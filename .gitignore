@@ -4,3 +4,4 @@ node_modules/
 *.pem
 public/build/
 service.txt
+.DS_Store
