@@ -1,0 +1,13 @@
+{
+  "name": "2023_2_ond_team",
+  "description": "Frontend repository for OND team project PinSpire in VK technopark 2023",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server",
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
