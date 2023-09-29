@@ -45,8 +45,8 @@ html, body {
 
 /* Стили для полей ввода */
 input {
-  width: 463px;
-  height: 40px; 
+  width: 443px;
+  height: 25px; 
   padding: 8px 0px 8px 8px;
   border: 2px solid var(--primary-45, #33A1B3);
   border-radius: 5px;
@@ -63,13 +63,13 @@ button {
   background-color: #226B77;
   color: #FFFFFF;
   width: 294px;
-  height: 53px;
+  height: 45px;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
 
-  font-size: 31.25px;
+  font-size: 21.25px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
