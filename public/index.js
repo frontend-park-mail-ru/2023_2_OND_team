@@ -1,16 +1,6 @@
 const fullscreenImage = document.getElementById('fond');
 
-const whiteBlock = document.createElement('div');
-whiteBlock.classList.add('form-container');
-fullscreenImage.appendChild(whiteBlock);
-
-const imageElement = document.createElement('img');
-imageElement.src = 'static/img/image_1.png';
-fullscreenImage.appendChild(imageElement);
-
-const form = document.createElement('form');
-form.classList.add('input-container');
-whiteBlock.appendChild(form);
+renderRegPage()
 
 function createLabeledInput(labelText, inputType, inputPlaceholder) {
     const label = document.createElement('label');
@@ -27,28 +17,6 @@ function createLabeledInput(labelText, inputType, inputPlaceholder) {
 
     return inputContainer;
 }
-
-form.appendChild(createLabeledInput('Имя пользователя', 'text', 'username'));
-form.appendChild(createLabeledInput('Почта', 'email', 'test@mail.ru'));
-form.appendChild(createLabeledInput('Пароль', 'password', '●●●●●●●●●●●●'));
-
-const submitButton = document.createElement('button');
-submitButton.type = 'submit';
-submitButton.textContent = 'Создать аккаунт';
-form.appendChild(submitButton);
-
-const textContainer = document.createElement('p');
-
-const alreadyHaveAccountText = document.createTextNode('Уже есть аккаунт? ');
-
-const signInLink = document.createElement('a');
-signInLink.href = '#';
-signInLink.textContent = 'Войти';
-
-textContainer.appendChild(alreadyHaveAccountText);
-textContainer.appendChild(signInLink);
-
-form.appendChild(textContainer);
 
 function renderAuthPage() {
     fullscreenImage.innerHTML = '';
@@ -85,6 +53,11 @@ function renderAuthPage() {
     textContainer.appendChild(signUpLink);
 
     form.appendChild(textContainer);
+
+    signUpLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        renderRegPage();
+    });
 }
 
 function renderRegPage() {
@@ -123,9 +96,9 @@ function renderRegPage() {
     textContainer.appendChild(signInLink);
 
     form.appendChild(textContainer);
-}
 
-signInLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    renderAuthPage();
-});
+    signInLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        renderAuthPage();
+    });
+}
