@@ -1,12 +1,12 @@
-import { renderAuthPage } from './auth-page.js';
-import { createLabeledInput } from './input.js';
-import { registerUser } from '../utils/reg.js';
+import { renderRegPage } from '../Registration/reg-page.js';
+import { createLabeledInput } from '../Input/input.js';
+import { loginUser } from '../../utils/login.js';
 
-export function renderRegPage(fullscreenImage) {
+export function renderAuthPage(fullscreenImage) {
     fullscreenImage.innerHTML = '';
 
     const ImageElement = document.createElement('img');
-    ImageElement.src = 'static/img/image_1.png';
+    ImageElement.src = 'static/img/image_2.png';
     fullscreenImage.appendChild(ImageElement);
 
     const whiteBlock = document.createElement('div');
@@ -18,43 +18,40 @@ export function renderRegPage(fullscreenImage) {
     whiteBlock.appendChild(form);
 
     const usernameInput = createLabeledInput('Имя пользователя', 'text', 'username');
-    const emailInput = createLabeledInput('Почта', 'email', 'test@mail.ru');
     const passwordInput = createLabeledInput('Пароль', 'password', '●●●●●●●●●●●●');
 
     form.appendChild(usernameInput);
-    form.appendChild(emailInput);
     form.appendChild(passwordInput);
 
-    const RegButton = document.createElement('button');
-    RegButton.type = 'submit';
-    RegButton.textContent = 'Создать аккаунт';
-    form.appendChild(RegButton);
+    const AuthButton = document.createElement('button');
+    AuthButton.type = 'submit';
+    AuthButton.textContent = 'Войти';
+    form.appendChild(AuthButton);
 
     const textContainer = document.createElement('p');
 
-    const alreadyHaveAccountText = document.createTextNode('Уже есть аккаунт? ');
+    const alreadyHaveAccountText = document.createTextNode('Все еще нет аккаунта? ');
 
-    const signInLink = document.createElement('a');
-    signInLink.href = '#';
-    signInLink.textContent = 'Войти';
+    const signUpLink = document.createElement('a');
+    signUpLink.href = '#';
+    signUpLink.textContent = 'Регистрация';
 
     textContainer.appendChild(alreadyHaveAccountText);
-    textContainer.appendChild(signInLink);
+    textContainer.appendChild(signUpLink);
 
     form.appendChild(textContainer);
 
-    signInLink.addEventListener('click', function (e) {
+    signUpLink.addEventListener('click', function (e) {
         e.preventDefault();
-        renderAuthPage(fullscreenImage);
+        renderRegPage(fullscreenImage);
     });
 
-    RegButton.addEventListener('click', function (e) {
+    AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
 
         const username = usernameInput.querySelector('input').value;
-        const email = emailInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
-        registerUser(username, email, password);
+        loginUser(username, password);
     });
 }
