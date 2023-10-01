@@ -40,6 +40,20 @@ app.post('/api/login', (req, res) => {
     }
 });
 
+app.post('/api/register', (req, res) => {
+    const { username, email, password } = req.body;
+
+    console.log('Имя пользователя:', username);
+    console.log('Почта:', email);
+    console.log('Пароль:', password);
+
+    if (username === 'test' && email === 'tets@test.ru' && password === 'test') {
+        res.status(200).json({ success: true, message: 'Найс' });
+    } else {
+        res.status(401).json({ success: false, message: 'Неверное имя пользователя или пароль' });
+    }
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
