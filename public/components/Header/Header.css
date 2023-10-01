@@ -1,0 +1,7 @@
+.header__item {
+    color: #6b009d;
+}
+
+.header__item:hover {
+    background-color: #f9edff;
+}

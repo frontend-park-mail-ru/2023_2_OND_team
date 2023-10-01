@@ -1,0 +1,219 @@
+@import './components/Header/Header.css';
+/* Импорты работают в CSS со своим синтаксисом */
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Общие стили для всей страницы */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+  }
+  
+/* Стили для фона */
+#fond {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Стили для белого квадрата слева */
+.form-container {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Стили для всего контейнера */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Стили для лейблов */
+.labeled-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Стили для полей ввода */
+input {
+  width: 443px;
+  height: 25px; 
+  padding: 8px 0px 8px 8px;
+  border: 2px solid var(--primary-45, #33A1B3);
+  border-radius: 5px;
+
+  color: var(--primary-45, #33A1B3);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;  
+}
+
+/* Стили для кнопки */
+button {
+  background-color: #226B77;
+  color: #FFFFFF;
+  width: 294px;
+  height: 45px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-size: 21.25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+
+.active {
+    font-weight: bold;
+}
+
+#root {
+    display: grid;
+
+    grid-template-areas:
+        "header"
+        "main";
+
+    grid-template-rows: 100px 1fr;
+}
+
+header {
+  display: flex;
+  padding: 13px 100px 13px 70px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color:#FFFFFF;
+  gap: 865px;
+}
+
+main {
+    grid-area: main;
+    padding: 0 70px 70px;
+}
+
+a {
+    display: block;
+    color: #333333;
+    text-decoration: none;
+}
+
+.feed {
+  margin: 0 auto;
+}
+
+#pins {
+  line-height: 0;
+  -webkit-column-count: 6;
+  -webkit-column-gap: 20px;
+  -moz-column-count: 6;
+  -moz-column-gap: 20px;
+  column-count: 6;
+  column-gap: 20px;
+}
+
+.feed-image {
+  margin-top: 10px;
+}
+
+.header__item {
+  padding-left: 10px;
+  color: #000;
+  text-align: center;
+  /* text base1 medium */
+  font-family: Lato;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#pins img {
+  /* width: 100%; */
+  /* height: auto !important; */
+  border-radius: 6%;
+  margin-bottom: 10px;
+
+  /* //height: auto; */
+  max-width: 100%;
+  vertical-align: middle;
+
+}
+
+@media (max-width: 1920px) {
+  #pins {
+    column-count: 6;
+  }
+}
+
+@media (max-width: 1440px) {
+  #pins {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1200px) {
+  #pins {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 980px) {
+  #pins {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  #pins {
+    column-count: 1;
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-x-10, 40px);
+} 
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+/* 
+
+
+.feed-image > img {
+    
+    border-radius: 6px;
+} */
+
+input {
+    display: block;
+    height: 60px;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
