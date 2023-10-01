@@ -3,27 +3,40 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/some-route', (require, response) => {
+app.use(cors());
+
+app.get('/some-route', (req, res) => {
     const filePath = path.resolve(__dirname, '..', 'public', 'index.html');
-    response.sendFile(filePath);
+    res.sendFile(filePath);
 });
 
-app.post('/api/login', (require, response) => {
-    const { username, password } = require.body;
+app.get('/set-cookie', (req, res) => {
+    res.cookie('loggedIn', 'true', { maxAge: 604800000, httpOnly: true });
+    res.send('Куки успешно установлены на сервере');
+});
+
+app.get('/get-cookie', (req, res) => {
+    const loggedInCookie = req.cookies.loggedIn;
+    res.send(`Значение куки loggedIn: ${loggedInCookie}`);
+});
+
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
 
     console.log('Имя пользователя:', username);
     console.log('Пароль:', password);
 
     if (username === 'test' && password === 'test') {
-        response.status(200).json({ success: true, message: 'Найс' });
+        res.status(200).json({ success: true, message: 'Найс' });
     } else {
-        response.status(401).json({ success: false, message: 'Неверное имя пользователя или пароль' });
+        res.status(401).json({ success: false, message: 'Неверное имя пользователя или пароль' });
     }
 });
 
