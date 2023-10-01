@@ -74,3 +74,16 @@ button {
   font-weight: 500;
   line-height: normal;
 }
+
+.cancel-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  z-index: 9999;
+}

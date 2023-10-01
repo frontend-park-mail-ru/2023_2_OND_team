@@ -5,6 +5,13 @@ import { registerUser } from '../../utils/reg.js';
 export function renderRegPage(fullscreenImage) {
     fullscreenImage.innerHTML = '';
 
+    const cancelButton = document.createElement('button');
+    cancelButton.classList.add('cancel-button');
+    const cancelIcon = document.createElement('img');
+    cancelIcon.src = './static/svg/cancel.svg';
+    cancelButton.appendChild(cancelIcon);
+    fullscreenImage.appendChild(cancelButton);
+
     const ImageElement = document.createElement('img');
     ImageElement.src = 'static/img/image_1.png';
     fullscreenImage.appendChild(ImageElement);
@@ -56,5 +63,10 @@ export function renderRegPage(fullscreenImage) {
         const password = passwordInput.querySelector('input').value;
 
         registerUser(username, email, password);
+    });
+
+    cancelButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        // renderMainPage(fullscreenImage);
     });
 }

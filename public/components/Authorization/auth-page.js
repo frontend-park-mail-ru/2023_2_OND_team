@@ -5,6 +5,13 @@ import { loginUser } from '../../utils/login.js';
 export function renderAuthPage(fullscreenImage) {
     fullscreenImage.innerHTML = '';
 
+    const cancelButton = document.createElement('button');
+    cancelButton.classList.add('cancel-button');
+    const cancelIcon = document.createElement('img');
+    cancelIcon.src = './static/svg/cancel.svg';
+    cancelButton.appendChild(cancelIcon);
+    fullscreenImage.appendChild(cancelButton);
+
     const ImageElement = document.createElement('img');
     ImageElement.src = 'static/img/image_2.png';
     fullscreenImage.appendChild(ImageElement);
@@ -53,5 +60,10 @@ export function renderAuthPage(fullscreenImage) {
         const password = passwordInput.querySelector('input').value;
 
         loginUser(username, password);
+    });
+
+    cancelButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        // renderMainPage(fullscreenImage);
     });
 }
