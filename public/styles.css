@@ -121,3 +121,10 @@ input:focus {
   font-weight: normal; 
   margin-bottom: 10px;
 }
+
+/* Стили для ссылок */
+a {
+  font-weight: bold; 
+  color: black;
+  text-decoration: none;
+}
