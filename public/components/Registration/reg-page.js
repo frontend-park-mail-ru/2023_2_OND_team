@@ -28,6 +28,11 @@ export function renderRegPage(fullscreenImage) {
     const emailInput = createLabeledInput('Почта', 'email', 'test@mail.ru');
     const passwordInput = createLabeledInput('Пароль', 'password', '●●●●●●●●●●●●');
 
+    const registrationTitle = document.createElement('h4');
+    registrationTitle.textContent = 'Регистрация в PinSpire';
+    registrationTitle.classList.add('registration-title');
+    form.appendChild(registrationTitle);
+
     form.appendChild(usernameInput);
     form.appendChild(emailInput);
     form.appendChild(passwordInput);

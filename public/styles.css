@@ -3,7 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+
 }
 
 /* Стили для фона */
@@ -75,6 +75,7 @@ button {
   line-height: normal;
 }
 
+/* Стили для кнопки */
 .cancel-button {
   position: absolute;
   top: 10px;
@@ -83,7 +84,21 @@ button {
   border: none;
   cursor: pointer;
   padding: 0;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   z-index: 9999;
+}
+
+/* Cтили для залоговка */
+.registration-title {
+  font-size: 31.3px; 
+  font-weight: normal; 
+  margin-bottom: 10px;
+}
+
+/* Cтили для залоговка */
+.auth-title {
+  font-size: 31.3px; 
+  font-weight: normal; 
+  margin-bottom: 10px;
 }

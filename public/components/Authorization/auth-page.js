@@ -27,6 +27,11 @@ export function renderAuthPage(fullscreenImage) {
     const usernameInput = createLabeledInput('Имя пользователя', 'text', 'username');
     const passwordInput = createLabeledInput('Пароль', 'password', '●●●●●●●●●●●●');
 
+    const registrationTitle = document.createElement('h4');
+    registrationTitle.textContent = 'Войти в PinSpire';
+    registrationTitle.classList.add('auth-title');
+    form.appendChild(registrationTitle);
+
     form.appendChild(usernameInput);
     form.appendChild(passwordInput);
 
