@@ -1,10 +1,19 @@
 'use strict';
 
 const express = require('express');
+const https = require('https');
+var fs = require('fs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
+
+const httpsOptions = {
+    key: fs.readFileSync("/home/ond_team/cert/privkey.pem"), // путь к ключу
+    cert: fs.readFileSync("/home/ond_team/cert/fullchain.pem") // путь к сертификату
+}
+
+https.createServer(httpsOptions, app).listen(1443);
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.json());
@@ -124,10 +133,4 @@ app.get('/pin', (req, res) => {
     }
 
     res.json(allImages);
-});
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
 });
