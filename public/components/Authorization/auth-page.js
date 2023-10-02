@@ -13,6 +13,7 @@ export function renderAuthPage(fullscreenImage) {
     fullscreenImage.appendChild(cancelButton);
 
     const ImageElement = document.createElement('img');
+    ImageElement.classList.add('ibackground');
     ImageElement.src = 'static/img/image_2.png';
     fullscreenImage.appendChild(ImageElement);
 
@@ -36,6 +37,7 @@ export function renderAuthPage(fullscreenImage) {
     form.appendChild(passwordInput);
 
     const AuthButton = document.createElement('button');
+    AuthButton.classList.add('button');
     AuthButton.type = 'submit';
     AuthButton.textContent = 'Войти';
     form.appendChild(AuthButton);

@@ -13,6 +13,7 @@ export function renderRegPage(fullscreenImage) {
     fullscreenImage.appendChild(cancelButton);
 
     const ImageElement = document.createElement('img');
+    ImageElement.classList.add('ibackground');
     ImageElement.src = 'static/img/image_1.png';
     fullscreenImage.appendChild(ImageElement);
 
@@ -38,6 +39,7 @@ export function renderRegPage(fullscreenImage) {
     form.appendChild(passwordInput);
 
     const RegButton = document.createElement('button');
+    RegButton.classList.add('button');
     RegButton.type = 'submit';
     RegButton.textContent = 'Создать аккаунт';
     form.appendChild(RegButton);
