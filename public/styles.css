@@ -1,9 +1,123 @@
+@import './components/Header/Header.css';
+
 /* Общие стили для всей страницы */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
+/* new styles */
+#root {
+  display: grid;
+
+  grid-template-areas:
+      "header"
+      "main";
+
+  grid-template-rows: 100px 1fr;
+  
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+header {
+  display: flex;
+  padding: 13px 100px 13px 70px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color:#FFFFFF;
+  gap: 800px;
+  box-shadow: 0 1px 5px rgb(214, 217, 219);
+}
+
+main {
+  grid-area: main;
+  padding: 0 70px 70px;
+}
+
+a {
+  display: block;
+  color: #333333;
+  text-decoration: none;
+}
+
+.feed {
+margin: 0 auto;
+}
+
+.feed-image {
+margin-top: 10px;
+}
+
+.header__item {
+padding-left: 10px;
+color: #000;
+text-align: center;
+/* text base1 medium */
+font-family: Lato;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.gallery {
+display: grid;
+grid-gap: 10px;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-auto-rows: auto;
+grid-auto-flow: dense;
+max-width: 1200px;
+margin: 10px auto;
+padding: 0 10px;
+}
+
+.gallery__item {
+align-items: center;
+display: flex;
+justify-content: center;
+}
+
+.gallery__item > img {
+border-radius: 12px;
+height: 100%;
+object-fit: cover;
+width: 100%;
+}
+
+.gallery__item--hor {
+grid-column: span 2;
+}
+
+.gallery__item--vert {
+grid-row: span 2;
+}
+
+.gallery__item--lg {
+grid-column: span 2;
+grid-row: span 2;
+}
+
+.header-logo {
+display: flex;
+align-items: center;
+gap: var(--spacing-x-10, 40px);
+} 
+
+.header-user {
+display: flex;
+align-items: center;
+gap: 100px;
+}
+
+
+/* end of new */
 
 /* Стили для фона */
 #fond {

@@ -1,25 +1,27 @@
 import { renderAuthPage } from '../Authorization/auth-page.js';
 import { createLabeledInput } from '../Input/input.js';
 import { registerUser } from '../../utils/reg.js';
+import { renderFeedPage } from '../Feed/Feed.js';
 
-export function renderRegPage(fullscreenImage) {
-    fullscreenImage.innerHTML = '';
+export function renderRegPage(headerElement, pageElement) {
+    pageElement.innerHTML = '';
+    pageElement.style.overflow = 'hidden';
 
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');
     const cancelIcon = document.createElement('img');
     cancelIcon.src = './static/svg/cancel.svg';
     cancelButton.appendChild(cancelIcon);
-    fullscreenImage.appendChild(cancelButton);
+    pageElement.appendChild(cancelButton);
 
     const ImageElement = document.createElement('img');
     ImageElement.classList.add('ibackground');
     ImageElement.src = 'static/img/image_1.png';
-    fullscreenImage.appendChild(ImageElement);
+    pageElement.appendChild(ImageElement);
 
     const whiteBlock = document.createElement('div');
     whiteBlock.classList.add('form-container');
-    fullscreenImage.appendChild(whiteBlock);
+    pageElement.appendChild(whiteBlock);
 
     const form = document.createElement('form');
     form.classList.add('input-container');
@@ -59,7 +61,7 @@ export function renderRegPage(fullscreenImage) {
 
     signInLink.addEventListener('click', function (e) {
         e.preventDefault();
-        renderAuthPage(fullscreenImage);
+        renderAuthPage(headerElement, pageElement);
     });
 
     RegButton.addEventListener('click', function (e) {
@@ -74,6 +76,7 @@ export function renderRegPage(fullscreenImage) {
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
-        // renderMainPage(fullscreenImage);
+        headerElement.style.display = '';
+        renderFeedPage(headerElement, pageElement);
     });
 }

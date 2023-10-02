@@ -1,6 +1,10 @@
-import { renderAuthPage } from './components/Authorization/auth-page.js';
-import { renderRegPage } from './components/Registration/reg-page.js';
 
-const fullscreenImage = document.getElementById('fond');
+import { renderFeedPage } from './components/Feed/Feed.js';
 
-renderRegPage(fullscreenImage);
+const rootElement = document.getElementById('root');
+const headerElement = document.createElement('header');
+const pageElement = document.createElement('main');
+rootElement.appendChild(headerElement);
+rootElement.appendChild(pageElement);
+
+renderFeedPage(headerElement, pageElement);

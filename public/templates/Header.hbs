@@ -1,0 +1,17 @@
+<div class="header-logo">
+    <div class="logo-icon">
+        <a class="header__item" href="/feed" data-section="feed">
+            <img src="static/svg/logo102x74.svg">
+        </a>
+    </div>
+    <div class="logo-text">
+        <a class="header__item" href="/feed" data-section="feed">
+            <img src="static/svg/logoString200x46.svg">
+        </a>
+    </div>
+</div>
+{{#if isAuthorized}}
+    {{{UserData userDataContext}}}
+{{else}}
+    {{{HeaderNonAuthorized}}}
+{{/if}}
