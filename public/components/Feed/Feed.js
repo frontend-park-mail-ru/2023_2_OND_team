@@ -14,9 +14,9 @@ export function renderFeedPage(headerElement, pageElement) {
             const images = parsedData[0].images;
             const username = parsedData[0].name;
 
-            // if (status === 200) {
-            //     isAuthorized = true;
-            // }
+            if (status === 200) {
+                isAuthorized = true;
+            }
             
             header.renderHeader(isAuthorized, username)
             
