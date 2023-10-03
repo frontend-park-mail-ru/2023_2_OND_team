@@ -8,11 +8,11 @@ export function isValidUserName(username) {
     let validation = { valid: true, message: '' };
 
     if (username.length <= 4) {
-        validation = { valid: false, message: 'Имя пользователя должно содержать не менее 4 символов.' };
+        validation = { valid: false, message: 'Имя пользователя должно содержать не менее 4 символов' };
     } else if (username.length >= 50) {
-        validation = { valid: false, message: 'Имя пользователя должно содержать менее 50 символов.' };
+        validation = { valid: false, message: 'Имя пользователя должно содержать менее 50 символов' };
     } else if (!regex.test(username)) {
-        validation = { valid: false, message: 'Имя пользователя должно состоять только из букв латинского алфавита и цифр.' };
+        validation = { valid: false, message: 'Имя пользователя должно состоять только из букв латинского алфавита и цифр' };
     }
 
     return validation;
@@ -27,17 +27,17 @@ export function isValidEmail(email) {
     let validation = { valid: true, message: '' };
 
     if (email.length >= 50) {
-        validation = { valid: false, message: 'Email должен содержать не более 50 символов.' };
+        validation = { valid: false, message: 'Email должен содержать не более 50 символов' };
     } else if (!email.includes('@')) {
-        validation = { valid: false, message: 'Email должен содержать символ @.' };
+        validation = { valid: false, message: 'Email должен содержать символ @' };
     } else {
         const parts = email.split('@');
         if (parts.length !== 2) {
-            validation = { valid: false, message: 'Email должен содержать только один символ @.' };
+            validation = { valid: false, message: 'Email должен содержать только один символ @' };
         } else {
             const domainParts = parts[1].split('.');
-            if (domainParts.length < 2) {
-                validation = { valid: false, message: 'Некорректный формат домена в email.' };
+            if (domainParts.length < 4) {
+                validation = { valid: false, message: 'Некорректный формат домена в email' };
             }
         }
     }
