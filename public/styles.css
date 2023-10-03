@@ -71,6 +71,7 @@ a {
   max-width: 1500px;
   margin: 10px auto;
   padding: 0 10px;
+  position: relative;
 }
 
 .gallery__item {
