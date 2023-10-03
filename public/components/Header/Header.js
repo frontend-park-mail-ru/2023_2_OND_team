@@ -1,14 +1,13 @@
 import { renderAuthPage } from "../Authorization/auth-page.js";
+import { renderRegPage } from "../Registration/reg-page.js";
 
 export class Header {
     #parent;
     #main;
-    logoutButton;
 
     constructor(parent, main) {
         this.#parent = parent;
         this.#main = main;
-        this.logoutButton = document.querySelector('.header-logout-button');
     }
 
     renderHeader(isAuthorized, username) {
@@ -30,7 +29,28 @@ export class Header {
             this.logoutButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.#parent.style.display = 'none';
+                this.#main.style.paddingTop = '0';
                 renderAuthPage(this.#parent, this.#main);
+            });
+        }
+
+        this.loginButton = document.querySelector('.header-login-button');
+        if (this.loginButton != undefined) {
+            this.loginButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.#parent.style.display = 'none';
+                this.#main.style.paddingTop = '0';
+                renderAuthPage(this.#parent, this.#main);
+            });
+        }
+
+        this.signupButton = document.querySelector('.header-signup-button');
+        if (this.signupButton != undefined) {
+            this.signupButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.#parent.style.display = 'none';
+                this.#main.style.paddingTop = '0';
+                renderRegPage(this.#parent, this.#main);
             });
         }
     }

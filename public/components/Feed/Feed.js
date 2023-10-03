@@ -28,21 +28,15 @@ export function renderFeedPage(headerElement, pageElement) {
 
             if (images && Array.isArray(images)) {
                 const div = document.createElement('div');
-                div.classList.add('container')
+                div.classList.add('container');
                 pageElement.appendChild(div);
                 
                 const section = document.createElement('section');
-                section.id = "pins"
+                section.id = "pins";
                 section.classList.add('gallery')
-                div.appendChild(section)
+                div.appendChild(section);
 
-                images.forEach(({src}) => {
-                    section.innerHTML += `
-                        <div class="gallery__item">
-                            <img src="${src}" width="200" />
-                        </div>
-                    `;
-                });
+                renderPins(section, images);
             }
             
         }
@@ -50,6 +44,16 @@ export function renderFeedPage(headerElement, pageElement) {
 
     window.addEventListener('scroll', handleScroll);
 
+}
+
+function handleScroll() {
+    let documentHeight = document.documentElement.scrollHeight;
+    let windowHeight = window.innerHeight;
+    let scrollY = window.scrollY;
+
+    if (scrollY + windowHeight >= documentHeight - 400) {
+        generatePins();
+    }
 }
 
 function generatePins() {
@@ -64,22 +68,12 @@ function generatePins() {
         });
 }
 
-function handleScroll() {
-    let documentHeight = document.documentElement.scrollHeight;
-    let windowHeight = window.innerHeight;
-    let scrollY = window.scrollY;
-
-    if (scrollY + windowHeight >= documentHeight - 200) {
-        generatePins();
-    }
-}
-
 /**
  * Рендерятся пины на главной странице.
  * @param {HTMLElement} parent - Родительский элемент для отображения изображений.
  * @param {Array} images - Массив объектов с информацией о пинах.
  */
-export function renderPins(parent, images) {
+function renderPins(parent, images) {
 
     const template = Handlebars.templates['Pins.hbs'];
     images.forEach(image => {

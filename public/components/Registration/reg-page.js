@@ -53,8 +53,9 @@ export function renderRegPage(headerElement, pageElement) {
     form.appendChild(RegButton);
 
     const textContainer = document.createElement('p');
+    textContainer.classList.add('already-registered');
 
-    const alreadyHaveAccountText = document.createTextNode('Уже есть аккаунт? ');
+    const alreadyHaveAccountText = document.createTextNode('Уже есть аккаунт?');
 
     const signInLink = document.createElement('a');
     signInLink.href = '#';
@@ -127,6 +128,7 @@ export function renderRegPage(headerElement, pageElement) {
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
         headerElement.style.display = '';
+        pageElement.style.paddingTop = '100px';
         renderFeedPage(headerElement, pageElement);
     });
 }

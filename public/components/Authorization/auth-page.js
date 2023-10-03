@@ -5,7 +5,7 @@ import { renderFeedPage } from '../Feed/Feed.js';
 import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
 
 /**
- * Рендерится страниц аутентификации.
+ * Рендерится страница аутентификации.
  * @param {HTMLElement} headerElement - Элемент заголовка.
  * @param {HTMLElement} pageElement - Элемент страницы.
  */
@@ -52,6 +52,7 @@ export function renderAuthPage(headerElement, pageElement) {
     form.appendChild(AuthButton);
 
     const textContainer = document.createElement('p');
+    textContainer.classList.add('already-registered');
 
     const alreadyHaveAccountText = document.createTextNode('Все еще нет аккаунта? ');
 
@@ -112,6 +113,7 @@ export function renderAuthPage(headerElement, pageElement) {
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
         headerElement.style.display = '';
+        pageElement.style.paddingTop = '100px';
         renderFeedPage(headerElement, pageElement);
     });
 }
