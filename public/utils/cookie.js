@@ -31,3 +31,11 @@ export function getCookie(name) {
     }
     return "";
 }
+
+/**
+ * Удаляет куки с указанным именем.
+ * @param {string} name - Имя куки, которое нужно удалить.
+ */
+export function clearCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}

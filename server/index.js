@@ -118,6 +118,24 @@ app.post('/api/login', (req, res) => {
 });
 
 /**
+ * Обработчик POST-запроса для завершения сессии пользователя (logout).
+ *
+ * @param {express.Request} req - Объект запроса Express.
+ * @param {express.Response} res - Объект ответа Express.
+ * @returns {void}
+ * @throws {Error} Если произошла ошибка при завершении сессии.
+ */
+app.post('/api/logout', (req, res) => {
+    try {
+        res.clearCookie('loggedIn');
+        res.status(200).json({ success: true, message: 'Сессия завершена' });
+    } catch (error) {
+        console.error('Ошибка при завершении сессии:', error);
+        res.status(500).json({ success: false, message: 'Произошла ошибка при завершении сессии' });
+    }
+});
+
+/**
  * Обработчик POST-запроса для регистрации пользователя.
  * @function
  * @param {string} '/api/register' - Маршрут, по которому выполняется POST-запрос.
@@ -188,6 +206,8 @@ app.get('/pin', (req, res) => {
 
     res.json(allImages);
 });
+
+
 
 const PORT = process.env.PORT || 3000;
 
