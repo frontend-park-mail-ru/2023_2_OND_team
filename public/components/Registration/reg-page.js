@@ -2,6 +2,7 @@ import { renderAuthPage } from '../Authorization/auth-page.js';
 import { createLabeledInput } from '../Input/input.js';
 import { registerUser } from '../../utils/reg.js';
 import { renderFeedPage } from '../Feed/Feed.js';
+import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
 
 export function renderRegPage(headerElement, pageElement) {
     pageElement.innerHTML = '';
@@ -64,6 +65,18 @@ export function renderRegPage(headerElement, pageElement) {
         renderAuthPage(headerElement, pageElement);
     });
 
+    const emailErrorSpan = document.createElement('span');
+    const passwordErrorSpan = document.createElement('span');
+    const usernameErrorSpan = document.createElement('span');
+
+    emailErrorSpan.classList.add('error-message');
+    passwordErrorSpan.classList.add('error-message');
+    usernameErrorSpan.classList.add('error-message');
+
+    emailInput.appendChild(emailErrorSpan);
+    usernameInput.appendChild(usernameErrorSpan);
+    passwordInput.appendChild(passwordErrorSpan);
+
     RegButton.addEventListener('click', function (e) {
         e.preventDefault();
 
@@ -71,7 +84,39 @@ export function renderRegPage(headerElement, pageElement) {
         const email = emailInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
-        registerUser(username, email, password);
+        if (!isValidUserName(username)) {
+            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            usernameErrorSpan.textContent = 'Введите корректное имя пользователя!';
+        } else {
+            usernameInput.querySelector('input').style.borderColor = '';
+            usernameInput.querySelector('input').style.Color = '';
+            usernameErrorSpan.textContent = '';
+        }
+
+        if (!isValidEmail(email)) {
+            emailInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            emailInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            emailErrorSpan.textContent = 'Введите корректный email!';
+        } else {
+            emailInput.querySelector('input').style.borderColor = '';
+            emailInput.querySelector('input').style.backgroundColor = '';
+            emailErrorSpan.textContent = '';
+        }
+    
+        if (!isValidPassword(password)) {
+            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            passwordErrorSpan.textContent = 'Введите корректный пароль!';
+        } else {
+            passwordInput.querySelector('input').style.borderColor = '';
+            passwordInput.querySelector('input').style.Color = '';
+            passwordErrorSpan.textContent = '';
+        }
+    
+        if (isValidUserName(username) && isValidEmail(email) && isValidPassword(password)) {
+            registerUser(username, email, password);
+        }
     });
 
     cancelButton.addEventListener('click', function (e) {

@@ -2,6 +2,7 @@ import { renderRegPage } from '../Registration/reg-page.js';
 import { createLabeledInput } from '../Input/input.js';
 import { loginUser } from '../../utils/login.js';
 import { renderFeedPage } from '../Feed/Feed.js';
+import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
 
 export function renderAuthPage(headerElement, pageElement) {
     pageElement.innerHTML = '';
@@ -63,13 +64,44 @@ export function renderAuthPage(headerElement, pageElement) {
         renderRegPage(headerElement, pageElement);
     });
 
+    const passwordErrorSpan = document.createElement('span');
+    const usernameErrorSpan = document.createElement('span');
+
+    passwordErrorSpan.classList.add('error-message');
+    usernameErrorSpan.classList.add('error-message');
+
+    usernameInput.appendChild(usernameErrorSpan);
+    passwordInput.appendChild(passwordErrorSpan);
+
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
 
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
-        loginUser(username, password);
+        if (!isValidUserName(username)) {
+            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            usernameErrorSpan.textContent = 'Введите корректное имя пользователя!';
+        } else {
+            passwordInput.querySelector('input').style.borderColor = '';
+            passwordInput.querySelector('input').style.Color = '';
+            usernameErrorSpan.textContent = '';
+        }
+
+        if (!isValidPassword(password)) {
+            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            passwordErrorSpan.textContent = 'Введите корректный пароль!';
+        } else {
+            passwordInput.querySelector('input').style.borderColor = '';
+            passwordInput.querySelector('input').style.Color = '';
+            passwordErrorSpan.textContent = '';
+        }
+    
+        if (isValidUserName(username) && isValidPassword(password)) {
+            loginUser(username, password);
+        }
     });
 
     cancelButton.addEventListener('click', function (e) {
