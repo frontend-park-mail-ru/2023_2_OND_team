@@ -7,7 +7,7 @@
  * @throws {Error} Если произошла ошибка при запросе или обработке данных.
  */
 export async function checkLogin() {
-    try {
+    /*try {
         const response = await fetch('//pinspire.online:8080/api/v1/auth/login');
         const res = await response.json();
         let isAuthorized = false;
@@ -22,10 +22,10 @@ export async function checkLogin() {
 
     } catch (error) {
         console.error('Ошибка при получении данных об авторизации:', error);
-    }
+    }*/
 
-    // return {
-    //     isAuthorized: true,
-    //     username: 'driver_on_lips',
-    // };
+    return {
+        isAuthorized: true,
+        username: 'driver_on_lips',
+    };
 }
