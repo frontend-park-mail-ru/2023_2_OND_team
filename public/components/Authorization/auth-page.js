@@ -106,7 +106,9 @@ export function renderAuthPage(headerElement, pageElement) {
         }
     
         if (isValidUserName(username) && isValidPassword(password)) {
-            loginUser(username, password);
+            if (loginUser(username, password)) {
+                renderFeedPage(headerElement, pageElement);
+            }
         }
     });
 

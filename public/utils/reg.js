@@ -6,6 +6,7 @@
  * @param {string} password - Пароль.
  */
 import { setCookie, getCookie } from '../utils/cookie.js';
+import { loginUser } from './login.js';
 
 // export function registerUser(username, email, password) {
 //     fetch('//pinspire.online:8080/api/v1/auth/signup', {
@@ -42,7 +43,7 @@ export async function registerUser(username, email, password) {
         const res = await response.json();
 
         if (res.status === 'ok') {
-            return true;
+            return loginUser(username, password);
         }
 
         return false;
