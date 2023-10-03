@@ -10,37 +10,54 @@ export function renderFeedPage(headerElement, pageElement) {
     pageElement.style.overflow = '';
     const header = new Header(headerElement, pageElement);
     
-    Ajax.get({
-        url: '/feed',
-        callback: (status, responseString) => {
+    fetch('//pinspire.online:8080/api/v1/auth/login')
+        .then(response => response.json())
+        .then(res => {
             let isAuthorized = false;
-
-            const parsedData = JSON.parse(responseString);
-            const images = parsedData[0].images;
-            const username = parsedData[0].name;
-
-            if (status === 200) {
-                isAuthorized = true;
+            if (res.status === 'ok') {
+                username = res.body.username;
+                isAuthorized = true
             }
+            header.renderHeader(isAuthorized, username);
+        })
+        .catch(error => {
+            console.error('Произошла ошибка при получении изображений:', error);
+        });
+        
+        generatePins();
+    
+
+    // Ajax.get({
+    //     url: '/feed',
+    //     callback: (status, responseString) => {
+    //         let isAuthorized = false;
+
+    //         const parsedData = JSON.parse(responseString);
+    //         const images = parsedData[0].images;
+    //         const username = parsedData[0].name;
+
+    //         if (status === 200) {
+    //             isAuthorized = true;
+    //         }
             
-            header.renderHeader(isAuthorized, username)
+    //         header.renderHeader(isAuthorized, username)
             
 
-            if (images && Array.isArray(images)) {
-                const div = document.createElement('div');
-                div.classList.add('container');
-                pageElement.appendChild(div);
+    //         if (images && Array.isArray(images)) {
+    //             const div = document.createElement('div');
+    //             div.classList.add('container');
+    //             pageElement.appendChild(div);
                 
-                const section = document.createElement('section');
-                section.id = "pins";
-                section.classList.add('gallery')
-                div.appendChild(section);
+    //             const section = document.createElement('section');
+    //             section.id = "pins";
+    //             section.classList.add('gallery')
+    //             div.appendChild(section);
 
-                renderPins(section, images);
-            }
+    //             renderPins(section, images);
+    //         }
             
-        }
-    })
+    //     }
+    // })
 
     window.addEventListener('scroll', handleScroll);
 
@@ -57,11 +74,15 @@ function handleScroll() {
 }
 
 function generatePins() {
-    fetch('/pin')
+    fetch('//pinspire.online:8080/api/v1/pin?count=20')
         .then(response => response.json())
-        .then(images => {
-            const section = document.getElementById('pins');
-            renderPins(section, images)
+        .then(res => {
+            if (res.status === 'ok') {
+                images = res.body.pins
+                console.log(images)
+                const section = document.getElementById('pins');
+                renderPins(section, images)
+            }
         })
         .catch(error => {
             console.error('Произошла ошибка при получении изображений:', error);
@@ -77,7 +98,7 @@ function renderPins(parent, images) {
 
     const template = Handlebars.templates['Pins.hbs'];
     images.forEach(image => {
-        const context = { src: image.src };
+        const context = { src: image.picture };
 
         parent.insertAdjacentHTML('beforeend', template(context));
     });

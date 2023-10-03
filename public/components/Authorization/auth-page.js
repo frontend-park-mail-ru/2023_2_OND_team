@@ -54,7 +54,7 @@ export function renderAuthPage(headerElement, pageElement) {
     const textContainer = document.createElement('p');
     textContainer.classList.add('already-registered');
 
-    const alreadyHaveAccountText = document.createTextNode('Все еще нет аккаунта? ');
+    const alreadyHaveAccountText = document.createTextNode('Все еще нет аккаунта?');
 
     const signUpLink = document.createElement('a');
     signUpLink.href = '#';
