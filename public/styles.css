@@ -23,7 +23,7 @@ header {
   flex-shrink: 1;
   padding: 0 90px 0 90px;
   align-items: center;
-  position: fixed;
+  position: relative;
   top: 0;
   width: 100%;
   background-color:#FFFFFF;
@@ -71,7 +71,7 @@ a {
   max-width: 1500px;
   margin: 10px auto;
   padding: 0 10px;
-  position: relative;
+  position: fixed;
 }
 
 .gallery__item {
