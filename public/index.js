@@ -1,4 +1,3 @@
-
 import { renderFeedPage } from './components/Feed/Feed.js';
 
 const rootElement = document.getElementById('root');

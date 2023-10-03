@@ -1,4 +1,6 @@
 import { Header } from "../Header/Header.js";
+import { checkLogin } from "../../utils/checkLogin.js";
+import { generatePins } from "../../utils/generatePins.js";
 
 /**
  * Рендерится главная страница с пинами.
@@ -9,58 +11,33 @@ export function renderFeedPage(headerElement, pageElement) {
     pageElement.innerHTML = ''
     pageElement.style.overflow = '';
     const header = new Header(headerElement, pageElement);
+    const div = document.createElement('div');
+    div.classList.add('container');
+    pageElement.appendChild(div);
+
+    const section = document.createElement('section');
+    section.id = "pins";
+    section.classList.add('gallery');
+    div.appendChild(section);
     
-    fetch('//pinspire.online:8080/api/v1/auth/login')
-        .then(response => response.json())
-        .then(res => {
-            let isAuthorized = false;
-            if (res.status === 'ok') {
-                username = res.body.username;
-                isAuthorized = true
-            }
-            header.renderHeader(isAuthorized, username);
+    checkLogin()
+        .then(data => {
+            header.renderHeader(data.isAuthorized, data.username);
         })
         .catch(error => {
-            console.error('Произошла ошибка при получении изображений:', error);
+            console.error('Ошибка при рендеринге хедера:', error);
         });
-        
-        generatePins();
-    
 
-    // Ajax.get({
-    //     url: '/feed',
-    //     callback: (status, responseString) => {
-    //         let isAuthorized = false;
-
-    //         const parsedData = JSON.parse(responseString);
-    //         const images = parsedData[0].images;
-    //         const username = parsedData[0].name;
-
-    //         if (status === 200) {
-    //             isAuthorized = true;
-    //         }
-            
-    //         header.renderHeader(isAuthorized, username)
-            
-
-    //         if (images && Array.isArray(images)) {
-    //             const div = document.createElement('div');
-    //             div.classList.add('container');
-    //             pageElement.appendChild(div);
-                
-    //             const section = document.createElement('section');
-    //             section.id = "pins";
-    //             section.classList.add('gallery')
-    //             div.appendChild(section);
-
-    //             renderPins(section, images);
-    //         }
-            
-    //     }
-    // })
+    generatePins()
+        .then(images => {
+            const section = document.getElementById('pins');
+            renderPins(section, images.images)
+        })
+        .catch(error => {
+            console.error('Ошибка при рендеринге пинов:', error);
+        });
 
     window.addEventListener('scroll', handleScroll);
-
 }
 
 function handleScroll() {
@@ -69,24 +46,15 @@ function handleScroll() {
     let scrollY = window.scrollY;
 
     if (scrollY + windowHeight >= documentHeight - 400) {
-        generatePins();
-    }
-}
-
-function generatePins() {
-    fetch('//pinspire.online:8080/api/v1/pin?count=20')
-        .then(response => response.json())
-        .then(res => {
-            if (res.status === 'ok') {
-                images = res.body.pins
-                console.log(images)
+        generatePins()
+            .then(images => {
                 const section = document.getElementById('pins');
-                renderPins(section, images)
-            }
-        })
-        .catch(error => {
-            console.error('Произошла ошибка при получении изображений:', error);
-        });
+                renderPins(section, images.images)
+            })
+            .catch(error => {
+                console.error('Ошибка при рендеринге пинов:', error);
+            });
+    }
 }
 
 /**
@@ -95,7 +63,6 @@ function generatePins() {
  * @param {Array} images - Массив объектов с информацией о пинах.
  */
 function renderPins(parent, images) {
-
     const template = Handlebars.templates['Pins.hbs'];
     images.forEach(image => {
         const context = { src: image.picture };
