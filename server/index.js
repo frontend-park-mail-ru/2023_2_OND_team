@@ -18,12 +18,13 @@ const app = express();
  * @property {string} key - Путь к приватному ключу сервера.
  * @property {string} cert - Путь к сертификату сервера.
  */
-//const httpsOptions = {
-//   key: fs.readFileSync("/home/ond_team/cert/privkey.pem"), // путь к ключу
-//   cert: fs.readFileSync("/home/ond_team/cert/fullchain.pem") // путь к сертификату
-//}
 
-//https.createServer(httpsOptions, app).listen(1443);
+const httpsOptions = {
+  key: fs.readFileSync("/home/ond_team/cert/privkey.pem"), // путь к ключу
+  cert: fs.readFileSync("/home/ond_team/cert/fullchain.pem") // путь к сертификату
+}
+
+https.createServer(httpsOptions, app).listen(1443);
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.json());
