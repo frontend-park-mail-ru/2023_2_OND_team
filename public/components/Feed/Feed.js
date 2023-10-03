@@ -37,10 +37,8 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге пинов:', error);
         });
 
-    window.addEventListener('scroll', timeout);
+    window.addEventListener('scroll', handleScroll);
 }
-
-let timeout = debouce(handleScroll, 1000);
 
 /**
  * Обработчик скролла страницы.
