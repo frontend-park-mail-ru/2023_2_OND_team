@@ -36,7 +36,7 @@ export function isValidEmail(email) {
             validation = { valid: false, message: 'Email должен содержать только один символ @' };
         } else {
             const domainParts = parts[1].split('.');
-            if (domainParts.length < 4) {
+            if (domainParts.length < 2) {
                 validation = { valid: false, message: 'Некорректный формат домена в email' };
             }
         }
