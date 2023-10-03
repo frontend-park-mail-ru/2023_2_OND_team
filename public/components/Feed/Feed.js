@@ -31,7 +31,7 @@ export function renderFeedPage(headerElement, pageElement) {
     generatePins()
         .then(images => {
             const section = document.getElementById('pins');
-            renderPins(section, images.images)
+            renderPins(section, images)
         })
         .catch(error => {
             console.error('Ошибка при рендеринге пинов:', error);
@@ -53,7 +53,7 @@ function handleScroll() {
         generatePins()
             .then(images => {
                 const section = document.getElementById('pins');
-                renderPins(section, images.images)
+                renderPins(section, images)
             })
             .catch(error => {
                 console.error('Ошибка при рендеринге пинов:', error);

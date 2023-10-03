@@ -8,7 +8,7 @@
 import { setCookie, getCookie } from '../utils/cookie.js';
 
 export function registerUser(username, email, password) {
-    fetch('/api/register', {
+    fetch('//pinspire.online:8080/api/v1/auth/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -17,9 +17,10 @@ export function registerUser(username, email, password) {
     })
         .then((response) => response.json())
         .then((data) => {
-            if (data.success) {
-                setCookie('registered', 'true', 7);
-                sendCookieToServer();
+            if (data.status === 'ok') {
+                console.log('reg');
+                // setCookie('registered', 'true', 7);
+                // sendCookieToServer();
             } else {
                 console.error('Ошибка регистрации:', data.message);
             }
