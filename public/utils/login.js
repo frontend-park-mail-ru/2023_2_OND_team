@@ -32,7 +32,7 @@ import { setCookie } from '../utils/cookie.js';
 
 export async function loginUser(username, password) {
     try {
-        const response = await fetch('//pinspire:8080/api/v1/auth/login', {
+        const response = await fetch('//pinspire.online:8080/api/v1/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
