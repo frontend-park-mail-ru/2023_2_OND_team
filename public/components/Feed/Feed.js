@@ -10,6 +10,7 @@ import { generatePins } from "../../utils/generatePins.js";
 export function renderFeedPage(headerElement, pageElement) {
     pageElement.innerHTML = ''
     pageElement.style.overflow = '';
+    headerElement.style.display = '';
     const header = new Header(headerElement, pageElement);
     const div = document.createElement('div');
     div.classList.add('container');
