@@ -14,6 +14,7 @@ export function registerUser(username, email, password) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, email, password }),
+        credentials: 'include',
     })
         .then((response) => response.json())
         .then((data) => {
