@@ -85,24 +85,27 @@ export function renderAuthPage(headerElement, pageElement) {
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
+        const usernameValidationResult = isValidUserName(username);
+        const passwordValidationResult = isValidPassword(password);
+
         if (!isValidUserName(username)) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            usernameErrorSpan.textContent = nameMessage;
+            usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
             passwordInput.querySelector('input').style.borderColor = '';
             passwordInput.querySelector('input').style.Color = '';
-            usernameErrorSpan.textContent = nameMessage;
+            usernameErrorSpan.textContent = '';
         }
 
         if (!isValidPassword(password)) {
             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            passwordErrorSpan.textContent = passMessage;
+            passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
             passwordInput.querySelector('input').style.borderColor = '';
             passwordInput.querySelector('input').style.Color = '';
-            passwordErrorSpan.textContent = passMessage;
+            passwordErrorSpan.textContent = '';
         }
     
         if (isValidUserName(username) && isValidPassword(password)) {
