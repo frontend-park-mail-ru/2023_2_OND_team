@@ -1,0 +1,122 @@
+.ibackground {
+    overflow:  hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.form-container {
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.labeled-input {
+    font-family: Nunito;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input {
+    font-family: Lato;
+    width: 443px;
+    height: 25px; 
+    padding: 8px 0px 8px 8px;
+    border: 2px solid var(--primary-45, #33A1B3);
+    border-radius: var(--br-s, 10px);
+  
+    color: var(--primary-45, #33A1B3);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;  
+}
+
+input:focus {
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30, #226B77);
+    background: var(--bg-100, #FFF);
+}
+
+.button {
+    background-color: #226B77;
+    color: #FFFFFF;
+    width: 294px;
+    height: 45px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  
+    font-size: 21.25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.button:hover {
+    background: rgba(34, 107, 119, 0.80);
+}
+
+.cancel-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    z-index: 9999;
+}
+
+.registration-title {
+    font-family: Nunito;
+    font-size: 31.3px; 
+    font-weight: normal; 
+    margin-bottom: 10px;
+}
+
+.auth-title {
+    font-family: Nunito;
+    font-size: 31.3px; 
+    font-weight: normal; 
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: Nunito;
+}
+
+a {
+    font-family: Nunito 600;
+    font-weight: bold; 
+    color: black;
+    text-decoration: none;
+}
+
+.error-message {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+}
+
+.already-registered {
+    display: flex;
+    gap: 5px;
+}

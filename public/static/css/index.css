@@ -1,0 +1,10 @@
+@import url("feed.css");
+@import url("header.css");
+@import url("form.css");
+@import url("gallery.css");
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
