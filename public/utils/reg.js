@@ -7,28 +7,49 @@
  */
 import { setCookie, getCookie } from '../utils/cookie.js';
 
-export function registerUser(username, email, password) {
-    fetch('//pinspire.online:8080/api/v1/auth/signup', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, email, password }),
-        credentials: 'include',
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.status === 'ok') {
-                console.log('reg');
-                // setCookie('registered', 'true', 7);
-                // sendCookieToServer();
-            } else {
-                console.error('Ошибка регистрации:', data.message);
-            }
+// export function registerUser(username, email, password) {
+//     fetch('//pinspire.online:8080/api/v1/auth/signup', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ username, email, password }),
+//         credentials: 'include',
+//     })
+//         .then((response) => response.json())
+//         .then((data) => {
+//             if (data.status === 'ok') {
+//                 renderFeedPage()
+//             } else {
+//                 console.error('Ошибка регистрации:', data.message);
+//             }
+//         })
+//         .catch((error) => {
+//             console.error('Ошибка при выполнении запроса:', error);
+//         });
+// }
+
+export async function registerUser(username, email, password) {
+    try {
+        const response = await fetch('//pinspire.online:8080/api/v1/auth/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, email, password }),
+            credentials: 'include',
         })
-        .catch((error) => {
-            console.error('Ошибка при выполнении запроса:', error);
-        });
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+            return true;
+        }
+
+        return false;
+
+    } catch (error) {
+        console.error('Ошибка при выполнении запроса:', error);
+    }
 }
 
 export function sendCookieToServer() {

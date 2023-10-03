@@ -121,7 +121,9 @@ export function renderRegPage(headerElement, pageElement) {
         }
     
         if (isValidUserName(username) && isValidEmail(email) && isValidPassword(password)) {
-            registerUser(username, email, password);
+            if (registerUser(username, email, password)) {
+                renderFeedPage(headerElement, pageElement);
+            }
         }
     });
 
