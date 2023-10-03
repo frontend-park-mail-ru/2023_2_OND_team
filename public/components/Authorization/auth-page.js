@@ -88,7 +88,7 @@ export function renderAuthPage(headerElement, pageElement) {
         const usernameValidationResult = isValidUserName(username);
         const passwordValidationResult = isValidPassword(password);
 
-        if (!isValidUserName(username)) {
+        if (!usernameValidationResult.valid) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
             usernameErrorSpan.textContent = usernameValidationResult.message;
@@ -98,7 +98,7 @@ export function renderAuthPage(headerElement, pageElement) {
             usernameErrorSpan.textContent = '';
         }
 
-        if (!isValidPassword(password)) {
+        if (!passwordValidationResult.valid) {
             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
             passwordErrorSpan.textContent = passwordValidationResult.message;
@@ -108,7 +108,7 @@ export function renderAuthPage(headerElement, pageElement) {
             passwordErrorSpan.textContent = '';
         }
     
-        if (isValidUserName(username) && isValidPassword(password)) {
+        if (usernameValidationResult.valid && passwordValidationResult.valid) {
             if (loginUser(username, password)) {
                 renderFeedPage(headerElement, pageElement);
             }
