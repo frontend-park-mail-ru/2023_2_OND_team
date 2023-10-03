@@ -90,37 +90,41 @@ export function renderRegPage(headerElement, pageElement) {
         const email = emailInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
-        if (!isValidUserName(username)) {
+        const usernameValidationMessage = isValidUserName(username);
+        const emailValidationMessage = isValidEmail(email);
+        const passwordValidationMessage = isValidPassword(password);
+
+        if (usernameValidationMessage) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            usernameErrorSpan.textContent = usernameValidationResult.message;
+            emailErrorSpan.textContent = emailValidationMessage;
         } else {
             usernameInput.querySelector('input').style.borderColor = '';
             usernameInput.querySelector('input').style.Color = '';
             usernameErrorSpan.textContent = '';
         }
 
-        if (!isValidEmail(email)) {
+        if (emailValidationMessage) {
             emailInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             emailInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            emailErrorSpan.textContent = emailValidationResult.message;
+            emailErrorSpan.textContent = emailValidationMessage;
         } else {
             emailInput.querySelector('input').style.borderColor = '';
             emailInput.querySelector('input').style.backgroundColor = '';
             emailErrorSpan.textContent = '';
         }
     
-        if (!isValidPassword(password)) {
+        if (passwordValidationMessage) {
             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            passwordErrorSpan.textContent = passwordValidationResult.message;
+            passwordErrorSpan.textContent = passwordValidationMessage;
         } else {
             passwordInput.querySelector('input').style.borderColor = '';
             passwordInput.querySelector('input').style.Color = '';
             passwordErrorSpan.textContent = '';
         }
     
-        if (isValidUserName(username) && isValidEmail(email) && isValidPassword(password)) {
+        if (!usernameValidationMessage && !emailValidationMessage && !passwordValidationMessage) {
             if (registerUser(username, email, password)) {
                 renderFeedPage(headerElement, pageElement);
             }
