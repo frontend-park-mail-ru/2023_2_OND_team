@@ -2,7 +2,7 @@ import { renderAuthPage } from '../Authorization/auth-page.js';
 import { createLabeledInput } from '../Input/input.js';
 import { registerUser } from '../../utils/reg.js';
 import { renderFeedPage } from '../Feed/Feed.js';
-import { isValidEmail, isValidPassword, isValidUserName, emailMessage, passMessage, nameMessage } from '../../utils/valid.js';
+import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
 
 /**
  * Рендерится страницу регистрации.
