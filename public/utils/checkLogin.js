@@ -1,3 +1,11 @@
+/**
+ * Проверяет статус авторизации пользователя.
+ *
+ * @async
+ * @function
+ * @returns {Promise<{ isAuthorized: boolean, username: string }>} Объект с информацией о статусе авторизации и именем пользователя.
+ * @throws {Error} Если произошла ошибка при запросе или обработке данных.
+ */
 export async function checkLogin() {
     // try {
     //     const response = await fetch('//pinspire.online:8080/api/v1/auth/login');

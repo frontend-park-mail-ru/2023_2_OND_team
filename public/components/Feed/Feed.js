@@ -40,6 +40,10 @@ export function renderFeedPage(headerElement, pageElement) {
     window.addEventListener('scroll', handleScroll);
 }
 
+/**
+ * Обработчик скролла страницы.
+ * Загружает дополнительные пины при достижении нижней части страницы.
+ */
 function handleScroll() {
     let documentHeight = document.documentElement.scrollHeight;
     let windowHeight = window.innerHeight;
