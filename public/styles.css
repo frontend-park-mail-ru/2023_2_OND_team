@@ -366,7 +366,7 @@ a {
 }
 
 .gallery img:hover {
-  transform: scale(1.08);
+  transform: scale(1.06);
   transition: transform 0.3s ease;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
 }
