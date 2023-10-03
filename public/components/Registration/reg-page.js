@@ -5,7 +5,7 @@ import { renderFeedPage } from '../Feed/Feed.js';
 import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
 
 /**
- * Рендерится страницу регистрации.
+ * Рендерится страница регистрации.
  * @param {HTMLElement} headerElement - Элемент заголовка страницы.
  * @param {HTMLElement} pageElement - Элемент страницы, куда будет рендериться контент.
  */
@@ -90,41 +90,41 @@ export function renderRegPage(headerElement, pageElement) {
         const email = emailInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
-        const usernameValidationMessage = isValidUserName(username);
-        const emailValidationMessage = isValidEmail(email);
-        const passwordValidationMessage = isValidPassword(password);
+        const usernameValidationResult = isValidUserName(username);
+        const emailValidationResult = isValidEmail(email);
+        const passwordValidationResult = isValidPassword(password);
 
-        if (usernameValidationMessage) {
+        if (!usernameValidationResult.valid) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            emailErrorSpan.textContent = emailValidationMessage;
+            usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
             usernameInput.querySelector('input').style.borderColor = '';
             usernameInput.querySelector('input').style.Color = '';
             usernameErrorSpan.textContent = '';
         }
 
-        if (emailValidationMessage) {
+        if (!emailValidationResult.valid) {
             emailInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             emailInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            emailErrorSpan.textContent = emailValidationMessage;
+            emailErrorSpan.textContent = emailValidationResult.message;
         } else {
             emailInput.querySelector('input').style.borderColor = '';
             emailInput.querySelector('input').style.backgroundColor = '';
             emailErrorSpan.textContent = '';
         }
     
-        if (passwordValidationMessage) {
+        if (!passwordValidationResult.valid) {
             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            passwordErrorSpan.textContent = passwordValidationMessage;
+            passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
             passwordInput.querySelector('input').style.borderColor = '';
             passwordInput.querySelector('input').style.Color = '';
             passwordErrorSpan.textContent = '';
         }
     
-        if (!usernameValidationMessage && !emailValidationMessage && !passwordValidationMessage) {
+        if (usernameValidationResult.valid && emailValidationResult.valid && passwordValidationResult.valid) {
             if (registerUser(username, email, password)) {
                 renderFeedPage(headerElement, pageElement);
             }
