@@ -1,3 +1,9 @@
+/**
+ * Выполняется запрос на вход пользователя с указанным именем и паролем.
+ * Если вход успешен, устанавливается куки `loggedIn` и отправляет их на сервер.
+ * @param {string} username - Имя пользователя.
+ * @param {string} password - Пароль.
+ */
 import { setCookie } from '../utils/cookie.js';
 
 export function loginUser(username, password) {

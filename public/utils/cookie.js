@@ -1,3 +1,9 @@
+/**
+ * Устанавливаются куки с указанным именем, значением и сроком действия.
+ * @param {string} name - Имя куки.
+ * @param {string} value - Значение куки.
+ * @param {number} days - Срок действия куки в днях.
+ */
 export function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -5,6 +11,11 @@ export function setCookie(name, value, days) {
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
+/**
+ * Получается значение куки по указанному имени.
+ * @param {string} name - Имя куки.
+ * @returns {string} - Значение куки или пустая строка, если кука не найдена.
+ */
 export function getCookie(name) {
     const cookieName = name + "=";
     const decodedCookie = decodeURIComponent(document.cookie);

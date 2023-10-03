@@ -1,13 +1,26 @@
-export function isValidUserName(password) {
-    return password.length >= 8;
+/**
+ * Проверяется, является ли имя пользователя валидным.
+ * @param {string} username - Введеное имя пользователя.
+ * @returns {boolean} - `true`, если имя пользователя валидно, иначе `false`.
+ */
+export function isValidUserName(username) {
+    return username.length >= 8;
 }
 
-// Минимум 4 символа и символ @
+/**
+ * Проверяется, является ли адрес электронной почты валидным.
+ * @param {string} email - Введенный адрес электронной почты.
+ * @returns {boolean} - `true`, если адрес электронной почты валиден, иначе `false`.
+ */
 export function isValidEmail(email) {
     return email.length >= 4 && email.includes('@');
 }
 
-// Минимум 8 символов и содержит хотя бы одну строчную и заглавную буквы
+/**
+ * Проверяется, является ли пароль валидным.
+ * @param {string} password - Введенный пароль для проверки.
+ * @returns {boolean} - `true`, если пароль валиден, иначе `false`.
+ */
 export function isValidPassword(password) {
     return password.length >= 8 && /[a-z]/.test(password) && /[A-Z]/.test(password);
 }

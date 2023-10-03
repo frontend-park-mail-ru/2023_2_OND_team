@@ -1,5 +1,10 @@
 import { Header } from "../Header/Header.js";
 
+/**
+ * Рендерится главная страница с пинами.
+ * @param {HTMLElement} headerElement - Элемент заголовка.
+ * @param {HTMLElement} pageElement - Элемент страницы.
+ */
 export function renderFeedPage(headerElement, pageElement) {
     pageElement.innerHTML = ''
     pageElement.style.overflow = '';
@@ -69,6 +74,11 @@ function handleScroll() {
     }
 }
 
+/**
+ * Рендерятся пины на главной странице.
+ * @param {HTMLElement} parent - Родительский элемент для отображения изображений.
+ * @param {Array} images - Массив объектов с информацией о пинах.
+ */
 export function renderPins(parent, images) {
 
     const template = Handlebars.templates['Pins.hbs'];

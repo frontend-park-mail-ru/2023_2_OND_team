@@ -1,3 +1,7 @@
+/**
+ * Методы HTTP-запросов, поддерживаемые объектом Ajax.
+ * @enum {string}
+ */
 (function() {
     const AJAX_METHODS = {
         GET: 'GET',

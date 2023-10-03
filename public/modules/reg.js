@@ -1,3 +1,9 @@
+/**
+ * Регистрация нового пользователя с использованием указанных данных.
+ * @param {string} username - Имя пользователя.
+ * @param {string} email - Электронная почта пользователя.
+ * @param {string} password - Пароль пользователя.
+ */
 import { setCookie, getCookie } from '../utils/cookie.js';
 
 export function registerUser(username, email, password) {
@@ -22,6 +28,9 @@ export function registerUser(username, email, password) {
         });
 }
 
+/**
+ * Отправляются куки на сервер.
+ */
 export function sendCookieToServer() {
     const registeredCookie = getCookie('registered');
     fetch('/set-registered-cookie', {

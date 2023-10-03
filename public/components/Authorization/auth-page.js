@@ -4,6 +4,11 @@ import { loginUser } from '../../utils/login.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
 
+/**
+ * Рендерится страниц аутентификации.
+ * @param {HTMLElement} headerElement - Элемент заголовка.
+ * @param {HTMLElement} pageElement - Элемент страницы.
+ */
 export function renderAuthPage(headerElement, pageElement) {
     pageElement.innerHTML = '';
     pageElement.style.display = 'blosk';

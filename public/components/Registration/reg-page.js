@@ -4,6 +4,11 @@ import { registerUser } from '../../utils/reg.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
 
+/**
+ * Рендерится страницу регистрации.
+ * @param {HTMLElement} headerElement - Элемент заголовка страницы.
+ * @param {HTMLElement} pageElement - Элемент страницы, куда будет рендериться контент.
+ */
 export function renderRegPage(headerElement, pageElement) {
     pageElement.innerHTML = '';
     pageElement.style.overflow = 'hidden';

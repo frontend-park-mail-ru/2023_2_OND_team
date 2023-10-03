@@ -1,3 +1,8 @@
+/**
+ * Выполняется вход пользователя с использованием указанных данных.
+ * @param {string} username - Имя пользователя.
+ * @param {string} password - Пароль пользователя.
+ */
 import { loginUser } from '../utils/login.js';
 import { sendCookieToServer } from '../utils/cookie.js';
 
@@ -23,6 +28,9 @@ export function loginUser(username, password) {
         });
 }
 
+/**
+ * Отправляются куки на сервер.
+ */
 export function sendCookieToServer() {
     const loggedInCookie = getCookie('loggedIn');
     fetch('/set-cookie', { 
