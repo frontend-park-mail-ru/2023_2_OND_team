@@ -8,7 +8,9 @@
  */
 export async function checkLogin() {
     try {
-        const response = await fetch('//pinspire.online:8080/api/v1/auth/login');
+        const response = await fetch('//pinspire.online:8080/api/v1/auth/login', {
+            credentials: 'include',
+        });
         const res = await response.json();
         let isAuthorized = false;
         let username = '';

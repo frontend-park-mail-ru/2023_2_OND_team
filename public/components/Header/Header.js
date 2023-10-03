@@ -1,5 +1,6 @@
 import { renderAuthPage } from "../Authorization/auth-page.js";
 import { renderRegPage } from "../Registration/reg-page.js";
+import { logoutUser } from "../../utils/logout.js";
 
 /**
  * Класс для рендеринга хэдера главной страницы.
@@ -43,7 +44,10 @@ export class Header {
                 e.preventDefault();
                 this.#parent.style.display = 'none';
                 this.#main.style.paddingTop = '0';
-                renderAuthPage(this.#parent, this.#main);
+
+                if (logoutUser()) {
+                    renderAuthPage(this.#parent, this.#main);
+                }
             });
         }
 
