@@ -1,4 +1,3 @@
-
 export async function logoutUser() {
     try {
         const response = await fetch('//pinspire.online:8080/api/v1/auth/logout', {

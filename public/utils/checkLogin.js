@@ -25,9 +25,4 @@ export async function checkLogin() {
     } catch (error) {
         console.error('Ошибка при получении данных об авторизации:', error);
     }
-
-    // return {
-    //     isAuthorized: true,
-    //     username: 'driver_on_lips',
-    // };
 }
