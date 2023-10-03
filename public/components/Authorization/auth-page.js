@@ -88,21 +88,21 @@ export function renderAuthPage(headerElement, pageElement) {
         if (!isValidUserName(username)) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            usernameErrorSpan.textContent = 'Введите корректное имя пользователя!';
+            usernameErrorSpan.textContent = nameMessage;
         } else {
             passwordInput.querySelector('input').style.borderColor = '';
             passwordInput.querySelector('input').style.Color = '';
-            usernameErrorSpan.textContent = '';
+            usernameErrorSpan.textContent = nameMessage;
         }
 
         if (!isValidPassword(password)) {
             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            passwordErrorSpan.textContent = 'Введите корректный пароль!';
+            passwordErrorSpan.textContent = passMessage;
         } else {
             passwordInput.querySelector('input').style.borderColor = '';
             passwordInput.querySelector('input').style.Color = '';
-            passwordErrorSpan.textContent = '';
+            passwordErrorSpan.textContent = passMessage;
         }
     
         if (isValidUserName(username) && isValidPassword(password)) {
