@@ -93,31 +93,31 @@ export function renderRegPage(headerElement, pageElement) {
         if (!isValidUserName(username)) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            usernameErrorSpan.textContent = nameMessage;
+            usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
             usernameInput.querySelector('input').style.borderColor = '';
             usernameInput.querySelector('input').style.Color = '';
-            usernameErrorSpan.textContent = nameMessage;
+            usernameErrorSpan.textContent = '';
         }
 
         if (!isValidEmail(email)) {
             emailInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             emailInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            emailErrorSpan.textContent = emailMessage;
+            emailErrorSpan.textContent = emailValidationResult.message;
         } else {
             emailInput.querySelector('input').style.borderColor = '';
             emailInput.querySelector('input').style.backgroundColor = '';
-            emailErrorSpan.textContent = emailMessage;
+            emailErrorSpan.textContent = '';
         }
     
         if (!isValidPassword(password)) {
             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            passwordErrorSpan.textContent = passMessage;
+            passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
             passwordInput.querySelector('input').style.borderColor = '';
             passwordInput.querySelector('input').style.Color = '';
-            passwordErrorSpan.textContent = passMessage;
+            passwordErrorSpan.textContent = '';
         }
     
         if (isValidUserName(username) && isValidEmail(email) && isValidPassword(password)) {
