@@ -111,6 +111,11 @@ export function renderAuthPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
+            const existingErrorSpan = form.querySelector('.error-message');
+            if (existingErrorSpan) {
+                existingErrorSpan.remove();
+            }
+            
             Api.loginUser(username, password)
                 .then(status => { 
                     if (status) {
