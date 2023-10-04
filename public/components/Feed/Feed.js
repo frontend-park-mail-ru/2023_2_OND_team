@@ -1,6 +1,5 @@
 import { Header } from "../Header/Header.js";
 import { API } from "../../utils/api.js";
-import { scrollFunction } from "../../utils/scrollFunction.js";
 // import { handleScroll } from "../../utils/handleScroll.js";
 import { renderPins } from "../../utils/renderPins.js";
 
@@ -52,28 +51,34 @@ export function renderFeedPage(headerElement, pageElement) {
         });
 
     let timer;
-    window.addEventListener('scroll', scrollFunction.bind({ timer: timer }));
+
+    function scrollFunction() {
+        clearTimeout(timer);
+        timer = setTimeout(handleScroll, 100);
+    }
+    window.addEventListener('scroll', scrollFunction);
 }
 
-// /**
-// * Обработчик скролла страницы.
-// * Загружает дополнительные пины при достижении нижней части страницы.
-// */
-// function handleScroll() {
-//     const Api = new API();
 
-//     let documentHeight = document.documentElement.scrollHeight;
-//     let windowHeight = window.innerHeight;
-//     let scrollY = window.scrollY;
+/**
+* Обработчик скролла страницы.
+* Загружает дополнительные пины при достижении нижней части страницы.
+*/
+function handleScroll() {
+    const Api = new API();
 
-//     if (scrollY + windowHeight >= documentHeight - 400) {
-//         Api.generatePins()
-//             .then(images => {
-//                 const section = document.getElementById('pins');
-//                 renderPins(section, images)
-//             })
-//             .catch(error => {
-//                 console.error('Ошибка при рендеринге пинов:', error);
-//             });
-//     }
-// }
+    let documentHeight = document.documentElement.scrollHeight;
+    let windowHeight = window.innerHeight;
+    let scrollY = window.scrollY;
+
+    if (scrollY + windowHeight >= documentHeight - 400) {
+        Api.generatePins()
+            .then(images => {
+                const section = document.getElementById('pins');
+                renderPins(section, images)
+            })
+            .catch(error => {
+                console.error('Ошибка при рендеринге пинов:', error);
+            });
+    }
+}
