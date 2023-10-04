@@ -8,6 +8,14 @@ import { generatePins } from "../../utils/generatePins.js";
 * @param {HTMLElement} pageElement - Элемент страницы.
 */
 export function renderFeedPage(headerElement, pageElement) {
+    if (headerElement !== undefined || pageElement !== undefined) {
+        const rootElement = document.getElementById('root');
+        headerElement = document.createElement('header');
+        pageElement = document.createElement('main');
+        rootElement.appendChild(headerElement);
+        rootElement.appendChild(pageElement);
+    }
+    
     pageElement.innerHTML = ''
     pageElement.style.overflow = '';
     headerElement.style.display = '';

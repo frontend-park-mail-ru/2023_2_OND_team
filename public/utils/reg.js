@@ -5,7 +5,6 @@
 * @param {string} email - Почта.
 * @param {string} password - Пароль.
 */
-// import { setCookie, getCookie } from '../utils/cookie.js';
 import { loginUser } from './login.js';
 
 export async function registerUser(username, email, password) {
@@ -30,20 +29,3 @@ export async function registerUser(username, email, password) {
         console.error('Ошибка при выполнении запроса:', error);
     }
 }
-
-// export function sendCookieToServer() {
-//     const registeredCookie = getCookie('registered');
-//     fetch('/set-registered-cookie', {
-//         method: 'GET',
-//     })
-//         .then((response) => {
-//             if (response.ok) {
-//                 console.log('Куки успешно отправлены на сервер');
-//             } else {
-//                 console.error('Ошибка при отправке куки на сервер');
-//             }
-//         })
-//         .catch((error) => {
-//             console.error('Ошибка при выполнении запроса:', error);
-//         });
-// }
