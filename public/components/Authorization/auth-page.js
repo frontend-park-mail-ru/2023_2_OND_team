@@ -125,7 +125,7 @@ export function renderAuthPage(headerElement, pageElement) {
 
                         console.log(errorSpan);
 
-                        if (errorSpan) {
+                        if (!errorSpan) {
                             errorSpan = document.createElement('span');
                             errorSpan.classList.add('error-message');
                             errorSpan.textContent = 'Неверное имя пользователя или пароль';
