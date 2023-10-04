@@ -50,15 +50,12 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге пинов:', error);
         });
 
-    let timer;
-
-    function scrollFunction() {
+    let timer
+    window.addEventListener('scroll', () => {
         clearTimeout(timer);
         timer = setTimeout(handleScroll, 100);
-    }
-    window.addEventListener('scroll', scrollFunction);
+    });
 }
-
 
 /**
 * Обработчик скролла страницы.
