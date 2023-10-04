@@ -81,15 +81,17 @@ export function renderAuthPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
+    let errorDisplayed = false;
+
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
-
+    
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
-
+    
         const usernameValidationResult = nameValid(username);
         const passwordValidationResult = passwordValid(password);
-
+    
         if (!usernameValidationResult.valid) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
@@ -99,7 +101,7 @@ export function renderAuthPage(headerElement, pageElement) {
             passwordInput.querySelector('input').style.Color = '';
             usernameErrorSpan.textContent = '';
         }
-
+    
         if (!passwordValidationResult.valid) {
             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
@@ -109,18 +111,11 @@ export function renderAuthPage(headerElement, pageElement) {
             passwordInput.querySelector('input').style.Color = '';
             passwordErrorSpan.textContent = '';
         }
-
-        let errorDisplayed = false;
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            const existingErrorSpan = form.querySelector('.error-message');
-            if (existingErrorSpan) {
-                existingErrorSpan.remove();
-            }
-
             if (!errorDisplayed) {
                 Api.loginUser(username, password)
-                    .then(status => { 
+                    .then(status => {
                         if (status) {
                             renderFeedPage(headerElement, pageElement);
                         } else {
@@ -135,7 +130,6 @@ export function renderAuthPage(headerElement, pageElement) {
                     });
             }
         }
-        
     });
 
     cancelButton.addEventListener('click', function (e) {
