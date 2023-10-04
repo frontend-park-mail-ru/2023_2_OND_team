@@ -1,6 +1,6 @@
 import { Header } from "../Header/Header.js";
 import { API } from "../../utils/api.js";
-// import { handleScroll } from "../../utils/handleScroll.js";
+import { handleScroll } from "../../utils/handleScroll.js";
 import { renderPins } from "../../utils/renderPins.js";
 
 /**
@@ -18,8 +18,9 @@ export function renderFeedPage(headerElement, pageElement) {
     }
     
     pageElement.innerHTML = ''
-    pageElement.style.overflow = '';
     headerElement.style.display = '';
+    document.body.style.overflow = 'visible';
+
     const header = new Header(headerElement, pageElement);
     const div = document.createElement('div');
     div.classList.add('container');
@@ -54,23 +55,4 @@ export function renderFeedPage(headerElement, pageElement) {
         clearTimeout(timer);
         timer = setTimeout(handleScroll, 100);
     });
-}
-
-function handleScroll() {
-    const Api = new API();
-
-    let documentHeight = document.documentElement.scrollHeight;
-    let windowHeight = window.innerHeight;
-    let scrollY = window.scrollY;
-
-    if (scrollY + windowHeight >= documentHeight - 400) {
-        Api.generatePins()
-            .then(images => {
-                const section = document.getElementById('pins');
-                renderPins(section, images)
-            })
-            .catch(error => {
-                console.error('Ошибка при рендеринге пинов:', error);
-            });
-    }
 }

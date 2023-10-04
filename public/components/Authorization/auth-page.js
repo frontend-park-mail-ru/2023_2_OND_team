@@ -13,8 +13,8 @@ export function renderAuthPage(headerElement, pageElement) {
     const Api = new API();
 
     pageElement.innerHTML = '';
-    pageElement.style.display = 'blosk';
-    pageElement.style.overflow = 'hidden';
+    // pageElement.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');

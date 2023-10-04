@@ -13,7 +13,7 @@ export function renderRegPage(headerElement, pageElement) {
     const Api = new API();
 
     pageElement.innerHTML = '';
-    pageElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
 
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');
