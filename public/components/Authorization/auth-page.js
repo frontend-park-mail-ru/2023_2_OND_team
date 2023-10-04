@@ -112,7 +112,7 @@ export function renderAuthPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            if (loginUser(username, password)) {
+            if (Api.loginUser(username, password)) {
                 renderFeedPage(headerElement, pageElement);
             }
         }

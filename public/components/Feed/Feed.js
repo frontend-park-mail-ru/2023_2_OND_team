@@ -1,6 +1,4 @@
 import { Header } from "../Header/Header.js";
-import { checkLogin } from "../../utils/checkLogin.js";
-import { generatePins } from "../../utils/generatePins.js";
 import { API } from "../../utils/api.js";
 
 /**
