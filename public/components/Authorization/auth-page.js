@@ -81,13 +81,14 @@ export function renderAuthPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
-    let errorDisplayed = false;
-
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
     
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
+    
+        usernameInput.querySelector('input').style.borderColor = '';
+        passwordInput.querySelector('input').style.borderColor = '';
     
         const usernameValidationResult = nameValid(username);
         const passwordValidationResult = passwordValid(password);
@@ -97,8 +98,6 @@ export function renderAuthPage(headerElement, pageElement) {
             usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
             usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
-            passwordInput.querySelector('input').style.borderColor = '';
-            passwordInput.querySelector('input').style.Color = '';
             usernameErrorSpan.textContent = '';
         }
     
@@ -107,37 +106,24 @@ export function renderAuthPage(headerElement, pageElement) {
             passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
             passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
-            passwordInput.querySelector('input').style.borderColor = '';
-            passwordInput.querySelector('input').style.Color = '';
             passwordErrorSpan.textContent = '';
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            if (!errorDisplayed) {
-                Api.loginUser(username, password)
-                    .then(status => {
-                        if (status) {
-                            renderFeedPage(headerElement, pageElement);
-                        } else {
-                            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                            const errorSpan = document.createElement('span');
-                            errorSpan.classList.add('error-message');
-                            errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                            form.appendChild(errorSpan);
-                            errorDisplayed = true;
-                        }
-        
-                        if (usernameInput.querySelector('input').style.borderColor !== '') {
-                            usernameInput.querySelector('input').style.borderColor = '';
-                        }
-                        if (passwordInput.querySelector('input').style.borderColor !== '') {
-                            passwordInput.querySelector('input').style.borderColor = '';
-                        }
-                    });
-            }
+            Api.loginUser(username, password)
+                .then(status => { 
+                    if (status) {
+                        renderFeedPage(headerElement, pageElement);
+                    } else {
+                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        const errorSpan = document.createElement('span');
+                        errorSpan.classList.add('error-message');
+                        errorSpan.textContent = 'Неверное имя пользователя или пароль';
+                        form.appendChild(errorSpan);
+                    }
+                });
         }
-        
     });
 
     cancelButton.addEventListener('click', function (e) {
