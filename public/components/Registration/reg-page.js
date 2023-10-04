@@ -140,8 +140,6 @@ export function renderRegPage(headerElement, pageElement) {
                         emailInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
                         passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
 
-                        console.log(errorSpan);
-
                         if (!errorSpan) {
                             errorSpan = document.createElement('span');
                             errorSpan.classList.add('error-message');

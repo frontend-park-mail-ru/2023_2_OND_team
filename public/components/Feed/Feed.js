@@ -18,8 +18,6 @@ export function renderFeedPage(headerElement, pageElement) {
     }
     
     pageElement.innerHTML = ''
-    // headerElement.style.display = '';
-    // pageElement.style.paddingTop = '100';
     document.body.style.overflow = 'visible';
 
     const header = new Header(headerElement, pageElement);
