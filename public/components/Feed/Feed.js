@@ -51,23 +51,21 @@ export function renderFeedPage(headerElement, pageElement) {
         });
 
     let scrollFunc = debounce(handleScroll, 100);
-    window.addEventListener('scroll', scrollFunc);
+    window.scrollFunc = scrollFunc;
+    window.addEventListener('scroll', window.scrollFunc);
 }
 
 function debounce(f, ms) {
-
     let isCooldown = false;
 
     return function() {
         if (isCooldown) return;
 
         f.apply(this, arguments);
-
         isCooldown = true;
 
         setTimeout(() => isCooldown = false, ms);
     };
-  
 }
 
 /**

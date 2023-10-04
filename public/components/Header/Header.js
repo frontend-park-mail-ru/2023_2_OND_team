@@ -49,6 +49,7 @@ export class Header {
 
                 if (this.#Api.logoutUser()) {
                     this.#parent.innerHTML = '';
+                    window.removeEventListener('scroll', window.scrollFunc);
                     renderAuthPage(this.#parent, this.#main);
                 }
             });
@@ -61,6 +62,7 @@ export class Header {
                 this.#parent.style.display = 'none';
                 this.#main.style.paddingTop = '0';
                 this.#parent.innerHTML = '';
+                window.removeEventListener('scroll', window.scrollFunc);
                 renderAuthPage(this.#parent, this.#main);
             });
         }
@@ -72,6 +74,7 @@ export class Header {
                 this.#parent.style.display = 'none';
                 this.#main.style.paddingTop = '0';
                 this.#parent.innerHTML = '';
+                window.removeEventListener('scroll', window.scrollFunc);
                 renderRegPage(this.#parent, this.#main);
             });
         }
