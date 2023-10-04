@@ -3,7 +3,7 @@
 * @param {string} username - Введеное имя пользователя.
 * @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
 */
-export function isValidUserName(username) {
+export function nameValid(username) {
     const regex = /^[a-zA-Z0-9_-]+$/;
     let validation = { valid: true, message: '' };
 
@@ -23,7 +23,7 @@ export function isValidUserName(username) {
 * @param {string} email - Введенный адрес электронной почты.
 * @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
 */
-export function isValidEmail(email) {
+export function emailValid(email) {
     let validation = { valid: true, message: '' };
 
     if (email.length >= 49) {
@@ -50,7 +50,7 @@ export function isValidEmail(email) {
 * @param {string} password - Введенный пароль для проверки.
 * @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
 */
-export function isValidPassword(password) {
+export function passwordValid(password) {
     let validation = { valid: true, message: '' };
 
     if (password.length <= 7) {

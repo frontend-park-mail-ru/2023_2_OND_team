@@ -2,7 +2,7 @@ import { renderRegPage } from '../Registration/reg-page.js';
 import { createLabeledInput } from '../Input/input.js';
 import { loginUser } from '../../utils/login.js';
 import { renderFeedPage } from '../Feed/Feed.js';
-import { isValidEmail, isValidPassword, isValidUserName } from '../../utils/valid.js';
+import { passwordValid, nameValid } from '../../utils/valid.js';
 
 /**
 * Рендерится страница аутентификации.
@@ -85,8 +85,8 @@ export function renderAuthPage(headerElement, pageElement) {
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
-        const usernameValidationResult = isValidUserName(username);
-        const passwordValidationResult = isValidPassword(password);
+        const usernameValidationResult = nameValid(username);
+        const passwordValidationResult = passwordValid(password);
 
         if (!usernameValidationResult.valid) {
             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
