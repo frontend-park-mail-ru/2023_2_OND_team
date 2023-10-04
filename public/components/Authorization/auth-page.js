@@ -115,12 +115,17 @@ export function renderAuthPage(headerElement, pageElement) {
                 .then(status => { 
                     if (status) {
                         renderFeedPage(headerElement, pageElement);
+                    } else {
+                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        const errorSpan = document.createElement('span');
+                        errorSpan.classList.add('error-message');
+                        errorSpan.textContent = 'Неверное имя пользователя или пароль';
+                        form.appendChild(errorSpan);
                     }
-                })
-                .catch(error => {
-                    console.error('Ошибка при авторизации:', error);
                 });
         }
+        
     });
 
     cancelButton.addEventListener('click', function (e) {
