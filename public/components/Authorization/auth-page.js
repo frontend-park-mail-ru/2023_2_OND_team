@@ -114,27 +114,27 @@ export function renderAuthPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            if (!errorDisplayed) {
-                Api.loginUser(username, password)
-                    .then(status => { 
-                        if (status) {
-                            renderFeedPage(headerElement, pageElement);
-                        } else {
-                            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            
+            Api.loginUser(username, password)
+                .then(status => { 
+                    if (status) {
+                        renderFeedPage(headerElement, pageElement);
+                    } else {
+                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
 
-                            if (!errorSpan) {
-                                const errorSpan = document.createElement('span');
-                                errorSpan.classList.add('error-message');
-                                errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                                form.appendChild(errorSpan);
-                            }
-                            
-                            
-                            // errorDisplayed = true;
+                        if (!errorSpan) {
+                            const errorSpan = document.createElement('span');
+                            errorSpan.classList.add('error-message');
+                            errorSpan.textContent = 'Неверное имя пользователя или пароль';
+                            form.appendChild(errorSpan);
                         }
-                    });
-            }
+                        
+                        
+                        // errorDisplayed = true;
+                    }
+                });
+            
         }
     });
 
