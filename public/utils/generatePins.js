@@ -8,7 +8,7 @@
 */
 export async function generatePins() {
     try {
-        const response = await fetch('//pinspire.online:8080/api/v1/pin?count=10');
+        const response = await fetch('//pinspire.online:8080/api/v1/pin?count=20');
         const res = await response.json();
         let images = [];
 
