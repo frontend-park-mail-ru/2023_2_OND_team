@@ -153,12 +153,12 @@ export function renderRegPage(headerElement, pageElement) {
 
     document.body.style.overflow = 'hidden';
 
-    const renderRegPage = Handlebars.templates['Reg.hbs'];
+    const regPage = Handlebars.templates['Reg.hbs'];
     
     const context = {
        
     };
 
-    pageElement.innerHTML = authPage(context);
+    pageElement.innerHTML = regPage(context);
 
 }
