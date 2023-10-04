@@ -1,6 +1,5 @@
 import { renderAuthPage } from "../Authorization/auth-page.js";
 import { renderRegPage } from "../Registration/reg-page.js";
-// import { logoutUser } from "../../utils/logout.js";
 import { API } from "../../utils/api.js";
 
 /**
@@ -49,6 +48,7 @@ export class Header {
                 this.#main.style.paddingTop = '0';
 
                 if (this.#Api.logoutUser()) {
+                    this.#parent.innerHTML = '';
                     renderAuthPage(this.#parent, this.#main);
                 }
             });

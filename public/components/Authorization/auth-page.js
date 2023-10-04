@@ -1,6 +1,5 @@
 import { renderRegPage } from '../Registration/reg-page.js';
 import { createLabeledInput } from '../Input/input.js';
-import { loginUser } from '../../utils/login.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 import { API } from '../../utils/api.js';
@@ -112,9 +111,15 @@ export function renderAuthPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            if (Api.loginUser(username, password)) {
-                renderFeedPage(headerElement, pageElement);
-            }
+            Api.loginUser(username, password)
+                .then(status => { 
+                    if (status) {
+                        renderFeedPage(headerElement, pageElement);
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка при авторизации:', error);
+                });
         }
     });
 
