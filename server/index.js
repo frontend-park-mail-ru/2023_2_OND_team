@@ -1,7 +1,7 @@
 /**
- * Модуль для создания и настройки Express.js сервера.
- * @module server
- */
+* Модуль для создания и настройки Express.js сервера.
+* @module server
+*/
 'use strict';
 
 const express = require('express');
@@ -13,11 +13,11 @@ const cors = require('cors');
 const app = express();
 
 /**
- * Параметры для настройки HTTPS сервера.
- * @type {object}
- * @property {string} key - Путь к приватному ключу сервера.
- * @property {string} cert - Путь к сертификату сервера.
- */
+* Параметры для настройки HTTPS сервера.
+* @type {object}
+* @property {string} key - Путь к приватному ключу сервера.
+* @property {string} cert - Путь к сертификату сервера.
+*/
 
 const httpsOptions = {
   key: fs.readFileSync("/home/ond_team/cert/privkey.pem"), // путь к ключу
@@ -33,9 +33,9 @@ app.use(cookieParser());
 app.use(cors());
 
 /**
- * Объект, представляющий пользователей приложения.
- * @type {Object.<string, { name: string, email: string, password: string, images: { src: string, likes: number }[] }>}
- */
+* Объект, представляющий пользователей приложения.
+* @type {Object.<string, { name: string, email: string, password: string, images: { src: string, likes: number }[] }>}
+*/
 const users = {
     'driver_on_lips@mail.ru': {
         name: 'driver_on_lips',
@@ -67,44 +67,44 @@ const users = {
 };
 
 /**
- * Обработчик GET-запроса для определенного маршрута.
- * @function
- * @param {string} '/some-route' - Маршрут, по которому выполняется GET-запрос.
- * @param {function} (req, res) - Функция-обработчик запроса.
- */
+* Обработчик GET-запроса для определенного маршрута.
+* @function
+* @param {string} '/some-route' - Маршрут, по которому выполняется GET-запрос.
+* @param {function} (req, res) - Функция-обработчик запроса.
+*/
 app.get('/some-route', (req, res) => {
     const filePath = path.resolve(__dirname, '..', 'public', 'index.html');
     res.sendFile(filePath);
 });
 
 /**
- * Обработчик GET-запроса для установки куки.
- * @function
- * @param {string} '/set-cookie' - Маршрут, по которому выполняется GET-запрос.
- * @param {function} (req, res) - Функция-обработчик запроса.
- */
+* Обработчик GET-запроса для установки куки.
+* @function
+* @param {string} '/set-cookie' - Маршрут, по которому выполняется GET-запрос.
+* @param {function} (req, res) - Функция-обработчик запроса.
+*/
 app.get('/set-cookie', (req, res) => {
     res.cookie('loggedIn', 'true', { maxAge: 604800000, httpOnly: true });
     res.send('Куки успешно установлены на сервере');
 });
 
 /**
- * Обработчик GET-запроса для получения куки.
- * @function
- * @param {string} '/get-cookie' - Маршрут, по которому выполняется GET-запрос.
- * @param {function} (req, res) - Функция-обработчик запроса.
- */
+* Обработчик GET-запроса для получения куки.
+* @function
+* @param {string} '/get-cookie' - Маршрут, по которому выполняется GET-запрос.
+* @param {function} (req, res) - Функция-обработчик запроса.
+*/
 app.get('/get-cookie', (req, res) => {
     const loggedInCookie = req.cookies.loggedIn;
     res.send(`Значение куки loggedIn: ${loggedInCookie}`);
 });
 
 /**
- * Обработчик POST-запроса для аутентификации пользователя.
- * @function
- * @param {string} '/api/login' - Маршрут, по которому выполняется POST-запрос.
- * @param {function} (req, res) - Функция-обработчик запроса.
- */
+* Обработчик POST-запроса для аутентификации пользователя.
+* @function
+* @param {string} '/api/login' - Маршрут, по которому выполняется POST-запрос.
+* @param {function} (req, res) - Функция-обработчик запроса.
+*/
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
 
@@ -119,13 +119,13 @@ app.post('/api/login', (req, res) => {
 });
 
 /**
- * Обработчик POST-запроса для завершения сессии пользователя (logout).
- *
- * @param {express.Request} req - Объект запроса Express.
- * @param {express.Response} res - Объект ответа Express.
- * @returns {void}
- * @throws {Error} Если произошла ошибка при завершении сессии.
- */
+* Обработчик POST-запроса для завершения сессии пользователя (logout).
+*
+* @param {express.Request} req - Объект запроса Express.
+* @param {express.Response} res - Объект ответа Express.
+* @returns {void}
+* @throws {Error} Если произошла ошибка при завершении сессии.
+*/
 app.post('/api/logout', (req, res) => {
     try {
         res.clearCookie('loggedIn');
@@ -137,11 +137,11 @@ app.post('/api/logout', (req, res) => {
 });
 
 /**
- * Обработчик POST-запроса для регистрации пользователя.
- * @function
- * @param {string} '/api/register' - Маршрут, по которому выполняется POST-запрос.
- * @param {function} (req, res) - Функция-обработчик запроса.
- */
+* Обработчик POST-запроса для регистрации пользователя.
+* @function
+* @param {string} '/api/register' - Маршрут, по которому выполняется POST-запрос.
+* @param {function} (req, res) - Функция-обработчик запроса.
+*/
 app.post('/api/register', (req, res) => {
     const { username, email, password } = req.body;
 
@@ -157,11 +157,11 @@ app.post('/api/register', (req, res) => {
 });
 
 /**
- * Обработчик GET-запроса для получения списка пинов.
- * @function
- * @param {string} '/feed' - Маршрут, по которому выполняется GET-запрос.
- * @param {function} (req, res) - Функция-обработчик запроса.
- */
+* Обработчик GET-запроса для получения списка пинов.
+* @function
+* @param {string} '/feed' - Маршрут, по которому выполняется GET-запрос.
+* @param {function} (req, res) - Функция-обработчик запроса.
+*/
 app.get('/feed', (req, res) => {
     const allImages = [];
 
@@ -188,11 +188,11 @@ app.get('/feed', (req, res) => {
 });
 
 /**
- * Обработчик GET-запроса для получения списка всех пинов.
- * @function
- * @param {string} '/pin' - Маршрут, по которому выполняется GET-запрос.
- * @param {function} (req, res) - Функция-обработчик запроса.
- */
+* Обработчик GET-запроса для получения списка всех пинов.
+* @function
+* @param {string} '/pin' - Маршрут, по которому выполняется GET-запрос.
+* @param {function} (req, res) - Функция-обработчик запроса.
+*/
 app.get('/pin', (req, res) => {
     const allImages = [];
 

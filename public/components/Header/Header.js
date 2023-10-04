@@ -3,27 +3,27 @@ import { renderRegPage } from "../Registration/reg-page.js";
 import { logoutUser } from "../../utils/logout.js";
 
 /**
- * Класс для рендеринга хэдера главной страницы.
- */
+* Класс для рендеринга хэдера главной страницы.
+*/
 export class Header {
     #parent;
     #main;
 
     /**
-     * Создает экземпляр класса Header.
-     * @param {HTMLElement} parent - Элемент, в который будет рендериться хэдр.
-     * @param {HTMLElement} main - Элемент основного контента страницы.
-     */
+    * Создает экземпляр класса Header.
+    * @param {HTMLElement} parent - Элемент, в который будет рендериться хэдр.
+    * @param {HTMLElement} main - Элемент основного контента страницы.
+    */
     constructor(parent, main) {
         this.#parent = parent;
         this.#main = main;
     }
 
     /**
-     * Рендерит хэдр страницы в зависимости от статуса авторизации.
-     * @param {boolean} isAuthorized - Флаг, указывающий, авторизован ли пользователь.
-     * @param {string} username - Имя пользователя, если авторизован.
-     */
+    * Рендерит хэдр страницы в зависимости от статуса авторизации.
+    * @param {boolean} isAuthorized - Флаг, указывающий, авторизован ли пользователь.
+    * @param {string} username - Имя пользователя, если авторизован.
+    */
     renderHeader(isAuthorized, username) {
         const header = Handlebars.templates['Header.hbs'];
         const userData = Handlebars.templates['UserData.hbs'];

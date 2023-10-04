@@ -1,10 +1,10 @@
 /**
- * Создается компонент с лейблом и полем ввода.
- * @param {string} labelText - Текст лейбла.
- * @param {string} inputType - Тип поля ввода.
- * @param {string} inputPlaceholder - placeholder для поля ввода.
- * @returns {HTMLDivElement} - Элемент, содержащий лейбл и поле ввода.
- */
+* Создается компонент с лейблом и полем ввода.
+* @param {string} labelText - Текст лейбла.
+* @param {string} inputType - Тип поля ввода.
+* @param {string} inputPlaceholder - placeholder для поля ввода.
+* @returns {HTMLDivElement} - Элемент, содержащий лейбл и поле ввода.
+*/
 export function createLabeledInput(labelText, inputType, inputPlaceholder) {
     const label = document.createElement('label');
     label.textContent = labelText;

@@ -1,10 +1,10 @@
 /**
- * Регистрирует пользователя с указанными данными.
- * Если регистрация успешна, устанавливает куки `registered` и отправляет их на сервер.
- * @param {string} username - Имя пользователя.
- * @param {string} email - Почта.
- * @param {string} password - Пароль.
- */
+* Регистрирует пользователя с указанными данными.
+* Если регистрация успешна, устанавливает куки `registered` и отправляет их на сервер.
+* @param {string} username - Имя пользователя.
+* @param {string} email - Почта.
+* @param {string} password - Пароль.
+*/
 import { setCookie, getCookie } from '../utils/cookie.js';
 import { loginUser } from './login.js';
 

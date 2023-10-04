@@ -3,10 +3,10 @@ import { checkLogin } from "../../utils/checkLogin.js";
 import { generatePins } from "../../utils/generatePins.js";
 
 /**
- * Рендерится главная страница с пинами.
- * @param {HTMLElement} headerElement - Элемент заголовка.
- * @param {HTMLElement} pageElement - Элемент страницы.
- */
+* Рендерится главная страница с пинами.
+* @param {HTMLElement} headerElement - Элемент заголовка.
+* @param {HTMLElement} pageElement - Элемент страницы.
+*/
 export function renderFeedPage(headerElement, pageElement) {
     pageElement.innerHTML = ''
     pageElement.style.overflow = '';
@@ -42,9 +42,9 @@ export function renderFeedPage(headerElement, pageElement) {
 }
 
 /**
- * Обработчик скролла страницы.
- * Загружает дополнительные пины при достижении нижней части страницы.
- */
+* Обработчик скролла страницы.
+* Загружает дополнительные пины при достижении нижней части страницы.
+*/
 function handleScroll() {
     let documentHeight = document.documentElement.scrollHeight;
     let windowHeight = window.innerHeight;
@@ -63,10 +63,10 @@ function handleScroll() {
 }
 
 /**
- * Рендерятся пины на главной странице.
- * @param {HTMLElement} parent - Родительский элемент для отображения изображений.
- * @param {Array} images - Массив объектов с информацией о пинах.
- */
+* Рендерятся пины на главной странице.
+* @param {HTMLElement} parent - Родительский элемент для отображения изображений.
+* @param {Array} images - Массив объектов с информацией о пинах.
+*/
 function renderPins(parent, images) {
     const template = Handlebars.templates['Pins.hbs'];
     images.forEach(image => {

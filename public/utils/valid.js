@@ -1,8 +1,8 @@
 /**
- * Проверяется, является ли имя пользователя валидным.
- * @param {string} username - Введеное имя пользователя.
- * @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
- */
+* Проверяется, является ли имя пользователя валидным.
+* @param {string} username - Введеное имя пользователя.
+* @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
+*/
 export function isValidUserName(username) {
     const regex = /^[a-zA-Z0-9]+$/;
     let validation = { valid: true, message: '' };
@@ -19,10 +19,10 @@ export function isValidUserName(username) {
 }
 
 /**
- * Проверяется, является ли адрес электронной почты валидным.
- * @param {string} email - Введенный адрес электронной почты.
- * @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
- */
+* Проверяется, является ли адрес электронной почты валидным.
+* @param {string} email - Введенный адрес электронной почты.
+* @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
+*/
 export function isValidEmail(email) {
     let validation = { valid: true, message: '' };
 
@@ -46,10 +46,10 @@ export function isValidEmail(email) {
 }
 
 /**
- * Проверяется, является ли пароль валидным.
- * @param {string} password - Введенный пароль для проверки.
- * @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
- */
+* Проверяется, является ли пароль валидным.
+* @param {string} password - Введенный пароль для проверки.
+* @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
+*/
 export function isValidPassword(password) {
     let validation = { valid: true, message: '' };
 

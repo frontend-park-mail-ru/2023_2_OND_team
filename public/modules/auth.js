@@ -1,8 +1,8 @@
 /**
- * Выполняется вход пользователя с использованием указанных данных.
- * @param {string} username - Имя пользователя.
- * @param {string} password - Пароль пользователя.
- */
+* Выполняется вход пользователя с использованием указанных данных.
+* @param {string} username - Имя пользователя.
+* @param {string} password - Пароль пользователя.
+*/
 import { loginUser } from '../utils/login.js';
 import { sendCookieToServer } from '../utils/cookie.js';
 
