@@ -2,32 +2,31 @@ export class API {
     #config
     constructor() {
         this.#config = [
-            { loginUser: '//pinspire.online:8080/api/v1/auth/login' },
-            { checkLogin: '//pinspire.online:8080/api/v1/auth/login' },
-            { logoutUser: '//pinspire.online:8080/api/v1/auth/logout' },
-            { registerUser: '//pinspire.online:8080/api/v1/auth/signup' },
-            { generatePins: '//pinspire.online:8080/api/v1/pin?count=20' },
-        ]
+            { name: 'loginUser', url: '//pinspire.online:8080/api/v1/auth/login' },
+            { name: 'checkLogin', url: '//pinspire.online:8080/api/v1/auth/login' },
+            { name: 'logoutUser', url: '//pinspire.online:8080/api/v1/auth/logout' },
+            { name: 'registerUser', url: '//pinspire.online:8080/api/v1/auth/signup' },
+            { name: 'generatePins', url: '//pinspire.online:8080/api/v1/pin?count=20' },
+        ];
     }
 
-    /**
-    * Выполняется запрос на вход пользователя с указанным именем и паролем.
-    * Если вход успешен, устанавливается куки `loggedIn` и отправляет их на сервер.
-    * @param {string} username - Имя пользователя.
-    * @param {string} password - Пароль.
-    */
     async loginUser(username, password) {
         try {
-            const response = await fetch(this.#config.loginUser, {
+            const configItem = this.#config.find(item => item.name === 'loginUser');
+            if (!configItem) {
+                throw new Error('Не найдена конфигурация для loginUser');
+            }
+            
+            const response = await fetch(configItem.url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ username, password }),
                 credentials: 'include',
-            })
-            const res = await response.json();
+            });
 
+            const res = await response.json();
             if (res.status === 'ok') {
                 return true;
             }
@@ -35,7 +34,8 @@ export class API {
             return false;
 
         } catch (error) {
-            console.error('Ошибка при выполнении запроса:', error);
+            console.error('Ошибка при выполнении запроса loginUser:', error);
+            throw error;
         }
     }
 
@@ -49,9 +49,15 @@ export class API {
     */
     async checkLogin() {
         try {
-            const response = await fetch(this.#config.checkLogin, {
+            const configItem = this.#config.find(item => item.name === 'checkLogin');
+            if (!configItem) {
+                throw new Error('Не найдена конфигурация для checkLogin');
+            }
+
+            const response = await fetch(configItem.url, {
                 credentials: 'include',
             });
+
             const res = await response.json();
             let isAuthorized = false;
             let username = '';
@@ -70,12 +76,17 @@ export class API {
 
     async logoutUser() {
         try {
-            const response = await fetch(this.#config.logoutUser, {
+            const configItem = this.#config.find(item => item.name === 'logoutUser');
+            if (!configItem) {
+                throw new Error('Не найдена конфигурация для logoutUser');
+            }
+
+            const response = await fetch(configItem.url, {
                 method: 'DELETE',
                 credentials: 'include',
             })
+
             const res = await response.json();
-    
             if (res.status === 'ok') {
                 return true;
             }
@@ -96,7 +107,12 @@ export class API {
     */
     async registerUser(username, email, password) {
         try {
-            const response = await fetch(this.#config.registerUser, {
+            const configItem = this.#config.find(item => item.name === 'registerUser');
+            if (!configItem) {
+                throw new Error('Не найдена конфигурация для registerUser');
+            }
+
+            const response = await fetch(configItem.url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -104,8 +120,8 @@ export class API {
                 body: JSON.stringify({ username, email, password }),
                 credentials: 'include',
             })
-            const res = await response.json();
 
+            const res = await response.json();
             if (res.status === 'ok') {
                 return this.loginUser(username, password);
             }
@@ -127,7 +143,12 @@ export class API {
     */
     async generatePins() {
         try {
-            const response = await fetch(this.#config.generatePins);
+            const configItem = this.#config.find(item => item.name === 'generatePins');
+            if (!configItem) {
+                throw new Error('Не найдена конфигурация для generatePins');
+            }
+
+            const response = await fetch(configItem.url);
             const res = await response.json();
             let images = [];
 

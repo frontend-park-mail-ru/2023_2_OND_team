@@ -9,7 +9,7 @@ import { API } from "../../utils/api.js";
 * @param {HTMLElement} pageElement - Элемент страницы.
 */
 export function renderFeedPage(headerElement, pageElement) {
-    if (headerElement === undefined || pageElement === undefined) {
+    if (!headerElement || !pageElement) {
         const rootElement = document.getElementById('root');
         headerElement = document.createElement('header');
         pageElement = document.createElement('main');
@@ -32,7 +32,7 @@ export function renderFeedPage(headerElement, pageElement) {
 
     const Api = new API();
     
-    checkLogin()
+    Api.checkLogin()
         .then(data => {
             header.renderHeader(data.isAuthorized, data.username);
         })
@@ -40,7 +40,7 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге хедера:', error);
         });
 
-    generatePins()
+    Api.generatePins()
         .then(images => {
             const section = document.getElementById('pins');
             renderPins(section, images)
@@ -64,7 +64,7 @@ function handleScroll() {
     let scrollY = window.scrollY;
 
     if (scrollY + windowHeight >= documentHeight - 400) {
-        generatePins()
+        Api.generatePins()
             .then(images => {
                 const section = document.getElementById('pins');
                 renderPins(section, images)
