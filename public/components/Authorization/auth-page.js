@@ -67,7 +67,7 @@ export function renderAuthPage(headerElement, pageElement) {
 
     signUpLink.addEventListener('click', function (e) {
         e.preventDefault();
-        renderRegPage(headerElement, pageElement);
+        renderRegPage(rootElement);
     });
 
     const passwordErrorSpan = document.createElement('span');
