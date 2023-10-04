@@ -51,10 +51,12 @@ export function renderFeedPage(headerElement, pageElement) {
         });
 
     let timer;
-    window.addEventListener('scroll', () => {
-        clearTimeout(timer);
-        timer = setTimeout(handleScroll, 100);
-    });
+    window.addEventListener('scroll', scrollFunction(timer));
+}
+
+function scrollFunction(timer) {
+    clearTimeout(timer);
+    timer = setTimeout(handleScroll, 100);
 }
 
 /**
