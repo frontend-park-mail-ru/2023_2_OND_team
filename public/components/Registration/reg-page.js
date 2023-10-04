@@ -85,6 +85,8 @@ export function renderRegPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
+    let errorSpan = document.querySelector('.error-mesage');
+
     RegButton.addEventListener('click', function (e) {
         e.preventDefault();
 
@@ -131,6 +133,19 @@ export function renderRegPage(headerElement, pageElement) {
                 .then(status => { 
                     if (status) {
                         renderFeedPage(headerElement, pageElement);
+                    } else {
+                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        emailInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+
+                        console.log(errorSpan);
+
+                        if (!errorSpan) {
+                            errorSpan = document.createElement('span');
+                            errorSpan.classList.add('error-message');
+                            errorSpan.textContent = 'Пользователь уже зарегистрирован';
+                            form.appendChild(errorSpan);
+                        }
                     }
                 })
                 .catch(error => {
