@@ -12,3 +12,5 @@ function initializeApp() {
   const rootElement = document.getElementById('root');
   renderFeedPage(rootElement);
 }
+
+initializeApp()
