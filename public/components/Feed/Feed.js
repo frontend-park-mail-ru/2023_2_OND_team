@@ -49,9 +49,9 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге пинов:', error);
         });
 
-    let timer;
-    window.addEventListener('scroll', () => {
-        clearTimeout(timer);
-        timer = setTimeout(handleScroll, 100);
-    });
+    // let timer;
+    // window.addEventListener('scroll', () => {
+    //     clearTimeout(timer);
+    //     timer = setTimeout(handleScroll, 100);
+    // });
 }
