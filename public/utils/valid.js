@@ -4,15 +4,15 @@
 * @returns {object} - Объект с полем `valid` (true/false) и полем `message` (сообщение об ошибке, если есть).
 */
 export function isValidUserName(username) {
-    const regex = /^[a-zA-Z0-9]+$/;
+    const regex = /^[a-zA-Z0-9_-]+$/;
     let validation = { valid: true, message: '' };
 
-    if (username.length <= 4) {
+    if (username.length <= 3) {
         validation = { valid: false, message: 'Имя пользователя должно содержать не менее 4 символов' };
-    } else if (username.length >= 50) {
+    } else if (username.length >= 49) {
         validation = { valid: false, message: 'Имя пользователя должно содержать менее 50 символов' };
     } else if (!regex.test(username)) {
-        validation = { valid: false, message: 'Имя пользователя должно состоять только из букв латинского алфавита и цифр' };
+        validation = { valid: false, message: 'Имя пользователя должно состоять только из букв и цифр' };
     }
 
     return validation;
@@ -26,7 +26,7 @@ export function isValidUserName(username) {
 export function isValidEmail(email) {
     let validation = { valid: true, message: '' };
 
-    if (email.length >= 50) {
+    if (email.length >= 49) {
         validation = { valid: false, message: 'Email должен содержать не более 50 символов' };
     } else if (!email.includes('@')) {
         validation = { valid: false, message: 'Email должен содержать символ @' };
@@ -53,9 +53,9 @@ export function isValidEmail(email) {
 export function isValidPassword(password) {
     let validation = { valid: true, message: '' };
 
-    if (password.length <= 8) {
+    if (password.length <= 7) {
         validation = { valid: false, message: 'Пароль должен содержать не менее 8 символов' };
-    } else if (password.length >= 50) {
+    } else if (password.length >= 49) {
         validation = { valid: false, message: 'Пароль должен содержать менее 50 символов' };
     } else if (!/[a-z]/.test(password)) {
         validation = { valid: false, message: 'Пароль должен содержать хотя бы одну букву в нижнем регистре' };
