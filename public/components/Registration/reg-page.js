@@ -132,6 +132,8 @@ export function renderRegPage(headerElement, pageElement) {
             Api.registerUser(username, email, password)
                 .then(status => { 
                     if (status) {
+                        headerElement.style.display = '';
+                        pageElement.style.paddingTop = '100px';
                         renderFeedPage(headerElement, pageElement);
                     } else {
                         usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
