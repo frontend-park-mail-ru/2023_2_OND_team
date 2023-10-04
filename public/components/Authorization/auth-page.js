@@ -120,6 +120,5 @@ export function renderAuthPage(headerElement, pageElement) {
         headerElement.style.display = '';
         pageElement.style.paddingTop = '100px';
         renderFeedPage(rootElement);
-        initializeApp()
     });
 }
