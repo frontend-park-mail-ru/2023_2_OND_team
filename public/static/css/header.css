@@ -115,6 +115,10 @@ header {
     line-height: normal;
 }
 
+.header-login-button:hover {
+    background: rgba(34, 107, 119, 0.80);
+}
+
 .header-signup-button {
     background-color: #226B77;
     color: #FFFFFF;
@@ -129,4 +133,8 @@ header {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.header-signup-button:hover {
+    background: rgba(34, 107, 119, 0.80);
 }
