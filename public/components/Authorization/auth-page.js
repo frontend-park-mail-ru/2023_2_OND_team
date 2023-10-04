@@ -116,6 +116,7 @@ export function renderAuthPage(headerElement, pageElement) {
             Api.loginUser(username, password)
                 .then(status => { 
                     if (status) {
+                        headerElement.style.display = '';
                         renderFeedPage(headerElement, pageElement);
                     } else {
                         usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
