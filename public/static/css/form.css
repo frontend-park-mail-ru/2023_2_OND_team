@@ -31,7 +31,7 @@
     gap: 5px;
 }
 
-input {
+.input-field {
     font-family: Lato;
     width: 443px;
     height: 25px; 
@@ -46,7 +46,7 @@ input {
     line-height: normal;  
 }
 
-input:focus {
+.input-field:focus {
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
     background: var(--bg-100, #FFF);
