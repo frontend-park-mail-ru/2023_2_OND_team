@@ -124,9 +124,9 @@ export function renderAuthPage(headerElement, pageElement) {
                         passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
 
                         console.log(errorSpan);
-                        
-                        if (errorSpan === undefined) {
-                            const errorSpan = document.createElement('span');
+
+                        if (errorSpan) {
+                            errorSpan = document.createElement('span');
                             errorSpan.classList.add('error-message');
                             errorSpan.textContent = 'Неверное имя пользователя или пароль';
                             form.appendChild(errorSpan);
