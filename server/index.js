@@ -40,7 +40,7 @@ const users = {
     'driver_on_lips@mail.ru': {
         name: 'driver_on_lips',
         email: 'driver_on_lips@mail.ru',
-        password: 'password',
+        password: 'Password',
         images: [
             {src: 'https://i.pinimg.com/564x/e2/43/10/e24310fe1909ec1f1de347fedc6318b0.jpg', likes: 120},
             {src: 'https://i.pinimg.com/564x/91/39/51/913951d97d3cc3ac5a4ecb58da2ffdf5.jpg', likes: 120},
