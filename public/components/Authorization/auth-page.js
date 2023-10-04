@@ -81,13 +81,11 @@ export function renderAuthPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
-    // let errorDisplayed = false;
+    let errorSpan = document.querySelector('.error-mesage');
 
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
     
-        let errorSpan = document.querySelector('.error-mesage');
-
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
@@ -123,7 +121,7 @@ export function renderAuthPage(headerElement, pageElement) {
                         usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
                         passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
 
-                        // console.log(errorSpan);
+                        console.log(errorSpan);
 
                         if (!errorSpan) {
                             errorSpan = document.createElement('span');
@@ -132,8 +130,6 @@ export function renderAuthPage(headerElement, pageElement) {
                             form.appendChild(errorSpan);
                         }
                         
-                        
-                        // errorDisplayed = true;
                     }
                 });
             
