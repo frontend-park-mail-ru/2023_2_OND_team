@@ -119,7 +119,7 @@ export function renderAuthPage(headerElement, pageElement) {
         e.preventDefault();
         headerElement.style.display = '';
         pageElement.style.paddingTop = '100px';
-        //renderFeedPage(rootElement);
+        renderFeedPage(rootElement);
         initializeApp()
     });
 }
