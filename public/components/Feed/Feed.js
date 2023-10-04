@@ -18,7 +18,7 @@ export function renderFeedPage(headerElement, pageElement) {
     }
     
     pageElement.innerHTML = ''
-    headerElement.style.display = '';
+    headerElement.style.display = 'block';
     document.body.style.overflow = 'visible';
 
     const header = new Header(headerElement, pageElement);
