@@ -1,6 +1,6 @@
 import { renderAuthPage } from '../Authorization/auth-page.js';
 import { createLabeledInput } from '../Input/input.js';
-// import { registerUser } from '../../utils/reg.js';
+import { registerUser } from '../../utils/reg.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 import { API } from '../../utils/api.js';
@@ -128,7 +128,7 @@ export function renderRegPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && emailValidationResult.valid && passwordValidationResult.valid) {
-            if (Api.registerUser(username, email, password)) {
+            if (registerUser(username, email, password)) {
                 renderFeedPage(headerElement, pageElement);
             }
         }

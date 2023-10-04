@@ -1,6 +1,6 @@
 import { Header } from "../Header/Header.js";
-// import { checkLogin } from "../../utils/checkLogin.js";
-// import { generatePins } from "../../utils/generatePins.js";
+import { checkLogin } from "../../utils/checkLogin.js";
+import { generatePins } from "../../utils/generatePins.js";
 import { API } from "../../utils/api.js";
 
 /**
@@ -32,7 +32,7 @@ export function renderFeedPage(headerElement, pageElement) {
 
     const Api = new API();
     
-    Api.checkLogin()
+    checkLogin()
         .then(data => {
             header.renderHeader(data.isAuthorized, data.username);
         })
@@ -40,7 +40,7 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге хедера:', error);
         });
 
-    Api.generatePins()
+    generatePins()
         .then(images => {
             const section = document.getElementById('pins');
             renderPins(section, images)
@@ -64,7 +64,7 @@ function handleScroll() {
     let scrollY = window.scrollY;
 
     if (scrollY + windowHeight >= documentHeight - 400) {
-        Api.generatePins()
+        generatePins()
             .then(images => {
                 const section = document.getElementById('pins');
                 renderPins(section, images)
