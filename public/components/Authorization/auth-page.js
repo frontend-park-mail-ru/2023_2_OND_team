@@ -81,11 +81,13 @@ export function renderAuthPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
-    let errorDisplayed = false;
+    // let errorDisplayed = false;
 
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
     
+        const errorSpan = document.querySelector('.error-mesage');
+
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
@@ -120,12 +122,16 @@ export function renderAuthPage(headerElement, pageElement) {
                         } else {
                             usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
                             passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                            const errorSpan = document.createElement('span');
-                            errorSpan.classList.add('error-message');
-                            errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                            form.appendChild(errorSpan);
+
+                            if (!errorSpan) {
+                                const errorSpan = document.createElement('span');
+                                errorSpan.classList.add('error-message');
+                                errorSpan.textContent = 'Неверное имя пользователя или пароль';
+                                form.appendChild(errorSpan);
+                            }
                             
-                            errorDisplayed = true;
+                            
+                            // errorDisplayed = true;
                         }
                     });
             }
