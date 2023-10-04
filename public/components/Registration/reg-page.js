@@ -149,7 +149,7 @@ import { API } from '../../utils/api.js';
 
 
 
-export function renderAuthPage(headerElement, pageElement) {
+export function renderRegPage(headerElement, pageElement) {
 
     document.body.style.overflow = 'hidden';
 
