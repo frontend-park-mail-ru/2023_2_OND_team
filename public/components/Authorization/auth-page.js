@@ -1,8 +1,9 @@
 import { renderRegPage } from '../Registration/reg-page.js';
 import { createLabeledInput } from '../Input/input.js';
-import { loginUser } from '../../utils/login.js';
+// import { loginUser } from '../../utils/login.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
+import { API } from '../../utils/api.js';
 
 /**
 * Рендерится страница аутентификации.
@@ -10,6 +11,8 @@ import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 * @param {HTMLElement} pageElement - Элемент страницы.
 */
 export function renderAuthPage(headerElement, pageElement) {
+    const Api = new API();
+
     pageElement.innerHTML = '';
     pageElement.style.display = 'blosk';
     pageElement.style.overflow = 'hidden';
@@ -109,7 +112,7 @@ export function renderAuthPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            if (loginUser(username, password)) {
+            if (Api.loginUser(username, password)) {
                 renderFeedPage(headerElement, pageElement);
             }
         }

@@ -1,6 +1,7 @@
 import { renderAuthPage } from "../Authorization/auth-page.js";
 import { renderRegPage } from "../Registration/reg-page.js";
-import { logoutUser } from "../../utils/logout.js";
+// import { logoutUser } from "../../utils/logout.js";
+import { API } from "../../utils/api.js";
 
 /**
 * Класс для рендеринга хэдера главной страницы.
@@ -8,6 +9,7 @@ import { logoutUser } from "../../utils/logout.js";
 export class Header {
     #parent;
     #main;
+    #Api
 
     /**
     * Создает экземпляр класса Header.
@@ -17,6 +19,7 @@ export class Header {
     constructor(parent, main) {
         this.#parent = parent;
         this.#main = main;
+        this.#Api = new API();
     }
 
     /**
@@ -45,7 +48,7 @@ export class Header {
                 this.#parent.style.display = 'none';
                 this.#main.style.paddingTop = '0';
 
-                if (logoutUser()) {
+                if (this.#Api.logoutUser()) {
                     renderAuthPage(this.#parent, this.#main);
                 }
             });
