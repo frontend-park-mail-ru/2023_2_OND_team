@@ -81,12 +81,14 @@ export function renderAuthPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
+    let errorDisplayed = false;
+
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
     
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
-    
+
         usernameInput.querySelector('input').style.borderColor = '';
         passwordInput.querySelector('input').style.borderColor = '';
     
@@ -110,19 +112,23 @@ export function renderAuthPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            Api.loginUser(username, password)
-                .then(status => { 
-                    if (status) {
-                        renderFeedPage(headerElement, pageElement);
-                    } else {
-                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                        const errorSpan = document.createElement('span');
-                        errorSpan.classList.add('error-message');
-                        errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                        form.appendChild(errorSpan);
-                    }
-                });
+            if (!errorDisplayed) {
+                Api.loginUser(username, password)
+                    .then(status => { 
+                        if (status) {
+                            renderFeedPage(headerElement, pageElement);
+                        } else {
+                            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                            const errorSpan = document.createElement('span');
+                            errorSpan.classList.add('error-message');
+                            errorSpan.textContent = 'Неверное имя пользователя или пароль';
+                            form.appendChild(errorSpan);
+                            
+                            errorDisplayed = true;
+                        }
+                    });
+            }
         }
     });
 
