@@ -127,9 +127,17 @@ export function renderAuthPage(headerElement, pageElement) {
                             form.appendChild(errorSpan);
                             errorDisplayed = true;
                         }
+        
+                        if (usernameInput.querySelector('input').style.borderColor !== '') {
+                            usernameInput.querySelector('input').style.borderColor = '';
+                        }
+                        if (passwordInput.querySelector('input').style.borderColor !== '') {
+                            passwordInput.querySelector('input').style.borderColor = '';
+                        }
                     });
             }
         }
+        
     });
 
     cancelButton.addEventListener('click', function (e) {
