@@ -4,7 +4,6 @@
 * @param {string} username - Имя пользователя.
 * @param {string} password - Пароль.
 */
-import { setCookie } from '../utils/cookie.js';
 
 export async function loginUser(username, password) {
     try {
