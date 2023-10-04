@@ -50,11 +50,24 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге пинов:', error);
         });
 
-    let timer
-    window.addEventListener('scroll', () => {
-        clearTimeout(timer);
-        timer = setTimeout(handleScroll, 100);
-    });
+    let scrollFunc = debounce(handleScroll, 100);
+    window.addEventListener('scroll', scrollFunc);
+}
+
+function debounce(f, ms) {
+
+    let isCooldown = false;
+
+    return function() {
+        if (isCooldown) return;
+
+        f.apply(this, arguments);
+
+        isCooldown = true;
+
+        setTimeout(() => isCooldown = false, ms);
+    };
+  
 }
 
 /**
