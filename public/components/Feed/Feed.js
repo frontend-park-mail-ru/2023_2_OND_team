@@ -1,5 +1,7 @@
 import { Header } from "../Header/Header.js";
 import { API } from "../../utils/api.js";
+import { handleScroll } from "../../utils/handleScroll.js";
+import { renderPins } from "../../utils/renderPins.js";
 
 /**
 * Рендерится главная страница с пинами.
@@ -50,43 +52,6 @@ export function renderFeedPage(headerElement, pageElement) {
     let timer;
     window.addEventListener('scroll', () => {
         clearTimeout(timer);
-        timer = setTimeout(handleScroll, 1000);
-    });
-}
-
-/**
-* Обработчик скролла страницы.
-* Загружает дополнительные пины при достижении нижней части страницы.
-*/
-function handleScroll() {
-    const Api = new API();
-
-    let documentHeight = document.documentElement.scrollHeight;
-    let windowHeight = window.innerHeight;
-    let scrollY = window.scrollY;
-
-    if (scrollY + windowHeight >= documentHeight - 400) {
-        Api.generatePins()
-            .then(images => {
-                const section = document.getElementById('pins');
-                renderPins(section, images)
-            })
-            .catch(error => {
-                console.error('Ошибка при рендеринге пинов:', error);
-            });
-    }
-}
-
-/**
-* Рендерятся пины на главной странице.
-* @param {HTMLElement} parent - Родительский элемент для отображения изображений.
-* @param {Array} images - Массив объектов с информацией о пинах.
-*/
-function renderPins(parent, images) {
-    const template = Handlebars.templates['Pins.hbs'];
-    images.forEach(image => {
-        const context = { src: image.picture };
-
-        parent.insertAdjacentHTML('beforeend', template(context));
+        timer = setTimeout(handleScroll, 100);
     });
 }
