@@ -65,8 +65,12 @@
     grid-row: span 2;
 }
 
+.gallery img {
+    transition: transform 0.3s ease;
+}
+
 .gallery img:hover {
-    transition: 0.3s;
     transform: scale(1.05);
+    transition: transform 0.3s ease;
     z-index: 1;
 }
