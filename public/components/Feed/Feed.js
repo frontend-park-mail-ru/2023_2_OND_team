@@ -7,13 +7,13 @@ import { generatePins } from "../../utils/generatePins.js";
 * @param {HTMLElement} headerElement - Элемент заголовка.
 * @param {HTMLElement} pageElement - Элемент страницы.
 */
-export function renderFeedPage(rootElement) {
-    pageElement.innerHTML = ''
+export function renderFeedPage(headerElement, pageElement) {
     const headerElement = document.createElement('header');
     const pageElement = document.createElement('main');
     rootElement.appendChild(headerElement);
     rootElement.appendChild(pageElement);
-
+    
+    pageElement.innerHTML = ''
     pageElement.style.overflow = '';
     headerElement.style.display = '';
     const header = new Header(headerElement, pageElement);

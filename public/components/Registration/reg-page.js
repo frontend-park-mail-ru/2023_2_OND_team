@@ -126,7 +126,7 @@ export function renderRegPage(headerElement, pageElement) {
     
         if (usernameValidationResult.valid && emailValidationResult.valid && passwordValidationResult.valid) {
             if (registerUser(username, email, password)) {
-                renderFeedPage(rootElement);
+                renderFeedPage(headerElement, pageElement);
             }
         }
     });
@@ -135,6 +135,6 @@ export function renderRegPage(headerElement, pageElement) {
         e.preventDefault();
         headerElement.style.display = '';
         pageElement.style.paddingTop = '100px';
-        renderFeedPage(rootElement);
+        renderFeedPage(headerElement, pageElement);
     });
 }

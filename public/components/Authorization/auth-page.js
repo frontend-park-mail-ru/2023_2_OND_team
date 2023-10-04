@@ -2,7 +2,7 @@ import { renderRegPage } from '../Registration/reg-page.js';
 import { createLabeledInput } from '../Input/input.js';
 import { loginUser } from '../../utils/login.js';
 import { renderFeedPage } from '../Feed/Feed.js';
-import { passwordValid, nameValid } from '../../utils/valid.js';
+import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 
 /**
 * Рендерится страница аутентификации.
@@ -67,7 +67,7 @@ export function renderAuthPage(headerElement, pageElement) {
 
     signUpLink.addEventListener('click', function (e) {
         e.preventDefault();
-        renderRegPage(rootElement);
+        renderRegPage(headerElement, pageElement);
     });
 
     const passwordErrorSpan = document.createElement('span');
@@ -110,7 +110,7 @@ export function renderAuthPage(headerElement, pageElement) {
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
             if (loginUser(username, password)) {
-                renderFeedPage(rootElement);
+                renderFeedPage(headerElement, pageElement);
             }
         }
     });
@@ -119,6 +119,6 @@ export function renderAuthPage(headerElement, pageElement) {
         e.preventDefault();
         headerElement.style.display = '';
         pageElement.style.paddingTop = '100px';
-        renderFeedPage(rootElement);
+        renderFeedPage(headerElement, pageElement);
     });
 }
