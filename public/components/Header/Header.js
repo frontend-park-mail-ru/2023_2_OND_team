@@ -60,6 +60,7 @@ export class Header {
                 e.preventDefault();
                 this.#parent.style.display = 'none';
                 this.#main.style.paddingTop = '0';
+                this.#parent.innerHTML = '';
                 renderAuthPage(this.#parent, this.#main);
             });
         }
@@ -70,6 +71,7 @@ export class Header {
                 e.preventDefault();
                 this.#parent.style.display = 'none';
                 this.#main.style.paddingTop = '0';
+                this.#parent.innerHTML = '';
                 renderRegPage(this.#parent, this.#main);
             });
         }
