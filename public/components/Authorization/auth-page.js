@@ -110,7 +110,7 @@ export function renderAuthPage(headerElement, pageElement) {
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
             if (loginUser(username, password)) {
-                renderFeedPage(headerElement, pageElement);
+                renderFeedPage(rootElement);
             }
         }
     });
@@ -119,6 +119,7 @@ export function renderAuthPage(headerElement, pageElement) {
         e.preventDefault();
         headerElement.style.display = '';
         pageElement.style.paddingTop = '100px';
-        renderFeedPage(headerElement, pageElement);
+        //renderFeedPage(rootElement);
+        initializeApp()
     });
 }
