@@ -8,7 +8,7 @@ import { generatePins } from "../../utils/generatePins.js";
 * @param {HTMLElement} pageElement - Элемент страницы.
 */
 export function renderFeedPage(headerElement, pageElement) {
-    if (headerElement !== undefined || pageElement !== undefined) {
+    if (headerElement === undefined || pageElement === undefined) {
         const rootElement = document.getElementById('root');
         headerElement = document.createElement('header');
         pageElement = document.createElement('main');
