@@ -86,7 +86,7 @@ header {
     border-radius: 10px;
     cursor: pointer;
   
-    font-size: 21.25px;
+    font-size: 21px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -100,7 +100,7 @@ header {
 }
 
 .header-login-button {
-    background-color: #226B77;
+    background-color: #AB1708;
     color: #FFFFFF;
     width: 89px;
     height: 45px;
@@ -109,14 +109,14 @@ header {
     border-radius: 10px;
     cursor: pointer;
   
-    font-size: 21.25px;
+    font-size: 21px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
 .header-login-button:hover {
-    background: rgba(34, 107, 119, 0.80);
+    background: rgba(188, 69, 57);
 }
 
 .header-signup-button {

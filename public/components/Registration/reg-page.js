@@ -36,7 +36,7 @@ export function renderRegPage(headerElement, pageElement) {
     whiteBlock.appendChild(form);
 
     const usernameInput = createLabeledInput('Имя пользователя', 'text', 'username');
-    const emailInput = createLabeledInput('Почта', 'email', 'test@mail.ru');
+    const emailInput = createLabeledInput('Почта', 'email', 'pinspire@example.com');
     const passwordInput = createLabeledInput('Пароль', 'password', '●●●●●●●●●●●●');
 
     const registrationTitle = document.createElement('h4');
