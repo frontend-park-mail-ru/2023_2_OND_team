@@ -103,7 +103,6 @@ header {
     color: var(--primary-30, #226B77);
 
     text-align: center;
-    font-family: Lato;
     font-size: 25px;
     font-style: normal;
     font-weight: 500;
@@ -126,7 +125,6 @@ header {
     cursor: pointer;
   
     font-size: 25px;
-    font-family: Lato;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -148,7 +146,6 @@ header {
     cursor: pointer;
   
     font-size: 25px;
-    font-family: Lato;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
