@@ -20,7 +20,7 @@ export function renderFeedPage(headerElement, pageElement) {
         rootElement.appendChild(pageElement);
     }
 
-    PIN_LAST_ID = 0;
+    PIN_LAST_ID = NUM_REQUESTED_PINS;
     
     pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
@@ -45,22 +45,16 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге хедера:', error);
         });
 
-    Api.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
+    Api.generatePins(NUM_REQUESTED_PINS, 0)
         .then(({images, lastID}) => {
             const section = document.getElementById('pins');
             renderPins(section, images);
-
-            if (PIN_LAST_ID === lastID) {
-                window.removeEventListener('scroll', window.scrollFunc);
-            }
-
-            PIN_LAST_ID = lastID;
         })
         .catch(error => {
             console.error(error);
         });
 
-    let scrollFunc = debounce(handleScroll, 100);
+    let scrollFunc = debounce(handleScroll, 300);
     window.scrollFunc = scrollFunc;
     window.addEventListener('scroll', window.scrollFunc);
 }
