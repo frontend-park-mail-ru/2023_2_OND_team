@@ -4,7 +4,7 @@ import { API } from "../../utils/api.js";
 import { renderPins } from "../../utils/renderPins.js";
 
 const NUM_REQUESTED_PINS = 20;
-let PIN_LAST_ID = 0;
+let PIN_LAST_ID;
 
 /**
 * Рендерится главная страница с пинами.
@@ -19,6 +19,8 @@ export function renderFeedPage(headerElement, pageElement) {
         rootElement.appendChild(headerElement);
         rootElement.appendChild(pageElement);
     }
+
+    PIN_LAST_ID = 0;
     
     pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
@@ -90,7 +92,6 @@ function handleScroll() {
     if (scrollY + windowHeight >= documentHeight - 400) {
         Api.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
             .then(({images, lastID}) => {
-                console.log(PIN_LAST_ID, lastID);
                 const section = document.getElementById('pins');
                 renderPins(section, images);
 
