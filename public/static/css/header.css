@@ -1,5 +1,5 @@
 main {
-    padding-top: 100px;
+    padding-top: 90px;
     flex-grow: 1;
 }
 
@@ -7,7 +7,7 @@ header {
     display: flex;
     justify-content:space-between;
     align-items: center;
-    height: 100px;
+    height: 80px;
     flex-shrink: 1;
     padding: 0 90px 0 90px;
     align-items: center;
@@ -19,22 +19,9 @@ header {
     z-index: 2;
 }
 
-.header__item {
-    padding-left: 10px;
-    color: #000;
-    text-align: center;
-    /* text base1 medium */
-    font-family: Lato;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
 .header-logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-x-10, 20px);
 }
 
 .logo-icon {
@@ -56,13 +43,13 @@ header {
     padding-right: 180px;
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 50px;
 }
   
 .header-user-data {
     display: flex;
     align-items: flex-start;
-    gap: 30px;
+    gap: 10px;
 }
 
 .header-username {
@@ -100,15 +87,6 @@ header {
 }
 
 .header-login-button {
-    /* background-color: rgba(17, 54, 61);
-    color: #FFFFFF;
-    width: 89px;
-    height: 45px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px; */
-    cursor: pointer;
-  
     font-size: 21px;
     font-style: normal;
     font-weight: 500;
@@ -119,10 +97,19 @@ header {
     justify-content: center;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
 
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
     background: var(--bg-100, #FFF);
+
+    color: var(--primary-30, #226B77);
+    text-align: center;
+    font-family: Lato;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .header-login-button:hover {

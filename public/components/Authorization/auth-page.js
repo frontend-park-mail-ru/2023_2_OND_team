@@ -117,7 +117,7 @@ export function renderAuthPage(headerElement, pageElement) {
                 .then(status => { 
                     if (status) {
                         headerElement.style.display = '';
-                        pageElement.style.paddingTop = '110px';
+                        pageElement.style.paddingTop = '90px';
                         renderFeedPage(headerElement, pageElement);
                     } else {
                         usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
@@ -139,7 +139,7 @@ export function renderAuthPage(headerElement, pageElement) {
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
         headerElement.style.display = '';
-        pageElement.style.paddingTop = '110px';
+        pageElement.style.paddingTop = '90px';
         renderFeedPage(headerElement, pageElement);
     });
 }
