@@ -2,8 +2,6 @@ import { renderRegPage } from '../Registration/reg-page.js';
 import { API } from '../../utils/api.js';
 import { nameValid, passwordValid } from '../../utils/valid.js';
 
-const template = require('../../templates/Auth.hbs');
-
 /**
  * Рендерится страница аутентификации.
  * @param {HTMLElement} headerElement - Элемент заголовка.
@@ -11,12 +9,14 @@ const template = require('../../templates/Auth.hbs');
  */
 export function renderAuthPage(headerElement, pageElement) {
     const Api = new API();
+    document.body.style.overflow = 'hidden';
+    const authPage = Handlebars.templates['Auth.hbs'];
 
     const context = {
         
     };
 
-    pageElement.innerHTML = template(context);
+    pageElement.innerHTML = authPage(context);
 
     const cancelButton = pageElement.querySelector('.cancel-button');
     const form = pageElement.querySelector('form');
