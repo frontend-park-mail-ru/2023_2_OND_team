@@ -12,18 +12,59 @@ import { API } from '../../utils/api.js';
 export function renderAuthPage(headerElement, pageElement) {
     const Api = new API();
 
+    pageElement.innerHTML = '';
     document.body.style.overflow = 'hidden';
 
-    const authPage = Handlebars.templates['Auth.hbs'];
+    const cancelButton = document.createElement('button');
+    cancelButton.classList.add('cancel-button');
+    const cancelIcon = document.createElement('img');
+    cancelIcon.src = './static/svg/cancel.svg';
+    cancelButton.appendChild(cancelIcon);
+    pageElement.appendChild(cancelButton);
 
-    const context = {
-        labeledInputs: [
-            { labelText: 'Имя пользователя', inputType: 'text', inputPlaceholder: 'Введите имя пользователя' },
-            { labelText: 'Пароль', inputType: 'password', inputPlaceholder: 'Введите пароль' }
-        ]
-    }
+    const ImageElement = document.createElement('img');
+    ImageElement.classList.add('ibackground');
+    ImageElement.src = 'static/img/image_2.png';
+    pageElement.appendChild(ImageElement);
 
-    pageElement.innerHTML = authPage(context);
+    const whiteBlock = document.createElement('div');
+    whiteBlock.classList.add('form-container');
+    pageElement.appendChild(whiteBlock);
+
+    const form = document.createElement('form');
+    form.classList.add('input-container');
+    whiteBlock.appendChild(form);
+
+    const usernameInput = createLabeledInput('Имя пользователя', 'text', 'username');
+    const passwordInput = createLabeledInput('Пароль', 'password', '●●●●●●●●●●●●');
+
+    const registrationTitle = document.createElement('h4');
+    registrationTitle.textContent = 'Войти в PinSpire';
+    registrationTitle.classList.add('auth-title');
+    form.appendChild(registrationTitle);
+
+    form.appendChild(usernameInput);
+    form.appendChild(passwordInput);
+
+    const AuthButton = document.createElement('button');
+    AuthButton.classList.add('button');
+    AuthButton.type = 'submit';
+    AuthButton.textContent = 'Войти';
+    form.appendChild(AuthButton);
+
+    const textContainer = document.createElement('p');
+    textContainer.classList.add('already-registered');
+
+    const alreadyHaveAccountText = document.createTextNode('Все еще нет аккаунта?');
+
+    const signUpLink = document.createElement('a');
+    signUpLink.href = '#';
+    signUpLink.textContent = 'Регистрация';
+
+    textContainer.appendChild(alreadyHaveAccountText);
+    textContainer.appendChild(signUpLink);
+
+    form.appendChild(textContainer);
 
     signUpLink.addEventListener('click', function (e) {
         e.preventDefault();
@@ -101,3 +142,18 @@ export function renderAuthPage(headerElement, pageElement) {
         renderFeedPage(headerElement, pageElement);
     });
 }
+
+
+// export function renderAuthPage(headerElement, pageElement) {
+
+//     document.body.style.overflow = 'hidden';
+
+//     const authPage = Handlebars.templates['Auth.hbs'];
+    
+//     const context = {
+       
+//     };
+
+//     pageElement.innerHTML = authPage(context);
+
+// }
