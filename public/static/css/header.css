@@ -101,14 +101,14 @@ header {
 
     text-align: center;
     font-family: Lato;
-    font-size: 21px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
 .header-login-button:hover {
-    background: rgba(34, 107, 119, 0.80);
+    background: rgba(34, 107, 119, 0.50);
 }
 
 .header-signup-button {
@@ -116,12 +116,12 @@ header {
     color: #FFFFFF;
     width: 178px;
     height: 45px;
-    padding: 10px 20px;
+    padding: 1px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
   
-    font-size: 21px;
+    font-size: 25px;
     font-family: Lato;
     font-style: normal;
     font-weight: 500;
