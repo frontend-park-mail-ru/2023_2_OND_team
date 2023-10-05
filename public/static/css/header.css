@@ -83,12 +83,12 @@ header {
     padding-right: 180px;
     display: flex;
     align-items: flex-start;
-    gap: 40px;
+    gap: 20px;
 }
 
 .header-login-button {
     height: 45px;
-    padding: 10px 20px;
+    padding: 1px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -108,7 +108,7 @@ header {
 }
 
 .header-login-button:hover {
-    background: rgba(57, 183, 202, 0.8);
+    background: rgba(34, 107, 119, 0.80);
 }
 
 .header-signup-button {
@@ -121,7 +121,8 @@ header {
     border-radius: 10px;
     cursor: pointer;
   
-    font-size: 21.25px;
+    font-size: 21px;
+    font-family: Lato;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
