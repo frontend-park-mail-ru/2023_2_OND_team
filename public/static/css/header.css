@@ -87,16 +87,10 @@ header {
 }
 
 .header-login-button {
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
-    height: 46px;
-    padding: 20px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+    height: 45px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
 
     border-radius: var(--br-s, 10px);
@@ -104,16 +98,17 @@ header {
     background: var(--bg-100, #FFF);
 
     color: var(--primary-30, #226B77);
+
     text-align: center;
     font-family: Lato;
-    font-size: 25px;
+    font-size: 21px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: normal;
 }
 
 .header-login-button:hover {
-    background: rgba(17, 54, 61, 0.80);
+    background: rgba(57, 183, 202, 0.8);
 }
 
 .header-signup-button {
