@@ -100,7 +100,7 @@ header {
 }
 
 .header-login-button {
-    background-color: #AB1708;
+    background-color: rgba(17, 54, 61);
     color: #FFFFFF;
     width: 89px;
     height: 45px;
@@ -116,7 +116,7 @@ header {
 }
 
 .header-login-button:hover {
-    background: rgba(188, 69, 57);
+    background: rgba(17, 54, 61, 0.80);
 }
 
 .header-signup-button {
