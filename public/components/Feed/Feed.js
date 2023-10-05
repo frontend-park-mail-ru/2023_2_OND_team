@@ -3,6 +3,8 @@ import { API } from "../../utils/api.js";
 // import { handleScroll } from "../../utils/handleScroll.js";
 import { renderPins } from "../../utils/renderPins.js";
 
+const NUM_REQUESTED_PINS = 20;
+
 /**
 * Рендерится главная страница с пинами.
 * @param {HTMLElement} headerElement - Элемент заголовка.
@@ -40,16 +42,27 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге хедера:', error);
         });
 
-    Api.generatePins()
-        .then(images => {
+    let Pin = {
+        lastID: 0
+    };
+
+    Api.generatePins(NUM_REQUESTED_PINS, Pin.lastID)
+        .then(({images, lastID}) => {
             const section = document.getElementById('pins');
-            renderPins(section, images)
+            renderPins(section, images);
+
+            if (Pin.lastID === lastID) {
+                window.removeEventListener('scroll', window.scrollFunc);
+            }
+
+            Pin.lastID = lastID;
+
         })
         .catch(error => {
-            console.error('Ошибка при рендеринге пинов:', error);
+            console.error(error);
         });
 
-    let scrollFunc = debounce(handleScroll, 100);
+    let scrollFunc = debounce(handleScroll(Pin), 100);
     window.scrollFunc = scrollFunc;
     window.addEventListener('scroll', window.scrollFunc);
 }
@@ -71,7 +84,7 @@ function debounce(f, ms) {
 * Обработчик скролла страницы.
 * Загружает дополнительные пины при достижении нижней части страницы.
 */
-function handleScroll() {
+function handleScroll(Pin) {
     const Api = new API();
 
     let documentHeight = document.documentElement.scrollHeight;
@@ -79,10 +92,17 @@ function handleScroll() {
     let scrollY = window.scrollY;
 
     if (scrollY + windowHeight >= documentHeight - 400) {
-        Api.generatePins()
-            .then(images => {
+        Api.generatePins(NUM_REQUESTED_PINS, Pin.lastID)
+            .then(({images, lastID}) => {
                 const section = document.getElementById('pins');
-                renderPins(section, images)
+                renderPins(section, images);
+
+                if (Pin.lastID === lastID) {
+                    window.removeEventListener('scroll', window.scrollFunc);
+                }
+
+                Pin.lastID = lastID;
+
             })
             .catch(error => {
                 console.error('Ошибка при рендеринге пинов:', error);

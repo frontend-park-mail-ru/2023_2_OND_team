@@ -3,10 +3,8 @@ export class API {
     constructor() {
         this.#config = [
             { name: 'loginUser', url: '//pinspire.online:8080/api/v1/auth/login' },
-            { name: 'checkLogin', url: '//pinspire.online:8080/api/v1/auth/login' },
             { name: 'logoutUser', url: '//pinspire.online:8080/api/v1/auth/logout' },
             { name: 'registerUser', url: '//pinspire.online:8080/api/v1/auth/signup' },
-            { name: 'generatePins', url: '//pinspire.online:8080/api/v1/pin?count=20' },
         ];
     }
 
@@ -49,7 +47,7 @@ export class API {
     */
     async checkLogin() {
         try {
-            const configItem = this.#config.find(item => item.name === 'checkLogin');
+            const configItem = this.#config.find(item => item.name === 'loginUser');
             if (!configItem) {
                 throw new Error('Не найдена конфигурация для checkLogin');
             }
@@ -141,23 +139,22 @@ export class API {
     * @throws {Error} Если произошла ошибка при запросе или обработке данных.
     * @returns {Promise<{ images: { picture: string }[] }>} Объект с массивом изображений.
     */
-    async generatePins() {
+    async generatePins(num=20, id=0) {
         try {
-            const configItem = this.#config.find(item => item.name === 'generatePins');
-            if (!configItem) {
-                throw new Error('Не найдена конфигурация для generatePins');
-            }
-
-            const response = await fetch(configItem.url);
+            const configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&lastID=${id}`;
+            const response = await fetch(configItem);
             const res = await response.json();
             let images = [];
+            let lastID;
 
             if (res.status === 'ok') {
                 images = res.body.pins;
+                lastID = res.body.lastID;
+
+                return { images, lastID }
+            } else {
+                throw new Error('Ошибка при получении данных из API');
             }
-
-            return images;
-
         } catch (error) {
             console.error('Ошибка при получении пинов:', error);
         }
