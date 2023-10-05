@@ -64,6 +64,7 @@ header {
 }
 
 .header-logout-button {
+    font-family: Nunito;
     background-color: #226B77;
     color: #FFFFFF;
     width: 107px;
@@ -80,6 +81,7 @@ header {
 }
 
 .header-buttons {
+    font-family: Nunito;
     padding-right: 180px;
     display: flex;
     align-items: flex-start;
