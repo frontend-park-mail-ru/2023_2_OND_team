@@ -17,7 +17,10 @@ export function renderAuthPage(headerElement, pageElement) {
     const authPage = Handlebars.templates['Auth.hbs'];
 
     const context = {
-
+        labeledInputs: [
+            { labelText: 'Имя пользователя', inputType: 'text', inputPlaceholder: 'Введите имя пользователя' },
+            { labelText: 'Пароль', inputType: 'password', inputPlaceholder: 'Введите пароль' }
+        ]
     }
 
     pageElement.innerHTML = authPage(context);
