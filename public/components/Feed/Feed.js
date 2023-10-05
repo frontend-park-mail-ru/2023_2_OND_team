@@ -89,7 +89,7 @@ function handleScroll() {
     let windowHeight = window.innerHeight;
     let scrollY = window.scrollY;
 
-    if (scrollY + windowHeight >= documentHeight - 400) {
+    if (scrollY + windowHeight >= documentHeight - 600) {
         Api.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
             .then(({images, lastID}) => {
                 const section = document.getElementById('pins');
