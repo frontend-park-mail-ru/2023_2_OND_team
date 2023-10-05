@@ -19,8 +19,6 @@ export function renderFeedPage(headerElement, pageElement) {
         rootElement.appendChild(headerElement);
         rootElement.appendChild(pageElement);
     }
-
-    PIN_LAST_ID = NUM_REQUESTED_PINS;
     
     pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
@@ -45,10 +43,12 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге хедера:', error);
         });
 
-    Api.generatePins(NUM_REQUESTED_PINS, 0)
+    Api.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
         .then(({images, lastID}) => {
             const section = document.getElementById('pins');
             renderPins(section, images);
+
+            PIN_LAST_ID = lastID;
         })
         .catch(error => {
             console.error(error);
