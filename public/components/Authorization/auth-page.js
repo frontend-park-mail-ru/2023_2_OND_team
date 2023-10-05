@@ -142,18 +142,3 @@ export function renderAuthPage(headerElement, pageElement) {
         renderFeedPage(headerElement, pageElement);
     });
 }
-
-
-// export function renderAuthPage(headerElement, pageElement) {
-
-//     document.body.style.overflow = 'hidden';
-
-//     const authPage = Handlebars.templates['Auth.hbs'];
-    
-//     const context = {
-       
-//     };
-
-//     pageElement.innerHTML = authPage(context);
-
-// }
