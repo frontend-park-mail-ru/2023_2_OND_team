@@ -4,7 +4,7 @@ import { API } from "../../utils/api.js";
 import { renderPins } from "../../utils/renderPins.js";
 
 const NUM_REQUESTED_PINS = 20;
-let PIN_LAST_ID;
+// let PIN_LAST_ID;
 
 /**
 * Рендерится главная страница с пинами.
@@ -19,6 +19,8 @@ export function renderFeedPage(headerElement, pageElement) {
         rootElement.appendChild(headerElement);
         rootElement.appendChild(pageElement);
     }
+
+    // PIN_LAST_ID = NUM_REQUESTED_PINS;
     
     pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
@@ -43,18 +45,16 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге хедера:', error);
         });
 
-    Api.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
+    Api.generatePins(NUM_REQUESTED_PINS, 0)
         .then(({images, lastID}) => {
             const section = document.getElementById('pins');
             renderPins(section, images);
-
-            PIN_LAST_ID = lastID;
         })
         .catch(error => {
             console.error(error);
         });
 
-    let scrollFunc = debounce(handleScroll, 300);
+    let scrollFunc = debounce(handleScroll, 100);
     window.scrollFunc = scrollFunc;
     window.addEventListener('scroll', window.scrollFunc);
 }
@@ -84,16 +84,16 @@ function handleScroll() {
     let scrollY = window.scrollY;
 
     if (scrollY + windowHeight >= documentHeight - 600) {
-        Api.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
+        Api.generatePins(NUM_REQUESTED_PINS, 0)
             .then(({images, lastID}) => {
                 const section = document.getElementById('pins');
                 renderPins(section, images);
 
-                if (PIN_LAST_ID === lastID) {
-                    window.removeEventListener('scroll', window.scrollFunc);
-                }
+                // if (PIN_LAST_ID === lastID) {
+                //     window.removeEventListener('scroll', window.scrollFunc);
+                // }
 
-                PIN_LAST_ID = lastID;
+                // PIN_LAST_ID = lastID;
             })
             .catch(error => {
                 console.error('Ошибка при рендеринге пинов:', error);
