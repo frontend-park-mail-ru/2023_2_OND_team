@@ -21,7 +21,7 @@
     object-fit: cover;
     width: 100%;
 }
-/*   
+  
 @media (max-width: 1400px) {
     .gallery {
         max-width: 1200px;
@@ -51,7 +51,7 @@
         max-width: 400px;
     }
 }
-   */
+  
 .gallery__item--hor {
     grid-column: span 2;
 }
