@@ -1,5 +1,6 @@
 import { renderRegPage } from '../Registration/reg-page.js';
 import { API } from '../../utils/api.js';
+import { renderFeedPage } from '../Feed/Feed.js';
 import { nameValid, passwordValid } from '../../utils/valid.js';
 
 /**
@@ -43,11 +44,11 @@ export function renderAuthPage(headerElement, pageElement) {
         const passwordValidationResult = passwordValid(password);
 
         if (!usernameValidationResult.valid) {
-        handleValidationError(usernameInput, usernameValidationResult.message);
+            handleValidationError(usernameInput, usernameValidationResult.message);
         }
 
         if (!passwordValidationResult.valid) {
-        handleValidationError(passwordInput, passwordValidationResult.message);
+            handleValidationError(passwordInput, passwordValidationResult.message);
         }
 
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
