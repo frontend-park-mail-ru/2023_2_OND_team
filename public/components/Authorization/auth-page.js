@@ -2,7 +2,7 @@ import { renderRegPage } from '../Registration/reg-page.js';
 import { API } from '../../utils/api.js';
 import { nameValid, passwordValid } from '../../utils/valid.js';
 
-const template = require('../..templates/Auth.hbs');
+const template = require('../../templates/Auth.hbs');
 
 /**
  * Рендерится страница аутентификации.
