@@ -6,10 +6,12 @@
   <div class="form-container">
     <form class="input-container">
       <h4 class="auth-title">Войти в PinSpire</h4>
-      <label for="username">Имя пользователя:</label>
-      <input type="text" id="username">
-      <label for="password">Пароль:</label>
-      <input type="password" id="password">
+      {{#each labeledInputs}}
+        <div class="labeled-input">
+          <label>{{this.labelText}}</label>
+          <input type="{{this.inputType}}" placeholder="{{this.inputPlaceholder}}" class="input">
+        </div>
+      {{/each}}
       <button type="submit" class="button">Войти</button>
       <p class="already-registered">Все еще нет аккаунта? <a href="#">Регистрация</a></p>
     </form>
