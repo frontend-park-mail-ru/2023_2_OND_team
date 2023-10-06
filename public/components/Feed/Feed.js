@@ -11,14 +11,23 @@ const NUM_REQUESTED_PINS = 20;
 * @param {HTMLElement} headerElement - Элемент заголовка.
 * @param {HTMLElement} pageElement - Элемент страницы.
 */
-export function renderFeedPage(headerElement, pageElement) {
-    if (!headerElement || !pageElement) {
-        const rootElement = document.getElementById('root');
-        headerElement = document.createElement('header');
-        pageElement = document.createElement('main');
-        rootElement.appendChild(headerElement);
-        rootElement.appendChild(pageElement);
-    }
+export function renderFeedPage() {
+    const feed = Handlebars.templates['Feed.hbs'];
+    const rootElement = document.getElementById('root');
+    rootElement.innerHTML = feed();
+
+    const headerElement = document.getElementsByTagName('header');
+    const pageElement = document.getElementsByTagName('main');
+    console.log(headerElement, pageElement);
+
+
+    // if (!headerElement || !pageElement) {
+    //     const rootElement = document.getElementById('root');
+    //     headerElement = document.createElement('header');
+    //     pageElement = document.createElement('main');
+    //     rootElement.appendChild(headerElement);
+    //     rootElement.appendChild(pageElement);
+    // }
 
     // PIN_LAST_ID = NUM_REQUESTED_PINS;
     
@@ -26,14 +35,14 @@ export function renderFeedPage(headerElement, pageElement) {
     document.body.style.overflow = 'visible';
 
     const header = new Header(headerElement, pageElement);
-    const div = document.createElement('div');
-    div.classList.add('container');
-    pageElement.appendChild(div);
+    // const div = document.createElement('div');
+    // div.classList.add('container');
+    // pageElement.appendChild(div);
 
-    const section = document.createElement('section');
-    section.id = "pins";
-    section.classList.add('gallery');
-    div.appendChild(section);
+    // const section = document.createElement('section');
+    // section.id = "pins";
+    // section.classList.add('gallery');
+    // div.appendChild(section);
     
     API.checkLogin()
         .then(data => {

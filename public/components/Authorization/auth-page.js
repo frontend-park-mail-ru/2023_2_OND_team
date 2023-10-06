@@ -78,7 +78,7 @@ export async function renderAuthPage(headerElement, pageElement) {
                     if (status) {
                         headerElement.classList.remove('header-hidden');
                         pageElement.classList.remove('main-no-padding');
-                        renderFeedPage(headerElement, pageElement);
+                        renderFeedPage();
                     } else {
                         usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
                         passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
@@ -100,7 +100,7 @@ export async function renderAuthPage(headerElement, pageElement) {
         e.preventDefault();
         headerElement.classList.remove('header-hidden');
         pageElement.classList.remove('main-no-padding');
-        renderFeedPage(headerElement, pageElement);
+        renderFeedPage();
     });
 }
 
