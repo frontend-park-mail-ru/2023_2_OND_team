@@ -1,6 +1,5 @@
 import { renderRegPage } from '../Registration/reg-page.js';
 import { API } from '../../utils/api.js';
-import { createLabeledInput } from '../Input/input.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 
