@@ -1,5 +1,5 @@
 import { Header } from "../Header/Header.js";
-import { API } from "../../utils/API.js";
+import { API } from "../../utils/api.js";
 // import { handleScroll } from "../../utils/handleScroll.js";
 import { renderPins } from "../../utils/renderPins.js";
 
