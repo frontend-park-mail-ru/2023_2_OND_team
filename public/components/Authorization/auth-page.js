@@ -3,7 +3,6 @@ import { API } from '../../utils/api.js';
 import { createLabeledInput } from '../Input/input.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
-import Handlebars from 'handlebars';
 
 /**
  * Рендерится страница аутентификации.
@@ -15,7 +14,7 @@ export async function renderAuthPage(headerElement, pageElement) {
     
     const authPage = Handlebars.templates['Auth.hbs'];
     const context = {
-        
+
     };
 
     pageElement.innerHTML = authPage(context);
