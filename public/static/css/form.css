@@ -110,10 +110,28 @@ a {
     text-decoration: none;
 }
 
-.error-message {
+.password-error-message {
     font-family: Nunito;
     font-size: 15px; 
     color: var(--error-50, #F4210B);
+    min-height: 20px;
+    min-width: 100px;
+}
+
+.username-error-message {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    min-height: 20px;
+    min-width: 100px;
+}
+
+.wrong-data-error-message  {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    min-height: 20px;
+    min-width: 100px;
 }
 
 .input-error input {
