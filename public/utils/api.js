@@ -1,14 +1,11 @@
 export class API {
-    #config
-    constructor() {
-        this.#config = [
+    static #config = [
             { name: 'loginUser', url: '//pinspire.online:8080/api/v1/auth/login' },
             { name: 'logoutUser', url: '//pinspire.online:8080/api/v1/auth/logout' },
             { name: 'registerUser', url: '//pinspire.online:8080/api/v1/auth/signup' },
         ];
-    }
 
-    async loginUser(username, password) {
+    static async loginUser(username, password) {
         try {
             const configItem = this.#config.find(item => item.name === 'loginUser');
             if (!configItem) {
@@ -45,7 +42,7 @@ export class API {
     * @returns {Promise<{ isAuthorized: boolean, username: string }>} Объект с информацией о статусе авторизации и именем пользователя.
     * @throws {Error} Если произошла ошибка при запросе или обработке данных.
     */
-    async checkLogin() {
+    static async checkLogin() {
         try {
             const configItem = this.#config.find(item => item.name === 'loginUser');
             if (!configItem) {
@@ -72,7 +69,7 @@ export class API {
         }
     }
 
-    async logoutUser() {
+    static async logoutUser() {
         try {
             const configItem = this.#config.find(item => item.name === 'logoutUser');
             if (!configItem) {
@@ -103,7 +100,7 @@ export class API {
     * @param {string} email - Почта.
     * @param {string} password - Пароль.
     */
-    async registerUser(username, email, password) {
+    static async registerUser(username, email, password) {
         try {
             const configItem = this.#config.find(item => item.name === 'registerUser');
             if (!configItem) {
@@ -139,7 +136,7 @@ export class API {
     * @throws {Error} Если произошла ошибка при запросе или обработке данных.
     * @returns {Promise<{ images: { picture: string }[] }>} Объект с массивом изображений.
     */
-    async generatePins(num=20, id=0) {
+    static async generatePins(num=20, id=0) {
         try {
             const configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&lastID=${id}`;
             const response = await fetch(configItem);

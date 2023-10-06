@@ -16,8 +16,6 @@ export async function renderAuthPage(headerElement, pageElement) {
     const context = {};
 
     pageElement.innerHTML = authPage(context);
-    const Api = new API();
-
     const passwordInput = pageElement.querySelector('#password');
     const usernameInput = pageElement.querySelector('#username');
     const AuthButton = pageElement.querySelector('.button');
@@ -75,7 +73,7 @@ export async function renderAuthPage(headerElement, pageElement) {
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
             
-            Api.loginUser(username, password)
+            API.loginUser(username, password)
                 .then(status => { 
                     if (status) {
                         headerElement.style.display = '';

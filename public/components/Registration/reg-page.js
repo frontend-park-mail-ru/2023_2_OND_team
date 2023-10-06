@@ -10,8 +10,6 @@ import { API } from '../../utils/api.js';
 * @param {HTMLElement} pageElement - Элемент страницы, куда будет рендериться контент.
 */
 export function renderRegPage(headerElement, pageElement) {
-    const Api = new API();
-
     pageElement.innerHTML = '';
     document.body.style.overflow = 'hidden';
 
@@ -129,7 +127,7 @@ export function renderRegPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && emailValidationResult.valid && passwordValidationResult.valid) {
-            Api.registerUser(username, email, password)
+            API.registerUser(username, email, password)
                 .then(status => { 
                     if (status) {
                         headerElement.style.display = '';

@@ -1,5 +1,5 @@
 import { Header } from "../Header/Header.js";
-import { API } from "../../utils/api.js";
+import { API } from "../../utils/API.js";
 // import { handleScroll } from "../../utils/handleScroll.js";
 import { renderPins } from "../../utils/renderPins.js";
 
@@ -34,10 +34,8 @@ export function renderFeedPage(headerElement, pageElement) {
     section.id = "pins";
     section.classList.add('gallery');
     div.appendChild(section);
-
-    const Api = new API();
     
-    Api.checkLogin()
+    API.checkLogin()
         .then(data => {
             header.renderHeader(data.isAuthorized, data.username);
         })
@@ -45,7 +43,7 @@ export function renderFeedPage(headerElement, pageElement) {
             console.error('Ошибка при рендеринге хедера:', error);
         });
 
-    Api.generatePins(NUM_REQUESTED_PINS, 0)
+    API.generatePins(NUM_REQUESTED_PINS, 0)
         .then(({images, lastID}) => {
             const section = document.getElementById('pins');
             renderPins(section, images);
@@ -77,14 +75,14 @@ function debounce(f, ms) {
 * Загружает дополнительные пины при достижении нижней части страницы.
 */
 function handleScroll() {
-    const Api = new API();
+    const API = new API();
 
     let documentHeight = document.documentElement.scrollHeight;
     let windowHeight = window.innerHeight;
     let scrollY = window.scrollY;
 
     if (scrollY + windowHeight >= documentHeight - 600) {
-        Api.generatePins(NUM_REQUESTED_PINS, 0)
+        API.generatePins(NUM_REQUESTED_PINS, 0)
             .then(({images, lastID}) => {
                 const section = document.getElementById('pins');
                 renderPins(section, images);

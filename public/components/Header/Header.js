@@ -8,8 +8,7 @@ import { API } from "../../utils/api.js";
 export class Header {
     #parent;
     #main;
-    #Api
-
+    
     /**
     * Создает экземпляр класса Header.
     * @param {HTMLElement} parent - Элемент, в который будет рендериться хэдр.
@@ -18,7 +17,6 @@ export class Header {
     constructor(parent, main) {
         this.#parent = parent;
         this.#main = main;
-        this.#Api = new API();
     }
 
     /**
@@ -47,7 +45,7 @@ export class Header {
                 this.#parent.style.display = 'none';
                 this.#main.style.paddingTop = '0';
 
-                if (this.#Api.logoutUser()) {
+                if (API.logoutUser()) {
                     this.#parent.innerHTML = '';
                     window.removeEventListener('scroll', window.scrollFunc);
                     renderAuthPage(this.#parent, this.#main);
