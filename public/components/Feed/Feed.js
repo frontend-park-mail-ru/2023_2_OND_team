@@ -15,12 +15,37 @@ export function renderFeedPage() {
     const rootElement = document.getElementById('root');
 
     const feed = Handlebars.templates['Feed.hbs'];
-    const context = {}
+    const header = Handlebars.templates['Header.hbs'];
+    const userData = Handlebars.templates['UserData.hbs'];
+    const headerNonAuthorized = Handlebars.templates['HeaderNonAuthorized.hbs'];
+
+    const headerContext = {
+        isAuthorized: null,
+        UserData: userData,
+        HeaderNonAuthorized: headerNonAuthorized,
+        userDataContext: null
+    };
+            
+    API.checkLogin()
+        .then(data => {
+            headerContext.isAuthorized = data.isAuthorized;
+            userDataContext = data.username;
+            // renderHeader(data.isAuthorized, data.username);
+        })
+        .catch(error => {
+            console.error('Ошибка при рендеринге хедера:', error);
+        });
+
+    const context = {
+        Header: header,
+        headerContext: { headerContext }
+    }
+
+
     rootElement.innerHTML = feed(context);
 
-    const headerElement = document.getElementsByTagName('header');
+    // const headerElement = document.getElementsByTagName('header');
     const pageElement = document.getElementsByTagName('main');
-    headerElement.innerHTML = '<h1>name<h1>';
 
     // if (!headerElement || !pageElement) {
     //     const rootElement = document.getElementById('root');
@@ -35,7 +60,7 @@ export function renderFeedPage() {
     pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
 
-    const header = new Header(headerElement, pageElement);
+    // const header = new Header(headerElement, pageElement);
     // const div = document.createElement('div');
     // div.classList.add('container');
     // pageElement.appendChild(div);
@@ -45,13 +70,6 @@ export function renderFeedPage() {
     // section.classList.add('gallery');
     // div.appendChild(section);
     
-    API.checkLogin()
-        .then(data => {
-            header.renderHeader(data.isAuthorized, data.username);
-        })
-        .catch(error => {
-            console.error('Ошибка при рендеринге хедера:', error);
-        });
 
     API.generatePins(NUM_REQUESTED_PINS, 0)
         .then(({images, lastID}) => {
@@ -61,6 +79,61 @@ export function renderFeedPage() {
         .catch(error => {
             console.error(error);
         });
+
+
+    function renderHeader(isAuthorized, username) {
+        const header = Handlebars.templates['Header.hbs'];
+        const userData = Handlebars.templates['UserData.hbs'];
+        const headerNonAuthorized = Handlebars.templates['HeaderNonAuthorized.hbs'];
+        
+        const context = {
+            isAuthorized: isAuthorized,
+            UserData: userData,
+            HeaderNonAuthorized: headerNonAuthorized,
+            userDataContext: { username }
+        };
+
+        this.#parent.innerHTML = header(context);
+
+        this.logoutButton = document.querySelector('.header-logout-button');
+        if (this.logoutButton != undefined) {
+            this.logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.#parent.classList.add('header-hidden');
+                this.#main.classList.add('main-no-padding');
+
+                if (API.logoutUser()) {
+                    this.#parent.innerHTML = '';
+                    window.removeEventListener('scroll', window.scrollFunc);
+                    renderAuthPage(this.#parent, this.#main);
+                }
+            });
+        }
+
+        this.loginButton = document.querySelector('.header-login-button');
+        if (this.loginButton != undefined) {
+            this.loginButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.#parent.classList.add('header-hidden');
+                this.#main.classList.add('main-no-padding');
+                this.#parent.innerHTML = '';
+                window.removeEventListener('scroll', window.scrollFunc);
+                renderAuthPage(this.#parent, this.#main);
+            });
+        }
+
+        this.signupButton = document.querySelector('.header-signup-button');
+        if (this.signupButton != undefined) {
+            this.signupButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.#parent.classList.add('header-hidden');
+                this.#main.classList.add('main-no-padding');
+                this.#parent.innerHTML = '';
+                window.removeEventListener('scroll', window.scrollFunc);
+                renderRegPage(this.#parent, this.#main);
+            });
+        }
+    }
 
     let scrollFunc = debounce(handleScroll, 100);
     window.scrollFunc = scrollFunc;
