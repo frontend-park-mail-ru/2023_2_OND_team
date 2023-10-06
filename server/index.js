@@ -6,7 +6,7 @@
 
 const express = require('express');
 const https = require('https');
-var fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -20,9 +20,9 @@ const app = express();
 */
 
 const httpsOptions = {
-  key: fs.readFileSync("/home/ond_team/cert/privkey.pem"), // путь к ключу
-  cert: fs.readFileSync("/home/ond_team/cert/fullchain.pem") // путь к сертификату
-}
+  key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
+  cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
+};
 
 https.createServer(httpsOptions, app).listen(443);
 
