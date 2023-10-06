@@ -35,7 +35,7 @@ export function renderAuthPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
-    let errorSpan = document.querySelector('.error-mesage');
+    let errorSpan = document.querySelector('.error-message');
 
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -81,7 +81,8 @@ export function renderAuthPage(headerElement, pageElement) {
                             errorSpan = document.createElement('span');
                             errorSpan.classList.add('error-message');
                             errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                        }  
+                            pageElement.querySelector('.input-container').appendChild(errorSpan);
+                        }
                     }
                 });
             
