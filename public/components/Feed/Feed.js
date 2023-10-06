@@ -64,7 +64,7 @@ export function renderFeedPage() {
     const pageElement = document.getElementById('main');
 
     console.log(logoutButton);
-    if (logoutButton != undefined) {
+    //if (logoutButton != undefined) {
         logoutButton.addEventListener('click', (e) => {
             e.preventDefault();
             headerElement.classList.add('header-hidden');
@@ -76,7 +76,7 @@ export function renderFeedPage() {
                 renderAuthPage(headerElement, pageElement);
             }
         });
-    }
+    //}
 
     if (loginButton != undefined) {
         loginButton.addEventListener('click', (e) => {
