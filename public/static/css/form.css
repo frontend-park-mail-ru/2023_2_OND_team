@@ -33,7 +33,7 @@
 
 input {
     font-family: Lato;
-    width: 443px;
+    width: 300px;
     height: 25px; 
     padding: 8px 0px 8px 8px;
     border: 2px solid var(--primary-45, #33A1B3);
