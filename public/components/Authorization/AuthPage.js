@@ -26,16 +26,12 @@ export function renderAuthPage(headerElement, pageElement) {
         renderRegPage(headerElement, pageElement);
     });
 
-    const passwordErrorSpan = document.createElement('span');
-    const usernameErrorSpan = document.createElement('span');
+    const usernameErrorSpan = document.querySelector('.username-error-message');
+    const passwordErrorSpan = document.querySelector('.password-error-message');
+    const wrongDataErrorSpan = document.querySelector('.wrong-data-error-message');
 
-    passwordErrorSpan.classList.add('error-message');
-    usernameErrorSpan.classList.add('error-message');
 
-    usernameInput.appendChild(usernameErrorSpan);
-    passwordInput.appendChild(passwordErrorSpan);
-
-    let errorSpan = document.querySelector('.error-message');
+    // let errorSpan = document.querySelector('.error-message');
 
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -51,7 +47,7 @@ export function renderAuthPage(headerElement, pageElement) {
     
         if (!usernameValidationResult.valid) {
             usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
-            usernameInput.style.Color = 'var(--error-50, #F4210B)';
+            usernameInput.style.color = 'var(--error-50, #F4210B)';
             usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
             usernameErrorSpan.textContent = '';
@@ -59,14 +55,13 @@ export function renderAuthPage(headerElement, pageElement) {
     
         if (!passwordValidationResult.valid) {
             passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
-            passwordInput.style.Color = 'var(--error-50, #F4210B)';
+            passwordInput.style.color = 'var(--error-50, #F4210B)';
             passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
             passwordErrorSpan.textContent = '';
         }
     
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
-            
             API.loginUser(username, password)
                 .then(status => { 
                     if (status) {
@@ -76,13 +71,14 @@ export function renderAuthPage(headerElement, pageElement) {
                     } else {
                         usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
                         passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
+                        wrongDataErrorSpan.textContent = 'Неверное имя пользователя или пароль';
 
-                        if (!errorSpan) {
-                            errorSpan = document.createElement('span');
-                            errorSpan.classList.add('error-message');
-                            errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                            pageElement.querySelector('.input-container').appendChild(errorSpan);
-                        }
+                        // if (!errorSpan) {
+                        //     errorSpan = document.createElement('span');
+                        //     errorSpan.classList.add('error-message');
+                        //     errorSpan.textContent = 'Неверное имя пользователя или пароль';
+                        //     pageElement.querySelector('.input-container').appendChild(errorSpan);
+                        // }
                     }
                 });
             
