@@ -252,7 +252,6 @@ export function renderRegPage(headerElement, pageElement) {
                             errorSpan = document.createElement('span');
                             errorSpan.classList.add('error-message');
                             errorSpan.textContent = 'Пользователь уже зарегистрирован';
-                            form.appendChild(errorSpan);
                         }
                     }
                 });
