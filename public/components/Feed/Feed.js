@@ -14,7 +14,7 @@ const NUM_REQUESTED_PINS = 20;
 export function renderFeedPage() {
     const rootElement = document.getElementById('root');
     const headerElement = document.getElementsByTagName('header')[0];
-    const pageElement = document.getElementsByTagName('main')[0];
+    const pageElement = document.getElementsByTagName('main');
 
     pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
