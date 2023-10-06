@@ -150,4 +150,7 @@ function defineButtons() {
             console.error(error);
         });
 
+    let scrollFunc = debounce(handleScroll, 100);
+    window.scrollFunc = scrollFunc;
+    window.addEventListener('scroll', window.scrollFunc);
 }
