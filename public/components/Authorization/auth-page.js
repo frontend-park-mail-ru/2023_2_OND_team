@@ -12,20 +12,17 @@ import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 export async function renderAuthPage(headerElement, pageElement) {
     document.body.style.overflow = 'hidden';
     
-    const authPage = Handlebars.templates['Auth.hbs'];
-    const context = {
+    const templateResponse = await fetch('../templates/Auth.hbs');
+    const templateText = await templateResponse.text();
+    const template = Handlebars.compile(templateText);
+    
+    const context = {};
 
-    };
+    pageElement.innerHTML = template(context);
 
-    pageElement.innerHTML = authPage(context);
     const Api = new API();
 
     const signUpLink = pageElement.querySelector('.already-registered a');
-    signUpLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        renderRegPage(headerElement, pageElement);
-    });
-
     signUpLink.addEventListener('click', function (e) {
         e.preventDefault();
         renderRegPage(headerElement, pageElement);
