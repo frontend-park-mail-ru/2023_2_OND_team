@@ -1,6 +1,6 @@
-import { Header } from "../Header/Header.js";
 import { API } from "../../utils/api.js";
-// import { handleScroll } from "../../utils/handleScroll.js";
+import { renderAuthPage } from "../Authorization/auth-page.js";
+import { renderRegPage } from "../Registration/reg-page.js";
 import { renderPins } from "../../utils/renderPins.js";
 
 const NUM_REQUESTED_PINS = 20;
@@ -13,6 +13,11 @@ const NUM_REQUESTED_PINS = 20;
 */
 export function renderFeedPage() {
     const rootElement = document.getElementById('root');
+    const headerElement = document.getElementsByTagName('header');
+    const pageElement = document.getElementsByTagName('main');
+
+    pageElement.innerHTML = ''
+    document.body.style.overflow = 'visible';
 
     const feed = Handlebars.templates['Feed.hbs'];
     const header = Handlebars.templates['Header.hbs'];
@@ -30,10 +35,9 @@ export function renderFeedPage() {
         .then(data => {
             headerContext.isAuthorized = data.isAuthorized;
             headerContext.userDataContext = data.username;
-            // renderHeader(data.isAuthorized, data.username);
         })
         .catch(error => {
-            console.error('Ошибка при рендеринге хедера:', error);
+            console.error(error);
         });
 
     const context = {
@@ -41,11 +45,47 @@ export function renderFeedPage() {
         headerContext: headerContext 
     }
 
-
     rootElement.innerHTML = feed(context);
 
-    // const headerElement = document.getElementsByTagName('header');
-    const pageElement = document.getElementsByTagName('main');
+    const logoutButton = document.querySelector('.header-logout-button');
+    if (logoutButton != undefined) {
+        logoutButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            headerElement.classList.add('header-hidden');
+            pageElement.classList.add('main-no-padding');
+
+            if (API.logoutUser()) {
+                headerElement.innerHTML = '';
+                window.removeEventListener('scroll', window.scrollFunc);
+                renderAuthPage(headerElement, pageElement);
+            }
+        });
+    }
+
+    const loginButton = document.querySelector('.header-login-button');
+    if (loginButton != undefined) {
+        loginButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            headerElement.classList.add('header-hidden');
+            pageElement.classList.add('main-no-padding');
+            headerElement.innerHTML = '';
+            window.removeEventListener('scroll', window.scrollFunc);
+            renderAuthPage(headerElement, pageElement);
+        });
+    }
+
+    const signupButton = document.querySelector('.header-signup-button');
+    if (signupButton != undefined) {
+        signupButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            headerElement.classList.add('header-hidden');
+            pageElement.classList.add('main-no-padding');
+            headerElement.innerHTML = '';
+            window.removeEventListener('scroll', window.scrollFunc);
+            renderRegPage(headerElement, pageElement);
+        });
+    }
+
 
     // if (!headerElement || !pageElement) {
     //     const rootElement = document.getElementById('root');
@@ -57,8 +97,6 @@ export function renderFeedPage() {
 
     // PIN_LAST_ID = NUM_REQUESTED_PINS;
     
-    pageElement.innerHTML = ''
-    document.body.style.overflow = 'visible';
 
     // const header = new Header(headerElement, pageElement);
     // const div = document.createElement('div');
@@ -93,19 +131,19 @@ export function renderFeedPage() {
     //         userDataContext: { username }
     //     };
 
-    //     this.#parent.innerHTML = header(context);
+    //     headerElement.innerHTML = header(context);
 
     //     this.logoutButton = document.querySelector('.header-logout-button');
     //     if (this.logoutButton != undefined) {
     //         this.logoutButton.addEventListener('click', (e) => {
     //             e.preventDefault();
-    //             this.#parent.classList.add('header-hidden');
-    //             this.#main.classList.add('main-no-padding');
+    //             headerElement.classList.add('header-hidden');
+    //             pageElement.classList.add('main-no-padding');
 
     //             if (API.logoutUser()) {
-    //                 this.#parent.innerHTML = '';
+    //                 headerElement.innerHTML = '';
     //                 window.removeEventListener('scroll', window.scrollFunc);
-    //                 renderAuthPage(this.#parent, this.#main);
+    //                 renderAuthPage(headerElement, pageElement);
     //             }
     //         });
     //     }
@@ -114,11 +152,11 @@ export function renderFeedPage() {
     //     if (this.loginButton != undefined) {
     //         this.loginButton.addEventListener('click', (e) => {
     //             e.preventDefault();
-    //             this.#parent.classList.add('header-hidden');
-    //             this.#main.classList.add('main-no-padding');
-    //             this.#parent.innerHTML = '';
+    //             headerElement.classList.add('header-hidden');
+    //             pageElement.classList.add('main-no-padding');
+    //             headerElement.innerHTML = '';
     //             window.removeEventListener('scroll', window.scrollFunc);
-    //             renderAuthPage(this.#parent, this.#main);
+    //             renderAuthPage(headerElement, pageElement);
     //         });
     //     }
 
@@ -126,11 +164,11 @@ export function renderFeedPage() {
     //     if (this.signupButton != undefined) {
     //         this.signupButton.addEventListener('click', (e) => {
     //             e.preventDefault();
-    //             this.#parent.classList.add('header-hidden');
-    //             this.#main.classList.add('main-no-padding');
-    //             this.#parent.innerHTML = '';
+    //             headerElement.classList.add('header-hidden');
+    //             pageElement.classList.add('main-no-padding');
+    //             headerElement.innerHTML = '';
     //             window.removeEventListener('scroll', window.scrollFunc);
-    //             renderRegPage(this.#parent, this.#main);
+    //             renderRegPage(headerElement, pageElement);
     //         });
     //     }
     // }
