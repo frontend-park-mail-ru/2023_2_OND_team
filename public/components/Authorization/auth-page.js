@@ -1,30 +1,14 @@
 import { renderRegPage } from '../Registration/reg-page.js';
 import { createLabeledInput } from '../Input/input.js';
 import { renderFeedPage } from '../Feed/Feed.js';
-import { nameValid, passwordValid } from '../../utils/valid.js';
+import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 import { API } from '../../utils/api.js';
 
-function clearInputErrors(usernameInput, passwordInput) {
-    usernameInput.querySelector('input').style.borderColor = '';
-    passwordInput.querySelector('input').style.borderColor = '';
-}
-
-function showErrorMessage(input, errorMessage) {
-    input.style.borderColor = 'var(--error-50, #F4210B)';
-    input.style.color = 'var(--error-50, #F4210B)';
-    return errorMessage;
-}
-
-function renderValidationErrorMessage(input, errorMessage) {
-    let errorSpan = input.querySelector('.error-message');
-    if (!errorSpan) {
-        errorSpan = document.createElement('span');
-        errorSpan.classList.add('error-message');
-        input.appendChild(errorSpan);
-    }
-    errorSpan.textContent = errorMessage;
-}
-
+/**
+* Рендерится страница аутентификации.
+* @param {HTMLElement} headerElement - Элемент заголовка.
+* @param {HTMLElement} pageElement - Элемент страницы.
+*/
 export function renderAuthPage(headerElement, pageElement) {
     const Api = new API();
 
@@ -87,47 +71,81 @@ export function renderAuthPage(headerElement, pageElement) {
         renderRegPage(headerElement, pageElement);
     });
 
+    const passwordErrorSpan = document.createElement('span');
+    const usernameErrorSpan = document.createElement('span');
+
+    passwordErrorSpan.classList.add('error-message');
+    usernameErrorSpan.classList.add('error-message');
+
+    usernameInput.appendChild(usernameErrorSpan);
+    passwordInput.appendChild(passwordErrorSpan);
+
+    let errorSpan = document.querySelector('.error-message');
+
+    usernameInput.querySelector('input').addEventListener('input', function () {
+        if (errorSpan) {
+            form.removeChild(errorSpan);
+            errorSpan = null;
+        }
+    });
+
+    passwordInput.querySelector('input').addEventListener('input', function () {
+        if (errorSpan) {
+            form.removeChild(errorSpan);
+            errorSpan = null;
+        }
+    });
+
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
-
+    
         const username = usernameInput.querySelector('input').value;
         const password = passwordInput.querySelector('input').value;
 
-        clearInputErrors(usernameInput, passwordInput);
-
+        usernameInput.querySelector('input').style.borderColor = '';
+        passwordInput.querySelector('input').style.borderColor = '';
+    
         const usernameValidationResult = nameValid(username);
         const passwordValidationResult = passwordValid(password);
-
+    
         if (!usernameValidationResult.valid) {
-            const errorMessage = showErrorMessage(usernameInput.querySelector('input'), usernameValidationResult.message);
-            renderValidationErrorMessage(usernameInput, errorMessage);
+            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            usernameErrorSpan.textContent = usernameValidationResult.message;
+        } else {
+            usernameErrorSpan.textContent = '';
         }
-
+    
         if (!passwordValidationResult.valid) {
-            const errorMessage = showErrorMessage(passwordInput.querySelector('input'), passwordValidationResult.message);
-            renderValidationErrorMessage(passwordInput, errorMessage);
+            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            passwordErrorSpan.textContent = passwordValidationResult.message;
+        } else {
+            passwordErrorSpan.textContent = '';
         }
-
+    
         if (usernameValidationResult.valid && passwordValidationResult.valid) {
+            
             Api.loginUser(username, password)
-                .then(status => {
+                .then(status => { 
                     if (status) {
                         headerElement.style.display = '';
                         pageElement.style.paddingTop = '90px';
                         renderFeedPage(headerElement, pageElement);
-                        
-                        if (errorSpan) {
-                            form.removeChild(errorSpan);
-                            errorSpan = null;
-                        }
                     } else {
-                        const errorMessage = 'Неверное имя пользователя или пароль';
-                        const errorSpan = form.querySelector('.error-message');
+                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+
                         if (!errorSpan) {
-                            renderValidationErrorMessage(form, errorMessage);
+                            errorSpan = document.createElement('span');
+                            errorSpan.classList.add('error-message');
+                            errorSpan.textContent = 'Неверное имя пользователя или пароль';
+                            form.appendChild(errorSpan);
                         }
+                        
                     }
                 });
+            
         }
     });
 
