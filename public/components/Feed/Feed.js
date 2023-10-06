@@ -44,8 +44,10 @@ export function renderFeedPage() {
 
     rootElement.innerHTML = feed(context);
 
-    const headerElement = document.getElementsByTagName('header');
-    const pageElement = document.getElementsByTagName('main');
+    const headerElement = document.getElementById('header');
+    const pageElement = document.getElementById('main');
+
+    console.log(headerElement, pageElement);
 
     const logoutButton = document.querySelector('.header-logout-button');
     if (logoutButton != undefined) {
