@@ -75,8 +75,6 @@ function debounce(f, ms) {
 * Загружает дополнительные пины при достижении нижней части страницы.
 */
 function handleScroll() {
-    const API = new API();
-
     let documentHeight = document.documentElement.scrollHeight;
     let windowHeight = window.innerHeight;
     let scrollY = window.scrollY;

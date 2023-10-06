@@ -154,3 +154,11 @@ header {
 .header-logout-button:hover {
     background: rgba(34, 107, 119, 0.80);
 }
+
+.header-hidden {
+    display: none;
+}
+
+.main-no-padding {
+    padding-top: 0;
+}

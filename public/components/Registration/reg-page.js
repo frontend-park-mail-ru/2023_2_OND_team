@@ -130,8 +130,8 @@ export function renderRegPage(headerElement, pageElement) {
             API.registerUser(username, email, password)
                 .then(status => { 
                     if (status) {
-                        headerElement.style.display = '';
-                        pageElement.style.paddingTop = '90px';
+                        headerElement.classList.remove('header-hidden');
+                        pageElement.classList.remove('main-no-padding');
                         renderFeedPage(headerElement, pageElement);
                     } else {
                         usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
@@ -154,8 +154,8 @@ export function renderRegPage(headerElement, pageElement) {
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
-        headerElement.style.display = '';
-        pageElement.style.paddingTop = '90px';
+        headerElement.classList.remove('header-hidden');
+        pageElement.classList.remove('main-no-padding');
         renderFeedPage(headerElement, pageElement);
     });
 }
