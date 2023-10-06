@@ -48,23 +48,23 @@ export async function renderAuthPage(headerElement, pageElement) {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        usernameInput.querySelector('input').style.borderColor = '';
-        passwordInput.querySelector('input').style.borderColor = '';
+        usernameInput.style.borderColor = '';
+        passwordInput.style.borderColor = '';
     
         const usernameValidationResult = nameValid(username);
         const passwordValidationResult = passwordValid(password);
     
         if (!usernameValidationResult.valid) {
-            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-            usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
+            usernameInput.style.Color = 'var(--error-50, #F4210B)';
             usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
             usernameErrorSpan.textContent = '';
         }
     
         if (!passwordValidationResult.valid) {
-            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-            passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
+            passwordInput.style.Color = 'var(--error-50, #F4210B)';
             passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
             passwordErrorSpan.textContent = '';
@@ -79,8 +79,8 @@ export async function renderAuthPage(headerElement, pageElement) {
                         pageElement.classList.remove('main-no-padding');
                         renderFeedPage();
                     } else {
-                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
 
                         if (!errorSpan) {
                             errorSpan = document.createElement('span');
