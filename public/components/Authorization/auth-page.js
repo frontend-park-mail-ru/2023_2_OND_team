@@ -95,18 +95,18 @@ export function renderAuthPage(headerElement, pageElement) {
         const passwordValidationResult = passwordValid(password);
     
         if (!usernameValidationResult.valid) {
-            usernameInput.querySelector('input').classList.add('input-error');
+            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
             usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
-            usernameInput.querySelector('input').classList.remove('input-error');
             usernameErrorSpan.textContent = '';
         }
     
         if (!passwordValidationResult.valid) {
-            passwordInput.querySelector('input').classList.add('input-error');
-            passwordErrorSpan.textContent = usernameValidationResult.message;
+            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+            passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
-            passwordInput.querySelector('input').classList.remove('input-error');
             passwordErrorSpan.textContent = '';
         }
     
@@ -119,8 +119,8 @@ export function renderAuthPage(headerElement, pageElement) {
                         pageElement.style.paddingTop = '90px';
                         renderFeedPage(headerElement, pageElement);
                     } else {
-                        usernameInput.querySelector('input').classList.add('input-error');
-                        passwordInput.querySelector('input').classList.add('input-error');
+                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
 
                         if (!errorSpan) {
                             errorSpan = document.createElement('span');
