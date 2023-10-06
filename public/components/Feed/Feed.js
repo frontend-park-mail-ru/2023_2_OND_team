@@ -1,5 +1,5 @@
 import { API } from "../../utils/api.js";
-import { renderAuthPage } from "../Authorization/auth-page.js";
+import { renderAuthPage } from "../Authorization/AuthPage.js";
 import { renderRegPage } from "../Registration/reg-page.js";
 import { renderPins } from "../../utils/renderPins.js";
 

@@ -1,4 +1,4 @@
-import { renderAuthPage } from '../Authorization/auth-page.js';
+import { renderAuthPage } from '../Authorization/AuthPage.js';
 import { createLabeledInput } from '../Input/input.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';

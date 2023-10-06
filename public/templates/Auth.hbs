@@ -6,8 +6,10 @@
     <div class="form-container">
         <form class="input-container">
             <h4 class="auth-title">Войти в PinSpire</h4>
-            {{!-- {{#createLabeledInput "Имя пользователя" "text" "username"}}
-            {{#createLabeledInput "Пароль" "password" "●●●●●●●●●●●●"}} --}}
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password">
             <button class="button" type="submit">Войти</button>
             <p class="already-registered">Все еще нет аккаунта? <a href="#">Регистрация</a></p>
         </form>

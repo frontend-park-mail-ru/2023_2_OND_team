@@ -104,6 +104,12 @@ export async function renderAuthPage(headerElement, pageElement) {
     });
 }
 
+Handlebars.registerHelper('createLabeledInput', function(label, type, value) {
+    const inputHTML = `<input type="${type}" value="${value}">`;
+    const labelHTML = `<label>${label} ${inputHTML}</label>`;
+    
+    return new Handlebars.SafeString(labelHTML);
+  });
 
 // export function renderAuthPage(headerElement, pageElement) {
 
