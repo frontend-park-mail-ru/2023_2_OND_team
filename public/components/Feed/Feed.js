@@ -13,7 +13,7 @@ const NUM_REQUESTED_PINS = 20;
 */
 export function renderFeedPage() {
     const rootElement = document.getElementById('root');
-    const headerElement = document.getElementsByTagName('header')[0];
+    const headerElement = document.getElementById('header');
     const pageElement = document.getElementsByTagName('main');
 
     pageElement.innerHTML = ''
