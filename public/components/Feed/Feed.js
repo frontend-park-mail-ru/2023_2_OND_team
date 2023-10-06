@@ -13,8 +13,6 @@ const NUM_REQUESTED_PINS = 20;
 */
 export function renderFeedPage() {
     const rootElement = document.getElementById('root');
-    const headerElement = document.getElementById('header');
-    const pageElement = document.getElementsByTagName('main');
 
     pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
@@ -46,6 +44,9 @@ export function renderFeedPage() {
     }
 
     rootElement.innerHTML = feed(context);
+
+    const headerElement = document.getElementsByTagName('header');
+    const pageElement = document.getElementsByTagName('main');
 
     const logoutButton = document.querySelector('.header-logout-button');
     if (logoutButton != undefined) {
