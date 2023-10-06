@@ -21,8 +21,6 @@ export function renderFeedPage() {
     const userData = Handlebars.templates['UserData.hbs'];
     const headerNonAuthorized = Handlebars.templates['HeaderNonAuthorized.hbs'];
 
-    let logoutButton, loginButton, signupButton;
-
     const userDataContext = {
         username: null
     }
@@ -38,32 +36,24 @@ export function renderFeedPage() {
         .then(data => {
             headerContext.isAuthorized = data.isAuthorized;
             headerContext.userDataContext.username = data.username;
-
-            const context = {
-                Header: header,
-                headerContext: headerContext 
-            };
-            rootElement.innerHTML = feed(context);
-
-            defineButtons();
         })
         .catch(error => {
             console.error(error);
         });
 
-
-    function defineButtons() {
-        logoutButton = document.querySelector('.header-logout-button');
-        loginButton = document.querySelector('.header-login-button');
-        signupButton = document.querySelector('.header-signup-button');
+    const context = {
+        Header: header,
+        headerContext: headerContext 
     }
-    
-    // document.addEventListener('DOMContentLoaded', defineButtons)
+
+    console.log(context);
+
+    rootElement.innerHTML = feed(context);
 
     const headerElement = document.getElementById('header');
     const pageElement = document.getElementById('main');
 
-    console.log(logoutButton);
+    const logoutButton = document.querySelector('.header-logout-button');
     if (logoutButton) {
         logoutButton.addEventListener('click', (e) => {
             e.preventDefault();
@@ -78,6 +68,7 @@ export function renderFeedPage() {
         });
     }
 
+    const loginButton = document.querySelector('.header-login-button');
     if (loginButton) {
         loginButton.addEventListener('click', (e) => {
             e.preventDefault();
@@ -89,6 +80,7 @@ export function renderFeedPage() {
         });
     }
 
+    const signupButton = document.querySelector('.header-signup-button');
     if (signupButton) {
         signupButton.addEventListener('click', (e) => {
             e.preventDefault();
