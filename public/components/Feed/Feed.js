@@ -32,17 +32,17 @@ export function renderFeedPage() {
         .then(data => {
             headerContext.isAuthorized = data.isAuthorized;
             headerContext.userDataContext = data.username;
+
+            const context = {
+                Header: header,
+                headerContext: headerContext 
+            };
+            rootElement.innerHTML = feed(context);
         })
         .catch(error => {
             console.error(error);
         });
 
-    const context = {
-        Header: header,
-        headerContext: headerContext 
-    }
-
-    rootElement.innerHTML = feed(context);
 
     const headerElement = document.getElementById('header');
     const pageElement = document.getElementById('main');
