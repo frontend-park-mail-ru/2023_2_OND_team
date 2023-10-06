@@ -20,7 +20,6 @@ export function renderFeedPage() {
 
     const headerElement = document.getElementsByTagName('header');
     const pageElement = document.getElementsByTagName('main');
-    console.log(headerElement, pageElement);
 
 
     // if (!headerElement || !pageElement) {

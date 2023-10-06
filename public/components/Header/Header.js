@@ -25,6 +25,7 @@ export class Header {
     * @param {string} username - Имя пользователя, если авторизован.
     */
     renderHeader(isAuthorized, username) {
+        console.log('header', this.#parent, this.#main);
         const header = Handlebars.templates['Header.hbs'];
         const userData = Handlebars.templates['UserData.hbs'];
         const headerNonAuthorized = Handlebars.templates['HeaderNonAuthorized.hbs'];
