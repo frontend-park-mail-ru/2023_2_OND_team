@@ -14,7 +14,6 @@ const NUM_REQUESTED_PINS = 20;
 export function renderFeedPage() {
     const rootElement = document.getElementById('root');
 
-    pageElement.innerHTML = ''
     document.body.style.overflow = 'visible';
 
     const feed = Handlebars.templates['Feed.hbs'];
