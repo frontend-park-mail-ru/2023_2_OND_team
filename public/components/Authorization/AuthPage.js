@@ -26,8 +26,11 @@ export function renderAuthPage(headerElement, pageElement) {
         renderRegPage(headerElement, pageElement);
     });
 
-    passwordErrorSpan = document.getElementById('pass-error-message');
-    usernameErrorSpan = document.getElementById('user-error-message');
+    const passwordErrorSpan = document.createElement('span');
+    const usernameErrorSpan = document.createElement('span');
+
+    passwordErrorSpan.classList.add('error-message');
+    usernameErrorSpan.classList.add('error-message');
 
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
