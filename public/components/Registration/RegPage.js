@@ -244,9 +244,9 @@ export function renderRegPage(headerElement, pageElement) {
                         pageElement.classList.remove('main-no-padding');
                         renderFeedPage();
                     } else {
-                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                        emailInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
+                        emailInput.style.borderColor = 'var(--error-50, #F4210B)';
+                        passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
 
                         if (!errorSpan) {
                             errorSpan = document.createElement('span');
