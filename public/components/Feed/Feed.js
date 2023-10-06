@@ -44,6 +44,8 @@ export function renderFeedPage() {
                 headerContext: headerContext 
             };
             rootElement.innerHTML = feed(context);
+
+            defineButtons();
         })
         .catch(error => {
             console.error(error);
@@ -56,7 +58,7 @@ export function renderFeedPage() {
         signupButton = document.querySelector('.header-signup-button');
     }
     
-    document.addEventListener('DOMContentLoaded', defineButtons)
+    // document.addEventListener('DOMContentLoaded', defineButtons)
 
     const headerElement = document.getElementById('header');
     const pageElement = document.getElementById('main');
