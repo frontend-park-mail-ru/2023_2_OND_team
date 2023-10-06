@@ -11,21 +11,15 @@ import Handlebars from 'handlebars';
  * @param {HTMLElement} pageElement - Элемент страницы.
  */
 export async function renderAuthPage(headerElement, pageElement) {
-    const Api = new API();
-
-    pageElement.innerHTML = '';
-
-    const templateResponse = await fetch('public/templates/Auth.hbs');
-    const templateText = await templateResponse.text();
-    const template = Handlebars.compile(templateText);
-
-    const templateData = {
+    document.body.style.overflow = 'hidden';
+    
+    const authPage = Handlebars.templates['Auth.hbs'];
+    const context = {
         
     };
 
-    const html = template(templateData);
-
-    pageElement.innerHTML = html;
+    pageElement.innerHTML = authPage(context);
+    const Api = new API();
 
     const signUpLink = pageElement.querySelector('.already-registered a');
     signUpLink.addEventListener('click', function (e) {
