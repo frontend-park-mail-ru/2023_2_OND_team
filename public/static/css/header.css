@@ -82,7 +82,7 @@ header {
 
 .header-buttons {
     font-family: Nunito;
-    padding-right: 100px;
+    padding-right: 95px;
     display: flex;
     align-items: flex-start;
     gap: 20px;
