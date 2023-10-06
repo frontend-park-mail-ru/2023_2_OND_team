@@ -45,8 +45,8 @@ export async function renderAuthPage(headerElement, pageElement) {
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
     
-        const username = usernameInput.querySelector('input').value;
-        const password = passwordInput.querySelector('input').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
         usernameInput.querySelector('input').style.borderColor = '';
         passwordInput.querySelector('input').style.borderColor = '';
@@ -102,24 +102,3 @@ export async function renderAuthPage(headerElement, pageElement) {
         renderFeedPage();
     });
 }
-
-Handlebars.registerHelper('createLabeledInput', function(label, type, value) {
-    const inputHTML = `<input type="${type}" value="${value}">`;
-    const labelHTML = `<label>${label} ${inputHTML}</label>`;
-    
-    return new Handlebars.SafeString(labelHTML);
-  });
-
-// export function renderAuthPage(headerElement, pageElement) {
-
-//     document.body.style.overflow = 'hidden';
-
-//     const authPage = Handlebars.templates['Auth.hbs'];
-    
-//     const context = {
-       
-//     };
-
-//     pageElement.innerHTML = authPage(context);
-
-// }
