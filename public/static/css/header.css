@@ -9,7 +9,7 @@ header {
     align-items: center;
     height: 80px;
     flex-shrink: 1;
-    padding: 0 90px 0 80px;
+    padding: 0 90px 0 50px;
     align-items: center;
     position: fixed;
     top: 0;
@@ -82,7 +82,7 @@ header {
 
 .header-buttons {
     font-family: Nunito;
-    padding-right: 130px;
+    padding-right: 110px;
     display: flex;
     align-items: flex-start;
     gap: 20px;
