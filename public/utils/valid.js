@@ -7,7 +7,7 @@ export function nameValid(username) {
     const regex = /^[a-zA-Z0-9_-]+$/;
     let validation = { valid: true, message: '' };
 
-    if (username.trim().length <= 4) {
+    if (username.length < 4) {
         validation = { valid: false, message: 'Имя пользователя должно содержать не менее 4 символов' };
     } else if (username.length >= 50) {
         validation = { valid: false, message: 'Имя пользователя должно содержать менее 50 символов' };
@@ -53,7 +53,7 @@ export function emailValid(email) {
 export function passwordValid(password) {
     let validation = { valid: true, message: '' };
 
-    if (password.length <= 8) {
+    if (password.length < 8) {
         validation = { valid: false, message: 'Пароль должен содержать не менее 8 символов' };
     } else if (password.length >= 50) {
         validation = { valid: false, message: 'Пароль должен содержать менее 50 символов' };
