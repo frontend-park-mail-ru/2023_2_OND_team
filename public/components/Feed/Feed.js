@@ -80,11 +80,11 @@ function handleScroll() {
                 const section = document.getElementById('pins');
                 renderPins(section, images);
 
-                if (PIN_LAST_ID === lastID) {
-                    window.removeEventListener('scroll', window.scrollFunc);
-                }
+                // if (PIN_LAST_ID === lastID) {
+                //     window.removeEventListener('scroll', window.scrollFunc);
+                // }
 
-                PIN_LAST_ID = lastID;
+                // PIN_LAST_ID = lastID;
             })
             .catch(error => {
                 console.error('Ошибка при рендеринге пинов:', error);
@@ -140,17 +140,14 @@ function defineButtons() {
             const section = document.getElementById('pins');
             renderPins(section, images);
             
-            if (PIN_LAST_ID === lastID) {
-                window.removeEventListener('scroll', window.scrollFunc);
-            }
+            // if (PIN_LAST_ID === lastID) {
+            //     window.removeEventListener('scroll', window.scrollFunc);
+            // }
             
-            PIN_LAST_ID = lastID;
+            // PIN_LAST_ID = lastID;
         })
         .catch(error => {
             console.error(error);
         });
 
-    let scrollFunc = debounce(handleScroll, 100);
-    window.scrollFunc = scrollFunc;
-    window.addEventListener('scroll', window.scrollFunc);
 }
