@@ -30,9 +30,6 @@ export function renderAuthPage(headerElement, pageElement) {
     const passwordErrorSpan = document.querySelector('.password-error-message');
     const wrongDataErrorSpan = document.querySelector('.wrong-data-error-message');
 
-
-    // let errorSpan = document.querySelector('.error-message');
-
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
     
@@ -72,13 +69,6 @@ export function renderAuthPage(headerElement, pageElement) {
                         usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
                         passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
                         wrongDataErrorSpan.textContent = 'Неверное имя пользователя или пароль';
-
-                        // if (!errorSpan) {
-                        //     errorSpan = document.createElement('span');
-                        //     errorSpan.classList.add('error-message');
-                        //     errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                        //     pageElement.querySelector('.input-container').appendChild(errorSpan);
-                        // }
                     }
                 });
             

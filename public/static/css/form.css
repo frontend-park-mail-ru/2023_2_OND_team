@@ -128,6 +128,15 @@ a {
     min-width: 500px;
 }
 
+.email-error-message {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: center;
+    min-height: 30px;
+    min-width: 500px;
+}
+
 .wrong-data-error-message  {
     font-family: Nunito;
     font-size: 15px; 

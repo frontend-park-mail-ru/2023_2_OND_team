@@ -27,19 +27,10 @@ export function renderRegPage(headerElement, pageElement) {
         renderAuthPage(headerElement, pageElement);
     });
 
-    const passwordErrorSpan = document.createElement('span');
-    const emailErrorSpan = document.createElement('span');
-    const usernameErrorSpan = document.createElement('span');
-
-    passwordErrorSpan.classList.add('error-message');
-    emailErrorSpan.classList.add('error-message');
-    usernameErrorSpan.classList.add('error-message');
-
-    usernameInput.appendChild(usernameErrorSpan);
-    emailInput.appendChild(usernameErrorSpan);
-    passwordInput.appendChild(passwordErrorSpan);
-
-    let errorSpan = document.querySelector('.error-mesage');
+    const usernameErrorSpan = document.querySelector('.username-error-message');
+    const emailErrorSpan = document.querySelector('.email-error-message');
+    const passwordErrorSpan = document.querySelector('.password-error-message');
+    const wrongDataErrorSpan = document.querySelector('.wrong-data-error-message');
 
     RegButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -58,30 +49,30 @@ export function renderRegPage(headerElement, pageElement) {
     
         if (!usernameValidationResult.valid) {
             usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
-            usernameInput.style.Color = 'var(--error-50, #F4210B)';
+            usernameInput.style.color = 'var(--error-50, #F4210B)';
             usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
             usernameErrorSpan.textContent = '';
         }
-
+    
         if (!emailValidationResult.valid) {
             emailInput.style.borderColor = 'var(--error-50, #F4210B)';
-            emailInput.style.Color = 'var(--error-50, #F4210B)';
-            emailInput.textContent = emailValidationResult.message;
+            emailInput.style.color = 'var(--error-50, #F4210B)';
+            emailErrorSpan.textContent = emailValidationResult.message;
         } else {
             emailErrorSpan.textContent = '';
         }
-    
+
         if (!passwordValidationResult.valid) {
             passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
-            passwordInput.style.Color = 'var(--error-50, #F4210B)';
+            passwordInput.style.color = 'var(--error-50, #F4210B)';
             passwordErrorSpan.textContent = passwordValidationResult.message;
         } else {
             passwordErrorSpan.textContent = '';
         }
     
         if (usernameValidationResult.valid && emailValidationResult.valid && passwordValidationResult.valid) {
-            API.registerUser(username, email, password)
+            API.loginUser(username, email, password)
                 .then(status => { 
                     if (status) {
                         headerElement.classList.remove('header-hidden');
@@ -91,12 +82,7 @@ export function renderRegPage(headerElement, pageElement) {
                         usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
                         emailInput.style.borderColor = 'var(--error-50, #F4210B)';
                         passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
-
-                        if (!errorSpan) {
-                            errorSpan = document.createElement('span');
-                            errorSpan.classList.add('error-message');
-                            errorSpan.textContent = 'Пользователь уже зарегистрирован';
-                        }
+                        wrongDataErrorSpan.textContent = 'Пользователь уже заригистрирован';
                     }
                 });
             
