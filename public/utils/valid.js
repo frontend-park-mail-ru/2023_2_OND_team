@@ -7,9 +7,9 @@ export function nameValid(username) {
     const regex = /^[a-zA-Z0-9_-]+$/;
     let validation = { valid: true, message: '' };
 
-    if (username.length <= 3) {
+    if (username.length <= 4) {
         validation = { valid: false, message: 'Имя пользователя должно содержать не менее 4 символов' };
-    } else if (username.length >= 49) {
+    } else if (username.length >= 50) {
         validation = { valid: false, message: 'Имя пользователя должно содержать менее 50 символов' };
     } else if (!regex.test(username)) {
         validation = { valid: false, message: 'Имя пользователя должно состоять только из букв и цифр' };
@@ -26,7 +26,7 @@ export function nameValid(username) {
 export function emailValid(email) {
     let validation = { valid: true, message: '' };
 
-    if (email.length >= 49) {
+    if (email.length >= 50) {
         validation = { valid: false, message: 'Email должен содержать не более 50 символов' };
     } else if (!email.includes('@')) {
         validation = { valid: false, message: 'Email должен содержать символ @' };
@@ -53,9 +53,9 @@ export function emailValid(email) {
 export function passwordValid(password) {
     let validation = { valid: true, message: '' };
 
-    if (password.length <= 7) {
+    if (password.length <= 8) {
         validation = { valid: false, message: 'Пароль должен содержать не менее 8 символов' };
-    } else if (password.length >= 49) {
+    } else if (password.length >= 50) {
         validation = { valid: false, message: 'Пароль должен содержать менее 50 символов' };
     } else if (!/[a-z]/.test(password)) {
         validation = { valid: false, message: 'Пароль должен содержать хотя бы одну букву в нижнем регистре' };
