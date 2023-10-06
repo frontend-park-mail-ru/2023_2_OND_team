@@ -15,7 +15,7 @@ export async function renderAuthPage(headerElement, pageElement) {
 
     pageElement.innerHTML = '';
 
-    const templateResponse = await fetch('../templates/Auth.hbs');
+    const templateResponse = await fetch('public/templates/Auth.hbs');
     const templateText = await templateResponse.text();
     const template = Handlebars.compile(templateText);
 
