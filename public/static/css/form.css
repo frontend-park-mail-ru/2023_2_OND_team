@@ -160,3 +160,24 @@ a {
     display: flex;
     gap: 5px;
 }
+
+.input-username {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.input-email {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.input-password {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
