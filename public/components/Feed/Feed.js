@@ -29,7 +29,7 @@ export function renderFeedPage() {
     API.checkLogin()
         .then(data => {
             headerContext.isAuthorized = data.isAuthorized;
-            userDataContext = data.username;
+            headerContext.userDataContext = data.username;
             // renderHeader(data.isAuthorized, data.username);
         })
         .catch(error => {
