@@ -37,7 +37,8 @@ export class Header {
             userDataContext: { username }
         };
 
-        this.#parent.innerHTML = 'asdf';
+        this.#parent.innerHTML = '<h1>user<h1>'
+
         //  header(context);
 
         // this.logoutButton = document.querySelector('.header-logout-button');
