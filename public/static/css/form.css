@@ -6,7 +6,7 @@
 
 .form-container {
     background: white;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: auto;
@@ -73,7 +73,7 @@ input:focus {
 }
 
 .cancel-button {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
     background: none;
