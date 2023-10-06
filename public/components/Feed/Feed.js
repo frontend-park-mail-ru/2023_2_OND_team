@@ -12,9 +12,11 @@ const NUM_REQUESTED_PINS = 20;
 * @param {HTMLElement} pageElement - Элемент страницы.
 */
 export function renderFeedPage() {
-    const feed = Handlebars.templates['Feed.hbs'];
     const rootElement = document.getElementById('root');
-    rootElement.innerHTML = feed();
+
+    const feed = Handlebars.templates['Feed.hbs'];
+    const context = {}
+    rootElement.innerHTML = feed(context);
 
     const headerElement = document.getElementsByTagName('header');
     const pageElement = document.getElementsByTagName('main');
