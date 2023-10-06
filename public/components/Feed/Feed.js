@@ -47,8 +47,6 @@ export function renderFeedPage() {
     const headerElement = document.getElementById('header');
     const pageElement = document.getElementById('main');
 
-    console.log(headerElement, pageElement);
-
     const logoutButton = document.querySelector('.header-logout-button');
     if (logoutButton != undefined) {
         logoutButton.addEventListener('click', (e) => {
@@ -88,29 +86,6 @@ export function renderFeedPage() {
         });
     }
 
-
-    // if (!headerElement || !pageElement) {
-    //     const rootElement = document.getElementById('root');
-    //     headerElement = document.createElement('header');
-    //     pageElement = document.createElement('main');
-    //     rootElement.appendChild(headerElement);
-    //     rootElement.appendChild(pageElement);
-    // }
-
-    // PIN_LAST_ID = NUM_REQUESTED_PINS;
-    
-
-    // const header = new Header(headerElement, pageElement);
-    // const div = document.createElement('div');
-    // div.classList.add('container');
-    // pageElement.appendChild(div);
-
-    // const section = document.createElement('section');
-    // section.id = "pins";
-    // section.classList.add('gallery');
-    // div.appendChild(section);
-    
-
     API.generatePins(NUM_REQUESTED_PINS, 0)
         .then(({images, lastID}) => {
             const section = document.getElementById('pins');
@@ -119,61 +94,6 @@ export function renderFeedPage() {
         .catch(error => {
             console.error(error);
         });
-
-
-    // function renderHeader(isAuthorized, username) {
-    //     const header = Handlebars.templates['Header.hbs'];
-    //     const userData = Handlebars.templates['UserData.hbs'];
-    //     const headerNonAuthorized = Handlebars.templates['HeaderNonAuthorized.hbs'];
-        
-    //     const context = {
-    //         isAuthorized: isAuthorized,
-    //         UserData: userData,
-    //         HeaderNonAuthorized: headerNonAuthorized,
-    //         userDataContext: { username }
-    //     };
-
-    //     headerElement.innerHTML = header(context);
-
-    //     this.logoutButton = document.querySelector('.header-logout-button');
-    //     if (this.logoutButton != undefined) {
-    //         this.logoutButton.addEventListener('click', (e) => {
-    //             e.preventDefault();
-    //             headerElement.classList.add('header-hidden');
-    //             pageElement.classList.add('main-no-padding');
-
-    //             if (API.logoutUser()) {
-    //                 headerElement.innerHTML = '';
-    //                 window.removeEventListener('scroll', window.scrollFunc);
-    //                 renderAuthPage(headerElement, pageElement);
-    //             }
-    //         });
-    //     }
-
-    //     this.loginButton = document.querySelector('.header-login-button');
-    //     if (this.loginButton != undefined) {
-    //         this.loginButton.addEventListener('click', (e) => {
-    //             e.preventDefault();
-    //             headerElement.classList.add('header-hidden');
-    //             pageElement.classList.add('main-no-padding');
-    //             headerElement.innerHTML = '';
-    //             window.removeEventListener('scroll', window.scrollFunc);
-    //             renderAuthPage(headerElement, pageElement);
-    //         });
-    //     }
-
-    //     this.signupButton = document.querySelector('.header-signup-button');
-    //     if (this.signupButton != undefined) {
-    //         this.signupButton.addEventListener('click', (e) => {
-    //             e.preventDefault();
-    //             headerElement.classList.add('header-hidden');
-    //             pageElement.classList.add('main-no-padding');
-    //             headerElement.innerHTML = '';
-    //             window.removeEventListener('scroll', window.scrollFunc);
-    //             renderRegPage(headerElement, pageElement);
-    //         });
-    //     }
-    // }
 
     let scrollFunc = debounce(handleScroll, 100);
     window.scrollFunc = scrollFunc;
