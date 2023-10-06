@@ -48,6 +48,7 @@ export function renderFeedPage() {
     const pageElement = document.getElementById('main');
 
     const logoutButton = document.querySelector('.header-logout-button');
+    console.log(logoutButton);
     if (logoutButton != undefined) {
         logoutButton.addEventListener('click', (e) => {
             e.preventDefault();
