@@ -4,7 +4,7 @@ import { renderRegPage } from "../Registration/RegPage.js";
 import { renderPins } from "../../utils/renderPins.js";
 
 const NUM_REQUESTED_PINS = 20;
-// let PIN_LAST_ID;
+let PIN_LAST_ID;
 
 /**
 * Рендерится главная страница с пинами.
@@ -13,6 +13,7 @@ const NUM_REQUESTED_PINS = 20;
 */
 export function renderFeedPage() {
     const rootElement = document.getElementById('root');
+    PIN_LAST_ID = 0;
 
     document.body.style.overflow = 'visible';
 
@@ -74,16 +75,16 @@ function handleScroll() {
     let scrollY = window.scrollY;
 
     if (scrollY + windowHeight >= documentHeight - 600) {
-        API.generatePins(NUM_REQUESTED_PINS, 0)
+        API.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
             .then(({images, lastID}) => {
                 const section = document.getElementById('pins');
                 renderPins(section, images);
 
-                // if (PIN_LAST_ID === lastID) {
-                //     window.removeEventListener('scroll', window.scrollFunc);
-                // }
+                if (PIN_LAST_ID === lastID) {
+                    window.removeEventListener('scroll', window.scrollFunc);
+                }
 
-                // PIN_LAST_ID = lastID;
+                PIN_LAST_ID = lastID;
             })
             .catch(error => {
                 console.error('Ошибка при рендеринге пинов:', error);
@@ -134,10 +135,16 @@ function defineButtons() {
         });
     }
 
-    API.generatePins(NUM_REQUESTED_PINS, 0)
+    API.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
         .then(({images, lastID}) => {
             const section = document.getElementById('pins');
             renderPins(section, images);
+            
+            if (PIN_LAST_ID === lastID) {
+                window.removeEventListener('scroll', window.scrollFunc);
+            }
+            
+            PIN_LAST_ID = lastID;
         })
         .catch(error => {
             console.error(error);
