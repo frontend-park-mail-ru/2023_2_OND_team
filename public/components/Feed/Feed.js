@@ -81,59 +81,59 @@ export function renderFeedPage() {
         });
 
 
-    function renderHeader(isAuthorized, username) {
-        const header = Handlebars.templates['Header.hbs'];
-        const userData = Handlebars.templates['UserData.hbs'];
-        const headerNonAuthorized = Handlebars.templates['HeaderNonAuthorized.hbs'];
+    // function renderHeader(isAuthorized, username) {
+    //     const header = Handlebars.templates['Header.hbs'];
+    //     const userData = Handlebars.templates['UserData.hbs'];
+    //     const headerNonAuthorized = Handlebars.templates['HeaderNonAuthorized.hbs'];
         
-        const context = {
-            isAuthorized: isAuthorized,
-            UserData: userData,
-            HeaderNonAuthorized: headerNonAuthorized,
-            userDataContext: { username }
-        };
+    //     const context = {
+    //         isAuthorized: isAuthorized,
+    //         UserData: userData,
+    //         HeaderNonAuthorized: headerNonAuthorized,
+    //         userDataContext: { username }
+    //     };
 
-        this.#parent.innerHTML = header(context);
+    //     this.#parent.innerHTML = header(context);
 
-        this.logoutButton = document.querySelector('.header-logout-button');
-        if (this.logoutButton != undefined) {
-            this.logoutButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.#parent.classList.add('header-hidden');
-                this.#main.classList.add('main-no-padding');
+    //     this.logoutButton = document.querySelector('.header-logout-button');
+    //     if (this.logoutButton != undefined) {
+    //         this.logoutButton.addEventListener('click', (e) => {
+    //             e.preventDefault();
+    //             this.#parent.classList.add('header-hidden');
+    //             this.#main.classList.add('main-no-padding');
 
-                if (API.logoutUser()) {
-                    this.#parent.innerHTML = '';
-                    window.removeEventListener('scroll', window.scrollFunc);
-                    renderAuthPage(this.#parent, this.#main);
-                }
-            });
-        }
+    //             if (API.logoutUser()) {
+    //                 this.#parent.innerHTML = '';
+    //                 window.removeEventListener('scroll', window.scrollFunc);
+    //                 renderAuthPage(this.#parent, this.#main);
+    //             }
+    //         });
+    //     }
 
-        this.loginButton = document.querySelector('.header-login-button');
-        if (this.loginButton != undefined) {
-            this.loginButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.#parent.classList.add('header-hidden');
-                this.#main.classList.add('main-no-padding');
-                this.#parent.innerHTML = '';
-                window.removeEventListener('scroll', window.scrollFunc);
-                renderAuthPage(this.#parent, this.#main);
-            });
-        }
+    //     this.loginButton = document.querySelector('.header-login-button');
+    //     if (this.loginButton != undefined) {
+    //         this.loginButton.addEventListener('click', (e) => {
+    //             e.preventDefault();
+    //             this.#parent.classList.add('header-hidden');
+    //             this.#main.classList.add('main-no-padding');
+    //             this.#parent.innerHTML = '';
+    //             window.removeEventListener('scroll', window.scrollFunc);
+    //             renderAuthPage(this.#parent, this.#main);
+    //         });
+    //     }
 
-        this.signupButton = document.querySelector('.header-signup-button');
-        if (this.signupButton != undefined) {
-            this.signupButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.#parent.classList.add('header-hidden');
-                this.#main.classList.add('main-no-padding');
-                this.#parent.innerHTML = '';
-                window.removeEventListener('scroll', window.scrollFunc);
-                renderRegPage(this.#parent, this.#main);
-            });
-        }
-    }
+    //     this.signupButton = document.querySelector('.header-signup-button');
+    //     if (this.signupButton != undefined) {
+    //         this.signupButton.addEventListener('click', (e) => {
+    //             e.preventDefault();
+    //             this.#parent.classList.add('header-hidden');
+    //             this.#main.classList.add('main-no-padding');
+    //             this.#parent.innerHTML = '';
+    //             window.removeEventListener('scroll', window.scrollFunc);
+    //             renderRegPage(this.#parent, this.#main);
+    //         });
+    //     }
+    // }
 
     let scrollFunc = debounce(handleScroll, 100);
     window.scrollFunc = scrollFunc;
