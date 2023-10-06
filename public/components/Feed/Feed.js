@@ -1,6 +1,6 @@
 import { API } from "../../utils/api.js";
 import { renderAuthPage } from "../Authorization/AuthPage.js";
-import { renderRegPage } from "../Registration/reg-page.js";
+import { renderRegPage } from "../Registration/RegPage.js";
 import { renderPins } from "../../utils/renderPins.js";
 
 const NUM_REQUESTED_PINS = 20;

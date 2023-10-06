@@ -1,4 +1,4 @@
-import { renderRegPage } from '../Registration/reg-page.js';
+import { renderRegPage } from '../Registration/RegPage.js';
 import { API } from '../../utils/api.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
@@ -8,7 +8,7 @@ import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
  * @param {HTMLElement} headerElement - Элемент заголовка.
  * @param {HTMLElement} pageElement - Элемент страницы.
  */
-export async function renderAuthPage(headerElement, pageElement) {
+export function renderAuthPage(headerElement, pageElement) {
     document.body.style.overflow = 'hidden';
     
     const authPage = Handlebars.templates['Auth.hbs'];
@@ -21,11 +21,6 @@ export async function renderAuthPage(headerElement, pageElement) {
     const cancelButton = pageElement.querySelector('.cancel-button');
 
     const signUpLink = pageElement.querySelector('.already-registered a');
-    signUpLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        renderRegPage(headerElement, pageElement);
-    });
-
     signUpLink.addEventListener('click', function (e) {
         e.preventDefault();
         renderRegPage(headerElement, pageElement);
