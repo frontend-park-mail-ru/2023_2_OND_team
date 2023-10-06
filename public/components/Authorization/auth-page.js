@@ -80,21 +80,7 @@ export function renderAuthPage(headerElement, pageElement) {
     usernameInput.appendChild(usernameErrorSpan);
     passwordInput.appendChild(passwordErrorSpan);
 
-    let errorSpan = document.querySelector('.error-message');
-
-    usernameInput.querySelector('input').addEventListener('input', function () {
-        if (errorSpan) {
-            form.removeChild(errorSpan);
-            errorSpan = null;
-        }
-    });
-
-    passwordInput.querySelector('input').addEventListener('input', function () {
-        if (errorSpan) {
-            form.removeChild(errorSpan);
-            errorSpan = null;
-        }
-    });
+    let errorSpan = document.querySelector('.error-mesage');
 
     AuthButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -109,18 +95,18 @@ export function renderAuthPage(headerElement, pageElement) {
         const passwordValidationResult = passwordValid(password);
     
         if (!usernameValidationResult.valid) {
-            usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-            usernameInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
+            usernameInput.querySelector('input').classList.add('input-error');
             usernameErrorSpan.textContent = usernameValidationResult.message;
         } else {
+            usernameInput.querySelector('input').classList.remove('input-error');
             usernameErrorSpan.textContent = '';
         }
     
         if (!passwordValidationResult.valid) {
-            passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-            passwordInput.querySelector('input').style.Color = 'var(--error-50, #F4210B)';
-            passwordErrorSpan.textContent = passwordValidationResult.message;
+            passwordInput.querySelector('input').classList.add('input-error');
+            passwordErrorSpan.textContent = usernameValidationResult.message;
         } else {
+            passwordInput.querySelector('input').classList.remove('input-error');
             passwordErrorSpan.textContent = '';
         }
     
@@ -133,8 +119,8 @@ export function renderAuthPage(headerElement, pageElement) {
                         pageElement.style.paddingTop = '90px';
                         renderFeedPage(headerElement, pageElement);
                     } else {
-                        usernameInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
-                        passwordInput.querySelector('input').style.borderColor = 'var(--error-50, #F4210B)';
+                        usernameInput.querySelector('input').classList.add('input-error');
+                        passwordInput.querySelector('input').classList.add('input-error');
 
                         if (!errorSpan) {
                             errorSpan = document.createElement('span');
