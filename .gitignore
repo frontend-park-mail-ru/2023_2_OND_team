@@ -1,0 +1,7 @@
+.idea/
+node_modules/
+*.pem
+public/build/
+service.txt
+.DS_Store
+public/compiledTemplates/templates.hbs.js
