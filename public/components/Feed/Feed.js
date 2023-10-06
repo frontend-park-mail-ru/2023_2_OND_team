@@ -36,61 +36,19 @@ export function renderFeedPage() {
         .then(data => {
             headerContext.isAuthorized = data.isAuthorized;
             headerContext.userDataContext.username = data.username;
+
+             const context = {
+                Header: header,
+                headerContext: headerContext 
+            }
+
+            rootElement.innerHTML = feed(context);
+        
+            defineButtons();
         })
         .catch(error => {
             console.error(error);
         });
-
-    const context = {
-        Header: header,
-        headerContext: headerContext 
-    }
-
-    console.log(context);
-
-    rootElement.innerHTML = feed(context);
-
-    const headerElement = document.getElementById('header');
-    const pageElement = document.getElementById('main');
-
-    const logoutButton = document.querySelector('.header-logout-button');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            headerElement.classList.add('header-hidden');
-            pageElement.classList.add('main-no-padding');
-
-            if (API.logoutUser()) {
-                headerElement.innerHTML = '';
-                window.removeEventListener('scroll', window.scrollFunc);
-                renderAuthPage(headerElement, pageElement);
-            }
-        });
-    }
-
-    const loginButton = document.querySelector('.header-login-button');
-    if (loginButton) {
-        loginButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            headerElement.classList.add('header-hidden');
-            pageElement.classList.add('main-no-padding');
-            headerElement.innerHTML = '';
-            window.removeEventListener('scroll', window.scrollFunc);
-            renderAuthPage(headerElement, pageElement);
-        });
-    }
-
-    const signupButton = document.querySelector('.header-signup-button');
-    if (signupButton) {
-        signupButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            headerElement.classList.add('header-hidden');
-            pageElement.classList.add('main-no-padding');
-            headerElement.innerHTML = '';
-            window.removeEventListener('scroll', window.scrollFunc);
-            renderRegPage(headerElement, pageElement);
-        });
-    }
 
     API.generatePins(NUM_REQUESTED_PINS, 0)
         .then(({images, lastID}) => {
@@ -143,5 +101,49 @@ function handleScroll() {
             .catch(error => {
                 console.error('Ошибка при рендеринге пинов:', error);
             });
+    }
+}
+
+function defineButtons() {
+    const headerElement = document.getElementById('header');
+    const pageElement = document.getElementById('main');
+
+    const logoutButton = document.querySelector('.header-logout-button');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            headerElement.classList.add('header-hidden');
+            pageElement.classList.add('main-no-padding');
+
+            if (API.logoutUser()) {
+                headerElement.innerHTML = '';
+                window.removeEventListener('scroll', window.scrollFunc);
+                renderAuthPage(headerElement, pageElement);
+            }
+        });
+    }
+
+    const loginButton = document.querySelector('.header-login-button');
+    if (loginButton) {
+        loginButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            headerElement.classList.add('header-hidden');
+            pageElement.classList.add('main-no-padding');
+            headerElement.innerHTML = '';
+            window.removeEventListener('scroll', window.scrollFunc);
+            renderAuthPage(headerElement, pageElement);
+        });
+    }
+
+    const signupButton = document.querySelector('.header-signup-button');
+    if (signupButton) {
+        signupButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            headerElement.classList.add('header-hidden');
+            pageElement.classList.add('main-no-padding');
+            headerElement.innerHTML = '';
+            window.removeEventListener('scroll', window.scrollFunc);
+            renderRegPage(headerElement, pageElement);
+        });
     }
 }
