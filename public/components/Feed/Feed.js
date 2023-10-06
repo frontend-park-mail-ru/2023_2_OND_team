@@ -49,19 +49,6 @@ export function renderFeedPage() {
         .catch(error => {
             console.error(error);
         });
-
-    API.generatePins(NUM_REQUESTED_PINS, 0)
-        .then(({images, lastID}) => {
-            const section = document.getElementById('pins');
-            renderPins(section, images);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-    let scrollFunc = debounce(handleScroll, 100);
-    window.scrollFunc = scrollFunc;
-    window.addEventListener('scroll', window.scrollFunc);
 }
 
 function debounce(f, ms) {
@@ -146,4 +133,17 @@ function defineButtons() {
             renderRegPage(headerElement, pageElement);
         });
     }
+
+    API.generatePins(NUM_REQUESTED_PINS, 0)
+        .then(({images, lastID}) => {
+            const section = document.getElementById('pins');
+            renderPins(section, images);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    let scrollFunc = debounce(handleScroll, 100);
+    window.scrollFunc = scrollFunc;
+    window.addEventListener('scroll', window.scrollFunc);
 }

@@ -180,7 +180,7 @@ export function renderRegPage(headerElement, pageElement) {
     const signInLink = pageElement.querySelector('.already-registered a');
     signInLink.addEventListener('click', function (e) {
         e.preventDefault();
-        renderRegPage(headerElement, pageElement);
+        renderAuthPage(headerElement, pageElement);
     });
 
     const passwordErrorSpan = document.createElement('span');
