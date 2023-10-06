@@ -44,15 +44,19 @@ export function renderFeedPage() {
                 headerContext: headerContext 
             };
             rootElement.innerHTML = feed(context);
-
-            logoutButton = document.querySelector('.header-logout-button');
-            loginButton = document.querySelector('.header-login-button');
-            signupButton = document.querySelector('.header-signup-button');
-})
+        })
         .catch(error => {
             console.error(error);
         });
 
+
+    function defineButtons() {
+        logoutButton = document.querySelector('.header-logout-button');
+        loginButton = document.querySelector('.header-login-button');
+        signupButton = document.querySelector('.header-signup-button');
+    }
+    
+    document.addEventListener('DOMContentLoaded', defineButtons)
 
     const headerElement = document.getElementById('header');
     const pageElement = document.getElementById('main');
