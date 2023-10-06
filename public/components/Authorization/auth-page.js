@@ -16,10 +16,13 @@ function showErrorMessage(input, errorMessage) {
 }
 
 function renderValidationErrorMessage(input, errorMessage) {
-    const errorSpan = document.createElement('span');
-    errorSpan.classList.add('error-message');
+    let errorSpan = input.querySelector('.error-message');
+    if (!errorSpan) {
+        errorSpan = document.createElement('span');
+        errorSpan.classList.add('error-message');
+        input.appendChild(errorSpan);
+    }
     errorSpan.textContent = errorMessage;
-    input.appendChild(errorSpan);
 }
 
 export function renderAuthPage(headerElement, pageElement) {
@@ -112,9 +115,14 @@ export function renderAuthPage(headerElement, pageElement) {
                         headerElement.style.display = '';
                         pageElement.style.paddingTop = '90px';
                         renderFeedPage(headerElement, pageElement);
+                        
+                        if (errorSpan) {
+                            form.removeChild(errorSpan);
+                            errorSpan = null;
+                        }
                     } else {
                         const errorMessage = 'Неверное имя пользователя или пароль';
-                        const errorSpan = document.querySelector('.error-message');
+                        const errorSpan = form.querySelector('.error-message');
                         if (!errorSpan) {
                             renderValidationErrorMessage(form, errorMessage);
                         }
