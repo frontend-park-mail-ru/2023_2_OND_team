@@ -4,9 +4,12 @@ import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 import { API } from '../../utils/api.js';
 
 /**
- * Рендерится страница аутентификации.
+ * Рендерит страницу регистрации.
+ *
  * @param {HTMLElement} headerElement - Элемент заголовка.
  * @param {HTMLElement} pageElement - Элемент страницы.
+ *
+ * @returns {void}
  */
 export function renderRegPage(headerElement, pageElement) {
     document.body.style.overflow = 'hidden';

@@ -4,10 +4,13 @@ import { renderFeedPage } from '../Feed/Feed.js';
 import { emailValid, passwordValid, nameValid } from '../../utils/valid.js';
 
 /**
- * Рендерится страница аутентификации.
- * @param {HTMLElement} headerElement - Элемент заголовка.
- * @param {HTMLElement} pageElement - Элемент страницы.
- */
+* Рендерит страницу аутентификации.
+*
+* @param {HTMLElement} headerElement - Элемент заголовка.
+* @param {HTMLElement} pageElement - Элемент страницы.
+*
+* @returns {void}
+*/
 export function renderAuthPage(headerElement, pageElement) {
     document.body.style.overflow = 'hidden';
     

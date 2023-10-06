@@ -7,9 +7,7 @@ const NUM_REQUESTED_PINS = 20;
 let PIN_LAST_ID;
 
 /**
-* Рендерится главная страница с пинами.
-* @param {HTMLElement} headerElement - Элемент заголовка.
-* @param {HTMLElement} pageElement - Элемент страницы.
+* Рендерит главную страницу с пинами.
 */
 export function renderFeedPage() {
     const rootElement = document.getElementById('root');
@@ -52,6 +50,9 @@ export function renderFeedPage() {
         });
 }
 
+/**
+* Создает функцию с задержкой для предотвращения слишком частых вызовов.
+*/
 function debounce(f, ms) {
     let isCooldown = false;
 
@@ -79,12 +80,6 @@ function handleScroll() {
             .then(({images, lastID}) => {
                 const section = document.getElementById('pins');
                 renderPins(section, images);
-
-                // if (PIN_LAST_ID === lastID) {
-                //     window.removeEventListener('scroll', window.scrollFunc);
-                // }
-
-                // PIN_LAST_ID = lastID;
             })
             .catch(error => {
                 console.error('Ошибка при рендеринге пинов:', error);
@@ -92,6 +87,9 @@ function handleScroll() {
     }
 }
 
+/**
+* Определяет обработчики событий для кнопок в шапке страницы и генерирует пины.
+*/
 function defineButtons() {
     const headerElement = document.getElementById('header');
     const pageElement = document.getElementById('main');
@@ -139,12 +137,6 @@ function defineButtons() {
         .then(({images, lastID}) => {
             const section = document.getElementById('pins');
             renderPins(section, images);
-            
-            // if (PIN_LAST_ID === lastID) {
-            //     window.removeEventListener('scroll', window.scrollFunc);
-            // }
-            
-            // PIN_LAST_ID = lastID;
         })
         .catch(error => {
             console.error(error);
