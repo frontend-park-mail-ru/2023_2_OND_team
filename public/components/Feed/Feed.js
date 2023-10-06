@@ -23,13 +23,13 @@ export function renderFeedPage() {
         isAuthorized: null,
         UserData: userData,
         HeaderNonAuthorized: headerNonAuthorized,
-        userDataContext: { username: null }
+        userDataContext: null
     };
             
     API.checkLogin()
         .then(data => {
             headerContext.isAuthorized = data.isAuthorized;
-            headerContext.userDataContext.username = data.username;
+            headerContext.userDataContext = data.username;
             // renderHeader(data.isAuthorized, data.username);
         })
         .catch(error => {
@@ -38,7 +38,7 @@ export function renderFeedPage() {
 
     const context = {
         Header: header,
-        headerContext: { headerContext }
+        headerContext: headerContext 
     }
 
 
