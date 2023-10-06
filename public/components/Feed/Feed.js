@@ -64,7 +64,7 @@ export function renderFeedPage() {
     const pageElement = document.getElementById('main');
 
     console.log(logoutButton);
-    //if (logoutButton != undefined) {
+    if (logoutButton) {
         logoutButton.addEventListener('click', (e) => {
             e.preventDefault();
             headerElement.classList.add('header-hidden');
@@ -76,9 +76,9 @@ export function renderFeedPage() {
                 renderAuthPage(headerElement, pageElement);
             }
         });
-    //}
+    }
 
-    if (loginButton != undefined) {
+    if (loginButton) {
         loginButton.addEventListener('click', (e) => {
             e.preventDefault();
             headerElement.classList.add('header-hidden');
@@ -89,7 +89,7 @@ export function renderFeedPage() {
         });
     }
 
-    if (signupButton != undefined) {
+    if (signupButton) {
         signupButton.addEventListener('click', (e) => {
             e.preventDefault();
             headerElement.classList.add('header-hidden');
