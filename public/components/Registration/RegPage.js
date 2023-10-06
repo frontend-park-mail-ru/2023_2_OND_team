@@ -237,7 +237,7 @@ export function renderRegPage(headerElement, pageElement) {
         }
     
         if (usernameValidationResult.valid && emailValidationResult.valid && passwordValidationResult.valid) {
-            API.registerUser(username, password)
+            API.registerUser(username, email, password)
                 .then(status => { 
                     if (status) {
                         headerElement.classList.remove('header-hidden');

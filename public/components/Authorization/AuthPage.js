@@ -81,9 +81,7 @@ export function renderAuthPage(headerElement, pageElement) {
                             errorSpan = document.createElement('span');
                             errorSpan.classList.add('error-message');
                             errorSpan.textContent = 'Неверное имя пользователя или пароль';
-                            form.appendChild(errorSpan);
-                        }
-                        
+                        }  
                     }
                 });
             
