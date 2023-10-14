@@ -85,7 +85,7 @@ export function renderRegPage(headerElement, pageElement) {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               emailInput.style.borderColor = 'var(--error-50, #F4210B)';
               passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
-              wrongDataErrorSpan.textContent = 'Пользователь уже заригистрирован';
+              wrongDataErrorSpan.textContent = 'Пользователь уже зарeгистрирован';
             }
           });
     }
