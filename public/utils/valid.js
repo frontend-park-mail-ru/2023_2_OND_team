@@ -6,10 +6,15 @@
 */
 export function nameValid(username) {
   const regex = /^[a-zA-Z0-9_-]+$/;
-  const allowedChars = /^[a-zA-Z0-9_-]+$/;
+  const allowedChars = /^[a-zA-Zа-яА-Я0-9!@#$%^&*()_+{}[]|:<>,.?~=-]+$/;
   let validation = {valid: true, message: ''};
 
-  if (username.length < 4) {
+  if (!username || username.trim() === '') {
+    validation = {
+      valid: false,
+      message: 'Заполните это поле',
+    };
+  } else if (username.length < 4) {
     validation = {
       valid: false,
       message: 'Имя пользователя должно содержать не менее 4 символов',
@@ -36,10 +41,15 @@ export function nameValid(username) {
 * полем `message` (сообщение об ошибке, если есть).
 */
 export function emailValid(email) {
-  const allowedChars = /^[a-zA-Z0-9@._-]+$/;
+  const allowedChars = /^[a-zA-Zа-яА-Я0-9!@#$%^&*()_+{}[]|:<>,.?~=-]+$/;
   let validation = {valid: true, message: ''};
 
-  if (email.length >= 50) {
+  if (!email || email.trim() === '') {
+    validation = {
+      valid: false,
+      message: 'Заполните это поле',
+    };
+  } else if (email.length >= 50) {
     validation = {
       valid: false,
       message: 'Email должен содержать не более 50 символов',
@@ -84,10 +94,15 @@ export function emailValid(email) {
 * `message` (сообщение об ошибке, если есть).
 */
 export function passwordValid(password) {
-  const allowedChars = /^[a-zA-Z0-9!@#$%^&*()_+{}[]|:<>,.?~=-]+$/;
+  const allowedChars = /^[a-zA-Zа-яА-Я0-9!@#$%^&*()_+{}[]|:<>,.?~=-]+$/;
   let validation = {valid: true, message: ''};
 
-  if (password.length < 8) {
+  if (!password || password.trim() === '') {
+    validation = {
+      valid: false,
+      message: 'Заполните это поле',
+    };
+  } else if (password.length < 8) {
     validation = {
       valid: false,
       message: 'Пароль должен содержать не менее 8 символов',
