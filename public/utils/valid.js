@@ -9,7 +9,7 @@ export function nameValid(username) {
   const allowedChars = /^[a-zA-Zа-яА-Я0-9!@#$%^&*()_+{}[]|:<>,.?~=-]+$/;
   let validation = {valid: true, message: ''};
 
-  if (!username || username.trim() === '') {
+  if (!username) {
     validation = {
       valid: false,
       message: 'Заполните это поле',
@@ -44,10 +44,15 @@ export function emailValid(email) {
   const allowedChars = /^[a-zA-Zа-яА-Я0-9!@#$%^&*()_+{}[]|:<>,.?~=-]+$/;
   let validation = {valid: true, message: ''};
 
-  if (!email || email.trim() === '') {
+  if (!email) {
     validation = {
       valid: false,
       message: 'Заполните это поле',
+    };
+  } else if (!allowedChars.test(email)) {
+    validation = {
+      valid: false,
+      message: 'Email содержит недопустимые символы',
     };
   } else if (email.length >= 50) {
     validation = {
@@ -77,13 +82,6 @@ export function emailValid(email) {
     }
   }
 
-  if (!allowedChars.test(email)) {
-    validation = {
-      valid: false,
-      message: 'Email содержит недопустимые символы',
-    };
-  }
-
   return validation;
 }
 
@@ -97,7 +95,7 @@ export function passwordValid(password) {
   const allowedChars = /^[a-zA-Zа-яА-Я0-9!@#$%^&*()_+{}[]|:<>,.?~=-]+$/;
   let validation = {valid: true, message: ''};
 
-  if (!password || password.trim() === '') {
+  if (!password) {
     validation = {
       valid: false,
       message: 'Заполните это поле',
@@ -122,9 +120,7 @@ export function passwordValid(password) {
       valid: false,
       message: 'Пароль должен содержать хотя бы одну букву в верхнем регистре',
     };
-  }
-
-  if (!allowedChars.test(password)) {
+  } else if (!allowedChars.test(password)) {
     validation = {
       valid: false,
       message: 'Пароль содержит недопустимые символы',
