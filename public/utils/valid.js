@@ -14,6 +14,11 @@ export function nameValid(username) {
       valid: false,
       message: 'Заполните это поле',
     };
+  } else if (!regex.test(username) || !allowedChars.test(username)) {
+    validation = {
+      valid: false,
+      message: 'Имя пользователя содержит недопустимые символы',
+    };
   } else if (username.length < 4) {
     validation = {
       valid: false,
@@ -23,11 +28,6 @@ export function nameValid(username) {
     validation = {
       valid: false,
       message: 'Имя пользователя должно содержать менее 50 символов',
-    };
-  } else if (!regex.test(username) || !allowedChars.test(username)) {
-    validation = {
-      valid: false,
-      message: 'Имя пользователя содержит недопустимые символы',
     };
   }
 
@@ -100,6 +100,11 @@ export function passwordValid(password) {
       valid: false,
       message: 'Заполните это поле',
     };
+  } else if (!allowedChars.test(password)) {
+    validation = {
+      valid: false,
+      message: 'Пароль содержит недопустимые символы',
+    };
   } else if (password.length < 8) {
     validation = {
       valid: false,
@@ -120,12 +125,7 @@ export function passwordValid(password) {
       valid: false,
       message: 'Пароль должен содержать хотя бы одну букву в верхнем регистре',
     };
-  } else if (!allowedChars.test(password)) {
-    validation = {
-      valid: false,
-      message: 'Пароль содержит недопустимые символы',
-    };
   }
-
+  
   return validation;
 }
