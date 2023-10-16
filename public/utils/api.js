@@ -4,11 +4,6 @@ export class API {
     {name: 'logoutUser', url: '//pinspire.online:8080/api/v1/auth/logout'},
     {name: 'registerUser', url: '//pinspire.online:8080/api/v1/auth/signup'},
   ];
-  // static #config = [
-  //   {name: 'loginUser', url: '/login'},
-  //   {name: 'logoutUser', url: '/logout'},
-  //   {name: 'registerUser', url: '/signup'},
-  // ];
 
   static async loginUser(username, password) {
     try {
@@ -49,7 +44,6 @@ export class API {
   static async checkLogin() {
     try {
       const configItem = this.#config.find((item) => item.name === 'loginUser');
-      // const configItem = '/login';
       if (!configItem) {
         throw new Error('Не найдена конфигурация для checkLogin');
       }
@@ -141,7 +135,6 @@ export class API {
   static async generatePins(num=20, id=0) {
     try {
       const configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&lastID=${id}`;
-      // const configItem = `/pin?count=${num}&lastID=${id}`;
       const response = await fetch(configItem);
       const res = await response.json();
       let images = [];
