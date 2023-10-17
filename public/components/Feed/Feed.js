@@ -3,8 +3,9 @@ import {renderAuthPage} from '../Authorization/AuthPage.js';
 import {renderRegPage} from '../Registration/RegPage.js';
 import {renderPins} from '../../utils/renderPins.js';
 
-const NUM_REQUESTED_PINS = 20;
-let PIN_LAST_ID;
+const PINS_MAX = 100;
+const PINS_REQUEST = 20;
+let PIN_LAST_ID = 0;
 
 /**
 * Рендерит главную страницу с пинами.
@@ -43,7 +44,7 @@ export function renderFeedPage() {
 
         rootElement.innerHTML = feed(context);
 
-        defineButtons();
+        definePageElements();
       })
       .catch((error) => {
         console.error(error);
@@ -51,46 +52,9 @@ export function renderFeedPage() {
 }
 
 /**
-* Создает функцию с задержкой для предотвращения слишком частых вызовов.
-*/
-function debounce(f, ms) {
-  let isCooldown = false;
-
-  return function() {
-    if (isCooldown) return;
-
-    f.apply(this, arguments);
-    isCooldown = true;
-
-    setTimeout(() => isCooldown = false, ms);
-  };
-}
-
-/**
-* Обработчик скролла страницы.
-* Загружает дополнительные пины при достижении нижней части страницы.
-*/
-function handleScroll() {
-  const documentHeight = document.documentElement.scrollHeight;
-  const windowHeight = window.innerHeight;
-  const scrollY = window.scrollY;
-
-  if (scrollY + windowHeight >= documentHeight - 600) {
-    API.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
-        .then(({images, lastID}) => {
-          const section = document.getElementById('pins');
-          renderPins(section, images);
-        })
-        .catch((error) => {
-          console.error('Ошибка при рендеринге пинов:', error);
-        });
-  }
-}
-
-/**
 * Определяет обработчики событий для кнопок в шапке страницы и генерирует пины.
 */
-function defineButtons() {
+function definePageElements() {
   const headerElement = document.getElementById('header');
   const pageElement = document.getElementById('main');
 
@@ -133,16 +97,62 @@ function defineButtons() {
     });
   }
 
-  API.generatePins(NUM_REQUESTED_PINS, PIN_LAST_ID)
-      .then(({images, lastID}) => {
-        const section = document.getElementById('pins');
-        renderPins(section, images);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  /**
+  * Создает функцию с задержкой для предотвращения слишком частых вызовов.
+  */
+  function debounce(f, ms) {
+    let isCooldown = false;
+
+    return function() {
+      if (isCooldown) return;
+
+      f.apply(this, arguments);
+      isCooldown = true;
+
+      setTimeout(() => isCooldown = false, ms);
+    };
+  }
+
+  /**
+  * Обработчик скролла страницы.
+  * Загружает дополнительные пины при достижении нижней части страницы.
+  */
+  function handleScroll() {
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+    const scrollY = window.scrollY;
+    
+    if (scrollY + windowHeight >= documentHeight - 1000) {
+      API.generatePins(PINS_REQUEST, PIN_LAST_ID)
+          .then(({images, lastID}) => {
+            if (PIN_LAST_ID == lastID) {
+              window.removeEventListener('scroll', window.scrollFunc);
+              return;
+            }
+
+            if (lastID > PINS_MAX) {
+              const pinsToDelete = document.querySelectorAll('[id^="pin-id-"]');
+              pinsToDelete.forEach(pin => {
+                const pinID = pin.getAttribute('id').replace('pin-id-', '');
+                if (pinID < lastID - PINS_MAX) {
+                  pin.remove();
+                  console.log(`remove element ${pinID}}`);
+                }
+              })
+            }
+
+            const section = document.getElementById('pins');
+            renderPins(section, images);
+            PIN_LAST_ID = lastID;
+          })
+          .catch((error) => {
+            console.error('Ошибка при рендеринге пинов:', error);
+          });
+    }
+  }
 
   const scrollFunc = debounce(handleScroll, 100);
   window.scrollFunc = scrollFunc;
+  scrollFunc();
   window.addEventListener('scroll', window.scrollFunc);
 }

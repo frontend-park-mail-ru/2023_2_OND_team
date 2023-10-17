@@ -24,7 +24,8 @@ const httpsOptions = {
   cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
 };
 
-https.createServer(httpsOptions, app).listen(443);
+// https.createServer(httpsOptions, app).listen(443);
+https.createServer(httpsOptions, app).listen(1443);
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.json());
