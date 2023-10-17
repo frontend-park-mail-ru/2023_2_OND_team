@@ -5,4 +5,5 @@ public/build/
 service.txt
 .DS_Store
 public/compiledTemplates/templates.hbs.js
-server/crt
+server/selfsigned.crt
+server/selfsigned.key

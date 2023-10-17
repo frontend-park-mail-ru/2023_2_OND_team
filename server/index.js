@@ -19,8 +19,8 @@ app.use(cookieParser());
 app.use(cors());
 
 const httpsOptions = {
-  key: fs.readFileSync(path.resolve(__dirname+'/crt/', 'selfsigned.key')),
-  cert: fs.readFileSync(path.resolve(__dirname+'/crt/', 'selfsigned.crt')),
+  key: fs.readFileSync(path.resolve(__dirname, 'selfsigned.key')),
+  cert: fs.readFileSync(path.resolve(__dirname, 'selfsigned.crt')),
 };
 
 const server = https.createServer(httpsOptions, app);
