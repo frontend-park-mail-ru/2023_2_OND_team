@@ -125,7 +125,6 @@ function definePageElements() {
     if (scrollY + windowHeight >= documentHeight - 1000) {
       API.generatePins(PINS_REQUEST, PIN_LAST_ID)
           .then(({images, lastID}) => {
-            console.log(`lastID: ${lastID}`);
             if (PIN_LAST_ID == lastID) {
               window.removeEventListener('scroll', window.scrollFunc);
               return;
@@ -135,6 +134,7 @@ function definePageElements() {
               const pinsToDelete = document.querySelectorAll('[id^="pin-id-"]');
               pinsToDelete.forEach(pin => {
                 const pinID = pin.getAttribute('id').replace('pin-id-', '');
+                console.log(pinID);
                 if (pinID < lastID - PINS_MAX) {
                   pin.remove();
                   console.log(`remove element ${pinID}}`);
@@ -145,6 +145,7 @@ function definePageElements() {
             const section = document.getElementById('pins');
             renderPins(section, images);
             PIN_LAST_ID = lastID;
+            console.log(`lastID: ${PIN_LAST_ID}`);
           })
           .catch((error) => {
             console.error('Ошибка при рендеринге пинов:', error);
