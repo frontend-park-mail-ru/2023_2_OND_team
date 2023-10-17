@@ -125,6 +125,7 @@ function definePageElements() {
     if (scrollY + windowHeight >= documentHeight - 1000) {
       API.generatePins(PINS_REQUEST, PIN_LAST_ID)
           .then(({images, lastID}) => {
+            console.log(`lastID: ${lastID}`);
             if (PIN_LAST_ID == lastID) {
               window.removeEventListener('scroll', window.scrollFunc);
               return;
