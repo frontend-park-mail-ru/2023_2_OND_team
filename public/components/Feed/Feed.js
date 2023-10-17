@@ -97,16 +97,6 @@ function definePageElements() {
     });
   }
 
-  API.generatePins(PINS_REQUEST, PIN_LAST_ID)
-      .then(({images, lastID}) => {
-        PIN_LAST_ID = lastID;
-        const section = document.getElementById('pins');
-        renderPins(section, images);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
   /**
   * Создает функцию с задержкой для предотвращения слишком частых вызовов.
   */
@@ -131,7 +121,7 @@ function definePageElements() {
     const documentHeight = document.documentElement.scrollHeight;
     const windowHeight = window.innerHeight;
     const scrollY = window.scrollY;
-
+    
     if (scrollY + windowHeight >= documentHeight - 1000) {
       API.generatePins(PINS_REQUEST, PIN_LAST_ID)
           .then(({images, lastID}) => {
@@ -163,5 +153,6 @@ function definePageElements() {
 
   const scrollFunc = debounce(handleScroll, 100);
   window.scrollFunc = scrollFunc;
+  scrollFunc();
   window.addEventListener('scroll', window.scrollFunc);
 }
