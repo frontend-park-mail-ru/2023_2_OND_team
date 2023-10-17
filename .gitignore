@@ -4,4 +4,4 @@ node_modules/
 public/build/
 service.txt
 .DS_Store
-public/compiledTemplates/templates.hbs.js
+# public/compiledTemplates/templates.hbs.js
