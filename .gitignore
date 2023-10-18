@@ -4,6 +4,4 @@ node_modules/
 public/build/
 service.txt
 .DS_Store
-public/compiledTemplates/templates.hbs.js
-server/selfsigned.crt
-server/selfsigned.key
+# public/compiledTemplates/templates.hbs.js
