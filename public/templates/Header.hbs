@@ -1,15 +1,35 @@
-<div class="header-logo">
-    <div class="logo-icon">
-        <a href="#top">
-            <img src="static/svg/logo102x74.svg">
-        </a>
+<div class="header-left">
+    <div class="header-logo">
+        <div class="logo-icon">
+            <a href="#top">
+                <img src="static/svg/logo102x74.svg">
+            </a>
+        </div>
+        {{!-- <div class="logo-text">
+            <a href="#top">
+                <img src="static/svg/logoString200x46.svg">
+            </a>
+        </div> --}}
     </div>
-    <div class="logo-text">
-        <a href="#top">
-            <img src="static/svg/logoString200x46.svg">
-        </a>
+
+    <div class="menu">
+        <nav>
+            <div class="menu-btn">
+                <div class="line line--1"></div>
+                <div class="line line--2"></div>
+                <div class="line line--3"></div>
+            </div>
+
+            <div class="nav-links">
+                <a href="" class="link">Загрузить картинку</a>
+                <a href="" class="link">Создать доску</a>
+            </div>
+        </nav>
     </div>
+
 </div>
+
+
 {{#if isAuthorized}}
     {{{UserData userDataContext}}}
 {{else}}

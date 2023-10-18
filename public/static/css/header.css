@@ -19,6 +19,11 @@ header {
     z-index: 2;
 }
 
+.header-left {
+    display: flex;
+    gap: 50px;
+}
+
 .header-logo {
     display: flex;
     align-items: center;
@@ -161,4 +166,126 @@ header {
 
 .main-no-padding {
     padding-top: 0;
+}
+
+
+nav {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform: translateY(0px);
+    height: 120px;
+    width: 300px;
+    transition: all 800ms cubic-bezier(.8, 0, .33, 1);
+    border-radius: 0% 0% 80% 50%;
+}
+
+nav.nav-open {
+    border-radius: 0% 0% 20px 20px;
+}
+
+nav.nav-open::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: transparent;
+}
+
+nav.nav-open::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgba(55, 55, 55, 0.6);
+}
+
+nav .menu-btn {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    padding: 0;
+    width: 30px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+nav .menu-btn .line {
+    padding: 0;
+    width: 30px;
+    background: #000;
+    height: 3px;
+    margin: 5px 0;
+    transition: all 700ms cubic-bezier(.9, 0, .33, 1);
+}
+
+nav .menu-btn .line.line--1 {
+    width: 30px;
+    transform: rotate(0) translateY(0);
+}
+
+nav .menu-btn .line.line--1.line-cross {
+    width: 30px;
+    transform: rotate(47deg) translateY(11px);
+	 background: rgba(0,0,0,0.6);
+}
+
+nav .menu-btn .line.line--2 {
+    width: 30px;
+    transform: translateX(0);
+}
+
+nav .menu-btn .line.line--2.line-fade-out {
+    width: 28px;
+    transform: translate(30px);
+    opacity: 0;
+}
+
+nav .menu-btn .line.line--3 {
+    width: 30px;
+    transform: rotate(0) translateY(0);
+}
+
+nav .menu-btn .line.line--3.line-cross {
+    width: 30px;
+    transform: rotate(-45deg) translateY(-11px);
+	 background: rgba(0,0,0,0.6);
+}
+
+nav .nav-links {
+    position: absolute;
+    left: 0;
+    top: 5%;
+    display: flex;
+    padding-left: 70px;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    transform: translateY(-1000px);
+    opacity: 0;
+    transition: all 900ms cubic-bezier(.9, 0, .33, 1);
+}
+
+nav .nav-links.fade-in {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+nav .nav-links .link {
+    margin: 20px 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: rgba(0,0,0,0.9);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    transition: all 300ms cubic-bezier(.9, 0, .33, 1);
+}
+
+nav .nav-links .link:hover {
+    color: rgba(0, 0, 0, .5);
 }
