@@ -1,37 +1,32 @@
 <div class="header-left">
-    <div class="header-logo">
-        <div class="logo-icon">
+    <div class="header-left__logo">
+        <div class="header-left__logo__icon">
             <a href="#top">
                 <img src="static/svg/logo102x74.svg">
             </a>
         </div>
-        {{!-- <div class="logo-text">
-            <a href="#top">
-                <img src="static/svg/logoString200x46.svg">
-            </a>
-        </div> --}}
     </div>
 
-    <div class="menu">
-        <nav>
-            <div class="menu-btn">
-                <div class="line line--1"></div>
-                <div class="line line--2"></div>
-                <div class="line line--3"></div>
+    <div class="header-left__create-menu">
+        <nav class="nav-create">
+            <div class="header__nav-create__menu">
+                <div class="line header__nav-create__menu-line1"></div>
+                <div class="line header__nav-create__menu-line2"></div>
+                <div class="line header__nav-create__menu-line3"></div>
             </div>
 
-            <div class="nav-links">
-                <a href="" class="link">Загрузить картинку</a>
-                <a href="" class="link">Создать доску</a>
+            <div class="header__nav-create__btns">
+                <button class="btn-primary-default header__nav-create__btn-upload-picture">Загрузить картинку</button>
+                <button class="btn-primary-default header__nav-create__btn-create-board">Создать доску</button>
             </div>
         </nav>
     </div>
-
 </div>
 
-
-{{#if isAuthorized}}
-    {{{UserData userDataContext}}}
-{{else}}
-    {{{HeaderNonAuthorized}}}
-{{/if}}
+<div class="header-right">
+    {{#if isAuthorized}}
+        {{{UserData userDataContext}}}
+    {{else}}
+        {{{HeaderNonAuthorized}}}
+    {{/if}}
+</div>

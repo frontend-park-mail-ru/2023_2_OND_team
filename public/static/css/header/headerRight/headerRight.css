@@ -1,0 +1,108 @@
+/* AUTHORIZED */
+.header-user {
+    padding-right: 100px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+  
+.header-user__data {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.header-user__data__username {
+    color: #000;
+    text-align: center;
+    /* text base1 medium */
+    font-family: Lato;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.header-user__logout-btn {
+    font-family: Nunito;
+    background-color: #226B77;
+    color: #FFFFFF;
+    width: 178px;
+    height: 45px;
+    padding: 1px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.header-user__logout-btn:hover {
+    background: rgba(34, 107, 119, 0.80);
+}
+
+/* NON AUTHORIZED */
+.header-btns {
+    font-family: Nunito;
+    padding-right: 95px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.header-btns__login {
+    font-family: Nunito;
+    height: 45px;
+    padding: 1px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30, #226B77);
+    background: var(--bg-100, #FFF);
+
+    color: var(--primary-30, #226B77);
+
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.header-btns__login:hover {
+    background: rgba(34, 107, 119, 0.50);
+}
+
+.header-btns__signup {
+    font-family: Nunito;
+    background-color: #226B77;
+    color: #FFFFFF;
+    width: 178px;
+    height: 45px;
+    padding: 1px 20px 1;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.header-btns__signup:hover {
+    background: rgba(34, 107, 119, 0.80);
+}
+
+.header-hidden {
+    display: none;
+}
+
+.main-no-padding {
+    padding-top: 0;
+}

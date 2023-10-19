@@ -1,0 +1,23 @@
+@import url("headerLeft/headerLeft.css");
+@import url("headerRight/headerRight.css");
+
+main {
+    padding-top: 90px;
+    flex-grow: 1;
+}
+
+header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 80px;
+    flex-shrink: 1;
+    padding: 0 90px 0 40px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color:#FFFFFF;
+    box-shadow: 0 1px 5px rgb(214, 217, 219);
+    z-index: 2;
+}
