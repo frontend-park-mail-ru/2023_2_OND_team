@@ -41,7 +41,7 @@
 .header__nav-create__menu .line {
     padding: 0;
     width: 30px;
-    background: #000;
+    background: #226B77;
     height: 3px;
     margin: 5px 0;
     transition: all 700ms cubic-bezier(.9, 0, .33, 1);
@@ -55,7 +55,7 @@
 .header__nav-create__menu-line1.line-cross {
     width: 30px;
     transform: rotate(47deg) translateY(11px);
-	 background: rgba(0,0,0,0.6);
+    background: #226B77;
 }
 
 .header__nav-create__menu-line2 {
