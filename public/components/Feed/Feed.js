@@ -134,6 +134,7 @@ function definePageElements() {
               const pinsToDelete = document.querySelectorAll('.gallery__item');
               pinsToDelete.forEach(pin => {
                 const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
+
                 if (pinID < lastID - PINS_MAX) {
                   pin.remove();
                   console.log(`remove element ${pinID}}`);
@@ -152,6 +153,7 @@ function definePageElements() {
   }
 
 
+
   var menuBtn = document.querySelector('.header__nav-create__menu');
   var nav = document.querySelector('.nav-create');
   var lineOne = document.querySelector('.header__nav-create__menu-line1');
@@ -165,7 +167,6 @@ function definePageElements() {
       lineThree.classList.toggle('line-cross');
       link.classList.toggle('fade-in');
   })
-
 
   const scrollFunc = debounce(handleScroll, 100);
   window.scrollFunc = scrollFunc;

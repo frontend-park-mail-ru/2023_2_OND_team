@@ -12,16 +12,17 @@ const https = require('https');
 const fs = require('fs');
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, '..', 'public')));
-app.use(express.json());
-app.use(cookieParser());
-
-app.use(cors());
+/**
+* Параметры для настройки HTTPS сервера.
+* @type {object}
+* @property {string} key - Путь к приватному ключу сервера.
+* @property {string} cert - Путь к сертификату сервера.
+*/
 
 const httpsOptions = {
-  key: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.key')),
-  cert: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.crt')),
+  key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
+  cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
 };
 
-const server = https.createServer(httpsOptions, app);
-server.listen(3000);
+// https.createServer(httpsOptions, app).listen(443);
+https.createServer(httpsOptions, app).listen(1443);
