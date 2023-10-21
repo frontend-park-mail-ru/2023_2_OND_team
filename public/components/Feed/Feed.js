@@ -58,7 +58,7 @@ function definePageElements() {
   const headerElement = document.getElementById('header');
   const pageElement = document.getElementById('main');
 
-  const logoutButton = document.querySelector('.header-logout-button');
+  const logoutButton = document.querySelector('.header-user__logout-btn');
   if (logoutButton) {
     logoutButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -73,7 +73,7 @@ function definePageElements() {
     });
   }
 
-  const loginButton = document.querySelector('.header-login-button');
+  const loginButton = document.querySelector('.header-btns__login');
   if (loginButton) {
     loginButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -85,7 +85,7 @@ function definePageElements() {
     });
   }
 
-  const signupButton = document.querySelector('.header-signup-button');
+  const signupButton = document.querySelector('.header-btns__signup');
   if (signupButton) {
     signupButton.addEventListener('click', (e) => {
       e.preventDefault();
