@@ -5,11 +5,11 @@
 'use strict';
 
 const express = require('express');
-const https = require('https');
-const fs = require('fs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
 const app = express();
 
 /**
@@ -26,9 +26,3 @@ const httpsOptions = {
 
 // https.createServer(httpsOptions, app).listen(443);
 https.createServer(httpsOptions, app).listen(1443);
-
-app.use(express.static(path.resolve(__dirname, '..', 'public')));
-app.use(express.json());
-app.use(cookieParser());
-
-app.use(cors());

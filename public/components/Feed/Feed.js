@@ -131,9 +131,10 @@ function definePageElements() {
             }
 
             if (lastID > PINS_MAX) {
-              const pinsToDelete = document.querySelectorAll('[id^="pin-id-"]');
+              const pinsToDelete = document.querySelectorAll('.gallery__item');
               pinsToDelete.forEach(pin => {
-                const pinID = pin.getAttribute('id').replace('pin-id-', '');
+                const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
+
                 if (pinID < lastID - PINS_MAX) {
                   pin.remove();
                   console.log(`remove element ${pinID}}`);
@@ -150,6 +151,22 @@ function definePageElements() {
           });
     }
   }
+
+
+
+  var menuBtn = document.querySelector('.header__nav-create__menu');
+  var nav = document.querySelector('.nav-create');
+  var lineOne = document.querySelector('.header__nav-create__menu-line1');
+  var lineTwo = document.querySelector('.header__nav-create__menu-line2');
+  var lineThree = document.querySelector('.header__nav-create__menu-line3');
+  var link = document.querySelector('.header__nav-create__btns');
+  menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('nav-open');
+      lineOne.classList.toggle('line-cross');
+      lineTwo.classList.toggle('line-fade-out');
+      lineThree.classList.toggle('line-cross');
+      link.classList.toggle('fade-in');
+  })
 
   const scrollFunc = debounce(handleScroll, 100);
   window.scrollFunc = scrollFunc;

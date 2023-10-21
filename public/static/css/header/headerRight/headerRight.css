@@ -1,44 +1,4 @@
-main {
-    padding-top: 90px;
-    flex-grow: 1;
-}
-
-header {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    height: 80px;
-    flex-shrink: 1;
-    padding: 0 90px 0 40px;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color:#FFFFFF;
-    box-shadow: 0 1px 5px rgb(214, 217, 219);
-    z-index: 2;
-}
-
-.header-logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo-icon {
-    width: 102px;
-    height: 74px;
-}
-
-.logo-text {
-    display: flex;
-    width: 200px;
-    height: 46px;
-    padding: 5px 8px;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-}
-
+/* AUTHORIZED */
 .header-user {
     padding-right: 100px;
     display: flex;
@@ -46,13 +6,13 @@ header {
     gap: 50px;
 }
   
-.header-user-data {
+.header-user__data {
     display: flex;
     align-items: flex-start;
     gap: 10px;
 }
 
-.header-username {
+.header-user__data__username {
     color: #000;
     text-align: center;
     /* text base1 medium */
@@ -63,24 +23,29 @@ header {
     line-height: normal;
 }
 
-.header-logout-button {
+.header-user__logout-btn {
     font-family: Nunito;
     background-color: #226B77;
     color: #FFFFFF;
-    width: 107px;
+    width: 178px;
     height: 45px;
-    padding: 10px 20px;
+    padding: 1px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
   
-    font-size: 21px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
-.header-buttons {
+.header-user__logout-btn:hover {
+    background: rgba(34, 107, 119, 0.80);
+}
+
+/* NON AUTHORIZED */
+.header-btns {
     font-family: Nunito;
     padding-right: 95px;
     display: flex;
@@ -88,7 +53,7 @@ header {
     gap: 20px;
 }
 
-.header-login-button {
+.header-btns__login {
     font-family: Nunito;
     height: 45px;
     padding: 1px 20px;
@@ -109,11 +74,11 @@ header {
     line-height: normal;
 }
 
-.header-login-button:hover {
+.header-btns__login:hover {
     background: rgba(34, 107, 119, 0.50);
 }
 
-.header-signup-button {
+.header-btns__signup {
     font-family: Nunito;
     background-color: #226B77;
     color: #FFFFFF;
@@ -130,28 +95,7 @@ header {
     line-height: normal;
 }
 
-.header-signup-button:hover {
-    background: rgba(34, 107, 119, 0.80);
-}
-
-.header-logout-button {
-    font-family: Nunito;
-    background-color: #226B77;
-    color: #FFFFFF;
-    width: 178px;
-    height: 45px;
-    padding: 1px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.header-logout-button:hover {
+.header-btns__signup:hover {
     background: rgba(34, 107, 119, 0.80);
 }
 
