@@ -29,5 +29,10 @@ const httpsOptions = {
 // https.createServer(httpsOptions, app).listen(443);
 https.createServer(httpsOptions, app).listen(1443);
 
+app.use(express.static(path.resolve(__dirname, '..', 'public')));
+app.use(express.json());
+app.use(cookieParser());
+
+app.use(cors());
 // const server = https.createServer(httpsOptions, app);
 // server.listen(3000);
