@@ -18,10 +18,11 @@
 }
 
 .input-container {
+    width: 410px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 5px;
 }
 
 .labeled-input {
@@ -32,14 +33,14 @@
 }
 
 input {
-    font-family: Lato;
-    width: 300px;
+    font-family: Nunito;
+    width: 400px;
     height: 25px; 
     padding: 8px 0px 8px 8px;
     border: 2px solid var(--primary-45, #33A1B3);
     border-radius: var(--br-s, 10px);
   
-    color: var(--primary-45, #33A1B3);
+    color: var(--primary-15, #11363C);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -55,7 +56,7 @@ input:focus {
 .button {
     background-color: #226B77;
     color: #FFFFFF;
-    width: 294px;
+    width: 410px;
     height: 45px;
     padding: 10px 20px;
     border: none;
@@ -89,14 +90,14 @@ input:focus {
     font-family: Nunito;
     font-size: 31px; 
     font-weight: normal; 
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .auth-title {
     font-family: Nunito;
     font-size: 31px; 
     font-weight: normal; 
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 p {
@@ -114,27 +115,27 @@ a {
     font-family: Nunito;
     font-size: 15px; 
     color: var(--error-50, #F4210B);
-    text-align: center;
+    text-align: left;
     min-height: 30px;
-    min-width: 500px;
+    min-width: 410px;
 }
 
 .username-error-message {
     font-family: Nunito;
     font-size: 15px; 
     color: var(--error-50, #F4210B);
-    text-align: center;
+    text-align: left;
     min-height: 30px;
-    min-width: 500px;
+    min-width: 410px;
 }
 
 .email-error-message {
     font-family: Nunito;
     font-size: 15px; 
     color: var(--error-50, #F4210B);
-    text-align: center;
+    text-align: left;
     min-height: 30px;
-    min-width: 500px;
+    min-width: 410px;
 }
 
 .wrong-data-error-message  {
@@ -143,7 +144,7 @@ a {
     color: var(--error-50, #F4210B);
     text-align: center;
     min-height: 30px;
-    min-width: 500px;
+    min-width: 410px;
 }
 
 .input-error input {
@@ -162,22 +163,22 @@ a {
 }
 
 .input-username {
+    width: 410px;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .input-email {
+    width: 410px;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .input-password {
+    width: 410px;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
+    align-items: flex-start;
 }
