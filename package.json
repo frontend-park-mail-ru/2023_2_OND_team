@@ -8,7 +8,8 @@
     "start": "node server",
     "compile:templates": "handlebars public/templates/* -m -f public/compiledTemplates/templates.hbs.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "npm run lint"
+    "prebuild": "npm run lint",
+    "stop": "node stop"
   },
   "author": "",
   "license": "ISC",
