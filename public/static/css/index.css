@@ -1,6 +1,7 @@
 @import url("feed/feed.css");
 @import url("header/header.css");
 @import url("form.css");
+@import url(./components/components.css);
 
 html, body {
   height: 100%;

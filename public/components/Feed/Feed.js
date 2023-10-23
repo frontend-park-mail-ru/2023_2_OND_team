@@ -73,7 +73,7 @@ function definePageElements() {
     });
   }
 
-  const loginButton = document.querySelector('.header-btns__login');
+  const loginButton = document.querySelector('.js-header-btns__login');
   if (loginButton) {
     loginButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -85,7 +85,7 @@ function definePageElements() {
     });
   }
 
-  const signupButton = document.querySelector('.header-btns__signup');
+  const signupButton = document.querySelector('.js-header-btns__signup');
   if (signupButton) {
     signupButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -154,19 +154,22 @@ function definePageElements() {
 
 
 
-  var menuBtn = document.querySelector('.header__nav-create__menu');
-  var nav = document.querySelector('.nav-create');
-  var lineOne = document.querySelector('.header__nav-create__menu-line1');
-  var lineTwo = document.querySelector('.header__nav-create__menu-line2');
-  var lineThree = document.querySelector('.header__nav-create__menu-line3');
-  var link = document.querySelector('.header__nav-create__btns');
-  menuBtn.addEventListener('click', () => {
-      nav.classList.toggle('nav-open');
-      lineOne.classList.toggle('line-cross');
-      lineTwo.classList.toggle('line-fade-out');
-      lineThree.classList.toggle('line-cross');
-      link.classList.toggle('fade-in');
-  })
+  const menuBtn = document.querySelector('.header__nav-create__menu');
+  if (menuBtn) {
+    const nav = document.querySelector('.nav-create');
+    const lineOne = document.querySelector('.header__nav-create__menu-line1');
+    const lineTwo = document.querySelector('.header__nav-create__menu-line2');
+    const lineThree = document.querySelector('.header__nav-create__menu-line3');
+    const link = document.querySelector('.header__nav-create__btns');
+    menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
+        lineOne.classList.toggle('line-cross');
+        lineTwo.classList.toggle('line-fade-out');
+        lineThree.classList.toggle('line-cross');
+        link.classList.toggle('fade-in');
+    });
+  }
+  
 
   const scrollFunc = debounce(handleScroll, 100);
   window.scrollFunc = scrollFunc;
