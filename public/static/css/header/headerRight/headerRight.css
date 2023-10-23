@@ -113,7 +113,7 @@
     top: 0;
     transform: translateY(0px);
     height: 220px;
-    width: 300px;
+    width: 350px;
     transition: all 800ms cubic-bezier(.8, 0, .33, 1);
     flex-shrink: 0;
 }
