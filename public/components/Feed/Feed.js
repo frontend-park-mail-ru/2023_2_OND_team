@@ -97,6 +97,30 @@ function definePageElements() {
     });
   }
 
+  const menuBtn = document.querySelector('.header__nav-create__menu');
+  if (menuBtn) {
+    const navCreate = document.querySelector('.nav-create');
+    const navCreateLineOne = document.querySelector('.header__nav-create__menu-line1');
+    const navCreateLineTwo = document.querySelector('.header__nav-create__menu-line2');
+    const navCreateLineThree = document.querySelector('.header__nav-create__menu-line3');
+    const link = document.querySelector('.header__nav-create__btns');
+    menuBtn.addEventListener('click', () => {
+        navCreate.classList.toggle('nav-open');
+        navCreateLineOne.classList.toggle('line-cross');
+        navCreateLineTwo.classList.toggle('line-fade-out');
+        navCreateLineThree.classList.toggle('line-cross');
+        link.classList.toggle('fade-in');
+    });
+  }
+
+  const headerAvatar = document.querySelector('.js-header__user-avatar');
+  if (headerAvatar) {
+    const navUser = document.querySelector('.nav-user');
+    headerAvatar.addEventListener('click', () => {
+      navUser.classList.toggle('nav-open');
+    })
+  }
+
   /**
   * Создает функцию с задержкой для предотвращения слишком частых вызовов.
   */
@@ -151,25 +175,6 @@ function definePageElements() {
           });
     }
   }
-
-
-
-  const menuBtn = document.querySelector('.header__nav-create__menu');
-  if (menuBtn) {
-    const nav = document.querySelector('.nav-create');
-    const lineOne = document.querySelector('.header__nav-create__menu-line1');
-    const lineTwo = document.querySelector('.header__nav-create__menu-line2');
-    const lineThree = document.querySelector('.header__nav-create__menu-line3');
-    const link = document.querySelector('.header__nav-create__btns');
-    menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('nav-open');
-        lineOne.classList.toggle('line-cross');
-        lineTwo.classList.toggle('line-fade-out');
-        lineThree.classList.toggle('line-cross');
-        link.classList.toggle('fade-in');
-    });
-  }
-  
 
   const scrollFunc = debounce(handleScroll, 100);
   window.scrollFunc = scrollFunc;

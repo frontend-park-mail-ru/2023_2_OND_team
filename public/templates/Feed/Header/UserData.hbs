@@ -3,8 +3,14 @@
         <div class="header-user__data__username">
             {{username}}
         </div>
-        <div class="header-user__data__avatar">
+        <div class="header-user__data__avatar js-header__user-avatar">
             <img src="./static/svg/icon _profile.svg">
+            <nav class="nav-user">
+                <div class="header__nav-user__btns">
+                    <button class="btn-primary-default header__nav-create__btn-upload-picture">Загрузить картинку</button>
+                    <button class="btn-primary-clear header__nav-create__btn-create-board">Создать доску</button>
+                </div>
+            </nav>
         </div>
     </div>
     <button class="header-user__logout-btn" type="submit">Выход</button>
