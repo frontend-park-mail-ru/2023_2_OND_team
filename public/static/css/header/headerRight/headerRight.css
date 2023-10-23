@@ -110,11 +110,11 @@
 .nav-user {
     overflow: hidden;
     position: absolute;
-    top: 0;
-    right: 30px;
+    top: 80px;
+    right: 200px;
     transform: translateY(0px);
-    height: 220px;
-    width: 350px;
+    height: 125px;
+    width: 150px;
     transition: all 800ms cubic-bezier(.8, 0, .33, 1);
     flex-shrink: 0;
 }
@@ -126,7 +126,6 @@
 .header__nav-user__btns {
     position: absolute;
     left: 0;
-    top: 80px;
     display: flex;
     padding: 10px 10px 10px 10px;
     gap: 10px;
