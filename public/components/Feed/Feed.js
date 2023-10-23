@@ -58,7 +58,7 @@ function definePageElements() {
   const headerElement = document.getElementById('header');
   const pageElement = document.getElementById('main');
 
-  const logoutButton = document.querySelector('.header-user__logout-btn');
+  const logoutButton = document.querySelector('.js-header-btns__logout');
   if (logoutButton) {
     logoutButton.addEventListener('click', (e) => {
       e.preventDefault();
