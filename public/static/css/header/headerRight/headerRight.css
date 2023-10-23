@@ -111,6 +111,7 @@
     overflow: hidden;
     position: absolute;
     top: 0;
+    right: 30px;
     transform: translateY(0px);
     height: 220px;
     width: 350px;

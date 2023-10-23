@@ -116,12 +116,13 @@ function definePageElements() {
   const headerAvatar = document.querySelector('.js-header__user-avatar');
   if (headerAvatar) {
     const navUser = document.querySelector('.nav-user');
-    const links = document.querySelector('.header__nav-user__btns')
+    const links = document.querySelector('.header__nav-user__btns');
     headerAvatar.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navUser.classList.toggle('nav-open');
-      links.classList.toggle('fade-in');
-    })
+      if (!navUser.contains(e.target)) {
+        navUser.classList.toggle('nav-open');
+        links.classList.toggle('fade-in');
+      }
+    });
   }
 
   /**
