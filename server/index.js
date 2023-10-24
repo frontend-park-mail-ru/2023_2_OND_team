@@ -22,8 +22,8 @@ const app = express();
 const httpsOptions = {
   key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
   cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
-  key: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.key')),
-  cert: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.crt')),
+  // key: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.key')),
+  // cert: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.crt')),
 };
 
 // https.createServer(httpsOptions, app).listen(443);
