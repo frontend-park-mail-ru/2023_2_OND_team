@@ -20,19 +20,19 @@ const app = express();
 */
 
 const httpsOptions = {
-  // key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
-  // cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
+  key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
+  cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
   key: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.key')),
   cert: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'selfsigned.crt')),
 };
 
 // https.createServer(httpsOptions, app).listen(443);
-// https.createServer(httpsOptions, app).listen(1444);
+https.createServer(httpsOptions, app).listen(1444);
 
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors());
-const server = https.createServer(httpsOptions, app);
-server.listen(3000);
+// const server = https.createServer(httpsOptions, app);
+// server.listen(3000);
