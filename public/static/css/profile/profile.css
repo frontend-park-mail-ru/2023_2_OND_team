@@ -1,0 +1,17 @@
+
+.profile {
+    position: relative;
+}
+
+.profile__menu {
+    position: absolute;
+    width: 200px;
+    border: 0 2px solid rgba(0, 0, 0, 0.22);
+    z-index: 2;
+}
+
+.profile__main {
+    position: absolute;
+    padding-left: 200px;
+    z-index: 1;
+}

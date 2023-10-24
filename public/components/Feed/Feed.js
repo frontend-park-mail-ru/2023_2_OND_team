@@ -2,6 +2,7 @@ import {API} from '../../utils/api.js';
 import {renderAuthPage} from '../Authorization/AuthPage.js';
 import {renderRegPage} from '../Registration/RegPage.js';
 import {renderPins} from '../../utils/renderPins.js';
+import { renderProfilePage } from '../Profile/Profile.js';
 
 const PINS_MAX = 100;
 const PINS_REQUEST = 20;
@@ -58,9 +59,9 @@ function definePageElements() {
   const headerElement = document.getElementById('header');
   const pageElement = document.getElementById('main');
 
-  const logoutButton = document.querySelector('.js-header-btns__logout');
-  if (logoutButton) {
-    logoutButton.addEventListener('click', (e) => {
+  const logoutBtn = document.querySelector('.js-header-btns__logout');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', (e) => {
       e.preventDefault();
       headerElement.classList.add('header-hidden');
       pageElement.classList.add('main-no-padding');
@@ -73,9 +74,9 @@ function definePageElements() {
     });
   }
 
-  const loginButton = document.querySelector('.js-header-btns__login');
-  if (loginButton) {
-    loginButton.addEventListener('click', (e) => {
+  const loginBtn = document.querySelector('.js-header-btns__login');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
       e.preventDefault();
       headerElement.classList.add('header-hidden');
       pageElement.classList.add('main-no-padding');
@@ -85,9 +86,9 @@ function definePageElements() {
     });
   }
 
-  const signupButton = document.querySelector('.js-header-btns__signup');
-  if (signupButton) {
-    signupButton.addEventListener('click', (e) => {
+  const signupBtn = document.querySelector('.js-header-btns__signup');
+  if (signupBtn) {
+    signupBtn.addEventListener('click', (e) => {
       e.preventDefault();
       headerElement.classList.add('header-hidden');
       pageElement.classList.add('main-no-padding');
@@ -113,15 +114,24 @@ function definePageElements() {
     });
   }
 
-  const headerAvatar = document.querySelector('.js-header__user-avatar');
-  if (headerAvatar) {
+  const headerUserData = document.querySelector('.js-header-user__data');
+  if (headerUserData) {
     const navUser = document.querySelector('.nav-user');
     const links = document.querySelector('.header__nav-user__btns');
-    headerAvatar.addEventListener('click', (e) => {
+    headerUserData.addEventListener('click', (e) => {
       if (!navUser.contains(e.target)) {
         navUser.classList.toggle('nav-open');
         links.classList.toggle('fade-in');
       }
+    });
+  }
+
+  const profileBtn = document.querySelector('.js-header-btns__profile');
+  if (profileBtn) {
+    profileBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.removeEventListener('scroll', window.scrollFunc);
+      renderProfilePage(headerElement, pageElement);
     });
   }
 

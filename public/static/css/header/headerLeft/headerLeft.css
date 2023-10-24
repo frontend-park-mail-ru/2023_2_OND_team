@@ -30,7 +30,7 @@
 
 .header__nav-create__menu {
     position: absolute;
-    top: 25px;
+    top: 15px;
     left: 5%;
     padding: 0;
     width: 30px;
@@ -83,7 +83,7 @@
 .header__nav-create__btns {
     position: absolute;
     left: 0;
-    top: 80px;
+    top: 60px;
     display: flex;
     padding: 10px 10px 10px 10px;
     gap: 10px;

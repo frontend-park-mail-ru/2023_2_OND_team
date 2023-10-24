@@ -2,7 +2,7 @@
 @import url("headerRight/headerRight.css");
 
 main {
-    padding-top: 90px;
+    padding-top: 70px;
     flex-grow: 1;
 }
 
@@ -10,7 +10,7 @@ header {
     display: flex;
     justify-content:space-between;
     align-items: center;
-    height: 80px;
+    height: 60px;
     flex-shrink: 1;
     padding: 0 90px 0 40px;
     align-items: center;
