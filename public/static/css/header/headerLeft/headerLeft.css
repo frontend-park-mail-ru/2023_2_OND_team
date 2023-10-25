@@ -10,7 +10,7 @@
 }
 
 .nav-create {
-    overflow: hidden;
+    /* overflow: hidden; */
     position: absolute;
     top: 0;
     transform: translateY(0px);
