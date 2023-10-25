@@ -1,6 +1,6 @@
-import { renderUserPage } from "./Content/User";
-import { renderDataPage } from "./Content/Data";
-import { renderSecurityPage } from "./Content/Security";
+import { renderUserPage } from "./Content/User.js";
+import { renderDataPage } from "./Content/Data.js";
+import { renderSecurityPage } from "./Content/Security.js";
 
 export function renderProfilePage(headerElement, pageElement) {
     const profile = Handlebars.templates['Profile.hbs'];
