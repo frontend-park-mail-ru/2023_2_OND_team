@@ -59,6 +59,19 @@ function definePageElements() {
   const headerElement = document.getElementById('header');
   const pageElement = document.getElementById('main');
 
+  const logo = document.querySelector('.js-header__logo');
+  if (logo) {
+    logo.addEventListener('click', handleLogoClick);
+  }
+
+  function handleLogoClick() {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
   const logoutBtn = document.querySelector('.js-header-btns__logout');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', (e) => {
@@ -69,6 +82,7 @@ function definePageElements() {
       if (API.logoutUser()) {
         headerElement.innerHTML = '';
         window.removeEventListener('scroll', window.scrollFunc);
+        logo.removeEventListener('click', handleLogoClick);
         renderAuthPage(headerElement, pageElement);
       }
     });
@@ -82,6 +96,7 @@ function definePageElements() {
       pageElement.classList.add('main-no-padding');
       headerElement.innerHTML = '';
       window.removeEventListener('scroll', window.scrollFunc);
+      logo.removeEventListener('click', handleLogoClick);
       renderAuthPage(headerElement, pageElement);
     });
   }
@@ -94,6 +109,7 @@ function definePageElements() {
       pageElement.classList.add('main-no-padding');
       headerElement.innerHTML = '';
       window.removeEventListener('scroll', window.scrollFunc);
+      logo.removeEventListener('click', handleLogoClick);
       renderRegPage(headerElement, pageElement);
     });
   }
@@ -131,6 +147,7 @@ function definePageElements() {
     profileBtn.addEventListener('click', (e) => {
       e.preventDefault();
       window.removeEventListener('scroll', window.scrollFunc);
+      logo.removeEventListener('click', handleLogoClick);
       renderProfilePage(headerElement, pageElement);
     });
   }
