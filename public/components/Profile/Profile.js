@@ -5,11 +5,7 @@ export function renderProfilePage(headerElement, pageElement) {
     const profileUser = Handlebars.templates['ProfileUser.hbs'];
     const profileData = Handlebars.templates['ProfileData.hbs'];
     const profileSecurity = Handlebars.templates['ProfileSecurity.hbs'];
-
-    const context = {
-        ProfilePage: profileUser,
-        profilePageContext: profileUserContext,
-    };
+    
     const profileUserContext = {
         username: 'Pupkin',
         avatar: 'https://pinspire.online:8081/upload/pins/d7dc22616d514788b514fc2edb60920b.png',
@@ -27,6 +23,10 @@ export function renderProfilePage(headerElement, pageElement) {
     const profileSecurityContext = {    
         mail: 'pupkin@mail.ru',
     };
-
+    const context = {
+        ProfilePage: profileUser,
+        profilePageContext: profileUserContext,
+    };
+    
     pageElement.innerHTML = profile(context);
 }
