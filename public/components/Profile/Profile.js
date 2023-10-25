@@ -1,32 +1,34 @@
-
+import { renderUserPage } from "./Content/User";
+import { renderDataPage } from "./Content/Data";
+import { renderSecurityPage } from "./Content/Security";
 
 export function renderProfilePage(headerElement, pageElement) {
     const profile = Handlebars.templates['Profile.hbs'];
-    const profileUser = Handlebars.templates['ProfileUser.hbs'];
-    const profileData = Handlebars.templates['ProfileData.hbs'];
-    const profileSecurity = Handlebars.templates['ProfileSecurity.hbs'];
-    
-    const profileUserContext = {
-        username: 'Pupkin',
-        avatar: 'https://pinspire.online:8081/upload/pins/d7dc22616d514788b514fc2edb60920b.png',
-        media: {
-            type: 'pins',
-            content: null,
-        },
-    };
-    const profileDataContext = {
-        username: 'Pupkin',
-        avatar: 'https://pinspire.online:8081/upload/pins/d7dc22616d514788b514fc2edb60920b.png',
-        name: 'Василий',
-        surname: 'Пупкин',
-    };
-    const profileSecurityContext = {    
-        mail: 'pupkin@mail.ru',
-    };
-    const context = {
-        ProfilePage: profileUser,
-        profilePageContext: profileUserContext,
-    };
+    const context = {};
     
     pageElement.innerHTML = profile(context);
+
+    const userBtn = document.querySelector('.js-profile__menu__user-btn');
+    if (userBtn) {
+        userBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            renderUserPage(headerElement, pageElement);
+        })
+    }
+
+    const dataBtn = document.querySelector('.js-profile__menu__data-btn');
+    if (dataBtn) {
+        dataBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            renderDataPage(headerElement, pageElement);
+        })
+    }
+
+    const securityBtn = document.querySelector('.js-profile__menu__security-btn');
+    if (securityBtn) {
+        securityBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            renderSecurityPage(headerElement, pageElement);
+        })
+    }
 }
