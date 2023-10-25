@@ -4,14 +4,14 @@
 }
 
 .profile__menu {
-    position: absolute;
+    position: fixed;
     width: 200px;
-    border: 0 2px solid rgba(0, 0, 0, 0.22);
+    border-right: 2px solid black;
     z-index: 2;
 }
 
 .profile__page {
     position: absolute;
-    padding-left: 200px;
+    padding-left: 210px;
     z-index: 1;
 }
