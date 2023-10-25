@@ -177,7 +177,7 @@ function definePageElements() {
     const windowHeight = window.innerHeight;
     const scrollY = window.scrollY;
     
-    if (scrollY + windowHeight >= documentHeight - 1000) {
+    if (scrollY + windowHeight >= documentHeight - 1500) {
       API.generatePins(PINS_REQUEST, PIN_LAST_ID)
           .then(({images, lastID}) => {
             if (PIN_LAST_ID == lastID) {

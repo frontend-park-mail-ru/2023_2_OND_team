@@ -6,11 +6,6 @@
 .header-left__logo {
     display: flex;
     align-items: center;
-}
-
-.logo-left__logo__icon {
-    width: 102px;
-    height: 74px;
     cursor: pointer;
 }
 
