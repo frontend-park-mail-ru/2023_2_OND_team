@@ -64,7 +64,7 @@ function definePageElements() {
     logo.addEventListener('click', handleLogoClick);
   }
 
-  function handleLogoClick() {
+  function handleLogoClick(e) {
     e.preventDefault();
     window.scrollTo({
       top: 0,
