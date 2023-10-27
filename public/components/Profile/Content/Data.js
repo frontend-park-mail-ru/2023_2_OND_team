@@ -42,6 +42,11 @@ export function renderDataPage(headerElement, pageElement) {
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
             console.log(usernameInput.value, nameInput.value, surnameInput.value);
+            context.username = usernameInput.value;
+            context.name = nameInput.value;
+            context.surname = surnameInput.value;
+
+
 
             usernameInput.disabled = true;
             nameInput.disabled = true;
