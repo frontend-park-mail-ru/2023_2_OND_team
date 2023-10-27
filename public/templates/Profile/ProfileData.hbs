@@ -2,16 +2,24 @@
     <div class="profile-data__page-name">
         Data
     </div>
+    <div class="profile-data__btns">
+        <button class="profile-data__edit-btn js-profile-data__edit-btn">Изменить</button>
+        <button class="profile-data__cansel-btn js-profile-data__cansel-btn">Отменить</button>
+        <button class="profile-data__save-btn js-profile-data__save-btn">Сохранить</button>
+    </div>
     <div class="profile-data__username">
-        {{username}}
+        <label for="username" class="labeled-input">Имя пользователя</label>
+        <input disabled type="text" id="username" placeholder={{username}}>
     </div>
     <div class="profile-data__avatar">
         <img src={{avatar}} alt="avatar">
     </div>
     <div class="profile-data__name">
-        {{name}}
+        <label for="name" class="labeled-input">Имя</label>
+        <input disabled type="text" id="name" placeholder={{name}}>
     </div>
     <div class="profile-data__surname">
-        {{surname}}
+        <label for="surname" class="labeled-input">Фамилия</label>
+        <input disabled type="text" id="surname" placeholder={{surname}}>
     </div>
 </div>

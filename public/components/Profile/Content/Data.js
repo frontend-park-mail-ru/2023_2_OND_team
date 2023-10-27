@@ -12,4 +12,17 @@ export function renderDataPage(headerElement, pageElement) {
     };
 
     profilePage.innerHTML = profileData(context);
+
+    const usernameInput = document.querySelector('#username');
+    const nameInput = document.querySelector('#name');
+    const surnameInput = document.querySelector('#surname');
+
+    const editBtn = document.querySelector('.js-profile-data__edit-btn');
+    if (editBtn) {
+        editBtn.addEventListener('click', () => {
+            usernameInput.disabled = false;
+            nameInput.disabled = false;
+            surnameInput.disabled = false;
+        })
+    }
 }
