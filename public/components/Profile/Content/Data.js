@@ -23,6 +23,29 @@ export function renderDataPage(headerElement, pageElement) {
             usernameInput.disabled = false;
             nameInput.disabled = false;
             surnameInput.disabled = false;
-        })
+        });
+    }
+
+    const canselBtn = document.querySelector('.js-profile-data__cansel-btn');
+    if (canselBtn) {
+        canselBtn.addEventListener('click', () => {
+            usernameInput.value = context.username;
+            nameInput.value = context.name;
+            surnameInput.value = context.surname;
+
+            usernameInput.disabled = true;
+            nameInput.disabled = true;
+            surnameInput.disabled = true;
+        });
+    }
+    const saveBtn = document.querySelector('.js-profile-data__save-btn');
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            console.log(usernameInput.value, nameInput.value, surnameInput.value);
+
+            usernameInput.disabled = true;
+            nameInput.disabled = true;
+            surnameInput.disabled = true;
+        });
     }
 }
