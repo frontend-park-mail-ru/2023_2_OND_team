@@ -2,12 +2,23 @@ import { renderUserPage } from "./Content/User.js";
 import { renderDataPage } from "./Content/Data.js";
 import { renderSecurityPage } from "./Content/Security.js";
 import { renderFeedPage } from "../Feed/Feed.js";
+import { API } from "../../utils/api.js";
 
 export function renderProfilePage(headerElement, pageElement) {
     const profile = Handlebars.templates['Profile.hbs'];
     const context = {};
     
     pageElement.innerHTML = profile(context);
+
+    async function loadUserData() {
+        try {
+          return await API.getUserInfo();
+        } catch (error) {
+          console.error('Ошибка при получении данных о пользователе:', error);
+        }
+    }
+
+    const userInfo = loadUserData();
 
     const logo = document.querySelector('.js-header__logo');
     if (logo) {
@@ -21,16 +32,16 @@ export function renderProfilePage(headerElement, pageElement) {
     if (userBtn) {
         userBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            renderUserPage(headerElement, pageElement);
+            renderUserPage(userInfo.username, userInfo.avatar);
         });
-        renderUserPage(headerElement, pageElement);
+        renderUserPage(userInfo.username, userInfo.avatar);
     }
 
     const dataBtn = document.querySelector('.js-profile__menu__data-btn');
     if (dataBtn) {
         dataBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            renderDataPage(headerElement, pageElement);
+            renderDataPage(userInfo.username, userInfo.name, userInfo.surname, userInfo.avatar);
         });
     }
 
@@ -38,7 +49,7 @@ export function renderProfilePage(headerElement, pageElement) {
     if (securityBtn) {
         securityBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            renderSecurityPage(headerElement, pageElement);
+            renderSecurityPage(userInfo.email);
         });
     }
 }

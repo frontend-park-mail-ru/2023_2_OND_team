@@ -1,18 +1,16 @@
 import { API } from "../../../utils/api.js";
 
-export function renderDataPage(headerElement, pageElement) {
-    async function loadProfileData() {
-        try {
-          const { username, name, surname, email, avatar } = await API.getUserInfo();
-          const context = { username, name, surname, email, avatar };
-          const profilePage = document.querySelector('.js-profile__page');
-          const profileData = Handlebars.templates['ProfileData.hbs'];
-          profilePage.innerHTML = profileData(context);
-        } catch (error) {
-          console.error('Ошибка при получении данных о пользователе:', error);
-        }
-    }
-    loadProfileData();
+export function renderDataPage(username, name, surname, avatar) {
+    const profilePage = document.querySelector('.js-profile__page');
+
+    const profileData = Handlebars.templates['ProfileData.hbs'];
+    const context = { 
+        username, 
+        name, 
+        surname, 
+        avatar, 
+    };
+    profilePage.innerHTML = profileData(context);
 
     const usernameInput = document.querySelector('#username');
     const nameInput = document.querySelector('#name');
