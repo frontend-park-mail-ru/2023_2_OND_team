@@ -41,24 +41,22 @@ export function renderDataPage(userInfo) {
     const saveBtn = document.querySelector('.js-profile-data__save-btn');
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
-            console.log(usernameInput.value, nameInput.value, surnameInput.value);
             userInfo.username = usernameInput.value;
             userInfo.name = nameInput.value;
             userInfo.surname = surnameInput.value;
 
+            usernameInput.disabled = true;
+            nameInput.disabled = true;
+            surnameInput.disabled = true;
+
             API.putUserInfo(userInfo)
                 .then((status) => {
                     if (status) {
-                        console.log('data has been saved');
+                        renderDataPage(userInfo);
                     } else {
                         console.log('error saving data');
                     }
                 })
-            
-
-            usernameInput.disabled = true;
-            nameInput.disabled = true;
-            surnameInput.disabled = true;
         });
     }
 }

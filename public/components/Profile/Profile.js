@@ -9,8 +9,6 @@ export function renderProfilePage(headerElement, pageElement) {
     const context = {};
     pageElement.innerHTML = profile(context);
 
-    let userInfo;
-
     const logo = document.querySelector('.js-header__logo');
     if (logo) {
         logo.addEventListener('click', (e) => {
@@ -25,7 +23,7 @@ export function renderProfilePage(headerElement, pageElement) {
             e.preventDefault();
             API.getUserInfo() 
                 .then((data) => {
-                    renderUserPage(data.username, data.avatar);
+                    renderUserPage(data);
                 })
                 .catch((error) => {
                     console.error('Ошибка при получении данных о пользователе:', error);
@@ -39,7 +37,7 @@ export function renderProfilePage(headerElement, pageElement) {
             e.preventDefault();
             API.getUserInfo() 
                 .then((data) => {
-                    renderDataPage(userInfo);
+                    renderDataPage(data);
                 })
                 .catch((error) => {
                     console.error('Ошибка при получении данных о пользователе:', error);
@@ -53,7 +51,7 @@ export function renderProfilePage(headerElement, pageElement) {
             e.preventDefault();
             API.getUserInfo() 
                 .then((data) => {
-                    renderSecurityPage(data.email);
+                    renderSecurityPage(data);
                 })
                 .catch((error) => {
                     console.error('Ошибка при получении данных о пользователе:', error);
@@ -63,7 +61,7 @@ export function renderProfilePage(headerElement, pageElement) {
 
     API.getUserInfo() 
         .then((data) => {
-            renderUserPage(data.username, data.avatar);
+            renderUserPage(data);
         })
         .catch((error) => {
             console.error('Ошибка при получении данных о пользователе:', error);
