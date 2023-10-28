@@ -2,7 +2,9 @@ export class API {
   static #config = [
     {name: 'loginUser', url: '//pinspire.online:8080/api/v1/auth/login'},
     {name: 'logoutUser', url: '//pinspire.online:8080/api/v1/auth/logout'},
-    {name: 'registerUser', url: '//pinspire.online:8080/api/v1/auth/signup'},
+    {name: 'profileAvatar', url: '//pinspire.online:8080/api/v1/profile/avatar'},
+    {name: 'profileInfo', url: '//pinspire.online:8080/api/v1/profile/info'},
+    {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
   ];
 
   static async loginUser(username, password) {
@@ -150,6 +152,30 @@ export class API {
       }
     } catch (error) {
       console.error('Ошибка при получении пинов:', error);
+    }
+  }
+
+  static async getUserInfo() {
+    try {
+      const profileInfo = this.#config.find((item) => item.name === 'profileInfo');
+      if (!profileInfo) {
+        throw new Error('Не найдена конфигурация для profileInfo');
+      }
+
+      const response = await fetch(configItem.url, {
+        credentials: 'include',
+      });
+
+      const res = await response.json();
+
+      if (res.status === 'ok') {
+        return res.body;
+      } else {
+        console.log(res);
+      }
+
+    } catch (error) {
+      console.error('Ошибка при получении данных об авторизации:', error);
     }
   }
 }

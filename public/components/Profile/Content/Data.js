@@ -1,17 +1,18 @@
-
+import { API } from "../../../utils/api";
 
 export function renderDataPage(headerElement, pageElement) {
-    const profilePage = document.querySelector('.js-profile__page');
-    
-    const profileData = Handlebars.templates['ProfileData.hbs'];
-    const context = {
-        username: 'Pupkin',
-        avatar: 'https://pinspire.online:8081/upload/pins/d7dc22616d514788b514fc2edb60920b.png',
-        name: 'Василий',
-        surname: 'Пупкин',
-    };
-
-    profilePage.innerHTML = profileData(context);
+    async function loadProfileData() {
+        try {
+          const { username, name, surname, email, avatar } = await API.getUserInfo();
+          const context = { username, name, surname, email, avatar };
+          const profilePage = document.querySelector('.js-profile__page');
+          const profileData = Handlebars.templates['ProfileData.hbs'];
+          profilePage.innerHTML = profileData(context);
+        } catch (error) {
+          console.error('Ошибка при получении данных о пользователе:', error);
+        }
+    }
+    loadProfileData();
 
     const usernameInput = document.querySelector('#username');
     const nameInput = document.querySelector('#name');
