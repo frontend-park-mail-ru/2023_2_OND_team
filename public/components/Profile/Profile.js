@@ -39,7 +39,7 @@ export function renderProfilePage(headerElement, pageElement) {
             e.preventDefault();
             API.getUserInfo() 
                 .then((data) => {
-                    renderDataPage(data.username, data.avatar, data.name, data.surname);
+                    renderDataPage(userInfo);
                 })
                 .catch((error) => {
                     console.error('Ошибка при получении данных о пользователе:', error);

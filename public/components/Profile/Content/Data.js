@@ -1,14 +1,14 @@
 import { API } from "../../../utils/api.js";
 
-export function renderDataPage(username, name, surname, avatar) {
+export function renderDataPage(userInfo) {
     const profilePage = document.querySelector('.js-profile__page');
 
     const profileData = Handlebars.templates['ProfileData.hbs'];
     const context = { 
-        username,
-        name, 
-        surname, 
-        avatar, 
+        username: userInfo.username, 
+        name: userInfo.name, 
+        surname: userInfo.surname, 
+        avatar: userInfo.avatar, 
     };
     profilePage.innerHTML = profileData(context);
 
@@ -28,9 +28,9 @@ export function renderDataPage(username, name, surname, avatar) {
     const canselBtn = document.querySelector('.js-profile-data__cansel-btn');
     if (canselBtn) {
         canselBtn.addEventListener('click', () => {
-            usernameInput.value = username;
-            nameInput.value = name;
-            surnameInput.value = surname;
+            usernameInput.value = context.username;
+            nameInput.value = context.name;
+            surnameInput.value = context.surname;
 
             usernameInput.disabled = true;
             nameInput.disabled = true;
@@ -41,19 +41,24 @@ export function renderDataPage(username, name, surname, avatar) {
     const saveBtn = document.querySelector('.js-profile-data__save-btn');
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
-            API.putUserInfo(usernameInput.value, nameInput.value, surnameInput.value)
+            console.log(usernameInput.value, nameInput.value, surnameInput.value);
+            userInfo.username = usernameInput.value;
+            userInfo.name = nameInput.value;
+            userInfo.surname = surnameInput.value;
+
+            API.putUserInfo(userInfo)
                 .then((status) => {
                     if (status) {
-                        renderDataPage(username, name, surname, avatar);
+                        console.log('data has been saved');
                     } else {
                         console.log('error saving data');
                     }
                 })
             
 
-            // usernameInput.disabled = true;
-            // nameInput.disabled = true;
-            // surnameInput.disabled = true;
+            usernameInput.disabled = true;
+            nameInput.disabled = true;
+            surnameInput.disabled = true;
         });
     }
 }
