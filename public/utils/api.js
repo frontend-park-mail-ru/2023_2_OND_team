@@ -2,6 +2,7 @@ export class API {
   static #config = [
     {name: 'loginUser', url: '//pinspire.online:8080/api/v1/auth/login'},
     {name: 'logoutUser', url: '//pinspire.online:8080/api/v1/auth/logout'},
+    {name: 'registerUser', url: '//pinspire.online:8080/api/v1/auth/signup'},
     {name: 'profileAvatar', url: '//pinspire.online:8080/api/v1/profile/avatar'},
     {name: 'profileInfo', url: '//pinspire.online:8080/api/v1/profile/info'},
     {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
