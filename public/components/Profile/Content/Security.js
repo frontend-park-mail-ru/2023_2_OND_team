@@ -1,11 +1,11 @@
 
 
-export function renderSecurityPage(mail) {
+export function renderSecurityPage(email) {
     const profilePage = document.querySelector('.js-profile__page');
 
     const profileSecurity = Handlebars.templates['ProfileSecurity.hbs'];
     const context = {
-        mail
+        mail: email
     };
 
     profilePage.innerHTML = profileSecurity(context);
