@@ -35,7 +35,7 @@ export function renderProfilePage(headerElement, pageElement) {
             if (dataBtn) {
                 dataBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    renderDataPage(userInfo.username, userInfo.name, userInfo.surname, userInfo.avatar);
+                    renderDataPage(userInfo);
                 });
             }
 
@@ -43,7 +43,7 @@ export function renderProfilePage(headerElement, pageElement) {
             if (securityBtn) {
                 securityBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    renderSecurityPage(userInfo.email);
+                    renderSecurityPage(userInfo);
                 });
             }
         })

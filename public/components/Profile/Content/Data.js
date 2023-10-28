@@ -1,14 +1,14 @@
 import { API } from "../../../utils/api.js";
 
-export function renderDataPage(username, name, surname, avatar) {
+export function renderDataPage(userInfo) {
     const profilePage = document.querySelector('.js-profile__page');
 
     const profileData = Handlebars.templates['ProfileData.hbs'];
     const context = { 
-        username, 
-        name, 
-        surname, 
-        avatar, 
+        username: userInfo.username, 
+        name: userInfo.name, 
+        surname: userInfo.surname, 
+        avatar: userInfo.avatar, 
     };
     profilePage.innerHTML = profileData(context);
 
@@ -37,15 +37,18 @@ export function renderDataPage(username, name, surname, avatar) {
             surnameInput.disabled = true;
         });
     }
+
     const saveBtn = document.querySelector('.js-profile-data__save-btn');
     if (saveBtn) {
         saveBtn.addEventListener('click', () => {
             console.log(usernameInput.value, nameInput.value, surnameInput.value);
-            context.username = usernameInput.value;
-            context.name = nameInput.value;
-            context.surname = surnameInput.value;
+            userInfo.username = usernameInput.value;
+            userInfo.name = nameInput.value;
+            userInfo.surname = surnameInput.value;
 
-
+            if (!API.putUserInfo(userInfo)) {
+                console.log('error saving data');
+            }
 
             usernameInput.disabled = true;
             nameInput.disabled = true;

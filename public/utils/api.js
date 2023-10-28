@@ -178,4 +178,33 @@ export class API {
       console.error('Ошибка при получении данных об авторизации:', error);
     }
   }
+
+  static async putUserInfo({username, name, surname, email, password}) {
+    try {
+      const configItem = this.#config.find((item) => item.name === 'profileEdit');
+      if (!configItem) {
+        throw new Error('Не найдена конфигурация для profileEdit');
+      }
+
+      const response = await fetch(configItem.url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username, name, surname, email, password}),
+        credentials: 'include',
+      });
+
+      const res = await response.json();
+
+      if (res.status === 'ok') {
+        return true;
+      } else {
+        console.log(res);
+      }
+
+    } catch (error) {
+      console.error('Ошибка при обновлении данных пользователя:', error);
+    }
+  }
 }
