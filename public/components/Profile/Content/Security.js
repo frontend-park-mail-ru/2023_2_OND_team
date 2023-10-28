@@ -1,4 +1,4 @@
-
+import { API } from "../../../utils/api";
 
 export function renderSecurityPage(userInfo) {
     const profilePage = document.querySelector('.js-profile__page');
@@ -11,7 +11,7 @@ export function renderSecurityPage(userInfo) {
 
     const emailInput = document.querySelector('#email');
     const passwordInput = document.querySelector('#password');
-    const passwordRepeatInput = document.querySelector('#password-repea');
+    const passwordRepeatInput = document.querySelector('#password-repeat');
 
     const editBtn = document.querySelector('.js-profile-security__edit-btn');
     if (editBtn) {
@@ -38,7 +38,7 @@ export function renderSecurityPage(userInfo) {
         saveBtn.addEventListener('click', () => {
             userInfo.email = emailInput.value;
             //userInfo.password = passwordInput.value;
-
+            
             emailInput.disabled = true;
             passwordInput.disabled = true;
             passwordRepeatInput.disabled = true;
