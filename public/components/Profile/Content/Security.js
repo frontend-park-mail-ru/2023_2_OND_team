@@ -7,6 +7,7 @@ export function renderSecurityPage(userInfo) {
     const context = {
         email: userInfo.email
     };
+    profilePage.innerHTML = profileSecurity(context);
 
     const emailInput = document.querySelector('#email');
     const passwordInput = document.querySelector('#password');
@@ -25,8 +26,6 @@ export function renderSecurityPage(userInfo) {
     if (canselBtn) {
         canselBtn.addEventListener('click', () => {
             emailInput.value = context.email;
-            passwordInput.value = context.password;
-            passwordRepeatInput.value = context.passwordRepeat;
 
             emailInput.disabled = true;
             passwordInput.disabled = true;
@@ -56,5 +55,4 @@ export function renderSecurityPage(userInfo) {
         });
     }
 
-    profilePage.innerHTML = profileSecurity(context);
 }
