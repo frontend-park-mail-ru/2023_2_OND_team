@@ -157,8 +157,8 @@ export class API {
 
   static async getUserInfo() {
     try {
-      const profileInfo = this.#config.find((item) => item.name === 'profileInfo');
-      if (!profileInfo) {
+      const configItem = this.#config.find((item) => item.name === 'profileInfo');
+      if (!configItem) {
         throw new Error('Не найдена конфигурация для profileInfo');
       }
 

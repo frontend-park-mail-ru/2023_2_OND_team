@@ -1,4 +1,4 @@
-import { API } from "../../../utils/api";
+import { API } from "../../../utils/api.js";
 
 export function renderDataPage(headerElement, pageElement) {
     async function loadProfileData() {
