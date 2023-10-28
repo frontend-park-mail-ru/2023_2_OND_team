@@ -5,13 +5,13 @@ import { renderFeedPage } from "../Feed/Feed.js";
 import { API } from "../../utils/api.js";
 
 export function renderProfilePage(headerElement, pageElement) {
-    
+    const profile = Handlebars.templates['Profile.hbs'];
+    const context = {};
+    pageElement.innerHTML = profile(context);
+
+
     API.getUserInfo() 
         .then((data) => {
-            const profile = Handlebars.templates['Profile.hbs'];
-            const context = {};
-            pageElement.innerHTML = profile(context);
-
             const userInfo = data;
             renderUserPage(userInfo.username, userInfo.avatar);
 

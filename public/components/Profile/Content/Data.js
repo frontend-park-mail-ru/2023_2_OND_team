@@ -46,9 +46,15 @@ export function renderDataPage(userInfo) {
             userInfo.name = nameInput.value;
             userInfo.surname = surnameInput.value;
 
-            if (!API.putUserInfo(userInfo)) {
-                console.log('error saving data');
-            }
+            API.putUserInfo(userInfo)
+                .then((status) => {
+                    if (status) {
+                        console.log('data has been saved');
+                    } else {
+                        console.log('error saving data');
+                    }
+                })
+            
 
             usernameInput.disabled = true;
             nameInput.disabled = true;
