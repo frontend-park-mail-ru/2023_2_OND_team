@@ -59,5 +59,5 @@ export function renderProfilePage(headerElement, pageElement) {
         });
     }
 
-    renderUserPage(data);
+    renderUserPage();
 }
