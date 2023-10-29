@@ -18,35 +18,22 @@ export function renderDataPage() {
             const usernameInput = document.querySelector('#username');
             const nameInput = document.querySelector('#name');
             const surnameInput = document.querySelector('#surname');
-            const avatarInput = document.querySelector('#avatar');
+
+            const avatarInput = document.querySelector('.js-profile__img__form');
+            avatarInput.addEventListener('change', (e) => {
+                e.preventDefault();
+                const formData = new FormData(avatarInput);
+                API.putUserAvatar(formData);
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const imgAvatar = this.rootNode.querySelector('.avatar-img');
+                    imgAvatar.src = reader.result;
+                };
+                const blobUrl = formData.get('object');
+                reader.readAsDataURL(blobUrl);
+            });
             
-            avatarInput.addEventListener('change', () => {
-                let avatar = avatarInput.files[0];
-
-                    if (avatar) {
-                        let reader = new FileReader();
-
-                        reader.onload = (e) => {
-                            API.putUserAvatar(e.target.result)
-                                .then((status) => {
-                                    if (status) {
-                                        renderDataPage();
-                                    } else {
-                                        console.log('Ошибка сохранения данных');
-                                    }
-                                })
-                                .catch((error) => {
-                                    console.log('Ошибка при отправке изображения на сервер:', error);
-                                });
-                        }
-
-                        reader.readAsDataURL(avatar);
-                    }
-                
-               
-            })
-
-
             const editBtn = document.querySelector('.js-profile-data__edit-btn');
             if (editBtn) {
                 editBtn.addEventListener('click', () => {
