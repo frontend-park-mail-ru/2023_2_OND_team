@@ -23,12 +23,13 @@ export function renderDataPage() {
             avatarInput.addEventListener('change', (e) => {
                 e.preventDefault();
                 const formData = new FormData(avatarInput);
-                API.putUserAvatar(formData);
+                
 
                 const reader = new FileReader();
                 reader.onload = () => {
                     const imgAvatar = document.querySelector('.avatar-img');
                     imgAvatar.src = reader.result;
+                        API.putUserAvatar(reader.result);
                 };
                 const blobUrl = formData.get('object');
                 reader.readAsDataURL(blobUrl);
