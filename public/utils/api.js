@@ -23,13 +23,13 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            // 'x-set-csrf-token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, password}),
           credentials: 'include',
         });
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -62,7 +62,7 @@ export class API {
           credentials: 'include',
         });
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
 
         const res = await response.json();
         let isAuthorized = false;
@@ -88,13 +88,13 @@ export class API {
 
         const response = await fetch(configItem.url, {
           method: 'DELETE',
-          // headers: {
-          //   'x-set-csrf-token': this.state.getCsrfToken(),
-          // },
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
           credentials: 'include',
         });
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -125,13 +125,13 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            // 'x-set-csrf-token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, email, password}),
           credentials: 'include',
         });
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -157,7 +157,8 @@ export class API {
         const configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&lastID=${id}`;
         const response = await fetch(configItem);
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         let images = [];
@@ -187,7 +188,7 @@ export class API {
           credentials: 'include',
         });
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
 
         const res = await response.json();
 
@@ -213,13 +214,13 @@ export class API {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            // 'x-set-csrf-token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, name, surname, email, password}),
           credentials: 'include',
         });
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
 
         const res = await response.json();
 
@@ -241,18 +242,17 @@ export class API {
           throw new Error('Не найдена конфигурация для profileAvatar');
         }
 
-          console.log(avatar)
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {
             'Content-Type': 'image/png',
-            // 'x-set-csrf-token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: avatar,
           credentials: 'include',
         });
 
-        // this.state.setCsrfToken(response.headers.get('x-set-csrf-token'));
+        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
 
         const res = await response.json();
 
