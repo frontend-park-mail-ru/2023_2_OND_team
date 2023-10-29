@@ -15,29 +15,48 @@ export function renderDataPage(userInfo) {
     const usernameInput = document.querySelector('#username');
     const nameInput = document.querySelector('#name');
     const surnameInput = document.querySelector('#surname');
-    const avatarInput = document.querySelector('#avatar');
+    // const avatarInput = document.querySelector('#avatar');
 
-    const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
-    if (uploadAvatarBtn) {
-        uploadAvatarBtn.addEventListener('click', () => {
-            let avatar = avatarInput.files[0];
+    // const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
+    // if (uploadAvatarBtn) {
+    //     uploadAvatarBtn.addEventListener('click', () => {
+    //         let avatar = avatarInput.files[0];
 
-            if (avatar) {
-                userInfo.avatar = avatar;
-                renderDataPage(userInfo);
+    //         if (avatar) {
+    //             userInfo.avatar = avatar;
+    //             renderDataPage(userInfo);
+    //         }
+
+
+    //         API.putUserAvatar(userInfo.avatar)
+    //             .then((status) => {
+    //                 if (status) {
+    //                     renderDataPage(userInfo);
+    //                 } else {
+    //                     console.log('error saving data');
+    //                 }
+    //             })
+    //     })
+    // }
+
+    function uploadImage() {
+        let input = document.getElementById('myFileInput');
+        let file = input.files[0];
+        
+        if (file) {
+            let reader = new FileReader();
+            
+            reader.onload = function(e) {
+                let image = new Image();
+                image.src = e.target.result;
+                userInfo.avatar = image;
+                // document.body.appendChild(image);
             }
-
-
-            API.putUserAvatar(userInfo.avatar)
-                .then((status) => {
-                    if (status) {
-                        renderDataPage(userInfo);
-                    } else {
-                        console.log('error saving data');
-                    }
-                })
-        })
-    }
+        
+            reader.readAsDataURL(file);
+            renderDataPage(userInfo);
+        }
+      }
 
     const editBtn = document.querySelector('.js-profile-data__edit-btn');
     if (editBtn) {

@@ -12,9 +12,9 @@
         <input disabled type="text" id="username" value={{username}}>
     </div>
     <div class="profile-data__avatar">
-        <input disabled type="image" id="avatar" placeholder="Загрузить аватарку">
-        <button class="profile-data__upload-avatar-btn js-profile-data__upload-avatar-btn">Загрузить</button>
-        <img src={{avatar}} alt="avatar">
+        <input type="file" id="myFileInput">
+        <button onclick="uploadImage()">Загрузить</button>
+
     </div>
     <div class="profile-data__name">
         <label for="name" class="labeled-input">Имя</label>
