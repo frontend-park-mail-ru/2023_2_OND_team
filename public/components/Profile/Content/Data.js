@@ -22,7 +22,7 @@ export function renderDataPage(userInfo) {
         uploadAvatarBtn.addEventListener('click', () => {
             let avatar = avatarInput.files[0];
     
-            if (filavatare) {
+            if (avatare) {
                 let reader = new FileReader();
     
                 reader.onload = (e) => {
