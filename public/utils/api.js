@@ -1,4 +1,4 @@
-import State from "./state";
+import State from "./state.js";
 
 export class API {
     static state = new State();
