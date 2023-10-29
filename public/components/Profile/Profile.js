@@ -59,12 +59,5 @@ export function renderProfilePage(headerElement, pageElement) {
         });
     }
 
-    API.getUserInfo() 
-        .then((data) => {
-            renderUserPage(data);
-        })
-        .catch((error) => {
-            console.error('Ошибка при получении данных о пользователе:', error);
-        });
-
+    renderUserPage(data);
 }

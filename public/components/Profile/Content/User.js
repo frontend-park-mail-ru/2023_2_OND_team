@@ -1,13 +1,20 @@
 
 
-export function renderUserPage(userInfo) {
-    const profilePage = document.querySelector('.js-profile__page');
+export function renderUserPage() {
+    API.getUserInfo() 
+        .then((data) => {
+            const profilePage = document.querySelector('.js-profile__page');
     
-    const profileUser = Handlebars.templates['ProfileUser.hbs'];
-    const context = {
-        username: userInfo.username,
-        avatar: userInfo.avatar,
-    };
+            const profileUser = Handlebars.templates['ProfileUser.hbs'];
+            const context = {
+                username: data.username,
+                avatar: data.avatar,
+            };
 
-    profilePage.innerHTML = profileUser(context);
+            profilePage.innerHTML = profileUser(context);
+            
+        })
+        .catch((error) => {
+            console.error('Ошибка при получении данных о пользователе:', error);
+        });
 }
