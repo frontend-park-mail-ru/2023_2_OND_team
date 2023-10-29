@@ -20,32 +20,48 @@ export function renderDataPage() {
             const surnameInput = document.querySelector('#surname');
             const avatarInput = document.querySelector('#avatar');
 
-            const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
-            if (uploadAvatarBtn) {
-                uploadAvatarBtn.addEventListener('click', () => {
-                    let avatar = avatarInput.files[0];
-            
-                    if (avatar) {
-                        let reader = new FileReader();
-            
-                        reader.onload = (e) => {
-                            API.putUserAvatar(e.target.result)
-                                .then((status) => {
-                                    if (status) {
-                                        renderDataPage();
-                                    } else {
-                                        console.log('Ошибка сохранения данных');
-                                    }
-                                })
-                                .catch((error) => {
-                                    console.log('Ошибка при отправке изображения на сервер:', error);
-                                });
+            let uploadAvatar;
+            avatarInput.addEventListener('change', () => {
+                console.log(avatarInput.value);
+                API.putUserAvatar(avatarInput.value)
+                    .then((status) => {
+                        if (status) {
+                            renderDataPage();
+                        } else {
+                            console.log('Ошибка сохранения данных');
                         }
+                    })
+                    .catch((error) => {
+                        console.log('Ошибка при отправке изображения на сервер:', error);
+                    });
+            })
+
+            // const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
+            // if (uploadAvatarBtn) {
+            //     uploadAvatarBtn.addEventListener('click', () => {
+            //         let avatar = avatarInput.files[0];
             
-                        reader.readAsDataURL(avatar);
-                    }
-                });
-            }
+            //         if (avatar) {
+            //             let reader = new FileReader();
+            
+            //             reader.onload = (e) => {
+            //                 API.putUserAvatar(e.target.result)
+            //                     .then((status) => {
+            //                         if (status) {
+            //                             renderDataPage();
+            //                         } else {
+            //                             console.log('Ошибка сохранения данных');
+            //                         }
+            //                     })
+            //                     .catch((error) => {
+            //                         console.log('Ошибка при отправке изображения на сервер:', error);
+            //                     });
+            //             }
+            
+            //             reader.readAsDataURL(avatar);
+            //         }
+            //     });
+            // }
 
             const editBtn = document.querySelector('.js-profile-data__edit-btn');
             if (editBtn) {

@@ -12,11 +12,9 @@
         <input disabled type="text" id="username" value={{username}}>
     </div>
     <div class="profile-data__avatar">
+        <input type="file" name="avatar" id="avatar" accept="image/png"><br>
+        <div class="js-profile-data__avatar-img"></div>
         <img src="{{avatar}}" alt="avatar">
-        <form method="PUT" enctype="multipart/form-data">
-            <input type="file" name="avatar" id="avatar" accept="image/*"><br>
-            <input type="submit" value="Отправить">
-        </form>
     </div>
     <div class="profile-data__name">
         <label for="name" class="labeled-input">Имя</label>
