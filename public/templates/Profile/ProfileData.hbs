@@ -12,9 +12,11 @@
         <input disabled type="text" id="username" value={{username}}>
     </div>
     <div class="profile-data__avatar">
-        <img src={{avatar}} alt="avatar">
-        <input type="file" id="avatar">
-        <button class="profile-data__upload-avatar-btn js-profile-data__upload-avatar-btn">Загрузить</button>
+        <img src="{{avatar}}" alt="avatar">
+        <form action="//pinspire.online:8080/api/v1/profile/avatar" method="put" enctype="multipart/form-data">
+            <input type="file" name="avatar" id="avatar" accept="image/*"><br>
+            <input type="submit" name="submit" value="Submit">
+        </form>
     </div>
     <div class="profile-data__name">
         <label for="name" class="labeled-input">Имя</label>
