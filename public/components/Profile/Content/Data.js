@@ -28,7 +28,7 @@ export function renderDataPage(userInfo) {
                 reader.onload = (e) => {
                     let image = new Image();
                     image.src = e.target.result;
-                    userInfo.avatar = image;
+                    userInfo.avatar = image.src;
     
                     API.putUserAvatar(userInfo.avatar)
                         .then((status) => {
