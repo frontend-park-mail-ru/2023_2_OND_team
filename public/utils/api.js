@@ -216,7 +216,8 @@ export class API {
         throw new Error('Не найдена конфигурация для profileAvatar');
       }
 
-      console.log('api', avatar)
+      const formdata = new FormData();
+      formdata.append('avatar', avatar)
 
       const response = await fetch(configItem.url, {
         method: 'PUT',

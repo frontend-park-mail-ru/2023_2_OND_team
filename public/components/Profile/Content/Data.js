@@ -20,10 +20,11 @@ export function renderDataPage() {
             const surnameInput = document.querySelector('#surname');
             const avatarInput = document.querySelector('#avatar');
 
-            let uploadAvatar;
+            
             avatarInput.addEventListener('change', () => {
-                console.log(avatarInput.value);
-                API.putUserAvatar(avatarInput.value)
+                const uploadAvatar = avatarInput.value;
+                if (uploadAvatar) {
+                    API.putUserAvatar(uploadAvatar)
                     .then((status) => {
                         if (status) {
                             renderDataPage();
@@ -34,6 +35,8 @@ export function renderDataPage() {
                     .catch((error) => {
                         console.log('Ошибка при отправке изображения на сервер:', error);
                     });
+                }
+               
             })
 
             // const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
