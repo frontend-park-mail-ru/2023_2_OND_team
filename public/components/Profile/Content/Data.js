@@ -25,7 +25,7 @@ export function renderDataPage(userInfo) {
             if (filavatare) {
                 let reader = new FileReader();
     
-                reader.onload = function(e) {
+                reader.onload = (e) => {
                     let image = new Image();
                     image.src = e.target.result;
                     userInfo.avatar = image;
