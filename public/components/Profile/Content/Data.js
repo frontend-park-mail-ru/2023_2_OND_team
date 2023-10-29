@@ -19,52 +19,33 @@ export function renderDataPage() {
             const nameInput = document.querySelector('#name');
             const surnameInput = document.querySelector('#surname');
             const avatarInput = document.querySelector('#avatar');
-
             
             avatarInput.addEventListener('change', () => {
-                const uploadAvatar = avatarInput.value;
-                if (uploadAvatar) {
-                    API.putUserAvatar(uploadAvatar)
-                    .then((status) => {
-                        if (status) {
-                            renderDataPage();
-                        } else {
-                            console.log('Ошибка сохранения данных');
+                let avatar = avatarInput.files[0];
+
+                    if (avatar) {
+                        let reader = new FileReader();
+
+                        reader.onload = (e) => {
+                            API.putUserAvatar(e.target.result)
+                                .then((status) => {
+                                    if (status) {
+                                        renderDataPage();
+                                    } else {
+                                        console.log('Ошибка сохранения данных');
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.log('Ошибка при отправке изображения на сервер:', error);
+                                });
                         }
-                    })
-                    .catch((error) => {
-                        console.log('Ошибка при отправке изображения на сервер:', error);
-                    });
-                }
+
+                        reader.readAsDataURL(avatar);
+                    }
+                
                
             })
 
-            // const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
-            // if (uploadAvatarBtn) {
-            //     uploadAvatarBtn.addEventListener('click', () => {
-            //         let avatar = avatarInput.files[0];
-            
-            //         if (avatar) {
-            //             let reader = new FileReader();
-            
-            //             reader.onload = (e) => {
-            //                 API.putUserAvatar(e.target.result)
-            //                     .then((status) => {
-            //                         if (status) {
-            //                             renderDataPage();
-            //                         } else {
-            //                             console.log('Ошибка сохранения данных');
-            //                         }
-            //                     })
-            //                     .catch((error) => {
-            //                         console.log('Ошибка при отправке изображения на сервер:', error);
-            //                     });
-            //             }
-            
-            //             reader.readAsDataURL(avatar);
-            //         }
-            //     });
-            // }
 
             const editBtn = document.querySelector('.js-profile-data__edit-btn');
             if (editBtn) {
