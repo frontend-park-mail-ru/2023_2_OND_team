@@ -20,39 +20,33 @@ export function renderDataPage(userInfo) {
     const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
     if (uploadAvatarBtn) {
         uploadAvatarBtn.addEventListener('click', () => {
-            let file = avatarInput.files[0];
-        
-            if (file) {
+            let avatar = avatarInput.files[0];
+    
+            if (filavatare) {
                 let reader = new FileReader();
-                
+    
                 reader.onload = function(e) {
                     let image = new Image();
                     image.src = e.target.result;
                     userInfo.avatar = image;
-                    // document.body.appendChild(image);
+    
+                    API.putUserAvatar(userInfo.avatar)
+                        .then((status) => {
+                            if (status) {
+                                renderDataPage(userInfo);
+                            } else {
+                                console.log('Ошибка сохранения данных');
+                            }
+                        })
+                        .catch((error) => {
+                            console.log('Ошибка при отправке изображения на сервер:', error);
+                        });
                 }
-            
-                reader.readAsDataURL(file);
-                renderDataPage(userInfo);
+    
+                reader.readAsDataURL(avatar);
             }
-
-            // if (avatar) {
-            //     userInfo.avatar = avatar;
-            //     renderDataPage(userInfo);
-            // }
-
-
-            // API.putUserAvatar(userInfo.avatar)
-            //     .then((status) => {
-            //         if (status) {
-            //             renderDataPage(userInfo);
-            //         } else {
-            //             console.log('error saving data');
-            //         }
-            //     })
-        })
+        });
     }
-
 
     const editBtn = document.querySelector('.js-profile-data__edit-btn');
     if (editBtn) {

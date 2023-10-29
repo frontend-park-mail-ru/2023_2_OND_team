@@ -208,4 +208,33 @@ export class API {
       console.error('Ошибка при обновлении данных пользователя:', error);
     }
   }
+
+  static async putUserAvatar(avatar) {
+    try {
+      const configItem = this.#config.find((item) => item.name === 'profileAvatar');
+      if (!configItem) {
+        throw new Error('Не найдена конфигурация для profileAvatar');
+      }
+
+      const response = await fetch(configItem.url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        body: avatar,
+        credentials: 'include',
+      });
+
+      const res = await response.json();
+
+      if (res.status === 'ok') {
+        return true;
+      } else {
+        console.log(res);
+      }
+
+    } catch (error) {
+      console.error('Ошибка при обновлении данных пользователя:', error);
+    }
+  }
 }
