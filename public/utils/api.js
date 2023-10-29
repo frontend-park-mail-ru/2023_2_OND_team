@@ -23,6 +23,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'x-set-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, password}),
           credentials: 'include',
@@ -87,6 +88,9 @@ export class API {
 
         const response = await fetch(configItem.url, {
           method: 'DELETE',
+          headers: {
+            'x-set-csrf-token': this.state.getCsrfToken(),
+          },
           credentials: 'include',
         });
 
@@ -121,6 +125,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'x-set-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, email, password}),
           credentials: 'include',
@@ -208,6 +213,7 @@ export class API {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
+            'x-set-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, name, surname, email, password}),
           credentials: 'include',
@@ -239,6 +245,7 @@ export class API {
           method: 'PUT',
           headers: {
             'Content-Type': 'image/png',
+            'x-set-csrf-token': this.state.getCsrfToken(),
           },
           body: avatar,
           credentials: 'include',
