@@ -219,7 +219,7 @@ export class API {
       const response = await fetch(configItem.url, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'image/{png|jpg}',
         },
         body: avatar,
         credentials: 'include',
