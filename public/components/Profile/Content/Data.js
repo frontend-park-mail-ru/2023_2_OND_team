@@ -15,6 +15,29 @@ export function renderDataPage(userInfo) {
     const usernameInput = document.querySelector('#username');
     const nameInput = document.querySelector('#name');
     const surnameInput = document.querySelector('#surname');
+    const avatarInput = document.querySelector('#avatar');
+
+    const uploadAvatarBtn = document.querySelector('.js-profile-data__upload-avatar-btn');
+    if (uploadAvatarBtn) {
+        uploadAvatarBtn.addEventListener('click', () => {
+            let avatar = avatarInput.files[0];
+
+            if (avatar) {
+                userInfo.avatar = avatar;
+                renderDataPage(userInfo);
+            }
+
+
+            API.putUserAvatar(userInfo.avatar)
+                .then((status) => {
+                    if (status) {
+                        renderDataPage(userInfo);
+                    } else {
+                        console.log('error saving data');
+                    }
+                })
+        })
+    }
 
     const editBtn = document.querySelector('.js-profile-data__edit-btn');
     if (editBtn) {
