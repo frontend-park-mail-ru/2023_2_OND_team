@@ -1,4 +1,4 @@
-
+import { API } from "../../../utils/api.js";
 
 export function renderUserPage() {
     API.getUserInfo() 
