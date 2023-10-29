@@ -27,7 +27,7 @@ export function renderDataPage() {
 
                 const reader = new FileReader();
                 reader.onload = () => {
-                    const imgAvatar = this.rootNode.querySelector('.avatar-img');
+                    const imgAvatar = document.querySelector('.avatar-img');
                     imgAvatar.src = reader.result;
                 };
                 const blobUrl = formData.get('object');
