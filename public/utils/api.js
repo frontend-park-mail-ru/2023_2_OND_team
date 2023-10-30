@@ -29,7 +29,11 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -62,7 +66,11 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         let isAuthorized = false;
@@ -94,7 +102,11 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -131,7 +143,11 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -159,7 +175,10 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
         console.log(this.state.getCsrfToken())
 
         const res = await response.json();
@@ -190,7 +209,11 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+       const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
 
@@ -222,7 +245,11 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
 
@@ -254,7 +281,11 @@ export class API {
           credentials: 'include',
         });
 
-        this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
 
