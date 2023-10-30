@@ -155,7 +155,9 @@ export class API {
     static async generatePins(num=20, id=0) {
       try {
         const configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&lastID=${id}`;
-        const response = await fetch(configItem);
+        const response = await fetch(configItem, {
+          credentials: 'include',
+        });
 
         this.state.setCsrfToken(response.headers.get('X-Set-CSRF-Token'));
         console.log(this.state.getCsrfToken())
