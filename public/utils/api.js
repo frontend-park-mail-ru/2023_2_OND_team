@@ -270,7 +270,7 @@ export class API {
         if (!configItem) {
           throw new Error('Не найдена конфигурация для profileAvatar');
         }
-
+    console.log(avatar);
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {

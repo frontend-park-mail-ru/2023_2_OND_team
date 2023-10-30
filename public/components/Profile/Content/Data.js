@@ -19,21 +19,95 @@ export function renderDataPage() {
             const nameInput = document.querySelector('#name');
             const surnameInput = document.querySelector('#surname');
 
-            const avatarInput = document.querySelector('.js-profile__img__form');
-            avatarInput.addEventListener('change', (e) => {
-                e.preventDefault();
-                const formData = new FormData(avatarInput);
+                 const inputElement = document.getElementById('input__file');
+                inputElement.addEventListener('change', (event) => {
+                  const file = event.target.files[0];
+                
+                  const reader = new FileReader();
+                
+                  reader.onload = (e) => {
+                    const imageBytes = e.target.result;
+                
+                    const blob = new Blob([imageBytes]);
+                API.putUserAvatar(blob);
+                  //console.log(blob)
+                
+                    // const downloadLink = document.createElement('a');
+                    // downloadLink.href = blobURL;
+                    // downloadLink.download = file.name;
+                
+                    // document.body.appendChild(downloadLink);
+                
+                    // downloadLink.click();
+                
+                    // document.body.removeChild(downloadLink);
+                  };
+                
+                  reader.readAsArrayBuffer(file);
+                });
+                
+                // const inputElement = document.getElementById('input__file');
+                // inputElement.addEventListener('change', (event) => {
+                //   const file = event.target.files[0];
+                
+                //   const reader = new FileReader();
+                
+                //   reader.onload = (e) => {
+                //     const imageBytes = e.target.result;
+                
+                //     const blob = new Blob([imageBytes]);
+                
+                //     const blobURL = URL.createObjectURL(blob);
+                
+                //     const downloadLink = document.createElement('a');
+                //     downloadLink.href = blobURL;
+                //     downloadLink.download = file.name;
+                
+                //     document.body.appendChild(downloadLink);
+                
+                //     downloadLink.click();
+                
+                //     document.body.removeChild(downloadLink);
+                //   };
+                
+                //   reader.readAsArrayBuffer(file);
+                // });
+
+
+                
+                // const p = document.getElementById('input__file')
+                // p.onchange = (e) => {
+                //         console.log(e.target.files[0].);
+                // }
+
+               // const p = document.getElementById('input__file');
+               //  p.onchange = (e) => {
+               //    const file = e.target.files[0];
+               //    const reader = new FileReader();
+                
+               //    reader.onload = () => {
+               //            API.putUserAvatar(reader.result);
+               //    };
+                
+               //    reader.readAsText(file);
+               //  };
+            // const avatarInput = document.querySelector('.js-profile__img__form');
+            // avatarInput.addEventListener('change', (e) => {
+                   
+            //     e.preventDefault();
+            //     const formData = new FormData(avatarInput);
                 
 
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const imgAvatar = document.querySelector('.avatar-img');
-                    imgAvatar.src = reader.result;
-                        API.putUserAvatar(reader.result);
-                };
-                const blobUrl = formData.get('object');
-                reader.readAsDataURL(blobUrl);
-            });
+            //     const reader = new FileReader();
+            //     reader.onload = (a) => {
+            //              console.log(a);
+            //         const imgAvatar = document.querySelector('.avatar-img');
+            //         imgAvatar.src = reader.result;
+            //             API.putUserAvatar(reader.result);
+            //     };
+            //     const blobUrl = formData.get('object');
+            //     reader.readAsDataURL(blobUrl);
+            // });
             
             const editBtn = document.querySelector('.js-profile-data__edit-btn');
             if (editBtn) {
