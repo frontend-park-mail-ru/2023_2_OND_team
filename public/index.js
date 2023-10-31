@@ -7,5 +7,7 @@
  * @throws {Error} Если произошла ошибка при отображении основной страницы.
  */
 import {renderFeedPage} from './components/Feed/Feed.js';
+import { API } from './utils/api.js';
 
+API.getCsrfToken();
 renderFeedPage();

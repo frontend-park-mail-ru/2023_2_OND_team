@@ -33,7 +33,6 @@ export function renderFeedPage() {
     userDataContext: userDataContext,
   };
 
-  API.getCsrfToken();
 
   API.checkLogin()
       .then((data) => {
