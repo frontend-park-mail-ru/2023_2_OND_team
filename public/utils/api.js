@@ -10,6 +10,8 @@ export class API {
       {name: 'profileAvatar', url: '//pinspire.online:8080/api/v1/profile/avatar'},
       {name: 'profileInfo', url: '//pinspire.online:8080/api/v1/profile/info'},
       {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
+      {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
+      {name: 'csrfToken', url: '//pinspire.online:8080/api/v1/csrf'},
     ];
 
     static async loginUser(username, password) {
@@ -63,6 +65,9 @@ export class API {
         }
 
         const response = await fetch(configItem.url, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
           credentials: 'include',
         });
 
@@ -172,6 +177,9 @@ export class API {
       try {
         const configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&lastID=${id}`;
         const response = await fetch(configItem, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
           credentials: 'include',
         });
 
@@ -206,6 +214,9 @@ export class API {
         }
 
         const response = await fetch(configItem.url, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
           credentials: 'include',
         });
 
@@ -270,7 +281,7 @@ export class API {
         if (!configItem) {
           throw new Error('Не найдена конфигурация для profileAvatar');
         }
-    console.log(avatar);
+        
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {
@@ -297,6 +308,30 @@ export class API {
 
       } catch (error) {
         console.error('Ошибка при обновлении данных пользователя:', error);
+      }
+    }
+
+    static async getCsrfToken() {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'csrfToken');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для csrfToken');
+        }
+        
+        const response = await fetch(configItem.url, {
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
+
+
+      } catch (error) {
+        console.error('Ошибка при получении csrf токена', error);
       }
     }
 }
