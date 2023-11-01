@@ -1,0 +1,14 @@
+@import url(./assets/components/buttons/primary/btnPrimary.css);
+@import url(./views/Authorization/form.css);
+@import url(./views/Feed/Feed.css);
+@import url(./views/Feed/Gallery.css);
+@import url(./views/HeaderGuest/header.css);
+@import url(./views/HeaderGuest/headerLeft.css);
+@import url(./views/HeaderGuest/headerRight.css);
+@import url(./views/ProfileUser/profile.css);
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
