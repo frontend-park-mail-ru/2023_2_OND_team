@@ -1,5 +1,5 @@
-@import url("headerLeft/headerLeft.css");
-@import url("headerRight/headerRight.css");
+@import url("./headerLeft.css");
+@import url("./headerRight.css");
 
 main {
     padding-top: 70px;

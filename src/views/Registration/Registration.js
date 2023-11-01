@@ -1,6 +1,6 @@
 import {renderAuthPage} from '../Authorization/Authorization.js';
 import {renderFeedPage} from '../Feed/Feed.js';
-import {emailValid, passwordValid, nameValid} from '../../utils/valid.js';
+import {emailValid, passwordValid, nameValid} from '../../components/Validation/valid.js';
 import {API} from '../../utils/api.js';
 
 /**

@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npm run compile:templates",
     "start": "node server",
-    "compile:templates": "handlebars $(find src/views -type f -name '*.hbs') -m -f ./templates.hbs.js",
+    "compile:templates": "handlebars $(find src/views -type f -name '*.hbs') -m -f ./src/templates.hbs.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run lint"
   },

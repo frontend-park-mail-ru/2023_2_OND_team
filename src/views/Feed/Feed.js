@@ -1,8 +1,8 @@
 import { API } from '../../utils/api.js';
-import {renderAuthPage} from '../Authorization/Authorization.js';
-import {renderRegPage} from '../Registration/Registration.js';
-import {renderPins} from '../../utils/renderPins.js';
-import {renderProfilePage} from '../ProfileUser/Profile.js';
+import { renderAuthPage } from '../Authorization/Authorization.js';
+import { renderRegPage } from '../Registration/Registration.js';
+import { renderPins } from '../../components/RenderPins/renderPins.js';
+import { renderProfilePage } from '../ProfileUser/Profile.js';
 
 const PINS_MAX = 100;
 const PINS_REQUEST = 20;

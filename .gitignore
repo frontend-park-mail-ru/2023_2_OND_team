@@ -1,7 +1,8 @@
 .idea/
 node_modules/
 *.pem
-public/build/
+src/build/
 service.txt
 .DS_Store
-.templates.hbs.js
+src/templates.hbs.js
+server/ssk/
