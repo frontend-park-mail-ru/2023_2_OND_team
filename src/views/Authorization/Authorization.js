@@ -14,7 +14,7 @@ import {passwordValid, nameValid} from '../../components/Validation/valid.js'
 export function renderAuthPage(headerElement, pageElement) {
   document.body.style.overflow = 'hidden';
 
-  const authPage = Handlebars.templates['Auth.hbs'];
+  const authPage = Handlebars.templates['Authorization.hbs'];
   const context = {};
 
   pageElement.innerHTML = authPage(context);

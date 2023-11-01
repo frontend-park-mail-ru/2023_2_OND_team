@@ -14,7 +14,7 @@ import {API} from '../../utils/api.js';
 export function renderRegPage(headerElement, pageElement) {
   document.body.style.overflow = 'hidden';
 
-  const regPage = Handlebars.templates['Reg.hbs'];
+  const regPage = Handlebars.templates['Registration.hbs'];
   const context = {};
 
   pageElement.innerHTML = regPage(context);
