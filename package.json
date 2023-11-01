@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm run compile:templates",
+    "dev": "webpack dev",
+    "build": "webpack",
     "start": "node server",
     "compile:templates": "handlebars $(find public/templates -type f -name '*.hbs') -m -f public/compiledTemplates/templates.hbs.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,12 +21,16 @@
     "handlebars": "^4.7.8"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "eslint": "^8.50.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-config-xo": "^0.43.1",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-n": "^16.1.0",
-    "eslint-plugin-promise": "^6.1.1"
+    "eslint-plugin-promise": "^6.1.1",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }
