@@ -13,7 +13,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    port: 1445
+    port: 1445,
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -23,10 +23,20 @@ module.exports = {
   ],
   module: {
     rules: [
-        {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
-        }
-    ]
-  }
-}
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
+};
