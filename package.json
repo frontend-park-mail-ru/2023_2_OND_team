@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm run compile:templates",
-    "dev": "webpack dev",
-    "build": "webpack",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
     "start": "node server",
     "compile:templates": "handlebars $(find public/templates -type f -name '*.hbs') -m -f public/compiledTemplates/templates.hbs.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "npm run lint"
+    "prebuild": "npm run lint", 
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
