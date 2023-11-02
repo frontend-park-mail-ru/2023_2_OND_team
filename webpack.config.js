@@ -1,6 +1,6 @@
 const path = require('path')
 const HTMLWebPackPlugin = require('html-webpack-plugin')
-const {CleanWebPackPlugin} = require('clear-webpack-plugin')
+const {CleanWebPackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
     context: path.resolve(__dirname, 'public'),
