@@ -126,6 +126,6 @@ export function passwordValid(password) {
       message: 'Пароль должен содержать хотя бы одну букву в верхнем регистре',
     };
   }
-  
+
   return validation;
 }
