@@ -12,10 +12,21 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  devServer: {
+    port: 1445
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: './index.html',
     }),
     new CleanWebpackPlugin(),
   ],
-};
+  module: {
+    rules: [
+        {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        }
+    ]
+  }
+}
