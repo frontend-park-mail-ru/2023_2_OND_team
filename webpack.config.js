@@ -1,6 +1,6 @@
 const path = require('path')
-const HTMLWebPackPlugin = require('html-webpack-plugin')
-const {CleanWebPackPlugin} = require('clean-webpack-plugin')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
     context: path.resolve(__dirname, 'public'),
@@ -13,9 +13,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-        new HTMLWebPackPlugin({
+        new HTMLWebpackPlugin({
             template: './index.html'
         }),
-        new CleanWebPackPlugin(),
+        new CleanWebpackPlugin(),
     ]
 }
