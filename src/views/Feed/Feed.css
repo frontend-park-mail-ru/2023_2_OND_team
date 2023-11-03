@@ -8,17 +8,15 @@
     top: 0;
     left: 0;
 }
-  
-a {
-    display: block;
-    color: #333333;
-    text-decoration: none;
+
+.sidebar-main {
+    width: 250px;
 }
 
-.feed {
-    margin: 0 auto;
+#header {
+    flex-grow: 1;
 }
-  
-.feed-image {
-    margin-top: 10px;
+
+#main {
+    flex-grow: 1;
 }

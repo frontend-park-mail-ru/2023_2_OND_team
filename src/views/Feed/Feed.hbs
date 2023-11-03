@@ -1,9 +1,12 @@
+<aside class="sidebar-main">
+    {{#if headerContext.isAuthorized}}
+        {{{Sidebar}}}
+    {{/if}}
+</aside>
 <header id="header">
     {{{Header headerContext}}}
 </header>
 <main id="main">
-    <div class="container">
-        <section id="pins" class="gallery">
-        </section>
-    </div>
+    <section id="pins" class="gallery">
+    </section>
 </main>
