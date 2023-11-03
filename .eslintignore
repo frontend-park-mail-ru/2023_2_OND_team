@@ -3,5 +3,4 @@ public/utils/api.js
 public/components/Registration/RegPage.js
 public/components/Authorization/AuthPage.js
 public/components/Feed/Feed.js
-public/router/page-routes.js
-dist/bundle.js
+dist/

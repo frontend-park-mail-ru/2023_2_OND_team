@@ -10,8 +10,9 @@ module.exports = {
     main: './index.js',
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/static/',
   },
   devServer: {
     port: 1445,
@@ -49,6 +50,10 @@ module.exports = {
             presets: ['@babel/preset-env'],
           },
         },
+      },
+      {
+        test: /.(s[ac])ss$/i,
+        use: ['sass-loader'],
       },
     ],
   },
