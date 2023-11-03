@@ -1,0 +1,18 @@
+export const ActionTypes = {
+    OPEN_PIN: 'OPEN_PIN',
+    LIKE_PIN: 'LIKE_PIN',
+    DISLIKE_PIN: 'DISLIKE_PIN',
+    OPEN_CREATION_WINDOW: 'OPEN_CREATION_WINDOW',
+    CLOSE_CREATION_WINDOW: 'CLOSE_CREATION_WINDOW',
+    OPEN_USER_WINDOW: 'OPEN_USER_WINDOW',
+    CLOSE_USER_WINDOW: 'CLOSE_USER_WINDOW',
+    GOTO_TOP_PAGE: 'GOTO_TOP_PAGE',
+    OPEN_FEED_PAGE: 'OPEN_FEED_PAGE',
+    OPEN_USER_PAGE: 'OPEN_USER_PAGE',
+}
+
+export function gotoTopPage() {
+    return {
+        type: ActionTypes.GOTO_TOP_PAGE,
+    }
+}
