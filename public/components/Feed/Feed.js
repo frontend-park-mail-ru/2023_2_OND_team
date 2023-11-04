@@ -3,7 +3,8 @@ import {renderAuthPage} from '../Authorization/AuthPage.js';
 import {renderRegPage} from '../Registration/RegPage.js';
 import {renderPins} from '../../utils/renderPins.js';
 import { renderProfilePage } from '../Profile/Profile.js';
-
+import { renderPinPage } from '../Pin/PinPage.js';
+ 
 const PINS_MAX = 100;
 const PINS_REQUEST = 20;
 let PIN_LAST_ID = 0;
@@ -194,4 +195,13 @@ function definePageElements() {
   window.scrollFunc = scrollFunc;
   scrollFunc();
   window.addEventListener('scroll', window.scrollFunc);
+
+  const pins = document.querySelectorAll('.gallery__item');
+
+  pins.forEach((pin) => {
+    const pinId = pin.dataset.id;
+    pin.addEventListener('click', () => {
+      renderPinPage();
+    });
+  });
 }
