@@ -1,7 +1,7 @@
 import {API} from '../../utils/api.js';
 import {renderFeedPage} from '../Feed/Feed.js';
 
-export function renderFeedPage() {
+export function renderPinPage() {
     document.body.style.overflow = 'visible';
   
     const feed = Handlebars.templates['Feed.hbs'];
