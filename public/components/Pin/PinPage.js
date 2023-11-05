@@ -5,16 +5,11 @@ import {renderPins} from '../../utils/renderPins.js';
 import { renderProfilePage } from '../Profile/Profile.js';
 import {renderFeedPage} from '../Feed/Feed.js';
 
-export function renderPinPage(pin) {
+export function displayPinInfo(pin) {
     const rootElement = document.getElementById('root');
 
-    rootElement.innerHTML = '';
+    document.body.style.overflow = 'visible';
 
-    displayPinInfo(pin);
-    renderFeedPage();
-}
-
-function displayPinInfo(pin) {
     const pinsCard = Handlebars.templates['PinsCard.hbs'];
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
     API.getPinInfo(pinID)
