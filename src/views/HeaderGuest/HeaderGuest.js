@@ -11,12 +11,12 @@ export function renderHeaderGuest() {
 
     const loginBtn = document.querySelector('.js-header__login-btn');
     loginBtn?.addEventListener('click', () => {
-        renderRegPage();
+        renderAuthPage();
     })
 
     const signupBtn = document.querySelector('.js-header__singup-btn');
     signupBtn?.addEventListener('click', () => {
-        renderAuthPage();
+        renderRegPage();
     })
 }
 
