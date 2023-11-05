@@ -14,6 +14,7 @@ export function renderPinPage(pin) {
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
     API.getPinInfo(pinID)
         .then((pinInfo) => {
+            console.log('Информация о пине:', pinInfo);
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
