@@ -8,8 +8,13 @@ import {renderFeedPage} from '../Feed/Feed.js';
 export function renderPinPage(pin) {
     const rootElement = document.getElementById('root');
 
-    document.body.style.overflow = 'visible';
+    rootElement.innerHTML = '';
 
+    displayPinInfo(pin);
+    renderFeedPage();
+}
+
+function displayPinInfo(pin) {
     const pinsCard = Handlebars.templates['PinsCard.hbs'];
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
     API.getPinInfo(pinID)
@@ -19,18 +24,11 @@ export function renderPinPage(pin) {
                 src: pinInfo.picture,
             };
 
-            const pinHtml = pinsCard(context);
+            const html = pinsCard(context);
 
-            const feedPage = renderFeedPage();
-
-            rootElement.innerHTML = '';
-
-            const pinsContainer = feedPage.querySelector('.pins-container');
-            pinsContainer.appendChild(pinHtml);
-
-            rootElement.appendChild(feedPage);
+            rootElement.innerHTML = html;
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
-        });
+    });
 }
