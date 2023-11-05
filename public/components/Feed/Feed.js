@@ -184,6 +184,7 @@ function definePageElements() {
             const section = document.getElementById('pins');
             renderPins(section, images);
             PIN_LAST_ID = lastID;
+            PinClick();
           })
           .catch((error) => {
             console.error('Ошибка при рендеринге пинов:', error);
@@ -195,7 +196,9 @@ function definePageElements() {
   window.scrollFunc = scrollFunc;
   scrollFunc();
   window.addEventListener('scroll', window.scrollFunc);
+}
 
+function PinClick() {
   const pins = document.querySelectorAll('.gallery__item');
 
   pins.forEach((pin) => {
