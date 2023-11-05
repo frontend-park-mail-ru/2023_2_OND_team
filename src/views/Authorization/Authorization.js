@@ -15,13 +15,12 @@ export function renderAuthPage() {
   const sidebar = document.querySelector('#sidebar');
   const header = document.querySelector('#header');
   const main = document.querySelector('#main');
-
-  sidebar.classList.add('hide');
-  header.classList.add('hide');
-  main.classList.add('hide');
-
   const authorization = document.querySelector('#fullpage');
 
+  sidebar.style.display = 'none';
+  header.style.display = 'none';
+  main.style.display = 'none';
+  authorization.style.display = 'flex';
 
   const authorizationTemplate = Handlebars.templates['Authorization.hbs'];
   const authorizationContext = {};
@@ -75,9 +74,10 @@ export function renderAuthPage() {
       API.loginUser(username, password)
           .then((status) => {
             if (status) {
-              sidebar.classList.remove('hide');
-              header.classList.remove('hide');
-              main.classList.remove('hide');
+              sidebar.style.display = 'flex';
+              header.style.display = 'flex';
+              main.style.display = 'flex';
+              authorization.style.display = 'none';
               renderFeedPage();
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -90,9 +90,10 @@ export function renderAuthPage() {
 
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
-    sidebar.classList.remove('hide');
-    header.classList.remove('hide');
-    main.classList.remove('hide');
+    sidebar.style.display = 'flex';
+    header.style.display = 'flex';
+    main.style.display = 'flex';
+    authorization.style.display = 'none';
     renderFeedPage();
   });
 }
