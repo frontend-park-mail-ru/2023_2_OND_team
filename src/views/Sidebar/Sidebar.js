@@ -1,4 +1,5 @@
 import { renderProfilePage } from "../ProfileUser/Profile.js";
+import { renderFeedPage } from "../Feed/Feed";
 
 export function defineSidebar() {
     const profileBtn = document.querySelector('.sidebar__menu__profile__arrow');
@@ -28,6 +29,7 @@ export function defineSidebar() {
             switch (menuItem) {
                 case 'feed':
                     console.log(1, menuItem);
+                    renderFeedPage();
                     break;
                 case 'favourite':
                     console.log(2, menuItem);

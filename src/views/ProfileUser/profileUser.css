@@ -11,7 +11,7 @@
   
   .profile-user__avatar {
     display: flex;
-    position: absolute;
+    position: relative;
     left: 712px;
     width: 120px;
     height: 162px;
@@ -41,9 +41,9 @@
   }
   
   .profile-user__change-cover-btn {
-    position: absolute;
-    top: 197px;
-    left: 1274px;
+    position: relative;
+    top: 90px;
+    left: 1150px;
     display: flex;
     width: 258px;
     height: 40px;
