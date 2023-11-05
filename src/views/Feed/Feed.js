@@ -1,9 +1,5 @@
 import { API } from '../../utils/api.js';
-import { renderAuthPage } from '../Authorization/Authorization.js';
-import { renderRegPage } from '../Registration/Registration.js';
 import { renderPins } from '../../components/RenderPins/renderPins.js';
-import { renderProfilePage } from '../ProfileUser/Profile.js';
-import { defineSidebar } from '../Sidebar/Sidebar.js';
 
 const PINS_MAX = 100;
 const PINS_REQUEST = 20;
@@ -59,7 +55,7 @@ function definePageElements() {
                 headerElement.innerHTML = '';
                 window.removeEventListener('scroll', window.scrollFunc);
                 logo.removeEventListener('click', handleLogoClick);
-                renderAuthPage(headerElement, pageElement);
+                // renderAuthPage(headerElement, pageElement);
             }
         });
     }
@@ -73,7 +69,7 @@ function definePageElements() {
             headerElement.innerHTML = '';
             window.removeEventListener('scroll', window.scrollFunc);
             logo.removeEventListener('click', handleLogoClick);
-            renderAuthPage(headerElement, pageElement);
+            // renderAuthPage(headerElement, pageElement);
         });
     }
 
@@ -86,7 +82,7 @@ function definePageElements() {
             headerElement.innerHTML = '';
             window.removeEventListener('scroll', window.scrollFunc);
             logo.removeEventListener('click', handleLogoClick);
-            renderRegPage(headerElement, pageElement);
+            // renderRegPage(headerElement, pageElement);
         });
     }
 
@@ -124,7 +120,7 @@ function definePageElements() {
             e.preventDefault();
             window.removeEventListener('scroll', window.scrollFunc);
             logo.removeEventListener('click', handleLogoClick);
-            renderProfilePage(headerElement, pageElement);
+            // renderProfilePage(headerElement, pageElement);
         });
     }
 
@@ -188,5 +184,5 @@ function definePageElements() {
     scrollFunc();
     window.addEventListener('scroll', window.scrollFunc);
 
-    defineSidebar();
+    // defineSidebar();
 }
