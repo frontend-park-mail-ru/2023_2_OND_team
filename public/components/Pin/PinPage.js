@@ -6,12 +6,25 @@ import { renderProfilePage } from '../Profile/Profile.js';
 import {renderFeedPage} from '../Feed/Feed.js';
 
 export function renderPinPage(pin) {
+    const rootElement = document.getElementById('root');
+    PIN_LAST_ID = 0;
+
+    document.body.style.overflow = 'visible';
+
+    const pinsCard = Handlebars.templates['PinsCard.hbs'];
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
     API.getPinInfo(pinID)
         .then((pinInfo) => {
-        console.log('Информация о пине:', pinInfo);
-    })
-    .catch((error) => {
-        console.error('Ошибка при получении информации о пине:', error);
-    });
+            const context = {
+                id: pinInfo.id,
+                src: pinInfo.picture,
+            };
+
+            const html = pinsCard(context);
+
+            rootElement.innerHTML = html;
+        })
+        .catch((error) => {
+            console.error('Ошибка при получении информации о пине:', error);
+        });
 }
