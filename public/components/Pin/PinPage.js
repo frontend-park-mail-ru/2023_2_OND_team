@@ -4,7 +4,6 @@ import { renderAuthPage } from '../Authorization/AuthPage.js';
 
 export function renderPinPage() {
   const rootElement = document.getElementById('root');
-  PIN_LAST_ID = 0;
 
   document.body.style.overflow = 'visible';
 
