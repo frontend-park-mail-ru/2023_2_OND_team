@@ -33,7 +33,9 @@ export function renderHeaderDefault() {
                     renderProfilePage();
                     break;
                 case 'logout':
-                    renderAuthPage();
+                    if (API.logoutUser()) {
+                        renderAuthPage();
+                    }
                     break;
                 default:
                     break;
