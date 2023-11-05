@@ -6,6 +6,7 @@
 @import url(./views/HeaderGuest/headerLeft.css);
 @import url(./views/HeaderGuest/headerRight.css);
 @import url(./views/ProfileUser/profile.css);
+@import url(./views/Sidebar/sidebar.css);
 
 html, body {
   height: 100%;
