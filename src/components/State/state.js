@@ -1,6 +1,8 @@
 export class State {
     #csrfToken;
     #currentPage;
+    #isAuthorized;
+    #username;
 
     constructor() {
         if (State.instance) {
@@ -10,6 +12,8 @@ export class State {
         State.instance = this;
         this.#csrfToken = null;
         this.#currentPage = null;
+        this.#isAuthorized = null;
+        this.#username = null;
     }
 
     setCsrfToken(token) {
@@ -28,6 +32,21 @@ export class State {
         return this.#currentPage;
     }
 
+    setIsAuthorized(isAuthorized) {
+        this.#isAuthorized = isAuthorized;
+    }
+
+    getIsAuthorized() {
+        return this.#isAuthorized;
+    }
+
+    setUsername(username) {
+        this.#username = username;
+    }
+
+    getUsername() {
+        return this.#username;
+    }
 }
 
 export default State;

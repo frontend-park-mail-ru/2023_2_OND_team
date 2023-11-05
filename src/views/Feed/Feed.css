@@ -14,8 +14,9 @@
     left: 0;
 }
 
-.sidebar-main {
+#sidebar {
     grid-area: sidebar;
+    display: flex;
     width: 250px;
 }
 

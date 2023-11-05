@@ -13,15 +13,17 @@ import { renderHeaderDefault } from "./views/HeaderDefault/HeaderDefault.js";
 
 API.getCsrfToken();
 API.checkLogin()
-    .then((data) => {
-        if (data.isAuthorized) {
+    .then((status) => {
+        if (status === 'ok') {
             renderSidebar();
             renderHeaderDefault(data);
-            renderFeedPage(data.isAuthorized);
+            renderFeedPage();
         } else {
-            renderHeaderGuest();
-            renderFeedPage(data.isAuthorized);
+            console.log(status)
         }
+    })
+    .catch((error) => {
+        console.error(error);
     })
 
 renderFeedPage();

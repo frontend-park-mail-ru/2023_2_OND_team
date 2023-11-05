@@ -78,15 +78,12 @@ export class API {
         console.log(this.state.getCsrfToken())
 
         const res = await response.json();
-        let isAuthorized = false;
-        let username = '';
-
         if (res.status === 'ok') {
-          username = res.body.username;
-          isAuthorized = true;
+          this.state.setIsAuthorized(true);
+          this.state.setUsername(res.body.username);
         }
 
-        return {isAuthorized, username};
+        return res.status;
       } catch (error) {
         console.error('Ошибка при получении данных об авторизации:', error);
       }

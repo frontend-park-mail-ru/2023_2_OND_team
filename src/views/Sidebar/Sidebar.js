@@ -1,7 +1,13 @@
 import { renderProfilePage } from "../ProfileUser/Profile.js";
 import { renderFeedPage } from "../Feed/Feed.js";
+import { State } from "../../components/State/state.js"
 
 export function renderSidebar() {
+    const state = new State();
+    if (!state.getIsAuthorized) {
+        return;
+    }
+
     const sidebar = document.querySelector('#sidebar');
     const sidebarTemplate = Handlebars.templates['Sidebar.hbs'];
     
@@ -36,20 +42,13 @@ export function renderSidebar() {
                     console.log(1, menuItem);
                     renderFeedPage();
                     break;
-                case 'favourite':
-                    console.log(2, menuItem);
-                    break;
-                case 'subscriptions':
-                    console.log(3, menuItem);
-                    break;
                 case 'profile':
-                    console.log(4, menuItem);
                     renderProfilePage();
                     break;
-                case 'profile__data':
+                case 'profile-data':
                     console.log(5, menuItem);
                     break;
-                case 'profile__security':
+                case 'profile-security':
                     console.log(6, menuItem);
                     break;
                 default:
