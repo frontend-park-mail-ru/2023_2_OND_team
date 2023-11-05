@@ -13,6 +13,7 @@ export class API {
       {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
       {name: 'csrfToken', url: '//pinspire.online:8080/api/v1/csrf'},
       {name: 'getLike', url: ''},
+      {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'}
     ];
 
     static async loginUser(username, password) {
@@ -403,4 +404,39 @@ export class API {
       }
     }
 
+    static async getPinInfo(pinID) {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'getPinInfo');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для getPinInfo');
+        }
+    
+        const pinInfoURL = `${configItem.url}/${pinID}`;
+    
+        const response = await fetch(pinInfoURL, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+    
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
+    
+        const res = await response.json();
+    
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          console.error(res);
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных о пине:', error);
+        throw error;
+      }
+    }
+    
 }

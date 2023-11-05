@@ -202,10 +202,10 @@ function PinClick() {
   const pins = document.querySelectorAll('.gallery__item');
 
   pins.forEach((pin) => {
-    const pinId = pin.dataset.id;
+    const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
     pin.addEventListener('click', () => {
       console.log('КЛИК');
-      renderPinPage();
+      renderPinPage(pinID);
     });
   });
 }

@@ -1,0 +1,22 @@
+.rectangle {
+    width: 1000px;
+    height: 600px; 
+    background-color: white; 
+    border-radius: 35px; 
+    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid #000;
+    position: relative;
+    display: flex;
+}
+
+.save-button {
+position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
