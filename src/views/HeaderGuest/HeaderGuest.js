@@ -1,3 +1,6 @@
+import { renderRegPage } from "../Registration/Registration";
+import { renderAuthPage } from "../Authorization/Authorization";
+
 export function renderHeaderGuest() {
     const header = document.querySelector('#header');
     
@@ -7,10 +10,13 @@ export function renderHeaderGuest() {
     header.innerHTML = headerTemplate(headerContext);
 
     const loginBtn = document.querySelector('.js-header__login-btn');
-    if (loginBtn) {
-        loginBtn.addEventListener('click', () => {
-            console.log('click');
-        })
-    }
+    loginBtn?.addEventListener('click', () => {
+        renderRegPage();
+    })
+
+    const signupBtn = document.querySelector('.js-header__singup-btn');
+    signupBtn?.addEventListener('click', () => {
+        renderAuthPage();
+    })
 }
 

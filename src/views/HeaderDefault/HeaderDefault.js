@@ -30,7 +30,7 @@ export function renderHeaderDefault() {
         })
     });
 
-    const createBtn = document.querySelector('.header__user__create-img');
+    const createBtn = document.querySelector('.js-create-img');
     createBtn?.addEventListener('click', () => {
         createMenu.classList.toggle('hide');
     });

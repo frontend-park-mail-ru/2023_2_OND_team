@@ -11,22 +11,32 @@ import {passwordValid, nameValid} from '../../components/Validation/valid.js'
 *
 * @return {void}
 */
-export function renderAuthPage(headerElement, pageElement) {
-  document.body.style.overflow = 'hidden';
+export function renderAuthPage() {
+  const sidebar = document.querySelector('#sidebar');
+  const header = document.querySelector('#header');
+  const main = document.querySelector('#main');
 
-  const authPage = Handlebars.templates['Authorization.hbs'];
-  const context = {};
+  sidebar.classList.add('hide');
+  header.classList.add('hide');
+  main.classList.add('hide');
 
-  pageElement.innerHTML = authPage(context);
-  const passwordInput = pageElement.querySelector('#password');
-  const usernameInput = pageElement.querySelector('#username');
-  const AuthButton = pageElement.querySelector('.button');
-  const cancelButton = pageElement.querySelector('.cancel-button');
+  const authorization = document.querySelector('#fullpage');
 
-  const signUpLink = pageElement.querySelector('.already-registered a');
+
+  const authorizationTemplate = Handlebars.templates['Authorization.hbs'];
+  const authorizationContext = {};
+
+  authorization.innerHTML = authorizationTemplate(authorizationContext);
+
+  const passwordInput = document.querySelector('#password');
+  const usernameInput = document.querySelector('#username');
+  const AuthButton = document.querySelector('.button');
+  const cancelButton = document.querySelector('.cancel-button');
+
+  const signUpLink = document.querySelector('.already-registered a');
   signUpLink.addEventListener('click', function(e) {
     e.preventDefault();
-    renderRegPage(headerElement, pageElement);
+    renderRegPage();
   });
 
   const usernameErrorSpan = document.querySelector('.username-error-message');
@@ -65,8 +75,9 @@ export function renderAuthPage(headerElement, pageElement) {
       API.loginUser(username, password)
           .then((status) => {
             if (status) {
-              headerElement.classList.remove('header-hidden');
-              pageElement.classList.remove('main-no-padding');
+              sidebar.classList.remove('hide');
+              header.classList.remove('hide');
+              main.classList.remove('hide');
               renderFeedPage();
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -79,8 +90,9 @@ export function renderAuthPage(headerElement, pageElement) {
 
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
-    headerElement.classList.remove('header-hidden');
-    pageElement.classList.remove('main-no-padding');
+    sidebar.classList.remove('hide');
+    header.classList.remove('hide');
+    main.classList.remove('hide');
     renderFeedPage();
   });
 }

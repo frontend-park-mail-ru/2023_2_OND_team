@@ -23,7 +23,6 @@
   .header__user__create-img {
     position: relative;
     top: 10px;
-    width: min-content;
     padding-left: 150px;
   }
   

@@ -11,23 +11,33 @@ import {API} from '../../utils/api.js';
  *
  * @return {void}
  */
-export function renderRegPage(headerElement, pageElement) {
-  document.body.style.overflow = 'hidden';
+export function renderRegPage() {
+  const sidebar = document.querySelector('#sidebar');
+  const header = document.querySelector('#header');
+  const main = document.querySelector('#main');
 
-  const regPage = Handlebars.templates['Registration.hbs'];
-  const context = {};
+  sidebar.classList.add('hide');
+  header.classList.add('hide');
+  main.classList.add('hide');
 
-  pageElement.innerHTML = regPage(context);
-  const passwordInput = pageElement.querySelector('#password');
-  const emailInput = pageElement.querySelector('#email');
-  const usernameInput = pageElement.querySelector('#username');
-  const RegButton = pageElement.querySelector('.button');
-  const cancelButton = pageElement.querySelector('.cancel-button');
+  const registration = document.querySelector('#fullpage');
 
-  const signInLink = pageElement.querySelector('.already-registered a');
+
+  const registrationTemplate = Handlebars.templates['Registration.hbs'];
+  const registrationContext = {};
+
+  registration.innerHTML = registrationTemplate(registrationContext);
+
+  const passwordInput = document.querySelector('#password');
+  const emailInput = document.querySelector('#email');
+  const usernameInput = document.querySelector('#username');
+  const RegButton = document.querySelector('.button');
+  const cancelButton = document.querySelector('.cancel-button');
+
+  const signInLink = document.querySelector('.already-registered a');
   signInLink.addEventListener('click', function(e) {
     e.preventDefault();
-    renderAuthPage(headerElement, pageElement);
+    renderAuthPage();
   });
 
   const usernameErrorSpan = document.querySelector('.username-error-message');
@@ -78,8 +88,9 @@ export function renderRegPage(headerElement, pageElement) {
       API.registerUser(username, email, password)
           .then((status) => {
             if (status) {
-              headerElement.classList.remove('header-hidden');
-              pageElement.classList.remove('main-no-padding');
+              sidebar.classList.remove('hide');
+              header.classList.remove('hide');
+              main.classList.remove('hide');
               renderFeedPage();
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -93,8 +104,9 @@ export function renderRegPage(headerElement, pageElement) {
 
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
-    headerElement.classList.remove('header-hidden');
-    pageElement.classList.remove('main-no-padding');
+    sidebar.classList.remove('hide');
+    header.classList.remove('hide');
+    main.classList.remove('hide');
     renderFeedPage();
   });
 }
