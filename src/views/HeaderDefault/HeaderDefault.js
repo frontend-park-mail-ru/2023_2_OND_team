@@ -1,4 +1,6 @@
 import State from "../../components/State/state.js";
+import { renderProfilePage } from "../ProfileUser/Profile.js";
+import { renderAuthPage } from "../Authorization/Authorization.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -26,7 +28,16 @@ export function renderHeaderDefault() {
     userMenuBtns.forEach((btn) => {
         btn?.addEventListener('click', () => {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
-            console.log(menuItem);
+            switch (menuItem) {
+                case 'profile':
+                    renderProfilePage();
+                    break;
+                case 'logout':
+                    renderAuthPage();
+                    break;
+                default:
+                    break;
+            }
         })
     });
 
@@ -39,6 +50,5 @@ export function renderHeaderDefault() {
     userBtn?.addEventListener('click', () => {
         userMenu.classList.toggle('hide');
     });
-
 
 }
