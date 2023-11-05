@@ -1,6 +1,7 @@
 import State from "../../components/State/state.js";
 import { renderProfilePage } from "../ProfileUser/Profile.js";
 import { renderAuthPage } from "../Authorization/Authorization.js";
+import { API } from "../../utils/api.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
