@@ -17,6 +17,8 @@ export function renderPinPage(pin) {
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
+                username: pinInfo.username,
+                discription: pinInfo.discription,
             };
 
             const html = pinsCard(context);
