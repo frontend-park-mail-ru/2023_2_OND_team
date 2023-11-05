@@ -5,7 +5,7 @@ import {renderPins} from '../../utils/renderPins.js';
 import { renderProfilePage } from '../Profile/Profile.js';
 import {renderFeedPage} from '../Feed/Feed.js';
 
-export function displayPinInfo(pin) {
+export function renderPinPage(pin) {
     const rootElement = document.getElementById('root');
 
     document.body.style.overflow = 'visible';
