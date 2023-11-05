@@ -4,7 +4,6 @@ import {renderRegPage} from '../Registration/RegPage.js';
 import {renderPins} from '../../utils/renderPins.js';
 import { renderProfilePage } from '../Profile/Profile.js';
 import {renderFeedPage} from '../Feed/Feed.js';
-import { renderAuthPage } from '../Authorization/AuthPage.js';
 
 export function renderPinPage() {
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
