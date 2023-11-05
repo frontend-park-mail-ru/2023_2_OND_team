@@ -19,11 +19,13 @@ export function renderPinPage(pin) {
                 src: pinInfo.picture,
             };
 
-            const html = pinsCard(context);
+            const pinHtml = pinsCard(context);
 
-            rootElement.innerHTML = html;
+            const feedHtml = renderFeedPage();
 
-            renderFeedPage();
+            const combinedHtml = `${pinHtml}${feedHtml}`;
+
+            rootElement.innerHTML = combinedHtml;
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
