@@ -20,14 +20,11 @@ API.checkLogin()
     .then((status) => {
         if (status === 'ok') {
             renderSidebar();
-            if (state.getIsAuthorized) {
-                renderHeaderDefault();
-            } else {
-                renderHeaderGuest();
-            }
+            renderHeaderDefault();
             renderFeedPage();
         } else {
-            console.log(status)
+            renderHeaderGuest();
+            renderFeedPage();
         }
     })
     .catch((error) => {
