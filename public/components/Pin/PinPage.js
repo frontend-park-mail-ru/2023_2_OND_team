@@ -21,11 +21,12 @@ export function renderPinPage(pin) {
 
             const pinHtml = pinsCard(context);
 
+            const feedPage = renderFeedPage();
+
             rootElement.innerHTML = '';
 
-            const feedPage = document.createElement('div');
-            feedPage.innerHTML = renderFeedPage();
-            feedPage.appendChild(pinHtml);
+            const pinsContainer = feedPage.querySelector('.pins-container');
+            pinsContainer.appendChild(pinHtml);
 
             rootElement.appendChild(feedPage);
         })
