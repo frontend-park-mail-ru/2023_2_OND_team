@@ -12,42 +12,20 @@ let PIN_LAST_ID = 0;
 /**
 * Рендерит главную страницу с пинами.
 */
-export function renderFeedPage() {
-    const rootElement = document.getElementById('root');
+export function renderFeedPage(data) {
+    const main = document.querySelector('#main');
     PIN_LAST_ID = 0;
 
     document.body.style.overflow = 'visible';
 
     const feed = Handlebars.templates['Feed.hbs'];
+    const feedContext = {
+        isAuthorized: data.isAuthorized
+    };
 
-    API.checkLogin()
-        .then((data) => {
-            let header = Handlebars.templates['HeaderGuest.hbs'];
-            let sidebar, headerContext;
-
-            if (data.isAuthorized) {
-                header = Handlebars.templates['HeaderDefault.hbs'];
-                sidebar = Handlebars.templates['Sidebar.hbs'];
-                headerContext = {
-                    isAuthorized: true,
-                    username: null,
-                    avatar: null,
-                };
-            }
-
-            const context = {
-                Header: header,
-                Sidebar: sidebar,
-                headerContext: headerContext,
-            };
-
-            rootElement.innerHTML = feed(context);
-
-            definePageElements();
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+    main.innerHTML = feed(feedContext)
+    
+    definePageElements();
 }
 
 /**

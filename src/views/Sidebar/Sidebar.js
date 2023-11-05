@@ -1,7 +1,12 @@
 import { renderProfilePage } from "../ProfileUser/Profile.js";
 import { renderFeedPage } from "../Feed/Feed.js";
 
-export function defineSidebar() {
+export function renderSidebar() {
+    const sidebar = document.querySelector('#sidebar');
+    const sidebarTemplate = Handlebars.templates['Sidebar.hbs'];
+    
+    sidebar.innerHTML = sidebarTemplate();
+
     const profileBtn = document.querySelector('.sidebar__menu__profile__arrow');
     profileBtn?.addEventListener('click', () => {
         console.log('click')
