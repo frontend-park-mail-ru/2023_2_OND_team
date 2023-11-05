@@ -1,3 +1,5 @@
+import { renderProfilePage } from "../ProfileUser/Profile";
+
 export function defineSidebar() {
     const profileBtn = document.querySelector('.sidebar__menu__profile__arrow');
     profileBtn?.addEventListener('click', () => {
@@ -22,8 +24,30 @@ export function defineSidebar() {
                 return;
             }
 
-            const menuItem = btn.className.split(' ').find(className => className.startsWith('sidebar__menu__'))[-1].split('__')[-1];
-            console.log(menuItem);
+            const menuItem = btn.className.split(' ')[1].split('__')[2]
+            switch (menuItem) {
+                case 'feed':
+                    console.log(1, menuItem);
+                    break;
+                case 'favourite':
+                    console.log(2, menuItem);
+                    break;
+                case 'subscriptions':
+                    console.log(3, menuItem);
+                    break;
+                case 'profile':
+                    console.log(4, menuItem);
+                    renderProfilePage();
+                    break;
+                case 'profile__data':
+                    console.log(5, menuItem);
+                    break;
+                case 'profile__security':
+                    console.log(6, menuItem);
+                    break;
+                default:
+                    break;
+            }
 
             const activeElement = document.querySelector('.sidebar__menu__btn-active');
             activeElement.classList.remove('sidebar__menu__btn-active');
