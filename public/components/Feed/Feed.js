@@ -201,6 +201,7 @@ function definePageElements() {
   pins.forEach((pin) => {
     const pinId = pin.dataset.id;
     pin.addEventListener('click', () => {
+      console.log('КЛИК');
       renderPinPage();
     });
   });
