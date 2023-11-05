@@ -7,7 +7,6 @@ import {renderFeedPage} from '../Feed/Feed.js';
 
 export function renderPinPage(pin) {
     const rootElement = document.getElementById('root');
-    PIN_LAST_ID = 0;
 
     document.body.style.overflow = 'visible';
 
