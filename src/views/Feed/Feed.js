@@ -3,6 +3,7 @@ import { renderAuthPage } from '../Authorization/Authorization.js';
 import { renderRegPage } from '../Registration/Registration.js';
 import { renderPins } from '../../components/RenderPins/renderPins.js';
 import { renderProfilePage } from '../ProfileUser/Profile.js';
+import { defineSidebar } from '../Sidebar/Sidebar.js';
 
 const PINS_MAX = 100;
 const PINS_REQUEST = 20;
@@ -208,4 +209,6 @@ function definePageElements() {
     window.scrollFunc = scrollFunc;
     scrollFunc();
     window.addEventListener('scroll', window.scrollFunc);
+
+    defineSidebar();
 }
