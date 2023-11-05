@@ -1,5 +1,5 @@
 import { renderProfilePage } from "../ProfileUser/Profile.js";
-import { renderFeedPage } from "../Feed/Feed";
+import { renderFeedPage } from "../Feed/Feed.js";
 
 export function defineSidebar() {
     const profileBtn = document.querySelector('.sidebar__menu__profile__arrow');
