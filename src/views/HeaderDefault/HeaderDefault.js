@@ -1,4 +1,4 @@
-import State from "../../components/State/state";
+import State from "../../components/State/state.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
