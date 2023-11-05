@@ -1,4 +1,4 @@
-import { renderProfilePage } from "../ProfileUser/Profile";
+import { renderProfilePage } from "../ProfileUser/Profile.js";
 
 export function defineSidebar() {
     const profileBtn = document.querySelector('.sidebar__menu__profile__arrow');
