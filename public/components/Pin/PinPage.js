@@ -5,7 +5,7 @@ import {renderPins} from '../../utils/renderPins.js';
 import { renderProfilePage } from '../Profile/Profile.js';
 import {renderFeedPage} from '../Feed/Feed.js';
 
-export function renderPinPage() {
+export function renderPinPage(pin) {
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
     API.getPinInfo(pinID)
         .then((pinInfo) => {
