@@ -2,9 +2,7 @@
 @import url(./views/Authorization/form.css);
 @import url(./views/Feed/Feed.css);
 @import url(./views/Feed/Gallery.css);
-@import url(./views/HeaderGuest/header.css);
-@import url(./views/HeaderGuest/headerLeft.css);
-@import url(./views/HeaderGuest/headerRight.css);
+@import url(./views/HeaderDefault/headerDefault.css);
 @import url(./views/ProfileUser/profile.css);
 @import url(./views/Sidebar/sidebar.css);
 
