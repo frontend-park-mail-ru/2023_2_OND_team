@@ -21,11 +21,13 @@ export function renderPinPage(pin) {
 
             const pinHtml = pinsCard(context);
 
-            const feedHtml = renderFeedPage();
+            rootElement.innerHTML = '';
 
-            const combinedHtml = `${pinHtml}${feedHtml}`;
+            const feedPage = document.createElement('div');
+            feedPage.innerHTML = renderFeedPage();
+            feedPage.appendChild(pinHtml);
 
-            rootElement.innerHTML = combinedHtml;
+            rootElement.appendChild(feedPage);
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
