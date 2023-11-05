@@ -5,7 +5,11 @@
   
   .sidebar {
     display: flex;
+    position: fixed;
+    height: 100%;
+    width: 250px;
     flex-direction: column;
+    background: var(--sidebra-bg, rgba(51, 161, 179, 0.05));
   }
   
   .sidebar__menu {
