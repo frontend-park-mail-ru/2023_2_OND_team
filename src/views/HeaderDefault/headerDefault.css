@@ -1,9 +1,8 @@
 .header {
     display: flex;
     justify-content: space-between;
-    width: 1920px;
     height: 77px;
-    padding-left: 40px;
+    padding-right: 10px;
     flex-shrink: 0;
     border-bottom: 1px solid var(--bg50, #808080);
     background: #FFF;
@@ -24,6 +23,7 @@
   .header__user__create-img {
     position: relative;
     top: 10px;
+    width: min-content;
     padding-left: 150px;
   }
   
@@ -32,6 +32,15 @@
     position: relative;
     flex-direction: column;
     width: 200px;
+  }
+
+  .header__user__avatar-img {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: min-content;
+    gap: 5px;
+    top: 20px;
   }
   
   .header__create__menu {
@@ -128,13 +137,7 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
   }
   
-  .header__user__avatar-img {
-    display: flex;
-    align-items: center;
-    position: relative;
-    gap: 5px;
-    top: 20px;
-  }
+ 
   
   .hide {
     display: none;

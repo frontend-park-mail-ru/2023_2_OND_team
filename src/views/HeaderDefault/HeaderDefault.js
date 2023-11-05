@@ -30,12 +30,12 @@ export function renderHeaderDefault() {
         })
     });
 
-    const createBtn = document.querySelector('.header__user__create');
+    const createBtn = document.querySelector('.header__user__create-img');
     createBtn?.addEventListener('click', () => {
         createMenu.classList.toggle('hide');
     });
 
-    const userBtn = document.querySelector('.header__user__avatar');
+    const userBtn = document.querySelector('.header__user__avatar-img');
     userBtn?.addEventListener('click', () => {
         userMenu.classList.toggle('hide');
     });
