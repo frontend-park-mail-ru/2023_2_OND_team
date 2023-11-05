@@ -3,7 +3,7 @@
 #root {
     display: grid;
     grid-template-areas: 
-    "header header"
+    "sidebar header"
     "sidebar content";
     grid-template-rows: min-content 1fr;
     grid-template-columns: min-content 1fr;
