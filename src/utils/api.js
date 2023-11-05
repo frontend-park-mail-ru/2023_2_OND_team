@@ -83,6 +83,8 @@ export class API {
           this.state.setUsername(res.body.username);
         }
 
+        this.state.setIsAuthorized(false);
+
         return res.status;
       } catch (error) {
         console.error('Ошибка при получении данных об авторизации:', error);
