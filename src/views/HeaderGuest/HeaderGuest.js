@@ -1,5 +1,5 @@
-import { renderRegPage } from "../Registration/Registration";
-import { renderAuthPage } from "../Authorization/Authorization";
+import { renderRegPage } from "../Registration/Registration.js";
+import { renderAuthPage } from "../Authorization/Authorization.js";
 
 export function renderHeaderGuest() {
     const header = document.querySelector('#header');
