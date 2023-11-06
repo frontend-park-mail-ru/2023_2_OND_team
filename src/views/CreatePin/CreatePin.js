@@ -1,6 +1,6 @@
 import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
-import Router from "../../components/Router/router.js"
+import { Router } from "../../components/Router/router.js";
 
 export function renderCreatePin() {
     const router = new Router();
