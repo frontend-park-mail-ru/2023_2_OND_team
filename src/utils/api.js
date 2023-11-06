@@ -372,7 +372,7 @@ export class API {
       }
     }
 
-    static async createPin(title, description, public, tags, picture) {
+    static async createPin(title, description) {
       try {
         const configItem = this.#config.find((item) => item.name === 'createPin');
         if (!configItem) {
@@ -385,7 +385,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({title, description, public, tags, picture}),
+          body: JSON.stringify({title, description}),
           credentials: 'include',
         });
 
@@ -397,7 +397,7 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
-          return this.createPin(title, description, public, tags, picture);
+          return this.createPin(title, description);
         }
 
         return false;
@@ -405,5 +405,4 @@ export class API {
         console.error('Ошибка при выполнении запроса:', error);
       }
     }
-    
 }
