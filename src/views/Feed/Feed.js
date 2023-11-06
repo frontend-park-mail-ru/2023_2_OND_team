@@ -88,11 +88,6 @@ export function renderFeedPage() {
     window.addEventListener('scroll', window.scrollFunc);
 
     const router = new Router();
-
-    router.navigate("/");
-    router.navigate("/about");
-    router.navigate("/contact");
-    router.navigate("/unknown");
         
 
     // const logo = document.querySelector('.js-header__logo');

@@ -3,6 +3,8 @@ import { renderSidebar } from "../../views/Sidebar/Sidebar.js";
 import { renderHeaderDefault } from "../../views/HeaderDefault/HeaderDefault.js";
 import { renderFeedPage } from "../../views/Feed/Feed.js";
 import { renderHeaderGuest } from "../../views/HeaderGuest/HeaderGuest.js";
+import { renderProfilePage } from "../../views/ProfileUser/Profile.js";
+import { renderAuthPage } from "../../views/Authorization/Authorization.js";
 
 export class Router {
     #routes;
@@ -39,8 +41,22 @@ export class Router {
                 },
             },
             {
-                path: "/about",
-                handler: () => console.log("About Page"),
+                path: "/profile",
+                handler: () => {
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                renderSidebar();
+                                renderHeaderDefault();
+                                renderProfilePage();
+                            } else {
+                                renderAuthPage();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
             },
             {
                 path: "/contact",

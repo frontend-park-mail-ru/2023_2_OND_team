@@ -1,12 +1,15 @@
 import { renderProfilePage } from "../ProfileUser/Profile.js";
 import { renderFeedPage } from "../Feed/Feed.js";
 import { State } from "../../components/State/state.js"
+import { Router } from "../../components/Router/router.js";
 
 export function renderSidebar() {
     const state = new State();
     if (!state.getIsAuthorized) {
         return;
     }
+
+    const router = new Router();
 
     const sidebar = document.querySelector('#sidebar');
     const sidebarTemplate = Handlebars.templates['Sidebar.hbs'];
@@ -40,10 +43,10 @@ export function renderSidebar() {
             switch (menuItem) {
                 case 'feed':
                     console.log(1, menuItem);
-                    renderFeedPage();
+                    router.navigate('/');
                     break;
                 case 'profile':
-                    renderProfilePage();
+                    router.navigate('/profile');
                     break;
                 case 'profile-data':
                     console.log(5, menuItem);

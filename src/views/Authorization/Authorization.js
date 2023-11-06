@@ -1,7 +1,7 @@
 import { renderRegPage } from '../Registration/Registration.js';
 import { API } from '../../utils/api.js';
 import { renderFeedPage } from '../Feed/Feed.js';
-import {passwordValid, nameValid} from '../../components/Validation/valid.js'
+import { passwordValid, nameValid } from '../../components/Validation/valid.js'
 import { renderHeaderDefault } from '../HeaderDefault/HeaderDefault.js';
 import { renderSidebar } from '../Sidebar/Sidebar.js';
 import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
