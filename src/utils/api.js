@@ -372,7 +372,7 @@ export class API {
       }
     }
 
-    static async createPin(title, description) {
+    static async createPin(picture, title, description) {
       try {
         const configItem = this.#config.find((item) => item.name === 'createPin');
         if (!configItem) {
@@ -385,7 +385,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({title, description}),
+          body: JSON.stringify({picture, title, description}),
           credentials: 'include',
         });
 
@@ -397,7 +397,7 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
-          return this.createPin(title, description);
+          return this.createPin(picture, title, description);
         }
 
         return false;

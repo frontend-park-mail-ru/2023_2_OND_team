@@ -15,9 +15,20 @@ export function renderCreatePin() {
     main.innerHTML = createPin(context);
 
     const cancelButton = document.querySelector('.pin-cancel-button');
+    const createButton = document.querySelector('.pin-create-button')
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
         router.navigate('/');
+    });
+
+    createButton.addEventListener('click', function (e) {
+        const picture = document.getElementById('picture').value;
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+
+        e.preventDefault();
+        router.navigate('/');
+        API.createPin(picture, title, description)
     });
 }
