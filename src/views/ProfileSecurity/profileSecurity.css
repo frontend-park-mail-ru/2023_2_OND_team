@@ -88,12 +88,23 @@
     height: 46px;
 }
 
+.profile-security__data-item-textarea {
+    width: 272px;
+    height: 46px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
 .profile-security__data-item-input {
     width: 272px;
     height: 46px;
     border: none;
     background: none;
     resize: none;
+    outline: none;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
