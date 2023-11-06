@@ -1,29 +1,41 @@
 .rectangle {
-    width: 80%;
-    max-width: 800px; 
-    height: 80%;
-    background-color: white;
-    border-radius: 35px;
-    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
-    border: 1px solid #000;
-    margin: 0 auto;
-    position: relative;
     display: flex;
-}
+    justify-content: center;
+    max-width: 900px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    margin: 100px auto 0;
+    height: 470px;
+    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+  }
   
-.rectangle .gallery__item img {
-    max-width: 50%;
-    height: auto;
-    margin-right: 10px;
-}
+  .save-button,
+  .pin-username,
+  .pin-description {
+    font-family: Nunito;
+    margin: 10px 0;
+    padding: 0;
+    display: block;
+    max-width: 90%;
+    margin-left: 20px;
+  }
   
-.save-button {
-    position: absolute;
-    top: 15px;
+  .gallery__item img {
+    max-width: 100%;
+    margin-right: 0px;
+    border-radius: 15px;
+  }
+  
+  .save-button {
     background-color: #226B77;
     color: white;
     border: none;
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
-}
+  }
+  
+  .rectangle > div {
+    flex: 1;
+  }
+  
