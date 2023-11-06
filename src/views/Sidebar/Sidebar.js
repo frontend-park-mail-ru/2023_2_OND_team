@@ -40,7 +40,6 @@ export function renderSidebar() {
             const menuItem = btn.className.split(' ')[1].split('__')[2]
             switch (menuItem) {
                 case 'feed':
-                    console.log(1, menuItem);
                     router.navigate('/');
                     break;
                 case 'profile':

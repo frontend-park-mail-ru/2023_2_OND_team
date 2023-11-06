@@ -49,21 +49,23 @@ export function renderFeedPage() {
         const documentHeight = document.documentElement.scrollHeight;
         const windowHeight = window.innerHeight;
         const scrollY = window.scrollY;
-        
+    
         if (scrollY + windowHeight >= documentHeight - 1000) {
             API.generatePins(numRequestedPins, pinMaxID, pinMinID)
                 .then((data) => {
+                    console.log(data.maxID, data.minID);
+                    console.log(pinMaxID, pinMinID);
                     if (data.maxID === pinMaxID && data.minID === pinMinID) {
                         window.removeEventListener('scroll', window.scrollFunc);
                         return;
                     }
-
+    
                     const section = document.getElementById('pins');
                     renderPins(section, data.pins);
-
+    
                     pinMaxID = data.maxID;
                     pinMinID = data.minID;
-
+    
                     const pins = document.querySelectorAll('.gallery__item');
                     if (pins?.length > 100) {
                         const pinsToDelete = Array.from(pins).slice(0, 20);
@@ -71,18 +73,20 @@ export function renderFeedPage() {
                             pin.remove();
                         });
                     }
-
+    
                 })
                 .catch((error) => {
                     console.error('Ошибка при рендеринге пинов:', error);
                 });
         }
     }
-
+    
     const scrollFunc = debounce(handleScroll, 150);
     window.scrollFunc = scrollFunc;
     scrollFunc();
+    window.removeEventListener('scroll', window.scrollFunc);
     window.addEventListener('scroll', window.scrollFunc);
+    
 
     // const logo = document.querySelector('.js-header__logo');
     // if (logo) {

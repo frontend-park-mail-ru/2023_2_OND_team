@@ -196,9 +196,8 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          images = res.body.pins;
 
-          return body;
+          return res.body;
         } else {
           throw new Error('Ошибка при получении данных из API');
         }

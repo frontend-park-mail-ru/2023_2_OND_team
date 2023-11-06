@@ -180,7 +180,6 @@ export class Router {
 
     handlePopstate() {
         const path = window.location.pathname;
-        console.log(path)
         const route = this.#routes.find((r) => r.path === path);
 
         if (route) {
