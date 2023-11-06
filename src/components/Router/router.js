@@ -6,12 +6,12 @@ import { renderHeaderGuest } from "../../views/HeaderGuest/HeaderGuest.js";
 import { renderProfilePage } from "../../views/ProfileUser/Profile.js";
 import { renderAuthPage } from "../../views/Authorization/Authorization.js";
 import { renderRegPage } from "../../views/Registration/Registration.js";
+import { renderPage404 } from "../../views/Page404/page404.js";
 
 export class Router {
     #routes;
     #currentRoute;
     #defaultRoute;
-    #notFoundHandler;
     #popstateListener;
 
     constructor() {
@@ -85,9 +85,8 @@ export class Router {
 
         this.#currentRoute = null;
         this.#defaultRoute = () => {
-            
+            renderPage404();
         };
-        this.#notFoundHandler = () => console.log("Page Not Found");
         this.#popstateListener = this.handlePopstate.bind(this);
         window.addEventListener("popstate", this.#popstateListener);
     }
@@ -107,9 +106,9 @@ export class Router {
         } else if (this.#defaultRoute) {
             this.#currentRoute = null;
             this.#defaultRoute();
-        } else if (this.#notFoundHandler) {
+        } else {
             this.#currentRoute = null;
-            this.#notFoundHandler();
+            console.log("u'l never see it");
         }
     }
 }
