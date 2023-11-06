@@ -178,14 +178,14 @@ export class Router {
                 },
             },
             {
-                path: "/pin/:pinID",
-                handler: (pinID) => {
-                    if (this.state.getCurrentPage() === 'createPin') {
+                path: "/pin/181",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'pinPage') {
                         return;
                     }
 
-                    this.state.setCurrentPage('createPin');
-                    renderPinPage(pinID);
+                    this.state.setCurrentPage('pinPage');
+                    renderPinPage(181);
                 },
             },
         ];
@@ -198,18 +198,18 @@ export class Router {
         window.addEventListener("popstate", this.#popstateListener);
     }
 
-    navigate(path, context) {
+    navigate(path) {
         window.history.pushState(null, null, path);
-        this.handlePopstate(context);
+        this.handlePopstate();
     }
 
-    handlePopstate(context) {
+    handlePopstate() {
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 
         if (route) {
             this.#currentRoute = route;
-            route.handler(context);
+            route.handler();
         } else if (this.#defaultRoute) {
             this.#currentRoute = null;
             this.#defaultRoute();

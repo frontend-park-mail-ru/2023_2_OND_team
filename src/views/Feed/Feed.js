@@ -75,6 +75,7 @@ export function renderFeedPage() {
 
                     const section = document.getElementById('pins');
                     renderPins(section, data.pins);
+                    definePins();
     
                     const pins = document.querySelectorAll('.gallery__item');
                     if (pins?.length > 100) {
@@ -97,6 +98,18 @@ export function renderFeedPage() {
     window.removeEventListener('scroll', window.scrollFunc);
     window.addEventListener('scroll', window.scrollFunc);
     
+    function definePins() {
+        const pins = document.querySelectorAll('.gallery__item');
+        console.log(pins)
+    
+        pins?.forEach((pin) => {
+          pin.addEventListener('click', () => {
+            console.log('КЛИК');
+            const pinID = pin.className.split(' ')[1].split('-')[3];
+            router.navigate('/pin/181');
+          });
+        });
+    }
 
     // const logo = document.querySelector('.js-header__logo');
     // if (logo) {
