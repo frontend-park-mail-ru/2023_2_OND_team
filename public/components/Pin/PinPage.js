@@ -11,8 +11,6 @@ export function renderPinPage(pin) {
     const pinsCard = Handlebars.templates['PinsCard.hbs'];
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
 
-    const rootElement = document.getElementById('root');
-
     API.getPinInfo(pinID)
         .then((pinInfo) => {
             console.log('Информация о пине:', pinInfo);
