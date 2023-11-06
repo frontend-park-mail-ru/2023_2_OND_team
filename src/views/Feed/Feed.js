@@ -1,6 +1,7 @@
 import { API } from '../../utils/api.js';
 import { renderPins } from '../../components/RenderPins/renderPins.js';
 import { State } from '../../components/State/state.js'
+import { Router } from '../../components/Router/router.js';
 
 const PINS_MAX = 100;
 const PINS_REQUEST = 20;
@@ -85,7 +86,14 @@ export function renderFeedPage() {
     window.scrollFunc = scrollFunc;
     scrollFunc();
     window.addEventListener('scroll', window.scrollFunc);
-    
+
+    const router = new Router();
+
+    router.navigate("/");
+    router.navigate("/about");
+    router.navigate("/contact");
+    router.navigate("/unknown");
+        
 
     // const logo = document.querySelector('.js-header__logo');
     // if (logo) {
