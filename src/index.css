@@ -6,6 +6,8 @@
 @import url(./views/HeaderGuest/headerGuest.css);
 @import url(./views/Sidebar/sidebar.css);
 @import url(./views/ProfileUser/profileUser.css);
+@import url(./views/ProfileData/profileData.css);
+@import url(./views/ProfileSecurity/profileSecurity.css);
 @import url(./views/Intro/intro.css);
 
 html, body {
