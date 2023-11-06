@@ -8,13 +8,12 @@ import {renderFeedPage} from '../Feed/Feed.js';
 export function renderCreatePin() {
     document.body.style.overflow = 'visible';
     const createPins = Handlebars.templates['CreatePins.hbs'];
-    const rootElement = document.getElementById('root');
+    const rootElement = rootElement.getElementById('root');
 
     const context = {};
-    const html = createPins(context);
-    rootElement.innerHTML = html;
+    rootElement.innerHTML = createPins(context);
 
-    const cancelButton = document.querySelector('.pin-cancel-button');
+    const cancelButton = rootElement.querySelector('.pin-cancel-button');
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
