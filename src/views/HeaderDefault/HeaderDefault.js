@@ -21,6 +21,16 @@ export function renderHeaderDefault() {
         btn?.addEventListener('click', () => {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
             console.log(menuItem);
+            switch (menuItem) {
+                case 'pin':
+                    router.navigate('/cteate/pin');
+                    break;
+                case 'board':
+                    router.navigate('/cteate/board');
+                    break;
+                default:
+                    break;
+            }
         })
     });
 

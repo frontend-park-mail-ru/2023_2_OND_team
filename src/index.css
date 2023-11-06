@@ -9,6 +9,7 @@
 @import url(./views/ProfileData/profileData.css);
 @import url(./views/ProfileSecurity/profileSecurity.css);
 @import url(./views/Intro/intro.css);
+@import url(./views/CreatePin/createpin.css);
 
 html, body {
   height: 100%;

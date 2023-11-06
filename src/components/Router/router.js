@@ -164,6 +164,17 @@ export class Router {
                     renderRegPage();
                 },
             },
+            {
+                path: "/create/pin",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'createPin') {
+                        return;
+                    }
+
+                    this.state.setCurrentPage('createPin');
+                    renderCreatePin();
+                },
+            },
         ];
 
         this.#currentRoute = null;
