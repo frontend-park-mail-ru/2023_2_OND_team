@@ -7,12 +7,13 @@ import {renderFeedPage} from '../Feed/Feed.js';
 
 export function renderPinPage(pin) {
     const rootElement = document.getElementById('root');
+    const cancelButton = document.querySelector('.cancel-button');
 
     document.body.style.overflow = 'visible';
 
     const pinsCard = Handlebars.templates['PinsCard.hbs'];
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
-    const cancelButton = pageElement.querySelector('.cancel-button');
+
     API.getPinInfo(pinID)
         .then((pinInfo) => {
             console.log('Информация о пине:', pinInfo);
