@@ -39,11 +39,10 @@
 }
 
 input[type="text"] {
-    width: 300px;
     padding: 5px;
     margin-bottom: 10px;
-    /* padding-top: 5px; */
-    /* vertical-align: top; */
+    padding-top: 5px;
+    vertical-align: top;
 }
 
 #description {
