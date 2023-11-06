@@ -1,12 +1,11 @@
 import State from "../../components/State/state.js";
-import { renderProfilePage } from "../ProfileUser/Profile.js";
-import { renderAuthPage } from "../Authorization/Authorization.js";
 import { API } from "../../utils/api.js";
-import { renderHeaderGuest } from "../HeaderGuest/HeaderGuest.js";
+import { Router } from "../../components/Router/router.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
 
+    const router = new Router();    
     const state = new State();
     
     const headerTemplate = Handlebars.templates['HeaderDefault.hbs'];
@@ -32,12 +31,12 @@ export function renderHeaderDefault() {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
             switch (menuItem) {
                 case 'profile':
+                    router.navigate('/profile');
                     renderProfilePage();
                     break;
                 case 'logout':
                     if (API.logoutUser()) {
-                        renderHeaderGuest();
-                        renderAuthPage();
+                        router.navigate('/login');
                     }
                     break;
                 default:

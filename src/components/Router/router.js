@@ -5,6 +5,7 @@ import { renderFeedPage } from "../../views/Feed/Feed.js";
 import { renderHeaderGuest } from "../../views/HeaderGuest/HeaderGuest.js";
 import { renderProfilePage } from "../../views/ProfileUser/Profile.js";
 import { renderAuthPage } from "../../views/Authorization/Authorization.js";
+import { renderRegPage } from "../../views/Registration/Registration.js";
 
 export class Router {
     #routes;
@@ -27,8 +28,12 @@ export class Router {
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
-                                renderSidebar();
-                                renderHeaderDefault();
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderFeedPage();
                             } else {
                                 renderHeaderGuest();
@@ -46,6 +51,12 @@ export class Router {
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderProfilePage();
                             } else {
                                 renderAuthPage();
@@ -57,13 +68,25 @@ export class Router {
                 },
             },
             {
-                path: "/contact",
-                handler: () => console.log("Contact Page"),
+                path: "/login",
+                handler: () => {
+                    renderHeaderGuest();
+                    renderAuthPage();
+                },
+            },
+            {
+                path: "/signup",
+                handler: () => {
+                    renderHeaderGuest();
+                    renderRegPage();
+                },
             },
         ];
 
         this.#currentRoute = null;
-        this.#defaultRoute = () => console.log("Default Route");
+        this.#defaultRoute = () => {
+            
+        };
         this.#notFoundHandler = () => console.log("Page Not Found");
         this.#popstateListener = this.handlePopstate.bind(this);
         window.addEventListener("popstate", this.#popstateListener);

@@ -1,5 +1,3 @@
-import { renderProfilePage } from "../ProfileUser/Profile.js";
-import { renderFeedPage } from "../Feed/Feed.js";
 import { State } from "../../components/State/state.js"
 import { Router } from "../../components/Router/router.js";
 

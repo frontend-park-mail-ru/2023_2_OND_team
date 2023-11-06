@@ -1,10 +1,6 @@
-import { renderRegPage } from '../Registration/Registration.js';
 import { API } from '../../utils/api.js';
-import { renderFeedPage } from '../Feed/Feed.js';
 import { passwordValid, nameValid } from '../../components/Validation/valid.js'
-import { renderHeaderDefault } from '../HeaderDefault/HeaderDefault.js';
-import { renderSidebar } from '../Sidebar/Sidebar.js';
-import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
+import { Router } from '../../components/Router/router.js';
 
 /**
 * Рендерит страницу аутентификации.
@@ -15,6 +11,8 @@ import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
 * @return {void}
 */
 export function renderAuthPage() {
+  const router = new Router();
+
   const sidebar = document.querySelector('#sidebar');
   const header = document.querySelector('#header');
   const main = document.querySelector('#main');
@@ -38,7 +36,7 @@ export function renderAuthPage() {
   signUpLink.addEventListener('click', function(e) {
     e.preventDefault();
     authorization.innerHTML = '';
-    renderRegPage();
+    router.navigate('/signup')
   });
 
   const usernameErrorSpan = document.querySelector('.username-error-message');
@@ -77,10 +75,9 @@ export function renderAuthPage() {
       API.loginUser(username, password)
           .then((status) => {
             if (status) {
+              header.innerHTML = '';
               authorization.innerHTML = '';
-              renderSidebar();
-              renderHeaderDefault();
-              renderFeedPage();
+              router.navigate('/');
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -93,7 +90,6 @@ export function renderAuthPage() {
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
     authorization.innerHTML = '';
-    renderHeaderGuest();
-    renderFeedPage();
+    router.navigate('/');
   });
 }
