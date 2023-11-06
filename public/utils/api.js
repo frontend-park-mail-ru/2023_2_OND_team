@@ -465,7 +465,8 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
-          return this.createPin(title, description, public, tags, picture);
+          //return this.createPin(title, description, public, tags, picture);
+          return true;
         }
 
         return false;
