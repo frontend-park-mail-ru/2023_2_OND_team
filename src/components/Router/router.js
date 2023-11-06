@@ -178,14 +178,14 @@ export class Router {
                 },
             },
             {
-                path: "/pin/181",
+                path: "/pin/10",
                 handler: () => {
                     if (this.state.getCurrentPage() === 'pinPage') {
                         return;
                     }
 
                     this.state.setCurrentPage('pinPage');
-                    renderPinPage(181);
+                    renderPinPage(10);
                 },
             },
         ];
