@@ -12,7 +12,6 @@ export function renderPinPage(pin) {
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
 
     const rootElement = document.getElementById('root');
-    const cancelButton = document.querySelector('.cancel-button');
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -31,6 +30,8 @@ export function renderPinPage(pin) {
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
     });
+
+    const cancelButton = document.querySelector('.cancel-button');
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
