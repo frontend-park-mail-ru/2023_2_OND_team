@@ -35,8 +35,12 @@ app.use(cookieParser());
 
 app.get('*', (req, res) => {
   const referer = req.headers.referer;
-  console.log('Request from:', referer);
-  res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
+  if (!referer) {
+    res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
+    return;
+  } else {
+    res.sendFile(path.resolve(__dirname,  (referer.split('/').length - 3) * '..', 'src', 'index.html'));
+  }
 });
 
 app.use(cors());
