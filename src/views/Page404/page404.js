@@ -19,7 +19,7 @@ export function renderPage404() {
 
     const toMainPageBtn = document.querySelector('.js-page404__to-main-btn');
     
-    toMainPageBtn?.addEventListener('click', () => {
+    toMainPageBtn?.addEventListener('click', (e) => {
         e.preventDefault();
         page404.innerHTML = '';
         router.navigate('/');
