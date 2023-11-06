@@ -18,8 +18,8 @@ export function renderPinPage(pin) {
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
-                username: pinInfo.username,
-                discription: pinInfo.discription,
+                username: pinInfo.author.username,
+                description: pinInfo.description,
             };
 
             const html = pinsCard(context);
