@@ -372,7 +372,7 @@ export class API {
       }
     }
 
-    static async createPin() {
+    static async createPin(title, description, public, tags, picture) {
       try {
         const configItem = this.#config.find((item) => item.name === 'createPin');
         if (!configItem) {
