@@ -2,6 +2,7 @@ import { renderRegPage } from '../Registration/Registration.js';
 import { API } from '../../utils/api.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import {passwordValid, nameValid} from '../../components/Validation/valid.js'
+import { renderHeaderDefault } from '../HeaderDefault/HeaderDefault.js';
 
 /**
 * Рендерит страницу аутентификации.
@@ -78,6 +79,7 @@ export function renderAuthPage() {
               header.style.display = 'flex';
               main.style.display = 'flex';
               authorization.style.display = 'none';
+              renderHeaderDefault();
               renderFeedPage();
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -94,6 +96,7 @@ export function renderAuthPage() {
     header.style.display = 'flex';
     main.style.display = 'flex';
     authorization.style.display = 'none';
+    renderHeaderDefault();
     renderFeedPage();
   });
 }

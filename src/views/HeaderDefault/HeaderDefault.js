@@ -2,6 +2,7 @@ import State from "../../components/State/state.js";
 import { renderProfilePage } from "../ProfileUser/Profile.js";
 import { renderAuthPage } from "../Authorization/Authorization.js";
 import { API } from "../../utils/api.js";
+import { renderHeaderGuest } from "../HeaderGuest/HeaderGuest.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -35,6 +36,7 @@ export function renderHeaderDefault() {
                     break;
                 case 'logout':
                     if (API.logoutUser()) {
+                        renderHeaderGuest();
                         renderAuthPage();
                     }
                     break;
