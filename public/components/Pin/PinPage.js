@@ -31,7 +31,7 @@ export function renderPinPage(pin) {
             console.error('Ошибка при получении информации о пине:', error);
     });
 
-    const cancelButton = document.querySelector('.cancel-button');
+    const cancelButton = rootElement.querySelector('.cancel-button');
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
