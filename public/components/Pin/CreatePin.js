@@ -13,4 +13,11 @@ export function renderCreatePin() {
     const context = {};
     const html = createPins(context);
     rootElement.innerHTML = html;
+
+    const cancelButton = document.querySelector('.pin-cancel-button');
+
+    cancelButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        renderFeedPage();
+    });
 }
