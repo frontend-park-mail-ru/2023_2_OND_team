@@ -453,7 +453,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({title, description, public, tags, picture}),
+          //body: JSON.stringify({title, description, public, tags, picture}),
           credentials: 'include',
         });
 
