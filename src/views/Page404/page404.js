@@ -1,4 +1,4 @@
-import { Router } from "../../components/Router/router";
+import { Router } from "../../components/Router/router.js";
 
 export function renderPage404() {
     const router = new Router();
