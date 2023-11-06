@@ -8,7 +8,7 @@ import {renderFeedPage} from '../Feed/Feed.js';
 export function renderCreatePin() {
     document.body.style.overflow = 'visible';
     const createPins = Handlebars.templates['CreatePins.hbs'];
-    const rootElement = rootElement.getElementById('root');
+    const rootElement = document.getElementById('root');
 
     const context = {};
     rootElement.innerHTML = createPins(context);
