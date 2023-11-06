@@ -1,5 +1,4 @@
 .profile-security {
-    display: flex;
     width: 1503px;
     height: 346px;
     justify-content: center;
@@ -11,7 +10,7 @@
 }
 
 .profile-security__content {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     display: flex;
@@ -40,7 +39,7 @@
 
 .profile-security__line {
     position: absolute;
-    top: 7px;
+    top: -1px;
     left: 270px;
     display: flex;
     width: 0.1px;
@@ -89,20 +88,23 @@
     height: 46px;
 }
 
-.profile-security__data-item-textarea {
+.profile-security__data-item-input {
     width: 272px;
     height: 46px;
     border: none;
     background: none;
     resize: none;
-    outline: none;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
+.profile-security__data-item-input:focus {
+    outline: none;
+}
+
 .profile-security__control {
-    position: absolute;
-    top: 255px;
-    left: 0;
+    position: relative;
+    top: -10px;
+    left: -8px;
     display: flex;
     width: 1503px;
     height: 91px;

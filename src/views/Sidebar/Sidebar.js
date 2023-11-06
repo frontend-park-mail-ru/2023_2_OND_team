@@ -20,7 +20,7 @@ export function renderSidebar() {
         const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
         const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
 
-        if (profileFields.classList.contains('sidebar__menu__profile-fields')) {
+        if (profileFields.classList.contains('hide')) {
             profileArrow.src = 'https://pinspire.online:1444/assets/icons/icon_profile_arrow-down.svg';
         } else {
             profileArrow.src = 'https://pinspire.online:1444/assets/icons/icon_profile_arrow-up.svg';
