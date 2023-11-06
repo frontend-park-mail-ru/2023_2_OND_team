@@ -18,6 +18,6 @@ const state = new State();
 const router = new Router();
 
 API.getCsrfToken();
-router.navigate('/');
+router.handlePopstate();
 
 
