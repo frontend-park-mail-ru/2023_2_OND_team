@@ -6,18 +6,13 @@ import { renderProfilePage } from '../Profile/Profile.js';
 import {renderFeedPage} from '../Feed/Feed.js';
 
 export function renderPinPage(pin) {
-    const rootElement = document.getElementById('root');
-    const cancelButton1 = document.querySelector('.cancel-button-pin');
-
-    cancelButton1.addEventListener('click', function (e) {
-        e.preventDefault();
-        renderFeedPage();
-    });
-
     document.body.style.overflow = 'visible';
 
     const pinsCard = Handlebars.templates['PinsCard.hbs'];
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
+
+    const rootElement = document.getElementById('root');
+    const cancelButton = document.querySelector('.cancel-button');
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -35,5 +30,10 @@ export function renderPinPage(pin) {
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
+    });
+
+    cancelButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        renderFeedPage();
     });
 }
