@@ -1,5 +1,6 @@
 @import url("pinsGalary/gallery.css");
 @import url("pinsGalary/pins_card.css");
+@import url("pinsGalary/create_pins.css");
 
 #root {
     display: flex;
