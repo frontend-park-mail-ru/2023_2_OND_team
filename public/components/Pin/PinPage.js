@@ -23,9 +23,7 @@ export function renderPinPage(pin) {
                 description: pinInfo.description,
             };
 
-            const html = pinsCard(context);
-
-            rootElement.innerHTML = html;
+            rootElement.innerHTML = pinsCard(context);
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
