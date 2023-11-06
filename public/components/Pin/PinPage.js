@@ -12,7 +12,7 @@ export function renderPinPage(pin) {
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
 
     const rootElement = document.getElementById('root');
-    const cancelButton = document.querySelector('.cancel-button');
+    const cancelButton = document.querySelector('.cancel-button-pin');
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
