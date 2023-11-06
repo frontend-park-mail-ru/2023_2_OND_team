@@ -3,6 +3,7 @@ import {renderFeedPage} from '../Feed/Feed.js';
 import {emailValid, passwordValid, nameValid} from '../../components/Validation/valid.js';
 import {API} from '../../utils/api.js';
 import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
+import { Router } from '../../components/Router/router.js';
 
 /**
  * Рендерит страницу регистрации.
@@ -13,6 +14,8 @@ import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
  * @return {void}
  */
 export function renderRegPage() {
+  const router = new Router();
+
   const sidebar = document.querySelector('#sidebar');
   const header = document.querySelector('#header');
   const main = document.querySelector('#main');
@@ -38,7 +41,7 @@ export function renderRegPage() {
   signInLink.addEventListener('click', function(e) {
     e.preventDefault();
     registration.innerHTML = '';
-    renderAuthPage();
+    router.navigate('/login');
   });
 
   const usernameErrorSpan = document.querySelector('.username-error-message');
@@ -89,10 +92,9 @@ export function renderRegPage() {
       API.registerUser(username, email, password)
           .then((status) => {
             if (status) {
+              header.innerHTML = '';
               registration.innerHTML = '';
-              renderSidebar();
-              renderHeaderDefault();
-              renderFeedPage();
+              router.navigate('/');
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               emailInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -106,7 +108,6 @@ export function renderRegPage() {
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
     registration.innerHTML = '';
-    renderHeaderGuest();
-    renderFeedPage();
+    router.navigate('/');
   });
 }

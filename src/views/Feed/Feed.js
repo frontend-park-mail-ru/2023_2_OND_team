@@ -85,7 +85,6 @@ export function renderFeedPage() {
     window.scrollFunc = scrollFunc;
     scrollFunc();
     window.addEventListener('scroll', window.scrollFunc);
-    
 
     // const logo = document.querySelector('.js-header__logo');
     // if (logo) {
