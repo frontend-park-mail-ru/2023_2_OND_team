@@ -7,6 +7,5 @@
  * @throws {Error} Если произошла ошибка при отображении основной страницы.
  */
 import {renderFeedPage} from './components/Feed/Feed.js';
-import { renderCreatePin } from './components/Pin/CreatePin.js';
 
-renderCreatePin();
+renderFeedPage();
