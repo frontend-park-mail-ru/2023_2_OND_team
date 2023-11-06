@@ -26,7 +26,7 @@ export function renderSidebar() {
             profileArrow.src = 'https://pinspire.online:1444/assets/icons/icon_profile_arrow-up.svg';
         }
 
-        profileFields.classList.toggle('sidebar__menu__profile-fields');
+        profileFields.classList.toggle('hide');
     });
 
     const menuBtns = document.querySelectorAll('.sidebar__menu__btn');
