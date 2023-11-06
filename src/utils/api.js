@@ -385,7 +385,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({picture, title, description}),
+          body: JSON.stringify({picture, title, description, 'public': true}),
           credentials: 'include',
         });
 
