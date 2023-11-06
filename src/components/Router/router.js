@@ -1,4 +1,8 @@
 import { API } from "../../utils/api.js";
+import { renderSidebar } from "../../views/Sidebar/Sidebar.js";
+import { renderHeaderDefault } from "../../views/HeaderDefault/HeaderDefault.js";
+import { renderFeedPage } from "../../views/Feed/Feed.js";
+import { renderHeaderGuest } from "../../views/HeaderGuest/HeaderGuest.js";
 
 export class Router {
     #routes;
