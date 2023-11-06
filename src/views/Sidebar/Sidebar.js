@@ -47,10 +47,10 @@ export function renderSidebar() {
                     router.navigate('/profile');
                     break;
                 case 'profile-data':
-                    console.log(5, menuItem);
+                    router.navigate('/profile/data');
                     break;
                 case 'profile-security':
-                    console.log(6, menuItem);
+                    router.navigate('/profile/security');
                     break;
                 default:
                     break;

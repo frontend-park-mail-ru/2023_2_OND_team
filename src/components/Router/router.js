@@ -7,6 +7,8 @@ import { renderProfilePage } from "../../views/ProfileUser/Profile.js";
 import { renderAuthPage } from "../../views/Authorization/Authorization.js";
 import { renderRegPage } from "../../views/Registration/Registration.js";
 import { renderPage404 } from "../../views/Page404/page404.js";
+import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
+import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
 
 export class Router {
     #routes;
@@ -58,6 +60,50 @@ export class Router {
                                     renderHeaderDefault();
                                 } 
                                 renderProfilePage();
+                            } else {
+                                renderAuthPage();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
+            },
+            {
+                path: "/profile/data",
+                handler: () => {
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderProfileData();
+                            } else {
+                                renderAuthPage();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
+            },
+            {
+                path: "/profile/security",
+                handler: () => {
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderProfileSecurity();
                             } else {
                                 renderAuthPage();
                             }
