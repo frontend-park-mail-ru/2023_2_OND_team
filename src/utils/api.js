@@ -175,10 +175,10 @@ export class API {
     static async generatePins(num, maxID, minID) {
       try {
         let configItem;
-        if (maxID && minID) {
-          configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
-        } else {
+        if (maxID === -Infinity && minID === Infinity) {
           configItem = `//pinspire.online:8080/api/v1/pin?count=${num}`;
+        } else {
+          configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
         }
         const response = await fetch(configItem, {
           headers: {

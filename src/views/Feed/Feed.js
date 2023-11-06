@@ -9,8 +9,8 @@ export function renderFeedPage() {
     const main = document.querySelector('#main');
 
     const numRequestedPins = 20;
-    let pinMaxID; 
-    let pinMinID; 
+    let pinMaxID = -Infinity; 
+    let pinMinID = Infinity; 
 
     document.body.style.overflow = 'visible';
 
