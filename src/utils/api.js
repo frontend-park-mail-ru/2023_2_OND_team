@@ -172,9 +172,14 @@ export class API {
       * @throws {Error} Если произошла ошибка при запросе или обработке данных.
       * @return {Promise<{ images: { picture: string }[] }>} Объект с массивом изображений.
       */
-    static async generatePins(num=20, id=0) {
+    static async generatePins(num, maxID, minID) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&lastID=${id}`;
+        let configItem;
+        if (maxID && minID) {
+          configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
+        } else {
+          configItem = `//pinspire.online:8080/api/v1/pin?count=${num}`;
+        }
         const response = await fetch(configItem, {
           headers: {
             'x-csrf-token': this.state.getCsrfToken(),
@@ -189,14 +194,11 @@ export class API {
         console.log(this.state.getCsrfToken())
 
         const res = await response.json();
-        let images = [];
-        let lastID;
 
         if (res.status === 'ok') {
           images = res.body.pins;
-          lastID = res.body.lastID;
 
-          return {images, lastID};
+          return body;
         } else {
           throw new Error('Ошибка при получении данных из API');
         }

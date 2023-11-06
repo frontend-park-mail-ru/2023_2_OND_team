@@ -2,16 +2,15 @@ import { API } from '../../utils/api.js';
 import { renderPins } from '../../components/RenderPins/renderPins.js';
 import { State } from '../../components/State/state.js'
 
-const PINS_MAX = 100;
-const PINS_REQUEST = 20;
-let PIN_LAST_ID = 0;
-
 /**
 * Рендерит главную страницу с пинами.
 */
 export function renderFeedPage() {
     const main = document.querySelector('#main');
-    PIN_LAST_ID = 0;
+
+    const numRequestedPins = 20;
+    let pinMaxID; 
+    let pinMinID; 
 
     document.body.style.overflow = 'visible';
 
@@ -52,28 +51,27 @@ export function renderFeedPage() {
         const scrollY = window.scrollY;
         
         if (scrollY + windowHeight >= documentHeight - 1000) {
-            API.generatePins(PINS_REQUEST, PIN_LAST_ID)
-                .then(({images, lastID}) => {
-                    if (PIN_LAST_ID == lastID) {
+            API.generatePins(numRequestedPins, pinMaxID, pinMinID)
+                .then((data) => {
+                    if (data.maxID === pinMaxID && data.minID === pinMinID) {
                         window.removeEventListener('scroll', window.scrollFunc);
                         return;
                     }
 
-                    if (lastID > PINS_MAX) {
-                        const pinsToDelete = document.querySelectorAll('.gallery__item');
-                        pinsToDelete.forEach(pin => {
-                            const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
+                    const section = document.getElementById('pins');
+                    renderPins(section, data.pins);
 
-                            if (pinID < lastID - PINS_MAX) {
-                                pin.remove();
-                                console.log(`remove element ${pinID}}`);
-                            }
-                        })
+                    pinMaxID = data.maxID;
+                    pinMinID = data.minID;
+
+                    const pins = document.querySelectorAll('.gallery__item');
+                    if (pins?.length > 100) {
+                        const pinsToDelete = Array.from(pins).slice(0, 20);
+                        pinsToDelete.forEach(pin => {
+                            pin.remove();
+                        });
                     }
 
-                    const section = document.getElementById('pins');
-                    renderPins(section, images);
-                    PIN_LAST_ID = lastID;
                 })
                 .catch((error) => {
                     console.error('Ошибка при рендеринге пинов:', error);
