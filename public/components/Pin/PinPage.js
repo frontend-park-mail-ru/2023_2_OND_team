@@ -9,6 +9,13 @@ export function renderPinPage(pin) {
     const rootElement = document.getElementById('root');
     const cancelButton = document.querySelector('.cancel-button');
 
+    if (cancelButton) {
+        cancelButton.addEventListener('click', function (e) {
+          e.preventDefault();
+          renderFeedPage();
+        });
+    }
+
     document.body.style.overflow = 'visible';
 
     const pinsCard = Handlebars.templates['PinsCard.hbs'];
@@ -31,9 +38,4 @@ export function renderPinPage(pin) {
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
     });
-
-    cancelButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        renderFeedPage();
-      });
 }
