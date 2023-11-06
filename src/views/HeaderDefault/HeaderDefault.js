@@ -32,7 +32,10 @@ export function renderHeaderDefault() {
             switch (menuItem) {
                 case 'profile':
                     router.navigate('/profile');
-                    renderProfilePage();
+                    const sidebarActiveElement = document.querySelector('.sidebar__menu__btn-active');
+                    sidebarActiveElement.classList.remove('sidebar__menu__btn-active');
+                    const sidebarProfileElement = document.querySelector('.sidebar__menu__profile-security');
+                    sidebarProfileElement.classList.add('sidebar__menu__btn-active');
                     break;
                 case 'logout':
                     if (API.logoutUser()) {
