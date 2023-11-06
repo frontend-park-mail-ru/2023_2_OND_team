@@ -11,6 +11,7 @@ import { renderPage404 } from "../../views/Page404/page404.js";
 import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
 import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
+import { renderPinPage } from "../../views/PinPage/PinPage.js";
 
 export class Router {
     #routes;
@@ -176,6 +177,17 @@ export class Router {
                     renderCreatePin();
                 },
             },
+            {
+                path: "/pin/:pinID",
+                handler: (pinID) => {
+                    if (this.state.getCurrentPage() === 'createPin') {
+                        return;
+                    }
+
+                    this.state.setCurrentPage('createPin');
+                    renderPinPage(pinID);
+                },
+            },
         ];
 
         this.#currentRoute = null;
@@ -186,18 +198,18 @@ export class Router {
         window.addEventListener("popstate", this.#popstateListener);
     }
 
-    navigate(path) {
+    navigate(path, context) {
         window.history.pushState(null, null, path);
-        this.handlePopstate();
+        this.handlePopstate(context);
     }
 
-    handlePopstate() {
+    handlePopstate(context) {
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 
         if (route) {
             this.#currentRoute = route;
-            route.handler();
+            route.handler(context);
         } else if (this.#defaultRoute) {
             this.#currentRoute = null;
             this.#defaultRoute();

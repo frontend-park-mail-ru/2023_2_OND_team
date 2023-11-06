@@ -1,11 +1,13 @@
 import { API } from '../../utils/api.js';
 import { renderPins } from '../../components/RenderPins/renderPins.js';
 import { State } from '../../components/State/state.js'
-
+import { Router } from '../../components/Router/router.js'
+ 
 /**
 * Рендерит главную страницу с пинами.
 */
 export function renderFeedPage() {
+    const router = new Router();
     const main = document.querySelector('#main');
 
     const numRequestedPins = 20;
@@ -24,6 +26,16 @@ export function renderFeedPage() {
     };
 
     main.innerHTML = feedTemplate(feedContext);
+
+    const pins = document.querySelectorAll('.gallery__item');
+
+    pins?.forEach((pin) => {
+      pin.addEventListener('click', () => {
+        console.log('КЛИК');
+        const pinID = pin.className.split(' ')[1].split('-')[3];
+        router.navigate(`/pin/${pinID}`);
+      });
+    });
 
     /**
     * Создает функцию с задержкой для предотвращения слишком частых вызовов.

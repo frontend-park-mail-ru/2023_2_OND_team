@@ -12,6 +12,8 @@ export class API {
       {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
       {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
       {name: 'csrfToken', url: '//pinspire.online:8080/api/v1/csrf'},
+      {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
+      {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
     ];
 
     static async loginUser(username, password) {
@@ -334,4 +336,75 @@ export class API {
         console.error('Ошибка при получении csrf токена', error);
       }
     }
+
+    static async getPinInfo(pinID) {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'getPinInfo');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для getPinInfo');
+        }
+    
+        const pinInfoURL = `${configItem.url}/${pinID}`;
+    
+        const response = await fetch(pinInfoURL, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+    
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
+    
+        const res = await response.json();
+    
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          console.error(res);
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных о пине:', error);
+        throw error;
+      }
+    }
+
+    static async createPin() {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'createPin');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для createPin');
+        }
+
+        const response = await fetch(configItem.url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          //body: JSON.stringify({title, description, public, tags, picture}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
+
+        const res = await response.json();
+        if (res.status === 'ok') {
+          //return this.createPin(title, description, public, tags, picture);
+          return true;
+        }
+
+        return false;
+      } catch (error) {
+        console.error('Ошибка при выполнении запроса:', error);
+      }
+    }
+    
 }

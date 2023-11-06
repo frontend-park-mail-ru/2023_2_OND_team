@@ -8,11 +8,11 @@ export function renderCreatePin() {
 
     const state = new State();
 
-    const createPins = Handlebars.templates['CreatePins.hbs'];
+    const createPin = Handlebars.templates['CreatePin.hbs'];
 
     const context = {};
 
-    main.innerHTML = createPins(context);
+    main.innerHTML = createPin(context);
 
     const cancelButton = document.querySelector('.pin-cancel-button');
 
