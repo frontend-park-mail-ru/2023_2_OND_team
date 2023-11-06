@@ -35,7 +35,7 @@ app.use(cookieParser());
 
 app.get('*', (req, res) => {
   // res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
-  res.sendFile(path.resolve('2023_2_OND_TEAM', 'src', 'index.html'));
+  res.sendFile(path.resolve('src', 'index.html'));
 });
 
 app.use(cors());
