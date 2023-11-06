@@ -7,9 +7,9 @@ import {renderFeedPage} from '../Feed/Feed.js';
 
 export function renderPinPage(pin) {
     const rootElement = document.getElementById('root');
-    const cancelButton = document.querySelector('.cancel-button');
+    const cancelButton1 = document.querySelector('.cancel-button-pin');
 
-    cancelButton.addEventListener('click', function (e) {
+    cancelButton1.addEventListener('click', function (e) {
         e.preventDefault();
         renderFeedPage();
     });
