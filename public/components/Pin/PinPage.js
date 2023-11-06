@@ -9,12 +9,10 @@ export function renderPinPage(pin) {
     const rootElement = document.getElementById('root');
     const cancelButton = document.querySelector('.cancel-button');
 
-    if (cancelButton) {
-        cancelButton.addEventListener('click', function (e) {
-          e.preventDefault();
-          renderFeedPage();
-        });
-    }
+    cancelButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        renderFeedPage();
+    });
 
     document.body.style.overflow = 'visible';
 
