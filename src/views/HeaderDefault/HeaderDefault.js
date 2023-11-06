@@ -23,10 +23,10 @@ export function renderHeaderDefault() {
             console.log(menuItem);
             switch (menuItem) {
                 case 'pin':
-                    router.navigate('/cteate/pin');
+                    router.navigate('/create/pin');
                     break;
                 case 'board':
-                    router.navigate('/cteate/board');
+                    router.navigate('/create/board');
                     break;
                 default:
                     break;
