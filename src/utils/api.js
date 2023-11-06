@@ -385,7 +385,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          //body: JSON.stringify({title, description, public, tags, picture}),
+          body: JSON.stringify({title, description, public, tags, picture}),
           credentials: 'include',
         });
 
@@ -397,8 +397,7 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
-          //return this.createPin(title, description, public, tags, picture);
-          return true;
+          return this.createPin(title, description, public, tags, picture);
         }
 
         return false;
