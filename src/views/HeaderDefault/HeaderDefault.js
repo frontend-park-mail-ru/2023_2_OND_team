@@ -34,7 +34,7 @@ export function renderHeaderDefault() {
                     router.navigate('/profile');
                     const sidebarActiveElement = document.querySelector('.sidebar__menu__btn-active');
                     sidebarActiveElement.classList.remove('sidebar__menu__btn-active');
-                    const sidebarProfileElement = document.querySelector('.sidebar__menu__profile-security');
+                    const sidebarProfileElement = document.querySelector('.sidebar__menu__profile');
                     sidebarProfileElement.classList.add('sidebar__menu__btn-active');
                     break;
                 case 'logout':

@@ -34,6 +34,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get('*', (req, res) => {
+  const referer = req.headers.referer;
+  console.log('Request from:', referer);
   res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
 });
 
