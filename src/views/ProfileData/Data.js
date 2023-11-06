@@ -19,7 +19,7 @@ export function renderDataPage() {
             const nameInput = document.querySelector('#name');
             const surnameInput = document.querySelector('#surname');
 
-                 const inputElement = document.getElementById('input__file');
+                const inputElement = document.getElementById('input__file');
                 inputElement.addEventListener('change', (event) => {
                     const file = event.target.files[0];
                 
