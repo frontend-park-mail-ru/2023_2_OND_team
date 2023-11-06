@@ -36,6 +36,7 @@ export class Router {
 
                     API.checkLogin()
                         .then((status) => {
+                            window.removeEventListener('scroll', window.scrollFunc);
                             this.state.setCurrentPage('feed');
                             if (status === 'ok') {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
