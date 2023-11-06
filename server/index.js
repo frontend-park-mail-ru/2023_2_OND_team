@@ -33,6 +33,10 @@ app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
+});
+
 app.use(cors());
 const server = https.createServer(httpsOptions, app);
 // server.listen(3000);

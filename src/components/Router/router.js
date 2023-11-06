@@ -46,8 +46,6 @@ export class Router {
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
-                                renderSidebar();
-                                renderHeaderDefault();
                                 renderProfilePage();
                             } else {
                                 renderAuthPage();
