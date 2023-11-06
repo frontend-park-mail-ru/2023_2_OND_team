@@ -53,18 +53,16 @@ export function renderFeedPage() {
         if (scrollY + windowHeight >= documentHeight - 1000) {
             API.generatePins(numRequestedPins, pinMaxID, pinMinID)
                 .then((data) => {
-                    console.log(data.maxID, data.minID);
-                    console.log(pinMaxID, pinMinID);
                     if (data.maxID === pinMaxID && data.minID === pinMinID) {
                         window.removeEventListener('scroll', window.scrollFunc);
                         return;
                     }
-    
+
+                    pinMaxID = Math.max(pinMaxID, data.maxID);
+                    pinMinID = Math.min(pinMinID, data.minID);
+
                     const section = document.getElementById('pins');
                     renderPins(section, data.pins);
-    
-                    pinMaxID = data.maxID;
-                    pinMinID = data.minID;
     
                     const pins = document.querySelectorAll('.gallery__item');
                     if (pins?.length > 100) {
@@ -81,7 +79,7 @@ export function renderFeedPage() {
         }
     }
     
-    const scrollFunc = debounce(handleScroll, 150);
+    const scrollFunc = debounce(handleScroll, 250);
     window.scrollFunc = scrollFunc;
     scrollFunc();
     window.removeEventListener('scroll', window.scrollFunc);
