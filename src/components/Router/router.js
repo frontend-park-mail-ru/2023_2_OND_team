@@ -1,4 +1,5 @@
 import { API } from "../../utils/api.js";
+import State from "../State/state.js";
 import { renderSidebar } from "../../views/Sidebar/Sidebar.js";
 import { renderHeaderDefault } from "../../views/HeaderDefault/HeaderDefault.js";
 import { renderFeedPage } from "../../views/Feed/Feed.js";
@@ -23,12 +24,19 @@ export class Router {
 
         Router.instance = this;
 
+        this.state = new State();
+
         this.#routes = [
             {
                 path: "/",
                 handler: () => {
+                    if (this.state.getCurrentPage() === 'feed') {
+                        return;
+                    }
+
                     API.checkLogin()
                         .then((status) => {
+                            this.state.setCurrentPage('feed');
                             if (status === 'ok') {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
@@ -50,9 +58,14 @@ export class Router {
             {
                 path: "/profile",
                 handler: () => {
+                    if (this.state.getCurrentPage() === 'profile') {
+                        return;
+                    }
+
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
+                                this.state.setCurrentPage('profile');
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
@@ -61,6 +74,7 @@ export class Router {
                                 } 
                                 renderProfilePage();
                             } else {
+                                this.state.setCurrentPage('login');
                                 renderAuthPage();
                             }
                         })
@@ -72,9 +86,14 @@ export class Router {
             {
                 path: "/profile/data",
                 handler: () => {
+                    if (this.state.getCurrentPage() === 'profileData') {
+                        return;
+                    }
+
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
+                                this.state.setCurrentPage('profileData');
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
@@ -83,6 +102,7 @@ export class Router {
                                 } 
                                 renderProfileData();
                             } else {
+                                this.state.setCurrentPage('login');
                                 renderAuthPage();
                             }
                         })
@@ -94,9 +114,14 @@ export class Router {
             {
                 path: "/profile/security",
                 handler: () => {
+                    if (this.state.getCurrentPage() === 'profileSecurity') {
+                        return;
+                    }
+
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
+                                this.state.setCurrentPage('profileSecurity');
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
@@ -105,6 +130,7 @@ export class Router {
                                 } 
                                 renderProfileSecurity();
                             } else {
+                                this.state.setCurrentPage('login');
                                 renderAuthPage();
                             }
                         })
@@ -116,6 +142,11 @@ export class Router {
             {
                 path: "/login",
                 handler: () => {
+                    if (this.state.getCurrentPage() === 'login') {
+                        return;
+                    }
+
+                    this.state.setCurrentPage('login');
                     renderHeaderGuest();
                     renderAuthPage();
                 },
@@ -123,6 +154,11 @@ export class Router {
             {
                 path: "/signup",
                 handler: () => {
+                    if (this.state.getCurrentPage() === 'signup') {
+                        return;
+                    }
+
+                    this.state.setCurrentPage('signup');
                     renderHeaderGuest();
                     renderRegPage();
                 },
@@ -144,6 +180,7 @@ export class Router {
 
     handlePopstate() {
         const path = window.location.pathname;
+        console.log(path)
         const route = this.#routes.find((r) => r.path === path);
 
         if (route) {

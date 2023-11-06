@@ -34,8 +34,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get('*', (req, res) => {
-  // res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
-  res.sendFile(path.resolve('src', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
 });
 
 app.use(cors());
