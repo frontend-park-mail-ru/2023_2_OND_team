@@ -7,35 +7,47 @@
     margin: 100px auto 0;
     height: 470px;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
-  }
+}
   
-  .save-button,
-  .pin-username,
-  .pin-description {
+.save-button,
+.pin-username,
+.pin-description {
     font-family: Nunito;
     margin: 10px 0;
     padding: 0;
     display: block;
     max-width: 90%;
     margin-left: 20px;
-  }
+}
   
-  .gallery__item img {
+.gallery__item img {
     max-width: 100%;
     margin-right: 0px;
     border-radius: 15px;
-  }
+}
   
-  .save-button {
+.save-button {
     background-color: #226B77;
     color: white;
     border: none;
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
-  }
+}
   
-  .rectangle > div {
+.rectangle > div {
     flex: 1;
-  }
+}
   
+.cancel-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    z-index: 9999;
+}

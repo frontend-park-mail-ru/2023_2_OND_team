@@ -12,6 +12,7 @@ export function renderPinPage(pin) {
 
     const pinsCard = Handlebars.templates['PinsCard.hbs'];
     const pinID = pin.getAttribute('class').replace('gallery__item js-pin-id-', '');
+    const cancelButton = pageElement.querySelector('.cancel-button');
     API.getPinInfo(pinID)
         .then((pinInfo) => {
             console.log('Информация о пине:', pinInfo);
@@ -29,4 +30,9 @@ export function renderPinPage(pin) {
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
     });
+
+    cancelButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        renderFeedPage();
+      });
 }
