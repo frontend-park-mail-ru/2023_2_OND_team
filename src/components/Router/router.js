@@ -1,3 +1,5 @@
+import { API } from "../../utils/api";
+
 export class Router {
     #routes;
     #currentRoute;
@@ -15,7 +17,22 @@ export class Router {
         this.#routes = [
             {
                 path: "/",
-                handler: () => console.log("Home Page"),
+                handler: () => {
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                renderSidebar();
+                                renderHeaderDefault();
+                                renderFeedPage();
+                            } else {
+                                renderHeaderGuest();
+                                renderFeedPage();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
             },
             {
                 path: "/about",
