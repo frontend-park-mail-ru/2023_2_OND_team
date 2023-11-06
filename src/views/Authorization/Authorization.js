@@ -4,6 +4,7 @@ import { renderFeedPage } from '../Feed/Feed.js';
 import {passwordValid, nameValid} from '../../components/Validation/valid.js'
 import { renderHeaderDefault } from '../HeaderDefault/HeaderDefault.js';
 import { renderSidebar } from '../Sidebar/Sidebar.js';
+import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
 
 /**
 * Рендерит страницу аутентификации.
@@ -19,10 +20,9 @@ export function renderAuthPage() {
   const main = document.querySelector('#main');
   const authorization = document.querySelector('#fullpage');
 
-  sidebar.style.display = 'none';
-  header.style.display = 'none';
-  main.style.display = 'none';
-  authorization.style.display = 'flex';
+  sidebar.innerHTML = '';
+  header.innerHTML = '';
+  main.innerHTML = '';
 
   const authorizationTemplate = Handlebars.templates['Authorization.hbs'];
   const authorizationContext = {};
@@ -37,6 +37,7 @@ export function renderAuthPage() {
   const signUpLink = document.querySelector('.already-registered a');
   signUpLink.addEventListener('click', function(e) {
     e.preventDefault();
+    authorization.innerHTML = '';
     renderRegPage();
   });
 
@@ -76,10 +77,7 @@ export function renderAuthPage() {
       API.loginUser(username, password)
           .then((status) => {
             if (status) {
-              sidebar.style.display = 'flex';
-              header.style.display = 'flex';
-              main.style.display = 'flex';
-              authorization.style.display = 'none';
+              authorization.innerHTML = '';
               renderSidebar();
               renderHeaderDefault();
               renderFeedPage();
@@ -94,9 +92,8 @@ export function renderAuthPage() {
 
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
-    header.style.display = 'flex';
-    main.style.display = 'flex';
-    authorization.style.display = 'none';
+    authorization.innerHTML = '';
+    renderHeaderGuest();
     renderFeedPage();
   });
 }

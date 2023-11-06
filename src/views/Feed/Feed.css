@@ -48,3 +48,11 @@
 #main:empty {
     display: none;
 }
+
+#fullpage {
+    display: flex;
+}
+
+#fullpage:empty {
+    display: none;
+}

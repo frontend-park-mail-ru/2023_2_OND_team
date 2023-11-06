@@ -2,6 +2,7 @@ import {renderAuthPage} from '../Authorization/Authorization.js';
 import {renderFeedPage} from '../Feed/Feed.js';
 import {emailValid, passwordValid, nameValid} from '../../components/Validation/valid.js';
 import {API} from '../../utils/api.js';
+import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
 
 /**
  * Рендерит страницу регистрации.
@@ -17,10 +18,9 @@ export function renderRegPage() {
   const main = document.querySelector('#main');
   const registration = document.querySelector('#fullpage');
 
-  sidebar.style.display = 'none';
-  header.style.display = 'none';
-  main.style.display = 'none';
-  registration.style.display = 'flex';
+  sidebar.innerHTML = '';
+  header.innerHTML = '';
+  main.innerHTML = '';
 
 
   const registrationTemplate = Handlebars.templates['Registration.hbs'];
@@ -37,6 +37,7 @@ export function renderRegPage() {
   const signInLink = document.querySelector('.already-registered a');
   signInLink.addEventListener('click', function(e) {
     e.preventDefault();
+    registration.innerHTML = '';
     renderAuthPage();
   });
 
@@ -88,10 +89,7 @@ export function renderRegPage() {
       API.registerUser(username, email, password)
           .then((status) => {
             if (status) {
-              sidebar.style.display = 'flex';
-              header.style.display = 'flex';
-              main.style.display = 'flex';
-              registration.style.display = 'none';
+              registration.innerHTML = '';
               renderSidebar();
               renderHeaderDefault();
               renderFeedPage();
@@ -107,9 +105,8 @@ export function renderRegPage() {
 
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
-    header.style.display = 'flex';
-    main.style.display = 'flex';
-    registration.style.display = 'none';
+    registration.innerHTML = '';
+    renderHeaderGuest();
     renderFeedPage();
   });
 }
