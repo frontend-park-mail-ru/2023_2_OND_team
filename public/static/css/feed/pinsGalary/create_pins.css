@@ -1,0 +1,8 @@
+.buttons-container {
+    margin-top: 10px;
+}
+
+.button {
+    display: inline-block;
+    margin-right: 10px;
+}
