@@ -92,6 +92,8 @@ export function renderRegPage() {
               header.style.display = 'flex';
               main.style.display = 'flex';
               registration.style.display = 'none';
+              renderSidebar();
+              renderHeaderDefault();
               renderFeedPage();
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -105,7 +107,6 @@ export function renderRegPage() {
 
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
-    sidebar.style.display = 'flex';
     header.style.display = 'flex';
     main.style.display = 'flex';
     registration.style.display = 'none';

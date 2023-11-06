@@ -3,6 +3,7 @@ import { API } from '../../utils/api.js';
 import { renderFeedPage } from '../Feed/Feed.js';
 import {passwordValid, nameValid} from '../../components/Validation/valid.js'
 import { renderHeaderDefault } from '../HeaderDefault/HeaderDefault.js';
+import { renderSidebar } from '../Sidebar/Sidebar.js';
 
 /**
 * Рендерит страницу аутентификации.
@@ -79,6 +80,7 @@ export function renderAuthPage() {
               header.style.display = 'flex';
               main.style.display = 'flex';
               authorization.style.display = 'none';
+              renderSidebar();
               renderHeaderDefault();
               renderFeedPage();
             } else {
@@ -92,11 +94,9 @@ export function renderAuthPage() {
 
   cancelButton.addEventListener('click', function(e) {
     e.preventDefault();
-    sidebar.style.display = 'flex';
     header.style.display = 'flex';
     main.style.display = 'flex';
     authorization.style.display = 'none';
-    renderHeaderDefault();
     renderFeedPage();
   });
 }
