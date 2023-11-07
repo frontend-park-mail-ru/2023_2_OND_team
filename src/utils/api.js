@@ -14,6 +14,7 @@ export class API {
       {name: 'csrfToken', url: '//pinspire.online:8080/api/v1/csrf'},
       {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
+      {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
     ];
 
@@ -407,11 +408,45 @@ export class API {
       }
     }
 
+    static async deletePin(pinID) {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'deletePin');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для deletePin');
+        }
+
+        const response = await fetch(configItem.url, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({pinID}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
+
+        const res = await response.json();
+        if (res.status === 'ok') {
+          return this.deletePin(pinID);
+        }
+
+        return false;
+      } catch (error) {
+        console.error('Ошибка при выполнении запроса:', error);
+      }
+    }
+
     static async createBoard(title, description, pinIDs) {
       try {
         const configItem = this.#config.find((item) => item.name === 'createBoard');
         if (!configItem) {
-          throw new Error('Не найдена конфигурация для createPin');
+          throw new Error('Не найдена конфигурация для createBoard');
         }
 
         const response = await fetch(configItem.url, {

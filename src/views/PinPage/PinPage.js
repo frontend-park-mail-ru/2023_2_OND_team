@@ -36,6 +36,19 @@ export function renderPinPage(pinID) {
                 rec.appendChild(deleteButton);
             }
 
+            deleteButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                console.log('boooom')
+                //API.deletePin(pinID)
+                    .then((result) => {
+                        if (result) {
+                            router.navigate('/');
+                        } else {
+                            console.error('Не удалось удалить пин.');
+                        }
+                    })
+
+            });
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
