@@ -25,13 +25,13 @@ export function renderPinPage(pinID) {
             const usernameDiv = document.querySelector('.header__user__menu__username-text');
             const usernameReal = usernameDiv.textContent.trim();
 
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Удалить';
+            deleteButton.classList.add('delete-button');
+
             console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Удалить';
-                deleteButton.classList.add('delete-button');
-
                 const rec = document.querySelector('.rectangle');
                 rec.appendChild(deleteButton);
             }
