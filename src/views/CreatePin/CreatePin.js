@@ -44,6 +44,8 @@ export function renderCreatePin() {
             }
     
             const picture = new Blob([pictureBytes], { type: mimeType });
+
+            console.log(picture);
     
             API.createPin(picture, title, description)
                 .then((status) => {

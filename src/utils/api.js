@@ -462,7 +462,7 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'image/png',
+            'Content-Type': 'multipart/form-data',
             'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({picture, title, description, 'public': true}),
