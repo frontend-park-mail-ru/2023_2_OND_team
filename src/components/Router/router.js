@@ -78,8 +78,7 @@ export class Router {
                                 } 
                                 renderProfilePage();
                             } else {
-                                this.state.setCurrentPage('login');
-                                renderAuthPage();
+                                this.navigate('/login');
                             }
                         })
                         .catch((error) => {
@@ -106,8 +105,7 @@ export class Router {
                                 } 
                                 renderProfileData();
                             } else {
-                                this.state.setCurrentPage('login');
-                                renderAuthPage();
+                                this.navigate('/login');
                             }
                         })
                         .catch((error) => {
@@ -134,8 +132,7 @@ export class Router {
                                 } 
                                 renderProfileSecurity();
                             } else {
-                                this.state.setCurrentPage('login');
-                                renderAuthPage();
+                                this.navigate('/login');
                             }
                         })
                         .catch((error) => {
@@ -222,8 +219,7 @@ export class Router {
                                 } 
                                 renderCreatePin();
                             } else {
-                                this.state.setCurrentPage('login');
-                                renderAuthPage();
+                                this.navigate('/login');
                             }
                         })
                         .catch((error) => {
@@ -250,8 +246,7 @@ export class Router {
                                 }                     
                                 renderCreateBoard();
                             } else {
-                                this.state.setCurrentPage('login');
-                                renderAuthPage();
+                                this.navigate('/login');
                             }
                         })
                         .catch((error) => {
@@ -267,24 +262,52 @@ export class Router {
                     }
 
                     API.checkLogin()
-                    .then((status) => {
-                        this.state.setCurrentPage(`pin${pinID}`);
-                        if (status === 'ok') {
-                            if (document.querySelector('#sidebar').innerHTML === '') {
-                                renderSidebar();
+                        .then((status) => {
+                            this.state.setCurrentPage(`pin${pinID}`);
+                            if (status === 'ok') {
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderPinPage(pinID);
+                            } else {
+                                renderHeaderGuest();
+                                renderPinPage(pinID);
                             }
-                            if (document.querySelector('#header').innerHTML === '') {
-                                renderHeaderDefault();
-                            } 
-                            renderPinPage(pinID);
-                        } else {
-                            renderHeaderGuest();
-                            renderPinPage(pinID);
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
+            },
+            {
+                path: "/board/ID",
+                handler: (boardID) => {
+                    if (this.state.getCurrentPage() === `board${boardID}`) {
+                        return;
+                    }
+
+                    API.checkLogin()
+                        .then((status) => {
+                            this.state.setCurrentPage(`board${boardID}`);
+                            if (status === 'ok') {
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderPinPage(pinID); // изменить на renderBoardPage(boardID);
+                            } else {
+                                renderHeaderGuest();
+                                renderPinPage(pinID); // изменить на renderBoardPage(boardID);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
                 },
             },
         ];
@@ -306,18 +329,23 @@ export class Router {
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 
-        if (route) {
-            this.#currentRoute = route;
-            route.handler();
-        } else if ( (/^\/pin\/\d+$/).test(path) ) {
-            this.#currentRoute = this.#routes.find((r) => r.path === "/pin/ID");
-            this.#currentRoute.handler(path.split('/')[2]);
-        } else if (this.#defaultRoute) {
-            this.#currentRoute = null;
-            this.#defaultRoute();
-        } else {
-            this.#currentRoute = null;
-            console.log("u'l never see it");
+        switch (true) {
+            case route:
+                this.#currentRoute = route;
+                route.handler();
+                break;
+            case (/^\/pin\/\d+$/).test(path): 
+                this.#currentRoute = this.#routes.find((r) => r.path === "/pin/ID");
+                this.#currentRoute.handler(path.split('/')[2]);
+                break;
+            case (/^\/board\/\d+$/).test(path): 
+                this.#currentRoute = this.#routes.find((r) => r.path === "/pin/ID");
+                this.#currentRoute.handler(path.split('/')[2]);
+                break;
+            default:
+                this.#currentRoute = null;
+                this.#defaultRoute();
+                break;
         }
     }
 }

@@ -100,7 +100,6 @@ export function renderFeedPage() {
     
     function definePins() {
         const pins = document.querySelectorAll('.gallery__item');
-        console.log(pins)
     
         pins?.forEach((pin) => {
           pin.addEventListener('click', () => {
