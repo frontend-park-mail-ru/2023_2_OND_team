@@ -99,7 +99,7 @@ export function renderFeedPage() {
     
         pins?.forEach((pin) => {
           pin.addEventListener('click', (e) => {
-            if (e.target.classList.contains('like-button')) {
+            if (e.target.classList.contains('like-icon')) {
                 return;
             }
 
@@ -108,10 +108,10 @@ export function renderFeedPage() {
           });
         });
 
-        const likeButtons = document.querySelectorAll('.like-button');
+        const likeButtons = document.querySelectorAll('.like-icon');
         likeButtons?.forEach((likeButton) => {
           likeButton.addEventListener('click', (element) => {
-            const id = element.className.split(' ').find(className => className.startsWith('js-like-button-')).split('-')[3];
+            const id = element.target.className.split(' ')[1].split('-')[3];
             // API.getLike(id)
             //   .then((data) => {
             //     const likeField = document.querySelector(`.like-counter-${id}`);
@@ -121,15 +121,10 @@ export function renderFeedPage() {
             //     console.error(error);
             //   })
       
-            console.log('КЛИК');
-            const likeIcon = likeButton.querySelector('.like-icon');
-      
-            if (likeIcon) {
-              if (likeIcon.src.endsWith('like_active.svg')) {
-                likeIcon.src = '/assets/icons/like.svg';
-              } else {
-                likeIcon.src = '/assets/icons/like_active.svg';
-              }
+            if (likeButton.src.endsWith('like_active.svg')) {
+                likeButton.src = '/assets/icons/like.svg';
+            } else {
+                likeButton.src = '/assets/icons/like_active.svg';
             }
           });
       
