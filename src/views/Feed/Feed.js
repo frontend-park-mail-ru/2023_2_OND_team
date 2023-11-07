@@ -127,6 +127,7 @@ export function renderFeedPage() {
 
         const likeButtons = document.querySelectorAll('.like-icon');
         likeButtons?.forEach((likeButton) => {
+            
             likeButton.addEventListener('click', (element) => {
                 API.checkLogin()
                     .then((status) => {
@@ -135,6 +136,7 @@ export function renderFeedPage() {
                             
                             return;
                         }
+                    })
 
                 const id = element.target.className.split(' ')[1].split('-')[3];
                 const likeField = document.querySelector(`.like-counter-${id}`);
@@ -166,7 +168,8 @@ export function renderFeedPage() {
                         console.error(error);
                     })
 
-            });      
+            });  
+
         });
 
 
