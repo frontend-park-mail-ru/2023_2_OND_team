@@ -60,11 +60,10 @@ export function renderProfileData() {
             const nameTextarea = document.querySelector('.js-name-textarea');
             const surnameTextarea = document.querySelector('.js-surname-textarea');
             const aboutTextarea = document.querySelector('.js-about-textarea');
-
-            const editDataBtnImg = document.querySelector('.profile-data__edit-data-img');
+            
             const editDataBtn = document.querySelector('.profile-data__edit-data');
             editDataBtn?.addEventListener('click', () => {
-                editDataBtnImg.classList.add('hide');
+                editAvatarBtn.classList.add('hide');
                 const profileData = document.querySelector('.js-profile-data');
                 profileData.classList.add('profile-data-edit');
                 
@@ -85,7 +84,7 @@ export function renderProfileData() {
 
             const canselBtn = document.querySelector('.js-profile-data__btns__cansel-btn');
             canselBtn?.addEventListener('click', () => {
-                editDataBtnImg.classList.remove('hide');
+                editAvatarBtn.classList.remove('hide');
                 const profileData = document.querySelector('.js-profile-data');
                 profileData.classList.remove('profile-data-edit');
 
@@ -106,7 +105,6 @@ export function renderProfileData() {
                 nameTextarea.value = profileDataContext.name;
                 surnameTextarea.value = profileDataContext.surname;
                 aboutTextarea.value = profileDataContext.about;
-
             })
         });
 }
