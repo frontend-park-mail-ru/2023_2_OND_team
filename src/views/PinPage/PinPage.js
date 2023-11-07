@@ -29,11 +29,16 @@ export function renderPinPage(pinID) {
             deleteButton.textContent = 'Удалить';
             deleteButton.classList.add('delete-button');
 
+            const updateButton = document.createElement('img');
+            updateButton.src = src = 'https://pinspire.online:1444/assets/icons/icon_edit.svg';
+            updateButton.classList.add('.profile-data__edit-data-img');
+
             console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
                 const rec = document.querySelector('.rectangle');
                 rec.appendChild(deleteButton);
+                rec.appendChild(updateButton);
             }
 
             deleteButton.addEventListener('click', function (e) {
