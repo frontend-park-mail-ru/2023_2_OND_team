@@ -225,7 +225,7 @@ export class Router {
             route.handler();
         } else if ( (/^\/pin\/\d+$/).test(path) ) {
             this.#currentRoute = this.#routes.find((r) => r.path === "/pin/ID");
-            this.#currentRoute.handler(path.split('/')[1]);
+            this.#currentRoute.handler(path.split('/')[2]);
         } else if (this.#defaultRoute) {
             this.#currentRoute = null;
             this.#defaultRoute();
