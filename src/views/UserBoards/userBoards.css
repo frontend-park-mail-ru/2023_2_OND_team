@@ -8,7 +8,7 @@
 .user__board {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 350px;
     height: 300px;
     gap: 10px;
     border-radius: 10px;
@@ -22,6 +22,7 @@
 .user__board-pins {
     display: flex;
     height: 100%;
+    justify-content: center;
 }
 
 .user__board__pin {
