@@ -25,9 +25,13 @@ export function renderCreateBoard() {
     createButton.addEventListener('click', function (e) {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
+        const IDsStr = document.getElementById('IDs').value;
+        const IDs = JSON.parse(IDsStr);
+
+        concole.log(title, description, IDs);
 
         e.preventDefault();
         router.navigate('/');
-        API.createBoard(title, description)
+        API.createBoard(title, description, IDs)
     });
 }
