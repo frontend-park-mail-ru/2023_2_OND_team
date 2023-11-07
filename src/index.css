@@ -14,6 +14,9 @@
 @import url(./views/CreateBoard/createBoard.css);
 
 html, body {
+  --bg50: #808080;
+  --bg-90: #E6E6E6;
+  --primary-30: #226B77;
   height: 100%;
   margin: 0;
   padding: 0;
