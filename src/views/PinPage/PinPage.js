@@ -31,7 +31,7 @@ export function renderPinPage(pinID) {
 
             const updateButton = document.createElement('img');
             updateButton.src = 'https://pinspire.online:1444/assets/icons/icon_edit.svg';
-            updateButton.classList.add('profile-data__edit-data-img');
+            updateButton.classList.add('edit-button');
 
             console.log(usernameReal, pinInfo.author.username);
 
