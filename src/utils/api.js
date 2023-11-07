@@ -590,10 +590,7 @@ export class API {
 
     static async getUserBoards() {
       try {
-        const configItem = this.#config.find((item) => item.name === 'getUserBoards');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для getUserBoards');
-        }
+        const configItem = `//pinspire.online:8080/api/v1/pin/like/set/${this.state.getUsername()}`;
 
         const response = await fetch(configItem.url, {
           headers: {
