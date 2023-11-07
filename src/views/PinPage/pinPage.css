@@ -70,9 +70,8 @@
 
 .edit-button {
     font-size: 16px;
-    border-radius: 10px;
-    padding: 10px 15px;
+    padding: 18px 15px;
     cursor: pointer;
-    width: 100px;
-    height: 45px;
+    width: 17px;
+    height: 25px;
 }
