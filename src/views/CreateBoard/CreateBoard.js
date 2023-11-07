@@ -28,7 +28,7 @@ export function renderCreateBoard() {
         const IDsStr = document.getElementById('IDs').value;
         const IDs = IDsStr.split(',').map(Number);
 
-        concole.log(title, description, IDs);
+        console.log(title, description, IDs);
 
         e.preventDefault();
         router.navigate('/');
