@@ -105,6 +105,50 @@ export function renderFeedPage() {
             router.navigate(`/pin/${pinID}`, pinID);
           });
         });
+
+
+
+
+        const likeButtons = document.querySelectorAll('.like-button');
+
+        likeButtons.forEach((likeButton) => {
+          likeButton.addEventListener('click', (element) => {
+            const id = element.className.split(' ').find(className => className.startsWith('js-like-button-')).split('-')[3];
+            // API.getLike(id)
+            //   .then((data) => {
+            //     const likeField = document.querySelector(`.like-counter-${id}`);
+            //     likeField.value = data.likes;
+            //   })
+            //   .catch((error) => {
+            //     console.error(error);
+            //   })
+      
+            console.log('КЛИК');
+            const likeIcon = likeButton.querySelector('.like-icon');
+      
+            if (likeIcon) {
+              if (likeIcon.src.endsWith('like_active.svg')) {
+                likeIcon.src = '/assets/icons/like.svg';
+              } else {
+                likeIcon.src = '/assets/icons/like_active.svg';
+              }
+            }
+          });
+      
+          likeButton.addEventListener('hover', (element) => {
+            const id = element.target.className.split(' ').find(className => className.startsWith('js-like-button-')).split('-')[3];
+            console.log(id);
+            // API.setLike(id)
+            //   .then((data) => {
+            //     const likeField = document.querySelector(`.like-counter-${id}`);
+            //     likeField.textContent = data.body.count_like;
+                 
+            //   })
+          });
+      
+        });
+
+
     }
     
 }
