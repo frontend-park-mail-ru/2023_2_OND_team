@@ -592,7 +592,7 @@ export class API {
       try {
         const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
 
-        const response = await fetch(configItem.url, {
+        const response = await fetch(configItem, {
           headers: {
             'x-csrf-token': this.state.getCsrfToken(),
           },
