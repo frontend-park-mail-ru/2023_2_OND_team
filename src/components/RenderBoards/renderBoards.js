@@ -9,6 +9,7 @@ export function renderBoards(parent, boards) {
         const pins = Array.from(board.pins).slice(0, 3);
         const context = {
             id: board.board_id,
+            title: board.title,
             pins: pins,
         };
   
