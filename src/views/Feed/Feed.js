@@ -24,15 +24,6 @@ export function renderFeedPage() {
 
     main.innerHTML = feedTemplate(feedContext);
 
-    // const pins = document.querySelectorAll('.gallery__item');
-
-    // pins?.forEach((pin) => {
-    //   pin.addEventListener('click', () => {
-    //     const pinID = pin.className.split(' ')[1].split('-')[3];
-    //     router.navigate(`/pin/${pinID}`);
-    //   });
-    // });
-
     /**
     * Создает функцию с задержкой для предотвращения слишком частых вызовов.
     */
@@ -108,37 +99,38 @@ export function renderFeedPage() {
           });
         });
 
+        pins?.forEach((pin) => {
+            pin.addEventListener('mouseenter', () => {
+                const pinID = pin.className.split(' ')[1].split('-')[3];
+                API.getLike(pinID)
+                    .then((data) => {
+                        console.log(data.is_set);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
+            })
+        })
+
         const likeButtons = document.querySelectorAll('.like-icon');
         likeButtons?.forEach((likeButton) => {
           likeButton.addEventListener('click', (element) => {
             const id = element.target.className.split(' ')[1].split('-')[3];
-            // API.getLike(id)
-            //   .then((data) => {
-            //     const likeField = document.querySelector(`.like-counter-${id}`);
-            //     likeField.value = data.likes;
-            //   })
-            //   .catch((error) => {
-            //     console.error(error);
-            //   })
+            API.getLike(id)
+              .then((data) => {
+                const likeField = document.querySelector(`.like-counter-${id}`);
+                likeField.value = data.likes;
+              })
+              .catch((error) => {
+                console.error(error);
+              })
       
             if (likeButton.src.endsWith('like_active.svg')) {
                 likeButton.src = '/assets/icons/like.svg';
             } else {
                 likeButton.src = '/assets/icons/like_active.svg';
             }
-          });
-      
-          likeButton.addEventListener('hover', (element) => {
-            const id = element.target.className.split(' ').find(className => className.startsWith('js-like-button-')).split('-')[3];
-            console.log(id);
-            // API.setLike(id)
-            //   .then((data) => {
-            //     const likeField = document.querySelector(`.like-counter-${id}`);
-            //     likeField.textContent = data.body.count_like;
-                 
-            //   })
-          });
-      
+          });      
         });
 
 

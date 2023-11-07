@@ -326,11 +326,40 @@ export class API {
           this.state.setCsrfToken(csrfToken);
         }
 
-
       } catch (error) {
         console.error('Ошибка при получении csrf токена', error);
       }
     }
+
+    static async getLike(id) {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/pin/like/isSet/${id}`;
+        const response = await fetch(configItem, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          console.log(res.body)
+          
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных о лайке');
+        }
+      } catch (error) {
+        console.error('Ошибка:', error);
+      }
+    }
+
 
     static async getPinInfo(pinID) {
       try {
