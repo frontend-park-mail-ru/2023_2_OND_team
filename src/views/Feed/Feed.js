@@ -121,22 +121,44 @@ export function renderFeedPage() {
         likeButtons?.forEach((likeButton) => {
             likeButton.addEventListener('click', (element) => {
             const id = element.target.className.split(' ')[1].split('-')[3];
-            API.setLike(id)
+            API.getLike(pinID)
                 .then((data) => {
-                    likeButton.src = '/assets/icons/like.svg';
-                    
-                    const likeField = document.querySelector(`.like-counter-${id}`);
-                    likeField.value = data.likes;
+                    if (data.is_set) {
+                        API.deleteLike(id)
+                            .then((data) => {
+                                if (data.is_set) {
+                                    likeButton.src = '/assets/icons/like.svg';
+                                } else {
+                                    likeButton.src = '/assets/icons/like_active.svg';
+                                }
+                                
+                                const likeField = document.querySelector(`.like-counter-${id}`);
+                                // likeField.value = data.likes;
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            })
+                    } else {
+                        API.setLike(id)
+                            .then((data) => {
+                                if (data.is_set) {
+                                    likeButton.src = '/assets/icons/like.svg';
+                                } else {
+                                    likeButton.src = '/assets/icons/like_active.svg';
+                                }
+                                
+                                const likeField = document.querySelector(`.like-counter-${id}`);
+                                // likeField.value = data.likes;
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            })
+                    }
                 })
                 .catch((error) => {
                     console.error(error);
                 })
-        
-                // if (likeButton.src.endsWith('like_active.svg')) {
-                //     likeButton.src = '/assets/icons/like.svg';
-                // } else {
-                //     likeButton.src = '/assets/icons/like_active.svg';
-                // }
+                
             });      
         });
 

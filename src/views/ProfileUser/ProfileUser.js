@@ -1,4 +1,3 @@
-import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
 
 export function renderProfilePage() {

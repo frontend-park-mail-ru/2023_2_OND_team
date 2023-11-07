@@ -4,7 +4,7 @@ import { renderSidebar } from "../../views/Sidebar/Sidebar.js";
 import { renderHeaderDefault } from "../../views/HeaderDefault/HeaderDefault.js";
 import { renderFeedPage } from "../../views/Feed/Feed.js";
 import { renderHeaderGuest } from "../../views/HeaderGuest/HeaderGuest.js";
-import { renderProfilePage } from "../../views/ProfileUser/Profile.js";
+import { renderProfilePage } from "../../views/ProfileUser/ProfileUser.js";
 import { renderAuthPage } from "../../views/Authorization/Authorization.js";
 import { renderRegPage } from "../../views/Registration/Registration.js";
 import { renderPage404 } from "../../views/Page404/page404.js";
