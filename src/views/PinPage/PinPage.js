@@ -22,12 +22,8 @@ export function renderPinPage(pinID) {
 
             main.innerHTML = pinPage(context);
 
-            const cancelButton = document.querySelector('.pin-cancel-button');
+            console.log(username, pinInfo.description);
 
-            cancelButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                router.navigate('/');
-            });
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
