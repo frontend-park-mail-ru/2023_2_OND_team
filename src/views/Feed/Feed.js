@@ -6,7 +6,8 @@ import { Router } from '../../components/Router/router.js'
 /**
 * Рендерит главную страницу с пинами.
 */
-export function renderFeedPage() {
+export function renderFeedPage() {    
+    const state = new State();
     const router = new Router();
     const main = document.querySelector('#main');
 
@@ -14,14 +15,11 @@ export function renderFeedPage() {
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
 
-    document.body.style.overflow = 'visible';
-
-    const state = new State();
 
     const feedTemplate = Handlebars.templates['Feed.hbs'];
     const introTemplate = Handlebars.templates['Intro.hbs'];
     const feedContext = {
-        isAuthorized: state.getIsAuthorized(),
+        isAuthorized: !state.getIsAuthorized(),
         Intro: introTemplate,
     };
 

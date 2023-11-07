@@ -1,7 +1,9 @@
 import { API } from "../../utils/api.js";
+import { Router } from "../../components/Router/router.js";
 
 export function renderProfileSecurity() {
     const main = document.querySelector('#main');
+    const router = new Router();
 
     API.getUserInfo() 
         .then((data) => {
