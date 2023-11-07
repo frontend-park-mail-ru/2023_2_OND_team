@@ -590,7 +590,7 @@ export class API {
 
     static async getUserBoards() {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/like/set/${this.state.getUsername()}`;
+        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
 
         const response = await fetch(configItem.url, {
           headers: {
