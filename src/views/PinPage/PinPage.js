@@ -22,7 +22,15 @@ export function renderPinPage(pinID) {
 
             main.innerHTML = pinPage(context);
 
-            console.log(pinInfo.description);
+            const usernameReal = document.querySelector('.header__user__menu__username-text');
+
+            console.log(usernameReal, pinInfo.username);
+
+            if (usernameReal === pinInfo.author.username) {
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Удалить';
+                deleteButton.classList.add('delete-button');
+            }
 
         })
         .catch((error) => {
