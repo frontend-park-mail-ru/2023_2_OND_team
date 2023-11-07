@@ -350,7 +350,7 @@ export class API {
 
         if (res.status === 'ok') {
           console.log(res.body)
-          
+
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных о лайке');
@@ -360,6 +360,36 @@ export class API {
       }
     }
 
+    static async setLike(id) {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/pin/like/set/${id}`;
+        const response = await fetch(configItem, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          console.log(res.body)
+          
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных о лайке');
+        }
+      } catch (error) {
+        console.error('Ошибка:', error);
+      }
+    }
 
     static async getPinInfo(pinID) {
       try {

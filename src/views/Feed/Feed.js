@@ -102,9 +102,14 @@ export function renderFeedPage() {
         pins?.forEach((pin) => {
             pin.addEventListener('mouseenter', () => {
                 const pinID = pin.className.split(' ')[1].split('-')[3];
+                const likeButton = document.querySelector(`.js-like-button-${pinID}`);
                 API.getLike(pinID)
                     .then((data) => {
-                        console.log(data.is_set);
+                        if (data.is_set) {
+                            likeButton.src = '/assets/icons/like.svg';
+                        } else {
+                            likeButton.src = '/assets/icons/like_active.svg';
+                        }
                     })
                     .catch((error) => {
                         console.error(error);
@@ -114,23 +119,25 @@ export function renderFeedPage() {
 
         const likeButtons = document.querySelectorAll('.like-icon');
         likeButtons?.forEach((likeButton) => {
-          likeButton.addEventListener('click', (element) => {
+            likeButton.addEventListener('click', (element) => {
             const id = element.target.className.split(' ')[1].split('-')[3];
-            API.getLike(id)
-              .then((data) => {
-                const likeField = document.querySelector(`.like-counter-${id}`);
-                likeField.value = data.likes;
-              })
-              .catch((error) => {
-                console.error(error);
-              })
-      
-            if (likeButton.src.endsWith('like_active.svg')) {
-                likeButton.src = '/assets/icons/like.svg';
-            } else {
-                likeButton.src = '/assets/icons/like_active.svg';
-            }
-          });      
+            API.setLike(id)
+                .then((data) => {
+                    likeButton.src = '/assets/icons/like.svg';
+                    
+                    const likeField = document.querySelector(`.like-counter-${id}`);
+                    likeField.value = data.likes;
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+        
+                // if (likeButton.src.endsWith('like_active.svg')) {
+                //     likeButton.src = '/assets/icons/like.svg';
+                // } else {
+                //     likeButton.src = '/assets/icons/like_active.svg';
+                // }
+            });      
         });
 
 
