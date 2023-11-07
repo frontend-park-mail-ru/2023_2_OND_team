@@ -16,7 +16,6 @@ export function renderSidebar() {
 
     const profileBtn = document.querySelector('.sidebar__menu__profile__arrow');
     profileBtn?.addEventListener('click', () => {
-        console.log('click')
         const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
         const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
 

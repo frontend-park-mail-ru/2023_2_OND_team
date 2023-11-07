@@ -1,8 +1,10 @@
 import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
+import { Router } from "../../components/Router/router.js";
+
 export function renderProfileData() {
     const main = document.querySelector('#main');
-    const state = new State();
+    const router = new Router();
     
     API.getUserInfo() 
         .then((data) => {
@@ -16,6 +18,23 @@ export function renderProfileData() {
             };
             main.innerHTML = profileDataTemplate(profileDataContext);
 
+            const inputElement = document.getElementById('input__file');
+            inputElement.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    const imageBytes = e.target.result;
+
+                    const blob = new Blob([imageBytes]);
+
+                    API.putUserAvatar(blob);
+                };
+
+              reader.readAsArrayBuffer(file);
+            });
+
             const profileAvatar = document.querySelector('.profile-data__avatar');
             const editAvatarBtn = document.querySelector('.profile-data__edit-avatar');
             
@@ -27,27 +46,7 @@ export function renderProfileData() {
                 editAvatarBtn.classList.add('hide');
             });
 
-            const editAvatar = () => {
-                const inputElement = document.getElementById('input__file');
-                inputElement.addEventListener('change', (event) => {
-                    const file = event.target.files[0];
-
-                    const reader = new FileReader();
-
-                    reader.onload = (e) => {
-                        const imageBytes = e.target.result;
-
-                        const blob = new Blob([imageBytes]);
-
-                        API.putUserAvatar(blob);
-                    };
-
-                  reader.readAsArrayBuffer(file);
-                });
-                console.log('editAvatar');
-            }
-
-            editAvatarBtn?.addEventListener('click', editAvatar);
+            editAvatarBtn?.addEventListener('click', () => {inputElement.click()});
 
             const usernameInput = document.querySelector('.js-profile-data__data-names__username-data');
             const nameInput = document.querySelector('.js-profile-data__data-names__name-data');
@@ -61,7 +60,7 @@ export function renderProfileData() {
 
             const editDataBtn = document.querySelector('.profile-data__edit-data');
             editDataBtn?.addEventListener('click', () => {
-                editAvatarBtn.classList.add('hide');
+                editDataBtn.classList.add('hide');
                 const profileData = document.querySelector('.js-profile-data');
                 profileData.classList.add('profile-data-edit');
 
@@ -82,7 +81,7 @@ export function renderProfileData() {
 
             const canselBtn = document.querySelector('.js-profile-data__btns__cansel-btn');
             canselBtn?.addEventListener('click', () => {
-                editAvatarBtn.classList.remove('hide');
+                editDataBtn.classList.remove('hide');
                 const profileData = document.querySelector('.js-profile-data');
                 profileData.classList.remove('profile-data-edit');
 
@@ -103,6 +102,26 @@ export function renderProfileData() {
                 nameTextarea.textContent = profileDataContext.name;
                 surnameTextarea.textContent = profileDataContext.surname;
                 aboutTextarea.textContent = profileDataContext.about;
+            })
+
+            const saveBtn = document.querySelector('.js-profile-data__btns__save-btn');
+            saveBtn?.addEventListener('click', () => {
+
+                const data = {
+                    username: usernameInput.value,
+                    name: nameInput.value,
+                    surname: surnameInput.value,
+                    about_me: aboutInput.value,
+                }
+                
+                API.putUserInfo(data)
+                    .then((status) => {
+                        if (status === "ok") {
+                            router.navigate('/profile/data');
+                        } else {
+                            console.log('error saving data');
+                        }
+                    })
             })
         });
 }

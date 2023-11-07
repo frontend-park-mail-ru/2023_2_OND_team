@@ -39,7 +39,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -79,7 +78,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -114,7 +112,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -155,7 +152,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -195,7 +191,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
 
@@ -228,14 +223,13 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
 
         if (res.status === 'ok') {
           return res.body;
         } else {
-          console.log(res);
+          throw new Error('Ошибка при получении данных пользователя');
         }
 
       } catch (error) {
@@ -264,14 +258,13 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
 
         if (res.status === 'ok') {
-          return true;
+          return res.status;
         } else {
-          console.log(res);
+          throw new Error('Ошибка при отправке данных пользователя');
         }
 
       } catch (error) {
@@ -300,14 +293,13 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
 
         if (res.status === 'ok') {
           return true;
         } else {
-          console.log(res);
+          throw new Error('Ошибка при отправке аватара пользователя');
         }
 
       } catch (error) {
@@ -331,7 +323,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
 
       } catch (error) {
@@ -359,14 +350,13 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
     
         const res = await response.json();
     
         if (res.status === 'ok') {
           return res.body;
         } else {
-          console.error(res);
+          throw new Error('Ошибка при получении данных о пине');
         }
       } catch (error) {
         console.error('Ошибка при получении данных о пине:', error);
@@ -395,7 +385,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -429,7 +418,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
@@ -463,7 +451,6 @@ export class API {
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-        console.log(this.state.getCsrfToken())
 
         const res = await response.json();
         if (res.status === 'ok') {
