@@ -116,7 +116,6 @@ export function renderProfileData() {
 
             const saveBtn = document.querySelector('.js-profile-data__btns__save-btn');
             saveBtn?.addEventListener('click', () => {
-
                 const data = {
                     username: usernameTextarea.value,
                     name: nameTextarea.value,
