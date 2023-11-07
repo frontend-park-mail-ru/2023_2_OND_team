@@ -1,7 +1,9 @@
 <div class="rectangle-create">
     <span class="title-create">Создание пина</span>
     <div>
-        <input id="picture" type="file" name="file" multiple>
+        <form class="profile__img__form js-profile__img__form" enctype="multipart/form-data" action="">
+            <input name="object" accept="image/*" type="file" id="picture" accept=".jpg, .jpeg, .png, .webp, .gif">
+        </form>
     </div>
     <div class="input-title">
         <label for="title" class="labeled-input">Название</label>
