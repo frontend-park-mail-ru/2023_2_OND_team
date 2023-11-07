@@ -98,22 +98,24 @@ export function renderProfileData() {
                 surnameTextarea.disabled = true;
                 aboutTextarea.disabled = true;
 
-                usernameTextarea.textContent = profileDataContext.username;
-                nameTextarea.textContent = profileDataContext.name;
-                surnameTextarea.textContent = profileDataContext.surname;
-                aboutTextarea.textContent = profileDataContext.about;
+                usernameTextarea.value = profileDataContext.username;
+                nameTextarea.value = profileDataContext.name;
+                surnameTextarea.value = profileDataContext.surname;
+                aboutTextarea.value = profileDataContext.about;
             })
 
             const saveBtn = document.querySelector('.js-profile-data__btns__save-btn');
             saveBtn?.addEventListener('click', () => {
 
                 const data = {
-                    username: usernameInput.value,
-                    name: nameInput.value,
-                    surname: surnameInput.value,
-                    about_me: aboutInput.value,
+                    username: usernameTextarea.value,
+                    name: nameTextarea.value,
+                    surname: surnameTextarea.value,
+                    about_me: aboutTextarea.value,
                 }
                 
+                console.log(data);
+
                 API.putUserInfo(data)
                     .then((status) => {
                         if (status === "ok") {
