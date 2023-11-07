@@ -106,7 +106,7 @@ export function renderFeedPage() {
           pin.addEventListener('click', () => {
             console.log('КЛИК');
             const pinID = pin.className.split(' ')[1].split('-')[3];
-            router.navigate('/pin/10');
+            router.navigate(`/pin/${pinID}`);
           });
         });
     }
