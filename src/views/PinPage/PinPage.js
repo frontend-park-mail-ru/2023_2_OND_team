@@ -20,14 +20,6 @@ export function renderPinPage(pinID) {
                 description: pinInfo.description,
             };
 
-            console.log(username, pinInfo.description);
-
-            if (username === pinInfo.author.username) {
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Удалить';
-                deleteButton.classList.add('delete-button');
-            }
-
             main.innerHTML = pinPage(context);
 
             const cancelButton = document.querySelector('.pin-cancel-button');
