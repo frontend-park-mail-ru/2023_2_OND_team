@@ -17,6 +17,7 @@
   display: flex;
   position: relative;
   top: -25px;
+  cursor: pointer;
 }
 
 .sidebar__menu {

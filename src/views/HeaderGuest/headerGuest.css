@@ -9,6 +9,10 @@
     background: #FFF;
 }
 
+.header-guest__logo {
+    cursor: pointer;
+}
+
 .header-guest__btns {
     display: inline-flex;
     align-items: flex-start;
