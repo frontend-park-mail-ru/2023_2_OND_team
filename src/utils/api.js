@@ -16,7 +16,7 @@ export class API {
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
-      {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/pin/personal'},
+      {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/pin/personal?count=1000'},
       {name: 'getUserBoards', url: '//pinspire.online:8080/api/v1/board/get/user/NewOne'},
     ];
 
@@ -562,7 +562,7 @@ export class API {
 
         console.log(configItem);
 
-        const response = await fetch(configItem, {
+        const response = await fetch(configItem.url, {
           headers: {
             'x-csrf-token': this.state.getCsrfToken(),
           },
