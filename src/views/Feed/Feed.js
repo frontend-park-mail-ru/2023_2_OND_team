@@ -117,6 +117,14 @@ export function renderFeedPage() {
             })
         })
 
+        pins?.forEach((pin) => {
+            pin.addEventListener('mouseleave', () => {
+                const pinID = pin.className.split(' ')[1].split('-')[3];
+                const likeField = document.querySelector(`.like-counter-${pinID}`);
+                likeField.classList.add('hide');
+            })
+        })
+
         const likeButtons = document.querySelectorAll('.like-icon');
         likeButtons?.forEach((likeButton) => {
             likeButton.addEventListener('click', (element) => {
@@ -129,7 +137,7 @@ export function renderFeedPage() {
                             .then((data) => {
                                 likeButton.src = '/assets/icons/like.svg';
                                 likeField.innerHTML = data.count_like;
-                                likeField.classList.toggle('hide');
+                                likeField.classList.remove('hide');
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -139,7 +147,7 @@ export function renderFeedPage() {
                             .then((data) => {
                                 likeButton.src = '/assets/icons/like_active.svg';
                                 likeField.innerHTML = data.count_like;
-                                likeField.classList.toggle('hide');
+                                likeField.classList.remove('hide');
                             })
                             .catch((error) => {
                                 console.error(error);
