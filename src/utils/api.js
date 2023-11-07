@@ -531,7 +531,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({title, description, 'public': true, 'tags': ["test"]}),
+          body: JSON.stringify({title, description, 'public': true, 'tags': [" "]}),
           credentials: 'include',
         });
 
