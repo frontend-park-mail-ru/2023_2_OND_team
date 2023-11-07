@@ -595,7 +595,7 @@ export class API {
           throw new Error('Не найдена конфигурация для getUserBoards');
         }
 
-        const response = await fetch(configItem, {
+        const response = await fetch(configItem.url, {
           headers: {
             'x-csrf-token': this.state.getCsrfToken(),
           },
