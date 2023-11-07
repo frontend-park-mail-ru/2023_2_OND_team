@@ -26,7 +26,7 @@ export function renderCreateBoard() {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
         const IDsStr = document.getElementById('IDs').value;
-        const IDs = JSON.parse(IDsStr);
+        const IDs = IDsStr.split(',').map(Number);
 
         concole.log(title, description, IDs);
 
