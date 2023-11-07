@@ -26,14 +26,24 @@ export function renderCreatePin() {
         const pictureInput = document.getElementById('picture');
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-
+    
         const pictureFile = pictureInput.files[0];
-
+    
         const reader = new FileReader();
-
+    
         reader.onload = (event) => {
             const pictureBytes = event.target.result;
-            const picture = new Blob([pictureBytes]);
+    
+            const extension = pictureFile.name.split('.').pop().toLowerCase();
+            let mimeType = 'application/octet-stream'; // Тип MIME по умолчанию
+    
+            if (extension === 'jpg' || extension === 'jpeg') {
+                mimeType = 'image/jpeg';
+            } else if (extension === 'png') {
+                mimeType = 'image/png';
+            }
+    
+            const picture = new Blob([pictureBytes], { type: mimeType });
     
             API.createPin(picture, title, description)
                 .then((status) => {
@@ -47,9 +57,9 @@ export function renderCreatePin() {
                     console.error(error);
                 });
         };
-
+    
         reader.readAsArrayBuffer(pictureFile);
-
+    
         e.preventDefault();
-    });
+    });    
 }
