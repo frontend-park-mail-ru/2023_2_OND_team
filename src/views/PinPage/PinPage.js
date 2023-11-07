@@ -39,11 +39,15 @@ export function renderPinPage(pinID) {
 
             console.log(usernameReal, pinInfo.author.username);
 
-            if (usernameReal === pinInfo.author.username && isAuthorized) {
+            if (usernameReal === pinInfo.author.username) {
                 const rec = document.querySelector('.rectangle');
-                rec.appendChild(saveButton);
                 rec.appendChild(deleteButton);
                 rec.appendChild(updateButton);
+            }
+
+            if (isAuthorized) {
+                const block = document.querySelector('.block');
+                block.appendChild(saveButton);
             }
 
             deleteButton.addEventListener('click', function (e) {
