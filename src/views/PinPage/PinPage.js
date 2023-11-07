@@ -23,6 +23,9 @@ export function renderPinPage(pinID) {
             main.innerHTML = pinPage(context);
 
             const usernameReal = state.getUsername();
+            const isAuthorized = state.getIsAuthorized();
+
+            console.log(isAuthorized);
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
@@ -34,7 +37,7 @@ export function renderPinPage(pinID) {
 
             console.log(usernameReal, pinInfo.author.username);
 
-            if (usernameReal === pinInfo.author.username) {
+            if (usernameReal === pinInfo.author.username && isAuthorized) {
                 const rec = document.querySelector('.rectangle');
                 rec.appendChild(deleteButton);
                 rec.appendChild(updateButton);
