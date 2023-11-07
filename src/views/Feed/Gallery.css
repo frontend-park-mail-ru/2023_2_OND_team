@@ -113,6 +113,7 @@
 }
 
 .like-counter {
+    height: 20px;
     text-align: center;
     opacity: 0;
 }
