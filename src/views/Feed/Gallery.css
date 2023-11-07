@@ -69,43 +69,10 @@
     transition: transform 0.3s ease;
 }
 
-.gallery__item::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;  
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    pointer-events: none;
-  }
-  
-  .gallery__item:hover::before {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  .like-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+.gallery img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
     z-index: 1;
-  }
-    
-  .like-icon {
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-  }
-    
-  .gallery__item:hover .like-button {
-    opacity: 1;
-    pointer-events: auto;
-  }
+}
+
+
