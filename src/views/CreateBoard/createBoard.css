@@ -10,7 +10,6 @@
     border-radius: 15px;
     cursor: pointer;
     width: 160px;
-    /* height: 49px; */
 }
 
 .board-create-button {
@@ -22,11 +21,9 @@
     border: 1px solid var(--primary-30, #226B77);
     background-color: #226B77;
     color: white;
-    /* border: none; */
     border-radius: 15px;
     cursor: pointer;
     width: 160px;
-    /* height: 49px; */
 }
 
 .board-cancel-button:hover,
@@ -40,4 +37,8 @@
     height: 1px;
     width: 100%;
     border: none;
+}
+
+.input-container {
+    justify-content: center;
 }
