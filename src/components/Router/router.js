@@ -211,12 +211,12 @@ export class Router {
         window.addEventListener("popstate", this.#popstateListener);
     }
 
-    navigate(path, context) {
+    navigate(path) {
         window.history.pushState(null, null, path);
-        this.handlePopstate(context);
+        this.handlePopstate();
     }
 
-    handlePopstate(context) {
+    handlePopstate() {
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 
@@ -225,7 +225,7 @@ export class Router {
             route.handler();
         } else if ( (/^\/pin\/\d+$/).test(path) ) {
             this.#currentRoute = this.#routes.find((r) => r.path === "/pin/ID");
-            this.#currentRoute.handler(context);
+            this.#currentRoute.handler(path.split('/')[1]);
         } else if (this.#defaultRoute) {
             this.#currentRoute = null;
             this.#defaultRoute();

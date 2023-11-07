@@ -49,5 +49,6 @@ export function renderPinPage(pinID) {
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
+            router.navigate('/page404');
     });
 }

@@ -8,6 +8,6 @@ export function renderPins(parent, images) {
   images.forEach((image) => {
     const context = {src: image.picture, id: image.id};
 
-    parent.insertAdjacentHTML('beforeend', template(context));
+    parent?.insertAdjacentHTML('beforeend', template(context));
   });
 }
