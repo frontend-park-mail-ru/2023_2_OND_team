@@ -22,8 +22,7 @@ export function renderPinPage(pinID) {
 
             main.innerHTML = pinPage(context);
 
-            const usernameDiv = document.querySelector('.header__user__menu__username-text');
-            const usernameReal = usernameDiv.textContent.trim();
+            const usernameReal = state.getUsername();
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';

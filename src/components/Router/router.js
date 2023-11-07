@@ -150,9 +150,27 @@ export class Router {
                         return;
                     }
 
-                    this.state.setCurrentPage('login');
-                    renderHeaderGuest();
-                    renderAuthPage();
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                window.removeEventListener('scroll', window.scrollFunc);
+                                this.state.setCurrentPage('feed');
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderFeedPage();
+                            } else {
+                                this.state.setCurrentPage('login');
+                                renderHeaderGuest();
+                                renderAuthPage();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
                 },
             },
             {
@@ -162,9 +180,27 @@ export class Router {
                         return;
                     }
 
-                    this.state.setCurrentPage('signup');
-                    renderHeaderGuest();
-                    renderRegPage();
+                    API.checkLogin()
+                    .then((status) => {
+                        if (status === 'ok') {
+                            window.removeEventListener('scroll', window.scrollFunc);
+                            this.state.setCurrentPage('feed');
+                            if (document.querySelector('#sidebar').innerHTML === '') {
+                                renderSidebar();
+                            }
+                            if (document.querySelector('#header').innerHTML === '') {
+                                renderHeaderDefault();
+                            } 
+                            renderFeedPage();
+                        } else {
+                            this.state.setCurrentPage('signup');
+                            renderHeaderGuest();
+                            renderRegPage();
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
                 },
             },
             {
@@ -174,8 +210,25 @@ export class Router {
                         return;
                     }
 
-                    this.state.setCurrentPage('createPin');
-                    renderCreatePin();
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                this.state.setCurrentPage('createPin');
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderCreatePin();
+                            } else {
+                                this.state.setCurrentPage('login');
+                                renderAuthPage();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
                 },
             },
             {
@@ -185,20 +238,53 @@ export class Router {
                         return;
                     }
 
-                    this.state.setCurrentPage('createBoard');
-                    renderCreateBoard();
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                this.state.setCurrentPage('createBoard');
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                }                     
+                                renderCreateBoard();
+                            } else {
+                                this.state.setCurrentPage('login');
+                                renderAuthPage();
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
                 },
             },
             {
                 path: "/pin/ID",
                 handler: (pinID) => {
-                    console.log(pinID);
-                    if (this.state.getCurrentPage() === 'pinPage') {
+                    if (this.state.getCurrentPage() === `pin${pinID}`) {
                         return;
                     }
 
-                    this.state.setCurrentPage('pinPage');
-                    renderPinPage(pinID);
+                    API.checkLogin()
+                    .then((status) => {
+                        this.state.setCurrentPage(`pin${pinID}`);
+                        if (status === 'ok') {
+                            if (document.querySelector('#sidebar').innerHTML === '') {
+                                renderSidebar();
+                            }
+                            if (document.querySelector('#header').innerHTML === '') {
+                                renderHeaderDefault();
+                            } 
+                            renderPinPage(pinID);
+                        } else {
+                            renderHeaderGuest();
+                            renderPinPage(pinID);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
                 },
             },
         ];
