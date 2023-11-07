@@ -20,5 +20,16 @@ export function renderHeaderGuest() {
     signupBtn?.addEventListener('click', () => {        
         router.navigate('/signup');
     })
+
+    const logo = document.querySelector('.js-header-guest__logo-img');
+    logo?.addEventListener('click', handleLogoClick);
+
+    function handleLogoClick(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    }
 }
 

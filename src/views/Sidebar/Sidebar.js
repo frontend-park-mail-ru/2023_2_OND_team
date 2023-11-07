@@ -60,5 +60,19 @@ export function renderSidebar() {
         });
     });
 
+    const logo = document.querySelector('.js-sidebar__logo-img');
+    logo?.addEventListener('click', handleLogoClick);
 
+    function handleLogoClick(e) {
+        e.preventDefault();
+
+        if (state.getCurrentPage() === 'feed') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        } else {
+            router.navigate('/');
+        }
+    }
 }

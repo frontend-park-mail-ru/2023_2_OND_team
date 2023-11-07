@@ -106,19 +106,5 @@ export function renderFeedPage() {
           });
         });
     }
-
-    // const logo = document.querySelector('.js-header__logo');
-    // if (logo) {
-    //     logo.addEventListener('click', handleLogoClick);
-    // }
-
-    // function handleLogoClick(e) {
-    //     e.preventDefault();
-    //     window.scrollTo({
-    //         top: 0,
-    //         behavior: 'smooth',
-    //     });
-    // }
-
     
 }
