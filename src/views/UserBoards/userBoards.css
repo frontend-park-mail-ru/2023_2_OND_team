@@ -21,6 +21,7 @@
 
 .user__board-pins {
     display: flex;
+    height: 100%;
 }
 
 .user__board__pin {
