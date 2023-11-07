@@ -28,8 +28,8 @@
     width: 160px;
 }
 
-.pin-create-button,
-.pin-cancel-button,
+.pin-create-button:hover,
+.pin-cancel-button:hover,
 .board-cancel-button:hover,
 .board-create-button:hover {
     color: white;
