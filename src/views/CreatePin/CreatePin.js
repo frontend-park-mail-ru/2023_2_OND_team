@@ -28,7 +28,7 @@ export function renderCreatePin() {
         const description = document.getElementById('description').value;
         
         pictureInput.addEventListener('change', (event) => {
-            const pictureFile = event.files[0];
+            const pictureFile = event.target.files[0];
         
             const reader = new FileReader();
         
@@ -56,5 +56,6 @@ export function renderCreatePin() {
         });
     
         e.preventDefault();
-    });    
+    });
+       
 }
