@@ -331,7 +331,7 @@ export class Router {
         console.log(route)
 
         switch (true) {
-            case route:
+            case (route !== undefined):
                 this.#currentRoute = route;
                 route.handler();
                 break;
