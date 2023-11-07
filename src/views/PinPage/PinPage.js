@@ -22,9 +22,10 @@ export function renderPinPage(pinID) {
 
             main.innerHTML = pinPage(context);
 
-            const usernameReal = document.querySelector('.header__user__menu__username-text');
+            const usernameDiv = document.querySelector('.header__user__menu__username-text');
+            const usernameReal = usernameDiv.textContent.trim();
 
-            console.log(usernameReal, pinInfo.username);
+            console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
                 const deleteButton = document.createElement('button');
