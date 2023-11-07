@@ -1,10 +1,17 @@
 <div class="profile-data js-profile-data">
   <div class="profile-data__content">
     <div class="profile-data__avatar">
-      <img src="https://pinspire.online:1444/assets/icons/headerDefaultAvatar.svg" class="profile-data__avatar-img">
+      
+      <img src="{{avatar}}" class="profile-data__avatar-img">
         <div class="profile-data__edit-avatar hide">
         <img src="https://pinspire.online:1444/assets/icons/icon_edit.svg" class="profile-data__edit-avatar-img">
       </div>
+      <form class="profile__img__form js-profile__img__form" enctype="multipart/form-data" action="">
+            <input name="object" accept="image/*" type="file" id="input__file" class="profile__file__input_none"
+                accept=".jpg, .jpeg, .png, .webp, .gif">
+            <label for="input__file" class="secondary-btn-med profile__avatar__button">
+            </label>
+        </form>
     </div>
     <div class="profile-data__line"></div>
     <div class="profile-data__data">
@@ -12,19 +19,19 @@
         <div class="profile-data__data-names__item profile-data__data-names__username">
           <div class="profile-data__data-names__item-title profile-data__data-names__username-title text-base2-medium">Имя пользователя</div>
           <div class="profile-data__data-names__item-data js-profile-data__data-names__username-data input-read-only">
-            <textarea disabled class="profile-data__data-names__item-textarea js-username-textarea text-base1-medium">Pupkin</textarea>
+            <textarea disabled class="profile-data__data-names__item-textarea js-username-textarea text-base1-medium">{{username}}</textarea>
           </div>
         </div>
         <div class="profile-data__data-names__item profile-data__data-names__name">
           <div class="profile-data__data-names__item-title profile-data__data-names__name-title text-base2-medium">Имя</div>
           <div class="profile-data__data-names__item-data js-profile-data__data-names__name-data input-read-only text-base1-medium">
-            <textarea disabled class="profile-data__data-names__item-textarea js-name-textarea text-base1-medium">Иван</textarea>
+            <textarea disabled class="profile-data__data-names__item-textarea js-name-textarea text-base1-medium">{{name}}</textarea>
           </div>
         </div>
         <div class="profile-data__data-names__item profile-data__data-names__surname">
           <div class="profile-data__data-names__item-title profile-data__data-names__surname-title text-base2-medium">Фамилия</div>
           <div class="profile-data__data-names__item-data js-profile-data__data-names__surname-data input-read-only text-base1-medium">
-            <textarea disabled class="profile-data__data-names__item-textarea js-surname-textarea text-base1-medium">Иванов</textarea>
+            <textarea disabled class="profile-data__data-names__item-textarea js-surname-textarea text-base1-medium">{{surname}}</textarea>
           </div>
         </div>
       </div>
@@ -33,7 +40,7 @@
           О себе
         </div>
         <div class="profile-data__data-about__data js-profile-data__data-about__data input-read-only">
-          <textarea disabled class="profile-data__data-about__data-textarea js-about-textarea text-base1-medium">Гений, миллиардер, плейбой, филантроп. Да и просто хороший парень. Люблю свою работу и хочу допуститься до рк</textarea>
+          <textarea disabled class="profile-data__data-about__data-textarea js-about-textarea text-base1-medium">{{about}}</textarea>
         </div>
       </div>
       <div class="profile-data__edit-data">

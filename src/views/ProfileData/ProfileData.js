@@ -14,6 +14,7 @@ export function renderProfileData() {
                 name: data.name, 
                 surname: data.surname, 
                 avatar: data.avatar, 
+                about: data.about_me,
             };
             main.innerHTML = profileDataTemplate(profileDataContext);
 
@@ -29,40 +30,82 @@ export function renderProfileData() {
             });
             
             const editAvatar = () => {
+                const inputElement = document.getElementById('input__file');
+                inputElement.addEventListener('change', (event) => {
+                    const file = event.target.files[0];
+                
+                    const reader = new FileReader();
+                
+                    reader.onload = (e) => {
+                        const imageBytes = e.target.result;
+                    
+                        const blob = new Blob([imageBytes]);
+                        
+                        API.putUserAvatar(blob);
+                    };
+                
+                  reader.readAsArrayBuffer(file);
+                });
                 console.log('editAvatar');
             }
             
             editAvatarBtn?.addEventListener('click', editAvatar);
+
+            const usernameInput = document.querySelector('.js-profile-data__data-names__username-data');
+            const nameInput = document.querySelector('.js-profile-data__data-names__name-data');
+            const surnameInput = document.querySelector('.js-profile-data__data-names__surname-data');
+            const aboutInput = document.querySelector('.js-profile-data__data-about__data');
+
+            const usernameTextarea = document.querySelector('.js-username-textarea');
+            const nameTextarea = document.querySelector('.js-name-textarea');
+            const surnameTextarea = document.querySelector('.js-surname-textarea');
+            const aboutTextarea = document.querySelector('.js-about-textarea');
             
             const editDataBtn = document.querySelector('.profile-data__edit-data');
             editDataBtn?.addEventListener('click', () => {
+                editAvatarBtn.classList.add('hide');
                 const profileData = document.querySelector('.js-profile-data');
-                profileData.classList.toggle('profile-data-edit');
+                profileData.classList.add('profile-data-edit');
                 
                 const profileDataControl = document.querySelector('.profile-data__control');
-                profileDataControl.classList.toggle('hide');
+                profileDataControl.classList.remove('hide');
                 
-                const usernameInput = document.querySelector('.js-profile-data__data-names__username-data');
-                const nameInput = document.querySelector('.js-profile-data__data-names__name-data');
-                const surnameInput = document.querySelector('.js-profile-data__data-names__surname-data');
-                const aboutInput = document.querySelector('.js-profile-data__data-about__data');
-                
-                usernameInput.classList.toggle('input-primary');
-                nameInput.classList.toggle('input-primary');
-                surnameInput.classList.toggle('input-primary');
-                aboutInput.classList.toggle('input-primary');
-                
-                const usernameTextarea = document.querySelector('.js-username-textarea')
-                const nameTextarea = document.querySelector('.js-name-textarea')
-                const surnameTextarea = document.querySelector('.js-surname-textarea')
-                const aboutTextarea = document.querySelector('.js-about-textarea')
-                
-                usernameTextarea.disabled = !usernameTextarea.disabled;
-                nameTextarea.disabled = !nameTextarea.disabled;
-                surnameTextarea.disabled = !surnameTextarea.disabled;
-                aboutTextarea.disabled = !aboutTextarea.disabled;
+                usernameInput.classList.add('input-primary');
+                nameInput.classList.add('input-primary');
+                surnameInput.classList.add('input-primary');
+                aboutInput.classList.add('input-primary');
+
+                usernameTextarea.disabled = false;
+                nameTextarea.disabled = false;
+                surnameTextarea.disabled = false;
+                aboutTextarea.disabled = false;
             
             });
+
+            const canselBtn = document.querySelector('.js-profile-data__btns__cansel-btn');
+            canselBtn?.addEventListener('click', () => {
+                editAvatarBtn.classList.remove('hide');
+                const profileData = document.querySelector('.js-profile-data');
+                profileData.classList.remove('profile-data-edit');
+
+                const profileDataControl = document.querySelector('.profile-data__control');
+                profileDataControl.classList.add('hide');
+
+                usernameInput.classList.remove('input-primary');
+                nameInput.classList.remove('input-primary');
+                surnameInput.classList.remove('input-primary');
+                aboutInput.classList.remove('input-primary');
+
+                usernameTextarea.disabled = true;
+                nameTextarea.disabled = true;
+                surnameTextarea.disabled = true;
+                aboutTextarea.disabled = true;
+
+                usernameTextarea.textContent = profileDataContext.username;
+                nameTextarea.textContent = profileDataContext.name;
+                surnameTextarea.textContent = profileDataContext.surname;
+                aboutTextarea.textContent = profileDataContext.about;
+            })
         });
 }
 
