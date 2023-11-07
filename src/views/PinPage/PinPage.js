@@ -46,8 +46,8 @@ export function renderPinPage(pinID) {
             }
 
             if (isAuthorized) {
-                const rec = document.querySelector('.rectangle');
-                rec.appendChild(saveButton);
+                const block = document.querySelector('.block');
+                block.appendChild(saveButton);
             }
 
             deleteButton.addEventListener('click', function (e) {
