@@ -1,11 +1,9 @@
 import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
-
 export function renderProfileData() {
     const main = document.querySelector('#main');
-
     const state = new State();
-
+    
     API.getUserInfo() 
         .then((data) => {
             const profileDataTemplate = Handlebars.templates['ProfileData.hbs'];
@@ -28,27 +26,27 @@ export function renderProfileData() {
             profileAvatar?.addEventListener('mouseleave', () => {
                 editAvatarBtn.classList.add('hide');
             });
-            
+
             const editAvatar = () => {
                 const inputElement = document.getElementById('input__file');
                 inputElement.addEventListener('change', (event) => {
                     const file = event.target.files[0];
-                
+
                     const reader = new FileReader();
-                
+
                     reader.onload = (e) => {
                         const imageBytes = e.target.result;
-                    
+
                         const blob = new Blob([imageBytes]);
-                        
+
                         API.putUserAvatar(blob);
                     };
-                
+
                   reader.readAsArrayBuffer(file);
                 });
                 console.log('editAvatar');
             }
-            
+
             editAvatarBtn?.addEventListener('click', editAvatar);
 
             const usernameInput = document.querySelector('.js-profile-data__data-names__username-data');
@@ -60,16 +58,16 @@ export function renderProfileData() {
             const nameTextarea = document.querySelector('.js-name-textarea');
             const surnameTextarea = document.querySelector('.js-surname-textarea');
             const aboutTextarea = document.querySelector('.js-about-textarea');
-            
+
             const editDataBtn = document.querySelector('.profile-data__edit-data');
             editDataBtn?.addEventListener('click', () => {
                 editAvatarBtn.classList.add('hide');
                 const profileData = document.querySelector('.js-profile-data');
                 profileData.classList.add('profile-data-edit');
-                
+
                 const profileDataControl = document.querySelector('.profile-data__control');
                 profileDataControl.classList.remove('hide');
-                
+
                 usernameInput.classList.add('input-primary');
                 nameInput.classList.add('input-primary');
                 surnameInput.classList.add('input-primary');
@@ -79,7 +77,7 @@ export function renderProfileData() {
                 nameTextarea.disabled = false;
                 surnameTextarea.disabled = false;
                 aboutTextarea.disabled = false;
-            
+
             });
 
             const canselBtn = document.querySelector('.js-profile-data__btns__cansel-btn');
@@ -101,11 +99,10 @@ export function renderProfileData() {
                 surnameTextarea.disabled = true;
                 aboutTextarea.disabled = true;
 
-                usernameTextarea.value = profileDataContext.username;
-                nameTextarea.value = profileDataContext.name;
-                surnameTextarea.value = profileDataContext.surname;
-                aboutTextarea.value = profileDataContext.about;
+                usernameTextarea.textContent = profileDataContext.username;
+                nameTextarea.textContent = profileDataContext.name;
+                surnameTextarea.textContent = profileDataContext.surname;
+                aboutTextarea.textContent = profileDataContext.about;
             })
         });
 }
-
