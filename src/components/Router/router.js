@@ -11,7 +11,7 @@ import { renderPage404 } from "../../views/Page404/page404.js";
 import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
 import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
-import { renderPinPage } from "../../views/PinPageDefault/PinPage.js";
+import { renderPinPage } from "../../views/PinPage/PinPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 
 export class Router {
