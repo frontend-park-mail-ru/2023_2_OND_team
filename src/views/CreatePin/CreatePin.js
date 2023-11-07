@@ -34,24 +34,15 @@ export function renderCreatePin() {
         reader.onload = (event) => {
             const pictureBytes = event.target.result;
     
-            const extension = pictureFile.name.split('.').pop().toLowerCase();
-            let mimeType = 'application/octet-stream'; // Тип MIME по умолчанию
+            const picture = new Blob([pictureBytes]);
     
-            if (extension === 'jpg' || extension === 'jpeg') {
-                mimeType = 'image/jpeg';
-            } else if (extension === 'png') {
-                mimeType = 'image/png';
-            }
-    
-            const picture = new Blob([pictureBytes], { type: mimeType });
-
             console.log(picture);
     
             API.createPin(picture, title, description)
                 .then((status) => {
                     if (status === "ok") {
                         router.navigate('/');
-                    } else {                       
+                    } else {
                         console.error('Error creating pin');
                     }
                 })
