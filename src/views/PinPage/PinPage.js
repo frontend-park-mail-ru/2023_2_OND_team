@@ -38,16 +38,8 @@ export function renderPinPage(pinID) {
 
             deleteButton.addEventListener('click', function (e) {
                 e.preventDefault();
-                console.log('boooom')
-                //API.deletePin(pinID)
-                    .then((result) => {
-                        if (result) {
-                            router.navigate('/');
-                        } else {
-                            console.error('Не удалось удалить пин.');
-                        }
-                    })
-
+                API.deletePin(pinID)
+                router.navigate('/');
             });
         })
         .catch((error) => {
