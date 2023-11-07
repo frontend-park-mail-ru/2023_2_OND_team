@@ -297,7 +297,7 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          return true;
+          return res.status;
         } else {
           throw new Error('Ошибка при отправке аватара пользователя');
         }

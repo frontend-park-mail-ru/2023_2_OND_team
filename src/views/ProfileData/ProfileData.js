@@ -29,7 +29,14 @@ export function renderProfileData() {
 
                     const blob = new Blob([imageBytes]);
 
-                    API.putUserAvatar(blob);
+                    API.putUserAvatar(blob)
+                        .then((status) => {
+                            if (status === "ok") {
+                                router.navigate('/profile/data');
+                            } else {                       
+                                console.error('error saving avatar');
+                            }
+                        })
                 };
 
               reader.readAsArrayBuffer(file);
@@ -121,7 +128,7 @@ export function renderProfileData() {
                         if (status === "ok") {
                             router.navigate('/profile/data');
                         } else {
-                            console.log('error saving data');
+                            console.error('error saving data');
                         }
                     })
             })
