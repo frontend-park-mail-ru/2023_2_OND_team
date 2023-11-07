@@ -518,7 +518,7 @@ export class API {
       }
     }
 
-    static async createBoard(title, description, pinIDs) {
+    static async createBoard(title, description) {
       try {
         const configItem = this.#config.find((item) => item.name === 'createBoard');
         if (!configItem) {
@@ -531,7 +531,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({title, description, 'public': true, pinIDs}),
+          body: JSON.stringify({title, description, 'public': true, 'tags': null}),
           credentials: 'include',
         });
 
