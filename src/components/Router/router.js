@@ -340,7 +340,7 @@ export class Router {
                 this.#currentRoute.handler(path.split('/')[2]);
                 break;
             case (/^\/board\/\d+$/).test(path): 
-                this.#currentRoute = this.#routes.find((r) => r.path === "/pin/ID");
+                this.#currentRoute = this.#routes.find((r) => r.path === "/board/ID");
                 this.#currentRoute.handler(path.split('/')[2]);
                 break;
             default:

@@ -21,9 +21,9 @@ export function renderSidebar() {
         const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
 
         if (profileFields.classList.contains('hide')) {
-            profileArrow.src = 'https://pinspire.online:1444/assets/icons/icon_profile_arrow-up.svg';
+            profileArrow.src = '/assets/icons/icon_profile_arrow-up.svg';
         } else {
-            profileArrow.src = 'https://pinspire.online:1444/assets/icons/icon_profile_arrow-down.svg';
+            profileArrow.src = '/assets/icons/icon_profile_arrow-down.svg';
         }
 
         profileFields.classList.toggle('hide');

@@ -33,6 +33,7 @@
   }
   
   .profile-data__avatar-img {
+    object-fit: cover;
     width: 120px;
     height: 120px;
   }
