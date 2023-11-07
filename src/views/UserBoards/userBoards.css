@@ -7,6 +7,7 @@
 
 .user__board {
     display: flex;
+    flex-direction: column;
     width: 500px;
     height: 300px;
     gap: 10px;
@@ -16,6 +17,10 @@
 
 .user__board-title {
     text-align: center;
+}
+
+.user__board-pins {
+    display: flex;
 }
 
 .user__board__pin {
