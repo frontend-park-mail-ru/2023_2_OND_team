@@ -237,7 +237,7 @@ export class API {
       }
     }
 
-    static async putUserInfo({username, name, surname, email, password}) {
+    static async putUserInfo({username, name, surname, about_me, email, password}) {
       try {
         const configItem = this.#config.find((item) => item.name === 'profileEdit');
         if (!configItem) {
@@ -250,7 +250,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({username, name, surname, email, password}),
+          body: JSON.stringify({username, name, surname, about_me, email, password}),
           credentials: 'include',
         });
 
@@ -278,7 +278,7 @@ export class API {
         if (!configItem) {
           throw new Error('Не найдена конфигурация для profileAvatar');
         }
-        
+
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {
@@ -295,6 +295,8 @@ export class API {
         }
 
         const res = await response.json();
+
+        console.log('avatar', res.status)
 
         if (res.status === 'ok') {
           return res.status;

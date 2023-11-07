@@ -37,6 +37,9 @@ export function renderProfileData() {
                                 console.error('error saving avatar');
                             }
                         })
+                        .catch((error) => {
+                            console.error(error);
+                        })
                 };
 
               reader.readAsArrayBuffer(file);
@@ -130,6 +133,9 @@ export function renderProfileData() {
                         } else {
                             console.error('error saving data');
                         }
+                    })
+                    .catch((error) => {
+                        console.error(error);
                     })
             })
         });
