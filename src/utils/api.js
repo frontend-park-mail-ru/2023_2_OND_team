@@ -487,18 +487,12 @@ export class API {
 
     static async deletePin(pinID) {
       try {
-        const configItem = this.#config.find((item) => item.name === 'deletePin');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для deletePin');
-        }
-
-        const response = await fetch(configItem.url, {
+        const configItem = `//pinspire.online:8080/api/v1/delete/pin/${pinID}`;
+        const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
-            'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({pinID}),
           credentials: 'include',
         });
 
@@ -508,13 +502,16 @@ export class API {
         }
 
         const res = await response.json();
-        if (res.status === 'ok') {
-          return this.deletePin(pinID);
-        }
 
-        return false;
+        if (res.status === 'ok') {
+          console.log(res.body)
+          
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных о лайке');
+        }
       } catch (error) {
-        console.error('Ошибка при выполнении запроса:', error);
+        console.error('Ошибка:', error);
       }
     }
 
