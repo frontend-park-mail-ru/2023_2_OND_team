@@ -34,3 +34,10 @@
     color: white;
     background-color: #3D99A6;
 }
+
+.grey-line {
+    background-color: gray;
+    height: 1px;
+    width: 100%;
+    border: none;
+}
