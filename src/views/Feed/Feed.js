@@ -24,15 +24,14 @@ export function renderFeedPage() {
 
     main.innerHTML = feedTemplate(feedContext);
 
-    const pins = document.querySelectorAll('.gallery__item');
+    // const pins = document.querySelectorAll('.gallery__item');
 
-    pins?.forEach((pin) => {
-      pin.addEventListener('click', () => {
-        console.log('КЛИК');
-        const pinID = pin.className.split(' ')[1].split('-')[3];
-        router.navigate(`/pin/${pinID}`);
-      });
-    });
+    // pins?.forEach((pin) => {
+    //   pin.addEventListener('click', () => {
+    //     const pinID = pin.className.split(' ')[1].split('-')[3];
+    //     router.navigate(`/pin/${pinID}`);
+    //   });
+    // });
 
     /**
     * Создает функцию с задержкой для предотвращения слишком частых вызовов.
@@ -99,19 +98,18 @@ export function renderFeedPage() {
         const pins = document.querySelectorAll('.gallery__item');
     
         pins?.forEach((pin) => {
-          pin.addEventListener('click', () => {
-            console.log('КЛИК');
+          pin.addEventListener('click', (e) => {
+            if (e.target.classList.contains('like-button')) {
+                return;
+            }
+
             const pinID = pin.className.split(' ')[1].split('-')[3];
-            router.navigate(`/pin/${pinID}`, pinID);
+            router.navigate(`/pin/${pinID}`);
           });
         });
 
-
-
-
         const likeButtons = document.querySelectorAll('.like-button');
-
-        likeButtons.forEach((likeButton) => {
+        likeButtons?.forEach((likeButton) => {
           likeButton.addEventListener('click', (element) => {
             const id = element.className.split(' ').find(className => className.startsWith('js-like-button-')).split('-')[3];
             // API.getLike(id)

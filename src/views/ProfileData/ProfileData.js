@@ -19,7 +19,7 @@ export function renderProfileData() {
             main.innerHTML = profileDataTemplate(profileDataContext);
 
             const inputElement = document.getElementById('input__file');
-            inputElement.addEventListener('change', (event) => {
+            inputElement?.addEventListener('change', (event) => {
                 const file = event.target.files[0];
 
                 const reader = new FileReader();
