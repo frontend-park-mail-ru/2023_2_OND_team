@@ -243,7 +243,7 @@ export class API {
         if (!configItem) {
           throw new Error('Не найдена конфигурация для profileEdit');
         }
-
+    
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {
@@ -253,22 +253,23 @@ export class API {
           body: JSON.stringify({username, name, surname, about_me, email, password}),
           credentials: 'include',
         });
-
+    
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-
+    
         const res = await response.json();
-
+    
         if (res.status === 'ok') {
           return res.status;
         } else {
           throw new Error('Ошибка при отправке данных пользователя');
         }
-
+    
       } catch (error) {
         console.error('Ошибка при обновлении данных пользователя:', error);
+        throw error;
       }
     }
 
@@ -295,8 +296,6 @@ export class API {
         }
 
         const res = await response.json();
-
-        console.log('avatar', res.status)
 
         if (res.status === 'ok') {
           return res.status;

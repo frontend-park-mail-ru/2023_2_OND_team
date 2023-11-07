@@ -124,8 +124,6 @@ export function renderProfileData() {
                     about_me: aboutTextarea.value,
                 }
                 
-                console.log(data);
-
                 API.putUserInfo(data)
                     .then((status) => {
                         if (status === "ok") {

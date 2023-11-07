@@ -89,10 +89,6 @@ export class Router {
             {
                 path: "/profile/data",
                 handler: () => {
-                    if (this.state.getCurrentPage() === 'profileData') {
-                        return;
-                    }
-
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
@@ -116,10 +112,6 @@ export class Router {
             {
                 path: "/profile/security",
                 handler: () => {
-                    if (this.state.getCurrentPage() === 'profileSecurity') {
-                        return;
-                    }
-
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
