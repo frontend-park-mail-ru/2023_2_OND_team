@@ -14,6 +14,7 @@ export class API {
       {name: 'csrfToken', url: '//pinspire.online:8080/api/v1/csrf'},
       {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
+      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
     ];
 
     static async loginUser(username, password) {
@@ -398,6 +399,40 @@ export class API {
         const res = await response.json();
         if (res.status === 'ok') {
           return this.createPin(picture, title, description);
+        }
+
+        return false;
+      } catch (error) {
+        console.error('Ошибка при выполнении запроса:', error);
+      }
+    }
+
+    static async createBoard(title, description, pinIDs) {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'createBoard');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для createPin');
+        }
+
+        const response = await fetch(configItem.url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({title, description, 'public': true, pinIDs}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+        console.log(this.state.getCsrfToken())
+
+        const res = await response.json();
+        if (res.status === 'ok') {
+          return this.createPin(title, description, pinIDs);
         }
 
         return false;
