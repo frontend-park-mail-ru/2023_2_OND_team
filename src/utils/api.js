@@ -487,7 +487,7 @@ export class API {
 
     static async deletePin(pinID) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/delete/pin/${pinID}`;
+        const configItem = `//pinspire.online:8080/api/v1/pin/delete/${pinID}`;
         const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
