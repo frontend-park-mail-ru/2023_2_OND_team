@@ -101,19 +101,26 @@ export function renderFeedPage() {
 
         pins?.forEach((pin) => {
             pin.addEventListener('mouseenter', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeButton = document.querySelector(`.js-like-button-${pinID}`);
-                API.getLike(pinID)
-                    .then((data) => {
-                        if (data.is_set) {
-                            likeButton.src = '/assets/icons/like_active.svg';
-                        } else {
-                            likeButton.src = '/assets/icons/like.svg';
-                        }
+                API.checkLogin()
+                    .then((status) => {
+                        if (status === 'ok') {
+                            const pinID = pin.className.split(' ')[1].split('-')[3];
+                            const likeButton = document.querySelector(`.js-like-button-${pinID}`);
+                            API.getLike(pinID)
+                                .then((data) => {
+                                    if (data.is_set) {
+                                        likeButton.src = '/assets/icons/like_active.svg';
+                                    } else {
+                                        likeButton.src = '/assets/icons/like.svg';
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        } 
                     })
-                    .catch((error) => {
-                        console.error(error);
-                    })
+
+                
             })
         })
 
