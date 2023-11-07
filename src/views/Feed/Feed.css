@@ -39,6 +39,7 @@
 #main {
     display: flex;
     justify-content: center;
+    align-items: center;
     grid-area: content;
     flex-grow: 1;
     z-index: 0;

@@ -8,20 +8,17 @@ import { Router } from '../../components/Router/router.js'
 */
 export function renderFeedPage() {
     const router = new Router();
+    const state = new State();
     const main = document.querySelector('#main');
 
     const numRequestedPins = 20;
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
 
-    document.body.style.overflow = 'visible';
-
-    const state = new State();
-
     const feedTemplate = Handlebars.templates['Feed.hbs'];
     const introTemplate = Handlebars.templates['Intro.hbs'];
     const feedContext = {
-        isAuthorized: state.getIsAuthorized(),
+        isAuthorized: !state.getIsAuthorized(),
         Intro: introTemplate,
     };
 
@@ -77,9 +74,7 @@ export function renderFeedPage() {
                     renderPins(section, data.pins);
                     definePins();
     
-                    const pins = document.querySelectorAll('.gallery__item');
-                    if (pins?.length > 100) {
-                        const pinsToDelete = Array.from(pins).slice(0, 20);
+                    constblockonst pinsToDelete = Array.from(pins).slice(0, 20);
                         pinsToDelete.forEach(pin => {
                             pin.remove();
                         });

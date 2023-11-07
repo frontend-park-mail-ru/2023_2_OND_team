@@ -83,9 +83,9 @@ export class API {
         if (res.status === 'ok') {
           this.state.setIsAuthorized(true);
           this.state.setUsername(res.body.username);
+        } else {
+          this.state.setIsAuthorized(false);
         }
-
-        this.state.setIsAuthorized(false);
 
         return res.status;
       } catch (error) {
