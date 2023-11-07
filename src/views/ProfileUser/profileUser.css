@@ -1,6 +1,6 @@
 .profile-user {
     display: flex;
-    width: 1545px;
+    width: 90%;
     height: 250px;
     flex-shrink: 0;
     align-items: center;
@@ -12,7 +12,7 @@
   .profile-user__avatar {
     display: flex;
     position: relative;
-    left: 712px;
+    left: 45%;
     width: 120px;
     height: 162px;
     flex-direction: column;
@@ -60,4 +60,35 @@
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
     background: var(--bg-100, #FFF);
+  }
+
+  .profile-user__content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-user__btns {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .profile-user__btn {
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+    text-align: center;
+  }
+  
+  .profile-user__btn-active {
+    color: var(--primary-45, #33A1B3);
+    text-align: center;
+  }
+  
+  .text-h3-medium {
+    /* h3 medium */
+    font-family: Raleway;
+    font-size: 39.06px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
   }

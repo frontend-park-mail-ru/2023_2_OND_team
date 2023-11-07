@@ -15,7 +15,9 @@ export class API {
       {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
-      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
+      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
+      {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/personal'},
+      {name: 'getUserBoards', url: '//pinspire.online:8080/api/v1/board/get/user/NewOne'},
     ];
 
     static async loginUser(username, password) {
@@ -550,4 +552,70 @@ export class API {
         console.error('Ошибка при выполнении запроса:', error);
       }
     }
+
+    static async getUserPins() {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'getUserPins');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для getUserPins');
+        }
+
+        const response = await fetch(configItem, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          console.log(res.body);
+
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
+    static async getUserBoards() {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'getUserBoards');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для getUserBoards');
+        }
+
+        const response = await fetch(configItem, {
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
 }
