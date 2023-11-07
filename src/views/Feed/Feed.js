@@ -106,9 +106,9 @@ export function renderFeedPage() {
                 API.getLike(pinID)
                     .then((data) => {
                         if (data.is_set) {
-                            likeButton.src = '/assets/icons/like.svg';
-                        } else {
                             likeButton.src = '/assets/icons/like_active.svg';
+                        } else {
+                            likeButton.src = '/assets/icons/like.svg';
                         }
                     })
                     .catch((error) => {
@@ -121,19 +121,14 @@ export function renderFeedPage() {
         likeButtons?.forEach((likeButton) => {
             likeButton.addEventListener('click', (element) => {
             const id = element.target.className.split(' ')[1].split('-')[3];
-            API.getLike(pinID)
+            const likeField = document.querySelector(`.like-counter-${id}`);
+            API.getLike(id)
                 .then((data) => {
                     if (data.is_set) {
                         API.deleteLike(id)
                             .then((data) => {
-                                if (data.is_set) {
-                                    likeButton.src = '/assets/icons/like.svg';
-                                } else {
-                                    likeButton.src = '/assets/icons/like_active.svg';
-                                }
-                                
-                                const likeField = document.querySelector(`.like-counter-${id}`);
-                                // likeField.value = data.likes;
+                                likeButton.src = '/assets/icons/like.svg';
+                                likeField.innerHTML = data.count_like;
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -141,14 +136,8 @@ export function renderFeedPage() {
                     } else {
                         API.setLike(id)
                             .then((data) => {
-                                if (data.is_set) {
-                                    likeButton.src = '/assets/icons/like.svg';
-                                } else {
-                                    likeButton.src = '/assets/icons/like_active.svg';
-                                }
-                                
-                                const likeField = document.querySelector(`.like-counter-${id}`);
-                                // likeField.value = data.likes;
+                                likeButton.src = '/assets/icons/like_active.svg';
+                                likeField.innerHTML = data.count_like;
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -158,7 +147,7 @@ export function renderFeedPage() {
                 .catch((error) => {
                     console.error(error);
                 })
-                
+
             });      
         });
 

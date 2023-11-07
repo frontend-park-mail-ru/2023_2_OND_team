@@ -390,7 +390,7 @@ export class API {
 
     static async deleteLike(id) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/like/delete/${id}`;
+        const configItem = `//pinspire.online:8080/api/v1/pin/like/${id}`;
         const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
