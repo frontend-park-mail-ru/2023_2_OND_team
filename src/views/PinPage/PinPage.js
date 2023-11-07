@@ -22,7 +22,7 @@ export function renderPinPage(pinID) {
 
             main.innerHTML = pinPage(context);
 
-            console.log(username, pinInfo.description);
+            console.log(pinInfo.description);
 
         })
         .catch((error) => {
