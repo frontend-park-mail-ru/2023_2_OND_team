@@ -114,11 +114,12 @@ export class API {
         }
 
         const res = await response.json();
-        if (res.status === 'ok') {
-          return true;
+
+        if(res.status === 'ok') {
+          this.state.setUsername(null);
         }
 
-        return false;
+        return res.status;
       } catch (error) {
         console.error('Ошибка при выполнении запроса:', error);
       }

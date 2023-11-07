@@ -1,8 +1,8 @@
-import { renderRegPage } from "../Registration/Registration.js";
-import { renderAuthPage } from "../Authorization/Authorization.js";
+import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
 
 export function renderHeaderGuest() {
+    const state = new State();
     const router = new Router();
     const header = document.querySelector('#header');
     
@@ -26,10 +26,15 @@ export function renderHeaderGuest() {
 
     function handleLogoClick(e) {
         e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
+
+        if (state.getCurrentPage() === 'feed') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        } else {
+            router.navigate('/');
+        }
     }
 }
 

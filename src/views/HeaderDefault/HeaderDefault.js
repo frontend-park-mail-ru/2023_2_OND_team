@@ -48,9 +48,17 @@ export function renderHeaderDefault() {
                     sidebarProfileElement.classList.add('sidebar__menu__btn-active');
                     break;
                 case 'logout':
-                    if (API.logoutUser()) {
-                        router.navigate('/login');
-                    }
+                    API.logoutUser()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                router.navigate('/login');
+                            } else {
+                                console.log('error logout');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
                     break;
                 default:
                     break;

@@ -265,7 +265,9 @@ export class Router {
                                 } 
                                 renderPinPage(pinID);
                             } else {
-                                renderHeaderGuest();
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderGuest();
+                                }
                                 renderPinPage(pinID);
                             }
                         })
@@ -293,7 +295,9 @@ export class Router {
                                 } 
                                 renderPinPage(pinID); // изменить на renderBoardPage(boardID);
                             } else {
-                                renderHeaderGuest();
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderGuest();
+                                }
                                 renderPinPage(pinID); // изменить на renderBoardPage(boardID);
                             }
                         })
