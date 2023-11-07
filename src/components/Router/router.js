@@ -328,6 +328,7 @@ export class Router {
     handlePopstate() {
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
+        console.log(route)
 
         switch (true) {
             case route:
