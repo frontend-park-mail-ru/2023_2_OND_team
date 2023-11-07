@@ -19,6 +19,10 @@ export function renderProfilePage() {
         const activeElement = document.querySelector('.profile-user__btn-active');
         activeElement.classList.remove('profile-user__btn-active');
         pinsBtn.classList.add('profile-user__btn-active');
+        
+        const gallery = document.querySelector('#user-boards');
+        gallery.innerHTML = '';
+
         renderUserPins();
     })
 
@@ -27,8 +31,14 @@ export function renderProfilePage() {
         const activeElement = document.querySelector('.profile-user__btn-active');
         activeElement.classList.remove('profile-user__btn-active');
         boardsBtn.classList.add('profile-user__btn-active');
+
+        const gallery = document.querySelector('#user-pins');
+        gallery.innerHTML = '';
+
         renderUserBoards();
     })
+
+    renderUserPins();
 }
 
 function renderUserPins() {
