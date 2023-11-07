@@ -189,15 +189,27 @@ export class Router {
                     renderCreateBoard();
                 },
             },
+            // {
+            //     path: "/pin/10",
+            //     handler: () => {
+            //         if (this.state.getCurrentPage() === 'pinPage') {
+            //             return;
+            //         }
+
+            //         this.state.setCurrentPage('pinPage');
+            //         renderPinPage(10);
+            //     },
+            // },
             {
-                path: "/pin/10",
-                handler: () => {
-                    if (this.state.getCurrentPage() === 'pinPage') {
+                path: "/pin/:pinID",
+                handler: (pinID) => {
+                    console.log("/pin/:pinID");
+                    if (this.state.getCurrentPage() === 'createPin') {
                         return;
                     }
 
-                    this.state.setCurrentPage('pinPage');
-                    renderPinPage(10);
+                    this.state.setCurrentPage('createPin');
+                    renderPinPage(pinID);
                 },
             },
         ];
@@ -210,18 +222,18 @@ export class Router {
         window.addEventListener("popstate", this.#popstateListener);
     }
 
-    navigate(path) {
+    navigate(path, context) {
         window.history.pushState(null, null, path);
-        this.handlePopstate();
+        this.handlePopstate(context);
     }
 
-    handlePopstate() {
+    handlePopstate(context) {
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 
         if (route) {
             this.#currentRoute = route;
-            route.handler();
+            route.handler(context);
         } else if (this.#defaultRoute) {
             this.#currentRoute = null;
             this.#defaultRoute();
