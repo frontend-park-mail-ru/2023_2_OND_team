@@ -129,6 +129,7 @@ export function renderFeedPage() {
                             .then((data) => {
                                 likeButton.src = '/assets/icons/like.svg';
                                 likeField.innerHTML = data.count_like;
+                                likeField.classList.toggle('hide');
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -138,6 +139,7 @@ export function renderFeedPage() {
                             .then((data) => {
                                 likeButton.src = '/assets/icons/like_active.svg';
                                 likeField.innerHTML = data.count_like;
+                                likeField.classList.toggle('hide');
                             })
                             .catch((error) => {
                                 console.error(error);
