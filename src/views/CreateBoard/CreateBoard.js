@@ -8,7 +8,7 @@ export function renderCreateBoard() {
 
     const state = new State();
 
-    const createPin = Handlebars.templates['CreateBoard.hbs'];
+    const createBoard = Handlebars.templates['CreateBoard.hbs'];
 
     const context = {};
 
@@ -28,6 +28,6 @@ export function renderCreateBoard() {
 
         e.preventDefault();
         router.navigate('/');
-        API.createPin(title, description)
+        API.createBoard(title, description)
     });
 }
