@@ -28,6 +28,7 @@ export function renderPinPage(pinID) {
             console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
+                console.log('RYYYY');
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Удалить';
                 deleteButton.classList.add('delete-button');
