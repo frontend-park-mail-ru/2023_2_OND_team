@@ -201,14 +201,14 @@ export class Router {
             //     },
             // },
             {
-                path: "/pin/:pinID",
+                path: "/pin/ID",
                 handler: (pinID) => {
                     console.log("/pin/:pinID");
-                    if (this.state.getCurrentPage() === 'createPin') {
+                    if (this.state.getCurrentPage() === 'pinPage') {
                         return;
                     }
 
-                    this.state.setCurrentPage('createPin');
+                    this.state.setCurrentPage('pinPage');
                     renderPinPage(pinID);
                 },
             },
@@ -233,6 +233,9 @@ export class Router {
 
         if (route) {
             this.#currentRoute = route;
+            route.handler();
+        } else if ( (/^\/pin\/\d+$/).test(path) ) {
+            this.#currentRoute = this.#routes.find((r) => r.path === "/pin/ID");
             route.handler(context);
         } else if (this.#defaultRoute) {
             this.#currentRoute = null;
