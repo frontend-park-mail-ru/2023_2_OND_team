@@ -114,6 +114,7 @@
 
 .like-counter {
     text-align: center;
+    opacity: 0;
 }
     
 .like-icon {

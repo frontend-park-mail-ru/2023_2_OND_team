@@ -121,7 +121,7 @@ export function renderFeedPage() {
             pin.addEventListener('mouseleave', () => {
                 const pinID = pin.className.split(' ')[1].split('-')[3];
                 const likeField = document.querySelector(`.like-counter-${pinID}`);
-                likeField.classList.add('hide');
+                likeField.style.opacity = 0;
             })
         })
 
@@ -137,7 +137,7 @@ export function renderFeedPage() {
                             .then((data) => {
                                 likeButton.src = '/assets/icons/like.svg';
                                 likeField.innerHTML = data.count_like;
-                                likeField.classList.remove('hide');
+                                likeField.style.opacity = 1;
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -147,7 +147,7 @@ export function renderFeedPage() {
                             .then((data) => {
                                 likeButton.src = '/assets/icons/like_active.svg';
                                 likeField.innerHTML = data.count_like;
-                                likeField.classList.remove('hide');
+                                likeField.style.opacity = 1;
                             })
                             .catch((error) => {
                                 console.error(error);
