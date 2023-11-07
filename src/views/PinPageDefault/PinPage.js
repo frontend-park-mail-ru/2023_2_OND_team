@@ -8,7 +8,7 @@ export function renderPinPage(pinID) {
 
     const state = new State();
 
-    const pinPage = Handlebars.templates['PinPage.hbs'];
+    const pinPage = Handlebars.templates['PinPageDefault.hbs'];
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -19,6 +19,14 @@ export function renderPinPage(pinID) {
                 username: pinInfo.author.username,
                 description: pinInfo.description,
             };
+
+            console.log(username, pinInfo.description);
+
+            if (username === pinInfo.author.username) {
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Удалить';
+                deleteButton.classList.add('delete-button');
+            }
 
             main.innerHTML = pinPage(context);
 
