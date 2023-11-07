@@ -114,6 +114,7 @@
 
 .like-counter {
     height: 20px;
+    color: aliceblue;
     text-align: center;
     opacity: 0;
 }
