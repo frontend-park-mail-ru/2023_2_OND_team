@@ -60,10 +60,11 @@ export function renderProfileData() {
             const nameTextarea = document.querySelector('.js-name-textarea');
             const surnameTextarea = document.querySelector('.js-surname-textarea');
             const aboutTextarea = document.querySelector('.js-about-textarea');
-            
+
+            const editDataBtnImg = document.querySelector('.profile-data__edit-data-img');
             const editDataBtn = document.querySelector('.profile-data__edit-data');
             editDataBtn?.addEventListener('click', () => {
-                editAvatarBtn.classList.add('hide');
+                editDataBtnImg.classList.add('hide');
                 const profileData = document.querySelector('.js-profile-data');
                 profileData.classList.add('profile-data-edit');
                 
@@ -84,7 +85,7 @@ export function renderProfileData() {
 
             const canselBtn = document.querySelector('.js-profile-data__btns__cansel-btn');
             canselBtn?.addEventListener('click', () => {
-                editAvatarBtn.classList.remove('hide');
+                editDataBtnImg.classList.remove('hide');
                 const profileData = document.querySelector('.js-profile-data');
                 profileData.classList.remove('profile-data-edit');
 
@@ -101,10 +102,11 @@ export function renderProfileData() {
                 surnameTextarea.disabled = true;
                 aboutTextarea.disabled = true;
 
-                usernameTextarea.textContent = profileDataContext.username;
-                nameTextarea.textContent = profileDataContext.name;
-                surnameTextarea.textContent = profileDataContext.surname;
-                aboutTextarea.textContent = profileDataContext.about;
+                usernameTextarea.value = profileDataContext.username;
+                nameTextarea.value = profileDataContext.name;
+                surnameTextarea.value = profileDataContext.surname;
+                aboutTextarea.value = profileDataContext.about;
+
             })
         });
 }
