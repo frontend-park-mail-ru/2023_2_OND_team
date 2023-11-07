@@ -1,0 +1,36 @@
+.board-cancel-button {
+    font-family: Nunito;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-30, #226B77);
+    background-color: white;
+    color: #226B77;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 160px;
+    height: 49px;
+}
+
+.board-create-button {
+    font-family: Nunito;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-30, #226B77);
+    background-color: #226B77;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 160px;
+    height: 49px;
+}
+
+.board-cancel-button:hover,
+.board-create-button:hover {
+    color: white;
+    background-color: #3D99A6;
+}

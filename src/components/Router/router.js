@@ -12,6 +12,7 @@ import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
 import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
 import { renderPinPage } from "../../views/PinPage/PinPage.js";
+import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 
 export class Router {
     #routes;
@@ -175,6 +176,17 @@ export class Router {
 
                     this.state.setCurrentPage('createPin');
                     renderCreatePin();
+                },
+            },
+            {
+                path: "/create/board",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'createBoard') {
+                        return;
+                    }
+
+                    this.state.setCurrentPage('createBoard');
+                    renderCreateBoard();
                 },
             },
             {

@@ -11,6 +11,7 @@
 @import url(./views/Intro/intro.css);
 @import url(./views/CreatePin/createPin.css);
 @import url(./views/PinPage/pinPage.css);
+@import url(./views/CreateBoard/createBoard.css);
 
 html, body {
   height: 100%;
