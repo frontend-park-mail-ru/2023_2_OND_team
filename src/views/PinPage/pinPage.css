@@ -9,6 +9,7 @@
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
 }
   
+.delete-button,
 .save-button,
 .pin-username,
 .pin-description {
@@ -30,6 +31,18 @@
     background-color: #226B77;
     color: white;
     border: none;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 200px;
+    height: 45px;
+}
+
+.delete-button {
+    background-color: white;
+    color: red;
+    border: red;
     font-size: 16px;
     border-radius: 10px;
     padding: 10px 15px;
