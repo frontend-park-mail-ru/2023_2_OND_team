@@ -8,7 +8,7 @@ export function renderPinPage(pinID) {
 
     const state = new State();
 
-    const pinPage = Handlebars.templates['PinPageDefault.hbs'];
+    const pinPage = Handlebars.templates['PinPage.hbs'];
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
