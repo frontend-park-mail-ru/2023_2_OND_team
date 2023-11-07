@@ -1,0 +1,9 @@
+<div class="user__board js-board-id-{{id}}">
+  {{#each pins}}
+    {{#if this}}
+      <div class="user__board__pin">
+        <img src="{{this}}">
+      </div>
+    {{/if}}
+  {{/each}}
+</div>
