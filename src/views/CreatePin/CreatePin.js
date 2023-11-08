@@ -43,23 +43,43 @@ export function renderCreatePin() {
         e.preventDefault();
     });
 
-    pictureInput.addEventListener('change', (event) => {
+    pictureInput.addEventListener('change', async (event) => {
         const pictureFile = event.target.files[0];
     
-        const reader = new FileReader();
+        const formData = new FormData();
+        formData.append('picture', pictureFile);
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('public', true);
     
-        reader.onload = (event) => {
-            const pictureBytes = event.target.result;
-
-            const mimeType = pictureFile.type;
+        try {
+            const configItem = config.find((item) => item.name === 'createPin');
+            if (!configItem) {
+                throw new Error('Не найдена конфигурация для createPin');
+            }
     
-            picture = new Blob([pictureBytes], { type: mimeType });
+            const response = await fetch(configItem.url, {
+                method: 'POST',
+                headers: {
+                    'x-csrf-token': this.state.getCsrfToken(),
+                },
+                body: formData,
+                credentials: 'include',
+            });
     
-            console.log(picture);
-
-        };
-
-        reader.readAsArrayBuffer(pictureFile);
+            const csrfToken = response.headers.get('X-Set-CSRF-Token');
+            if (csrfToken) {
+                this.state.setCsrfToken(csrfToken);
+            }
+    
+            const res = await response.json();
+            if (res.status === 'ok') {
+                return this.createPin(picture, title, description);
+            }
+    
+            return false;
+        } catch (error) {
+            console.error('Ошибка при выполнении запроса:', error);
+        }
     });
-       
 }

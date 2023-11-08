@@ -472,10 +472,10 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'image/*',
+            'Content-Type': 'multipart/form-data; boundary=pin',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({picture, title, description, 'public': true}),
+          body: formData,
           credentials: 'include',
         });
 
