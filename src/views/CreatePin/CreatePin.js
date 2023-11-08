@@ -31,8 +31,8 @@ export function renderCreatePin() {
     
         const formData = new FormData();
         formData.append('picture', picture);
-        formData.append('title', title);
-        formData.append('description', description);
+        formData.append('title', 'tet');
+        formData.append('description', 'ff');
         formData.append('public', true);
     
         API.createPin(formData)
