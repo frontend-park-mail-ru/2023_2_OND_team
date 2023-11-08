@@ -69,14 +69,25 @@ export class API {
           throw new Error('Не найдена конфигурация для checkLogin');
         }
 
-        const response = await fetch(configItem.url, {
-          headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
+        let response;
+
+        if (!this.state.getCsrfToken()) {
+          response = await fetch(configItem.url, {
+            headers: {
+              'x-csrf-token': this.state.getCsrfToken(),
+            },
+            credentials: 'include',
+          });
+        } else {
+          response = await fetch(configItem.url, {
+            credentials: 'include',
+          });
+        }
 
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
+
+        console.log(csrfToken, this.state.getCsrfToken());
+
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
