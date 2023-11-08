@@ -32,7 +32,6 @@ export function renderCreatePin() {
         
             const reader = new FileReader();
         
-            reader.onload = (event) => {
                 const pictureBytes = event.target.result;
         
                 const picture = new Blob([pictureBytes]);
@@ -50,7 +49,6 @@ export function renderCreatePin() {
                     .catch((error) => {
                         console.error(error);
                     });
-            };
     
             reader.readAsArrayBuffer(pictureFile);
         });
