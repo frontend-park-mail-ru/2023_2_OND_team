@@ -475,7 +475,7 @@ export class API {
             'Content-Type': 'multipart/form-data',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({picture, title, description, 'public': true}),
+          body: JSON.stringify({picture, 'title': 'test', 'description': 'test', 'public': true}),
           credentials: 'include',
         });
 
@@ -486,7 +486,7 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
-          return this.createPin(picture, title, description);
+          return this.createPin(picture);
         }
 
         return false;
