@@ -86,40 +86,56 @@ export function renderProfileSecurity() {
                 const password = passwordTextarea.value;
                 const passwordRepeat = passwordRepeatTextarea.value;
 
-                const emailValidationResult = emailValid(email);
-                if (!emailValidationResult.valid) {
-                    emailSpan.textContent = emailValidationResult.message;
-                } else {
-                    emailSpan.textContent = '';
-                }
+                let data;
 
-                const passwordValidationResult = passwordValid(password);
-                if (!passwordValidationResult.valid) {
-                    passwordSpan.textContent = passwordValidationResult.message;
-                } else {
-                    passwordSpan.textContent = '';
-                }
-                const passwordRepeatValidationResult = passwordValid(passwordRepeat);
-                if (!passwordRepeatValidationResult.valid) {
-                    passwordRepeatSpan.textContent = passwordRepeatValidationResult.message;
-                } else {
-                    passwordRepeatSpan.textContent = '';
-                }
-
-                if (password !== passwordRepeat) {
-                    passwordRepeatSpan.textContent = 'Пароли не совпадают';
-                } else {
-                    passwordRepeatSpan.textContent = '';
-                }
-
-                if ( !(emailValidationResult.valid && passwordValidationResult.valid &&
-                    passwordRepeatValidationResult.valid && (password === passwordRepeat)) ) {
+                if (password === '' && passwordRepeat === '') {
+                    const emailValidationResult = emailValid(email);
+                    if (!emailValidationResult.valid) {
+                        emailSpan.textContent = emailValidationResult.message;
                         return;
+                    } else {
+                        emailSpan.textContent = '';
+                        data = {
+                            email: email,
+                        }
                     }
+                } else {
+                    const emailValidationResult = emailValid(email);
+                    if (!emailValidationResult.valid) {
+                        emailSpan.textContent = emailValidationResult.message;
+                    } else {
+                        emailSpan.textContent = '';
+                    }
+    
+                    const passwordValidationResult = passwordValid(password);
+                    if (!passwordValidationResult.valid) {
+                        passwordSpan.textContent = passwordValidationResult.message;
+                    } else {
+                        passwordSpan.textContent = '';
+                    }
+                    
+                    const passwordRepeatValidationResult = passwordValid(passwordRepeat);
+                    if (!passwordRepeatValidationResult.valid) {
+                        passwordRepeatSpan.textContent = passwordRepeatValidationResult.message;
+                    } else {
+                        passwordRepeatSpan.textContent = '';
+                    }
+    
+                    if (password !== passwordRepeat) {
+                        passwordRepeatSpan.textContent = 'Пароли не совпадают';
+                    } else {
+                        passwordRepeatSpan.textContent = '';
+                    }
+    
+                    if ( !(emailValidationResult.valid && passwordValidationResult.valid &&
+                        passwordRepeatValidationResult.valid && (password === passwordRepeat)) ) {
+                            return;
+                        }
 
-                const data = {
-                    email: email,
-                    password: password,
+                    data = {
+                        email: email,
+                        password: password,
+                    }
                 }
 
                 API.putUserInfo(data)
