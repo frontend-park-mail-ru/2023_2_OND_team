@@ -86,25 +86,29 @@ export class API {
         if (!configItem) {
           throw new Error('Не найдена конфигурация для checkLogin');
         }
-        const myCookieValue = getCookie('_csrf');
-        console.log('csrf', myCookieValue);
+        // const myCookieValue = getCookie('_csrf');
+        // console.log('csrf', myCookieValue);
 
-        let response;
+        // let response;
 
-        if (!this.state.getCsrfToken()) {
-            document.cookie = '_csrf=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        // if (!this.state.getCsrfToken()) {
+        //     document.cookie = '_csrf=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
           
-          response = await fetch(configItem.url, {
-            headers: {
-              'x-csrf-token': this.state.getCsrfToken(),
-            },
-            credentials: 'include',
-          });
-        } else {
-          response = await fetch(configItem.url, {
-            credentials: 'include',
-          });
-        }
+        //   response = await fetch(configItem.url, {
+        //     headers: {
+        //       'x-csrf-token': this.state.getCsrfToken(),
+        //     },
+        //     credentials: 'include',
+        //   });
+        // } else {
+        //   response = await fetch(configItem.url, {
+        //     credentials: 'include',
+        //   });
+        // }
+
+        response = await fetch(configItem.url, {
+          credentials: 'include',
+        });
 
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
 
