@@ -16,6 +16,7 @@ export function renderCreatePin() {
 
     const cancelButton = document.querySelector('.pin-cancel-button');
     const createButton = document.querySelector('.pin-create-button');
+    const pictureInput = document.getElementById('picture');
     let picture;
 
     cancelButton.addEventListener('click', function (e) {
@@ -24,7 +25,6 @@ export function renderCreatePin() {
     });
 
     createButton.addEventListener('click', function (e) {
-        const pictureInput = document.getElementById('picture');
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
 
