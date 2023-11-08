@@ -101,6 +101,9 @@
 }
 
 .profile-security__data-item-input {
+    position: relative;
+    top: -2px;
+    left: -2px;
     width: 272px;
     height: 46px;
     border: none;
@@ -189,6 +192,20 @@
     text-align: center;
 }
 
+.profile-security__password-span {
+    font-family: Nunito;
+    font-size: 15px; 
+    /* color: var(--error-50, #F4210B); */
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
+
+
+.span-error {
+    color: var(--error-50, #F4210B);
+}
+
 
 .input-read-only {
     border-radius: var(--br-s, 10px);
@@ -203,6 +220,7 @@
 }
 
 .btn-primary-clear {
+    height: 44px;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
     background: var(--bg-100, #FFF);

@@ -71,6 +71,20 @@ export function renderProfileSecurity() {
 
             const saveBtn = document.querySelector('.js-profile-security__btns__save-btn');
             saveBtn?.addEventListener('click', () => {
+                const password = passwordTextarea.value;
+                const passwordRepeat = passwordRepeatTextarea.value;
+                if (password !== passwordRepeat) {
+                    const passwordSpan = document.querySelector('.profile-security__password-span');
+                    const passwordRepeatSpan = document.querySelector('.profile-security__password-repeat-span');
+
+                    passwordSpan.classList.add('span-error');
+                    passwordRepeatSpan.classList.add('span-error');
+
+                    passwordRepeatSpan.textContent = 'Пароли не совпадают';
+
+                    return;
+                }
+
                 const data = {
                     email: mailTextarea.value,
                     password: passwordTextarea.value,
