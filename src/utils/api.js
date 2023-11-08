@@ -106,7 +106,7 @@ export class API {
         //   });
         // }
 
-        response = await fetch(configItem.url, {
+        const response = await fetch(configItem.url, {
           credentials: 'include',
         });
 
