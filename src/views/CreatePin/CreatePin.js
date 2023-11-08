@@ -46,11 +46,19 @@ export function renderCreatePin() {
     pictureInput.addEventListener('change', async (event) => {
         const pictureFile = event.target.files[0];
     
-        const formData = new FormData();
-        formData.append('picture', pictureFile);
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('public', true);
+        const options = {
+            method: 'POST',
+            headers: {
+                'x-csrf-token': this.state.getCsrfToken(),
+            },
+            body: new FormData(),
+            credentials: 'include',
+        };
+    
+        options.body.append('picture', pictureFile);
+        options.body.append('title', title);
+        options.body.append('description', description);
+        options.body.append('public', true);
     
         try {
             const configItem = config.find((item) => item.name === 'createPin');
@@ -58,26 +66,12 @@ export function renderCreatePin() {
                 throw new Error('Не найдена конфигурация для createPin');
             }
     
-            const response = await fetch(configItem.url, {
-                method: 'POST',
-                headers: {
-                    'x-csrf-token': this.state.getCsrfToken(),
-                },
-                body: formData,
-                credentials: 'include',
-            });
+            const response = await API.createPin(options);
     
-            const csrfToken = response.headers.get('X-Set-CSRF-Token');
-            if (csrfToken) {
-                this.state.setCsrfToken(csrfToken);
+            if (response.status === 'ok') {
+            } else {
+                console.error('Ошибка создания пина');
             }
-    
-            const res = await response.json();
-            if (res.status === 'ok') {
-                return this.createPin(picture, title, description);
-            }
-    
-            return false;
         } catch (error) {
             console.error('Ошибка при выполнении запроса:', error);
         }

@@ -462,36 +462,23 @@ export class API {
       }
     }
 
-    static async createPin(picture, title, description) {
+    static async createPin(options) {
       try {
-        const configItem = this.#config.find((item) => item.name === 'createPin');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для createPin');
-        }
-
-        const response = await fetch(configItem.url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'multipart/form-data; boundary=pin',
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          body: formData,
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-        if (res.status === 'ok') {
-          return this.createPin(picture, title, description);
-        }
-
-        return false;
+          const configItem = this.#config.find((item) => item.name === 'createPin');
+          if (!configItem) {
+              throw new Error('Не найдена конфигурация для createPin');
+          }
+  
+          const response = await fetch(configItem.url, options);
+          const csrfToken = response.headers.get('X-Set-CSRF-Token');
+          if (csrfToken) {
+              this.state.setCsrfToken(csrfToken);
+          }
+  
+          const res = await response.json();
+          return res; // Возвращаем результат
       } catch (error) {
-        console.error('Ошибка при выполнении запроса:', error);
+          console.error('Ошибка при выполнении запроса:', error);
       }
     }
 
