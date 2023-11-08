@@ -192,7 +192,26 @@
     text-align: center;
 }
 
+.profile-security__email-span {
+    font-family: Nunito;
+    font-size: 15px; 
+    /* color: var(--error-50, #F4210B); */
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
+
+
 .profile-security__password-span {
+    font-family: Nunito;
+    font-size: 15px; 
+    /* color: var(--error-50, #F4210B); */
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
+
+.profile-security__password-repeat-span {
     font-family: Nunito;
     font-size: 15px; 
     /* color: var(--error-50, #F4210B); */

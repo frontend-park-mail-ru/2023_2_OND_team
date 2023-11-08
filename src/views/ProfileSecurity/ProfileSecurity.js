@@ -67,6 +67,11 @@ export function renderProfileSecurity() {
                 mailTextarea.value = profileSecurityContext.email;
                 passwordTextarea.value = '';
                 passwordRepeatTextarea.value = '';
+
+                const passwordSpan = document.querySelector('.profile-security__password-span');
+                const passwordRepeatSpan = document.querySelector('.profile-security__password-repeat-span');
+
+                passwordRepeatSpan.textContent = '';
             });
 
             const saveBtn = document.querySelector('.js-profile-security__btns__save-btn');
