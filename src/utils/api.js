@@ -379,8 +379,6 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          console.log(res.body)
-          
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных о лайке');
@@ -409,8 +407,6 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          console.log(res.body)
-          
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных о лайке');
@@ -560,8 +556,6 @@ export class API {
           throw new Error('Не найдена конфигурация для getUserPins');
         }
 
-        console.log(configItem);
-
         const response = await fetch(configItem.url, {
           headers: {
             'x-csrf-token': this.state.getCsrfToken(),
@@ -577,8 +571,6 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          console.log(res.body);
-
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных из API');
