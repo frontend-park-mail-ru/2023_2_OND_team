@@ -27,11 +27,12 @@ export function renderCreatePin() {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
         
-        pictureInput.addEventListener('change', (event) => {
+        pictureInput.addEventListener('load', (event) => {
             const pictureFile = event.target.files[0];
         
             const reader = new FileReader();
         
+            reader.onload = (event) => {
                 const pictureBytes = event.target.result;
         
                 const picture = new Blob([pictureBytes]);
@@ -49,6 +50,7 @@ export function renderCreatePin() {
                     .catch((error) => {
                         console.error(error);
                     });
+            };
     
             reader.readAsArrayBuffer(pictureFile);
         });
