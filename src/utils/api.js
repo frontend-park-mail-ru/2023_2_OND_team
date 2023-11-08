@@ -328,9 +328,6 @@ export class API {
         }
         
         const response = await fetch(configItem.url, {
-          headers: {
-            'X-CSRF-Token': '',
-          },
           credentials: 'include',
         });
 
