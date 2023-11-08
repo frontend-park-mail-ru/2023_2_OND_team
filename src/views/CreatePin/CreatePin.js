@@ -25,28 +25,23 @@ export function renderCreatePin() {
     });
 
     createButton.addEventListener('click', function (e) {
-        e.preventDefault();
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
+
+        API.createPin(picture, title, description)
+        .then((status) => {
+            if (status === "ok") {
+                router.navigate('/');
+            } else {
+                console.error('Error creating pin');
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
     
-        const formData = new FormData();
-        formData.append('picture', picture);
-        formData.append('title', 'tet');
-        formData.append('description', 'ff');
-        formData.append('public', true);
-    
-        API.createPin(formData)
-            .then((response) => {
-                if (response.status === 'ok') {
-                    router.navigate('/');
-                } else {
-                    console.error('Error creating pin');
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    });    
+        e.preventDefault();
+    });
 
     pictureInput.addEventListener('change', (event) => {
         const pictureFile = event.target.files[0];
