@@ -27,9 +27,8 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    
     border-radius: var(--br-s, 10px);
-    border: 2px solid var(--primary-30, #226B77);
+    border: 2px solid var(--primary-30);
     background: var(--bg-100, #FFF);
 }
   
@@ -42,12 +41,12 @@
     align-items: center;
     gap: 10px;
     border-radius: var(--br-s, 10px);
-    background: var(--primary-30, #226B77);
-    border: 2px solid var(--primary-30, #226B77);
+    background: var(--primary-30);
+    border: 2px solid var(--primary-30);
 }
   
 .header__login-btn {
-    color: var(--primary-30, #226B77);
+    color: var(--primary-30);
     text-align: center;
 }
 

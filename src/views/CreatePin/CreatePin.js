@@ -23,12 +23,39 @@ export function renderCreatePin() {
     });
 
     createButton.addEventListener('click', function (e) {
-        const picture = document.getElementById('picture').value;
+        const pictureInput = document.getElementById('picture');
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-
+        
+        pictureInput.addEventListener('change', (event) => {
+            const pictureFile = event.target.files[0];
+        
+            const reader = new FileReader();
+        
+            reader.onload = (event) => {
+                const pictureBytes = event.target.result;
+        
+                const picture = new Blob([pictureBytes]);
+        
+                console.log(picture);
+        
+                API.createPin(picture, title, description)
+                    .then((status) => {
+                        if (status === "ok") {
+                            router.navigate('/');
+                        } else {
+                            console.error('Error creating pin');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            };
+    
+            reader.readAsArrayBuffer(pictureFile);
+        });
+    
         e.preventDefault();
-        router.navigate('/');
-        API.createPin(picture, title, description)
     });
+       
 }

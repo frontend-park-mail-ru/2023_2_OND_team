@@ -17,7 +17,9 @@ export class API {
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
       {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/pin/personal?count=1000'},
-      {name: 'getUserBoards', url: '//pinspire.online:8080/api/v1/board/get/user/NewOne'},
+      {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
+      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
+
     ];
 
     static async loginUser(username, password) {
@@ -470,8 +472,8 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'Content-Type': 'multipart/form-data',
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({picture, title, description, 'public': true}),
           credentials: 'include',
@@ -495,18 +497,12 @@ export class API {
 
     static async deletePin(pinID) {
       try {
-        const configItem = this.#config.find((item) => item.name === 'deletePin');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для deletePin');
-        }
-
-        const response = await fetch(configItem.url, {
+        const configItem = `//pinspire.online:8080/api/v1/pin/delete/${pinID}`;
+        const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({pinID}),
           credentials: 'include',
         });
 
@@ -516,17 +512,56 @@ export class API {
         }
 
         const res = await response.json();
-        if (res.status === 'ok') {
-          return this.deletePin(pinID);
-        }
 
-        return false;
+        if (res.status === 'ok') {
+          console.log(res.body)
+          
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных о лайке');
+        }
       } catch (error) {
-        console.error('Ошибка при выполнении запроса:', error);
+        console.error('Ошибка:', error);
       }
     }
 
-    static async createBoard(title, description, pinIDs) {
+    static async putPinInfo({description}) {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'pinEdit');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для pinEdit');
+        }
+    
+        const response = await fetch(configItem.url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({description}),
+          credentials: 'include',
+        });
+    
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+    
+        const res = await response.json();
+    
+        if (res.status === 'ok') {
+          return res.status;
+        } else {
+          throw new Error('Ошибка при отправке данных пина');
+        }
+    
+      } catch (error) {
+        console.error('Ошибка при обновлении данных пина:', error);
+        throw error;
+      }
+    }
+
+    static async createBoard(title, description) {
       try {
         const configItem = this.#config.find((item) => item.name === 'createBoard');
         if (!configItem) {
@@ -539,7 +574,7 @@ export class API {
             'Content-Type': 'application/json',
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({title, description, 'public': true, pinIDs}),
+          body: JSON.stringify({title, description, 'public': true, 'tags': [" "]}),
           credentials: 'include',
         });
 

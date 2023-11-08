@@ -190,3 +190,8 @@ a {
 .hide {
     display: none;
 }
+
+input::placeholder {
+  position: absolute;
+  top: 10px;
+}

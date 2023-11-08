@@ -1,6 +1,7 @@
+.pin-cancel-button,
 .board-cancel-button {
     font-family: Nunito;
-    font-size: 20px;
+    font-size: 25px;
     display: inline-block;
     margin-right: 10px;
     padding: 10px 20px;
@@ -10,27 +11,38 @@
     border-radius: 15px;
     cursor: pointer;
     width: 160px;
-    height: 49px;
 }
 
+.pin-create-button,
 .board-create-button {
     font-family: Nunito;
-    font-size: 20px;
+    font-size: 25px;
     display: inline-block;
     margin-right: 10px;
     padding: 10px 20px;
     border: 1px solid var(--primary-30, #226B77);
     background-color: #226B77;
     color: white;
-    border: none;
     border-radius: 15px;
     cursor: pointer;
     width: 160px;
-    height: 49px;
 }
 
+.pin-create-button:hover,
+.pin-cancel-button:hover,
 .board-cancel-button:hover,
 .board-create-button:hover {
     color: white;
     background-color: #3D99A6;
+}
+
+.grey-line {
+    background-color: #D9D9D9;
+    height: 1px;
+    width: 100%;
+    border: none;
+}
+
+.input-container {
+    justify-content: center;
 }

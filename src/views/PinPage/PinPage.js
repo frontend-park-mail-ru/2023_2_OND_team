@@ -17,6 +17,7 @@ export function renderPinPage(pinID) {
                 id: pinInfo.id,
                 src: pinInfo.picture,
                 username: pinInfo.author.username,
+                title: pinInfo.title,
                 description: pinInfo.description,
             };
 
@@ -34,7 +35,7 @@ export function renderPinPage(pinID) {
             deleteButton.classList.add('delete-button');
 
             const updateButton = document.createElement('img');
-            updateButton.src = 'https://pinspire.online:1444/assets/icons/icon_edit.svg';
+            updateButton.src = 'https://pinspire.online:1445/assets/icons/icon_edit.svg';
             updateButton.classList.add('edit-button');
 
             console.log(usernameReal, pinInfo.author.username);
@@ -46,13 +47,19 @@ export function renderPinPage(pinID) {
             }
 
             if (isAuthorized) {
-                const block = document.querySelector('.block');
+                const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
             }
 
             deleteButton.addEventListener('click', function (e) {
                 e.preventDefault();
                 API.deletePin(pinID)
+                router.navigate('/');
+            });
+
+            updateButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                API.updatePin(pinID)
                 router.navigate('/');
             });
         })

@@ -1,8 +1,7 @@
-
 .sidebar__menu__btn {
-    all: unset;
-  }
-  
+  all: unset;
+}
+
 .sidebar {
   display: flex;
   position: fixed;
@@ -52,12 +51,12 @@
 .sidebar__menu__btn-active {
   border-radius: var(--br-s, 10px);
   background: rgba(51, 161, 179, 0.40);
-  color: var(--primary-30, #226B77);
+  color: var(--primary-30);
 }
 
 .sidebar__menu__btn:hover {
   border-radius: var(--br-s, 10px);
-  background: var(--bg-90, #E6E6E6);
+  background: var(--bg-90);
 }
 
 .sidebar__menu__item__label {
@@ -112,15 +111,13 @@
 }
 
 .rectangle-create {
-  height: 70%;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  height: 70%;width: 80%;
+  display: flex;flex-direction: column;
+  padding: 1px 20px;
   display: flex;
   justify-content: center;
   max-width: 900px;
-  border: 1px solid #000;
+  border: 1px solid grey;
   border-radius: 15px;
   margin: 100px auto 0;
   box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
@@ -159,41 +156,5 @@ input[type="text"] {
   display: flex;
   margin-top: 20px;
   align-items: center;
-}
-
-.pin-cancel-button {
-  font-family: Nunito;
-  font-size: 20px;
-  display: inline-block;
-  margin-right: 10px;
-  padding: 10px 20px;
-  border: 1px solid var(--primary-30, #226B77);
-  background-color: white;
-  color: #226B77;
-  border-radius: 15px;
-  cursor: pointer;
-  width: 160px;
-  height: 49px;
-}
-
-.pin-create-button {
-  font-family: Nunito;
-  font-size: 20px;
-  display: inline-block;
-  margin-right: 10px;
-  padding: 10px 20px;
-  border: 1px solid var(--primary-30, #226B77);
-  background-color: #226B77;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  width: 160px;
-  height: 49px;
-}
-
-.pin-cancel-button:hover,
-.pin-create-button:hover {
-  color: white;
-  background-color: #3D99A6;
+  justify-content: center;
 }
