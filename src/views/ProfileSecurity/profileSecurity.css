@@ -104,8 +104,8 @@
     position: relative;
     top: -2px;
     left: -2px;
-    width: 272px;
-    height: 46px;
+    width: 264px;
+    height: 30px;
     border: none;
     background: none;
     resize: none;
@@ -192,10 +192,19 @@
     text-align: center;
 }
 
+.profile-security-span {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
+
 .profile-security__email-span {
     font-family: Nunito;
     font-size: 15px; 
-    /* color: var(--error-50, #F4210B); */
+    color: var(--error-50, #F4210B);
     text-align: left;
     min-height: 30px;
     min-width: 410px;
@@ -205,7 +214,7 @@
 .profile-security__password-span {
     font-family: Nunito;
     font-size: 15px; 
-    /* color: var(--error-50, #F4210B); */
+    color: var(--error-50, #F4210B);
     text-align: left;
     min-height: 30px;
     min-width: 410px;
@@ -214,7 +223,7 @@
 .profile-security__password-repeat-span {
     font-family: Nunito;
     font-size: 15px; 
-    /* color: var(--error-50, #F4210B); */
+    color: var(--error-50, #F4210B);
     text-align: left;
     min-height: 30px;
     min-width: 410px;
