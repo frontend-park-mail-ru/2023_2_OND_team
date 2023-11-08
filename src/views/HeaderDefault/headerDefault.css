@@ -41,6 +41,13 @@
     gap: 5px;
     top: 20px;
   }
+
+  .header__user__avatar-user {
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
   
   .header__create__menu {
     position: relative;

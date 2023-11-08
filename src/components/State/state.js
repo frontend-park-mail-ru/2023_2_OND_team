@@ -3,6 +3,7 @@ export class State {
     #currentPage;
     #isAuthorized;
     #username;
+    #avatar;
 
     constructor() {
         if (State.instance) {
@@ -14,6 +15,7 @@ export class State {
         this.#currentPage = null;
         this.#isAuthorized = null;
         this.#username = null;
+        this.#avatar = null;
     }
 
     setCsrfToken(token) {
@@ -46,6 +48,14 @@ export class State {
 
     getUsername() {
         return this.#username;
+    }
+
+    setAvatar(avatar) {
+        this.#avatar = avatar;
+    }
+
+    getAvatar() {
+        return this.#avatar;
     }
 }
 

@@ -36,6 +36,7 @@
     object-fit: cover;
     width: 120px;
     height: 120px;
+    border-radius: 10px;
 }
 
 .profile-security__line {
@@ -54,9 +55,10 @@
 
 .profile-security__data {
     display: flex;
+    flex-direction: column;
     position: absolute;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 1076px;
     height: 346px;
     left: 271px;
@@ -100,8 +102,11 @@
 }
 
 .profile-security__data-item-input {
-    width: 272px;
-    height: 46px;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    width: 264px;
+    height: 30px;
     border: none;
     background: none;
     resize: none;
@@ -188,6 +193,15 @@
     text-align: center;
 }
 
+.profile-security-span-all {
+    font-family: Nunito;
+    height: 40px;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+}
+
+
 
 .input-read-only {
     border-radius: var(--br-s, 10px);
@@ -202,6 +216,7 @@
 }
 
 .btn-primary-clear {
+    height: 44px;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
     background: var(--bg-100, #FFF);

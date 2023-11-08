@@ -11,6 +11,7 @@ export function renderHeaderDefault() {
     const headerTemplate = Handlebars.templates['HeaderDefault.hbs'];
     const headerContext = {
         username: state.getUsername(),
+        avatar: state.getAvatar(),
     }
 
     header.innerHTML = headerTemplate(headerContext);

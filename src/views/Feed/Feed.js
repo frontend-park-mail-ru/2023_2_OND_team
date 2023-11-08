@@ -101,19 +101,26 @@ export function renderFeedPage() {
 
         pins?.forEach((pin) => {
             pin.addEventListener('mouseenter', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeButton = document.querySelector(`.js-like-button-${pinID}`);
-                API.getLike(pinID)
-                    .then((data) => {
-                        if (data.is_set) {
-                            likeButton.src = '/assets/icons/like_active.svg';
-                        } else {
-                            likeButton.src = '/assets/icons/like.svg';
-                        }
+                API.checkLogin()
+                    .then((status) => {
+                        if (status === 'ok') {
+                            const pinID = pin.className.split(' ')[1].split('-')[3];
+                            const likeButton = document.querySelector(`.js-like-button-${pinID}`);
+                            API.getLike(pinID)
+                                .then((data) => {
+                                    if (data.is_set) {
+                                        likeButton.src = '/assets/icons/like_active.svg';
+                                    } else {
+                                        likeButton.src = '/assets/icons/like.svg';
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        } 
                     })
-                    .catch((error) => {
-                        console.error(error);
-                    })
+
+                
             })
         })
 
@@ -121,44 +128,55 @@ export function renderFeedPage() {
             pin.addEventListener('mouseleave', () => {
                 const pinID = pin.className.split(' ')[1].split('-')[3];
                 const likeField = document.querySelector(`.like-counter-${pinID}`);
-                likeField.classList.add('hide');
+                likeField.style.opacity = 0;
             })
         })
 
         const likeButtons = document.querySelectorAll('.like-icon');
         likeButtons?.forEach((likeButton) => {
+            
             likeButton.addEventListener('click', (element) => {
-            const id = element.target.className.split(' ')[1].split('-')[3];
-            const likeField = document.querySelector(`.like-counter-${id}`);
-            API.getLike(id)
-                .then((data) => {
-                    if (data.is_set) {
-                        API.deleteLike(id)
-                            .then((data) => {
-                                likeButton.src = '/assets/icons/like.svg';
-                                likeField.innerHTML = data.count_like;
-                                likeField.classList.remove('hide');
-                            })
-                            .catch((error) => {
-                                console.error(error);
-                            })
-                    } else {
-                        API.setLike(id)
-                            .then((data) => {
-                                likeButton.src = '/assets/icons/like_active.svg';
-                                likeField.innerHTML = data.count_like;
-                                likeField.classList.remove('hide');
-                            })
-                            .catch((error) => {
-                                console.error(error);
-                            })
-                    }
-                })
-                .catch((error) => {
-                    console.error(error);
-                })
+                API.checkLogin()
+                    .then((status) => {
+                        if (status !== 'ok') {
+                            router.navigate('/login');
+                            
+                            return;
+                        }
+                    })
 
-            });      
+                const id = element.target.className.split(' ')[1].split('-')[3];
+                const likeField = document.querySelector(`.like-counter-${id}`);
+                API.getLike(id)
+                    .then((data) => {
+                        if (data.is_set) {
+                            API.deleteLike(id)
+                                .then((data) => {
+                                    likeButton.src = '/assets/icons/like.svg';
+                                    likeField.innerHTML = data.count_like;
+                                    likeField.style.opacity = 1;
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        } else {
+                            API.setLike(id)
+                                .then((data) => {
+                                    likeButton.src = '/assets/icons/like_active.svg';
+                                    likeField.innerHTML = data.count_like;
+                                    likeField.style.opacity = 1;
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
+
+            });  
+
         });
 
 

@@ -26,16 +26,16 @@
     
 @media (max-width: 1400px) {
     .gallery {
-    max-width: 1200px;
+        max-width: 1000px;
     }
 }
     
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
     .gallery {
-    max-width: 1000px;
+    max-width: 600px;
     }
 }
-    
+/*     
 @media (max-width: 1000px) {
     .gallery {
     max-width: 800px;
@@ -52,7 +52,7 @@
     .gallery {
     max-width: 400px;
     }
-}
+} */
     
 .gallery__item--hor {
     grid-column: span 2;
@@ -101,19 +101,11 @@
     z-index: 1;
 }
 
-.like-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 1;
-}
-
 .like-counter {
+    height: 20px;
+    color: aliceblue;
     text-align: center;
+    opacity: 0;
 }
     
 .like-icon {

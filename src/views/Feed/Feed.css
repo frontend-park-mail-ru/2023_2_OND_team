@@ -17,6 +17,7 @@
 #sidebar {
     grid-area: sidebar;
     display: flex;
+    z-index: 2;
     width: 250px;
 }
 

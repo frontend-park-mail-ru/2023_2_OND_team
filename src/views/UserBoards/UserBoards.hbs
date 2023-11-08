@@ -1,0 +1,12 @@
+<div class="user__board js-board-id-{{id}}">
+    <div class="user__board-title text-base1-medium">{{title}}</div>
+    <div class="user__board-pins">
+        {{#each pins}}
+            {{#if this}}
+                <div class="user__board__pin">
+                    <img src="{{this}}">
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
