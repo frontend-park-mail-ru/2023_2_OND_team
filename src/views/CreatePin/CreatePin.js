@@ -49,8 +49,11 @@ export function renderCreatePin() {
         const reader = new FileReader();
     
         reader.onload = (event) => {
+            const pictureBytes = event.target.result;
+
             const mimeType = pictureFile.type;
-            const picture = new Blob([event.target.result], { type: mimeType });
+    
+            picture = new Blob([pictureBytes], { type: mimeType });
     
             console.log(picture);
 
