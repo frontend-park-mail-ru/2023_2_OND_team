@@ -46,7 +46,7 @@ export function renderPinPage(pinID) {
             }
 
             if (isAuthorized) {
-                const block = document.querySelector('.block');
+                const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
             }
 
