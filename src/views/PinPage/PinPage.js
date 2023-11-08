@@ -17,6 +17,7 @@ export function renderPinPage(pinID) {
                 id: pinInfo.id,
                 src: pinInfo.picture,
                 username: pinInfo.author.username,
+                title: pinInfo.title,
                 description: pinInfo.description,
             };
 
