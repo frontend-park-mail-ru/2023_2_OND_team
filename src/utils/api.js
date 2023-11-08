@@ -15,6 +15,7 @@ export class API {
       {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
+      {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
     ];
 
@@ -512,6 +513,42 @@ export class API {
         }
       } catch (error) {
         console.error('Ошибка:', error);
+      }
+    }
+
+    static async putPinInfo({description}) {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'pinEdit');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для pinEdit');
+        }
+    
+        const response = await fetch(configItem.url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({description}),
+          credentials: 'include',
+        });
+    
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+    
+        const res = await response.json();
+    
+        if (res.status === 'ok') {
+          return res.status;
+        } else {
+          throw new Error('Ошибка при отправке данных пина');
+        }
+    
+      } catch (error) {
+        console.error('Ошибка при обновлении данных пина:', error);
+        throw error;
       }
     }
 
