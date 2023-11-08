@@ -25,6 +25,8 @@
   .profile-user__avatar-img {
     width: 120px;
     height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
   }
   
   .profile-user__avatar__username {

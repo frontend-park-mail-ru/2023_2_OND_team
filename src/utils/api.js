@@ -85,8 +85,16 @@ export class API {
         if (res.status === 'ok') {
           this.state.setIsAuthorized(true);
           this.state.setUsername(res.body.username);
+          this.state.setAvatar(res.body.avatar);
         } else {
-          this.state.setIsAuthorized(false);
+          if (res.code === 'csrf') {
+            this.getCsrfToken()
+              .then(() => {
+                this.checkLogin();
+              })
+          } else {
+            this.state.setIsAuthorized(false);
+          }
         }
 
         return res.status;
@@ -286,7 +294,7 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'image/png',
+            'Content-Type': 'image/*',
             'x-csrf-token': this.state.getCsrfToken(),
           },
           body: avatar,
@@ -323,6 +331,7 @@ export class API {
         });
 
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        console.log(csrfToken);
 
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
