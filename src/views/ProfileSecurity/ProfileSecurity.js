@@ -82,7 +82,7 @@ export function renderProfileSecurity() {
 
             const saveBtn = document.querySelector('.js-profile-security__btns__save-btn');
             saveBtn?.addEventListener('click', () => {
-                const email = mailInput.value;
+                const email = mailTextarea.value;
                 const password = passwordTextarea.value;
                 const passwordRepeat = passwordRepeatTextarea.value;
 
@@ -102,7 +102,7 @@ export function renderProfileSecurity() {
                 }
                 const passwordRepeatValidationResult = passwordValid(passwordRepeat);
                 if (!passwordRepeatValidationResult.valid) {
-                    passwordRepeatSpan.textContent = passworpasswordRepeatValidationResultdValidationResult.message;
+                    passwordRepeatSpan.textContent = passwordRepeatValidationResult.message;
                 } else {
                     passwordRepeatSpan.textContent = '';
                 }

@@ -55,9 +55,10 @@
 
 .profile-security__data {
     display: flex;
+    flex-direction: column;
     position: absolute;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 1076px;
     height: 346px;
     left: 271px;
@@ -192,47 +193,14 @@
     text-align: center;
 }
 
-.profile-security-span {
+.profile-security-span-all {
     font-family: Nunito;
+    height: 40px;
     font-size: 15px; 
     color: var(--error-50, #F4210B);
     text-align: left;
-    min-height: 30px;
-    min-width: 410px;
 }
 
-.profile-security__email-span {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-
-.profile-security__password-span {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-.profile-security__password-repeat-span {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-
-.span-error {
-    color: var(--error-50, #F4210B);
-}
 
 
 .input-read-only {
