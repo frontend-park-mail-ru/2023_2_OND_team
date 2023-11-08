@@ -15,11 +15,8 @@ export class API {
       {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
-      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
-      {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/pin/personal?count=1000'},
       {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
-
     ];
 
     static async loginUser(username, password) {
@@ -33,7 +30,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, password}),
           credentials: 'include',
@@ -73,13 +70,12 @@ export class API {
 
         const response = await fetch(configItem.url, {
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
 
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
-
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
@@ -88,16 +84,8 @@ export class API {
         if (res.status === 'ok') {
           this.state.setIsAuthorized(true);
           this.state.setUsername(res.body.username);
-          this.state.setAvatar(res.body.avatar);
         } else {
-          if (res.code === 'csrf') {
-            this.getCsrfToken()
-              .then(() => {
-                this.checkLogin();
-              })
-          } else {
-            this.state.setIsAuthorized(false);
-          }
+          this.state.setIsAuthorized(false);
         }
 
         return res.status;
@@ -116,7 +104,7 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'DELETE',
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -156,7 +144,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, email, password}),
           credentials: 'include',
@@ -196,7 +184,7 @@ export class API {
         }
         const response = await fetch(configItem, {
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -228,7 +216,7 @@ export class API {
 
         const response = await fetch(configItem.url, {
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -262,7 +250,7 @@ export class API {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, name, surname, about_me, email, password}),
           credentials: 'include',
@@ -297,8 +285,8 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'image/*',
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'Content-Type': 'image/png',
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: avatar,
           credentials: 'include',
@@ -334,7 +322,6 @@ export class API {
         });
 
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        console.log(csrfToken);
 
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
@@ -350,7 +337,7 @@ export class API {
         const configItem = `//pinspire.online:8080/api/v1/pin/like/isSet/${id}`;
         const response = await fetch(configItem, {
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -378,7 +365,7 @@ export class API {
         const response = await fetch(configItem, {
           method: 'POST',
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -391,6 +378,8 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
+          console.log(res.body)
+          
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных о лайке');
@@ -406,7 +395,7 @@ export class API {
         const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -419,6 +408,8 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
+          console.log(res.body)
+          
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных о лайке');
@@ -439,7 +430,7 @@ export class API {
     
         const response = await fetch(pinInfoURL, {
           headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -462,25 +453,36 @@ export class API {
       }
     }
 
-    static async createPin(options) {
+    static async createPin(formData) {
       try {
           const configItem = this.#config.find((item) => item.name === 'createPin');
           if (!configItem) {
               throw new Error('Не найдена конфигурация для createPin');
           }
   
-          const response = await fetch(configItem.url, options);
+          const response = await fetch(configItem.url, {
+              method: 'POST',
+              headers: {
+                  'x-csrf-token': this.state.getCsrfToken(),
+              },
+              body: formData,
+              credentials: 'include',
+          });
+  
           const csrfToken = response.headers.get('X-Set-CSRF-Token');
           if (csrfToken) {
               this.state.setCsrfToken(csrfToken);
           }
   
           const res = await response.json();
-          return res; // Возвращаем результат
+          if (res.status === 'ok') {
+          } else {
+              console.error('Ошибка создания пина');
+          }
       } catch (error) {
           console.error('Ошибка при выполнении запроса:', error);
       }
-    }
+    }  
 
     static async deletePin(pinID) {
       try {
@@ -559,7 +561,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
+            'x-csrf-token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({title, description, 'public': true, 'tags': [" "]}),
           credentials: 'include',
@@ -580,65 +582,4 @@ export class API {
         console.error('Ошибка при выполнении запроса:', error);
       }
     }
-
-    static async getUserPins() {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'getUserPins');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для getUserPins');
-        }
-
-        const response = await fetch(configItem.url, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных из API');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
-      }
-    }
-
-    static async getUserBoards() {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
-
-        const response = await fetch(configItem, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных из API');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
-      }
-    }
-
 }

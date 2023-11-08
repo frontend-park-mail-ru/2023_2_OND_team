@@ -43,37 +43,35 @@ export function renderCreatePin() {
         e.preventDefault();
     });
 
-    pictureInput.addEventListener('change', async (event) => {
+    pictureInput.addEventListener('change', (event) => {
         const pictureFile = event.target.files[0];
+        const reader = new FileReader();
     
-        const options = {
-            method: 'POST',
-            headers: {
-                'x-csrf-token': this.state.getCsrfToken(),
-            },
-            body: new FormData(),
-            credentials: 'include',
+        reader.onload = (event) => {
+            const pictureBytes = event.target.result;
+            const mimeType = pictureFile.type;
+            const picture = new Blob([pictureBytes], { type: mimeType });
+    
+            const formData = new FormData();
+            formData.append('picture', picture);
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('public', true);
+    
+            API.createPin(formData)
+                .then((status) => {
+                    if (status === "ok") {
+                        console.log('Данные успешно отправлены на сервер');
+                    } else {
+                        console.error('Ошибка на сервере');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Ошибка при выполнении запроса:', error);
+                });
         };
     
-        options.body.append('picture', pictureFile);
-        options.body.append('title', title);
-        options.body.append('description', description);
-        options.body.append('public', true);
-    
-        try {
-            const configItem = config.find((item) => item.name === 'createPin');
-            if (!configItem) {
-                throw new Error('Не найдена конфигурация для createPin');
-            }
-    
-            const response = await API.createPin(options);
-    
-            if (response.status === 'ok') {
-            } else {
-                console.error('Ошибка создания пина');
-            }
-        } catch (error) {
-            console.error('Ошибка при выполнении запроса:', error);
-        }
-    });
+        reader.readAsArrayBuffer(pictureFile);
+    });    
+       
 }
