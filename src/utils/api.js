@@ -1,23 +1,5 @@
 import State from "../components/State/state.js";
 
-function getCookie(cookieName) {
-  const name = `${cookieName}=`;
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const cookieArray = decodedCookie.split(';');
-
-  for (let i = 0; i < cookieArray.length; i++) {
-    let cookie = cookieArray[i];
-    while (cookie.charAt(0) === ' ') {
-      cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(name) === 0) {
-      return cookie.substring(name.length, cookie.length);
-    }
-  }
-
-  return '';
-}
-
 export class API {
     static state = new State();
 
@@ -49,7 +31,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, password}),
           credentials: 'include',
@@ -86,33 +68,15 @@ export class API {
         if (!configItem) {
           throw new Error('Не найдена конфигурация для checkLogin');
         }
-        // const myCookieValue = getCookie('_csrf');
-        // console.log('csrf', myCookieValue);
-
-        // let response;
-
-        // if (!this.state.getCsrfToken()) {
-        //     document.cookie = '_csrf=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-          
-        //   response = await fetch(configItem.url, {
-        //     headers: {
-        //       'x-csrf-token': this.state.getCsrfToken(),
-        //     },
-        //     credentials: 'include',
-        //   });
-        // } else {
-        //   response = await fetch(configItem.url, {
-        //     credentials: 'include',
-        //   });
-        // }
 
         const response = await fetch(configItem.url, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
           credentials: 'include',
         });
 
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
-
-        console.log(csrfToken, this.state.getCsrfToken());
 
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
@@ -150,7 +114,7 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'DELETE',
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -190,7 +154,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, email, password}),
           credentials: 'include',
@@ -230,7 +194,7 @@ export class API {
         }
         const response = await fetch(configItem, {
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -262,7 +226,7 @@ export class API {
 
         const response = await fetch(configItem.url, {
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -296,7 +260,7 @@ export class API {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({username, name, surname, about_me, email, password}),
           credentials: 'include',
@@ -332,7 +296,7 @@ export class API {
           method: 'PUT',
           headers: {
             'Content-Type': 'image/*',
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: avatar,
           credentials: 'include',
@@ -384,7 +348,7 @@ export class API {
         const configItem = `//pinspire.online:8080/api/v1/pin/like/isSet/${id}`;
         const response = await fetch(configItem, {
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -412,7 +376,7 @@ export class API {
         const response = await fetch(configItem, {
           method: 'POST',
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -440,7 +404,7 @@ export class API {
         const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -473,7 +437,7 @@ export class API {
     
         const response = await fetch(pinInfoURL, {
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -507,7 +471,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({picture, title, description, 'public': true}),
           credentials: 'include',
@@ -540,7 +504,7 @@ export class API {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({pinID}),
           credentials: 'include',
@@ -573,7 +537,7 @@ export class API {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({title, description, 'public': true, pinIDs}),
           credentials: 'include',
@@ -604,7 +568,7 @@ export class API {
 
         const response = await fetch(configItem.url, {
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
@@ -632,7 +596,7 @@ export class API {
 
         const response = await fetch(configItem, {
           headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
+            'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
