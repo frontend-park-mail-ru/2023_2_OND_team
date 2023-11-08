@@ -459,32 +459,38 @@ export class API {
         if (!configItem) {
           throw new Error('Не найдена конфигурация для createPin');
         }
-
+    
+        const formData = new FormData();
+        formData.append('picture', picture);
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('public', true);
+    
         const response = await fetch(configItem.url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'multipart/form-data',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({picture, title, description, 'public': true}),
+          body: formData,
           credentials: 'include',
         });
-
+    
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-
+    
         const res = await response.json();
         if (res.status === 'ok') {
-          return this.createPin(picture, title, description);
+          return res;
         }
-
+    
         return false;
       } catch (error) {
         console.error('Ошибка при выполнении запроса:', error);
+        throw error;
       }
-    }
+    }    
 
     static async deletePin(pinID) {
       try {
