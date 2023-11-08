@@ -72,6 +72,8 @@ export class API {
         let response;
 
         if (!this.state.getCsrfToken()) {
+            document.cookie = '_csrf=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          
           response = await fetch(configItem.url, {
             headers: {
               'x-csrf-token': this.state.getCsrfToken(),
