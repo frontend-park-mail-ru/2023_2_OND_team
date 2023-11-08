@@ -88,7 +88,6 @@ export function renderProfileSecurity() {
 
                 const emailValidationResult = emailValid(email);
                 if (!emailValidationResult.valid) {
-                    // emailSpan.classList.add('span-error');
                     emailSpan.textContent = emailValidationResult.message;
                 } else {
                     emailSpan.textContent = '';
