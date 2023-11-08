@@ -25,10 +25,10 @@ export function renderCreatePin() {
     });
 
     createButton.addEventListener('click', function (e) {
-        //const title = document.getElementById('title').value;
-        //const description = document.getElementById('description').value;
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
 
-        API.createPin(picture)
+        API.createPin(picture, title, description)
         .then((status) => {
             if (status === "ok") {
                 router.navigate('/');
