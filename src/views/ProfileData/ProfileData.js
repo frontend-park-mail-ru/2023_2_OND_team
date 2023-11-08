@@ -1,5 +1,6 @@
 import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
+import { nameValid } from "../../components/Validation/valid.js";
 
 export function renderProfileData() {
     const main = document.querySelector('#main');

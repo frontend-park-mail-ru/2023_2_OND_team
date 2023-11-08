@@ -26,8 +26,8 @@ const httpsOptions = {
   // cert: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'certificate.crt')),
 };
 
-// https.createServer(httpsOptions, app).listen(443);
-https.createServer(httpsOptions, app).listen(1444);
+https.createServer(httpsOptions, app).listen(443);
+// https.createServer(httpsOptions, app).listen(1444);
 
 app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(express.json());

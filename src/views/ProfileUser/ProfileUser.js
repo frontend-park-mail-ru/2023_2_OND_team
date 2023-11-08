@@ -12,6 +12,7 @@ export function renderProfilePage() {
 
     const profileTemplate = Handlebars.templates['ProfileUser.hbs'];
     const profileContext = {
+        avatar: state.getAvatar(),
         username: state.getUsername(),
     };
 
