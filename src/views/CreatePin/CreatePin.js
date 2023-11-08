@@ -45,33 +45,18 @@ export function renderCreatePin() {
 
     pictureInput.addEventListener('change', (event) => {
         const pictureFile = event.target.files[0];
+    
         const reader = new FileReader();
     
         reader.onload = (event) => {
-            const pictureBytes = event.target.result;
             const mimeType = pictureFile.type;
-            const picture = new Blob([pictureBytes], { type: mimeType });
+            const picture = new Blob([event.target.result], { type: mimeType });
     
-            const formData = new FormData();
-            formData.append('picture', picture);
-            formData.append('title', title);
-            formData.append('description', description);
-            formData.append('public', true);
-    
-            API.createPin(formData)
-                .then((status) => {
-                    if (status === "ok") {
-                        console.log('Данные успешно отправлены на сервер');
-                    } else {
-                        console.error('Ошибка на сервере');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Ошибка при выполнении запроса:', error);
-                });
+            console.log(picture);
+
         };
-    
+
         reader.readAsArrayBuffer(pictureFile);
-    });    
+    });
        
 }

@@ -453,36 +453,38 @@ export class API {
       }
     }
 
-    static async createPin(formData) {
+    static async createPin(picture, title, description) {
       try {
-          const configItem = this.#config.find((item) => item.name === 'createPin');
-          if (!configItem) {
-              throw new Error('Не найдена конфигурация для createPin');
-          }
-  
-          const response = await fetch(configItem.url, {
-              method: 'POST',
-              headers: {
-                  'x-csrf-token': this.state.getCsrfToken(),
-              },
-              body: formData,
-              credentials: 'include',
-          });
-  
-          const csrfToken = response.headers.get('X-Set-CSRF-Token');
-          if (csrfToken) {
-              this.state.setCsrfToken(csrfToken);
-          }
-  
-          const res = await response.json();
-          if (res.status === 'ok') {
-          } else {
-              console.error('Ошибка создания пина');
-          }
+        const configItem = this.#config.find((item) => item.name === 'createPin');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для createPin');
+        }
+
+        const response = await fetch(configItem.url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({picture, title, description, 'public': true}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+        if (res.status === 'ok') {
+          return this.createPin(picture, title, description);
+        }
+
+        return false;
       } catch (error) {
-          console.error('Ошибка при выполнении запроса:', error);
+        console.error('Ошибка при выполнении запроса:', error);
       }
-    }  
+    }
 
     static async deletePin(pinID) {
       try {
