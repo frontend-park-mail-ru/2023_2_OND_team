@@ -26,10 +26,12 @@ export function renderCreatePin() {
         const pictureInput = document.getElementById('picture');
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
+        console.log('nice');
         
         pictureInput.addEventListener('load', (event) => {
+            console.log('goodd');
             const pictureFile = event.target.files[0];
-        
+            
             const reader = new FileReader();
         
             reader.onload = (event) => {
