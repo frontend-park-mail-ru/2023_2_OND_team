@@ -31,7 +31,7 @@ export function renderCreateBoard() {
         API.createBoard(title, description)
         .then((response) => {
             if (response && response.status === 'ok' && response.body && response.body.boardID) {
-                const boardID = response.body.boardID;
+                const boardID = response.body.new_board_id;
                 console.log(`BoardID: ${boardID}`);
             } else {
                 console.error('Ошибка создания доски или неверный ответ:', response);
