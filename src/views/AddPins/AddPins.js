@@ -12,6 +12,7 @@ export function renderAddPins() {
     const numRequestedPins = 12;
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
+    let hasLoadedPins = false;
 
     const feedTemplate = Handlebars.templates['AddPins.hbs'];
     const feedContext = {};
@@ -39,12 +40,28 @@ export function renderAddPins() {
     * Загружает дополнительные пины при достижении нижней части страницы.
     */
     function handleScroll() {
-        const documentHeight = document.documentElement.scrollHeight;
-        const windowHeight = window.innerHeight;
-        const scrollY = window.scrollY;
-    
-        API.generatePins(numRequestedPins, pinMaxID, pinMinID)
+        if (!hasLoadedPins) {
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+        
+            if (scrollY + windowHeight >= documentHeight - 1000) {
+                API.generatePins(numRequestedPins, pinMaxID, pinMinID)
+                    .then((data) => {
+                        pinMaxID = Math.max(pinMaxID, data.maxID);
+                        pinMinID = Math.min(pinMinID, data.minID);
 
+                        const section = document.getElementById('pins');
+                        renderPins(section, data.pins);
+                        definePins();
+        
+                        hasLoadedPins = true;
+                    })
+                    .catch((error) => {
+                        console.error('Ошибка при рендеринге пинов:', error);
+                    });
+            }
+        }
     }
     
     const scrollFunc = debounce(handleScroll, 250);
