@@ -9,7 +9,7 @@ export function renderAddPins() {
     const state = new State();
     const main = document.querySelector('#main');
 
-    const numRequestedPins = 20;
+    const numRequestedPins = 12;
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
 
@@ -59,8 +59,8 @@ export function renderAddPins() {
                     definePins();
     
                     const pins = document.querySelectorAll('.gallery__item');
-                    if (pins?.length > 100) {
-                        const pinsToDelete = Array.from(pins).slice(0, 20);
+                    if (pins?.length > 12) {
+                        const pinsToDelete = Array.from(pins).slice(0, pins.length - 12);
                         pinsToDelete.forEach(pin => {
                             pin.remove();
                         });
