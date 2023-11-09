@@ -3,9 +3,7 @@ import { renderPins } from '../../components/RenderPins/renderPins.js';
 import { State } from '../../components/State/state.js'
 import { Router } from '../../components/Router/router.js'
  
-/**
-* Рендерит главную страницу с пинами.
-*/
+
 export function renderAddPins() {
     const router = new Router();
     const state = new State();
@@ -19,9 +17,7 @@ export function renderAddPins() {
 
     main.innerHTML = feedTemplate(addPins);
 
-    /**
-    * Создает функцию с задержкой для предотвращения слишком частых вызовов.
-    */
+
     function debounce(f, ms) {
         let isCooldown = false;
 
@@ -35,10 +31,7 @@ export function renderAddPins() {
         };
     }
 
-    /**
-    * Обработчик скролла страницы.
-    * Загружает дополнительные пины при достижении нижней части страницы.
-    */
+    
     function handleScroll() {
         const documentHeight = document.documentElement.scrollHeight;
         const windowHeight = window.innerHeight;

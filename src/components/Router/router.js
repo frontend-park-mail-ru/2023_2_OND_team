@@ -250,14 +250,14 @@ export class Router {
             {
                 path: "/create/board/ID",
                 handler: () => {
-                    if (this.state.getCurrentPage() === `createВoard`) {
+                    if (this.state.getCurrentPage() === `createВoard${ID}`) {
                         return;
                     }
 
                     API.checkLogin()
                         .then((status) => {
                             if (status === 'ok') {
-                                this.state.setCurrentPage(`createВoard`);
+                                this.state.setCurrentPage(`createВoard${ID}`);
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
