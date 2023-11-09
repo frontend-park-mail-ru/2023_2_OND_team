@@ -71,9 +71,6 @@ export function renderAddPins() {
                     }
     
                 })
-                .catch((error) => {
-                    console.error('Ошибка при рендеринге пинов:', error);
-                });
         }
     }
     
