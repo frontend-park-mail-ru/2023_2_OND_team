@@ -19,9 +19,6 @@ export function renderAddPins() {
 
     main.innerHTML = feedTemplate(feedContext);
 
-    /**
-    * Создает функцию с задержкой для предотвращения слишком частых вызовов.
-    */
     function debounce(f, ms) {
         let isCooldown = false;
 
@@ -35,10 +32,6 @@ export function renderAddPins() {
         };
     }
 
-    /**
-    * Обработчик скролла страницы.
-    * Загружает дополнительные пины при достижении нижней части страницы.
-    */
     function handleScroll() {
         if (!hasLoadedPins) {
             const documentHeight = document.documentElement.scrollHeight;
@@ -70,4 +63,25 @@ export function renderAddPins() {
     window.removeEventListener('scroll', window.scrollFunc);
     window.addEventListener('scroll', window.scrollFunc);
     
+    function SelectPins() {
+        const pins = document.querySelectorAll('.gallery__item');
+        const selectedPins = [];
+
+        pins?.forEach((pin) => {
+            pin.addEventListener('click', (e) => {
+                const pinID = pin.className.split(' ')[1].split('-')[3];
+    
+                const index = selectedPins.indexOf(pinID);
+                if (index === -1) {
+                    selectedPins.push(pinID);
+                } else {
+                    selectedPins.splice(index, 1);
+                }
+    
+                console.log(selectedPins);
+            });
+        });
+    }
+    
+    SelectPins();
 }
