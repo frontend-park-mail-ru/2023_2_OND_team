@@ -595,36 +595,37 @@ export class API {
 
     static async createBoard(title, description) {
       try {
-        const configItem = this.#config.find((item) => item.name === 'createBoard');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для createBoard');
-        }
-
-        const response = await fetch(configItem.url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          body: JSON.stringify({title, description, 'public': true, 'tags': [" "]}),
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных из API');
-        }
+          const configItem = this.#config.find((item) => item.name === 'createBoard');
+          if (!configItem) {
+              throw new Error('Не найдена конфигурация для createBoard');
+          }
+  
+          const response = await fetch(configItem.url, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': this.state.getCsrfToken(),
+              },
+              body: JSON.stringify({ title, description, 'public': true, 'tags': [" "] }),
+              credentials: 'include',
+          });
+  
+          const csrfToken = response.headers.get('X-Set-CSRF-Token');
+          if (csrfToken) {
+              this.state.setCsrfToken(csrfToken);
+          }
+  
+          const res = await response.json();
+          if (res.status === 'ok' && res.body && res.body.new_board_id) {
+              return { status: 'ok', body: { new_board_id: res.body.new_board_id } };
+          } else {
+              throw new Error('Ошибка при получении данных из API');
+          }
       } catch (error) {
-        console.error('Ошибка при выполнении запроса:', error);
+          console.error('Ошибка при выполнении запроса:', error);
+          throw error;
       }
-    }
+    }  
 
     static async getUserPins() {
       try {

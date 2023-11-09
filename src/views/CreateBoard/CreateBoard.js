@@ -29,19 +29,19 @@ export function renderCreateBoard() {
         console.log(title, description);
     
         API.createBoard(title, description)
-        .then((response) => {
-            if (response && response.status === 'ok' && response.body && response.body.new_board_id) {
-                const boardID = response.body.new_board_id;
-                console.log(`Board created with ID: ${boardID}`);
-            } else {
-                console.error('Error creating board or invalid response:', response);
-            }
-        })
-        .catch((error) => {
-            console.error('Error creating board:', error);
-        });
+            .then((response) => {
+                if (response && response.status === 'ok' && response.body && response.body.new_board_id) {
+                    const boardID = response.body.new_board_id;
+                    console.log(`Board created with ID: ${boardID}`);
+                } else {
+                    console.error('Error creating board or invalid response:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Error creating board:', error);
+            });
     
         e.preventDefault();
-    });
+    });    
     
 }
