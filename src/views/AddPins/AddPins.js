@@ -15,7 +15,9 @@ export function renderAddPins() {
 
     const addPins = Handlebars.templates['AddPins.hbs'];
 
-    main.innerHTML = feedTemplate(addPins);
+    const context = {};
+
+    main.innerHTML = addPins(context);
 
 
     function debounce(f, ms) {
@@ -31,7 +33,7 @@ export function renderAddPins() {
         };
     }
 
-    
+
     function handleScroll() {
         const documentHeight = document.documentElement.scrollHeight;
         const windowHeight = window.innerHeight;
