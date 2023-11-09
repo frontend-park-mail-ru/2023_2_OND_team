@@ -526,7 +526,7 @@ export class API {
       }
     }
 
-    static async addBoardPins(boardID) {
+    static async addBoardPins(boardID, pins) {
       try {
         const configItem = `//pinspire.online:8080/api/v1/board/add/pins/${boardID}`;
         const response = await fetch(configItem, {
