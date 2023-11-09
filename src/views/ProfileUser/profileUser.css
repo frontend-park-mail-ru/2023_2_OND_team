@@ -123,16 +123,34 @@
     width: 100%;
 }
     
-@media (max-width: 1400px) {
-    .gallery {
-        max-width: 1000px;
-    }
+@media (max-width: 1500px) {
+  .gallery {
+      max-width: 1200px;
+  }
 }
-    
+  
+@media (max-width: 1200px) {
+  .gallery {
+  max-width: 1000px;
+  }
+}
+  
 @media (max-width: 1000px) {
-    .gallery {
-    max-width: 600px;
-    }
+  .gallery {
+  max-width: 800px;
+  }
+}
+  
+@media (max-width: 800px) {
+  .gallery {
+  max-width: 600px;
+  }
+}
+  
+@media (max-width: 600px) {
+  .gallery {
+  max-width: 400px;
+  }
 }
     
 .gallery__item--hor {

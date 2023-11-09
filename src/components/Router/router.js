@@ -13,6 +13,7 @@ import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecuri
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
 import { renderPinPage } from "../../views/PinPage/PinPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
+import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
 
 export class Router {
     #routes;
@@ -190,6 +191,33 @@ export class Router {
                     .catch((error) => {
                         console.error(error);
                     })
+                },
+            },
+            {
+                path: "/favourite",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'favourite') {
+                        return;
+                    }
+
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                this.state.setCurrentPage('favourite');
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderFavouritePage();
+                            } else {
+                                this.navigate('/login');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
                 },
             },
             {
