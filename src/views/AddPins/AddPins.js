@@ -66,14 +66,16 @@ export function renderAddPins(boardID) {
             pin.addEventListener('click', (e) => {
                 const pinID = Number(pin.className.split(' ')[1].split('-')[3]);
     
-                const index = selectedPins.indexOf(pinID);
-                if (index === -1) {
-                    selectedPins.push(pinID);
-                } else {
-                    selectedPins.splice(index, 1);
-                }
+                if (!isNaN(pinID)) {
+                    const index = selectedPins.indexOf(pinID);
+                    if (index === -1) {
+                        selectedPins.push(pinID);
+                    } else {
+                        selectedPins.splice(index, 1);
+                    }
     
-                console.log(selectedPins);
+                    console.log(selectedPins);
+                }
             });
         });
     }
