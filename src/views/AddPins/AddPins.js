@@ -6,7 +6,7 @@ import { Router } from '../../components/Router/router.js'
 /**
 * Рендерит главную страницу с пинами.
 */
-export function renderFeedPage() {
+export function renderAddPins() {
     const router = new Router();
     const state = new State();
     const main = document.querySelector('#main');

@@ -33,6 +33,7 @@ export function renderCreateBoard() {
                 if (response && response.status === 'ok' && response.body && response.body.new_board_id) {
                     const boardID = response.body.new_board_id;
                     console.log(`Board created with ID: ${boardID}`);
+                    router.navigate(`/create/board/${boardID}`);
                 } else {
                     console.error('Error creating board or invalid response:', response);
                 }

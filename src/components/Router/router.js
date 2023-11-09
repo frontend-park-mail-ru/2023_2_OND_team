@@ -13,6 +13,7 @@ import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecuri
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
 import { renderPinPage } from "../../views/PinPage/PinPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
+import { renderAddPins } from "../../views/AddPins/AddPins.js"
 
 export class Router {
     #routes;
@@ -239,6 +240,33 @@ export class Router {
                                 renderCreateBoard();
                             } else {
                                 this.navigate('/login');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
+            },
+            {
+                path: "/create/board/ID",
+                handler: () => {
+                    if (this.state.getCurrentPage() === `createВoard${boardID}`) {
+                        return;
+                    }
+
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                this.state.setCurrentPage(`createВoard${boardID}`);
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                }                     
+                                renderAddPins();
+                            } else {
+                                this.navigate('/create/board');
                             }
                         })
                         .catch((error) => {
