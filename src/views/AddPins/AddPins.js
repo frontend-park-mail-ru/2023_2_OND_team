@@ -94,7 +94,18 @@ export function renderAddPins(boardID) {
     
     addButton.addEventListener('click', function (e) {
         console.log(boardID, selectedPins);
-    
+
+        API.addBoardPins(boardID, selectedPins)
+            .then((response) => {
+                if (response.status === 'ok') {
+                    router.navigate(`/`);
+                } else {
+                    console.error('Error creating board or invalid response:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Ошибка добавления пинов в доску:', error);
+            });
     
         e.preventDefault();
     });
