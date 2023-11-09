@@ -51,4 +51,13 @@
     border-radius: 15px;
     margin: 100px auto 0;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
-  }
+}
+
+.buttons-container-add {
+    display: flex;
+    padding: 0px 0px 20px 0px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+  
