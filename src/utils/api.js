@@ -526,15 +526,15 @@ export class API {
       }
     }
 
-    static async addBoardPins(boardID, pins) {
+    static async addBoardPins(board_id, pins) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/board/add/pins/${boardID}`;
+        const configItem = `//pinspire.online:8080/api/v1/board/add/pins/${board_id}`;
         const response = await fetch(configItem, {
           method: 'POST',
           headers: {
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({ boardID, pins }),
+          body: JSON.stringify({ board_id, pins }),
           credentials: 'include',
         });
 
