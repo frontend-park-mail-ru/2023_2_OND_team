@@ -31,3 +31,17 @@
     color: white;
     background-color: #3D99A6;
 }
+
+.rectangle-add {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 1px 20px;
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin: 100px auto 0;
+    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+  }
