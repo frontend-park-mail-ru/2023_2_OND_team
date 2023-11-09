@@ -100,10 +100,6 @@ export function renderProfileData() {
                 nameTextarea.disabled = false;
                 surnameTextarea.disabled = false;
                 aboutTextarea.disabled = false;
-
-                avatarSpan.textContent = '';
-                usernameSpan.textContent = '';
-                dataSpan.textContent = '';
             });
 
             const canselBtn = document.querySelector('.js-profile-data__btns__cansel-btn');
@@ -129,6 +125,10 @@ export function renderProfileData() {
                 nameTextarea.value = profileDataContext.name;
                 surnameTextarea.value = profileDataContext.surname;
                 aboutTextarea.value = profileDataContext.about;
+
+                avatarSpan.textContent = '';
+                usernameSpan.textContent = '';
+                dataSpan.textContent = '';
             })
 
             const saveBtn = document.querySelector('.js-profile-data__btns__save-btn');
