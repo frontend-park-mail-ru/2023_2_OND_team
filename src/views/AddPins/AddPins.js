@@ -13,13 +13,18 @@ export function renderAddPins() {
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
 
-    const addPins = Handlebars.templates['AddPins.hbs'];
+    const feedTemplate = Handlebars.templates['Feed.hbs'];
+    const introTemplate = Handlebars.templates['Intro.hbs'];
+    const feedContext = {
+        isAuthorized: !state.getIsAuthorized(),
+        Intro: introTemplate,
+    };
 
-    const context = {};
+    main.innerHTML = feedTemplate(feedContext);
 
-    main.innerHTML = addPins(context);
-
-
+    /**
+    * Создает функцию с задержкой для предотвращения слишком частых вызовов.
+    */
     function debounce(f, ms) {
         let isCooldown = false;
 
@@ -33,7 +38,10 @@ export function renderAddPins() {
         };
     }
 
-
+    /**
+    * Обработчик скролла страницы.
+    * Загружает дополнительные пины при достижении нижней части страницы.
+    */
     function handleScroll() {
         const documentHeight = document.documentElement.scrollHeight;
         const windowHeight = window.innerHeight;
@@ -88,6 +96,88 @@ export function renderAddPins() {
             router.navigate(`/pin/${pinID}`);
           });
         });
+
+        pins?.forEach((pin) => {
+            pin.addEventListener('mouseenter', () => {
+                API.checkLogin()
+                    .then((status) => {
+                        if (status === 'ok') {
+                            const pinID = pin.className.split(' ')[1].split('-')[3];
+                            const likeButton = document.querySelector(`.js-like-button-${pinID}`);
+                            API.getLike(pinID)
+                                .then((data) => {
+                                    if (data.is_set) {
+                                        likeButton.src = '/assets/icons/like_active.svg';
+                                    } else {
+                                        likeButton.src = '/assets/icons/like.svg';
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        } 
+                    })
+
+                
+            })
+        })
+
+        pins?.forEach((pin) => {
+            pin.addEventListener('mouseleave', () => {
+                const pinID = pin.className.split(' ')[1].split('-')[3];
+                const likeField = document.querySelector(`.like-counter-${pinID}`);
+                likeField.style.opacity = 0;
+            })
+        })
+
+        const likeButtons = document.querySelectorAll('.like-icon');
+        likeButtons?.forEach((likeButton) => {
+            
+            likeButton.addEventListener('click', (element) => {
+                API.checkLogin()
+                    .then((status) => {
+                        if (status !== 'ok') {
+                            router.navigate('/login');
+                            
+                            return;
+                        }
+                    })
+
+                const id = element.target.className.split(' ')[1].split('-')[3];
+                const likeField = document.querySelector(`.like-counter-${id}`);
+                API.getLike(id)
+                    .then((data) => {
+                        if (data.is_set) {
+                            API.deleteLike(id)
+                                .then((data) => {
+                                    likeButton.src = '/assets/icons/like.svg';
+                                    likeField.innerHTML = data.count_like;
+                                    likeField.style.opacity = 1;
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        } else {
+                            API.setLike(id)
+                                .then((data) => {
+                                    likeButton.src = '/assets/icons/like_active.svg';
+                                    likeField.innerHTML = data.count_like;
+                                    likeField.style.opacity = 1;
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
+
+            });  
+
+        });
+
+
     }
     
 }
