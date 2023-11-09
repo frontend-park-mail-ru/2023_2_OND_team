@@ -22,12 +22,9 @@ const app = express();
 const httpsOptions = {
   key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
   cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
-  // key: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'private.key')),
-  // cert: fs.readFileSync(path.resolve(__dirname+'/ssk/', 'certificate.crt')),
 };
 
-https.createServer(httpsOptions, app).listen(1443);
-// https.createServer(httpsOptions, app).listen(1444);
+https.createServer(httpsOptions, app).listen(1444);
 
 app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(express.json());
@@ -38,5 +35,3 @@ app.get('*', (req, res) => {
 });
 
 app.use(cors());
-// const server = https.createServer(httpsOptions, app);
-// server.listen(3000);
