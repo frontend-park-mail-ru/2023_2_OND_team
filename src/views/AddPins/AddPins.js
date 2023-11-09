@@ -15,6 +15,10 @@ export function renderAddPins() {
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
 
+    const addPins = Handlebars.templates['AddPins.hbs'];
+
+    main.innerHTML = feedTemplate(addPins);
+
     /**
     * Создает функцию с задержкой для предотвращения слишком частых вызовов.
     */
