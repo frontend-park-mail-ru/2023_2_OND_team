@@ -9,6 +9,8 @@ export function renderAddPins(boardID) {
     const state = new State();
     const main = document.querySelector('#main');
 
+    const board_id = Number(boardID);
+
     const numRequestedPins = 12;
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
@@ -97,7 +99,7 @@ export function renderAddPins(boardID) {
     addButton.addEventListener('click', function (e) {
         console.log(boardID, selectedPins);
 
-        API.addBoardPins(boardID, selectedPins)
+        API.addBoardPins(board_id, selectedPins)
             .then((response) => {
                 if (response.status === 'ok') {
                     router.navigate(`/`);
