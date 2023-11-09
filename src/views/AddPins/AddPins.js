@@ -10,9 +10,8 @@ export function renderAddPins() {
     const main = document.querySelector('#main');
 
     const numRequestedPins = 12;
-    let pinMaxID = -Infinity;
-    let pinMinID = Infinity;
-    let hasLoadedPins = false;
+    let pinMaxID = -Infinity; 
+    let pinMinID = Infinity; 
 
     const feedTemplate = Handlebars.templates['AddPins.hbs'];
     const feedContext = {};
@@ -20,12 +19,12 @@ export function renderAddPins() {
     main.innerHTML = feedTemplate(feedContext);
 
     /**
-     * Создает функцию с задержкой для предотвращения слишком частых вызовов.
-     */
+    * Создает функцию с задержкой для предотвращения слишком частых вызовов.
+    */
     function debounce(f, ms) {
         let isCooldown = false;
 
-        return function () {
+        return function() {
             if (isCooldown) return;
 
             f.apply(this, arguments);
@@ -36,34 +35,36 @@ export function renderAddPins() {
     }
 
     /**
-     * Обработчик скролла страницы.
-     * Загружает дополнительные пины при достижении нижней части страницы.
-     */
+    * Обработчик скролла страницы.
+    * Загружает дополнительные пины при достижении нижней части страницы.
+    */
     function handleScroll() {
-        if (!hasLoadedPins) {
-            const documentHeight = document.documentElement.scrollHeight;
-            const windowHeight = window.innerHeight;
-            const scrollY = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+    
+        if (scrollY + windowHeight >= documentHeight - 1000) {
+            API.generatePins(numRequestedPins, pinMaxID, pinMinID)
+                .then((data) => {
+                    if (data.maxID === pinMaxID && data.minID === pinMinID) {
+                        window.removeEventListener('scroll', window.scrollFunc);
+                        return;
+                    }
 
-            if (scrollY + windowHeight >= documentHeight - 1000) {
-                API.generatePins(numRequestedPins, pinMaxID, pinMinID)
-                    .then((data) => {
-                        pinMaxID = Math.max(pinMaxID, data.maxID);
-                        pinMinID = Math.min(pinMinID, data.minID);
+                    pinMaxID = Math.max(pinMaxID, data.maxID);
+                    pinMinID = Math.min(pinMinID, data.minID);
 
-                        const section = document.getElementById('pins');
-                        renderPins(section, data.pins);
-                        definePins();
-
-                        hasLoadedPins = true;
-                    })
-                    .catch((error) => {
-                        console.error('Ошибка при рендеринге пинов:', error);
-                    });
-            }
+                    const section = document.getElementById('pins');
+                    //renderPins(section, data.pins);
+                    definePins();
+    
+                })
+                .catch((error) => {
+                    console.error('Ошибка при рендеринге пинов:', error);
+                });
         }
     }
-
+    
     const scrollFunc = debounce(handleScroll, 250);
     window.scrollFunc = scrollFunc;
     scrollFunc();
