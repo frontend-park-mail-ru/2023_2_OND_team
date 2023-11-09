@@ -101,6 +101,9 @@ export function renderProfileData() {
                 surnameTextarea.disabled = false;
                 aboutTextarea.disabled = false;
 
+                avatarSpan.textContent = '';
+                usernameSpan.textContent = '';
+                dataSpan.textContent = '';
             });
 
             const canselBtn = document.querySelector('.js-profile-data__btns__cansel-btn');
