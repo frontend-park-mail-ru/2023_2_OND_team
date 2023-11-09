@@ -617,10 +617,10 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
-          return this.createPin(title, description, pinIDs);
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
         }
-
-        return false;
       } catch (error) {
         console.error('Ошибка при выполнении запроса:', error);
       }
