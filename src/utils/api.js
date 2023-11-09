@@ -15,6 +15,7 @@ export class API {
       {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
+      {name: 'addPins', url:'//pinspire.online:8080/api/v1/board/add/pins'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
       {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/pin/personal?count=1000'},
       {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
@@ -519,6 +520,37 @@ export class API {
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных о лайке');
+        }
+      } catch (error) {
+        console.error('Ошибка:', error);
+      }
+    }
+
+    static async addBoardPins(boardID) {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/board/add/pins/${boardID}`;
+        const response = await fetch(configItem, {
+          method: 'POST',
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify(boardID, pins),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          console.log(res.body)
+          
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных о доске');
         }
       } catch (error) {
         console.error('Ошибка:', error);

@@ -25,13 +25,23 @@ export function renderCreateBoard() {
     createButton.addEventListener('click', function (e) {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-        //const IDsStr = document.getElementById('IDs').value;
-        //const IDs = IDsStr.split(',').map(Number);
-
+    
         console.log(title, description);
-
-        e.preventDefault();
-        router.navigate('/');
+    
         API.createBoard(title, description)
+        .then((response) => {
+            if (response && response.status === 'ok' && response.body && response.body.boardID) {
+                const boardID = response.body.boardID;
+                console.log(`BoardID: ${boardID}`);
+            } else {
+                console.error('Ошибка создания доски или неверный ответ:', response);
+            }
+        })
+        .catch((error) => {
+            console.error('Ошибка создания доски:', error);
+        });
+    
+        e.preventDefault();
     });
+    
 }
