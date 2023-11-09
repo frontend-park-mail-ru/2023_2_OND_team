@@ -264,7 +264,7 @@ export class Router {
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderDefault();
                                 }                     
-                                renderAddPins();
+                                renderAddPins(boardID);
                             } else {
                                 this.navigate('/create/board');
                             }

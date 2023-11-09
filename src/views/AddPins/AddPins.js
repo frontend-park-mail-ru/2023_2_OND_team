@@ -4,7 +4,7 @@ import { State } from '../../components/State/state.js'
 import { Router } from '../../components/Router/router.js'
  
 
-export function renderAddPins() {
+export function renderAddPins(boardID) {
     const router = new Router();
     const state = new State();
     const main = document.querySelector('#main');
