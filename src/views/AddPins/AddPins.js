@@ -48,7 +48,7 @@ export function renderAddPins() {
 
                         const section = document.getElementById('pins');
                         renderPins(section, data.pins);
-                        definePins();
+                        SelectPins();
         
                         hasLoadedPins = true;
                     })
@@ -59,7 +59,7 @@ export function renderAddPins() {
         }
     }
 
-    function definePins() {
+    function SelectPins() {
         const pins = document.querySelectorAll('.gallery__item');
     
         pins?.forEach((pin) => {
