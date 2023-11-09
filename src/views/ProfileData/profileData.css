@@ -153,6 +153,11 @@
   color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
+.profile-data-span {
+  position: absolute;
+  bottom: 0;
+}
+
 .profile-data-span-all {
   font-family: Nunito;
   height: 30px;
