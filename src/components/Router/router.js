@@ -249,7 +249,7 @@ export class Router {
             },
             {
                 path: "/create/board/ID",
-                handler: () => {
+                handler: ({ boardID }) => {
                     if (this.state.getCurrentPage() === `createВoard${boardID}`) {
                         return;
                     }
@@ -367,7 +367,7 @@ export class Router {
                 this.#currentRoute.handler(path.split('/')[2]);
                 break;
             case (/^\/create\/board\/\d+$/).test(path): 
-                const boardID = parseInt(path.split('/')[3], 10);;
+                const boardID = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
                 break;
