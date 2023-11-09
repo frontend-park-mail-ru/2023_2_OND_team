@@ -43,6 +43,6 @@ export function renderCreateBoard() {
             });
     
         e.preventDefault();
-    });    
+    });
     
 }
