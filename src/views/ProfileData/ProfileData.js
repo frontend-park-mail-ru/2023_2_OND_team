@@ -29,7 +29,9 @@ export function renderProfileData() {
 
                     const blob = new Blob([imageBytes]);
 
-                    API.putUserAvatar(blob)
+                    const fileExtension = file.name.split('.').pop();
+
+                    API.putUserAvatar(blob, fileExtension)
                         .then((status) => {
                             if (status === "ok") {
                                 router.navigate('/profile/data');

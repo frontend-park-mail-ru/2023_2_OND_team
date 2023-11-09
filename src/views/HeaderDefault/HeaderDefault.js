@@ -82,7 +82,6 @@ export function renderHeaderDefault() {
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
         }
 
-        profileFields.classList.toggle('hide');
         userMenu.classList.toggle('hide');
     });
 

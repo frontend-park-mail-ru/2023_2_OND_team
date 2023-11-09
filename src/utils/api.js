@@ -287,7 +287,7 @@ export class API {
       }
     }
 
-    static async putUserAvatar(avatar) {
+    static async putUserAvatar(avatar, contentType) {
       try {
         const configItem = this.#config.find((item) => item.name === 'profileAvatar');
         if (!configItem) {
@@ -297,7 +297,7 @@ export class API {
         const response = await fetch(configItem.url, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'image/*',
+            'Content-Type': `image/${contentType}`,
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: avatar,
