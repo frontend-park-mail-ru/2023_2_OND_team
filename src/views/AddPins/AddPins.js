@@ -46,7 +46,7 @@ export function renderAddPins() {
 
                         const section = document.getElementById('pins');
                         renderPins(section, data.pins);
-                        definePins();
+                        definePins();  // Добавлен вызов функции definePins()
         
                         hasLoadedPins = true;
                     })
@@ -56,17 +56,10 @@ export function renderAddPins() {
             }
         }
     }
-    
-    const scrollFunc = debounce(handleScroll, 250);
-    window.scrollFunc = scrollFunc;
-    scrollFunc();
-    window.removeEventListener('scroll', window.scrollFunc);
-    window.addEventListener('scroll', window.scrollFunc);
-    
-    function SelectPins() {
-        const pins = document.querySelectorAll('.gallery__item');
-        const selectedPins = [];
 
+    function definePins() {
+        const pins = document.querySelectorAll('.gallery__item');
+    
         pins?.forEach((pin) => {
             pin.addEventListener('click', (e) => {
                 const pinID = pin.className.split(' ')[1].split('-')[3];
@@ -83,5 +76,10 @@ export function renderAddPins() {
         });
     }
     
-    SelectPins();
+    const scrollFunc = debounce(handleScroll, 250);
+    window.scrollFunc = scrollFunc;
+    scrollFunc();
+    window.removeEventListener('scroll', window.scrollFunc);
+    window.addEventListener('scroll', window.scrollFunc);
+    
 }
