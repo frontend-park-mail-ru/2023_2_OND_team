@@ -43,24 +43,8 @@ export function renderAddPins() {
         const windowHeight = window.innerHeight;
         const scrollY = window.scrollY;
     
-            API.generatePins(numRequestedPins, pinMaxID, pinMinID)
-                .then((data) => {
-                    if (data.maxID === pinMaxID && data.minID === pinMinID) {
-                        window.removeEventListener('scroll', window.scrollFunc);
-                        return;
-                    }
+        API.generatePins(numRequestedPins, pinMaxID, pinMinID)
 
-                    pinMaxID = Math.max(pinMaxID, data.maxID);
-                    pinMinID = Math.min(pinMinID, data.minID);
-
-                    const section = document.getElementById('pins');
-                    renderPins(section, data.pins);
-                    definePins();
-    
-                })
-                .catch((error) => {
-                    console.error('Ошибка при рендеринге пинов:', error);
-                });
     }
     
     const scrollFunc = debounce(handleScroll, 250);
