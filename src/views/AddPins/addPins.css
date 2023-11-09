@@ -1,5 +1,5 @@
-.pin-create-button,
-.board-create-button {
+.pin-add-button,
+.pin-back-button {
     font-family: Nunito;
     font-size: 25px;
     display: inline-block;
@@ -13,21 +13,8 @@
     width: 160px;
 }
 
-.pin-create-button:hover,
-.pin-cancel-button:hover,
-.board-cancel-button:hover,
-.board-create-button:hover {
+.pin-add-button,
+.pin-back-button:hover {
     color: white;
     background-color: #3D99A6;
-}
-
-.grey-line {
-    background-color: #D9D9D9;
-    height: 1px;
-    width: 100%;
-    border: none;
-}
-
-.input-container {
-    justify-content: center;
 }
