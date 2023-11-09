@@ -83,19 +83,4 @@ export function renderAddPins() {
     window.removeEventListener('scroll', window.scrollFunc);
     window.addEventListener('scroll', window.scrollFunc);
     
-    function definePins() {
-        const pins = document.querySelectorAll('.gallery__item');
-    
-        pins?.forEach((pin) => {
-          pin.addEventListener('click', (e) => {
-            if (e.target.classList.contains('like-icon')) {
-                return;
-            }
-
-            const pinID = pin.className.split(' ')[1].split('-')[3];
-            router.navigate(`/pin/${pinID}`);
-          });
-        });
-    }
-    
 }
