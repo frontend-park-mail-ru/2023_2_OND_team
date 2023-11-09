@@ -534,7 +534,7 @@ export class API {
           headers: {
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify(boardID, pins),
+          body: JSON.stringify({ boardID, pins }),
           credentials: 'include',
         });
 

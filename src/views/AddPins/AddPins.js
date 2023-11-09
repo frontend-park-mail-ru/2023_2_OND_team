@@ -14,7 +14,7 @@ export function renderAddPins(boardID) {
     let pinMinID = Infinity; 
     let hasLoadedPins = false;
 
-    const pins = [];
+    const selectedPins = [];
 
     const feedTemplate = Handlebars.templates['AddPins.hbs'];
     const feedContext = {};
@@ -66,14 +66,14 @@ export function renderAddPins(boardID) {
             pin.addEventListener('click', (e) => {
                 const pinID = pin.className.split(' ')[1].split('-')[3];
     
-                const index = pins.indexOf(pinID);
+                const index = selectedPins.indexOf(pinID);
                 if (index === -1) {
-                    pins.push(pinID);
+                    selectedPins.push(pinID);
                 } else {
-                    pins.splice(index, 1);
+                    selectedPins.splice(index, 1);
                 }
     
-                console.log(pins);
+                console.log(selectedPins);
             });
         });
     }
@@ -93,9 +93,9 @@ export function renderAddPins(boardID) {
     });
     
     addButton.addEventListener('click', function (e) {
-        console.log(boardID, pins);
+        console.log(boardID, selectedPins);
 
-        API.addBoardPins(boardID, pins)
+        API.addBoardPins(boardID, selectedPins)
             .then((response) => {
                 if (response.status === 'ok') {
                     router.navigate(`/`);
