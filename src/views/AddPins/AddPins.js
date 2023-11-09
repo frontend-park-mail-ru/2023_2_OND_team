@@ -13,12 +13,8 @@ export function renderAddPins() {
     let pinMaxID = -Infinity; 
     let pinMinID = Infinity; 
 
-    const feedTemplate = Handlebars.templates['Feed.hbs'];
-    const introTemplate = Handlebars.templates['Intro.hbs'];
-    const feedContext = {
-        isAuthorized: !state.getIsAuthorized(),
-        Intro: introTemplate,
-    };
+    const feedTemplate = Handlebars.templates['AddPins.hbs'];
+    const feedContext = {};
 
     main.innerHTML = feedTemplate(feedContext);
 
@@ -71,6 +67,9 @@ export function renderAddPins() {
                     }
     
                 })
+                .catch((error) => {
+                    console.error('Ошибка при рендеринге пинов:', error);
+                });
         }
     }
     
