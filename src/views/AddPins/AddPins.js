@@ -64,7 +64,7 @@ export function renderAddPins(boardID) {
     
         pins?.forEach((pin) => {
             pin.addEventListener('click', (e) => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
+                const pinID = Number(pin.className.split(' ')[1].split('-')[3]);
     
                 const index = selectedPins.indexOf(pinID);
                 if (index === -1) {
