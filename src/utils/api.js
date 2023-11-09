@@ -274,13 +274,9 @@ export class API {
         }
     
         const res = await response.json();
-    
-        if (res.status === 'ok') {
-          return res.status;
-        } else {
-          throw new Error('Ошибка при отправке данных пользователя');
-        }
-    
+
+        return res;    
+        
       } catch (error) {
         console.error('Ошибка при обновлении данных пользователя:', error);
         throw error;
@@ -311,11 +307,7 @@ export class API {
 
         const res = await response.json();
 
-        if (res.status === 'ok') {
-          return res.status;
-        } else {
-          throw new Error('Ошибка при отправке аватара пользователя');
-        }
+        return res;
 
       } catch (error) {
         console.error('Ошибка при обновлении данных пользователя:', error);

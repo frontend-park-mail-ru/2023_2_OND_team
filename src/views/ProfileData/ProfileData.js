@@ -18,6 +18,10 @@ export function renderProfileData() {
             };
             main.innerHTML = profileDataTemplate(profileDataContext);
 
+            const avatarSpan = document.querySelector('.profile-data__avatar-span');
+            const usernameSpan = document.querySelector('.profile-data__username-span');
+            const dataSpan = document.querySelector('.profile-data-span');
+
             const inputElement = document.getElementById('input__file');
             inputElement?.addEventListener('change', (event) => {
                 const file = event.target.files[0];
@@ -31,10 +35,18 @@ export function renderProfileData() {
 
                     const fileExtension = file.name.split('.').pop();
 
+                    if (!['png', 'jpeg', 'svg', 'webp'].includes(fileExtension)) {
+                        avatarSpan.textContent = 'Эта аватарка не подойдет';
+                        return;
+                    }
+
                     API.putUserAvatar(blob, fileExtension)
-                        .then((status) => {
-                            if (status === "ok") {
+                        .then((res) => {
+                            if (res.status === 'ok') {
                                 router.navigate('/profile/data');
+                            } else if (res.status === 'error' &&
+                                       res.message === "failed to change user's avatar") {
+                                        avatarSpan.textContent = 'Эта аватарка не подойдет';
                             } else {                       
                                 console.error('error saving avatar');
                             }
@@ -118,17 +130,27 @@ export function renderProfileData() {
 
             const saveBtn = document.querySelector('.js-profile-data__btns__save-btn');
             saveBtn?.addEventListener('click', () => {
+                const username = usernameTextarea.value;
+                const usernameValidationResult = nameValid(username);
+
+                if (!usernameValidationResult.valid) {
+                    usernameSpan.textContent = usernameValidationResult.message;
+                    return;
+                }
+
                 const data = {
-                    username: usernameTextarea.value,
+                    username: username,
                     name: nameTextarea.value,
                     surname: surnameTextarea.value,
                     about_me: aboutTextarea.value,
                 }
                 
                 API.putUserInfo(data)
-                    .then((status) => {
-                        if (status === "ok") {
+                    .then((res) => {
+                        if (res.status === "ok") {
                             router.navigate('/profile/data');
+                        } else if (res.status === 'error') {
+                            dataSpan.textContent = 'Некорректные данные';
                         } else {
                             console.error('error saving data');
                         }
