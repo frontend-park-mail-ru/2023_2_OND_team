@@ -11,8 +11,7 @@
   
 .delete-button,
 .save-button,
-.pin-username,
-.pin-description {
+.pin-username {
     font-family: Nunito;
     margin: 10px 0;
     padding: 0;
@@ -80,11 +79,12 @@
 }
 
 .block .labeled-input {
-    padding: 5px 17px;
+    padding: 8px 0px 0px 20px;
     color: var(--bg50, #808080);
 }
 
-.pin-title {
+.pin-title,
+.pin-description{
     font-family: Nunito;
-    padding: 5px 17px;
+    padding: 5px 0px 0px 20px;
 }
