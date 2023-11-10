@@ -1,6 +1,7 @@
 import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
+import { RenderFeedPage } from "../../views/Feed/Feed.js"
 
 export function renderPinPage(pinID) {
     const router = new Router();
@@ -67,4 +68,6 @@ export function renderPinPage(pinID) {
             console.error('Ошибка при получении информации о пине:', error);
             router.navigate('/page404');
     });
+
+    RenderFeedPage();
 }
