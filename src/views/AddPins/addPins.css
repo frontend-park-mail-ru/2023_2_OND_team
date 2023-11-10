@@ -1,0 +1,62 @@
+.title-add {
+    margin: 10px 15px 0px;
+    font-family: Nunito;
+    font-size: 25px;
+    text-align: left;
+}  
+
+.pin-back-button {
+    font-family: Nunito;
+    font-size: 25px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-30, #226B77);
+    background-color: white;
+    color: #226B77;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 160px;
+}
+
+.pin-add-button {
+    font-family: Nunito;
+    font-size: 25px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-30, #226B77);
+    background-color: #226B77;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 160px;
+}
+
+.pin-add-button:hover,
+.pin-back-button:hover {
+    color: white;
+    background-color: #3D99A6;
+}
+
+.rectangle-add {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 1px 20px;
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-container-add {
+    display: flex;
+    padding: 0px 0px 20px 0px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+  

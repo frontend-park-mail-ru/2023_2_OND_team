@@ -10,9 +10,7 @@
 }
   
 .delete-button,
-.save-button,
-.pin-username,
-.pin-description {
+.save-button {
     font-family: Nunito;
     margin: 10px 0;
     padding: 0;
@@ -20,11 +18,24 @@
     max-width: 90%;
     margin-left: 20px;
 }
+
+.pin-username {
+    font-family: Nunito;
+    margin: 10px 0;
+    padding: 0;
+    display: block;
+    max-width: 90%;
+    margin-left: 20px;
+    font-weight: 700;
+}
   
-.gallery__item img {
+.open__gallery__item img {
     max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
     margin-right: 0px;
-    border-radius: 15px;
+    border-radius: 14px;
 }
   
 .save-button {
@@ -77,11 +88,22 @@
 }
 
 .block .labeled-input {
-    padding: 3px 17px;
+    padding: 8px 0px 0px 20px;
     color: var(--bg50, #808080);
 }
 
-.pin-title {
+.pin-title,
+.pin-description{
     font-family: Nunito;
-    padding: 5px 17px;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    padding: 0;
+    display: block;
+    margin-left: 20px;
+}
+
+.other__pins__title {
+    font-family: Nunito;
+    font-size: 25px;
+    text-align: center;
 }

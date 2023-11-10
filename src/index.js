@@ -13,5 +13,3 @@ const router = new Router();
 
 API.getCsrfToken();
 router.handlePopstate();
-
-

@@ -70,7 +70,7 @@ export function renderProfilePage() {
             .then((data) => {
                 const section = document.getElementById('user-boards');
                 renderBoards(section, data);
-                // defineBoards();
+                defineBoards();
             })
             .catch((error) => {
                 console.error('Ошибка при рендеринге досок:', error);
@@ -157,80 +157,14 @@ export function renderProfilePage() {
 
 
     function defineBoards() {
-        const pins = document.querySelectorAll('.gallery__item');
+        const boards = document.querySelectorAll('.user-board');
     
-        pins?.forEach((pin) => {
-          pin.addEventListener('click', (e) => {
-            if (e.target.classList.contains('like-icon')) {
-                return;
-            }
+        boards?.forEach((board) => {
+            board.addEventListener('click', (e) => {
 
-            const pinID = pin.className.split(' ')[1].split('-')[3];
-            router.navigate(`/pin/${pinID}`);
+            const boardID = board.className.split(' ')[1].split('-')[3];
+            router.navigate(`/board/${boardID}`);
           });
-        });
-
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseenter', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeButton = document.querySelector(`.js-like-button-${pinID}`);
-                API.getLike(pinID)
-                    .then((data) => {
-                        if (data.is_set) {
-                            likeButton.src = '/assets/icons/like_active.svg';
-                        } else {
-                            likeButton.src = '/assets/icons/like.svg';
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            })
-        })
-
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseleave', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${pinID}`);
-                likeField.style.opacity = 0;
-            })
-        })
-
-        const likeButtons = document.querySelectorAll('.like-icon');
-        likeButtons?.forEach((likeButton) => {
-            likeButton.addEventListener('click', (element) => {
-                const id = element.target.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${id}`);
-                API.getLike(id)
-                    .then((data) => {
-                        if (data.is_set) {
-                            API.deleteLike(id)
-                                .then((data) => {
-                                    likeButton.src = '/assets/icons/like.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
-                                })
-                                .catch((error) => {
-                                    console.error(error);
-                                })
-                        } else {
-                            API.setLike(id)
-                                .then((data) => {
-                                    likeButton.src = '/assets/icons/like_active.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
-                                })
-                                .catch((error) => {
-                                    console.error(error);
-                                })
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-
-            });  
-
         });
     }
 }
