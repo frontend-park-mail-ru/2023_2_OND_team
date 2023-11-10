@@ -73,7 +73,15 @@ export function renderHeaderDefault() {
     });
 
     const userBtn = document.querySelector('.header__user__avatar-img');
-    userBtn?.addEventListener('click', () => {
+    userBtn?.addEventListener('click', () => {  
+        const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
+
+        if (userMenu.classList.contains('hide')) {
+            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
+        } else {
+            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
+        }
+
         userMenu.classList.toggle('hide');
     });
 
