@@ -15,6 +15,7 @@ export class API {
       {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
+      {name: 'addPins', url:'//pinspire.online:8080/api/v1/board/add/pins'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
       {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
       {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
@@ -521,6 +522,37 @@ export class API {
       }
     }
 
+    static async addBoardPins(board_id, pins) {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/board/add/pins/${board_id}`;
+        const response = await fetch(configItem, {
+          method: 'POST',
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({ pins }),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          console.log(res.body)
+          
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных о доске');
+        }
+      } catch (error) {
+        console.error('Ошибка:', error);
+      }
+    }
+
     static async putPinInfo({description}) {
       try {
         const configItem = this.#config.find((item) => item.name === 'pinEdit');
@@ -559,36 +591,37 @@ export class API {
 
     static async createBoard(title, description) {
       try {
-        const configItem = this.#config.find((item) => item.name === 'createBoard');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для createBoard');
-        }
-
-        const response = await fetch(configItem.url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          body: JSON.stringify({title, description, 'public': true, 'tags': [" "]}),
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-        if (res.status === 'ok') {
-          return this.createPin(title, description, pinIDs);
-        }
-
-        return false;
+          const configItem = this.#config.find((item) => item.name === 'createBoard');
+          if (!configItem) {
+              throw new Error('Не найдена конфигурация для createBoard');
+          }
+  
+          const response = await fetch(configItem.url, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': this.state.getCsrfToken(),
+              },
+              body: JSON.stringify({ title, description, 'public': true, 'tags': [" "] }),
+              credentials: 'include',
+          });
+  
+          const csrfToken = response.headers.get('X-Set-CSRF-Token');
+          if (csrfToken) {
+              this.state.setCsrfToken(csrfToken);
+          }
+  
+          const res = await response.json();
+          if (res.status === 'ok' && res.body && res.body.new_board_id) {
+              return { status: 'ok', body: { new_board_id: res.body.new_board_id } };
+          } else {
+              throw new Error('Ошибка при получении данных из API');
+          }
       } catch (error) {
-        console.error('Ошибка при выполнении запроса:', error);
+          console.error('Ошибка при выполнении запроса:', error);
+          throw error;
       }
-    }
+    }  
 
     static async getUserPins() {
       try {

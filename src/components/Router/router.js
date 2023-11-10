@@ -12,8 +12,10 @@ import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
 import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
 import { renderPinPage } from "../../views/PinPage/PinPage.js";
+import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
+import { renderAddPins } from "../../views/AddPins/AddPins.js"
 
 export class Router {
     #routes;
@@ -274,6 +276,33 @@ export class Router {
                 },
             },
             {
+                path: "/create/board/ID",
+                handler: ({ boardID }) => {
+                    if (this.state.getCurrentPage() === `createВoard${boardID}`) {
+                        return;
+                    }
+
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                this.state.setCurrentPage(`createВoard${boardID}`);
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                }                     
+                                renderAddPins(boardID);
+                            } else {
+                                this.navigate('/create/board');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
+            },
+            {
                 path: "/pin/ID",
                 handler: (pinID) => {
                     if (this.state.getCurrentPage() === `pin${pinID}`) {
@@ -318,11 +347,17 @@ export class Router {
                                 }
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderDefault();
-                                }
+
+                                } 
+                                renderBoardPage(boardID);
+                              
                             } else {
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderGuest();
                                 }
+
+                                renderBoardPage(boardID);
+
                             }
                             renderPinPage(pinID); // изменить на renderBoardPage(boardID);
                         })
@@ -380,6 +415,11 @@ export class Router {
             case (/^\/board\/\d+$/).test(path): 
                 this.#currentRoute = this.#routes.find((r) => r.path === "/board/ID");
                 this.#currentRoute.handler(path.split('/')[2]);
+                break;
+            case (/^\/create\/board\/\d+$/).test(path): 
+                const boardID = path.split('/')[3];
+                this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
+                this.#currentRoute.handler({ boardID });
                 break;
             default:
                 this.#currentRoute = null;

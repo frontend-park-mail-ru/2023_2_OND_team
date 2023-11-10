@@ -15,6 +15,7 @@
 @import url(./views/UserBoards/userBoards.css);
 @import url(./views/Favourite/favourite.css);
 @import url(./views/Page404/page404.css);
+@import url(./views/AddPins/addPins.css);
 
 html, body {
   --bg50: #808080;
