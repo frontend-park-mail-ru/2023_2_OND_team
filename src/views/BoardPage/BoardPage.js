@@ -9,5 +9,5 @@ export function renderBoardPage(boardID) {
     const state = new State();
 
     const boardPage = Handlebars.templates['BoardPage.hbs'];
-
+    main.innerHTML = boardPage({});
 }

@@ -12,7 +12,7 @@ import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
 import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
 import { renderPinPage } from "../../views/PinPage/PinPage.js";
-import { renderBoardPage } from "../../views/PinPage/BoardPage.js";
+import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderAddPins } from "../../views/AddPins/AddPins.js"
 
