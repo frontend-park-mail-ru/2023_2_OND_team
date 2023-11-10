@@ -100,16 +100,8 @@ export function renderAddPins(boardID) {
         console.log(boardID, selectedPins);
 
         API.addBoardPins(board_id, selectedPins)
-            .then((status) => {
-                if (status === 'ok') {
-                    router.navigate(`/`);
-                } else {
-                    console.error('Error creating board or invalid response:', response);
-                }
-            })
-            .catch((error) => {
-                console.error('Ошибка добавления пинов в доску:', error);
-            });
+        router.navigate(`/`);
+
     
         e.preventDefault();
     });
