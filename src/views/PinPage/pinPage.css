@@ -88,3 +88,9 @@
     font-family: Nunito;
     padding: 5px 0px 0px 20px;
 }
+
+.other__pins__title {
+    font-family: Nunito;
+    font-size: 25px;
+    text-align: center;
+}
