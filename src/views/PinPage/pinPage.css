@@ -10,7 +10,15 @@
 }
   
 .delete-button,
-.save-button,
+.save-button {
+    font-family: Nunito;
+    margin: 10px 0;
+    padding: 0;
+    display: block;
+    max-width: 90%;
+    margin-left: 20px;
+}
+
 .pin-username {
     font-family: Nunito;
     margin: 10px 0;
@@ -18,6 +26,7 @@
     display: block;
     max-width: 90%;
     margin-left: 20px;
+    font-weight: 700;
 }
   
 .open__gallery__item img {
@@ -86,7 +95,11 @@
 .pin-title,
 .pin-description{
     font-family: Nunito;
-    padding: 5px 0px 0px 20px;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    padding: 0;
+    display: block;
+    margin-left: 20px;
 }
 
 .other__pins__title {
