@@ -7,7 +7,7 @@ import { renderHeaderGuest } from "../../views/HeaderGuest/HeaderGuest.js";
 import { renderProfilePage } from "../../views/ProfileUser/ProfileUser.js";
 import { renderAuthPage } from "../../views/Authorization/Authorization.js";
 import { renderRegPage } from "../../views/Registration/Registration.js";
-import { renderPage404 } from "../../views/Page404/page404.js";
+import { renderPage404 } from "../../views/Page404/Page404.js";
 import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
 import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
 import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
@@ -49,11 +49,10 @@ export class Router {
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderDefault();
                                 } 
-                                renderFeedPage();
                             } else {
                                 renderHeaderGuest();
-                                renderFeedPage();
                             }
+                            renderFeedPage();
                         })
                         .catch((error) => {
                             console.error(error);
@@ -290,14 +289,13 @@ export class Router {
                                 }
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderDefault();
-                                } 
-                                renderPinPage(pinID);
+                                }
                             } else {
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderGuest();
                                 }
-                                renderPinPage(pinID);
                             }
+                            renderPinPage(pinID);
                         })
                         .catch((error) => {
                             console.error(error);
@@ -320,14 +318,13 @@ export class Router {
                                 }
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderDefault();
-                                } 
-                                renderPinPage(pinID); // изменить на renderBoardPage(boardID);
+                                }
                             } else {
                                 if (document.querySelector('#header').innerHTML === '') {
                                     renderHeaderGuest();
                                 }
-                                renderPinPage(pinID); // изменить на renderBoardPage(boardID);
                             }
+                            renderPinPage(pinID); // изменить на renderBoardPage(boardID);
                         })
                         .catch((error) => {
                             console.error(error);
@@ -338,7 +335,25 @@ export class Router {
 
         this.#currentRoute = null;
         this.#defaultRoute = () => {
-            renderPage404();
+            API.checkLogin()
+                .then((status) => {
+                    if (status === 'ok') {
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        }
+                    } else {
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderGuest();
+                        }                    
+                    }
+                    renderPage404();
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
         };
         this.#popstateListener = this.handlePopstate.bind(this);
         window.addEventListener("popstate", this.#popstateListener);
