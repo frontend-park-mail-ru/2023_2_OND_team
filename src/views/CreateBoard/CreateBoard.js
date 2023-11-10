@@ -32,14 +32,13 @@ export function renderCreateBoard() {
             .then((response) => {
                 if (response && response.status === 'ok' && response.body && response.body.new_board_id) {
                     const boardID = response.body.new_board_id;
-                    console.log(`Board created with ID: ${boardID}`);
                     router.navigate(`/create/board/${boardID}`);
                 } else {
-                    console.error('Error creating board or invalid response:', response);
+                    console.error(response);
                 }
             })
             .catch((error) => {
-                console.error('Error creating board:', error);
+                console.error('Ошибка создания доски:', error);
             });
     
         e.preventDefault();
