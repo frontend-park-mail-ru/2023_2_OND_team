@@ -16,7 +16,7 @@ export function renderPage404() {
     
     toMainPageBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        page404.innerHTML = '';
+        main.innerHTML = '';
         router.navigate('/');
     })
   
