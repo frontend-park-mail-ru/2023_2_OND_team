@@ -12,7 +12,7 @@ export function renderFavouritePage() {
 
     main.innerHTML = favouriteTemplate(favouriteContext);
 
-    API.getUserPins()
+    API.getLikedPins()
         .then((data) => {
             const section = document.getElementById('favourite-pins');
             renderPins(section, data.pins);

@@ -2,6 +2,7 @@ export class State {
     #csrfToken;
     #currentPage;
     #isAuthorized;
+    #userID
     #username;
     #avatar;
 
@@ -16,6 +17,7 @@ export class State {
         this.#isAuthorized = null;
         this.#username = null;
         this.#avatar = null;
+        this.#userID = null;
     }
 
     setCsrfToken(token) {
@@ -40,6 +42,14 @@ export class State {
 
     getIsAuthorized() {
         return this.#isAuthorized;
+    }
+
+    setUserID(userID) {
+        this.#userID = userID;
+    }
+
+    getUserID() {
+        return this.#userID;
     }
 
     setUsername(username) {

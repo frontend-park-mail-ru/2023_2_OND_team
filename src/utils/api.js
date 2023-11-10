@@ -16,7 +16,7 @@ export class API {
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
-      {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/pin/personal?count=1000'},
+      {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
       {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
 
@@ -87,6 +87,7 @@ export class API {
         const res = await response.json();
         if (res.status === 'ok') {
           this.state.setIsAuthorized(true);
+          this.state.setUserID(res.body.id);
           this.state.setUsername(res.body.username);
           this.state.setAvatar(res.body.avatar);
         } else {
@@ -129,7 +130,10 @@ export class API {
         const res = await response.json();
 
         if(res.status === 'ok') {
+          this.state.setIsAuthorized(false);
+          this.state.setUserID(null);
           this.state.setUsername(null);
+          this.state.setAvatar(null);
         }
 
         return res.status;
@@ -190,9 +194,9 @@ export class API {
       try {
         let configItem;
         if (maxID === -Infinity && minID === Infinity) {
-          configItem = `//pinspire.online:8080/api/v1/pin?count=${num}`;
+          configItem = `//pinspire.online:8080/api/v1/feed/pin?count=${num}`;
         } else {
-          configItem = `//pinspire.online:8080/api/v1/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
+          configItem = `//pinspire.online:8080/api/v1/feed/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
         }
         const response = await fetch(configItem, {
           headers: {
@@ -588,12 +592,41 @@ export class API {
 
     static async getUserPins() {
       try {
-        const configItem = this.#config.find((item) => item.name === 'getUserPins');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для getUserPins');
+        const userID = this.state.getUserID();
+
+        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
         }
 
-        const response = await fetch(configItem.url, {
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
+    static async getLikedPins() {
+      try {
+        const userID = this.state.getUserID();
+
+        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}&liked=true`;
+
+        const response = await fetch(configItem, {
           headers: {
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
