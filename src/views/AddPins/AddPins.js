@@ -99,7 +99,7 @@ export function renderAddPins(boardID) {
     addButton.addEventListener('click', function (e) {
         console.log(boardID, selectedPins);
 
-        API.addBoardPins(board_id, selectedPins)
+        API.addBoardPins(selectedPins)
             .then((response) => {
                 if (response.status === 'ok') {
                     router.navigate(`/`);
