@@ -99,9 +99,9 @@ export function renderAddPins(boardID) {
     addButton.addEventListener('click', function (e) {
         console.log(boardID, selectedPins);
 
-        API.addBoardPins(selectedPins)
-            .then((response) => {
-                if (response.status === 'ok') {
+        API.addBoardPins(board_id, selectedPins)
+            .then((status) => {
+                if (status === 'ok') {
                     router.navigate(`/`);
                 } else {
                     console.error('Error creating board or invalid response:', response);
