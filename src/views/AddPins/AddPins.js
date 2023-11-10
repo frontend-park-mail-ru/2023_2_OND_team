@@ -18,10 +18,10 @@ export function renderAddPins(boardID) {
 
     const selectedPins = [];
 
-    const feedTemplate = Handlebars.templates['AddPins.hbs'];
-    const feedContext = {};
+    const addPinsTemplate = Handlebars.templates['AddPins.hbs'];
+    const addPinsContext = {};
 
-    main.innerHTML = feedTemplate(feedContext);
+    main.innerHTML = addPinsTemplate(addPinsContext);
 
     function debounce(f, ms) {
         let isCooldown = false;
