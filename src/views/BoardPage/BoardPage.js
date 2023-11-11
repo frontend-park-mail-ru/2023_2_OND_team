@@ -9,5 +9,14 @@ export function renderBoardPage(boardID) {
     const state = new State();
 
     const boardPage = Handlebars.templates['BoardPage.hbs'];
-    main.innerHTML = boardPage({});
+    API.getPinInfo(boardID)
+    .then((boardInfo) => {
+        console.log('Информация о пине:', boardInfo);
+
+        //main.innerHTML = pinPage(context);
+    })
+    .catch((error) => {
+        console.error('Ошибка при получении информации о пине:', error);
+        router.navigate('/page404');
+    });
 }

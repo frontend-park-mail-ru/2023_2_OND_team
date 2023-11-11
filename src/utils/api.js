@@ -16,11 +16,10 @@ export class API {
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
       {name: 'addPins', url:'//pinspire.online:8080/api/v1/board/add/pins'},
-      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
       {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
       {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
-      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
-
+      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
+      {name: 'getBoardInfo', url: '//pinspire.online:8080/api/v1/board/get'},
     ];
 
     static async loginUser(username, password) {
@@ -709,6 +708,38 @@ export class API {
         }
       } catch (error) {
         console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
+    static async getBoardInfo() {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'boardInfo');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для boardInfo');
+        }
+
+        const response = await fetch(configItem.url, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+       const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных доски');
+        }
+
+      } catch (error) {
+        console.error('Ошибка при получении данных о доске:', error);
       }
     }
 
