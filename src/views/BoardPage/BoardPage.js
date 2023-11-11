@@ -6,55 +6,40 @@ import { renderPins } from "../../components/RenderPins/renderPins.js";
 export function renderBoardPage(boardID) {
     const router = new Router();
     const main = document.querySelector('#main');
-
     const state = new State();
-
     const boardPage = Handlebars.templates['BoardPage.hbs'];
 
     API.getBoardInfo(boardID)
-    .then((boardInfo) => {
-        console.log('Информация о доске:', boardInfo);
+        .then((boardInfo) => {
+            console.log('Информация о доске:', boardInfo);
 
-        const context = {
-            title: boardInfo.title,
-            description: boardInfo.description
-        };
+            const context = {
+                title: boardInfo.title,
+                description: boardInfo.description
+            };
 
-        renderBoardPins(boardID);
+            main.innerHTML = boardPage(context);
 
-        main.innerHTML = boardPage(context);
+            const usernameReal = state.getUsername();
 
-        const usernameReal = state.getUsername();
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Удалить';
+            deleteButton.classList.add('delete-button');
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Удалить';
-        deleteButton.classList.add('delete-button');
+            const updateButton = document.createElement('img');
+            updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
+            updateButton.classList.add('edit-button');
 
-        const updateButton = document.createElement('img');
-        updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
-        updateButton.classList.add('edit-button');
+            console.log(usernameReal);
 
-        console.log(usernameReal);
-
-        //if (usernameReal === boardInfo.author.username) {
             const rec = document.querySelector('.bar');
             rec.appendChild(deleteButton);
             rec.appendChild(updateButton);
-        //}
-    })
-    .catch((error) => {
-        console.error('Ошибка при получении информации о доске:', error);
-        router.navigate('/page404');
-    });
 
-    function renderBoardPins(boardID) {
-        API.getBoardInfo(boardID)
-            .then((boardInfo) => {
-                const section = document.getElementById('board-pins');
-                renderPins(section, boardInfo.pins);
-            })
-            .catch((error) => {
-                console.error('Ошибка при рендеринге пинов доски:', error);
-            });
-    }
+            renderPins(boardInfo.pins);
+        })
+        .catch((error) => {
+            console.error('Ошибка при получении информации о доске:', error);
+            router.navigate('/page404');
+        });
 }
