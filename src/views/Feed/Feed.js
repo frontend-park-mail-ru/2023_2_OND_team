@@ -1,5 +1,5 @@
 import { API } from '../../utils/api.js';
-import { renderRecPins } from '../../components/RenderPins/renderPins.js';
+import { renderRecPins } from '../../components/RenderRecPins/renderRecPins.js';
 import { State } from '../../components/State/state.js'
 import { Router } from '../../components/Router/router.js'
  
