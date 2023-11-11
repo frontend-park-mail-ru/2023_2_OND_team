@@ -33,7 +33,7 @@ export function renderBoardPage(boardID) {
         console.log(usernameReal);
 
         //if (usernameReal === boardInfo.author.username) {
-            const rec = document.querySelector('.rectangle-add');
+            const rec = document.querySelector('.bar');
             rec.appendChild(deleteButton);
             rec.appendChild(updateButton);
         //}
