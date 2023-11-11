@@ -11,7 +11,7 @@ export function renderBoardPage(boardID) {
     const boardPage = Handlebars.templates['BoardPage.hbs'];
     API.getPinInfo(boardID)
     .then((boardInfo) => {
-        console.log('Информация о пине:', boardInfo);
+        console.log('Информация о доске:', boardInfo);
 
         //main.innerHTML = pinPage(context);
     })
