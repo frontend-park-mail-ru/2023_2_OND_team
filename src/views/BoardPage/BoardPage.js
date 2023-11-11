@@ -18,6 +18,24 @@ export function renderBoardPage(boardID) {
         };
 
         main.innerHTML = boardPage(context);
+
+        const usernameReal = state.getUsername();
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Удалить';
+        deleteButton.classList.add('delete-button');
+
+        const updateButton = document.createElement('img');
+        updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
+        updateButton.classList.add('edit-button');
+
+        console.log(usernameReal, boardInfo.author.username);
+
+        if (usernameReal === pinInfo.author.username) {
+            const rec = document.querySelector('.rectangle');
+            rec.appendChild(deleteButton);
+            rec.appendChild(updateButton);
+        }
     })
     .catch((error) => {
         console.error('Ошибка при получении информации о пине:', error);
