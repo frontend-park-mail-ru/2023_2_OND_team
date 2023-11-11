@@ -59,4 +59,35 @@
     align-items: center;
     justify-content: center;
 }
-  
+ 
+.int__gallery__item > img {
+    border-radius: 12px;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.int__gallery__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.int__gallery__item--hor {
+    grid-column: span 2;
+}
+    
+.int__gallery__item--vert {
+    grid-row: span 2;
+}
+    
+.int__gallery__item--lg {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.int__gallery img {
+    transition: transform 0.3s ease;
+}

@@ -1,5 +1,5 @@
 import { API } from '../../utils/api.js';
-import { renderPins } from '../../components/RenderPins/renderPins.js';
+import { renderPins } from '../../components/RenderRecPins/renderRecPins.js';
 import { State } from '../../components/State/state.js'
 import { Router } from '../../components/Router/router.js'
  
@@ -49,7 +49,7 @@ export function renderAddPins(boardID) {
                         pinMinID = Math.min(pinMinID, data.minID);
 
                         const section = document.getElementById('add_pins');
-                        renderPins(section, data.pins);
+                        renderRecPins(section, data.pins);
                         SelectPins();
         
                         hasLoadedPins = true;
