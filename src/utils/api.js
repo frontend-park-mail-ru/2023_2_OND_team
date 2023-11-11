@@ -711,35 +711,37 @@ export class API {
       }
     }
 
-    static async getBoardInfo() {
+    static async getBoardInfo(boardID) {
       try {
-        const configItem = this.#config.find((item) => item.name === 'boardInfo');
+        const configItem = this.#config.find((item) => item.name === 'getBoardInfo');
         if (!configItem) {
-          throw new Error('Не найдена конфигурация для boardInfo');
+          throw new Error('Не найдена конфигурация для getBoardInfo');
         }
-
-        const response = await fetch(configItem.url, {
+    
+        const boardInfoURL = `${configItem.url}/${boardID}`;
+    
+        const response = await fetch(boardInfoURL, {
           headers: {
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
           credentials: 'include',
         });
-
-       const csrfToken = response.headers.get('X-Set-CSRF-Token');
+    
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
         if (csrfToken) {
           this.state.setCsrfToken(csrfToken);
         }
-
+    
         const res = await response.json();
-
+    
         if (res.status === 'ok') {
           return res.body;
         } else {
-          throw new Error('Ошибка при получении данных доски');
+          throw new Error('Ошибка при получении данных о доске');
         }
-
       } catch (error) {
         console.error('Ошибка при получении данных о доске:', error);
+        throw error;
       }
     }
 
