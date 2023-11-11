@@ -157,7 +157,7 @@ export function renderProfilePage() {
 
 
     function defineBoards() {
-        const boards = document.querySelectorAll('.user-board');
+        const boards = document.querySelectorAll('.user__board');
     
         boards?.forEach((board) => {
             board.addEventListener('click', (e) => {
