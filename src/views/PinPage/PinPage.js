@@ -35,7 +35,7 @@ export function renderPinPage(pinID) {
             deleteButton.classList.add('delete-button');
 
             const updateButton = document.createElement('img');
-            updateButton.src = 'https://pinspire.online:1445/assets/icons/icon_edit.svg';
+            updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
             updateButton.classList.add('edit-button');
 
             console.log(usernameReal, pinInfo.author.username);
