@@ -26,6 +26,12 @@ export async function renderBoardPage(boardID) {
         deleteButton.textContent = 'Удалить';
         deleteButton.classList.add('delete-button');
 
+        deleteButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            API.deleteBoard(boardID)
+            router.navigate('/profile');
+        });
+
         const updateButton = document.createElement('img');
         updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
         updateButton.classList.add('edit-button');
