@@ -62,12 +62,11 @@ export function renderAddPins(boardID) {
     }
 
     function SelectPins() {
-        const pins = document.querySelectorAll('.gallery__item');
+        const pins = document.querySelectorAll('.int__gallery__item');
     
         pins?.forEach((pin) => {
             pin.addEventListener('click', (e) => {
                 const pinID = Number(pin.className.split(' ')[1].split('-')[3]);
-                pin.classList.toggle('selected');
     
                 if (!isNaN(pinID)) {
                     const index = selectedPins.indexOf(pinID);
