@@ -48,7 +48,7 @@ export function renderAddPins(boardID) {
                         pinMaxID = Math.max(pinMaxID, data.maxID);
                         pinMinID = Math.min(pinMinID, data.minID);
 
-                        const section = document.getElementById('pins');
+                        const section = document.getElementById('add_pins');
                         renderPins(section, data.pins);
                         SelectPins();
         
