@@ -1,8 +1,5 @@
 .rectangle-board-open {
     margin: 15px 15px 0px;
-    font-family: Nunito;
-    font-size: 25px;
-    text-align: left;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -25,4 +22,13 @@
     font-family: Nunito;
     font-size: 25px;
     text-align: left;
+}
+
+.description-board-open {
+    font-family: Nunito;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    padding: 0;
+    display: block;
+    margin-left: 20px;
 }
