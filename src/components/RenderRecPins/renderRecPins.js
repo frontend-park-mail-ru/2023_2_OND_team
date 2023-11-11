@@ -3,7 +3,7 @@
 * @param {HTMLElement} parent - Родительский элемент для отображения изображений
 * @param {Array} images - Массив объектов с информацией о пинах.
 */
-export function renderPins(parent, images) {
+export function renderRecPins(parent, images) {
   const template = Handlebars.templates['PinOnBoard.hbs'];
   images.forEach((image) => {
     const context = {src: image.picture, id: image.id};
