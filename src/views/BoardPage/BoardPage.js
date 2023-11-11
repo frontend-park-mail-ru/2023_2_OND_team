@@ -20,8 +20,6 @@ export function renderBoardPage(boardID) {
             description: boardInfo.description
         };
 
-        const pins = boardInfo.pins;
-
         renderBoardPins(boardID);
 
         main.innerHTML = boardPage(context);
@@ -51,9 +49,9 @@ export function renderBoardPage(boardID) {
 
     function renderBoardPins(boardID) {
         API.getBoardInfo(boardID)
-            .then((pins) => {
+            .then((boardInfo) => {
                 const section = document.getElementById('board-pins');
-                renderPins(section, pins);
+                renderPins(section, boardInfo.pins);
             })
             .catch((error) => {
                 console.error('Ошибка при рендеринге пинов доски:', error);
