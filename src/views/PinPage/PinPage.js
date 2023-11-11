@@ -31,6 +31,9 @@ export function renderPinPage(pinID) {
             saveButton.textContent = 'Прикрепить на доску';
             saveButton.classList.add('save-button');
 
+            const boardList = document.createElement('select');
+            boardList.classList.add('board-list');
+
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
             deleteButton.classList.add('delete-button');
@@ -50,6 +53,7 @@ export function renderPinPage(pinID) {
             if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
+                block.appendChild(boardList);
             }
 
             deleteButton.addEventListener('click', function (e) {
