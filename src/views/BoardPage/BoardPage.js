@@ -13,7 +13,11 @@ export function renderBoardPage(boardID) {
     .then((boardInfo) => {
         console.log('Информация о доске:', boardInfo);
 
-        //main.innerHTML = pinPage(context);
+        const context = {
+            title: boardInfo.title
+        };
+
+        main.innerHTML = boardPage(context);
     })
     .catch((error) => {
         console.error('Ошибка при получении информации о пине:', error);
