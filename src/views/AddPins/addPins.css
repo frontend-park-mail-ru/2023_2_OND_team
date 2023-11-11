@@ -91,3 +91,35 @@
 .int__gallery img {
     transition: transform 0.3s ease;
 }
+
+.int__gallery__item:hover .like-button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.int__gallery__item:hover::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.int__gallery__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;  
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.int__gallery__item.selected::before {
+    border: 2px solid #4CAF50;
+}
+
+.int__gallery__item.selected:hover::before {
+    opacity: 0.7;
+}
