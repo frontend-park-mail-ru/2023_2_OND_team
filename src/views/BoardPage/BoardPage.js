@@ -1,6 +1,8 @@
 import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
+import { renderPins } from "../../components/RenderPins/renderPins.js";
+import { definePins } from "../../views/ProfileUser/ProfileUser.js";
 
 export function renderBoardPage(boardID) {
     const router = new Router();
@@ -19,9 +21,9 @@ export function renderBoardPage(boardID) {
             description: boardInfo.description
         };
 
-        pins = boardInfo.pins;
+        const pins = boardInfo.pins; // Объявление переменной pins
 
-        renderBoardPins(boardID)
+        renderBoardPins(boardID);
 
         main.innerHTML = boardPage(context);
 
