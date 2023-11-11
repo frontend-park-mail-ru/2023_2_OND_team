@@ -1,6 +1,7 @@
 import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
+import { renderPins } from '../../components/RenderPins/renderPins.js';
 
 export function renderPinPage(pinID) {
     const router = new Router();
@@ -37,6 +38,10 @@ export function renderPinPage(pinID) {
             const updateButton = document.createElement('img');
             updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
             updateButton.classList.add('edit-button');
+
+            const section = document.getElementById('pins');
+            renderPins(section, data.pins);
+            definePins();
 
             console.log(usernameReal, pinInfo.author.username);
 
