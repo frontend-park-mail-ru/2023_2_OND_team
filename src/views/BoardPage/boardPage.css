@@ -1,3 +1,10 @@
+.rectangle-board {
+    margin: 15px 15px 0px;
+    font-family: Nunito;
+    font-size: 25px;
+    text-align: left;
+}
+
 .bar {
     display: flex;
     justify-content: space-between;
