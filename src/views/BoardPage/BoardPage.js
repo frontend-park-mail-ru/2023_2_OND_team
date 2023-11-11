@@ -9,7 +9,7 @@ export function renderBoardPage(boardID) {
     const state = new State();
 
     const boardPage = Handlebars.templates['BoardPage.hbs'];
-    API.getPinInfo(boardID)
+    API.getBoardInfo(boardID)
     .then((boardInfo) => {
         console.log('Информация о доске:', boardInfo);
 
