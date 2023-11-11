@@ -15,7 +15,8 @@ export function renderBoardPage(boardID) {
         console.log('Информация о доске:', boardInfo);
 
         const context = {
-            title: boardInfo.title
+            title: boardInfo.title,
+            description: boardInfo.description
         };
 
         main.innerHTML = boardPage(context);
