@@ -6,4 +6,4 @@ service.txt
 .DS_Store
 public/compiledTemplates/templates.hbs.js
 server/ssk/*
-dist/bundle.*.js
+dist/
