@@ -37,6 +37,15 @@
     margin-right: 0px;
     border-radius: 14px;
 }
+
+.saved {
+    display: flex;
+}
+
+.board-list {
+    margin: 20px 5px 25px 5px;
+    border-radius: 10px;
+}
   
 .save-button {
     background-color: #226B77;
