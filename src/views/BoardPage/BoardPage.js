@@ -19,6 +19,10 @@ export function renderBoardPage(boardID) {
             description: boardInfo.description
         };
 
+        pins = boardInfo.pins;
+
+        renderBoardPins(boardID)
+
         main.innerHTML = boardPage(context);
 
         const usernameReal = state.getUsername();
@@ -43,4 +47,16 @@ export function renderBoardPage(boardID) {
         console.error('Ошибка при получении информации о доске:', error);
         router.navigate('/page404');
     });
+
+    function renderBoardPins(boardID) {
+        API.getBoardInfo(boardID)
+            .then((data) => {
+                const section = document.getElementById('board-pins');
+                renderPins(section, data.pins);
+                definePins();
+            })
+            .catch((error) => {
+                console.error('Ошибка при рендеринге пинов доски:', error);
+            });
+    }
 }
