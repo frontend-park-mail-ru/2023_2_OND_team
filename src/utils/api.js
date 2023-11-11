@@ -748,7 +748,7 @@ export class API {
     
     static async deleteBoard(boardID) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/delete/${boardID}`;
+        const configItem = `//pinspire.online:8080/api/v1/board/delete/${boardID}`;
         const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
