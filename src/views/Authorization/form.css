@@ -1,0 +1,197 @@
+.ibackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.form-container {
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 70px;
+}
+
+.input-container {
+    width: 410px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.labeled-input {
+    font-family: Nunito;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input {
+    font-family: Nunito;
+    width: 400px;
+    height: 25px; 
+    padding: 8px 0px 8px 8px;
+    border: 2px solid var(--primary-45, #33A1B3);
+    border-radius: var(--br-s, 10px);
+  
+    color: var(--primary-15, #11363C);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;  
+}
+
+input:focus {
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30, #226B77);
+    background: var(--bg-100, #FFF);
+}
+
+.button {
+    background-color: #226B77;
+    color: #FFFFFF;
+    width: 410px;
+    height: 45px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.button:hover {
+    background: rgba(34, 107, 119, 0.80);
+}
+
+.cancel-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    z-index: 9999;
+}
+
+.registration-title {
+    font-family: Nunito;
+    font-size: 31px; 
+    font-weight: normal; 
+    margin-bottom: 30px;
+}
+
+.auth-title {
+    font-family: Nunito;
+    font-size: 31px; 
+    font-weight: normal; 
+    margin-bottom: 30px;
+}
+
+p {
+    font-family: Nunito;
+}
+
+a {
+    font-family: Nunito 600;
+    font-weight: bold; 
+    color: black;
+    text-decoration: none;
+}
+
+.password-error-message {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
+
+.username-error-message {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
+
+.email-error-message {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
+
+.wrong-data-error-message  {
+    font-family: Nunito;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: center;
+    min-height: 30px;
+    min-width: 410px;
+}
+
+.input-error input {
+    border-color: var(--error-50, #F4210B);
+    color: var(--error-50, #F4210B);
+}
+
+.input-error .error-message {
+    display: block;
+    color: var(--error-50, #F4210B);
+}
+
+.already-registered {
+    display: flex;
+    gap: 5px;
+}
+
+.input-username {
+    width: 410px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-email {
+    width: 410px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-password {
+    width: 410px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hide {
+    display: none;
+}
+
+input::placeholder {
+  position: absolute;
+  top: 10px;
+}
