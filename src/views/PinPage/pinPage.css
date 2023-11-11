@@ -1,11 +1,11 @@
 .rectangle {
     display: flex;
     justify-content: center;
-    max-width: 900px;
+    max-width: 950px;
     border: 1px solid #000;
     border-radius: 15px;
     margin: 100px auto 0;
-    height: 470px;
+    height: 570px;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
 }
   
