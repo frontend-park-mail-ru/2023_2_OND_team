@@ -30,13 +30,13 @@ export function renderBoardPage(boardID) {
         updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
         updateButton.classList.add('edit-button');
 
-        console.log(usernameReal, boardInfo.author.username);
+        console.log(usernameReal);
 
-        if (usernameReal === boardInfo.author.username) {
+        //if (usernameReal === boardInfo.author.username) {
             const rec = document.querySelector('.rectangle-add');
             rec.appendChild(deleteButton);
             rec.appendChild(updateButton);
-        }
+        //}
     })
     .catch((error) => {
         console.error('Ошибка при получении информации о доске:', error);
