@@ -39,10 +39,6 @@ export function renderPinPage(pinID) {
             updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
             updateButton.classList.add('edit-button');
 
-            const section = document.getElementById('pins');
-            renderPins(section, data.pins);
-            definePins();
-
             console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
