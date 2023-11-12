@@ -3,14 +3,14 @@ import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
 
-export function renderBoardPage(boardID) {
+export async function renderBoardPage(boardID) {
     const router = new Router();
     const main = document.querySelector('#main');
     const state = new State();
     const boardPage = Handlebars.templates['BoardPage.hbs'];
 
     try {
-        const boardInfo = API.getBoardInfo(boardID);
+        const boardInfo = await API.getBoardInfo(boardID);
         console.log('Информация о доске:', boardInfo);
 
         const context = {
@@ -26,9 +26,9 @@ export function renderBoardPage(boardID) {
         deleteButton.textContent = 'Удалить';
         deleteButton.classList.add('delete-button');
 
-        deleteButton.addEventListener('click', function (e) {
+        deleteButton.addEventListener('click', async function (e) {
             e.preventDefault();
-            API.deleteBoard(boardID);
+            await API.deleteBoard(boardID);
             router.navigate('/profile');
         });
 
@@ -42,16 +42,16 @@ export function renderBoardPage(boardID) {
         rec.appendChild(deleteButton);
         rec.appendChild(updateButton);
 
-        renderBoardPins();
+        await renderBoardPins();
 
     } catch (error) {
         console.error('Ошибка при получении информации о доске:', error);
         router.navigate('/page404');
     }
 
-    function renderBoardPins() {
+    async function renderBoardPins() {
         try {
-            const data = API.getBoardPins(boardID);
+            const data = await API.getBoardPins(boardID);
             const section = document.getElementById('board-pins');
             renderPins(section, data.pins);
         } catch (error) {
