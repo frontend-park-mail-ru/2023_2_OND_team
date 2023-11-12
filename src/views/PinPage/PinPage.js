@@ -26,6 +26,13 @@ export function renderPinPage(pinID) {
             const usernameReal = state.getUsername();
             const isAuthorized = state.getIsAuthorized();
 
+            const titleTextarea = document.querySelector('.pin-title');
+            const descriptionTextarea = document.querySelector('.pin-description');
+
+            const pinControl = document.querySelector('.pin-control');
+            const canselDataBtn = document.querySelector('.pin-control__cansel-btn');
+            const saveDataBtn = document.querySelector('.pin-control__save-btn');
+
             const saveButton = document.createElement('button');
             saveButton.textContent = 'Прикрепить на доску';
             saveButton.classList.add('save-button');
@@ -37,6 +44,45 @@ export function renderPinPage(pinID) {
             const updateButton = document.createElement('img');
             updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
             updateButton.classList.add('edit-button');
+
+            updateButton?.addEventListener('click', () => {
+                updateButton.classList.add('hide');
+                pinControl.classList.remove('hide');
+
+                titleTextarea.classList.add('input-primary');
+                descriptionTextarea.classList.add('input-primary');
+
+                titleTextarea.disapled = false;
+                descriptionTextarea.disapled = false;
+            });
+
+            canselDataBtn?.addEventListener('click', () => {
+                updateButton.classList.remove('hide');
+                pinControl.classList.add('hide');
+
+                titleTextarea.classList.remove('input-primary');
+                descriptionTextarea.classList.remove('input-primary');
+
+                titleTextarea.disapled = true;
+                descriptionTextarea.disapled = true;
+
+                titleTextarea.value = pinInfo.title;
+                descriptionTextarea.value = pinInfo.description;
+            });
+
+            saveDataBtn?.addEventListener('click', () => {
+                updateButton.classList.remove('hide');
+                pinControl.classList.add('hide');
+
+                titleTextarea.classList.remove('input-primary');
+                descriptionTextarea.classList.remove('input-primary');
+
+                titleTextarea.disapled = true;
+                descriptionTextarea.disapled = true;
+
+                titleTextarea.value = pinInfo.title;
+                descriptionTextarea.value = pinInfo.description;
+            });
 
             console.log(usernameReal, pinInfo.author.username);
 

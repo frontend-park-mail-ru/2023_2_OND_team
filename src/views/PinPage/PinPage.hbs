@@ -8,12 +8,16 @@
             <span class="pin-username">{{username}}</span>
             <div>
                 <label for="pin-title" class="labeled-input">Название</label>
-                <span class="pin-title">{{title}}</span>
+                <textarea disabled class="pin-title input-read-only text-base1-medium pin-edit-item">{{title}}</textarea>
             </div>
             <div>
                 <label for="pin-description" class="labeled-input">Описание</label>
-                <span class="pin-description">{{description}}</span>
+                <textarea disabled class="pin-description  text-base1-medium pin-edit-item">{{description}}</textarea>
             </div>
+        </div>
+        <div class="pin-control hide">
+            <button class="btn-primary-clear text-base1-medium pin-control__cansel-btn">Отмена</button>
+            <button class="btn-primary-default text-base1-medium pin-control__save-btn">Сохранить</button>
         </div>
     </div>
     <div class="other__pins__title">
