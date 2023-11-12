@@ -26,9 +26,9 @@ export async function renderBoardPage(boardID) {
         deleteButton.textContent = 'Удалить';
         deleteButton.classList.add('delete-button');
 
-        deleteButton.addEventListener('click', function (e) {
+        deleteButton.addEventListener('click', async function (e) {
             e.preventDefault();
-            API.deleteBoard(boardID)
+            await API.deleteBoard(boardID);
             router.navigate('/profile');
         });
 
@@ -42,22 +42,19 @@ export async function renderBoardPage(boardID) {
         rec.appendChild(deleteButton);
         rec.appendChild(updateButton);
 
-        //renderPins(document.getElementById('board-pins'), boardInfo.pins);
-        renderBoardPins();
+        await renderBoardPins();
     } catch (error) {
         console.error('Ошибка при получении информации о доске:', error);
         router.navigate('/page404');
     }
 
-    function renderBoardPins() {
-        API.getBoardPins()
-            .then((data) => {
-                const section = document.getElementById('board-pins');
-                renderPins(section, data.pins);
-                //definePins();
-            })
-            .catch((error) => {
-                console.error('Ошибка при рендеринге пинов:', error);
-            });
+    async function renderBoardPins() {
+        try {
+            const data = await API.getBoardPins();
+            const section = document.getElementById('board-pins');
+            renderPins(section, data.pins);
+        } catch (error) {
+            console.error('Ошибка при рендеринге пинов:', error);
+        }
     }
 }
