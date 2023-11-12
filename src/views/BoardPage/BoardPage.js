@@ -22,19 +22,57 @@ export async function renderBoardPage(boardID) {
 
         const usernameReal = state.getUsername();
 
+        const titleTextarea = document.querySelector('.pin-title');
+        const descriptionTextarea = document.querySelector('.pin-description');
+
+        const pinControl = document.querySelector('.pin-control');
+        const canselDataBtn = document.querySelector('.pin-control__cansel-btn');
+        const saveDataBtn = document.querySelector('.pin-control__save-btn');
+
+        const editSpan = document.querySelector('.pin-edit-span-all');
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Удалить';
         deleteButton.classList.add('delete-button');
+
+        const updateButton = document.createElement('img');
+        updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
+        updateButton.classList.add('edit-button');
+
+        updateButton?.addEventListener('click', () => {
+            updateButton.classList.add('hide');
+            pinControl.classList.remove('hide');
+
+            titleTextarea.classList.add('input-primary');
+            descriptionTextarea.classList.add('input-primary');
+
+            titleTextarea.disabled = false;
+            descriptionTextarea.disabled = false;
+            
+            editSpan.textContent = '';
+        });
+
+        canselDataBtn?.addEventListener('click', () => {
+            updateButton.classList.remove('hide');
+            pinControl.classList.add('hide');
+
+            titleTextarea.classList.remove('input-primary');
+            descriptionTextarea.classList.remove('input-primary');
+
+            titleTextarea.disabled = true;
+            descriptionTextarea.disabled = true;
+
+            titleTextarea.value = pinInfo.title;
+            descriptionTextarea.value = pinInfo.description;
+            
+            editSpan.textContent = '';
+        });
 
         deleteButton.addEventListener('click', async function (e) {
             e.preventDefault();
             await API.deleteBoard(boardID);
             router.navigate('/profile');
         });
-
-        const updateButton = document.createElement('img');
-        updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
-        updateButton.classList.add('edit-button');
 
         console.log(usernameReal);
 
