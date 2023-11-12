@@ -305,10 +305,6 @@ export class Router {
             {
                 path: "/pin/ID",
                 handler: (pinID) => {
-                    if (this.state.getCurrentPage() === `pin${pinID}`) {
-                        return;
-                    }
-
                     API.checkLogin()
                         .then((status) => {
                             this.state.setCurrentPage(`pin${pinID}`);
@@ -334,10 +330,6 @@ export class Router {
             {
                 path: "/board/ID",
                 handler: (boardID) => {
-                    if (this.state.getCurrentPage() === `board${boardID}`) {
-                        return;
-                    }
-
                     API.checkLogin()
                         .then((status) => {
                             this.state.setCurrentPage(`board${boardID}`);

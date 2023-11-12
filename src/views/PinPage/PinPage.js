@@ -33,6 +33,8 @@ export function renderPinPage(pinID) {
             const canselDataBtn = document.querySelector('.pin-control__cansel-btn');
             const saveDataBtn = document.querySelector('.pin-control__save-btn');
 
+            const editSpan = document.querySelector('.pin-edit-span-all');
+
             const saveButton = document.createElement('button');
             saveButton.textContent = 'Прикрепить на доску';
             saveButton.classList.add('save-button');
@@ -54,6 +56,8 @@ export function renderPinPage(pinID) {
 
                 titleTextarea.disabled = false;
                 descriptionTextarea.disabled = false;
+                
+                editSpan.textContent = '';
             });
 
             canselDataBtn?.addEventListener('click', () => {
@@ -68,20 +72,22 @@ export function renderPinPage(pinID) {
 
                 titleTextarea.value = pinInfo.title;
                 descriptionTextarea.value = pinInfo.description;
+                
+                editSpan.textContent = '';
             });
 
             saveDataBtn?.addEventListener('click', () => {
-                updateButton.classList.remove('hide');
-                pinControl.classList.add('hide');
-
-                titleTextarea.classList.remove('input-primary');
-                descriptionTextarea.classList.remove('input-primary');
-
-                titleTextarea.disabled = true;
-                descriptionTextarea.disabled = true;
-
-                titleTextarea.value = pinInfo.title;
-                descriptionTextarea.value = pinInfo.description;
+                API.putPinInfo(pinInfo.id, titleTextarea.value, descriptionTextarea.value)
+                    .then((res) => {
+                        if (res.status === 'ok') {
+                            router.navigate(`/pin/${pinInfo.id}`);
+                        } else {
+                            editSpan.textContent = 'Некорректные данные';
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
             });
 
             console.log(usernameReal, pinInfo.author.username);
@@ -103,11 +109,6 @@ export function renderPinPage(pinID) {
                 router.navigate('/');
             });
 
-            updateButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                API.updatePin(pinID)
-                router.navigate('/');
-            });
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);

@@ -109,15 +109,21 @@
     margin-top: 20px;
 }
 
-
+.pin-edit-span-all {
+    font-family: Nunito;
+    height: 30px;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+}
 
 .pin-control {
     display: inline-flex;
     align-items: flex-start;
     position: relative;
-    top: -100px;
-    left: 700px;
-    gap: 20px;
+    top: -70px;
+    left: 520px;
+    gap: 50px;
 }
 
 .pin-edit-item {
