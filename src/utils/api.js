@@ -554,20 +554,17 @@ export class API {
       }
     }
 
-    static async putPinInfo({description}) {
+    static async putPinInfo(pinID, title, description) {
       try {
-        const configItem = this.#config.find((item) => item.name === 'pinEdit');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для pinEdit');
-        }
-    
-        const response = await fetch(configItem.url, {
+        const configItem = `//pinspire.online:8080/api/v1/pin/edit/${pinID}`;
+  
+        const response = await fetch(configItem, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({description}),
+          body: JSON.stringify({title,description}),
           credentials: 'include',
         });
     
@@ -578,11 +575,7 @@ export class API {
     
         const res = await response.json();
     
-        if (res.status === 'ok') {
-          return res.status;
-        } else {
-          throw new Error('Ошибка при отправке данных пина');
-        }
+        return res;
     
       } catch (error) {
         console.error('Ошибка при обновлении данных пина:', error);
