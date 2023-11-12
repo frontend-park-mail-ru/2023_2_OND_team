@@ -68,6 +68,20 @@ export async function renderBoardPage(boardID) {
             editSpan.textContent = '';
         });
 
+        saveDataBtn?.addEventListener('click', () => {
+            API.putBoardInfo(boardInfo.id, titleTextarea.value, descriptionTextarea.value, pins)
+                .then((res) => {
+                    if (res.status === 'ok') {
+                        router.navigate(`/board/${boardInfo.id}`);
+                    } else {
+                        editSpan.textContent = 'Некорректные данные';
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+        });
+
         deleteButton.addEventListener('click', async function (e) {
             e.preventDefault();
             await API.deleteBoard(boardID);

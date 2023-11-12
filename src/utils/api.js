@@ -22,6 +22,7 @@ export class API {
       {name: 'getBoardInfo', url: '//pinspire.online:8080/api/v1/board/get'},
       {name: 'deleteBoard', url: '//pinspire.online:8080/api/v1/board/delete'},
       {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
+      {name: 'boardUpdate', url: '//pinspire.online:8080/api/v1/board/update'}
     ];
 
     static async loginUser(username, password) {
@@ -795,6 +796,35 @@ export class API {
         }
       } catch (error) {
         console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
+    static async putBoardInfo(boardID, title, description, pins) {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/board/update/${boardID}`;
+  
+        const response = await fetch(configItem, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({title, description, 'public': false, pins}),
+          credentials: 'include',
+        });
+    
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+    
+        const res = await response.json();
+    
+        return res;
+    
+      } catch (error) {
+        console.error('Ошибка при обновлении данных пина:', error);
+        throw error;
       }
     }
 
