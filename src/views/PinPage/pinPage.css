@@ -111,9 +111,12 @@
 
 
 
-.profile-data__btns {
+.pin-control {
     display: inline-flex;
     align-items: flex-start;
+    position: relative;
+    top: -100px;
+    left: 700px;
     gap: 20px;
 }
 
