@@ -1,12 +1,12 @@
 .rectangle-board-open {
     margin: 15px 15px 0px;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 1px 20px;
     display: flex;
     justify-content: center;
-    max-width: 900px;
+    max-width: 1175px;
     border: 1px solid grey;
     border-radius: 15px;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
