@@ -359,7 +359,6 @@ export class Router {
                                 renderBoardPage(boardID);
 
                             }
-                            renderBoardPage(boardID);
                         })
                         .catch((error) => {
                             console.error(error);
