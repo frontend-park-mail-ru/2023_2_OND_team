@@ -69,6 +69,7 @@ export function renderProfilePage() {
             .then((data) => {
                 const section = document.getElementById('user-boards');
                 renderBoards(section, data);
+                defineBoards();
             })
             .catch((error) => {
                 console.error('Ошибка при рендеринге досок:', error);
