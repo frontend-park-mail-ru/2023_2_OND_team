@@ -145,8 +145,6 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
-
-
 .hide {
     display: none;
 }
