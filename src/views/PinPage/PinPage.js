@@ -30,10 +30,21 @@ export function renderPinPage(pinID) {
             const saveButton = document.createElement('button');
             saveButton.textContent = 'Прикрепить на доску';
             saveButton.classList.add('save-button');
+            UserBoards();
 
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
             const boardOptions = ['Доска 1', 'Доска 2', 'Доска 3'];
+
+            function UserBoards() {
+                API.getUserBoards()
+                    .then((data) => {
+                        console.log('Информация о досках пользователя:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Ошибка при получении информации о досках пользователя:', error);
+                    });
+            }
 
             boardOptions.forEach((boardName, index) => {
                 const option = document.createElement('option');
