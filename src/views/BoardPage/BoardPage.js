@@ -50,7 +50,7 @@ export async function renderBoardPage(boardID) {
 
     async function renderBoardPins() {
         try {
-            const data = await API.getBoardPins();
+            const data = await API.getBoardPins(boardID);
             const section = document.getElementById('board-pins');
             renderPins(section, data.pins);
         } catch (error) {

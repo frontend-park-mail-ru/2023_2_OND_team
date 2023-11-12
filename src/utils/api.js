@@ -777,11 +777,9 @@ export class API {
       }
     }
 
-    static async getBoardPins() {
+    static async getBoardPins(boardID) {
       try {
-        const boardID = this.state.getBoardID();
-
-        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${boardID}`;
+        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&boardID=${boardID}`;
 
         const response = await fetch(configItem, {
           headers: {

@@ -3,7 +3,6 @@ export class State {
     #currentPage;
     #isAuthorized;
     #userID
-    #boardID;
     #username;
     #avatar;
 
@@ -19,7 +18,6 @@ export class State {
         this.#username = null;
         this.#avatar = null;
         this.#userID = null;
-        this.#boardID = null;
     }
 
     setCsrfToken(token) {
@@ -52,10 +50,6 @@ export class State {
 
     getUserID() {
         return this.#userID;
-    }
-
-    getBoardID() {
-        return this.#boardID;
     }
 
     setUsername(username) {
