@@ -21,6 +21,7 @@ export class API {
       {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
       {name: 'getBoardInfo', url: '//pinspire.online:8080/api/v1/board/get'},
       {name: 'deleteBoard', url: '//pinspire.online:8080/api/v1/board/delete'},
+      {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
     ];
 
     static async loginUser(username, password) {
@@ -773,6 +774,36 @@ export class API {
         }
       } catch (error) {
         console.error('Ошибка:', error);
+      }
+    }
+
+    static async getBoardPins() {
+      try {
+        const boardID = this.state.getBoardID();
+
+        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${boardID}`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
       }
     }
 
