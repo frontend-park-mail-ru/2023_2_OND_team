@@ -32,14 +32,21 @@ export function renderPinPage(pinID) {
             saveButton.classList.add('save-button');
             UserBoards();
 
-            const boardList = document.createElement('select');
-            boardList.classList.add('board-list');
-            const boardOptions = ['Доска 1', 'Доска 2', 'Доска 3'];
-
             function UserBoards() {
+                const boardList = document.createElement('select');
+                boardList.classList.add('board-list');
+            
                 API.getUserBoards()
                     .then((data) => {
-                        console.log('Информация о досках пользователя:', data);
+                        data.forEach((board) => {
+                            const option = document.createElement('option');
+                            option.value = board.board_id;
+                            option.textContent = board.title;
+                            boardList.appendChild(option);
+                        });
+            
+                        const container = document.getElementById('your-container-id');
+                        container.appendChild(boardList);
                     })
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
