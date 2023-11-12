@@ -40,11 +40,13 @@ export function renderPinPage(pinID) {
                             const option = document.createElement('option');
                             option.value = board.board_id;
                             option.textContent = board.title;
-                            boardList.appendChild(option);
+                            //boardList.appendChild(option);
                         });
 
-                        const container = document.getElementById('board-list');
-                        container.appendChild(boardList);
+                        console.log(option.value);
+
+                        //const container = document.getElementById('board-list');
+                        //container.appendChild(boardList);
                     })
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
