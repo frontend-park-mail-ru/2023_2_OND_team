@@ -17,14 +17,25 @@
     justify-content: space-between;
 }
 
-.title-board-open {
-    margin: 15px 15px 0px;
+.labeled-input-open {
     font-family: Nunito;
-    font-size: 25px;
-    text-align: left;
+    color: grey;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 20px;
 }
 
-.description-board-open {
+.board-edit-item {
+    width: 272px;
+    height: 46px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.board-description {
     font-family: Nunito;
     padding: 5px 20px;
     box-sizing: border-box;
@@ -33,10 +44,9 @@
     margin-left: 20px;
 }
 
-.labeled-input-open {
+.board-title {
+    margin: 15px 15px 0px;
     font-family: Nunito;
-    color: grey;
-    display: block;
-    margin-bottom: 5px;
-    margin-left: 20px;
+    font-size: 25px;
+    text-align: left;
 }
