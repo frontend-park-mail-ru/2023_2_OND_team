@@ -64,13 +64,11 @@ export function renderProfilePage() {
             });
     }
     
-    
     function renderUserBoards() {
         API.getUserBoards()
             .then((data) => {
                 const section = document.getElementById('user-boards');
                 renderBoards(section, data);
-                defineBoards();
             })
             .catch((error) => {
                 console.error('Ошибка при рендеринге досок:', error);
