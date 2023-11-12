@@ -24,14 +24,14 @@ export async function renderBoardPage(boardID) {
 
         const usernameReal = state.getUsername();
 
-        const titleTextarea = document.querySelector('.pin-title');
-        const descriptionTextarea = document.querySelector('.pin-description');
+        const titleTextarea = document.querySelector('.board-title');
+        const descriptionTextarea = document.querySelector('.board-description');
 
-        const pinControl = document.querySelector('.pin-control');
-        const canselDataBtn = document.querySelector('.pin-control__cansel-btn');
-        const saveDataBtn = document.querySelector('.pin-control__save-btn');
+        const pinControl = document.querySelector('.board-control');
+        const canselDataBtn = document.querySelector('.board-control__cansel-btn');
+        const saveDataBtn = document.querySelector('.board-control__save-btn');
 
-        const editSpan = document.querySelector('.pin-edit-span-all');
+        const editSpan = document.querySelector('.board-edit-span-all');
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Удалить';
