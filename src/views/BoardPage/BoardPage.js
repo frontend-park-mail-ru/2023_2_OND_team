@@ -3,14 +3,14 @@ import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
 
-export async function renderBoardPage(boardID) {
+export function renderBoardPage(boardID) {
     const router = new Router();
     const main = document.querySelector('#main');
     const state = new State();
     const boardPage = Handlebars.templates['BoardPage.hbs'];
 
     try {
-        const boardInfo = await API.getBoardInfo(boardID);
+        const boardInfo = API.getBoardInfo(boardID);
         console.log('Информация о доске:', boardInfo);
 
         const context = {
