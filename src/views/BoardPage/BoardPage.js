@@ -9,6 +9,8 @@ export async function renderBoardPage(boardID) {
     const state = new State();
     const boardPage = Handlebars.templates['BoardPage.hbs'];
 
+    const pins = [190, 2, 1];
+
     try {
         const boardInfo = await API.getBoardInfo(boardID);
         console.log('Информация о доске:', boardInfo);
