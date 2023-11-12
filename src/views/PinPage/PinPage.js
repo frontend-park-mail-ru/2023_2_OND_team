@@ -6,9 +6,7 @@ import { renderPins } from '../../components/RenderPins/renderPins.js';
 export function renderPinPage(pinID) {
     const router = new Router();
     const main = document.querySelector('#main');
-
     const state = new State();
-
     const pinPage = Handlebars.templates['PinPage.hbs'];
 
     API.getPinInfo(pinID)
@@ -30,28 +28,28 @@ export function renderPinPage(pinID) {
             const saveButton = document.createElement('button');
             saveButton.textContent = 'Прикрепить на доску';
             saveButton.classList.add('save-button');
-            UserBoards();
-
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
-            const boardOptions = ['Доска 1', 'Доска 2', 'Доска 3'];
 
             function UserBoards() {
                 API.getUserBoards()
                     .then((data) => {
                         console.log('Информация о досках пользователя:', data);
+
+                        data.body.forEach((board) => {
+                            const option = document.createElement('option');
+                            option.value = board.board_id;
+                            option.textContent = board.title;
+                            boardList.appendChild(option);
+                        });
+
+                        const container = document.getElementById('board-list');
+                        container.appendChild(boardList);
                     })
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
                     });
             }
-
-            boardOptions.forEach((boardName, index) => {
-                const option = document.createElement('option');
-                option.value = index;
-                option.text = boardName;
-                boardList.appendChild(option);
-            });
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
@@ -73,22 +71,23 @@ export function renderPinPage(pinID) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
                 block.appendChild(boardList);
+                UserBoards();
             }
 
             deleteButton.addEventListener('click', function (e) {
                 e.preventDefault();
-                API.deletePin(pinID)
+                API.deletePin(pinID);
                 router.navigate('/');
             });
 
             updateButton.addEventListener('click', function (e) {
                 e.preventDefault();
-                API.updatePin(pinID)
+                API.updatePin(pinID);
                 router.navigate('/');
             });
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
             router.navigate('/page404');
-    });
+        });
 }
