@@ -809,7 +809,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({ title, description, 'public': false, pins }),
+          body: JSON.stringify({ title, description, pins, 'public': false }),
           credentials: 'include',
         });
     
@@ -823,7 +823,7 @@ export class API {
         return res;
     
       } catch (error) {
-        console.error('Ошибка при обновлении данных пина:', error);
+          console.error('Ошибка при обновлении данных пина:', error);
         throw error;
       }
     }

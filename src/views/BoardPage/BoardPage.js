@@ -71,7 +71,7 @@ export async function renderBoardPage(boardID) {
         });
 
         saveDataBtn?.addEventListener('click', () => {
-            API.putBoardInfo(boardInfo.id, titleTextarea.value, descriptionTextarea.value, pins)
+            API.putBoardInfo(boardInfo.board_id, titleTextarea.value, descriptionTextarea.value, pins)
                 .then((res) => {
                     if (res.status === 'ok') {
                         router.navigate(`/board/${boardInfo.board_id}`);
