@@ -53,13 +53,6 @@ export function renderPinPage(pinID) {
                     });
             }
 
-            boardOptions.forEach((boardName, index) => {
-                const option = document.createElement('option');
-                option.value = index;
-                option.text = boardName;
-                boardList.appendChild(option);
-            });
-
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
             deleteButton.classList.add('delete-button');
