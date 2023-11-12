@@ -2,7 +2,7 @@ export class State {
     #csrfToken;
     #currentPage;
     #isAuthorized;
-    #userID
+    #userID;
     #username;
     #avatar;
 

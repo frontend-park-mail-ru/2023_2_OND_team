@@ -36,6 +36,23 @@
     gap: 5px;
 }
 
+textarea {
+    font-family: Nunito;
+    width: 400px;
+    height: 25px; 
+    padding: 8px 0px 8px 8px;
+    border: 2px solid var(--primary-45, #33A1B3);
+    border-radius: var(--br-s, 10px);
+  
+    color: var(--primary-15, #11363C);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    resize: none;
+}
+
+
 input {
     font-family: Nunito;
     width: 400px;

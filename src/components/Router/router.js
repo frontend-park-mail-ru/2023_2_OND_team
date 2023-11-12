@@ -351,7 +351,6 @@ export class Router {
                                 renderBoardPage(boardID);
 
                             }
-                            renderPinPage(pinID); // изменить на renderBoardPage(boardID);
                         })
                         .catch((error) => {
                             console.error(error);

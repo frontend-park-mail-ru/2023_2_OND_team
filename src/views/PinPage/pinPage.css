@@ -37,6 +37,15 @@
     margin-right: 0px;
     border-radius: 14px;
 }
+
+.saved {
+    display: flex;
+}
+
+.board-list {
+    margin: 20px 5px 25px 5px;
+    border-radius: 10px;
+}
   
 .save-button {
     background-color: #226B77;
@@ -54,7 +63,7 @@
     background-color: white;
     color: red;
     border: red;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
@@ -80,10 +89,10 @@
 }
 
 .edit-button {
-    font-size: 16px;
+    font-size: 18px;
     padding: 18px 15px;
     cursor: pointer;
-    width: 17px;
+    width: 22px;
     height: 25px;
 }
 
@@ -155,9 +164,9 @@
 }
 
 .text-base1-medium {
-    font-family: Lato;
+    font-family: Nunito;
     font-size: 25px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-  }
+ }

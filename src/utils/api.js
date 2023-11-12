@@ -16,10 +16,12 @@ export class API {
       {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
       {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
       {name: 'addPins', url:'//pinspire.online:8080/api/v1/board/add/pins'},
-      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
       {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
-      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'}
-
+      {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
+      {name: 'createBoard', url:'//pinspire.online:8080/api/v1/board/create'},
+      {name: 'getBoardInfo', url: '//pinspire.online:8080/api/v1/board/get'},
+      {name: 'deleteBoard', url: '//pinspire.online:8080/api/v1/board/delete'},
+      {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
     ];
 
     static async loginUser(username, password) {
@@ -514,7 +516,7 @@ export class API {
           
           return res.body;
         } else {
-          throw new Error('Ошибка при получении данных о лайке');
+          throw new Error('Ошибка при получении данных об удалении пина');
         }
       } catch (error) {
         console.error('Ошибка:', error);
@@ -695,6 +697,98 @@ export class API {
 
         if (res.status === 'ok') {
 
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
+    static async getBoardInfo(boardID) {
+      try {
+        const configItem = this.#config.find((item) => item.name === 'getBoardInfo');
+        if (!configItem) {
+          throw new Error('Не найдена конфигурация для getBoardInfo');
+        }
+    
+        const boardInfoURL = `${configItem.url}/${boardID}`;
+    
+        const response = await fetch(boardInfoURL, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+    
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+    
+        const res = await response.json();
+    
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных о доске');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных о доске:', error);
+        throw error;
+      }
+    }
+    
+    static async deleteBoard(boardID) {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/board/delete/${boardID}`;
+        const response = await fetch(configItem, {
+          method: 'DELETE',
+          headers: {
+            'x-csrf-token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          console.log(res.body)
+          
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных об удалении доски');
+        }
+      } catch (error) {
+        console.error('Ошибка:', error);
+      }
+    }
+
+    static async getBoardPins(boardID) {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&boardID=${boardID}`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных из API');
