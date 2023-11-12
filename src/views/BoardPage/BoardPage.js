@@ -26,9 +26,9 @@ export async function renderBoardPage(boardID) {
         deleteButton.textContent = 'Удалить';
         deleteButton.classList.add('delete-button');
 
-        deleteButton.addEventListener('click', async function (e) {
+        deleteButton.addEventListener('click', function (e) {
             e.preventDefault();
-            await API.deleteBoard(boardID);
+            API.deleteBoard(boardID);
             router.navigate('/profile');
         });
 
@@ -42,15 +42,16 @@ export async function renderBoardPage(boardID) {
         rec.appendChild(deleteButton);
         rec.appendChild(updateButton);
 
-        await renderBoardPins();
+        renderBoardPins();
+
     } catch (error) {
         console.error('Ошибка при получении информации о доске:', error);
         router.navigate('/page404');
     }
 
-    async function renderBoardPins() {
+    function renderBoardPins() {
         try {
-            const data = await API.getBoardPins(boardID);
+            const data = API.getBoardPins(boardID);
             const section = document.getElementById('board-pins');
             renderPins(section, data.pins);
         } catch (error) {
