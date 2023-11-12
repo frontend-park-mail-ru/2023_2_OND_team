@@ -104,11 +104,11 @@
 .pin-title,
 .pin-description{
     font-family: Nunito;
-    padding: 5px 20px;
-    box-sizing: border-box;
-    padding: 0;
-    display: block;
-    margin-left: 20px;
+    padding: 0px 20px;
+    margin-left: 0px;
+    width: 300px;
+    height-min: 200px;
+    resize: vertical; 
 }
 
 .other__pins__title {
