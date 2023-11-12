@@ -42,19 +42,19 @@ export async function renderBoardPage(boardID) {
         rec.appendChild(deleteButton);
         rec.appendChild(updateButton);
 
-        //await renderBoardPins();
+        renderBoardPins();
     } catch (error) {
         console.error('Ошибка при получении информации о доске:', error);
         router.navigate('/page404');
     }
 
-    /**async function renderBoardPins() {
+    function renderBoardPins() {
         try {
-            const data = await API.getBoardPins(boardID);
+            const data = API.getBoardPins(boardID);
             const section = document.getElementById('board-pins');
             renderPins(section, data.pins);
         } catch (error) {
             console.error('Ошибка при рендеринге пинов:', error);
         }
-    }**/
+    }
 }
