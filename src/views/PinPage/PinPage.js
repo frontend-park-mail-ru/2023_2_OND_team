@@ -33,6 +33,14 @@ export function renderPinPage(pinID) {
 
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
+            const boardOptions = ['Доска 1', 'Доска 2', 'Доска 3'];
+
+            boardOptions.forEach((boardName, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.text = boardName;
+                boardList.appendChild(option);
+            });
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
