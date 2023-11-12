@@ -50,3 +50,11 @@
     font-size: 25px;
     text-align: left;
 }
+
+.text-base1-small {
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
