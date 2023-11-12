@@ -42,7 +42,7 @@ export function renderPinPage(pinID) {
                         //    option.textContent = board.title;
                         //    boardList.appendChild(option);
                         //});
-                        boards.forEach((board) => {
+                        data.forEach((board) => {
                             const pins = Array.from(board.pins).slice(0, 3);
                             const context = {
                                 id: board.board_id,
