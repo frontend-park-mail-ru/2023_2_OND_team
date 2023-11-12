@@ -108,3 +108,47 @@
     text-align: center;
     margin-top: 20px;
 }
+
+
+
+.profile-data__btns {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.pin-edit-item {
+    width: 272px;
+    height: 46px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+
+
+.hide {
+    display: none;
+}
+
+.input-read-only {
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-45, #FFFFFF);
+    background: var(--bg-100, #FFF);
+}
+
+.input-primary {
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-45, #33A1B3);
+    background: var(--bg-100, #FFF);
+}
+
+.text-base1-medium {
+    font-family: Lato;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }

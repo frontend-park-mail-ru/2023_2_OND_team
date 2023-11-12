@@ -52,8 +52,8 @@ export function renderPinPage(pinID) {
                 titleTextarea.classList.add('input-primary');
                 descriptionTextarea.classList.add('input-primary');
 
-                titleTextarea.disapled = false;
-                descriptionTextarea.disapled = false;
+                titleTextarea.disabled = false;
+                descriptionTextarea.disabled = false;
             });
 
             canselDataBtn?.addEventListener('click', () => {
@@ -63,8 +63,8 @@ export function renderPinPage(pinID) {
                 titleTextarea.classList.remove('input-primary');
                 descriptionTextarea.classList.remove('input-primary');
 
-                titleTextarea.disapled = true;
-                descriptionTextarea.disapled = true;
+                titleTextarea.disabled = true;
+                descriptionTextarea.disabled = true;
 
                 titleTextarea.value = pinInfo.title;
                 descriptionTextarea.value = pinInfo.description;
@@ -77,8 +77,8 @@ export function renderPinPage(pinID) {
                 titleTextarea.classList.remove('input-primary');
                 descriptionTextarea.classList.remove('input-primary');
 
-                titleTextarea.disapled = true;
-                descriptionTextarea.disapled = true;
+                titleTextarea.disabled = true;
+                descriptionTextarea.disabled = true;
 
                 titleTextarea.value = pinInfo.title;
                 descriptionTextarea.value = pinInfo.description;
