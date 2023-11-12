@@ -15,8 +15,12 @@ export function renderFavouritePage() {
     API.getLikedPins()
         .then((data) => {
             const section = document.getElementById('favourite-pins');
-            renderPins(section, data.pins);
-            definePins();
+            if (data.pins) {
+                renderPins(section, data.pins);
+                definePins();
+            } else {
+                console.log('null');
+            }
         })
         .catch((error) => {
             console.error('Ошибка при рендеринге пинов:', error);
