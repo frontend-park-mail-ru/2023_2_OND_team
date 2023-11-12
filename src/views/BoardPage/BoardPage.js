@@ -74,7 +74,7 @@ export async function renderBoardPage(boardID) {
             API.putBoardInfo(boardInfo.id, titleTextarea.value, descriptionTextarea.value, pins)
                 .then((res) => {
                     if (res.status === 'ok') {
-                        router.navigate(`/board/${boardInfo.id}`);
+                        router.navigate(`/board/${boardInfo.board_id}`);
                     } else {
                         editSpan.textContent = 'Некорректные данные';
                     }

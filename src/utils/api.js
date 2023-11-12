@@ -809,7 +809,7 @@ export class API {
             'Content-Type': 'application/json',
             'x-csrf-token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({title, description, 'public': false, pins}),
+          body: JSON.stringify({ title, description, 'public': false, pins }),
           credentials: 'include',
         });
     
