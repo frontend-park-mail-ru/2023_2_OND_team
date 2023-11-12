@@ -36,14 +36,23 @@ export function renderPinPage(pinID) {
                     .then((data) => {
                         console.log('Информация о досках пользователя:', data);
 
-                        data.body.forEach((board) => {
-                            const option = document.createElement('option');
-                            option.value = board.board_id;
-                            option.textContent = board.title;
-                            //boardList.appendChild(option);
+                        //data.body.forEach((board) => {
+                        //    const option = document.createElement('option');
+                        //    option.value = board.board_id;
+                        //    option.textContent = board.title;
+                        //    boardList.appendChild(option);
+                        //});
+                        boards.forEach((board) => {
+                            const pins = Array.from(board.pins).slice(0, 3);
+                            const context = {
+                                id: board.board_id,
+                                title: board.title,
+                                description: board.description,
+                                pins: pins,
+                            }
                         });
 
-                        console.log(option.value);
+                        console.log(context);
 
                         //const container = document.getElementById('board-list');
                         //container.appendChild(boardList);
