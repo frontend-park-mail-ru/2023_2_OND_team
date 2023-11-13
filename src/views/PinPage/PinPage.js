@@ -44,27 +44,18 @@ export function renderPinPage(pinID) {
                 API.getUserBoards()
                     .then((data) => {
                         console.log('Информация о досках пользователя:', data);
-
+        
+                        boardList.innerHTML = '';
+        
                         data.body.forEach((board) => {
                             const option = document.createElement('option');
                             option.value = board.board_id;
                             option.textContent = board.title;
                             boardList.appendChild(option);
                         });
-                        data.forEach((board) => {
-                            const pins = Array.from(board.pins).slice(0, 3);
-                            const context = {
-                                id: board.board_id,
-                                title: board.title,
-                                description: board.description,
-                                pins: pins,
-                            }
-                        });
-
-                        console.log(context);
-
-                        //const container = document.getElementById('board-list');
-                        //container.appendChild(boardList);
+        
+                        const container = document.getElementById('board-list');
+                        container.appendChild(boardList);
                     })
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
