@@ -29,7 +29,7 @@
     font-weight: 700;
 }
   
-.open__gallery__item img {
+.gallery__item img {
     max-width: 100%;
     height: 100%;
     object-fit: cover;
