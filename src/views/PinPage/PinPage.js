@@ -44,16 +44,20 @@ export function renderPinPage(pinID) {
                 API.getUserBoards()
                     .then((data) => {
                         console.log('Информация о досках пользователя:', data);
-        
+            
                         boardList.innerHTML = '';
-        
-                        data.body.forEach((board) => {
-                            const option = document.createElement('option');
-                            option.value = board.board_id;
-                            option.textContent = board.title;
-                            boardList.appendChild(option);
-                        });
-        
+            
+                        if (data && data.body && Array.isArray(data.body)) {
+                            data.body.forEach((board) => {
+                                const option = document.createElement('option');
+                                option.value = board.board_id;
+                                option.textContent = board.title;
+                                boardList.appendChild(option);
+                            });
+                        } else {
+                            console.error('Некорректный формат данных о досках пользователя:', data);
+                        }
+            
                         const container = document.getElementById('board-list');
                         container.appendChild(boardList);
                     })
@@ -61,6 +65,7 @@ export function renderPinPage(pinID) {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
                     });
             }
+            
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
