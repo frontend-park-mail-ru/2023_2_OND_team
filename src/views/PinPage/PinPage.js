@@ -130,12 +130,12 @@ export function renderPinPage(pinID) {
                 rec.appendChild(updateButton);
             }
 
-            if (isAuthorized) {
+            /*if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
                 block.appendChild(boardList);
                 UserBoards();
-            }
+            }*/
 
             deleteButton.addEventListener('click', function (e) {
                 e.preventDefault();
