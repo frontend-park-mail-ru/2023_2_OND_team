@@ -48,7 +48,6 @@ export function renderPinPage(pinID) {
                         const container = document.getElementById('board-list');
                         //container.innerHTML = '';
             
-                        if (data.body) {
                             data.body.forEach((board) => {
                                 const boardSelect = document.createElement('select');
                                 boardSelect.classList.add('board-list');
@@ -62,9 +61,6 @@ export function renderPinPage(pinID) {
             
                                 container.appendChild(boardSelect);
                             });
-                        } else {
-                            console.error('Некорректный формат данных о досках пользователя:', data);
-                        }
                     })
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
