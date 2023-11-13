@@ -42,19 +42,20 @@ export function renderPinPage(pinID) {
 
             function UserBoards() {
                 const boardList = document.querySelector('.board-list');
-            
-                const testData = [
-                    { board_id: 1, title: 'Доска 1' },
-                    { board_id: 2, title: 'Доска 2' },
-                    { board_id: 3, title: 'Доска 3' }
-                ];
-            
-                testData.forEach(board => {
-                    const option = document.createElement('option');
-                    option.value = board.board_id;
-                    option.textContent = board.title;
-                    boardList.appendChild(option);
-                });
+
+                boardList.innerHTML = '';
+
+                API.getUserBoards()
+                if (data && data.body && Array.isArray(data.body)) {
+                    data.body.forEach(board => {
+                        const option = document.createElement('option');
+                        option.value = board.board_id;
+                        option.textContent = board.title;
+                        boardList.appendChild(option);
+                    });
+                } else {
+                    console.error('Некорректный формат данных о досках пользователя:', data);
+                }
             }
             
             
