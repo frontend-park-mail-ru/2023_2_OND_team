@@ -40,12 +40,11 @@ export function renderPinPage(pinID) {
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
-            function UserBoards() {
+            function UserBoards(data) {
                 const boardList = document.querySelector('.board-list');
-
+            
                 boardList.innerHTML = '';
-
-                API.getUserBoards()
+            
                 if (data && data.body && Array.isArray(data.body)) {
                     data.body.forEach(board => {
                         const option = document.createElement('option');
@@ -57,6 +56,14 @@ export function renderPinPage(pinID) {
                     console.error('Некорректный формат данных о досках пользователя:', data);
                 }
             }
+            
+            API.getUserBoards()
+                .then((data) => {
+                    UserBoards(data);
+                })
+                .catch((error) => {
+                    console.error('Ошибка при получении информации о досках пользователя:', error);
+                });
             
             
             const deleteButton = document.createElement('button');
