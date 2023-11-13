@@ -43,7 +43,7 @@ export function renderPinPage(pinID) {
             function UserBoards() {
                 const boardList = document.querySelector('.board-list');
                 
-                API.getUserBoards()
+                //API.getUserBoards()
             
                 const testData = [
                     { board_id: 1, title: 'Доска 1' },
