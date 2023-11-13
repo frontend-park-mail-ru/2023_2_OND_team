@@ -167,6 +167,16 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
+.pin-description {
+    width: 472px;
+    height: 200px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
 .hide {
     display: none;
 }
