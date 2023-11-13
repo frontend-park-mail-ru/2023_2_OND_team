@@ -171,4 +171,13 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
- }
+}
+
+.board-control {
+    display: inline-flex;
+    align-items: flex-start;
+    position: relative;
+    top: -70px;
+    left: 520px;
+    gap: 50px;
+}
