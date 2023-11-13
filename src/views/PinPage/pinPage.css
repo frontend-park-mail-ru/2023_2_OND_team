@@ -108,6 +108,7 @@
     box-sizing: border-box;
     padding: 0;
     display: block;
+    margin-top: 20px;
     margin-left: 20px;
     width: 300px;
     height: auto;
