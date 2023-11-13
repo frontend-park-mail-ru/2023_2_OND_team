@@ -45,28 +45,33 @@ export function renderPinPage(pinID) {
                     .then((data) => {
                         console.log('Информация о досках пользователя:', data);
             
-                        boardList.innerHTML = '';
+                        const container = document.getElementById('board-list');
+                        container.innerHTML = '';
             
                         if (data && data.body && Array.isArray(data.body)) {
                             data.body.forEach((board) => {
-                                const option = document.createElement('option');
-                                option.value = board.board_id;
-                                option.textContent = board.title;
-                                boardList.appendChild(option);
+                                const boardSelect = document.createElement('select');
+                                boardSelect.classList.add('board-list');
+            
+                                board.pins.forEach((pin, index) => {
+                                    const option = document.createElement('option');
+                                    option.value = index + 1;
+                                    option.textContent = board.title;
+                                    boardSelect.appendChild(option);
+                                });
+            
+                                container.appendChild(boardSelect);
                             });
                         } else {
                             console.error('Некорректный формат данных о досках пользователя:', data);
                         }
-            
-                        const container = document.getElementById('board-list');
-                        container.appendChild(boardList);
                     })
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
                     });
             }
             
-
+            
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
             deleteButton.classList.add('delete-button');
