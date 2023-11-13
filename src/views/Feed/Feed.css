@@ -1,0 +1,61 @@
+@import url(./Gallery.css);
+
+#root {
+    display: grid;
+    grid-template-areas: 
+    "sidebar header"
+    "sidebar content";
+    grid-template-rows: 77px 1fr;
+    grid-template-columns: min-content 1fr;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    display: flex;
+    z-index: 2;
+    width: 250px;
+}
+
+#sidebar:empty {
+    display: none;
+}
+
+#header {
+    grid-area: header;
+    position: fixed;
+    flex-grow: 1;
+    z-index: 1;
+    width: -webkit-fill-available;
+}
+
+#header:empty {
+    display: none;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: content;
+    flex-grow: 1;
+    z-index: 0;
+    padding-top: 20px;
+    padding: 30px 0px 30px 0px;
+}
+
+#main:empty {
+    display: none;
+}
+
+#fullpage {
+    display: flex;
+}
+
+#fullpage:empty {
+    display: none;
+}

@@ -24,11 +24,14 @@ const httpsOptions = {
   cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
 };
 
-// https.createServer(httpsOptions, app).listen(443);
-https.createServer(httpsOptions, app).listen(1445);
+https.createServer(httpsOptions, app).listen(443);
 
-app.use(express.static(path.resolve(__dirname, '..', 'public')));
+app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(express.json());
 app.use(cookieParser());
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'src', 'index.html'));
+});
 
 app.use(cors());
