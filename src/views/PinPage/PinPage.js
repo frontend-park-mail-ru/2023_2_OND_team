@@ -40,17 +40,17 @@ export function renderPinPage(pinID) {
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
-            function UserBoards() {
+            /*function UserBoards() {
                 API.getUserBoards()
                     .then((data) => {
                         console.log('Информация о досках пользователя:', data);
 
-                        //data.body.forEach((board) => {
-                        //    const option = document.createElement('option');
-                        //    option.value = board.board_id;
-                        //    option.textContent = board.title;
-                        //    boardList.appendChild(option);
-                        //});
+                        data.body.forEach((board) => {
+                            const option = document.createElement('option');
+                            option.value = board.board_id;
+                            option.textContent = board.title;
+                            boardList.appendChild(option);
+                        });
                         data.forEach((board) => {
                             const pins = Array.from(board.pins).slice(0, 3);
                             const context = {
@@ -69,7 +69,7 @@ export function renderPinPage(pinID) {
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
                     });
-            }
+            }**/
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
