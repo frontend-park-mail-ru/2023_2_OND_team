@@ -41,30 +41,20 @@ export function renderPinPage(pinID) {
             boardList.classList.add('board-list');
 
             function UserBoards() {
-                API.getUserBoards()
-                    .then((data) => {
-                        console.log('Информация о досках пользователя:', data);
+                const boardList = document.querySelector('.board-list');
             
-                        const container = document.getElementById('board-list');
-                        //container.innerHTML = '';
+                const testData = [
+                    { board_id: 1, title: 'Доска 1' },
+                    { board_id: 2, title: 'Доска 2' },
+                    { board_id: 3, title: 'Доска 3' }
+                ];
             
-                            data.body.forEach((board) => {
-                                const boardSelect = document.createElement('select');
-                                boardSelect.classList.add('board-list');
-            
-                                board.pins.forEach((board_id) => {
-                                    const option = document.createElement('option');
-                                    board_id = board.board_id
-                                    option.textContent = board.title;
-                                    boardSelect.appendChild(option);
-                                });
-            
-                                container.appendChild(boardSelect);
-                            });
-                    })
-                    .catch((error) => {
-                        console.error('Ошибка при получении информации о досках пользователя:', error);
-                    });
+                testData.forEach(board => {
+                    const option = document.createElement('option');
+                    option.value = board.board_id;
+                    option.textContent = board.title;
+                    boardList.appendChild(option);
+                });
             }
             
             
@@ -130,6 +120,7 @@ export function renderPinPage(pinID) {
             if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
+                block.appendChild(boardList);
                 UserBoards();
             }
 
