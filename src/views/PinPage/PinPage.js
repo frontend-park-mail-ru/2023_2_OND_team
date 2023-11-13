@@ -48,7 +48,7 @@ export function renderPinPage(pinID) {
                         const container = document.getElementById('board-list');
                         //container.innerHTML = '';
             
-                        if (data && data.body && Array.isArray(data.body)) {
+                        if (Array.isArray(data.body)) {
                             data.body.forEach((board) => {
                                 const boardSelect = document.createElement('select');
                                 boardSelect.classList.add('board-list');
