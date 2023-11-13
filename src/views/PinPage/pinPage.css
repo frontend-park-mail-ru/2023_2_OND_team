@@ -38,6 +38,23 @@
     border-radius: 14px;
 }
 
+.pin-like-btn {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.pin-like-counter {
+    height: 20px;
+    text-align: center;
+}
+    
+.pin-like-icon {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
 .saved {
     display: flex;
 }
@@ -143,6 +160,16 @@
 .pin-edit-item {
     width: 472px;
     height: 56px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.pin-description {
+    width: 472px;
+    height: 200px;
     border: none;
     background: none;
     resize: none;

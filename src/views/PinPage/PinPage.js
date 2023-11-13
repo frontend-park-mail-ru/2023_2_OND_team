@@ -18,9 +18,53 @@ export function renderPinPage(pinID) {
                 username: pinInfo.author.username,
                 title: pinInfo.title,
                 description: pinInfo.description,
+                likes: pinInfo.count_likes,
             };
 
             main.innerHTML = pinPage(context);
+
+            const likeButton = document.querySelector('.pin-like-icon');
+            const likeField = document.querySelector('.pin-like-counter');
+
+            API.getLike(pinID)
+                .then((data) => {
+                    if (data.is_set) {
+                        likeButton.src = '/assets/icons/like_active.svg';
+                    } else {
+                        likeButton.src = '/assets/icons/like.svg';
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+
+            likeButton?.addEventListener('click', () => {
+                API.getLike(pinID)
+                    .then((data) => {
+                        if (data.is_set) {
+                            API.deleteLike(pinID)
+                                .then((data) => {
+                                    likeButton.src = '/assets/icons/like.svg';
+                                    likeField.innerHTML = data.count_like;
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        } else {
+                            API.setLike(pinID)
+                                .then((data) => {
+                                    likeButton.src = '/assets/icons/like_active.svg';
+                                    likeField.innerHTML = data.count_like;
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
+            })
 
             const usernameReal = state.getUsername();
             const isAuthorized = state.getIsAuthorized();

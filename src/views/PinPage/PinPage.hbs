@@ -14,16 +14,21 @@
                 <label for="pin-description" class="labeled-input">Описание</label>
                 <textarea disabled class="pin-description input-read-only text-base1-small pin-edit-item">{{description}}</textarea>
             </div>
+            <div class="pin-like-btn">
+                <img src="/assets/icons/like.svg" alt="Like" class="pin-like-icon js-pin-like-icon-{{id}}">
+                <div class="pin-like-counter pin-like-counter-{{id}} text-base1-medium">{{likes}}</span>
+                </div>
+            </div>
         </div>
-    </div>
     <span class="pin-edit-span-all"></span>
-    <div class="pin-control hide">
-        <button class="btn-primary-clear text-base1-medium pin-control__cansel-btn">Отмена</button>
-        <button class="btn-primary-default text-base1-medium pin-control__save-btn">Сохранить</button>
-    </div>
+    
     <!--<div class="other__pins__title">
         <span>Другие интересные пины</span>
     </div>
     <section id="pins" class="gallery">
     </section>-->
+</div>
+<div class="pin-control hide">
+    <button class="btn-primary-clear text-base1-medium pin-control__cansel-btn">Отмена</button>
+    <button class="btn-primary-default text-base1-medium pin-control__save-btn">Сохранить</button>
 </div>
