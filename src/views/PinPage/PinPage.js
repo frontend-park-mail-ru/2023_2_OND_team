@@ -84,37 +84,26 @@ export function renderPinPage(pinID) {
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
-            /*function UserBoards() {
-                API.getUserBoards()
-                    .then((data) => {
-                        console.log('Информация о досках пользователя:', data);
-
-                        data.body.forEach((board) => {
-                            const option = document.createElement('option');
-                            option.value = board.board_id;
-                            option.textContent = board.title;
-                            boardList.appendChild(option);
-                        });
-                        data.forEach((board) => {
-                            const pins = Array.from(board.pins).slice(0, 3);
-                            const context = {
-                                id: board.board_id,
-                                title: board.title,
-                                description: board.description,
-                                pins: pins,
-                            }
-                        });
-
-                        console.log(context);
-
-                        //const container = document.getElementById('board-list');
-                        //container.appendChild(boardList);
-                    })
-                    .catch((error) => {
-                        console.error('Ошибка при получении информации о досках пользователя:', error);
-                    });
-            }**/
-
+            function UserBoards() {
+                const boardList = document.querySelector('.board-list');
+                
+                //API.getUserBoards()
+            
+                const testData = [
+                    { board_id: 1, title: 'Доска 1' },
+                    { board_id: 2, title: 'Доска 2' },
+                    { board_id: 3, title: 'Доска 3' }
+                ];
+            
+                testData.forEach(board => {
+                    const option = document.createElement('option');
+                    option.value = board.board_id;
+                    option.textContent = board.title;
+                    boardList.appendChild(option);
+                });
+            }
+            
+            
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
             deleteButton.classList.add('delete-button');
@@ -174,12 +163,12 @@ export function renderPinPage(pinID) {
                 rec.appendChild(updateButton);
             }
 
-            /*if (isAuthorized) {
+            if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
                 block.appendChild(boardList);
                 UserBoards();
-            }*/
+            }
 
             deleteButton.addEventListener('click', function (e) {
                 e.preventDefault();
