@@ -27,8 +27,8 @@ export async function renderBoardPage(boardID) {
         const titleTextarea = document.querySelector('.board-title');
         const descriptionTextarea = document.querySelector('.board-description');
 
-        const pinControl = document.querySelector('.board-control');
-        const canselDataBtn = document.querySelector('.board-control__cansel-btn');
+        const boardControl = document.querySelector('.board-control');
+        const cancelDataBtn = document.querySelector('.board-control__cancel-btn');
         const saveDataBtn = document.querySelector('.board-control__save-btn');
 
         const editSpan = document.querySelector('.board-edit-span-all');
@@ -43,7 +43,7 @@ export async function renderBoardPage(boardID) {
 
         updateButton?.addEventListener('click', () => {
             updateButton.classList.add('hide');
-            pinControl.classList.remove('hide');
+            boardControl.classList.remove('hide');
 
             titleTextarea.classList.add('input-primary');
             descriptionTextarea.classList.add('input-primary');
@@ -54,9 +54,9 @@ export async function renderBoardPage(boardID) {
             editSpan.textContent = '';
         });
 
-        canselDataBtn?.addEventListener('click', () => {
+        cancelDataBtn?.addEventListener('click', () => {
             updateButton.classList.remove('hide');
-            pinControl.classList.add('hide');
+            boardControl.classList.add('hide');
 
             titleTextarea.classList.remove('input-primary');
             descriptionTextarea.classList.remove('input-primary');

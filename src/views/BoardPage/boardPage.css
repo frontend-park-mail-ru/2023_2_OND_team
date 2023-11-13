@@ -58,3 +58,20 @@
     font-weight: 400;
     line-height: normal;
 }
+
+.board-edit-span-all {
+    font-family: Nunito;
+    height: 30px;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+}
+
+.board-control {
+    display: inline-flex;
+    align-items: flex-start;
+    position: relative;
+    top: -70px;
+    left: 520px;
+    gap: 50px;
+}
