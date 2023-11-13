@@ -46,7 +46,7 @@ export function renderPinPage(pinID) {
                         console.log('Информация о досках пользователя:', data);
             
                         const container = document.getElementById('board-list');
-                        container.innerHTML = '';
+                        //container.innerHTML = '';
             
                         if (data && data.body && Array.isArray(data.body)) {
                             data.body.forEach((board) => {
