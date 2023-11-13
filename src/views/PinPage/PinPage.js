@@ -53,9 +53,9 @@ export function renderPinPage(pinID) {
                                 const boardSelect = document.createElement('select');
                                 boardSelect.classList.add('board-list');
             
-                                board.pins.forEach((pin, index) => {
+                                board.pins.forEach((board_id) => {
                                     const option = document.createElement('option');
-                                    option.value = index + 1;
+                                    board_id = board.board_id;
                                     option.textContent = board.title;
                                     boardSelect.appendChild(option);
                                 });
