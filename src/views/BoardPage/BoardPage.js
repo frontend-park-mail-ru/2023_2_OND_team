@@ -24,14 +24,14 @@ export async function renderBoardPage(boardID) {
 
         const usernameReal = state.getUsername();
 
-        const titleTextarea = document.querySelector('.board-title');
-        const descriptionTextarea = document.querySelector('.board-description');
+        const titleTextarea = document.querySelector('.pin-title');
+        const descriptionTextarea = document.querySelector('.pin-description');
 
-        const boardControl = document.querySelector('.board-control');
-        const cancelDataBtn = document.querySelector('.board-control__cancel-btn');
-        const saveDataBtn = document.querySelector('.board-control__save-btn');
+        const pinControl = document.querySelector('.pin-control');
+        const canselDataBtn = document.querySelector('.pin-control__cansel-btn');
+        const saveDataBtn = document.querySelector('.pin-control__save-btn');
 
-        const editSpan = document.querySelector('.board-edit-span-all');
+        const editSpan = document.querySelector('.pin-edit-span-all');
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Удалить';
@@ -43,7 +43,7 @@ export async function renderBoardPage(boardID) {
 
         updateButton?.addEventListener('click', () => {
             updateButton.classList.add('hide');
-            boardControl.classList.remove('hide');
+            pinControl.classList.remove('hide');
 
             titleTextarea.classList.add('input-primary');
             descriptionTextarea.classList.add('input-primary');
@@ -54,9 +54,9 @@ export async function renderBoardPage(boardID) {
             editSpan.textContent = '';
         });
 
-        cancelDataBtn?.addEventListener('click', () => {
+        canselDataBtn?.addEventListener('click', () => {
             updateButton.classList.remove('hide');
-            boardControl.classList.add('hide');
+            pinControl.classList.add('hide');
 
             titleTextarea.classList.remove('input-primary');
             descriptionTextarea.classList.remove('input-primary');
