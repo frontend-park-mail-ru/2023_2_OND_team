@@ -1,0 +1,77 @@
+.rectangle-board-open {
+    margin: 15px 15px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1px 20px;
+    display: flex;
+    justify-content: center;
+    max-width: 1395px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.labeled-input-open {
+    font-family: Nunito;
+    color: grey;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+.board-edit-item {
+    width: 272px;
+    height: 46px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.board-description {
+    font-family: Nunito;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    padding: 0;
+    display: block;
+    margin-left: 20px;
+}
+
+.board-title {
+    margin: 15px 15px 0px;
+    font-family: Nunito;
+    font-size: 25px;
+    text-align: left;
+}
+
+.text-base1-small {
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.board-edit-span-all {
+    font-family: Nunito;
+    height: 30px;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+}
+
+.board-control {
+    display: inline-flex;
+    align-items: flex-start;
+    position: relative;
+    top: -70px;
+    left: 520px;
+    gap: 50px;
+}

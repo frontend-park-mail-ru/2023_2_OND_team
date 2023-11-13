@@ -4,11 +4,11 @@
 * @param {Array} images - Массив объектов с информацией о пинах.
 */
 export function renderRecPins(parent, images) {
-    const template = Handlebars.templates['PinsOnBoard.hbs'];
-    images.forEach((image) => {
-      const context = {src: image.picture, id: image.id};
-  
-      parent?.insertAdjacentHTML('beforeend', template(context));
-    });
+  const template = Handlebars.templates['PinOnBoard.hbs'];
+  images.forEach((image) => {
+    const context = {src: image.picture, id: image.id};
+
+    parent?.insertAdjacentHTML('beforeend', template(context));
+  });
 }
   
