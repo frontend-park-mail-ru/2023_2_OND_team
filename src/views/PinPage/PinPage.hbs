@@ -1,11 +1,11 @@
 <div>
     <div class="rectangle">
-        <div class="gallery__item js-pin-id-{{id}}">
+        <div class="open__gallery__item js-pin-id-{{id}}">
             <img src="{{src}}" width="200"/>
-            <div class="like-button">
+            {{!-- <div class="like-button">
                 <img src="/assets/icons/like.svg" alt="Like" class="like-icon js-like-button-{{id}}">
                 <div class="like-counter like-counter-{{id}} text-base1-medium"></span>
-            </div>
+            </div> --}}
         </div>
         <div class="block">
             <!--<div class="saved"></div>-->
@@ -17,6 +17,10 @@
             <div>
                 <label for="pin-description" class="labeled-input">Описание</label>
                 <textarea disabled class="pin-description input-read-only text-base1-small pin-edit-item">{{description}}</textarea>
+            </div>
+            <div class="pin-like-btn">
+                <img src="/assets/icons/like.svg" alt="Like" class="pin-like-icon js-pin-like-icon-{{id}}">
+                <div class="pin-like-counter pin-like-counter-{{id}} text-base1-medium"></span>
             </div>
         </div>
     </div>
