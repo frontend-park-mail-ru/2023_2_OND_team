@@ -38,11 +38,15 @@
     border-radius: 14px;
 }
 
+.pin-like-btn {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
 .pin-like-counter {
     height: 20px;
-    color: aliceblue;
     text-align: center;
-    opacity: 0;
 }
     
 .pin-like-icon {
