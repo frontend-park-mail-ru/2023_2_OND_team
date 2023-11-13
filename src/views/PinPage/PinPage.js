@@ -48,14 +48,14 @@ export function renderPinPage(pinID) {
                         const container = document.getElementById('board-list');
                         //container.innerHTML = '';
             
-                        if (Array.isArray(data.body)) {
+                        if (data.body) {
                             data.body.forEach((board) => {
                                 const boardSelect = document.createElement('select');
                                 boardSelect.classList.add('board-list');
             
                                 board.pins.forEach((board_id) => {
                                     const option = document.createElement('option');
-                                    board_id = board.board_id;
+                                    board_id = board.board_id
                                     option.textContent = board.title;
                                     boardSelect.appendChild(option);
                                 });
