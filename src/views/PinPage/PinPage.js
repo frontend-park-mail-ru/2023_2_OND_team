@@ -40,7 +40,7 @@ export function renderPinPage(pinID) {
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
-            /*function UserBoards() {
+            function UserBoards() {
                 API.getUserBoards()
                     .then((data) => {
                         console.log('Информация о досках пользователя:', data);
@@ -69,7 +69,7 @@ export function renderPinPage(pinID) {
                     .catch((error) => {
                         console.error('Ошибка при получении информации о досках пользователя:', error);
                     });
-            }**/
+            }
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Удалить';
@@ -130,12 +130,12 @@ export function renderPinPage(pinID) {
                 rec.appendChild(updateButton);
             }
 
-            /*if (isAuthorized) {
+            if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
                 block.appendChild(boardList);
                 UserBoards();
-            }*/
+            }
 
             deleteButton.addEventListener('click', function (e) {
                 e.preventDefault();
