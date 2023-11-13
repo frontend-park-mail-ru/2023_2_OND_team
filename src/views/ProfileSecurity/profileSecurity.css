@@ -145,13 +145,13 @@
 
 .profile-security__change {
     display: flex;
-    width: 338px;
+    width: 350px;
     height: 40px;
 }
 
 .profile-security__btn-change{
     display: flex;
-    width: 338px;
+    width: 350px;
     height: 100%;
     padding: 20px 16px;
     justify-content: center;

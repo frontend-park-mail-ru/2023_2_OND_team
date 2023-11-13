@@ -37,6 +37,32 @@
     margin-right: 0px;
     border-radius: 14px;
 }
+
+.pin-like-btn {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.pin-like-counter {
+    height: 20px;
+    text-align: center;
+}
+    
+.pin-like-icon {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.saved {
+    display: flex;
+}
+
+.board-list {
+    margin: 20px 5px 25px 5px;
+    border-radius: 10px;
+}
   
 .save-button {
     background-color: #226B77;
@@ -54,7 +80,7 @@
     background-color: white;
     color: red;
     border: red;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 10px;
     padding: 10px 15px;
     cursor: pointer;
@@ -80,10 +106,10 @@
 }
 
 .edit-button {
-    font-size: 16px;
+    font-size: 18px;
     padding: 18px 15px;
     cursor: pointer;
-    width: 17px;
+    width: 22px;
     height: 25px;
 }
 
@@ -99,7 +125,12 @@
     box-sizing: border-box;
     padding: 0;
     display: block;
+    margin-top: 20px;
     margin-left: 20px;
+    width: 300px;
+    height: auto;
+    resize: vertical;
+    overflow-y: auto;
 }
 
 .other__pins__title {
@@ -107,4 +138,65 @@
     font-size: 25px;
     text-align: center;
     margin-top: 20px;
+}
+
+.pin-edit-span-all {
+    font-family: Nunito;
+    height: 30px;
+    font-size: 15px; 
+    color: var(--error-50, #F4210B);
+    text-align: left;
+}
+
+.pin-control {
+    display: inline-flex;
+    align-items: flex-start;
+    position: relative;
+    top: -70px;
+    left: 520px;
+    gap: 50px;
+}
+
+.pin-edit-item {
+    width: 472px;
+    height: 56px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.pin-description {
+    width: 472px;
+    height: 200px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.hide {
+    display: none;
+}
+
+.input-read-only {
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-45, #FFFFFF);
+    background: var(--bg-100, #FFF);
+}
+
+.input-primary {
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-45, #33A1B3);
+    background: var(--bg-100, #FFF);
+}
+
+.text-base1-medium {
+    font-family: Nunito;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

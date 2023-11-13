@@ -11,8 +11,28 @@
     width: 350px;
     height: 300px;
     gap: 10px;
-    border-radius: 10px;
+    border-radius: 17px;
     border: 1px solid black;
+    position: relative;
+}
+
+.user__board::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 17px;  
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.user__board:hover::before {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .user__board-title {
