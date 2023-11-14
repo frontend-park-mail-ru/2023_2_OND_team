@@ -86,7 +86,14 @@ export function renderHeaderDefault() {
     });
 
     document.body.addEventListener('click', (e) => {
-        createMenu.classList.add('hide');
-        userMenu.classList.add('hide');
+        console.log(e.target)
+        if (e.target !== document.querySelector('.js-create-img')) {
+            createMenu.classList.add('hide');
+        }
+        if (e.target !== document.querySelector('.header__user__avatar-user') &&
+           e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
+            userMenu.classList.add('hide');
+            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
+        }
     })
 }
