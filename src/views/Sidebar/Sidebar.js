@@ -49,8 +49,8 @@ export function renderSidebar() {
                     const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
 
                     profileFields.classList.remove('hide');
-                    profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
-                    
+                    profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
+
                     router.navigate('/profile');
                     break;
                 case 'profile-data':
