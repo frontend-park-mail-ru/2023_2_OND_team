@@ -72,9 +72,10 @@ export function renderHeaderDefault() {
         createMenu.classList.toggle('hide');
     });
 
+    const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
+
     const userBtn = document.querySelector('.header__user__avatar-img');
     userBtn?.addEventListener('click', () => {  
-        const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
 
         if (userMenu.classList.contains('hide')) {
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
@@ -93,7 +94,7 @@ export function renderHeaderDefault() {
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
            e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
             userMenu.classList.add('hide');
-            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
+            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
         }
     })
 }
