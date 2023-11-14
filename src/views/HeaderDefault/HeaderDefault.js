@@ -21,7 +21,6 @@ export function renderHeaderDefault() {
     createMenuBtns.forEach((btn) => {
         btn?.addEventListener('click', () => {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
-            console.log(menuItem);
             switch (menuItem) {
                 case 'pin':
                     router.navigate('/create/pin');
@@ -87,7 +86,6 @@ export function renderHeaderDefault() {
     });
 
     document.body.addEventListener('click', (e) => {
-        console.log(e.target)
         if (e.target !== document.querySelector('.js-create-img')) {
             createMenu.classList.add('hide');
         }

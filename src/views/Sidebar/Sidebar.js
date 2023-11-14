@@ -45,8 +45,12 @@ export function renderSidebar() {
                     router.navigate('/favourite');
                     break;
                 case 'profile':
+                    const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
+                    const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
+
                     profileFields.classList.remove('hide');
                     profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
+                    
                     router.navigate('/profile');
                     break;
                 case 'profile-data':

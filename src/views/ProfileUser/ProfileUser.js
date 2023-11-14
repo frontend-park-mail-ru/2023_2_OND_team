@@ -73,7 +73,7 @@ export function renderProfilePage() {
     function renderUserBoards() {
         API.getUserBoards()
             .then((data) => {
-                if (!data.boards) {
+                if (!data.board_id) {
                     const nonContent = document.querySelector('.user-non-content');
                     renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
                     return;
