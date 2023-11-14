@@ -18,9 +18,10 @@ export function renderFavouritePage() {
             if (data.pins) {
                 renderPins(section, data.pins);
                 definePins();
-            } else {
-                console.log('null');
-            }
+                return;
+            } 
+            const nonContent = document.querySelector('.favourite-non-content');
+            renderNonContentNotification(nonContent, 'У вас пока нет понравившихся пинов', 'Оценить пины', '/');
         })
         .catch((error) => {
             console.error('Ошибка при рендеринге пинов:', error);
