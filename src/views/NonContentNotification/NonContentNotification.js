@@ -1,4 +1,4 @@
-import { Router } from "../../components/Router/router";
+import { Router } from "../../components/Router/router.js";
 
 export function renderNonContentNotification(elementMount, textContent, btnContent, url) {
     const router = new Router();
