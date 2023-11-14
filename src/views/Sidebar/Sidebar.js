@@ -81,6 +81,10 @@ export function renderSidebar() {
                 behavior: 'smooth',
             });
         } else {
+            const activeElement = document.querySelector('.sidebar__menu__btn-active');
+            const feedElement = document.querySelector('.sidebar__menu__feed');
+            activeElement.classList.remove('sidebar__menu__btn-active');
+            feedElement.classList.add('sidebar__menu__btn-active');
             router.navigate('/');
         }
     }

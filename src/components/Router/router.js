@@ -17,6 +17,12 @@ import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
 import { renderAddPins } from "../../views/AddPins/AddPins.js"
 
+function resetScroll() {
+    window.scrollTo({
+        top: 0,
+    });
+}
+
 export class Router {
     #routes;
     #currentRoute;
@@ -308,6 +314,7 @@ export class Router {
                     API.checkLogin()
                         .then((status) => {
                             this.state.setCurrentPage(`pin${pinID}`);
+                            resetScroll();
                             if (status === 'ok') {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
@@ -332,6 +339,7 @@ export class Router {
                 handler: (boardID) => {
                     API.checkLogin()
                         .then((status) => {
+                            resetScroll();
                             this.state.setCurrentPage(`board${boardID}`);
                             if (status === 'ok') {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
