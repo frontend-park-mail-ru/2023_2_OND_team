@@ -25,6 +25,10 @@
     top: 10px;
     padding-left: 150px;
 }
+
+.js-create-img {
+    cursor: pointer;
+}
   
 .header__user__avatar {
     display: flex;
@@ -38,6 +42,7 @@
     align-items: center;
     position: relative;
     width: min-content;
+    cursor: pointer;
     gap: 5px;
     top: 20px;
 }
@@ -93,7 +98,7 @@
     position: relative;
     top: 54px;
     width: 200px;
-    height: 151px;
+    height: 155px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -110,11 +115,11 @@
     align-items: center;
     gap: var(--br-s, 10px);
     flex-shrink: 0;
+    cursor: pointer;
 }
   
-.header__user__menu__item:hover {
-    border-radius: 20px;
-    background: var(--bg-90, #E6E6E6);
+.header__user__menu__logout {
+    margin-top: 5px;
 }
   
 .header__user__menu__username {
