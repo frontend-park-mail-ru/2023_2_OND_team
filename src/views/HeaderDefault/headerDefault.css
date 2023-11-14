@@ -75,6 +75,11 @@
     align-items: center;
     gap: var(--br-s, 10px);
     flex-shrink: 0;
+    cursor: pointer;
+}
+
+.header__create__menu__board {
+   margin-top: 10px;
 }
   
 .header__create__menu__item:hover {
@@ -98,7 +103,7 @@
     position: relative;
     top: 54px;
     width: 200px;
-    height: 155px;
+    height: 160px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -117,9 +122,14 @@
     flex-shrink: 0;
     cursor: pointer;
 }
+
+.header__user__menu__item:hover {
+    border-radius: 20px;
+    background: var(--bg-90, #E6E6E6);
+}
   
 .header__user__menu__logout {
-    margin-top: 5px;
+    margin-top: 10px;
 }
   
 .header__user__menu__username {
