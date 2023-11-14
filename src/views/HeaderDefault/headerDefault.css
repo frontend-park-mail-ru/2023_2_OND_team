@@ -58,7 +58,7 @@
     position: relative;
     top: 30px;
     width: 212px;
-    height: 110px;
+    height: 101px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -128,6 +128,10 @@
     background: var(--bg-90, #E6E6E6);
 }
   
+.header__user__menu__profile {
+    border-radius: 0 0 20px 20px;
+}
+
 .header__user__menu__logout {
     margin-top: 10px;
 }
