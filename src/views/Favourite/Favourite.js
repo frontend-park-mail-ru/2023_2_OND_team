@@ -1,6 +1,7 @@
 import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
+import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
 
 export function renderFavouritePage() {
     const main = document.querySelector('#main');
