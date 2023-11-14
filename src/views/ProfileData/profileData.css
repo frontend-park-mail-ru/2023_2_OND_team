@@ -117,7 +117,7 @@
 .profile-data__data-about {
   display: flex;
   position: absolute;
-  top: 32px;
+  top: 20px;
   left: 500px;
   width: 360px;
   height: 223px;
@@ -242,7 +242,7 @@
 
 .input-read-only {
   border-radius: var(--br-s, 10px);
-  border: 2px solid var(--primary-45, #FFFFFF);
+  border: 2px solid var(--primary-45, #808080);
   background: var(--bg-100, #FFF);
 }
 
