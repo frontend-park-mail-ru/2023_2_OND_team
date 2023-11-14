@@ -119,8 +119,6 @@ export function renderFeedPage() {
                                 })
                         } 
                     })
-
-                
             })
         })
 
