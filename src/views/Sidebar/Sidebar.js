@@ -45,6 +45,8 @@ export function renderSidebar() {
                     router.navigate('/favourite');
                     break;
                 case 'profile':
+                    profileFields.classList.remove('hide');
+                    profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
                     router.navigate('/profile');
                     break;
                 case 'profile-data':
