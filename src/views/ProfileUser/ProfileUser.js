@@ -56,13 +56,14 @@ export function renderProfilePage() {
     function renderUserPins() {
         API.getUserPins()
             .then((data) => {
-                if (!data.pins) {
-                    const nonContent = document.querySelector('.user-non-content');
+                const nonContent = document.querySelector('.user-non-content');
+                    if (!data.pins) {
                     renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
                     return;
                 }
                 const section = document.getElementById('user-pins');
                 renderPins(section, data.pins);
+                nonContent.innerHTML = '';
                 definePins();
             })
             .catch((error) => {
@@ -73,13 +74,14 @@ export function renderProfilePage() {
     function renderUserBoards() {
         API.getUserBoards()
             .then((data) => {
-                if (!data.board_id) {
-                    const nonContent = document.querySelector('.user-non-content');
+                const nonContent = document.querySelector('.user-non-content');
+                    if (!data.length) {
                     renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
                     return;
                 }
                 const section = document.getElementById('user-boards');
                 renderBoards(section, data);
+                nonContent.innerHTML = '';
                 defineBoards();
             })
             .catch((error) => {
