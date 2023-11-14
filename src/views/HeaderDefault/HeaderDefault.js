@@ -85,4 +85,8 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
+    document.body.addEventListener('click', () => {
+        createMenu.classList.add('hide');
+        userMenu.classList.add('hide');
+    })
 }

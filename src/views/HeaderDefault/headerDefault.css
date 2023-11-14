@@ -128,7 +128,7 @@
     background: var(--bg-90, #E6E6E6);
 }
   
-.header__user__menu__profile {
+.header__user__menu__profile:hover {
     border-radius: 0 0 20px 20px;
 }
 
