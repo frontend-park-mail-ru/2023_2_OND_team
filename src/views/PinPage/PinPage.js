@@ -160,7 +160,7 @@ export function renderPinPage(pinID) {
             if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
-                block.appendChild(boardList);
+                //block.appendChild(boardList);
                 UserBoards();
             }
 
