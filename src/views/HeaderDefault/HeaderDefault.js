@@ -1,6 +1,7 @@
 import State from "../../components/State/state.js";
 import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
+import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -23,9 +24,11 @@ export function renderHeaderDefault() {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
             switch (menuItem) {
                 case 'pin':
+                    setHeaderTitle('Создание пина');
                     router.navigate('/create/pin');
                     break;
                 case 'board':
+                    setHeaderTitle('Создание доски');
                     router.navigate('/create/board');
                     break;
                 default:
@@ -52,6 +55,7 @@ export function renderHeaderDefault() {
                     profileFields.classList.remove('hide');
                     profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
 
+                    setHeaderTitle('Мои пины и доски');
                     router.navigate('/profile');
 
                     break;
@@ -59,6 +63,7 @@ export function renderHeaderDefault() {
                     API.logoutUser()
                         .then((status) => {
                             if (status === 'ok') {
+                                removeHeaderTitle();
                                 router.navigate('/login');
                             } else {
                                 console.log('error logout');
