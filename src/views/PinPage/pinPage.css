@@ -202,3 +202,10 @@
     font-weight: 400;
     line-height: normal;
 }
+
+.js-pin-to-board__btn-change {
+    margin: 10px 0;
+    display: block;
+    max-width: 90%;
+    margin-left: 20px;
+}

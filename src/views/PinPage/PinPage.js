@@ -80,7 +80,7 @@ export function renderPinPage(pinID) {
 
             const saveButton = document.createElement('button');
             saveButton.textContent = 'Прикрепить на доску';
-            saveButton.classList.add('save-button');
+            saveButton.classList.add('btn-primary-default text-base1-medium js-board-create__btn-change');
             const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
