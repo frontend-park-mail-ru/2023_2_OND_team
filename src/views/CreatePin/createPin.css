@@ -60,14 +60,6 @@
     margin-right: 10px;
 }
 
-#title,
-#description {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-
 .title-create {
     font-family: Nunito;
     font-size: 25px;
@@ -101,4 +93,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;  
+}
+
+.description__item-data {
+    height: 200px;
+    vertical-align: top;
+    height: 25px;
+    padding: 8px 0px 8px 8px;
+    resize: none;
 }
