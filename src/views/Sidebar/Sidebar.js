@@ -41,6 +41,9 @@ export function renderSidebar() {
                 case 'feed':
                     router.navigate('/');
                     break;
+                case 'subscriptions':
+                    router.navigate('/subscriptions');
+                    break;
                 case 'favourite':
                     router.navigate('/favourite');
                     break;

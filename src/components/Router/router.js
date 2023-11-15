@@ -201,6 +201,33 @@ export class Router {
                 },
             },
             {
+                path: "/subscriptions",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'subscriptions') {
+                        return;
+                    }
+
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                this.state.setCurrentPage('subscriptions');
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderFavouritePage();
+                            } else {
+                                this.navigate('/login');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
+            },
+            {
                 path: "/favourite",
                 handler: () => {
                     if (this.state.getCurrentPage() === 'favourite') {
