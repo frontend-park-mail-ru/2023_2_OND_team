@@ -1,20 +1,23 @@
 <div class="rectangle-create" id="pin-rectangle">
     <span class="title-create">Создание пина</span>
     <hr class="grey-line">
-    <div class="forms">
-        <div>
+    <div class="input__forms">
+        <div class="pin__img__add">
             <form class="profile__img__form js-profile__img__form" enctype="multipart/form-data" action="">
                 <input name="object" accept="image/*" type="file" id="picture" accept=".jpg, .jpeg, .png, .webp, .gif">
+                <img id="upload-image" src="../../assets/icons/actions/upload.svg">
             </form>
         </div>
-        <div class="inputs">
-            <div class="input-title">
-                <label for="title" class="labeled-input">Название</label>
-                <input type="text" id="title" placeholder="Введите название пина">
-            </div>
-            <div class="input-description">
-                <label for="description" class="labeled-input">Описание</label>
-                <textarea type="text" id="description" placeholder="Введите описание пина"></textarea>
+        <div class="forms">
+            <div class="inputs">
+                <div class="input-title">
+                    <label for="title" class="labeled-input">Название</label>
+                    <input type="text" id="title" placeholder="Введите название пина">
+                </div>
+                <div class="input-description">
+                    <label for="description" class="labeled-input">Описание</label>
+                    <textarea type="text" id="description" placeholder="Введите описание пина"></textarea>
+                </div>
             </div>
         </div>
     </div>
