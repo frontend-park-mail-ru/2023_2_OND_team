@@ -102,9 +102,10 @@ export function renderPinPage(pinID) {
             }*/
             
             const deleteButton = document.querySelector('.js-delete__btn');
-
-
             const updateButton = document.querySelector('.js-edit__btn');
+
+            updateButton.classList.add('hide');
+            deleteButton.classList.add('hide');
 
             updateButton?.addEventListener('click', () => {
                 updateButton.classList.add('hide');
@@ -153,8 +154,8 @@ export function renderPinPage(pinID) {
 
             if (usernameReal === pinInfo.author.username) {
                 const rec = document.querySelector('.rectangle');
-                rec.appendChild(deleteButton);
-                rec.appendChild(updateButton);
+                updateButton.classList.remove('hide');
+                deleteButton.classList.remove('hide');
             }
 
             if (isAuthorized) {
