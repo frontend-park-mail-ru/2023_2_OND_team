@@ -35,6 +35,50 @@
     display: block;
     margin-bottom: 5px;
 }
+
+.input__forms {
+    display: flex;
+}
+
+.pin__img__add {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.forms {
+    flex: 1;
+}
+
+.labeled-input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-title,
+.input-description {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+#title,
+#description {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
+.title-create {
+    font-family: Nunito;
+    font-size: 25px;
+    text-align: left;
+}
+  
+#file-input {
+    width: 50%;
+    margin-bottom: 10px;
+    height: 100px;
+}  
   
 #description {
     height: 200px;
