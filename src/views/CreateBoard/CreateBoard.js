@@ -14,8 +14,8 @@ export function renderCreateBoard() {
 
     main.innerHTML = createBoard(context);
 
-    const cancelButton = document.querySelector('.js-board-cancel__btn-change');
-    const createButton = document.querySelector('.js-board-create__btn-change')
+    const cancelButton = document.getElementById('.board-btn-cancel');
+    const createButton = document.getElementById('.board-btn-create');
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
