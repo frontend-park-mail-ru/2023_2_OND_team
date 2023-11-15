@@ -36,44 +36,6 @@
     gap: 5px;
 }
 
-textarea {
-    font-family: Nunito;
-    width: 400px;
-    height: 25px; 
-    padding: 8px 0px 8px 8px;
-    border: 2px solid var(--primary-45, #33A1B3);
-    border-radius: var(--br-s, 10px);
-  
-    color: var(--primary-15, #11363C);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    resize: none;
-}
-
-
-input {
-    font-family: Nunito;
-    width: 400px;
-    height: 25px; 
-    padding: 8px 0px 8px 8px;
-    border: 2px solid var(--primary-45, #33A1B3);
-    border-radius: var(--br-s, 10px);
-  
-    color: var(--primary-15, #11363C);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;  
-}
-
-input:focus {
-    border-radius: var(--br-s, 10px);
-    border: 2px solid var(--primary-30, #226B77);
-    background: var(--bg-100, #FFF);
-}
-
 .button {
     background-color: #226B77;
     color: #FFFFFF;
@@ -119,17 +81,6 @@ input:focus {
     font-size: 31px; 
     font-weight: normal; 
     margin-bottom: 30px;
-}
-
-p {
-    font-family: Nunito;
-}
-
-a {
-    font-family: Nunito 600;
-    font-weight: bold; 
-    color: black;
-    text-decoration: none;
 }
 
 .password-error-message {
@@ -206,9 +157,4 @@ a {
 
 .hide {
     display: none;
-}
-
-input::placeholder {
-  position: absolute;
-  top: 10px;
 }
