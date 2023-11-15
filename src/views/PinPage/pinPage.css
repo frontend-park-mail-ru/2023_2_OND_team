@@ -221,3 +221,11 @@
     width: 100px;
     height: 45px;
 }
+
+.btn-edit {
+    font-size: 18px;
+    padding: 18px 15px;
+    cursor: pointer;
+    width: 22px;
+    height: 25px;
+}
