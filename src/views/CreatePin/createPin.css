@@ -93,3 +93,12 @@
     display: flex;
     justify-content: center;
 }
+
+.title__item-data {
+    padding: 8px 0px 8px 8px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    resize: none;
+}
