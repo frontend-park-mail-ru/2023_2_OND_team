@@ -120,21 +120,6 @@
     color: var(--bg50, #808080);
 }
 
-.pin-title,
-.pin-description{
-    font-family: Nunito;
-    padding: 5px 20px;
-    box-sizing: border-box;
-    padding: 0;
-    display: block;
-    margin-top: 20px;
-    margin-left: 20px;
-    width: 300px;
-    height: auto;
-    resize: vertical;
-    overflow-y: auto;
-}
-
 .other__pins__title {
     font-family: Nunito;
     font-size: 25px;
@@ -170,13 +155,14 @@
 }
 
 .pin-description {
-    width: 472px;
+    width: 400px;
     height: 200px;
     border: none;
     background: none;
     resize: none;
     outline: none;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
+    padding: 8px 0px 8px 8px;
 }
 
 .hide {
