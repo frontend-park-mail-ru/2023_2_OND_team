@@ -167,3 +167,9 @@
     font-weight: 400;
     line-height: normal;   
 }
+
+.open-btn {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
