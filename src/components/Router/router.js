@@ -56,9 +56,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderDefault();
                             } else {
                                 renderHeaderGuest();
                             }
@@ -151,9 +149,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderDefault();
                                 renderFeedPage();
                             } else {
                                 this.state.setCurrentPage('login');
@@ -181,9 +177,7 @@ export class Router {
                             if (document.querySelector('#sidebar').innerHTML === '') {
                                 renderSidebar();
                             }
-                            if (document.querySelector('#header').innerHTML === '') {
-                                renderHeaderDefault();
-                            } 
+                            renderHeaderDefault();
                             renderFeedPage();
                         } else {
                             this.state.setCurrentPage('signup');
@@ -332,13 +326,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                }
+                                renderHeaderDefault();
                             } else {
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderGuest();
-                                }
+                                renderHeaderGuest();
                             }
                             renderPinPage(pinID);
                         })
@@ -358,10 +348,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-
-                                } 
+                                renderHeaderDefault();
                                 renderBoardPage(boardID);
                               
                             } else {
@@ -370,7 +357,6 @@ export class Router {
                                 }
 
                                 renderBoardPage(boardID);
-
                             }
                         })
                         .catch((error) => {
@@ -388,13 +374,9 @@ export class Router {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
-                        if (document.querySelector('#header').innerHTML === '') {
-                            renderHeaderDefault();
-                        }
+                        renderHeaderDefault();
                     } else {
-                        if (document.querySelector('#header').innerHTML === '') {
-                            renderHeaderGuest();
-                        }                    
+                        renderHeaderGuest();
                     }
                     renderPage404();
                 })

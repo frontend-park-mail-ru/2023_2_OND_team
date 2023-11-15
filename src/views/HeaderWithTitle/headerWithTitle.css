@@ -9,10 +9,11 @@
 }
 
 .header-with-title__left {
-    width: 200px
+    width: 450px
 }
 
 .header-with-title__title {
+    padding-top: 20px;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
     text-align: center;
 }
@@ -196,28 +197,3 @@
 .hide {
     display: none;
 }
-  
-.text-base1-regular {
-    font-family: Nunito;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-  
-.text-base1-medium {
-    /* text base1 medium */
-    font-family: Nunito;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.text-h4-medium {
-    font-family: Raleway;
-    font-size: 31.25px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
