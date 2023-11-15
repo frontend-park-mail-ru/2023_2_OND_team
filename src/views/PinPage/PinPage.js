@@ -161,7 +161,7 @@ export function renderPinPage(pinID) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
                 //block.appendChild(boardList);
-                UserBoards();
+                //UserBoards();
             }
 
             deleteButton.addEventListener('click', function (e) {
