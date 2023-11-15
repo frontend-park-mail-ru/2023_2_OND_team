@@ -9,6 +9,36 @@
     background: #FFF;
 }
 
+.header-guest__search {
+    padding: 5px 0 0 20px;
+}
+
+.header-guest__search__field {
+    display: inline-flex;
+    height: 40px;
+    width: 270px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 10px;
+    flex-shrink: 0;
+    gap: 4px;
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30, #226B77);
+    background: var(--bg-100, #FFF);
+}
+
+.header-guest__search__text-input {
+    all: unset;
+    width: 230px;
+    padding-left: 4px;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.header-guest__search__img-image {
+    cursor: pointer;
+}
+
 .header-guest__logo {
     cursor: pointer;
 }

@@ -36,11 +36,6 @@
     margin-bottom: 5px;
 }
   
-input[type="text"] {
-    margin-bottom: 10px;
-    vertical-align: top;
-}
-  
 #description {
     height: 200px;
     vertical-align: top;

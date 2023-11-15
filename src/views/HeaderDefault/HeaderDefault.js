@@ -21,7 +21,6 @@ export function renderHeaderDefault() {
     createMenuBtns.forEach((btn) => {
         btn?.addEventListener('click', () => {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
-            console.log(menuItem);
             switch (menuItem) {
                 case 'pin':
                     router.navigate('/create/pin');
@@ -42,11 +41,19 @@ export function renderHeaderDefault() {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
             switch (menuItem) {
                 case 'profile':
-                    router.navigate('/profile');
                     const sidebarActiveElement = document.querySelector('.sidebar__menu__btn-active');
                     sidebarActiveElement.classList.remove('sidebar__menu__btn-active');
                     const sidebarProfileElement = document.querySelector('.sidebar__menu__profile');
                     sidebarProfileElement.classList.add('sidebar__menu__btn-active');
+                    
+                    const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
+                    const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
+
+                    profileFields.classList.remove('hide');
+                    profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
+
+                    router.navigate('/profile');
+
                     break;
                 case 'logout':
                     API.logoutUser()
@@ -72,9 +79,10 @@ export function renderHeaderDefault() {
         createMenu.classList.toggle('hide');
     });
 
+    const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
+
     const userBtn = document.querySelector('.header__user__avatar-img');
     userBtn?.addEventListener('click', () => {  
-        const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
 
         if (userMenu.classList.contains('hide')) {
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
@@ -85,4 +93,14 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
+    document.body.addEventListener('click', (e) => {
+        if (e.target !== document.querySelector('.js-create-img')) {
+            createMenu.classList.add('hide');
+        }
+        if (e.target !== document.querySelector('.header__user__avatar-user') &&
+           e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
+            userMenu.classList.add('hide');
+            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
+        }
+    })
 }

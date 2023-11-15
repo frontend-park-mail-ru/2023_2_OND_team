@@ -6,7 +6,37 @@
     flex-shrink: 0;
     border-bottom: 1px solid var(--bg50, #808080);
     background: #FFF;
-  }
+}
+
+.header__search {
+    padding: 5px 0 0 20px;
+}
+
+.header__search__field {
+    display: inline-flex;
+    height: 40px;
+    width: 270px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 10px;
+    flex-shrink: 0;
+    gap: 4px;
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30, #226B77);
+    background: var(--bg-100, #FFF);
+}
+
+.header__search__text-input {
+    all: unset;
+    width: 230px;
+    padding-left: 4px;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.header__search__img-image {
+    cursor: pointer;
+}
   
 .header__user-btns {
     display: flex;
@@ -22,8 +52,23 @@
   
 .header__user__create-img {
     position: relative;
-    top: 10px;
+    top: 20px;
     padding-left: 150px;
+}
+
+.js-create-img {
+    cursor: pointer;
+}
+
+.header__user__notification {
+    display: flex;
+    flex-direction: column;
+}
+
+.header__user__notification-img {
+    position: relative;
+    top: 20px;
+    cursor: pointer;
 }
   
 .header__user__avatar {
@@ -38,6 +83,7 @@
     align-items: center;
     position: relative;
     width: min-content;
+    cursor: pointer;
     gap: 5px;
     top: 20px;
 }
@@ -53,7 +99,7 @@
     position: relative;
     top: 30px;
     width: 212px;
-    height: 101px;
+    height: 110px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -70,6 +116,11 @@
     align-items: center;
     gap: var(--br-s, 10px);
     flex-shrink: 0;
+    cursor: pointer;
+}
+
+.header__create__menu__board {
+   margin-top: 10px;
 }
   
 .header__create__menu__item:hover {
@@ -93,7 +144,7 @@
     position: relative;
     top: 54px;
     width: 200px;
-    height: 151px;
+    height: 160px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -110,11 +161,20 @@
     align-items: center;
     gap: var(--br-s, 10px);
     flex-shrink: 0;
+    cursor: pointer;
 }
-  
+
 .header__user__menu__item:hover {
     border-radius: 20px;
     background: var(--bg-90, #E6E6E6);
+}
+  
+.header__user__menu__profile:hover {
+    border-radius: 0 0 20px 20px;
+}
+
+.header__user__menu__logout {
+    margin-top: 10px;
 }
   
 .header__user__menu__username {

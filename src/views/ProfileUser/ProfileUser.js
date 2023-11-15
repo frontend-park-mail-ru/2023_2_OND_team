@@ -3,6 +3,7 @@ import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
 import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
+import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
 
 export function renderProfilePage() {
     const main = document.querySelector('#main');
@@ -55,8 +56,14 @@ export function renderProfilePage() {
     function renderUserPins() {
         API.getUserPins()
             .then((data) => {
+                const nonContent = document.querySelector('.user-non-content');
+                    if (!data.pins) {
+                    renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
+                    return;
+                }
                 const section = document.getElementById('user-pins');
                 renderPins(section, data.pins);
+                nonContent.innerHTML = '';
                 definePins();
             })
             .catch((error) => {
@@ -67,8 +74,14 @@ export function renderProfilePage() {
     function renderUserBoards() {
         API.getUserBoards()
             .then((data) => {
+                const nonContent = document.querySelector('.user-non-content');
+                    if (!data.length) {
+                    renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
+                    return;
+                }
                 const section = document.getElementById('user-boards');
                 renderBoards(section, data);
+                nonContent.innerHTML = '';
                 defineBoards();
             })
             .catch((error) => {

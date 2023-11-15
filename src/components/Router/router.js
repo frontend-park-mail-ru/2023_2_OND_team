@@ -16,6 +16,13 @@ import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
 import { renderAddPins } from "../../views/AddPins/AddPins.js"
+import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
+
+function resetScroll() {
+    window.scrollTo({
+        top: 0,
+    });
+}
 
 export class Router {
     #routes;
@@ -195,6 +202,33 @@ export class Router {
                 },
             },
             {
+                path: "/subscriptions",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'subscriptions') {
+                        return;
+                    }
+
+                    API.checkLogin()
+                        .then((status) => {
+                            if (status === 'ok') {
+                                this.state.setCurrentPage('subscriptions');
+                                if (document.querySelector('#sidebar').innerHTML === '') {
+                                    renderSidebar();
+                                }
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
+                                renderSubscriptionsPage();
+                            } else {
+                                this.navigate('/login');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        })
+                },
+            },
+            {
                 path: "/favourite",
                 handler: () => {
                     if (this.state.getCurrentPage() === 'favourite') {
@@ -308,6 +342,7 @@ export class Router {
                     API.checkLogin()
                         .then((status) => {
                             this.state.setCurrentPage(`pin${pinID}`);
+                            resetScroll();
                             if (status === 'ok') {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
@@ -332,6 +367,7 @@ export class Router {
                 handler: (boardID) => {
                     API.checkLogin()
                         .then((status) => {
+                            resetScroll();
                             this.state.setCurrentPage(`board${boardID}`);
                             if (status === 'ok') {
                                 if (document.querySelector('#sidebar').innerHTML === '') {

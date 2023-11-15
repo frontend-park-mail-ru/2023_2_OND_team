@@ -75,6 +75,8 @@
 }
 
 .profile-data__data-names {
+  position: relative;
+  top: -15px;
   flex: 1;
   display: inline-flex;
   flex-direction: column;
@@ -100,12 +102,11 @@
 
 .profile-data__data-names__item-data {
   display: flex;
-  width: 272px;
+  width: 360px;
   height: 46px;
 }
 
 .profile-data__data-names__item-textarea {
-  width: 272px;
   height: 46px;
   border: none;
   background: none;
@@ -117,10 +118,8 @@
 .profile-data__data-about {
   display: flex;
   position: absolute;
-  top: 32px;
+  top: 5px;
   left: 500px;
-  width: 360px;
-  height: 223px;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
@@ -134,9 +133,7 @@
 
 .profile-data__data-about__data {
   display: flex;
-  height: 200px;
-  width: 360px;
-  padding: 8px 0px;
+  width: 650px;
   justify-content: center;
   align-items: flex-start;
   padding-left: 2px;
@@ -144,8 +141,8 @@
 }
 
 .profile-data__data-about__data-textarea {
-  height: 200px;
-  width: 360px;
+  height: 258px;
+  width: 650px;
   border: none;
   background: none;
   resize: none;
@@ -240,9 +237,9 @@
 
 
 
-.input-read-only {
+.input-disabled {
   border-radius: var(--br-s, 10px);
-  border: 2px solid var(--primary-45, #FFFFFF);
+  border: 2px solid var(--primary-45, #808080);
   background: var(--bg-100, #FFF);
 }
 

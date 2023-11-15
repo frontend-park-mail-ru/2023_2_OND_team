@@ -1,6 +1,7 @@
 import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
+import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
 
 export function renderFavouritePage() {
     const main = document.querySelector('#main');
@@ -18,9 +19,10 @@ export function renderFavouritePage() {
             if (data.pins) {
                 renderPins(section, data.pins);
                 definePins();
-            } else {
-                console.log('null');
-            }
+                return;
+            } 
+            const nonContent = document.querySelector('.favourite-non-content');
+            renderNonContentNotification(nonContent, 'У вас пока нет понравившихся пинов', 'Оценить пины', '/');
         })
         .catch((error) => {
             console.error('Ошибка при рендеринге пинов:', error);

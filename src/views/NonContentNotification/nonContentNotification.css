@@ -1,0 +1,19 @@
+.non-content-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.js-non-content-goto-btn{
+    width: 220px;
+}
+
+.text-h4-medium {
+    /* h4 medium */
+    font-family: Nunito;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
