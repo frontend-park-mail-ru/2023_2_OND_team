@@ -78,7 +78,7 @@ export function renderPinPage(pinID) {
 
             const editSpan = document.querySelector('.pin-edit-span-all');
             
-            const saveButton = document.querySelector('btn-primary-default text-base1-medium js-pin-to-board__btn-change');
+            const saveButton = document.querySelector('.btn-primary-default text-base1-medium js-pin-to-board__btn-change');
             /*const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
@@ -101,10 +101,10 @@ export function renderPinPage(pinID) {
                 });
             }*/
             
-            const deleteButton = document.querySelector('btn-delete text-base1-medium js-delete__btn');
+            const deleteButton = document.querySelector('.btn-delete text-base1-medium js-delete__btn');
 
 
-            const updateButton = document.querySelector('btn-edit js-edit__btn');
+            const updateButton = document.querySelector('.btn-edit js-edit__btn');
 
             updateButton?.addEventListener('click', () => {
                 updateButton.classList.add('hide');
