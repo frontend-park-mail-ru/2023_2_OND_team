@@ -77,11 +77,9 @@ export function renderPinPage(pinID) {
             const saveDataBtn = document.querySelector('.pin-control__save-btn');
 
             const editSpan = document.querySelector('.pin-edit-span-all');
-
-            const saveButton = document.createElement('button');
-            saveButton.textContent = 'Прикрепить на доску';
-            saveButton.classList.add('btn-primary-default text-base1-medium js-board-create__btn-change');
-            const boardList = document.createElement('select');
+            
+            const saveButton = document.querySelector('btn-primary-default text-base1-medium js-pin-to-board__btn-change');
+            /*const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
             function UserBoards() {
@@ -101,16 +99,12 @@ export function renderPinPage(pinID) {
                     option.textContent = board.title;
                     boardList.appendChild(option);
                 });
-            }
+            }*/
             
-            
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Удалить';
-            deleteButton.classList.add('delete-button');
+            const deleteButton = document.querySelector('btn-delete text-base1-medium js-delete__btn');
 
-            const updateButton = document.createElement('img');
-            updateButton.src = '/assets/icons/actions/icon_edit.svg';
-            updateButton.classList.add('edit-button');
+
+            const updateButton = document.querySelector('btn-edit js-edit__btn');
 
             updateButton?.addEventListener('click', () => {
                 updateButton.classList.add('hide');

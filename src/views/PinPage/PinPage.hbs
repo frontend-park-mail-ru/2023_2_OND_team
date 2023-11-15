@@ -4,7 +4,9 @@
             <img src="{{src}}" width="200"/>
         </div>
         <div class="block">
-            <div class="saved"></div>
+            <div class="saved">
+                <button disabled class="btn-primary-default text-base1-medium js-pin-to-board__btn-change">Прикрепить на доску</button>
+            </div>
             <span class="pin-username">{{username}}</span>
             <div>
                 <label for="pin-title" class="labeled-input">Название</label>
@@ -27,6 +29,12 @@
     </div>
     <section id="pins" class="gallery">
     </section>-->
+    <div>
+        <button disabled class="btn-delete text-base1-medium js-delete__btn">Удалить</button>
+    </div>
+    <div>
+        <img disabled src="https://pinspire.online/assets/icons/actions/icon_edit.svg" class="btn-edit js-edit__btn">
+    </div>
 </div>
 <div class="pin-control hide">
     <button class="btn-primary-clear text-base1-medium pin-control__cansel-btn">Отмена</button>
