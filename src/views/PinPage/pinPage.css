@@ -229,3 +229,7 @@
     width: 22px;
     height: 25px;
 }
+
+.js-pin-to-board__btn {
+    width: 200px;
+}
