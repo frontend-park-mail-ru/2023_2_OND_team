@@ -220,6 +220,7 @@
     cursor: pointer;
     width: 100px;
     height: 45px;
+    margin: 10px 0;
 }
 
 .btn-edit {
@@ -228,8 +229,10 @@
     cursor: pointer;
     width: 22px;
     height: 25px;
+    margin: 10px 0;
 }
 
 .js-pin-to-board__btn {
     width: 200px;
+    margin: 10px 0;
 }
