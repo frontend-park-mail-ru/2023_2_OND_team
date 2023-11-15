@@ -37,7 +37,13 @@
 .header__search__img-image {
     cursor: pointer;
 }
-  
+
+.header__title {
+    padding-top: 20px;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+    text-align: center;
+}
+
 .header__user-btns {
     display: flex;
     gap: 20px;

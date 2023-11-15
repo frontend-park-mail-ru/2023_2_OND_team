@@ -15,9 +15,7 @@ import { renderPinPage } from "../../views/PinPage/PinPage.js";
 import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
-import { renderAddPins } from "../../views/AddPins/AddPins.js"
-import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
-import { renderHeaderWithTitle } from "../../views/HeaderWithTitle/HeaderWithTitle.js";
+import { renderAddPins } from "../../views/AddPins/AddPins.js";
 
 function resetScroll() {
     window.scrollTo({
@@ -56,7 +54,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderDefault();
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                             } else {
                                 renderHeaderGuest();
                             }
@@ -81,7 +81,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Мои пины и доски');
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderProfilePage();
                             } else {
                                 this.navigate('/login');
@@ -102,7 +104,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Данные аккаунта'); 
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderProfileData();
                             } else {
                                 this.navigate('/login');
@@ -123,7 +127,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Безопасность');
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderProfileSecurity();
                             } else {
                                 this.navigate('/login');
@@ -149,7 +155,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderDefault();
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderFeedPage();
                             } else {
                                 this.state.setCurrentPage('login');
@@ -177,7 +185,9 @@ export class Router {
                             if (document.querySelector('#sidebar').innerHTML === '') {
                                 renderSidebar();
                             }
-                            renderHeaderDefault();
+                            if (document.querySelector('#header').innerHTML === '') {
+                                renderHeaderDefault();
+                            } 
                             renderFeedPage();
                         } else {
                             this.state.setCurrentPage('signup');
@@ -204,7 +214,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Подписки'); 
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderSubscriptionsPage();
                             } else {
                                 this.navigate('/login');
@@ -229,7 +241,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Понравившиеся пины'); 
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderFavouritePage();
                             } else {
                                 this.navigate('/login');
@@ -254,7 +268,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Создание пина');
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                } 
                                 renderCreatePin();
                             } else {
                                 this.navigate('/login');
@@ -279,7 +295,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Создание доски');                    
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                }                     
                                 renderCreateBoard();
                             } else {
                                 this.navigate('/login');
@@ -304,7 +322,9 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderWithTitle('Создание доски');                    
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                }                     
                                 renderAddPins(boardID);
                             } else {
                                 this.navigate('/create/board');
@@ -326,9 +346,13 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderDefault();
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+                                }
                             } else {
-                                renderHeaderGuest();
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderGuest();
+                                }
                             }
                             renderPinPage(pinID);
                         })
@@ -348,7 +372,10 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                renderHeaderDefault();
+                                if (document.querySelector('#header').innerHTML === '') {
+                                    renderHeaderDefault();
+
+                                } 
                                 renderBoardPage(boardID);
                               
                             } else {
@@ -357,6 +384,7 @@ export class Router {
                                 }
 
                                 renderBoardPage(boardID);
+
                             }
                         })
                         .catch((error) => {
@@ -374,9 +402,13 @@ export class Router {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
-                        renderHeaderDefault();
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        }
                     } else {
-                        renderHeaderGuest();
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderGuest();
+                        }                    
                     }
                     renderPage404();
                 })
