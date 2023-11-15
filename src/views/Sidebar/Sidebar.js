@@ -1,29 +1,6 @@
 import { State } from "../../components/State/state.js"
 import { Router } from "../../components/Router/router.js";
-
-function setHeaderTitle(title) {
-    const headerSearch = document.querySelector('.header__search');
-    const headerLeft = document.querySelector('.header__left');
-    const headerTitle = document.querySelector('.header__title');
-
-    headerSearch.classList.add('hide');
-    headerLeft.classList.remove('hide');
-    headerTitle.classList.remove('hide');
-
-    headerTitle.innerHTML = title;
-}
-
-function removeHeaderTitle() {
-    const headerSearch = document.querySelector('.header__search');
-    const headerLeft = document.querySelector('.header__left');
-    const headerTitle = document.querySelector('.header__title');
-
-    headerSearch.classList.remove('hide');
-    headerLeft.classList.add('hide');
-    headerTitle.classList.add('hide');
-
-    headerTitle.innerHTML = '';
-}
+import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
 
 export function renderSidebar() {
     const state = new State();
@@ -71,6 +48,7 @@ export function renderSidebar() {
                     router.navigate('/subscriptions');
                     break;
                 case 'favourite':
+                    setHeaderTitle('Понравившиеся пины');
                     router.navigate('/favourite');
                     break;
                 case 'profile':
@@ -80,12 +58,16 @@ export function renderSidebar() {
                     profileFields.classList.remove('hide');
                     profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
 
+                    setHeaderTitle('Мои пины и доски');
+
                     router.navigate('/profile');
                     break;
                 case 'profile-data':
+                    setHeaderTitle('Данные аккаунта');
                     router.navigate('/profile/data');
                     break;
                 case 'profile-security':
+                    setHeaderTitle('Безопасность');
                     router.navigate('/profile/security');
                     break;
                 default:
