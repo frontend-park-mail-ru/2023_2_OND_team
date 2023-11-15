@@ -10,7 +10,8 @@
 }
 
 .header-guest__search {
-    padding: 5px 0 0 20px;
+    position: relative;
+    top: -10px;
 }
 
 .header-guest__search__field {
