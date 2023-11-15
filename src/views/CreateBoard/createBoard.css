@@ -46,3 +46,12 @@
 .input-container {
     justify-content: center;
 }
+
+.board-data__btns {
+    display: inline-flex;
+    align-items: flex-start;
+    flex: center;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+}

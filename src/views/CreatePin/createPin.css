@@ -84,13 +84,6 @@
     height: 200px;
     vertical-align: top;
 }
-  
-.buttons-container {
-    display: flex;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: center;
-}
 
 .pin-data__btns {
     display: inline-flex;
@@ -99,4 +92,4 @@
     gap: 20px;
     display: flex;
     justify-content: center;
-  }
+}
