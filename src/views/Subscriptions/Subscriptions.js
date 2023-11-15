@@ -1,6 +1,6 @@
 import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
 
-export function rendersubscriptionsPage() {
+export function renderSubscriptionsPage() {
     const main = document.querySelector('#main');
 
     const subscriptionsTemplate = Handlebars.templates['Subscriptions.hbs'];
