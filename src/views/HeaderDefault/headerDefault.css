@@ -9,6 +9,10 @@
 }
 
 .header__search {
+    padding-left: 20px;
+}
+
+.header__search__field {
     display: inline-flex;
     height: 40px;
     width: 270px;
