@@ -14,8 +14,8 @@ export function renderCreatePin() {
 
     main.innerHTML = createPin(context);
 
-    const cancelButton = document.querySelector('.js-pin-cancel__btn');
-    const createButton = document.querySelector('.js-pin-create__btn');
+    const cancelButton = document.querySelector('.js-pin-cancel__btn-change');
+    const createButton = document.querySelector('.js-pin-create__btn-change');
     const pictureInput = document.getElementById('picture');
     let picture;
 
