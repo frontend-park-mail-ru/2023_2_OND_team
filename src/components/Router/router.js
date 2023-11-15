@@ -17,6 +17,7 @@ import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
 import { renderAddPins } from "../../views/AddPins/AddPins.js"
 import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
+import { renderHeaderWithTitle } from "../../views/HeaderWithTitle/HeaderWithTitle.js";
 
 function resetScroll() {
     window.scrollTo({
@@ -82,9 +83,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderWithTitle('Мои пины и доски');
                                 renderProfilePage();
                             } else {
                                 this.navigate('/login');
@@ -105,9 +104,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderWithTitle('Данные аккаунта'); 
                                 renderProfileData();
                             } else {
                                 this.navigate('/login');
@@ -128,9 +125,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderWithTitle('Безопасность');
                                 renderProfileSecurity();
                             } else {
                                 this.navigate('/login');
@@ -215,9 +210,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderWithTitle('Подписки'); 
                                 renderSubscriptionsPage();
                             } else {
                                 this.navigate('/login');
@@ -242,9 +235,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderWithTitle('Понравившиеся пины'); 
                                 renderFavouritePage();
                             } else {
                                 this.navigate('/login');
@@ -269,9 +260,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
+                                renderHeaderWithTitle('Создание пина');
                                 renderCreatePin();
                             } else {
                                 this.navigate('/login');
@@ -296,9 +285,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                }                     
+                                renderHeaderWithTitle('Создание доски');                    
                                 renderCreateBoard();
                             } else {
                                 this.navigate('/login');
@@ -323,9 +310,7 @@ export class Router {
                                 if (document.querySelector('#sidebar').innerHTML === '') {
                                     renderSidebar();
                                 }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                }                     
+                                renderHeaderWithTitle('Создание доски');                    
                                 renderAddPins(boardID);
                             } else {
                                 this.navigate('/create/board');
