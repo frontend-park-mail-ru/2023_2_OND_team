@@ -44,6 +44,10 @@
     text-align: center;
 }
 
+.header__left {
+    width: 450px
+}
+
 .header__user-btns {
     display: flex;
     gap: 20px;

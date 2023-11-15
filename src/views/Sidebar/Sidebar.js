@@ -1,6 +1,30 @@
 import { State } from "../../components/State/state.js"
 import { Router } from "../../components/Router/router.js";
 
+function setHeaderTitle(title) {
+    const headerSearch = document.querySelector('.header__search');
+    const headerLeft = document.querySelector('.header__left');
+    const headerTitle = document.querySelector('.header__title');
+
+    headerSearch.classList.add('hide');
+    headerLeft.classList.remove('hide');
+    headerTitle.classList.remove('hide');
+
+    headerTitle.innerHTML = title;
+}
+
+function removeHeaderTitle() {
+    const headerSearch = document.querySelector('.header__search');
+    const headerLeft = document.querySelector('.header__left');
+    const headerTitle = document.querySelector('.header__title');
+
+    headerSearch.classList.remove('hide');
+    headerLeft.classList.add('hide');
+    headerTitle.classList.add('hide');
+
+    headerTitle.innerHTML = '';
+}
+
 export function renderSidebar() {
     const state = new State();
     if (!state.getIsAuthorized) {
@@ -39,9 +63,11 @@ export function renderSidebar() {
             const menuItem = btn.className.split(' ')[1].split('__')[2]
             switch (menuItem) {
                 case 'feed':
+                    removeHeaderTitle();
                     router.navigate('/');
                     break;
                 case 'subscriptions':
+                    setHeaderTitle('Подписки');
                     router.navigate('/subscriptions');
                     break;
                 case 'favourite':

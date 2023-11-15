@@ -16,6 +16,7 @@ import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
 import { renderAddPins } from "../../views/AddPins/AddPins.js";
+import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js"
 
 function resetScroll() {
     window.scrollTo({
