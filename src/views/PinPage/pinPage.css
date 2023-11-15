@@ -145,6 +145,7 @@
 }
 
 .pin-edit-item {
+    padding-left: 20px;
     width: 472px;
     height: 56px;
     border: none;
