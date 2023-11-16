@@ -92,9 +92,15 @@ export function renderRegPage() {
       API.registerUser(username, email, password)
           .then((status) => {
             if (status) {
-              header.innerHTML = '';
-              registration.innerHTML = '';
-              router.navigate('/');
+              API.checkLogin()
+                .then(() => {
+                  header.innerHTML = '';
+                  authorization.innerHTML = '';
+                  router.navigate('/');
+                })
+                .catch((error) => {
+                  console.error(error);
+                })
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               emailInput.style.borderColor = 'var(--error-50, #F4210B)';

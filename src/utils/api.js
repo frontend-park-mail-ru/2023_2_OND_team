@@ -49,17 +49,10 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
-          this.checkLogin()
-          .then(() => {
-            return true;
-          })
+          return true;
         }
 
-        this.checkLogin()
-          .then(() => {
-            return false;
-          })
-
+        return false;
       } catch (error) {
         console.error('Ошибка при выполнении запроса loginUser:', error);
         throw error;
@@ -110,8 +103,6 @@ export class API {
             this.state.setIsAuthorized(false);
           }
         }
-
-        console.log(this.state.getIsAuthorized());
 
         return res.status;
       } catch (error) {
@@ -522,7 +513,6 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          console.log(res.body)
           
           return res.body;
         } else {
@@ -553,7 +543,6 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          console.log(res.body)
           
           return res.body;
         } else {
@@ -768,9 +757,7 @@ export class API {
 
         const res = await response.json();
 
-        if (res.status === 'ok') {
-          console.log(res.body)
-          
+        if (res.status === 'ok') {          
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных об удалении доски');
