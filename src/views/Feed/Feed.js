@@ -62,7 +62,7 @@ export function renderFeedPage() {
 
                     const section = document.getElementById('pins');
                     renderPins(section, data.pins);
-                    definePins(data.pins);
+                    definePins();
     
                     const pins = document.querySelectorAll('.gallery__item');
                     if (pins?.length > 100) {
@@ -85,19 +85,22 @@ export function renderFeedPage() {
     window.removeEventListener('scroll', window.scrollFunc);
     window.addEventListener('scroll', window.scrollFunc);
     
-    function definePins(pins) {
+    function definePins() {
+        const pins = document.querySelectorAll('.gallery__item');
+
         if (state.getIsAuthorized()) {
             pins.forEach((pin) => {
+                const pinID = pin.className.split(' ')[1].split('-')[3];
+                const likeField = document.querySelector(`.like-counter-${pinEssence.ID}`);
+                const likeButton = document.querySelector(`.js-like-button-${pinEssence.ID}`);
+                
                 const pinEssence = {
-                    ID: pin.id,
+                    ID: pinID,
                     setLike: null,
-                    countLikes: pin.count_likes,
+                    countLikes: null,
                 }
                 
                 state.addPin(pinEssence);
-
-                const likeField = document.querySelector(`.like-counter-${pinEssence.ID}`);
-                const likeButton = document.querySelector(`.js-like-button-${pinEssence.ID}`);
 
                 pin.addEventListener('click', (e) => {
                     if (e.target.classList.contains('like-icon')) {
@@ -119,6 +122,11 @@ export function renderFeedPage() {
                         API.getLike(pinEssence.ID)
                             .then((data) => {
                                 state.setLike(pinEssence.ID, data.is_set);
+                                if (data.is_set) {
+                                    likeButton.src = '/assets/icons/like_active.svg';
+                                } else {
+                                    likeButton.src = '/assets/icons/like.svg';
+                                }
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -126,15 +134,17 @@ export function renderFeedPage() {
                     }
 
                     const countLikes = state.getCountLikes(pinEssence.ID);
-                    likeField.innerHTML = countLikes;
-                    likeField.style.opacity = 1;
+                    if (countLikes) {
+                        likeField.innerHTML = countLikes;
+                        likeField.style.opacity = 1;
+                    }
                 });
 
                 pin.addEventListener('mouseleave', () => {
                     likeField.style.opacity = 0;                   
                 });
 
-                likeButton.addEventListener('click', (element) => {
+                likeButton.addEventListener('click', () => {
                     const setLike = state.getSetLike(pinEssence.ID);
                     if (setLike !== null) {
                         if (setLike === true) {
@@ -153,7 +163,7 @@ export function renderFeedPage() {
                         } else {
                             likeButton.src = '/assets/icons/like_active.svg';
 
-                            const countLikes = state.addLikePinLikePin(pinEssence.ID);
+                            const countLikes = state.addLikePin(pinEssence.ID);
                             likeField.innerHTML = countLikes;
 
                             API.setLike(pinEssence.ID)
