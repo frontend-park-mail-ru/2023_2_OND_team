@@ -57,10 +57,11 @@ export function renderProfilePage() {
                     return;
                 }
 
-                const section = document.querySelector('.user-gallery');
-                section.innerHTML = '';
+                const sectionPins = document.querySelector('.user-pins-gallery');
+                const sectionBoards = document.querySelector('.user-boards-gallery');
+                sectionBoards.innerHTML = '';
                 nonContent.innerHTML = '';
-                renderPins(section, data.pins);
+                renderPins(sectionPins, data.pins);
                 definePins();
             })
             .catch((error) => {
@@ -77,10 +78,11 @@ export function renderProfilePage() {
                     return;
                 }         
 
-                const section = document.querySelector('.user-gallery');
-                section.innerHTML = '';
+                const sectionPins = document.querySelector('.user-pins-gallery');
+                const sectionBoards = document.querySelector('.user-boards-gallery');
+                sectionPins.innerHTML = '';
                 nonContent.innerHTML = '';
-                renderBoards(section, data);
+                renderBoards(sectionBoards, data);
                 defineBoards();
             })
             .catch((error) => {
