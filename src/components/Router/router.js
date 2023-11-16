@@ -16,8 +16,9 @@ import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
 import { renderAddPins } from "../../views/AddPins/AddPins.js";
-import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js"
-import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js"
+import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
+import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
+import { setActiveSidebarItem } from "../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js";
 
 function resetScroll() {
     window.scrollTo({
@@ -59,6 +60,8 @@ export class Router {
                             renderSidebar();
                         }
 
+                        setActiveSidebarItem('feed');
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
@@ -87,6 +90,8 @@ export class Router {
                             renderSidebar();
                         }
 
+                        setActiveSidebarItem('profile');
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         }
@@ -111,6 +116,8 @@ export class Router {
                             renderSidebar();
                         }
 
+                        setActiveSidebarItem('profile-data');
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
@@ -132,6 +139,8 @@ export class Router {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+                        
+                        setActiveSidebarItem('profile-security');
 
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
@@ -194,6 +203,8 @@ export class Router {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+                        
+                        setActiveSidebarItem('subscriptions');
 
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
@@ -223,6 +234,8 @@ export class Router {
                             renderSidebar();
                         }
 
+                        setActiveSidebarItem('favourite');
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
@@ -250,6 +263,8 @@ export class Router {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
+                        setActiveSidebarItem('');
 
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
@@ -279,6 +294,8 @@ export class Router {
                             renderSidebar();
                         }
 
+                        setActiveSidebarItem('');
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         }               
@@ -304,6 +321,8 @@ export class Router {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+                        
+                        setActiveSidebarItem('');
                         
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
@@ -365,35 +384,36 @@ export class Router {
                             renderHeaderGuest();
                         }
                     }
+
                     resetScroll();
-                    
+
                     renderBoardPage(boardID);
                 },
             },
         ];
 
         this.#currentRoute = null;
+
         this.#defaultRoute = () => {
-            API.checkLogin()
-                .then((status) => {
-                    if (status === 'ok') {
-                        if (document.querySelector('#sidebar').innerHTML === '') {
-                            renderSidebar();
-                        }
-                        if (document.querySelector('#header').innerHTML === '') {
-                            renderHeaderDefault();
-                        }
-                    } else {
-                        if (document.querySelector('#header').innerHTML === '') {
-                            renderHeaderGuest();
-                        }                    
-                    }
-                    renderPage404();
-                })
-                .catch((error) => {
-                    console.error(error);
-                })
+            if (this.state.getIsAuthorized()) {
+                if (document.querySelector('#sidebar').innerHTML === '') {
+                    renderSidebar();
+                }
+
+                if (document.querySelector('#header').innerHTML === '') {
+                    renderHeaderDefault();
+                }
+
+                setActiveSidebarItem('');
+            } else {
+                if (document.querySelector('#header').innerHTML === '') {
+                    renderHeaderGuest();
+                }      
+            }
+
+            renderPage404();
         };
+
         this.#popstateListener = this.handlePopstate.bind(this);
         window.addEventListener("popstate", this.#popstateListener);
     }

@@ -41,17 +41,6 @@ export function renderHeaderDefault() {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
             switch (menuItem) {
                 case 'profile':
-                    const sidebarActiveElement = document.querySelector('.sidebar__menu__btn-active');
-                    sidebarActiveElement.classList.remove('sidebar__menu__btn-active');
-                    const sidebarProfileElement = document.querySelector('.sidebar__menu__profile');
-                    sidebarProfileElement.classList.add('sidebar__menu__btn-active');
-                    
-                    const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
-                    const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
-
-                    profileFields.classList.remove('hide');
-                    profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
-
                     router.navigate('/profile');
                     break;
                 case 'logout':

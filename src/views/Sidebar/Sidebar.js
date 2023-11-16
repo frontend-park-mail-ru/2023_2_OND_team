@@ -48,12 +48,6 @@ export function renderSidebar() {
                     router.navigate('/favourite');
                     break;
                 case 'profile':
-                    const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
-                    const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
-
-                    profileFields.classList.remove('hide');
-                    profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
-
                     router.navigate('/profile');
                     break;
                 case 'profile-data':
@@ -65,10 +59,6 @@ export function renderSidebar() {
                 default:
                     break;
             }
-
-            const activeElement = document.querySelector('.sidebar__menu__btn-active');
-            activeElement.classList.remove('sidebar__menu__btn-active');
-            btn.classList.add('sidebar__menu__btn-active');
         });
     });
 
@@ -84,10 +74,6 @@ export function renderSidebar() {
                 behavior: 'smooth',
             });
         } else {
-            const activeElement = document.querySelector('.sidebar__menu__btn-active');
-            const feedElement = document.querySelector('.sidebar__menu__feed');
-            activeElement.classList.remove('sidebar__menu__btn-active');
-            feedElement.classList.add('sidebar__menu__btn-active');
             router.navigate('/');
         }
     }
