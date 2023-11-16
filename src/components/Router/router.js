@@ -384,7 +384,7 @@ export class Router {
                             renderHeaderGuest();
                         }
                     }
-                    
+
                     resetScroll();
 
                     renderBoardPage(boardID);
@@ -393,27 +393,27 @@ export class Router {
         ];
 
         this.#currentRoute = null;
+
         this.#defaultRoute = () => {
-            API.checkLogin()
-                .then((status) => {
-                    if (status === 'ok') {
-                        if (document.querySelector('#sidebar').innerHTML === '') {
-                            renderSidebar();
-                        }
-                        if (document.querySelector('#header').innerHTML === '') {
-                            renderHeaderDefault();
-                        }
-                    } else {
-                        if (document.querySelector('#header').innerHTML === '') {
-                            renderHeaderGuest();
-                        }                    
-                    }
-                    renderPage404();
-                })
-                .catch((error) => {
-                    console.error(error);
-                })
+            if (this.state.getIsAuthorized()) {
+                if (document.querySelector('#sidebar').innerHTML === '') {
+                    renderSidebar();
+                }
+
+                if (document.querySelector('#header').innerHTML === '') {
+                    renderHeaderDefault();
+                }
+
+                setHeaderTitle('');
+            } else {
+                if (document.querySelector('#header').innerHTML === '') {
+                    renderHeaderGuest();
+                }      
+            }
+
+            renderPage404();
         };
+
         this.#popstateListener = this.handlePopstate.bind(this);
         window.addEventListener("popstate", this.#popstateListener);
     }
