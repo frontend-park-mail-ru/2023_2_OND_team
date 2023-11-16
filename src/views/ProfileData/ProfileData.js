@@ -153,7 +153,7 @@ export function renderProfileData() {
                         if (res.status === "ok") {
                             router.navigate('/profile/data');
                         } else if (res.status === 'error') {
-                            dataSpan.textContent(`Некорректные данные: ${res.message}`);
+                            dataSpan.textContent = `Некорректные данные: ${res.message}`;
                         } else {
                             console.error('error saving data');
                         }

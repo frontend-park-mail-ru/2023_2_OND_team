@@ -143,7 +143,7 @@ export function renderProfileSecurity() {
                         if (res.status === "ok") {
                             router.navigate('/profile/security');
                         } else {                            
-                            securitySpan.textContent(`Некорректные данные: ${res.message}`);
+                            securitySpan.textContent = `Некорректные данные: ${res.message}`;
                         }
                     })
                     .catch((error) => {
