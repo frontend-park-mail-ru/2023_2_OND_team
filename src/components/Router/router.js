@@ -159,8 +159,6 @@ export class Router {
 
                         this.state.setCurrentPage('login');
 
-                        removeHeaderTitle();
-
                         renderHeaderGuest();
                         renderAuthPage();
                     }
@@ -177,8 +175,6 @@ export class Router {
                         this.navigate('/');
                     } else {
                         this.state.setCurrentPage('signup');
-
-                        removeHeaderTitle();
                         
                         renderHeaderGuest();
                         renderRegPage();
@@ -194,13 +190,17 @@ export class Router {
 
                     if (this.state.getIsAuthorized()) {
                         this.state.setCurrentPage('subscriptions');
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+
                         setHeaderTitle('Подписки');
+
                         renderSubscriptionsPage();
                     } else {
                         this.navigate('/login');
@@ -216,14 +216,19 @@ export class Router {
 
                     if (this.state.getIsAuthorized()) {
                         this.state.deleteAllPins();
+
                         this.state.setCurrentPage('favourite');
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+
                         setHeaderTitle('Понравившиеся пины');
+
                         renderFavouritePage();
                     } else {
                         this.navigate('/login');
@@ -295,12 +300,15 @@ export class Router {
 
                     if (this.state.getIsAuthorized()) {
                         this.state.setCurrentPage(`createВoard${boardID}`);
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+                        
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
-                        }                     
+                        }
+
                         renderAddPins(boardID);
                     } else {
                         this.navigate('/create/board');
@@ -330,6 +338,7 @@ export class Router {
                     }
 
                     resetScroll();
+
                     renderPinPage(pinID);
                 },
             },
@@ -341,6 +350,7 @@ export class Router {
                     }
 
                     this.state.deleteAllPins();
+
                     this.state.setCurrentPage(`board${boardID}`);
 
                     if (this.state.getIsAuthorized()) {
@@ -356,6 +366,7 @@ export class Router {
                         }
                     }
                     resetScroll();
+                    
                     renderBoardPage(boardID);
                 },
             },
