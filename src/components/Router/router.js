@@ -404,7 +404,7 @@ export class Router {
                     renderHeaderDefault();
                 }
 
-                setHeaderTitle('');
+                setActiveSidebarItem('');
             } else {
                 if (document.querySelector('#header').innerHTML === '') {
                     renderHeaderGuest();
