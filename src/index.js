@@ -12,4 +12,5 @@ import { Router } from "./components/Router/router.js";
 const router = new Router();
 
 API.getCsrfToken();
-router.handlePopstate();
+API.checkLogin()
+    .then(router.handlePopstate())
