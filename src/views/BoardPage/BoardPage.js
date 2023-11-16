@@ -2,6 +2,7 @@ import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
+import { definePins } from "../../utils/definePins/definePins.js";
 
 export async function renderBoardPage(boardID) {
     const router = new Router();
@@ -108,6 +109,7 @@ export async function renderBoardPage(boardID) {
             const data = await API.getBoardPins(boardID);
             const section = document.getElementById('board-pins');
             renderPins(section, data.pins);
+            definePins();
         } catch (error) {
             console.error('Ошибка при рендеринге пинов:', error);
         }
