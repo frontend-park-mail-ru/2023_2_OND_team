@@ -102,7 +102,9 @@ export function renderFeedPage() {
                 const likeField = document.querySelector(`.like-counter-${pinEssence.ID}`);
                 const likeButton = document.querySelector(`.js-like-button-${pinEssence.ID}`);
                 
-                state.addPin(pinEssence);
+                if (!state.addPin(pinEssence)) {
+                    return;
+                }
 
                 pin.addEventListener('click', (e) => {
                     if (e.target.classList.contains('like-icon')) {
