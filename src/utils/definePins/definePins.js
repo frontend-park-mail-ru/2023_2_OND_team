@@ -124,5 +124,35 @@ export function definePins() {
                 }     
             });  
         });
+    } else {
+        pins.forEach((pin) => {
+            const pinID = pin.className.split(' ')[1].split('-')[3];
+            
+            const pinEssence = {
+                ID: pinID,
+                setLike: null,
+                countLikes: null,
+            }
+            
+            const likeButton = document.querySelector(`.js-like-button-${pinEssence.ID}`);
+            
+            if (!state.addPin(pinEssence)) {
+                return;
+            }
+
+            pin.addEventListener('click', (e) => {
+                if (e.target.classList.contains('like-icon')) {
+                    return;
+                }
+                
+                state.deleteAllPins();
+                router.navigate(`/pin/${pinEssence.ID}`);
+            });
+
+            likeButton.addEventListener('click', () => {
+                state.deleteAllPins();
+                router.navigate('/login');
+            });  
+        });
     }
 }
