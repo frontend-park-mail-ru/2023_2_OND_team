@@ -1,9 +1,3 @@
-interface VisiblePins {
-    id,
-    setLike,
-    countLikes,
-}
-
 export class State {
     #csrfToken;
     #currentPage;
