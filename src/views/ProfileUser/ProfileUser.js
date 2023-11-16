@@ -30,9 +30,6 @@ export function renderProfilePage() {
         activeElement.classList.remove('profile-user__btn-active');
         pinsBtn.classList.add('profile-user__btn-active');
         
-        const gallery = document.querySelector('#user-boards');
-        gallery.innerHTML = '';
-
         renderUserPins();
     })
 
@@ -45,9 +42,6 @@ export function renderProfilePage() {
 
         activeElement.classList.remove('profile-user__btn-active');
         boardsBtn.classList.add('profile-user__btn-active');
-
-        const gallery = document.querySelector('#user-pins');
-        gallery.innerHTML = '';
 
         renderUserBoards();
     })
