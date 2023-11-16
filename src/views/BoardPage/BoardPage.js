@@ -24,7 +24,7 @@ export async function renderBoardPage(boardID) {
 
         const usernameReal = state.getUsername();
 
-        const titleTextarea = document.querySelector('.pin-title');
+        const titleTextarea = document.querySelector('.board-title');
         const descriptionTextarea = document.querySelector('.pin-description');
 
         const pinControl = document.querySelector('.pin-control');
