@@ -87,11 +87,13 @@ export class State {
     }
 
     setLike(ID, value) {
-        this.#visiblePins.find(pin => pin.ID === ID)?.setLike = value;
+        const pin = this.#visiblePins.find(pin => pin.ID === ID);
+        pin?.setLike = value;
     }
 
     setCountLikes(ID, countLikes) {
-        this.#visiblePins.find(pin => pin.ID === ID)?.countLikes = countLikes;
+        const pin = this.#visiblePins.find(pin => pin.ID === ID);
+        pin?.countLikes = countLikes;
     }
 
     getCountLikes(ID) {
