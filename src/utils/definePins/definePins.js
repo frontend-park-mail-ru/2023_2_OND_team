@@ -59,7 +59,7 @@ export function definePins() {
                 }
 
                 const countLikes = state.getCountLikes(pinEssence.ID);
-                if (countLikes) {
+                if (countLikes !== null) {
                     likeField.innerHTML = countLikes;
                     likeField.style.opacity = 1;
                 }
@@ -76,7 +76,7 @@ export function definePins() {
                         likeButton.src = '/assets/icons/like.svg';
 
                         const countLikes = state.removeLikePin(pinEssence.ID);
-                        if (countLikes) {
+                        if (countLikes !== null) {
                             likeField.innerHTML = countLikes;
                         }
 
@@ -94,7 +94,7 @@ export function definePins() {
                         likeButton.src = '/assets/icons/like_active.svg';
 
                         const countLikes = state.addLikePin(pinEssence.ID);
-                        if (countLikes) {
+                        if (countLikes !== null) {
                             likeField.innerHTML = countLikes;
                         }
 
