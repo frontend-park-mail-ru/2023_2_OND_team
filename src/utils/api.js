@@ -49,6 +49,11 @@ export class API {
 
         const res = await response.json();
         if (res.status === 'ok') {
+          this.state.setIsAuthorized(true);
+          this.state.setUserID(res.body.id);
+          this.state.setUsername(res.body.username);
+          this.state.setAvatar(res.body.avatar);
+          
           return true;
         }
 
