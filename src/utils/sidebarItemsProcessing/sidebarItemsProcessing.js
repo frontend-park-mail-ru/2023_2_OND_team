@@ -1,12 +1,12 @@
 export function setActiveSidebarItem(item) {
     const activeElement = document.querySelector('.sidebar__menu__btn-active');
-    activeElement.classList.remove('sidebar__menu__btn-active');
+    activeElement?.classList.remove('sidebar__menu__btn-active');
 
     if (!item) {
         return;
     }
 
-    const nestedBtn = document.querySelector(`.sidebar__menu__btn sidebar__menu__${item}`);
+    const nestedBtn = document.querySelector(`.sidebar__menu__${item}`);
     nestedBtn?.classList.add('sidebar__menu__btn-active');
 
     if (['profile', 'profile-data', 'profile-security'].includes(item)) {
