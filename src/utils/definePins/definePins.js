@@ -1,5 +1,5 @@
-import State from "../../components/State/state";
-import { Router } from "../../components/Router/router";
+import State from "../../components/State/state.js";
+import { Router } from "../../components/Router/router.js";
 
 
 export function definePins() {
