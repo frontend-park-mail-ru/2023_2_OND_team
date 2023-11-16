@@ -48,15 +48,21 @@ export class Router {
                     }
 
                     window.removeEventListener('scroll', window.scrollFunc);
+
+                    state.deleteAllPins();
+
                     this.state.setCurrentPage('feed');
 
                     if (this.state.getIsAuthorized()) {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+
+                        removeHeaderTitle();
                     } else {
                         renderHeaderGuest();
                     }
@@ -72,13 +78,20 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized()) {
+                        state.deleteAllPins();
+
                         this.state.setCurrentPage('profile');
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
-                        } 
+                        }
+
+                        setHeaderTitle('Мои пины и доски');
+
                         renderProfilePage();
                     } else {
                         this.navigate('/login');
@@ -89,13 +102,20 @@ export class Router {
                 path: "/profile/data",
                 handler: () => {
                     if (this.state.getIsAuthorized()) {
+                        state.deleteAllPins();
+
                         this.state.setCurrentPage('profileData');
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+
+                        setHeaderTitle('Данные аккаунта');
+
                         renderProfileData();
                     } else {
                         this.navigate('/login');
@@ -107,12 +127,17 @@ export class Router {
                 handler: () => {
                     if (this.state.getIsAuthorized()) {
                         this.state.setCurrentPage('profileSecurity');
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+
+                        setHeaderTitle('Безопасность');
+
                         renderProfileSecurity();
                     } else {
                         this.navigate('/login');
@@ -129,7 +154,12 @@ export class Router {
                     if (this.state.getIsAuthorized()) {
                         this.navigate('/');
                     } else {
+                        state.deleteAllPins();
+                        
                         this.state.setCurrentPage('login');
+
+                        removeHeaderTitle();
+
                         renderHeaderGuest();
                         renderAuthPage();
                     }
@@ -146,6 +176,9 @@ export class Router {
                         this.navigate('/');
                     } else {
                         this.state.setCurrentPage('signup');
+
+                        removeHeaderTitle();
+                        
                         renderHeaderGuest();
                         renderRegPage();
                     }
@@ -166,6 +199,7 @@ export class Router {
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+                        setHeaderTitle('Подписки');
                         renderSubscriptionsPage();
                     } else {
                         this.navigate('/login');
@@ -180,6 +214,7 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized()) {
+                        state.deleteAllPins();
                         this.state.setCurrentPage('favourite');
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
@@ -187,6 +222,7 @@ export class Router {
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+                        setHeaderTitle('Понравившиеся пины');
                         renderFavouritePage();
                     } else {
                         this.navigate('/login');
@@ -201,13 +237,20 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized) {
+                        state.deleteAllPins();
+
                         this.state.setCurrentPage('createPin');
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         } 
+
+                        setHeaderTitle('Создание пина');
+
                         renderCreatePin();
                     } else {
                         this.navigate('/login');
@@ -222,13 +265,20 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized()) {
+                        state.deleteAllPins();
+
                         this.state.setCurrentPage('createBoard');
+
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
+
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
-                        }                     
+                        }               
+                        
+                        setHeaderTitle('Создание доски');
+
                         renderCreateBoard();
                     } else {
                         this.navigate('/login');
@@ -289,6 +339,7 @@ export class Router {
                         return;
                     }
 
+                    state.deleteAllPins();
                     this.state.setCurrentPage(`board${boardID}`);
 
                     if (this.state.getIsAuthorized()) {
@@ -341,7 +392,6 @@ export class Router {
     }
 
     handlePopstate() {
-        console.log(this.state.getIsAuthorized())
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 

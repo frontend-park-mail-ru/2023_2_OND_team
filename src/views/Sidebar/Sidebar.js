@@ -1,6 +1,5 @@
 import { State } from "../../components/State/state.js"
 import { Router } from "../../components/Router/router.js";
-import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
 
 export function renderSidebar() {
     const state = new State();
@@ -40,17 +39,12 @@ export function renderSidebar() {
             const menuItem = btn.className.split(' ')[1].split('__')[2]
             switch (menuItem) {
                 case 'feed':
-                    removeHeaderTitle();
-                    state.deleteAllPins();
                     router.navigate('/');
                     break;
                 case 'subscriptions':
-                    setHeaderTitle('Подписки');
                     router.navigate('/subscriptions');
                     break;
                 case 'favourite':
-                    setHeaderTitle('Понравившиеся пины');
-                    state.deleteAllPins();
                     router.navigate('/favourite');
                     break;
                 case 'profile':
@@ -60,16 +54,12 @@ export function renderSidebar() {
                     profileFields.classList.remove('hide');
                     profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
 
-                    setHeaderTitle('Мои пины и доски');
-                    state.deleteAllPins();
                     router.navigate('/profile');
                     break;
                 case 'profile-data':
-                    setHeaderTitle('Данные аккаунта');
                     router.navigate('/profile/data');
                     break;
                 case 'profile-security':
-                    setHeaderTitle('Безопасность');
                     router.navigate('/profile/security');
                     break;
                 default:
@@ -98,7 +88,6 @@ export function renderSidebar() {
             const feedElement = document.querySelector('.sidebar__menu__feed');
             activeElement.classList.remove('sidebar__menu__btn-active');
             feedElement.classList.add('sidebar__menu__btn-active');
-            removeHeaderTitle();
             router.navigate('/');
         }
     }
