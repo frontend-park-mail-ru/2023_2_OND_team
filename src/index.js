@@ -14,5 +14,8 @@ const router = new Router();
 API.getCsrfToken()
     .then( 
         API.checkLogin()
-            .then(router.handlePopstate())
+            .then((status) => {
+                console.log(status);
+                router.handlePopstate();
+            })
     )
