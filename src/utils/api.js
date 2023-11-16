@@ -104,6 +104,8 @@ export class API {
           }
         }
 
+        console.log(this.state.getIsAuthorized());
+
         return res.status;
       } catch (error) {
         console.error('Ошибка при получении данных об авторизации:', error);
