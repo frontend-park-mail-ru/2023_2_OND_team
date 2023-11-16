@@ -88,6 +88,10 @@ export class State {
         this.#visiblePins.splice(0, count);
     }
 
+    deleteAllPins() {
+        this.#visiblePins = [];
+    }
+
     getSetLike(ID) {
         return this.#visiblePins.find(pin => pin.ID === ID)?.setLike;
     }

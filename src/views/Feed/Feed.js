@@ -110,7 +110,8 @@ export function renderFeedPage() {
                     if (e.target.classList.contains('like-icon')) {
                         return;
                     }
-        
+                    
+                    state.deleteAllPins();
                     router.navigate(`/pin/${pinEssence.ID}`);
                 });
 
