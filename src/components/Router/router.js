@@ -17,6 +17,7 @@ import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
 import { renderAddPins } from "../../views/AddPins/AddPins.js";
 import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js"
+import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js"
 
 function resetScroll() {
     window.scrollTo({
