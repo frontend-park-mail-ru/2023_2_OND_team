@@ -112,12 +112,24 @@ export class State {
 
     addLikePin(ID) {
         const nestedPinIndex = this.#visiblePins.findIndex(pin => pin.ID === ID);
-        return nestedPinIndex !== -1 ? this.#visiblePins[nestedPinIndex].countLikes++ : null;
+        const pin = this.#visiblePins[nestedPinIndex];
+        if (pin.countLikes === null) {
+            return null;
+        }
+
+        pin.countLikes += 1;
+        return pin.countLikes;
     }
 
     removeLikePin(ID) {
         const nestedPinIndex = this.#visiblePins.findIndex(pin => pin.ID === ID);
-        return nestedPinIndex !== -1 ? this.#visiblePins[nestedPinIndex].countLikes-- : null;
+        const pin = this.#visiblePins[nestedPinIndex];
+        if (pin.countLikes === null) {
+            return null;
+        }
+        
+        pin.countLikes -= 1;
+        return pin.countLikes;
     }
     
 }

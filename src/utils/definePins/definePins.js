@@ -78,14 +78,17 @@ export function definePins() {
                         const countLikes = state.removeLikePin(pinEssence.ID);
                         if (countLikes !== null) {
                             likeField.innerHTML = countLikes;
+                            likeField.style.opacity = 1;
                         }
 
                         API.deleteLike(pinEssence.ID)
                             .then((data) => {
                                 state.setLike(pinEssence.ID, false);
                                 state.setCountLikes(pinEssence.ID, data.count_like);
-                                likeField.style.opacity = 1;
-                                likeField.innerHTML = state.getCountLikes(pinEssence.ID);
+                                if (likeField.innerHTML === '') {
+                                    likeField.innerHTML = state.getCountLikes(pinEssence.ID);
+                                    likeField.style.opacity = 1;
+                                }
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -96,14 +99,17 @@ export function definePins() {
                         const countLikes = state.addLikePin(pinEssence.ID);
                         if (countLikes !== null) {
                             likeField.innerHTML = countLikes;
+                            likeField.style.opacity = 1;
                         }
 
                         API.setLike(pinEssence.ID)
                             .then((data) => {
                                 state.setLike(pinEssence.ID, true);
                                 state.setCountLikes(pinEssence.ID, data.count_like);
-                                likeField.style.opacity = 1;
-                                likeField.innerHTML = state.getCountLikes(pinEssence.ID);
+                                if (likeField.innerHTML === '') {
+                                    likeField.innerHTML = state.getCountLikes(pinEssence.ID);
+                                    likeField.style.opacity = 1;
+                                }
                             })
                             .catch((error) => {
                                 console.error(error);
