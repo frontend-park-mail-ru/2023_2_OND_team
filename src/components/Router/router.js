@@ -341,6 +341,7 @@ export class Router {
     }
 
     handlePopstate() {
+        console.log(this.state.getIsAuthorized())
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 
