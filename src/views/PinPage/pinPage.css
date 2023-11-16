@@ -41,6 +41,7 @@
     align-items: center;
     padding-left: 20px;
     gap: 10px;
+    margin-top: 170px
 }
 
 .pin-like-counter {
@@ -168,13 +169,14 @@
 }
 
 .input-read-only {
+    margin: 5px 0px 0px 15px;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-45, #FFFFFF);
     background: var(--bg-100, #FFF);
 }
 
 .input-primary {
-    margin: 15px;
+    margin: 5px 0px 0px 15px;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-45, #33A1B3);
     background: var(--bg-100, #FFF);
