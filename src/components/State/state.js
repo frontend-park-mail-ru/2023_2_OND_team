@@ -94,6 +94,7 @@ export class State {
     setCountLikes(ID, countLikes) {
         const pin = this.#visiblePins.find(pin => pin.ID === ID);
         pin.countLikes = countLikes;
+        console.log(ID, countLikes, pin);
     }
 
     getCountLikes(ID) {

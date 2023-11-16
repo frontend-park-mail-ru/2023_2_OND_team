@@ -152,11 +152,14 @@ export function renderFeedPage() {
                             likeButton.src = '/assets/icons/like.svg';
 
                             const countLikes = state.removeLikePin(pinEssence.ID);
-                            likeField.innerHTML = countLikes;
+                            if (countLikes) {
+                                likeField.innerHTML = countLikes;
+                            }
 
                             API.deleteLike(pinEssence.ID)
                                 .then((data) => {
                                     state.setCountLikes(data.id, data.count_like);
+                                    likeField.innerHTML = state.getCountLikes(data.id);
                                 })
                                 .catch((error) => {
                                     console.error(error);
@@ -165,11 +168,15 @@ export function renderFeedPage() {
                             likeButton.src = '/assets/icons/like_active.svg';
 
                             const countLikes = state.addLikePin(pinEssence.ID);
-                            likeField.innerHTML = countLikes;
+                            if (countLikes) {
+                                likeField.innerHTML = countLikes;
+                            }
 
                             API.setLike(pinEssence.ID)
                                 .then((data) => {
+                                    console.log(data.id, data.count_like)
                                     state.setCountLikes(data.id, data.count_like);
+                                    likeField.innerHTML = sta.getCountLikes(data.ID);
                                 })
                                 .catch((error) => {
                                     console.error(error);
