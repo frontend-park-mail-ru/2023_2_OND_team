@@ -88,8 +88,9 @@ export function definePins() {
                                 if (countLikes === null) {
                                     likeField.innerHTML = state.getCountLikes(pinEssence.ID);
                                     likeField.style.opacity = 1;
+                                } else {
+                                    state.setCountLikes(pinEssence.ID, data.count_like);
                                 }
-                                state.setCountLikes(pinEssence.ID, data.count_like);
                             })
                             .catch((error) => {
                                 console.error(error);
@@ -107,12 +108,13 @@ export function definePins() {
                         API.setLike(pinEssence.ID)
                             .then((data) => {
                                 state.setLike(pinEssence.ID, true);
-                                const countLikes = state.getCountLikes(pinEssence.ID);
+                                state.setCountLikes(pinEssence.ID, data.count_like);
                                 if (countLikes === null) {
                                     likeField.innerHTML = state.getCountLikes(pinEssence.ID);
                                     likeField.style.opacity = 1;
+                                } else {
+                                    state.setCountLikes(pinEssence.ID, data.count_like);
                                 }
-                                state.setCountLikes(pinEssence.ID, data.count_like);
                             })
                             .catch((error) => {
                                 console.error(error);
