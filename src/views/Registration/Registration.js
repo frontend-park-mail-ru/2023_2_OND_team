@@ -1,8 +1,5 @@
-import {renderAuthPage} from '../Authorization/Authorization.js';
-import {renderFeedPage} from '../Feed/Feed.js';
 import {emailValid, passwordValid, nameValid} from '../../components/Validation/valid.js';
 import {API} from '../../utils/api.js';
-import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
 import { Router } from '../../components/Router/router.js';
 
 /**
@@ -95,7 +92,7 @@ export function renderRegPage() {
               API.checkLogin()
                 .then(() => {
                   header.innerHTML = '';
-                  authorization.innerHTML = '';
+                  registration.innerHTML = '';
                   router.navigate('/');
                 })
                 .catch((error) => {
