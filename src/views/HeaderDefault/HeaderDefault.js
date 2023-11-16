@@ -25,10 +25,12 @@ export function renderHeaderDefault() {
             switch (menuItem) {
                 case 'pin':
                     setHeaderTitle('Создание пина');
+                    state.deleteAllPins();
                     router.navigate('/create/pin');
                     break;
                 case 'board':
                     setHeaderTitle('Создание доски');
+                    state.deleteAllPins();
                     router.navigate('/create/board');
                     break;
                 default:
@@ -56,6 +58,7 @@ export function renderHeaderDefault() {
                     profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
 
                     setHeaderTitle('Мои пины и доски');
+                    state.deleteAllPins();
                     router.navigate('/profile');
 
                     break;
@@ -64,6 +67,7 @@ export function renderHeaderDefault() {
                         .then((status) => {
                             if (status === 'ok') {
                                 removeHeaderTitle();
+                                state.deleteAllPins();
                                 router.navigate('/login');
                             } else {
                                 console.log('error logout');

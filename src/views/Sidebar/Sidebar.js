@@ -41,6 +41,7 @@ export function renderSidebar() {
             switch (menuItem) {
                 case 'feed':
                     removeHeaderTitle();
+                    state.deleteAllPins();
                     router.navigate('/');
                     break;
                 case 'subscriptions':
@@ -49,6 +50,7 @@ export function renderSidebar() {
                     break;
                 case 'favourite':
                     setHeaderTitle('Понравившиеся пины');
+                    state.deleteAllPins();
                     router.navigate('/favourite');
                     break;
                 case 'profile':
@@ -59,6 +61,7 @@ export function renderSidebar() {
                     profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
 
                     setHeaderTitle('Мои пины и доски');
+                    state.deleteAllPins();
                     router.navigate('/profile');
                     break;
                 case 'profile-data':
