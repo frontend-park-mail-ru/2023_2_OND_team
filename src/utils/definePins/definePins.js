@@ -84,8 +84,9 @@ export function definePins() {
                         API.deleteLike(pinEssence.ID)
                             .then((data) => {
                                 state.setLike(pinEssence.ID, false);
-                                state.setCountLikes(pinEssence.ID, data.count_like);
-                                if (likeField.innerHTML === '') {
+                                const countLikes = state.getCountLikes(pinEssence.ID);
+                                if (countLikes === null) {
+                                    state.setCountLikes(pinEssence.ID, data.count_like);
                                     likeField.innerHTML = state.getCountLikes(pinEssence.ID);
                                     likeField.style.opacity = 1;
                                 }
@@ -98,6 +99,7 @@ export function definePins() {
 
                         const countLikes = state.addLikePin(pinEssence.ID);
                         if (countLikes !== null) {
+
                             likeField.innerHTML = countLikes;
                             likeField.style.opacity = 1;
                         }
@@ -105,8 +107,9 @@ export function definePins() {
                         API.setLike(pinEssence.ID)
                             .then((data) => {
                                 state.setLike(pinEssence.ID, true);
-                                state.setCountLikes(pinEssence.ID, data.count_like);
-                                if (likeField.innerHTML === '') {
+                                const countLikes = state.getCountLikes(pinEssence.ID);
+                                if (countLikes === null) {
+                                    state.setCountLikes(pinEssence.ID, data.count_like);
                                     likeField.innerHTML = state.getCountLikes(pinEssence.ID);
                                     likeField.style.opacity = 1;
                                 }
