@@ -67,6 +67,7 @@ export function renderFeedPage() {
                     const pins = document.querySelectorAll('.gallery__item');
                     if (pins?.length > 100) {
                         const pinsToDelete = Array.from(pins).slice(0, 20);
+                        state.removePins(20);
                         pinsToDelete.forEach(pin => {
                             pin.remove();
                         });
@@ -185,141 +186,10 @@ export function renderFeedPage() {
                                     console.error(error);
                                 })
                         }
-                    } else {
-                        console.log('сработало');
-                        // API.getLike(pinEssence.ID)
-                        //     .then((data) => {
-                        //         state.setLike(pinEssence.ID, data.is_set);
-                        //     })
-                        //     .catch((error) => {
-                        //         console.error(error);
-                        //     })
-                    }
-
-                    // API.checkLogin()
-                    //     .then((status) => {
-                    //         if (status !== 'ok') {
-                    //             router.navigate('/login');
-                                
-                    //             return;
-                    //         }
-                    //     })
-    
-                    // const id = element.target.className.split(' ')[1].split('-')[3];
-                    // const likeField = document.querySelector(`.like-counter-${id}`);
-                    // API.getLike(id)
-                    //     .then((data) => {
-                    //         if (data.is_set) {
-                    //             API.deleteLike(id)
-                    //                 .then((data) => {
-                    //                     likeButton.src = '/assets/icons/like.svg';
-                    //                     likeField.innerHTML = data.count_like;
-                    //                     likeField.style.opacity = 1;
-                    //                 })
-                    //                 .catch((error) => {
-                    //                     console.error(error);
-                    //                 })
-                    //         } else {
-                    //             API.setLike(id)
-                    //                 .then((data) => {
-                    //                     likeButton.src = '/assets/icons/like_active.svg';
-                    //                     likeField.innerHTML = data.count_like;
-                    //                     likeField.style.opacity = 1;
-                    //                 })
-                    //                 .catch((error) => {
-                    //                     console.error(error);
-                    //                 })
-                    //         }
-                    //     })
-                    //     .catch((error) => {
-                    //         console.error(error);
-                    //     })
-    
+                    }     
                 });  
-
             });
         }
-
-        
-
-
-        // API.getLike(id)
-        // .then((data) => {
-        //     if (data.is_set) {
-        //         API.deleteLike(id)
-        //             .then((data) => {
-        //                 likeButton.src = '/assets/icons/like.svg';
-        //                 likeField.innerHTML = data.count_like;
-        //                 likeField.style.opacity = 1;
-        //             })
-        //             .catch((error) => {
-        //                 console.error(error);
-        //             })
-        //     } else {
-        //         API.setLike(id)
-        //             .then((data) => {
-        //                 likeButton.src = '/assets/icons/like_active.svg';
-        //                 likeField.innerHTML = data.count_like;
-        //                 likeField.style.opacity = 1;
-        //             })
-        //             .catch((error) => {
-        //                 console.error(error);
-        //             })
-        //     }
-        // })
-        // .catch((error) => {
-        //     console.error(error);
-        // })
-
-
-
-        // const likeButtons = document.querySelectorAll('.like-icon');
-        // likeButtons?.forEach((likeButton) => {
-            
-        //     likeButton.addEventListener('click', (element) => {
-        //         API.checkLogin()
-        //             .then((status) => {
-        //                 if (status !== 'ok') {
-        //                     router.navigate('/login');
-                            
-        //                     return;
-        //                 }
-        //             })
-
-        //         const id = element.target.className.split(' ')[1].split('-')[3];
-        //         const likeField = document.querySelector(`.like-counter-${id}`);
-        //         API.getLike(id)
-        //             .then((data) => {
-        //                 if (data.is_set) {
-        //                     API.deleteLike(id)
-        //                         .then((data) => {
-        //                             likeButton.src = '/assets/icons/like.svg';
-        //                             likeField.innerHTML = data.count_like;
-        //                             likeField.style.opacity = 1;
-        //                         })
-        //                         .catch((error) => {
-        //                             console.error(error);
-        //                         })
-        //                 } else {
-        //                     API.setLike(id)
-        //                         .then((data) => {
-        //                             likeButton.src = '/assets/icons/like_active.svg';
-        //                             likeField.innerHTML = data.count_like;
-        //                             likeField.style.opacity = 1;
-        //                         })
-        //                         .catch((error) => {
-        //                             console.error(error);
-        //                         })
-        //                 }
-        //             })
-        //             .catch((error) => {
-        //                 console.error(error);
-        //             })
-
-        //     });  
-
-        // });
-
 
     }
     

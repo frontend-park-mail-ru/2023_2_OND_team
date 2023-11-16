@@ -71,6 +71,10 @@ export class State {
     }
 
     addPin({ID, setLike, countLikes}) {
+        if (this.#visiblePins.findIndex(pin => pin.ID === ID) !== -1) {
+            return;
+        }
+        
         this.#visiblePins.push({
             ID,
             setLike,
