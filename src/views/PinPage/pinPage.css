@@ -35,7 +35,7 @@
     object-fit: cover;
     width: 100%;
     margin-right: 0px;
-    border-radius: 14px;
+    border-radius: 14px 0px 0px 14px;
 }
 
 .pin-like-btn {
@@ -163,7 +163,7 @@
     resize: none;
     outline: none;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
-    padding: 8px 0px 8px 8px;
+    padding: 8px 0px 8px 18px;
 }
 
 .hide {
