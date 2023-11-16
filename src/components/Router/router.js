@@ -49,7 +49,7 @@ export class Router {
 
                     window.removeEventListener('scroll', window.scrollFunc);
 
-                    state.deleteAllPins();
+                    this.state.deleteAllPins();
 
                     this.state.setCurrentPage('feed');
 
@@ -78,7 +78,7 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        state.deleteAllPins();
+                        this.state.deleteAllPins();
 
                         this.state.setCurrentPage('profile');
 
@@ -102,7 +102,7 @@ export class Router {
                 path: "/profile/data",
                 handler: () => {
                     if (this.state.getIsAuthorized()) {
-                        state.deleteAllPins();
+                        this.state.deleteAllPins();
 
                         this.state.setCurrentPage('profileData');
 
@@ -154,8 +154,8 @@ export class Router {
                     if (this.state.getIsAuthorized()) {
                         this.navigate('/');
                     } else {
-                        state.deleteAllPins();
-                        
+                        this.state.deleteAllPins();
+
                         this.state.setCurrentPage('login');
 
                         removeHeaderTitle();
@@ -214,7 +214,7 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        state.deleteAllPins();
+                        this.state.deleteAllPins();
                         this.state.setCurrentPage('favourite');
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
@@ -237,7 +237,7 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized) {
-                        state.deleteAllPins();
+                        this.state.deleteAllPins();
 
                         this.state.setCurrentPage('createPin');
 
@@ -265,7 +265,7 @@ export class Router {
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        state.deleteAllPins();
+                        this.state.deleteAllPins();
 
                         this.state.setCurrentPage('createBoard');
 
@@ -339,7 +339,7 @@ export class Router {
                         return;
                     }
 
-                    state.deleteAllPins();
+                    this.state.deleteAllPins();
                     this.state.setCurrentPage(`board${boardID}`);
 
                     if (this.state.getIsAuthorized()) {
