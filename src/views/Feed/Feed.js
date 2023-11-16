@@ -62,7 +62,7 @@ export function renderFeedPage() {
 
                     const section = document.getElementById('pins');
                     renderPins(section, data.pins);
-                    definePins();
+                    definePins(data.pins);
     
                     const pins = document.querySelectorAll('.gallery__item');
                     if (pins?.length > 100) {
@@ -85,97 +85,219 @@ export function renderFeedPage() {
     window.removeEventListener('scroll', window.scrollFunc);
     window.addEventListener('scroll', window.scrollFunc);
     
-    function definePins() {
-        const pins = document.querySelectorAll('.gallery__item');
-    
-        pins?.forEach((pin) => {
-          pin.addEventListener('click', (e) => {
-            if (e.target.classList.contains('like-icon')) {
-                return;
-            }
+    function definePins(pins) {
+        if (state.getIsAuthorized()) {
+            pins.forEach((pin) => {
+                const pinEssence = {
+                    ID: pin.id,
+                    setLike: null,
+                    countLikes: pin.count_likes,
+                }
+                
+                state.addPin(pinEssence);
 
-            const pinID = pin.className.split(' ')[1].split('-')[3];
-            router.navigate(`/pin/${pinID}`);
-          });
-        });
+                const likeField = document.querySelector(`.like-counter-${pinEssence.ID}`);
+                const likeButton = document.querySelector(`.js-like-button-${pinEssence.ID}`);
 
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseenter', () => {
-                API.checkLogin()
-                    .then((status) => {
-                        if (status === 'ok') {
-                            const pinID = pin.className.split(' ')[1].split('-')[3];
-                            const likeButton = document.querySelector(`.js-like-button-${pinID}`);
-                            API.getLike(pinID)
-                                .then((data) => {
-                                    if (data.is_set) {
-                                        likeButton.src = '/assets/icons/like_active.svg';
-                                    } else {
-                                        likeButton.src = '/assets/icons/like.svg';
-                                    }
-                                })
-                                .catch((error) => {
-                                    console.error(error);
-                                })
-                        } 
-                    })
-            })
-        })
+                pin.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('like-icon')) {
+                        return;
+                    }
+        
+                    router.navigate(`/pin/${pinEssence.ID}`);
+                });
 
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseleave', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${pinID}`);
-                likeField.style.opacity = 0;
-            })
-        })
-
-        const likeButtons = document.querySelectorAll('.like-icon');
-        likeButtons?.forEach((likeButton) => {
-            
-            likeButton.addEventListener('click', (element) => {
-                API.checkLogin()
-                    .then((status) => {
-                        if (status !== 'ok') {
-                            router.navigate('/login');
-                            
-                            return;
+                pin.addEventListener('mouseenter', () => {
+                    const setLike = state.getSetLike(pinEssence.ID);
+                    if (setLike !== null) {
+                        if (setLike === true) {
+                            likeButton.src = '/assets/icons/like_active.svg';
+                        } else if (setLike === false) {
+                            likeButton.src = '/assets/icons/like.svg';
                         }
-                    })
+                    } else {
+                        API.getLike(pinEssence.ID)
+                            .then((data) => {
+                                state.setLike(pinEssence.ID, data.is_set);
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            })
+                    }
 
-                const id = element.target.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${id}`);
-                API.getLike(id)
-                    .then((data) => {
-                        if (data.is_set) {
-                            API.deleteLike(id)
+                    const countLikes = state.getCountLikes(pinEssence.ID);
+                    likeField.innerHTML = countLikes;
+                    likeField.style.opacity = 1;
+                });
+
+                pin.addEventListener('mouseleave', () => {
+                    likeField.style.opacity = 0;                   
+                });
+
+                likeButton.addEventListener('click', (element) => {
+                    const setLike = state.getSetLike(pinEssence.ID);
+                    if (setLike !== null) {
+                        if (setLike === true) {
+                            likeButton.src = '/assets/icons/like.svg';
+
+                            const countLikes = state.removeLikePin(pinEssence.ID);
+                            likeField.innerHTML = countLikes;
+
+                            API.deleteLike(pinEssence.ID)
                                 .then((data) => {
-                                    likeButton.src = '/assets/icons/like.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
+                                    state.setCountLikes(data.id, data.count_like);
                                 })
                                 .catch((error) => {
                                     console.error(error);
                                 })
                         } else {
-                            API.setLike(id)
+                            likeButton.src = '/assets/icons/like_active.svg';
+
+                            const countLikes = state.addLikePinLikePin(pinEssence.ID);
+                            likeField.innerHTML = countLikes;
+
+                            API.setLike(pinEssence.ID)
                                 .then((data) => {
-                                    likeButton.src = '/assets/icons/like_active.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
+                                    state.setCountLikes(data.id, data.count_like);
                                 })
                                 .catch((error) => {
                                     console.error(error);
                                 })
                         }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
+                    } else {
+                        console.log('сработало');
+                        // API.getLike(pinEssence.ID)
+                        //     .then((data) => {
+                        //         state.setLike(pinEssence.ID, data.is_set);
+                        //     })
+                        //     .catch((error) => {
+                        //         console.error(error);
+                        //     })
+                    }
 
-            });  
+                    // API.checkLogin()
+                    //     .then((status) => {
+                    //         if (status !== 'ok') {
+                    //             router.navigate('/login');
+                                
+                    //             return;
+                    //         }
+                    //     })
+    
+                    // const id = element.target.className.split(' ')[1].split('-')[3];
+                    // const likeField = document.querySelector(`.like-counter-${id}`);
+                    // API.getLike(id)
+                    //     .then((data) => {
+                    //         if (data.is_set) {
+                    //             API.deleteLike(id)
+                    //                 .then((data) => {
+                    //                     likeButton.src = '/assets/icons/like.svg';
+                    //                     likeField.innerHTML = data.count_like;
+                    //                     likeField.style.opacity = 1;
+                    //                 })
+                    //                 .catch((error) => {
+                    //                     console.error(error);
+                    //                 })
+                    //         } else {
+                    //             API.setLike(id)
+                    //                 .then((data) => {
+                    //                     likeButton.src = '/assets/icons/like_active.svg';
+                    //                     likeField.innerHTML = data.count_like;
+                    //                     likeField.style.opacity = 1;
+                    //                 })
+                    //                 .catch((error) => {
+                    //                     console.error(error);
+                    //                 })
+                    //         }
+                    //     })
+                    //     .catch((error) => {
+                    //         console.error(error);
+                    //     })
+    
+                });  
 
-        });
+            });
+        }
+
+        
+
+
+        // API.getLike(id)
+        // .then((data) => {
+        //     if (data.is_set) {
+        //         API.deleteLike(id)
+        //             .then((data) => {
+        //                 likeButton.src = '/assets/icons/like.svg';
+        //                 likeField.innerHTML = data.count_like;
+        //                 likeField.style.opacity = 1;
+        //             })
+        //             .catch((error) => {
+        //                 console.error(error);
+        //             })
+        //     } else {
+        //         API.setLike(id)
+        //             .then((data) => {
+        //                 likeButton.src = '/assets/icons/like_active.svg';
+        //                 likeField.innerHTML = data.count_like;
+        //                 likeField.style.opacity = 1;
+        //             })
+        //             .catch((error) => {
+        //                 console.error(error);
+        //             })
+        //     }
+        // })
+        // .catch((error) => {
+        //     console.error(error);
+        // })
+
+
+
+        // const likeButtons = document.querySelectorAll('.like-icon');
+        // likeButtons?.forEach((likeButton) => {
+            
+        //     likeButton.addEventListener('click', (element) => {
+        //         API.checkLogin()
+        //             .then((status) => {
+        //                 if (status !== 'ok') {
+        //                     router.navigate('/login');
+                            
+        //                     return;
+        //                 }
+        //             })
+
+        //         const id = element.target.className.split(' ')[1].split('-')[3];
+        //         const likeField = document.querySelector(`.like-counter-${id}`);
+        //         API.getLike(id)
+        //             .then((data) => {
+        //                 if (data.is_set) {
+        //                     API.deleteLike(id)
+        //                         .then((data) => {
+        //                             likeButton.src = '/assets/icons/like.svg';
+        //                             likeField.innerHTML = data.count_like;
+        //                             likeField.style.opacity = 1;
+        //                         })
+        //                         .catch((error) => {
+        //                             console.error(error);
+        //                         })
+        //                 } else {
+        //                     API.setLike(id)
+        //                         .then((data) => {
+        //                             likeButton.src = '/assets/icons/like_active.svg';
+        //                             likeField.innerHTML = data.count_like;
+        //                             likeField.style.opacity = 1;
+        //                         })
+        //                         .catch((error) => {
+        //                             console.error(error);
+        //                         })
+        //                 }
+        //             })
+        //             .catch((error) => {
+        //                 console.error(error);
+        //             })
+
+        //     });  
+
+        // });
 
 
     }
