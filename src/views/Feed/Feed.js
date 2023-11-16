@@ -90,13 +90,14 @@ export function renderFeedPage() {
 
         if (state.getIsAuthorized()) {
             pins.forEach((pin) => {
+                const pinID = pin.className.split(' ')[1].split('-')[3];
+                
                 const pinEssence = {
                     ID: pinID,
                     setLike: null,
                     countLikes: null,
                 }
                 
-                const pinID = pin.className.split(' ')[1].split('-')[3];
                 const likeField = document.querySelector(`.like-counter-${pinEssence.ID}`);
                 const likeButton = document.querySelector(`.js-like-button-${pinEssence.ID}`);
                 
