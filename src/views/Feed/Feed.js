@@ -175,7 +175,7 @@ export function renderFeedPage() {
                             API.setLike(pinEssence.ID)
                                 .then((data) => {
                                     state.setCountLikes(pinEssence.ID, data.count_like);
-                                    likeField.innerHTML = sta.getCountLikes(pinEssence.ID);
+                                    likeField.innerHTML = state.getCountLikes(pinEssence.ID);
                                 })
                                 .catch((error) => {
                                     console.error(error);
