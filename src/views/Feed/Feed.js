@@ -158,8 +158,8 @@ export function renderFeedPage() {
 
                             API.deleteLike(pinEssence.ID)
                                 .then((data) => {
-                                    state.setCountLikes(data.id, data.count_like);
-                                    likeField.innerHTML = state.getCountLikes(data.id);
+                                    state.setCountLikes(pinEssence.ID, data.count_like);
+                                    likeField.innerHTML = state.getCountLikes(pinEssence.ID);
                                 })
                                 .catch((error) => {
                                     console.error(error);
@@ -174,9 +174,8 @@ export function renderFeedPage() {
 
                             API.setLike(pinEssence.ID)
                                 .then((data) => {
-                                    console.log(data.id, data.count_like)
-                                    state.setCountLikes(data.id, data.count_like);
-                                    likeField.innerHTML = sta.getCountLikes(data.ID);
+                                    state.setCountLikes(pinEssence.ID, data.count_like);
+                                    likeField.innerHTML = sta.getCountLikes(pinEssence.ID);
                                 })
                                 .catch((error) => {
                                     console.error(error);
