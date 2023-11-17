@@ -23,8 +23,8 @@ export function renderCreateBoard() {
     });
 
     createButton.addEventListener('click', function (e) {
-        const title = document.getElementById('title__item-data').value;
-        const description = document.getElementById('description__item-data').value;
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
     
         console.log(title, description);
     
