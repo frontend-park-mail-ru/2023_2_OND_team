@@ -97,6 +97,10 @@ export function renderRegPage() {
       repeatPasswordInput.style.borderColor = 'var(--error-50, #F4210B)';
       repeatPasswordInput.style.color = 'var(--error-50, #F4210B)';
       repeatPasswordErrorSpan.textContent = repeatPasswordValidResult.message;
+
+      passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
+      passwordInput.style.color = 'var(--error-50, #F4210B)';
+      passwordErrorSpan.textContent = repeatPasswordValidResult.message;
     } else {
       repeatPasswordErrorSpan.textContent = '';
     }
