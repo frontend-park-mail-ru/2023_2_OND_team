@@ -146,6 +146,7 @@
 }
 
 .auth__item-data {
+    margin: 5px 0px 0px 0px;
     width: 400px;
     height: 25px;
     padding: 8px 0px 8px 8px;
@@ -158,10 +159,6 @@
     font-weight: bold;
     color: black;
     text-decoration: none;
-}
-
-.auth__item-data {
-    margin: 5px 0px 0px 0px;
 }
 
 .text-h4-medium {
