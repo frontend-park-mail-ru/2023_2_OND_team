@@ -1,9 +1,3 @@
-.title-create {
-    font-family: Nunito;
-    font-size: 25px;
-    text-align: left;
-}
-  
 .rectangle-create {
     height: 70%;
     width: 80%;
@@ -63,8 +57,6 @@
 }
 
 .title-create {
-    font-family: Nunito;
-    font-size: 25px;
     text-align: left;
 }
 
@@ -84,4 +76,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;  
+}
+
+.upload-image {
+    height: 250px;
+    width: 350px
 }
