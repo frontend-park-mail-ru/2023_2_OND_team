@@ -64,6 +64,11 @@ export function renderRegPage() {
     passwordInput.style.borderColor = '';
     repeatPasswordInput.style.borderColor = '';
 
+    usernameInput.style.color = '';
+    emailInput.style.color = '';
+    passwordInput.style.color = '';
+    repeatPasswordInput.style.color = '';
+
     const usernameValidationResult = nameValid(username);
     const emailValidationResult = emailValid(email);
     const passwordValidationResult = passwordValid(password);
