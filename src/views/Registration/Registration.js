@@ -1,6 +1,6 @@
 import {renderAuthPage} from '../Authorization/Authorization.js';
 import {renderFeedPage} from '../Feed/Feed.js';
-import {emailValid, passwordValid, nameValid} from '../../components/Validation/valid.js';
+import {emailValid, passwordValid, nameValid, repeatPasswordValid} from '../../components/Validation/valid.js';
 import {API} from '../../utils/api.js';
 import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
 import { Router } from '../../components/Router/router.js';
@@ -32,6 +32,7 @@ export function renderRegPage() {
   registration.innerHTML = registrationTemplate(registrationContext);
 
   const passwordInput = document.querySelector('#password');
+  const repeatPasswordInput = document.querySelector('#repeat-password');
   const emailInput = document.querySelector('#email');
   const usernameInput = document.querySelector('#username');
   const RegButton = document.querySelector('.button');
@@ -47,6 +48,7 @@ export function renderRegPage() {
   const usernameErrorSpan = document.querySelector('.username-error-message');
   const emailErrorSpan = document.querySelector('.email-error-message');
   const passwordErrorSpan = document.querySelector('.password-error-message');
+  const repeatPasswordErrorSpan = document.querySelector('.repeat-password-error-message');
   const wrongDataErrorSpan = document.querySelector('.wrong-data-error-message');
 
   RegButton.addEventListener('click', function(e) {
@@ -55,14 +57,17 @@ export function renderRegPage() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const repeatPassword = document.getElementById('repeat-password').value;
 
     usernameInput.style.borderColor = '';
     emailInput.style.borderColor = '';
     passwordInput.style.borderColor = '';
+    repeatPassword.style.borderColor = '';
 
     const usernameValidationResult = nameValid(username);
     const emailValidationResult = emailValid(email);
     const passwordValidationResult = passwordValid(password);
+    const repeatPasswordValidResult = repeatPasswordValid(password, repeatPassword);
 
     if (!usernameValidationResult.valid) {
       usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
@@ -86,6 +91,14 @@ export function renderRegPage() {
       passwordErrorSpan.textContent = passwordValidationResult.message;
     } else {
       passwordErrorSpan.textContent = '';
+    }
+
+    if (!repeatPasswordValidResult.valid) {
+      repeatPasswordInput.style.borderColor = 'var(--error-50, #F4210B)';
+      repeatPasswordInput.style.color = 'var(--error-50, #F4210B)';
+      repeatPasswordErrorSpan.textContent = repeatPasswordValidResult.message;
+    } else {
+      repeatPasswordErrorSpan.textContent = '';
     }
 
     if (usernameValidationResult.valid && emailValidationResult.valid && passwordValidationResult.valid) {

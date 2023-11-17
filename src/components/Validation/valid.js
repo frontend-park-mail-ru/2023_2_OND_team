@@ -129,3 +129,21 @@ export function passwordValid(password) {
   
   return validation;
 }
+
+export function repeatPasswordValid (password, repeatPassword) {
+  let validation = {valid: true, message: ''};
+
+  if (!repeatPassword) {
+    validation = {
+      valid: false,
+      message: 'Заполните это поле',
+    };
+  } else if (repeatPassword != password){
+    validation = {
+      valid: false,
+      message: 'Пароли не совпадают',
+    };
+  }
+
+  return validation;
+}
