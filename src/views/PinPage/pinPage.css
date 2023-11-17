@@ -152,9 +152,10 @@
 }
 
 .description__item-data {
+    vertical-align: top;
     padding: 8px 0px 8px 8px;
     width: 472px;
-    height: 150px;
+    height: 200px;
     border: none;
     background: none;
     resize: none;

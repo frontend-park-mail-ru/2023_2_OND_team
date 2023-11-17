@@ -63,3 +63,15 @@
     font-weight: 400;
     line-height: normal;
 }
+
+.board-edit-item {
+    margin: 5px 0px 0px 15px;
+    padding: 5px 5px;
+    width: 472px;
+    height: 56px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
