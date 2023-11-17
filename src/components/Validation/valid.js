@@ -22,7 +22,7 @@ export function nameValid(username) {
   } else if (username.length < 4) {
     validation = {
       valid: false,
-      message: 'Имя пользователя должно содержать не менее 4 символов',
+      message: 'Имя пользователя должно содержать более 4 символов',
     };
   } else if (username.length >= 50) {
     validation = {
@@ -118,12 +118,12 @@ export function passwordValid(password) {
   } else if (!/[a-z]/.test(password)) {
     validation = {
       valid: false,
-      message: 'Пароль должен содержать хотя бы одну букву в нижнем регистре',
+      message: 'Пароль должен содержать символ в нижнем регистре',
     };
   } else if (!/[A-Z]/.test(password)) {
     validation = {
       valid: false,
-      message: 'Пароль должен содержать хотя бы одну букву в верхнем регистре',
+      message: 'Пароль должен содержать символ в верхнем регистре',
     };
   }
   
