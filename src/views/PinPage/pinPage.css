@@ -179,14 +179,6 @@
     background: var(--bg-100, #FFF);
 }
 
-.text-base1-medium {
-    font-family: Nunito;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
 .js-pin-to-board__btn {
     margin: 10px 0;
     max-width: 90%;

@@ -36,24 +36,9 @@
     gap: 5px;
 }
 
-.button {
-    background-color: #226B77;
-    color: #FFFFFF;
+.form__button {
     width: 410px;
     height: 45px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.button:hover {
-    background: rgba(34, 107, 119, 0.80);
 }
 
 .cancel-button {

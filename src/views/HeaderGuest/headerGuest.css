@@ -84,12 +84,3 @@
     color: var(--bg-100, #FFF);
     text-align: center;
 }
-
-.text-base1-medium {
-    /* text base1 medium */
-    font-family: Lato;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
