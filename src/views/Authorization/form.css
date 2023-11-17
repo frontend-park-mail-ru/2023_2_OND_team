@@ -69,42 +69,6 @@
     z-index: 9999;
 }
 
-.password-error-message {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-.username-error-message {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-.email-error-message {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-.wrong-data-error-message  {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: center;
-    min-height: 30px;
-    min-width: 410px;
-}
-
 .input-error input {
     border-color: var(--error-50, #F4210B);
     color: var(--error-50, #F4210B);
@@ -173,6 +137,6 @@
     font-size: 15px;
     color: var(--error-50, #F4210B);
     text-align: left;
-    min-height: 30px;
+    min-height: 25px;
     min-width: 410px;
 }
