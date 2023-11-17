@@ -69,20 +69,6 @@
     z-index: 9999;
 }
 
-.registration-title {
-    font-family: Nunito;
-    font-size: 31px; 
-    font-weight: normal; 
-    margin-bottom: 30px;
-}
-
-.auth-title {
-    font-family: Nunito;
-    font-size: 31px; 
-    font-weight: normal; 
-    margin-bottom: 30px;
-}
-
 .password-error-message {
     font-family: Nunito;
     font-size: 15px; 
@@ -172,4 +158,15 @@
     font-weight: bold;
     color: black;
     text-decoration: none;
+}
+
+.auth__item-data {
+    margin: 5px 0px 0px 0px;
+}
+
+.text-h4-medium {
+    font-family: Nunito;
+    font-size: 31px;
+    font-weight: normal;
+    margin-bottom: 30px;
 }
