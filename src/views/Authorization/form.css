@@ -110,13 +110,6 @@
     text-decoration: none;
 }
 
-.text-h4-medium {
-    font-family: Nunito;
-    font-size: 31px;
-    font-weight: normal;
-    margin-bottom: 30px;
-}
-
 .primary-error-message {
     font-family: Nunito;
     font-size: 15px;
@@ -156,4 +149,9 @@
     text-align: center;
     background: var(--primary-45, #33A1B3);
     cursor: pointer;
+}
+
+.auth-title,
+.registration-title {
+    margin: 20px;
 }
