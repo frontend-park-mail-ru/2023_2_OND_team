@@ -6,16 +6,15 @@ export function renderCreatePin() {
     const router = new Router();
     const main = document.querySelector('#main');
     const state = new State();
-
     const createPin = Handlebars.templates['CreatePin.hbs'];
     const context = {};
+    let picture;
+
     main.innerHTML = createPin(context);
 
     const cancelButton = document.querySelector('.js-pin-cancel__btn-change');
     const createButton = document.querySelector('.js-pin-create__btn-change');
     const pictureInput = document.getElementById('picture');
-    const dropArea = document.getElementById('pin-rectangle');
-    let picture;
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -26,13 +25,13 @@ export function renderCreatePin() {
         e.preventDefault();
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-
+    
         const formData = new FormData();
         formData.append('picture', picture);
         formData.append('title', title);
         formData.append('description', description);
         formData.append('public', true);
-
+    
         API.createPin(formData)
             .then((response) => {
                 if (response.status === 'ok') {
@@ -44,51 +43,53 @@ export function renderCreatePin() {
             .catch((error) => {
                 console.error(error);
             });
-    });
+    });    
 
-    function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    function highlight(e) {
-        dropArea.classList.add('highlight');
-    }
-
-    function unhighlight(e) {
-        dropArea.classList.remove('highlight');
-    }
-
-    function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-
-        handleFiles(files);
-    }
-
-    function handleFiles(files) {
+    pictureInput.addEventListener('change', (event) => {
+        const pictureFile = event.target.files[0];
+    
         const reader = new FileReader();
-
+    
         reader.onload = (event) => {
             const pictureBytes = event.target.result;
-            const mimeType = files[0].type;
+            const mimeType = pictureFile.type;
             picture = new Blob([pictureBytes], { type: mimeType });
+    
+            console.log(picture);
         };
 
-        reader.readAsArrayBuffer(files[0]);
-    }
-
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, preventDefaults, false);
+        reader.readAsArrayBuffer(pictureFile);
     });
 
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dropArea.addEventListener(eventName, highlight, false);
+    pictureInput.addEventListener('dragenter', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
     });
 
-    ['dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, unhighlight, false);
+    pictureInput.addEventListener('dragover', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
     });
 
-    dropArea.addEventListener('drop', handleDrop, false);
+    pictureInput.addEventListener('drop', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+
+        const droppedFiles = event.dataTransfer.files;
+        if (droppedFiles.length > 0) {
+            const pictureFile = droppedFiles[0];
+
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+                const pictureBytes = event.target.result;
+                const mimeType = pictureFile.type;
+                picture = new Blob([pictureBytes], { type: mimeType });
+
+                console.log(picture);
+            };
+
+            reader.readAsArrayBuffer(pictureFile);
+        }
+    });
 }
