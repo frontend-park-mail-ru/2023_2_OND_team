@@ -139,4 +139,21 @@
     color: var(--bg-100, #FFF);
     text-align: center;
     background: var(--primary-30, #226B77);
+    cursor: pointer;
+}
+
+.form-btn-primary-default:hover {
+    display: flex;
+    width: 410px;
+    height: 44px;
+    padding: 20px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30);
+    color: var(--bg-100, #FFF);
+    text-align: center;
+    background: var(--primary-45, #33A1B3);
+    cursor: pointer;
 }
