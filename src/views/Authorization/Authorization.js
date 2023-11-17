@@ -30,7 +30,7 @@ export function renderAuthPage() {
   const passwordInput = document.querySelector('#password');
   const usernameInput = document.querySelector('#username');
   const AuthButton = document.querySelector('.button');
-  const cancelButton = document.querySelector('.cancel-button');
+  const cancelButton = document.querySelector('.form__button');
 
   const signUpLink = document.querySelector('.already-registered a');
   signUpLink.addEventListener('click', function(e) {

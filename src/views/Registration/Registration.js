@@ -35,7 +35,7 @@ export function renderRegPage() {
   const repeatPasswordInput = document.querySelector('#repeat-password');
   const emailInput = document.querySelector('#email');
   const usernameInput = document.querySelector('#username');
-  const RegButton = document.querySelector('.button');
+  const RegButton = document.querySelector('.form__button');
   const cancelButton = document.querySelector('.cancel-button');
 
   const signInLink = document.querySelector('.already-registered a');
