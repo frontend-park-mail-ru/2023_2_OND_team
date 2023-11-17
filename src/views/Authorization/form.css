@@ -167,3 +167,12 @@
     font-weight: normal;
     margin-bottom: 30px;
 }
+
+.primary-error-message {
+    font-family: Nunito;
+    font-size: 15px;
+    color: var(--error-50, #F4210B);
+    text-align: left;
+    min-height: 30px;
+    min-width: 410px;
+}
