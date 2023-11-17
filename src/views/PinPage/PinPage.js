@@ -143,13 +143,12 @@ export function renderPinPage(pinID) {
             });
 
             saveDataBtn?.addEventListener('click', () => {
-                likeButton.classList.remove('hide');
-                likeField.classList.remove('hide');
-
                 API.putPinInfo(pinInfo.id, titleTextarea.value, descriptionTextarea.value)
                     .then((res) => {
                         if (res.status === 'ok') {
                             router.navigate(`/pin/${pinInfo.id}`);
+                            likeButton.classList.remove('hide');
+                            likeField.classList.remove('hide');
                         } else {
                             editSpan.textContent = 'Некорректные данные';
                         }
