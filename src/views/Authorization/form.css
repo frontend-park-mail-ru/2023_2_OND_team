@@ -136,5 +136,7 @@
     gap: 10px;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30);
-    background: var(--bg-100, #FFF);
+    color: var(--bg-100, #FFF);
+    text-align: center;
+    background: var(--primary-30, #226B77);
 }
