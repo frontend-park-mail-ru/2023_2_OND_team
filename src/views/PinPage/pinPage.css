@@ -89,10 +89,6 @@
     height: 45px;
 }
   
-.rectangle > div {
-    flex: 1;
-}
-  
 .cancel-button {
     position: fixed;
     top: 10px;
