@@ -69,8 +69,8 @@ export function renderPinPage(pinID) {
             const usernameReal = state.getUsername();
             const isAuthorized = state.getIsAuthorized();
 
-            const titleTextarea = document.querySelector('.pin-title');
-            const descriptionTextarea = document.querySelector('.pin-description');
+            const titleTextarea = document.querySelector('.title__item-data');
+            const descriptionTextarea = document.querySelector('.description__item-data');
 
             const pinControl = document.querySelector('.pin-control');
             const canselDataBtn = document.querySelector('.pin-control__cansel-btn');
