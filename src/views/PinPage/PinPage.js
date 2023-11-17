@@ -114,6 +114,9 @@ export function renderPinPage(pinID) {
                 titleTextarea.classList.add('input-primary');
                 descriptionTextarea.classList.add('input-primary');
 
+                likeButton.classList.add('hide');
+                likeField.classList.add('hide');
+
                 titleTextarea.disabled = false;
                 descriptionTextarea.disabled = false;
                 
@@ -127,6 +130,9 @@ export function renderPinPage(pinID) {
                 titleTextarea.classList.remove('input-primary');
                 descriptionTextarea.classList.remove('input-primary');
 
+                likeButton.classList.remove('hide');
+                likeField.classList.remove('hide');
+
                 titleTextarea.disabled = true;
                 descriptionTextarea.disabled = true;
 
@@ -137,6 +143,9 @@ export function renderPinPage(pinID) {
             });
 
             saveDataBtn?.addEventListener('click', () => {
+                likeButton.classList.remove('hide');
+                likeField.classList.remove('hide');
+
                 API.putPinInfo(pinInfo.id, titleTextarea.value, descriptionTextarea.value)
                     .then((res) => {
                         if (res.status === 'ok') {
