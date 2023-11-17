@@ -135,6 +135,6 @@
     align-items: center;
     gap: 10px;
     border-radius: var(--br-s, 10px);
-    background: var(--primary-30);
     border: 2px solid var(--primary-30);
+    background: var(--bg-100, #FFF);
 }
