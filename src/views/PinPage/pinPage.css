@@ -134,9 +134,8 @@
     display: inline-flex;
     align-items: flex-start;
     position: relative;
-    top: -76px;
-    left: 778px;
     gap: 50px;
+    padding: 80px 0px 0px 140px
 }
 
 .pin-edit-item {
@@ -144,6 +143,18 @@
     padding: 5px 5px;
     width: 472px;
     height: 56px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.big-pin-edit-item {
+    margin: 5px 0px 0px 15px;
+    padding: 5px 5px;
+    width: 472px;
+    height: 186px;
     border: none;
     background: none;
     resize: none;
