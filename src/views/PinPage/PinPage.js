@@ -101,7 +101,7 @@ export function renderPinPage(pinID) {
                 });
             }*/
             
-            const deleteButton = document.querySelector('js-delete__btn');
+            const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
             updateButton.classList.add('hide');
@@ -173,7 +173,7 @@ export function renderPinPage(pinID) {
                 //UserBoards();
             }
 
-            deleteButton?.addEventListener('click', function (e) {
+            deleteButton.addEventListener('click', function (e) {
                 e.preventDefault();
                 API.deletePin(pinID);
                 router.navigate('/');
