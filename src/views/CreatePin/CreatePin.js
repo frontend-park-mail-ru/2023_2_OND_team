@@ -15,6 +15,7 @@ export function renderCreatePin() {
     const cancelButton = document.querySelector('.js-pin-cancel__btn-change');
     const createButton = document.querySelector('.js-pin-create__btn-change');
     const pictureInput = document.getElementById('picture');
+    const uploadImage = document.querySelector('.upload-image');
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -47,49 +48,42 @@ export function renderCreatePin() {
 
     pictureInput.addEventListener('change', (event) => {
         const pictureFile = event.target.files[0];
-    
+        handleFile(pictureFile);
+    });
+
+    uploadImage.addEventListener('dragenter', preventDefaults);
+    uploadImage.addEventListener('dragover', preventDefaults);
+    uploadImage.addEventListener('drop', handleDrop);
+
+    function preventDefaults(event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    function handleDrop(event) {
+        if (event.target === uploadImage) {
+            preventDefaults(event);
+            const droppedFiles = event.dataTransfer.files;
+            if (droppedFiles.length > 0) {
+                const pictureFile = droppedFiles[0];
+                handleFile(pictureFile);
+            }
+        }
+    }
+
+    function handleFile(file) {
         const reader = new FileReader();
-    
+
         reader.onload = (event) => {
             const pictureBytes = event.target.result;
-            const mimeType = pictureFile.type;
-            picture = new Blob([pictureBytes], { type: mimeType });
-    
+            picture = new FormData();
+            picture.append('picture', new Blob([pictureBytes], { type: file.type }));
+
             console.log(picture);
+
+            pictureInput.value = file.name;
         };
 
-        reader.readAsArrayBuffer(pictureFile);
-    });
-
-    pictureInput.addEventListener('dragenter', (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-    });
-
-    pictureInput.addEventListener('dragover', (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-    });
-
-    pictureInput.addEventListener('drop', (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-
-        const droppedFiles = event.dataTransfer.files;
-        if (droppedFiles.length > 0) {
-            const pictureFile = droppedFiles[0];
-
-            const reader = new FileReader();
-
-            reader.onload = (event) => {
-                const pictureBytes = event.target.result;
-                const mimeType = pictureFile.type;
-                picture = new Blob([pictureBytes], { type: mimeType });
-
-                console.log(picture);
-            };
-
-            reader.readAsArrayBuffer(pictureFile);
-        }
-    });
+        reader.readAsArrayBuffer(file);
+    }
 }
