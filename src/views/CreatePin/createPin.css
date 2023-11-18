@@ -83,26 +83,3 @@
     width: 350px;
     cursor: pointer;
 }
-
-.upload-image {
-    position: relative;
-    height: 250px;
-    width: 350px;
-    cursor: pointer;
-}
-
-.upload-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.upload-image:hover::before {
-    opacity: 1;
-}
