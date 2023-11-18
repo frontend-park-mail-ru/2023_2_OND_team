@@ -174,7 +174,7 @@ export function renderPinPage(pinID) {
             }
 
             deleteButton.addEventListener('click', function (e) {
-                e.preventDefault();
+                //e.preventDefault();
                 API.deletePin(pinID);
                 router.navigate('/');
             });
