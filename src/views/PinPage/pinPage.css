@@ -37,11 +37,12 @@
 }
 
 .pin-like-btn {
+    position: absolute;
+    bottom: 400px;
     display: flex;
     align-items: center;
     padding-left: 20px;
     gap: 10px;
-    margin-top: 162px
 }
 
 .pin-like-counter {
@@ -212,9 +213,14 @@
 }
 
 .btn-edit {
-    font-size: 18px;
-    padding: 18px 15px;
     cursor: pointer;
     width: 22px;
     height: 25px;
+}
+
+.edit-img {
+    font-size: 18px;
+    padding: 18px 15px;
+    width: 60px;
+    height: 28px;
 }
