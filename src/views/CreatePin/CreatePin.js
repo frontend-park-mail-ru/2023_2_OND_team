@@ -81,7 +81,7 @@ export function renderCreatePin() {
 
             console.log(picture);
 
-            pictureInput.value = file.name;
+            //pictureInput.value = file.name;
         };
 
         reader.readAsArrayBuffer(file);
