@@ -4,8 +4,10 @@
     <div class="input__forms">
         <div class="pin__img__add">
             <form class="profile__img__form js-profile__img__form" enctype="multipart/form-data" action="">
-                <input name="object" accept="image/*" type="file" id="picture" accept=".jpg, .jpeg, .png, .webp, .gif">
-                <img class="upload-image" src="../../assets/icons/actions/upload.svg">
+                <label for="picture" class="upload-image-label">
+                    <input name="object" accept="image/*" type="file" id="picture" accept=".jpg, .jpeg, .png, .webp, .gif" class="hidden-input">
+                    <img class="upload-image" src="../../assets/icons/actions/upload.svg">
+                </label>
             </form>
         </div>
         <div class="forms">
