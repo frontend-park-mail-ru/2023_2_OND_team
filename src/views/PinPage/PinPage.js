@@ -101,7 +101,7 @@ export function renderPinPage(pinID) {
                 });
             }*/
             
-            const deleteButton = document.querySelector('.btn-delete');
+            const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
             updateButton.classList.add('hide');
@@ -158,6 +158,13 @@ export function renderPinPage(pinID) {
                     })
             });
 
+
+            deleteButton?.addEventListener('click', function (e) {
+                e.preventDefault();
+                API.deletePin(pinID);
+                router.navigate('/');
+            });
+
             console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
@@ -172,12 +179,6 @@ export function renderPinPage(pinID) {
                 //block.appendChild(boardList);
                 //UserBoards();
             }
-
-            deleteButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                API.deletePin(pinID);
-                router.navigate('/');
-            });
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
