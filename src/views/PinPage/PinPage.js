@@ -101,7 +101,7 @@ export function renderPinPage(pinID) {
                 });
             }*/
             
-            const deleteButton = document.querySelector('.js-delete__btn');
+            const deleteButton = document.querySelector('.btn-delete');
             const updateButton = document.querySelector('.js-edit__btn');
 
             updateButton.classList.add('hide');
