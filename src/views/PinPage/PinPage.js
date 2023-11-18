@@ -158,12 +158,17 @@ export function renderPinPage(pinID) {
                     })
             });
 
-
             deleteButton?.addEventListener('click', () => {
                 //e.preventDefault();
-                API.deletePin(pinID);
-                router.navigate('/');
+                API.deletePin(pinID)
+                    .then((res) => {
+                        router.navigate('/');
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             });
+            
 
             console.log(usernameReal, pinInfo.author.username);
 
