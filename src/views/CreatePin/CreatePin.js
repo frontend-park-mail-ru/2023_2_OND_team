@@ -76,8 +76,8 @@ export function renderCreatePin() {
 
         reader.onload = (event) => {
             const pictureBytes = event.target.result;
-            picture = new FormData();
-            picture.append('picture', new Blob([pictureBytes], { type: file.type }));
+            const mimeType = file.type;
+            picture = new Blob([pictureBytes], { type: mimeType });
 
             console.log(picture);
 
