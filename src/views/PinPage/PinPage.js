@@ -158,16 +158,18 @@ export function renderPinPage(pinID) {
                     })
             });
 
-            deleteButton?.addEventListener('click', () => {
-                //e.preventDefault();
-                API.deletePin(pinID)
-                    .then((res) => {
-                        router.navigate('/');
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
+            deleteButton.addEventListener('click', (event) => {
+                if (event.target.classList.contains('js-delete__btn')) {
+                    API.deletePin(pinID)
+                        .then((res) => {
+                            router.navigate('/');
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                }
             });
+            
             
 
             console.log(usernameReal, pinInfo.author.username);
