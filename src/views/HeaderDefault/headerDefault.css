@@ -79,6 +79,7 @@
 .header__user__notification {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
 .header__user__notification-img {
@@ -177,14 +178,31 @@
 .header__notifications__menu {
     position: relative;
     top: 50px;
-    width: 330px;
-    height: 130px;
+    width: 250px;
+    height: 100px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+}
+
+.header__notifications__menu__title {
+    display: flex;
+    height: 40px;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--primary-30, #226B77);
+    background: rgba(255, 255, 255, 0.00);
+}
+
+.header__notifications__menu__items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
 }
   
 .header__user__menu {
