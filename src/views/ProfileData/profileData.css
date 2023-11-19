@@ -235,8 +235,6 @@
   text-align: center;
 }
 
-
-
 .input-disabled {
   border-radius: var(--br-s, 10px);
   border: 2px solid var(--primary-45, #808080);
@@ -249,29 +247,8 @@
   background: var(--bg-100, #FFF);
 }
 
-.btn-primary-clear {
-  height: 44px;
-  border-radius: var(--br-s, 10px);
-  border: 2px solid var(--primary-30, #226B77);
-  background: var(--bg-100, #FFF);
-}
-
-.btn-primary-default {
-  border-radius: var(--br-s, 10px);
-  background: var(--primary-30, #226B77);
-  border: 2px solid var(--primary-30, #226B77);
-}
-
 .hide {
   display: none;
-}
-
-.text-base1-medium {
-  font-family: Lato;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 .text-base2-medium {

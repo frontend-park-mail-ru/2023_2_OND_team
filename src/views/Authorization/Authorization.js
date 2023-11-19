@@ -29,7 +29,7 @@ export function renderAuthPage() {
 
   const passwordInput = document.querySelector('#password');
   const usernameInput = document.querySelector('#username');
-  const AuthButton = document.querySelector('.button');
+  const AuthButton = document.querySelector('.form__button');
   const cancelButton = document.querySelector('.cancel-button');
 
   const signUpLink = document.querySelector('.already-registered a');
@@ -51,6 +51,9 @@ export function renderAuthPage() {
 
     usernameInput.style.borderColor = '';
     passwordInput.style.borderColor = '';
+
+    usernameInput.style.color = '';
+    passwordInput.style.color = '';
 
     const usernameValidationResult = nameValid(username);
     const passwordValidationResult = passwordValid(password);

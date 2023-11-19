@@ -204,8 +204,6 @@
     text-align: left;
 }
 
-
-
 .input-primary {
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-45, #33A1B3);
@@ -227,14 +225,6 @@
 
 .hide {
     display: none;
-}
-
-.text-base1-medium {
-    font-family: Nunito;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }
 
 .text-base2-medium {
