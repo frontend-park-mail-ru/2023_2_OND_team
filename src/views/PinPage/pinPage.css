@@ -1,12 +1,20 @@
 .rectangle {
     display: flex;
-    justify-content: center;
-    max-width: 950px;
+    width: auto;
     border: 1px solid #000;
     border-radius: 15px;
-    margin: 100px auto 0;
-    height: 570px;
+    margin: 50px auto 0;
+    height: 650px;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.open__gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px 0px 0px 14px;
 }
   
 .delete-button,
@@ -28,21 +36,14 @@
     margin-left: 20px;
     font-weight: 700;
 }
-  
-.open__gallery__item img {
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-    margin-right: 0px;
-    border-radius: 14px;
-}
 
 .pin-like-btn {
+    position: absolute;
     display: flex;
     align-items: center;
     padding-left: 20px;
     gap: 10px;
+    bottom: 20px;
 }
 
 .pin-like-counter {
@@ -90,10 +91,6 @@
     height: 45px;
 }
   
-.rectangle > div {
-    flex: 1;
-}
-  
 .cancel-button {
     position: fixed;
     top: 10px;
@@ -120,21 +117,6 @@
     color: var(--bg50, #808080);
 }
 
-.pin-title,
-.pin-description{
-    font-family: Nunito;
-    padding: 5px 20px;
-    box-sizing: border-box;
-    padding: 0;
-    display: block;
-    margin-top: 20px;
-    margin-left: 20px;
-    width: 300px;
-    height: auto;
-    resize: vertical;
-    overflow-y: auto;
-}
-
 .other__pins__title {
     font-family: Nunito;
     font-size: 25px;
@@ -154,12 +136,13 @@
     display: inline-flex;
     align-items: flex-start;
     position: relative;
-    top: -70px;
-    left: 520px;
     gap: 50px;
+    padding: 80px 0px 0px 140px
 }
 
 .pin-edit-item {
+    margin: 5px 0px 0px 15px;
+    padding: 5px 5px;
     width: 472px;
     height: 56px;
     border: none;
@@ -169,7 +152,21 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
-.pin-description {
+.big-pin-edit-item {
+    margin: 5px 0px 0px 15px;
+    padding: 5px 5px;
+    width: 472px;
+    height: 186px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.description__item-data {
+    vertical-align: top;
+    padding: 8px 0px 8px 8px;
     width: 472px;
     height: 200px;
     border: none;
@@ -195,10 +192,36 @@
     background: var(--bg-100, #FFF);
 }
 
-.text-base1-medium {
-    font-family: Nunito;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.js-pin-to-board__btn {
+    margin: 10px 0;
+    max-width: 90%;
+    margin-left: 20px;
+    width: 200px;
+    height: 45px
+}
+
+.btn-delete {
+    background-color: white;
+    color: red;
+    border: red;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100px;
+    height: 45px;
+    margin: 10px 0;
+}
+
+.btn-edit {
+    cursor: pointer;
+    width: 22px;
+    height: 25px;
+}
+
+.edit-btn-block {
+    font-size: 18px;
+    padding: 18px 15px;
+    width: 60px;
+    height: 28px;
 }

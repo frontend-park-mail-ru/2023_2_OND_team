@@ -1,13 +1,9 @@
-.title-create {
-    font-family: Nunito;
-    font-size: 25px;
-    text-align: left;
-}
-  
 .rectangle-create {
-    height: 70%;width: 80%;
-    display: flex;flex-direction: column;
-    padding: 1px 20px;
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
     display: flex;
     justify-content: center;
     max-width: 900px;
@@ -35,15 +31,55 @@
     display: block;
     margin-bottom: 5px;
 }
-  
-#description {
-    height: 200px;
-    vertical-align: top;
-}
-  
-.buttons-container {
+
+.input__forms {
     display: flex;
-    margin-top: 20px;
-    align-items: center;
+}
+
+.pin__img__add {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.forms {
+    flex: 1;
+}
+
+.labeled-input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-title,
+.input-description {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.title-create {
+    text-align: left;
+}
+
+.pin-data__btns {
+    display: inline-flex;
+    align-items: flex-start;
+    flex: center;
+    gap: 20px;
+    display: flex;
     justify-content: center;
+}
+
+.title__item-data {
+    width: 472px;
+    height: 25px;
+    padding: 8px 0px 8px 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;  
+}
+
+.upload-image {
+    height: 250px;
+    width: 350px;
+    cursor: pointer;
 }

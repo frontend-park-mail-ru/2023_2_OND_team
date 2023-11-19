@@ -46,9 +46,9 @@
 
 .board-title {
     margin: 15px 15px 0px;
-    font-family: Nunito;
     font-size: 25px;
     text-align: left;
+    font-weight: 700;
 }
 
 .text-base1-small {

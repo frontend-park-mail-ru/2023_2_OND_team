@@ -4,7 +4,9 @@
             <img src="{{src}}" width="200"/>
         </div>
         <div class="block">
-            <div class="saved"></div>
+            <div class="saved">
+                <button disabled class="btn-primary-default text-base2-medium js-pin-to-board__btn">Прикрепить на доску</button>
+            </div>
             <span class="pin-username">{{username}}</span>
             <div>
                 <label for="pin-title" class="labeled-input">Название</label>
@@ -12,23 +14,28 @@
             </div>
             <div>
                 <label for="pin-description" class="labeled-input">Описание</label>
-                <textarea disabled class="pin-description input-read-only text-base1-small pin-edit-item">{{description}}</textarea>
+                <textarea disabled class="pin-description input-read-only text-base1-small big-pin-edit-item">{{description}}</textarea>
             </div>
             <div class="pin-like-btn">
                 <img src="/assets/icons/like.svg" alt="Like" class="pin-like-icon js-pin-like-icon-{{id}}">
-                <div class="pin-like-counter pin-like-counter-{{id}} text-base1-medium">{{likes}}</span>
-                </div>
+                <div class="pin-like-counter pin-like-counter-{{id}} text-base1-medium">{{likes}}</span></div>
+            </div>
+            <div class="pin-control hide">
+                <button class="btn-primary-clear text-base1-medium pin-control__cansel-btn">Отмена</button>
+                <button class="btn-primary-default text-base1-medium pin-control__save-btn">Сохранить</button>
             </div>
         </div>
     <span class="pin-edit-span-all"></span>
-    
-    <!--<div class="other__pins__title">
+    <div>
+        <button disabled class="btn-delete text-base2-medium js-delete__btn">Удалить</button>
+    </div>
+    <div class="edit-btn-block">
+        <img disabled src="/assets/icons/actions/icon_edit.svg" class="btn-edit js-edit__btn">
+    </div>
+</div>
+<div>
+    <div class="other__pins__title">
         <span>Другие интересные пины</span>
     </div>
-    <section id="pins" class="gallery">
-    </section>-->
-</div>
-<div class="pin-control hide">
-    <button class="btn-primary-clear text-base1-medium pin-control__cansel-btn">Отмена</button>
-    <button class="btn-primary-default text-base1-medium pin-control__save-btn">Сохранить</button>
+    <!--<section id="pins" class="gallery"></section>-->
 </div>

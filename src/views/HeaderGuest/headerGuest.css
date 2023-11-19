@@ -65,7 +65,7 @@
 .btn-primary-default {
     display: flex;
     width: 175px;
-    height: 40px;
+    height: 44px;
     padding: 20px 16px;
     justify-content: center;
     align-items: center;
@@ -83,13 +83,4 @@
 .header__singup-btn {
     color: var(--bg-100, #FFF);
     text-align: center;
-}
-
-.text-base1-medium {
-    /* text base1 medium */
-    font-family: Lato;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }

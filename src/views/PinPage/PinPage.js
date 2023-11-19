@@ -77,11 +77,9 @@ export function renderPinPage(pinID) {
             const saveDataBtn = document.querySelector('.pin-control__save-btn');
 
             const editSpan = document.querySelector('.pin-edit-span-all');
-
-            const saveButton = document.createElement('button');
-            saveButton.textContent = 'Прикрепить на доску';
-            saveButton.classList.add('save-button');
-            const boardList = document.createElement('select');
+            
+            const saveButton = document.querySelector('.js-pin-to-board__btn');
+            /*const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
             function UserBoards() {
@@ -101,16 +99,19 @@ export function renderPinPage(pinID) {
                     option.textContent = board.title;
                     boardList.appendChild(option);
                 });
-            }
+            }*/
             
-            
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Удалить';
-            deleteButton.classList.add('delete-button');
+            const deleteButton = document.querySelector('.js-delete__btn');
+            const updateButton = document.querySelector('.js-edit__btn');
 
-            const updateButton = document.createElement('img');
-            updateButton.src = '/assets/icons/actions/icon_edit.svg';
-            updateButton.classList.add('edit-button');
+            updateButton.classList.add('hide');
+            deleteButton.classList.add('hide');
+
+            deleteButton?.addEventListener('click', () => {
+                //e.preventDefault();
+                API.deletePin(pinID)
+                router.navigate('/');
+            });
 
             updateButton?.addEventListener('click', () => {
                 updateButton.classList.add('hide');
@@ -118,6 +119,9 @@ export function renderPinPage(pinID) {
 
                 titleTextarea.classList.add('input-primary');
                 descriptionTextarea.classList.add('input-primary');
+
+                likeButton.classList.add('hide');
+                likeField.classList.add('hide');
 
                 titleTextarea.disabled = false;
                 descriptionTextarea.disabled = false;
@@ -131,6 +135,9 @@ export function renderPinPage(pinID) {
 
                 titleTextarea.classList.remove('input-primary');
                 descriptionTextarea.classList.remove('input-primary');
+
+                likeButton.classList.remove('hide');
+                likeField.classList.remove('hide');
 
                 titleTextarea.disabled = true;
                 descriptionTextarea.disabled = true;
@@ -146,6 +153,8 @@ export function renderPinPage(pinID) {
                     .then((res) => {
                         if (res.status === 'ok') {
                             router.navigate(`/pin/${pinInfo.id}`);
+                            likeButton.classList.remove('hide');
+                            likeField.classList.remove('hide');
                         } else {
                             editSpan.textContent = 'Некорректные данные';
                         }
@@ -159,22 +168,16 @@ export function renderPinPage(pinID) {
 
             if (usernameReal === pinInfo.author.username) {
                 const rec = document.querySelector('.rectangle');
-                rec.appendChild(deleteButton);
-                rec.appendChild(updateButton);
+                updateButton.classList.remove('hide');
+                deleteButton.classList.remove('hide');
             }
 
             if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
-                block.appendChild(boardList);
-                UserBoards();
+                //block.appendChild(boardList);
+                //UserBoards();
             }
-
-            deleteButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                API.deletePin(pinID);
-                router.navigate('/');
-            });
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
