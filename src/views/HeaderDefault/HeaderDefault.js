@@ -44,9 +44,9 @@ export function renderHeaderDefault() {
     const notificationsBtn = document.querySelector('.js-notification-img');
     notificationsBtn?.addEventListener('click', () => {
         if (notificationsMenu.classList.contains('hide')) {
-            notificationsBtn.src = '/assets/icons/forHeader/notification.svg';
-        } else {
             notificationsBtn.src = '/assets/icons/forHeader/notification-active.svg';
+        } else {
+            notificationsBtn.src = '/assets/icons/forHeader/notification.svg';
         }
 
         notificationsMenu.classList.toggle('hide');
