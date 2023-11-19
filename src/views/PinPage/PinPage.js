@@ -107,6 +107,12 @@ export function renderPinPage(pinID) {
             updateButton.classList.add('hide');
             deleteButton.classList.add('hide');
 
+            deleteButton?.addEventListener('click', () => {
+                //e.preventDefault();
+                API.deletePin(pinID)
+                router.navigate('/');
+            });
+
             updateButton?.addEventListener('click', () => {
                 updateButton.classList.add('hide');
                 pinControl.classList.remove('hide');
@@ -157,20 +163,6 @@ export function renderPinPage(pinID) {
                         console.error(error);
                     })
             });
-
-            deleteButton.addEventListener('click', (event) => {
-                if (event.target.classList.contains('js-delete__btn')) {
-                    API.deletePin(pinID)
-                        .then((res) => {
-                            router.navigate('/');
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        });
-                }
-            });
-            
-            
 
             console.log(usernameReal, pinInfo.author.username);
 
