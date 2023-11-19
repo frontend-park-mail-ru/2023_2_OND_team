@@ -9,8 +9,15 @@
     background: #FFF;
 }
 
+.header-guest__logo_and_search {
+    display: flex;
+    align-items: center;
+}
+
 .header-guest__search {
-    padding: 5px 0 0 20px;
+    position: relative;
+    top: -10px;
+    padding-left: 20px;
 }
 
 .header-guest__search__field {

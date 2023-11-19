@@ -78,9 +78,15 @@ export function renderAuthPage() {
       API.loginUser(username, password)
           .then((status) => {
             if (status) {
-              header.innerHTML = '';
-              authorization.innerHTML = '';
-              router.navigate('/');
+              API.checkLogin()
+                .then(() => {
+                  header.innerHTML = '';
+                  authorization.innerHTML = '';
+                  router.navigate('/');
+                })
+                .catch((error) => {
+                  console.error(error);
+                })
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               passwordInput.style.borderColor = 'var(--error-50, #F4210B)';

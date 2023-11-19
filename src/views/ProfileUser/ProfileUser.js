@@ -4,6 +4,7 @@ import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
 import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
 import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
+import { definePins } from "../../utils/definePins/definePins.js";
 
 export function renderProfilePage() {
     const main = document.querySelector('#main');
@@ -29,9 +30,6 @@ export function renderProfilePage() {
         activeElement.classList.remove('profile-user__btn-active');
         pinsBtn.classList.add('profile-user__btn-active');
         
-        const gallery = document.querySelector('#user-boards');
-        gallery.innerHTML = '';
-
         renderUserPins();
     })
 
@@ -45,9 +43,6 @@ export function renderProfilePage() {
         activeElement.classList.remove('profile-user__btn-active');
         boardsBtn.classList.add('profile-user__btn-active');
 
-        const gallery = document.querySelector('#user-pins');
-        gallery.innerHTML = '';
-
         renderUserBoards();
     })
 
@@ -57,13 +52,16 @@ export function renderProfilePage() {
         API.getUserPins()
             .then((data) => {
                 const nonContent = document.querySelector('.user-non-content');
-                    if (!data.pins) {
+                if (!data.pins) {
                     renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
                     return;
                 }
-                const section = document.getElementById('user-pins');
-                renderPins(section, data.pins);
+
+                const sectionPins = document.querySelector('.user-pins-gallery');
+                const sectionBoards = document.querySelector('.user-boards-gallery');
+                sectionBoards.innerHTML = '';
                 nonContent.innerHTML = '';
+                renderPins(sectionPins, data.pins);
                 definePins();
             })
             .catch((error) => {
@@ -75,98 +73,22 @@ export function renderProfilePage() {
         API.getUserBoards()
             .then((data) => {
                 const nonContent = document.querySelector('.user-non-content');
-                    if (!data.length) {
+                if (!data.length) {
                     renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
                     return;
-                }
-                const section = document.getElementById('user-boards');
-                renderBoards(section, data);
+                }         
+
+                const sectionPins = document.querySelector('.user-pins-gallery');
+                const sectionBoards = document.querySelector('.user-boards-gallery');
+                sectionPins.innerHTML = '';
                 nonContent.innerHTML = '';
+                renderBoards(sectionBoards, data);
                 defineBoards();
             })
             .catch((error) => {
                 console.error('Ошибка при рендеринге досок:', error);
             });
     }
-
-    function definePins() {
-        const pins = document.querySelectorAll('.gallery__item');
-    
-        pins?.forEach((pin) => {
-          pin.addEventListener('click', (e) => {
-            if (e.target.classList.contains('like-icon')) {
-                return;
-            }
-
-            const pinID = pin.className.split(' ')[1].split('-')[3];
-            router.navigate(`/pin/${pinID}`);
-          });
-        });
-
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseenter', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeButton = document.querySelector(`.js-like-button-${pinID}`);
-                API.getLike(pinID)
-                    .then((data) => {
-                        if (data.is_set) {
-                            likeButton.src = '/assets/icons/like_active.svg';
-                        } else {
-                            likeButton.src = '/assets/icons/like.svg';
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            })
-        })
-
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseleave', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${pinID}`);
-                likeField.style.opacity = 0;
-            })
-        })
-
-        const likeButtons = document.querySelectorAll('.like-icon');
-        likeButtons?.forEach((likeButton) => {
-            likeButton.addEventListener('click', (element) => {
-                const id = element.target.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${id}`);
-                API.getLike(id)
-                    .then((data) => {
-                        if (data.is_set) {
-                            API.deleteLike(id)
-                                .then((data) => {
-                                    likeButton.src = '/assets/icons/like.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
-                                })
-                                .catch((error) => {
-                                    console.error(error);
-                                })
-                        } else {
-                            API.setLike(id)
-                                .then((data) => {
-                                    likeButton.src = '/assets/icons/like_active.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
-                                })
-                                .catch((error) => {
-                                    console.error(error);
-                                })
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-
-            });  
-
-        });
-    }
-
 
     function defineBoards() {
         const boards = document.querySelectorAll('.user__board');

@@ -139,11 +139,11 @@ export function renderProfileSecurity() {
                 }
 
                 API.putUserInfo(data)
-                    .then((status) => {
-                        if (status === "ok") {
+                    .then((res) => {
+                        if (res.status === "ok") {
                             router.navigate('/profile/security');
                         } else {                            
-                            securitySpan.textContent(`Некорректные данные: ${message}`);
+                            securitySpan.textContent = `Некорректные данные: ${res.message}`;
                         }
                     })
                     .catch((error) => {

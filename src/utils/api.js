@@ -513,7 +513,6 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          console.log(res.body)
           
           return res.body;
         } else {
@@ -544,7 +543,6 @@ export class API {
         const res = await response.json();
 
         if (res.status === 'ok') {
-          console.log(res.body)
           
           return res.body;
         } else {
@@ -759,9 +757,7 @@ export class API {
 
         const res = await response.json();
 
-        if (res.status === 'ok') {
-          console.log(res.body)
-          
+        if (res.status === 'ok') {          
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных об удалении доски');

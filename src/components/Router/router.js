@@ -15,8 +15,11 @@ import { renderPinPage } from "../../views/PinPage/PinPage.js";
 import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
 import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
 import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
-import { renderAddPins } from "../../views/AddPins/AddPins.js"
+import { renderAddPins } from "../../views/AddPins/AddPins.js";
 import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
+import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
+import { setActiveSidebarItem } from "../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js";
+import { renderMessengerPage } from "../../views/Messenger/Messenger.js";
 
 function resetScroll() {
     window.scrollTo({
@@ -47,25 +50,29 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            window.removeEventListener('scroll', window.scrollFunc);
-                            this.state.setCurrentPage('feed');
-                            if (status === 'ok') {
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                            } else {
-                                renderHeaderGuest();
-                            }
-                            renderFeedPage();
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    window.removeEventListener('scroll', window.scrollFunc);
+
+                    this.state.deleteAllPins();
+
+                    this.state.setCurrentPage('feed');
+
+                    if (this.state.getIsAuthorized()) {
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        setActiveSidebarItem('feed');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        removeHeaderTitle();
+                    } else {
+                        renderHeaderGuest();
+                    }
+
+                    renderFeedPage();
                 },
             },
             {
@@ -75,70 +82,77 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage('profile');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                                renderProfilePage();
-                            } else {
-                                this.navigate('/login');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.state.deleteAllPins();
+
+                        this.state.setCurrentPage('profile');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        setActiveSidebarItem('profile');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        }
+
+                        setHeaderTitle('Мои пины и доски');
+
+                        renderProfilePage();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
                 path: "/profile/data",
                 handler: () => {
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage('profileData');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                                renderProfileData();
-                            } else {
-                                this.navigate('/login');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.state.deleteAllPins();
+
+                        this.state.setCurrentPage('profileData');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        setActiveSidebarItem('profile-data');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Данные аккаунта');
+
+                        renderProfileData();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
                 path: "/profile/security",
                 handler: () => {
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage('profileSecurity');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                                renderProfileSecurity();
-                            } else {
-                                this.navigate('/login');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage('profileSecurity');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        
+                        setActiveSidebarItem('profile-security');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Безопасность');
+
+                        renderProfileSecurity();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
@@ -148,27 +162,16 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                window.removeEventListener('scroll', window.scrollFunc);
-                                this.state.setCurrentPage('feed');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                                renderFeedPage();
-                            } else {
-                                this.state.setCurrentPage('login');
-                                renderHeaderGuest();
-                                renderAuthPage();
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.navigate('/');
+                    } else {
+                        this.state.deleteAllPins();
+
+                        this.state.setCurrentPage('login');
+
+                        renderHeaderGuest();
+                        renderAuthPage();
+                    }
                 },
             },
             {
@@ -178,27 +181,42 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                    .then((status) => {
-                        if (status === 'ok') {
-                            window.removeEventListener('scroll', window.scrollFunc);
-                            this.state.setCurrentPage('feed');
-                            if (document.querySelector('#sidebar').innerHTML === '') {
-                                renderSidebar();
-                            }
-                            if (document.querySelector('#header').innerHTML === '') {
-                                renderHeaderDefault();
-                            } 
-                            renderFeedPage();
-                        } else {
-                            this.state.setCurrentPage('signup');
-                            renderHeaderGuest();
-                            renderRegPage();
+                    if (this.state.getIsAuthorized()) {
+                        this.navigate('/');
+                    } else {
+                        this.state.setCurrentPage('signup');
+                        
+                        renderHeaderGuest();
+                        renderRegPage();
+                    }
+                },
+            },
+            {
+                path: "/messenger",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'messenger') {
+                        return;
+                    }
+
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage('messenger');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
                         }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
+                        
+                        setActiveSidebarItem('messenger');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Мессенджер');
+
+                        renderMessengerPage();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
@@ -208,24 +226,25 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage('subscriptions');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                                renderSubscriptionsPage();
-                            } else {
-                                this.navigate('/login');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage('subscriptions');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        
+                        setActiveSidebarItem('subscriptions');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Подписки');
+
+                        renderSubscriptionsPage();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
@@ -235,24 +254,27 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage('favourite');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                                renderFavouritePage();
-                            } else {
-                                this.navigate('/login');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.state.deleteAllPins();
+
+                        this.state.setCurrentPage('favourite');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        setActiveSidebarItem('favourite');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Понравившиеся пины');
+
+                        renderFavouritePage();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
@@ -262,24 +284,27 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage('createPin');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                } 
-                                renderCreatePin();
-                            } else {
-                                this.navigate('/login');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized) {
+                        this.state.deleteAllPins();
+
+                        this.state.setCurrentPage('createPin');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        setActiveSidebarItem('');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Создание пина');
+
+                        renderCreatePin();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
@@ -289,24 +314,27 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage('createBoard');
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                }                     
-                                renderCreateBoard();
-                            } else {
-                                this.navigate('/login');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.state.deleteAllPins();
+
+                        this.state.setCurrentPage('createBoard');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        setActiveSidebarItem('');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        }               
+                        
+                        setHeaderTitle('Создание доски');
+
+                        renderCreateBoard();
+                    } else {
+                        this.navigate('/login');
+                    }
                 },
             },
             {
@@ -316,90 +344,35 @@ export class Router {
                         return;
                     }
 
-                    API.checkLogin()
-                        .then((status) => {
-                            if (status === 'ok') {
-                                this.state.setCurrentPage(`createВoard${boardID}`);
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                }                     
-                                renderAddPins(boardID);
-                            } else {
-                                this.navigate('/create/board');
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage(`createВoard${boardID}`);
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        
+                        setActiveSidebarItem('');
+                        
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        }
+
+                        renderAddPins(boardID);
+                    } else {
+                        this.navigate('/create/board');
+                    }
                 },
             },
             {
                 path: "/pin/ID",
                 handler: (pinID) => {
-                    API.checkLogin()
-                        .then((status) => {
-                            this.state.setCurrentPage(`pin${pinID}`);
-                            resetScroll();
-                            if (status === 'ok') {
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
-                                }
-                            } else {
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderGuest();
-                                }
-                            }
-                            renderPinPage(pinID);
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
-                },
-            },
-            {
-                path: "/board/ID",
-                handler: (boardID) => {
-                    API.checkLogin()
-                        .then((status) => {
-                            resetScroll();
-                            this.state.setCurrentPage(`board${boardID}`);
-                            if (status === 'ok') {
-                                if (document.querySelector('#sidebar').innerHTML === '') {
-                                    renderSidebar();
-                                }
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderDefault();
+                    if (this.state.getCurrentPage() === `pin${pinID}`) {
+                        return;
+                    }
+                    
+                    this.state.setCurrentPage(`pin${pinID}`);
 
-                                } 
-                                renderBoardPage(boardID);
-                              
-                            } else {
-                                if (document.querySelector('#header').innerHTML === '') {
-                                    renderHeaderGuest();
-                                }
-
-                                renderBoardPage(boardID);
-
-                            }
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        })
-                },
-            },
-        ];
-
-        this.#currentRoute = null;
-        this.#defaultRoute = () => {
-            API.checkLogin()
-                .then((status) => {
-                    if (status === 'ok') {
+                    if (this.state.getIsAuthorized()) {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
@@ -409,14 +382,67 @@ export class Router {
                     } else {
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderGuest();
-                        }                    
+                        }
                     }
-                    renderPage404();
-                })
-                .catch((error) => {
-                    console.error(error);
-                })
+
+                    resetScroll();
+
+                    renderPinPage(pinID);
+                },
+            },
+            {
+                path: "/board/ID",
+                handler: (boardID) => {
+                    if (this.state.getCurrentPage() === `board${boardID}`) {
+                        return;
+                    }
+
+                    this.state.deleteAllPins();
+
+                    this.state.setCurrentPage(`board${boardID}`);
+
+                    if (this.state.getIsAuthorized()) {
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+                    } else {
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderGuest();
+                        }
+                    }
+
+                    resetScroll();
+
+                    renderBoardPage(boardID);
+                },
+            },
+        ];
+
+        this.#currentRoute = null;
+
+        this.#defaultRoute = () => {
+            if (this.state.getIsAuthorized()) {
+                if (document.querySelector('#sidebar').innerHTML === '') {
+                    renderSidebar();
+                }
+
+                if (document.querySelector('#header').innerHTML === '') {
+                    renderHeaderDefault();
+                }
+
+                setActiveSidebarItem('');
+            } else {
+                if (document.querySelector('#header').innerHTML === '') {
+                    renderHeaderGuest();
+                }      
+            }
+
+            renderPage404();
         };
+
         this.#popstateListener = this.handlePopstate.bind(this);
         window.addEventListener("popstate", this.#popstateListener);
     }
