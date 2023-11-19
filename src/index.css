@@ -19,6 +19,9 @@
 @import url(./views/BoardPage/boardPage.css);
 @import url(./views/NonContentNotification/nonContentNotification.css);
 @import url(./views/HeaderWithTitle/headerWithTitle.css);
+@import url(./views/Subscriptions/subscriptions.css);
+@import url(./views/Messenger/messenger.css);
+
 
 html, body {
   --bg50: #808080;

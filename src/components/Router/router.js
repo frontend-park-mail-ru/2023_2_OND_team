@@ -19,6 +19,7 @@ import { renderAddPins } from "../../views/AddPins/AddPins.js";
 import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
 import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
 import { setActiveSidebarItem } from "../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js";
+import { renderMessengerPage } from "../../views/Messenger/Messenger.js";
 
 function resetScroll() {
     window.scrollTo({
@@ -187,6 +188,34 @@ export class Router {
                         
                         renderHeaderGuest();
                         renderRegPage();
+                    }
+                },
+            },
+            {
+                path: "/messenger",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'messenger') {
+                        return;
+                    }
+
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage('messenger');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        
+                        setActiveSidebarItem('messenger');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Мессенджер');
+
+                        renderMessengerPage();
+                    } else {
+                        this.navigate('/login');
                     }
                 },
             },
