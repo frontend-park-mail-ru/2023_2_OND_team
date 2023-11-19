@@ -19,6 +19,7 @@ import { renderAddPins } from "../../views/AddPins/AddPins.js";
 import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
 import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
 import { setActiveSidebarItem } from "../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js";
+import { renderMessengerPage } from "../../views/Messenger/Messenger.js";
 
 function resetScroll() {
     window.scrollTo({
@@ -212,7 +213,7 @@ export class Router {
 
                         setHeaderTitle('Мессенджер');
 
-                        renderSubscriptionsPage();
+                        renderMessengerPage();
                     } else {
                         this.navigate('/login');
                     }
