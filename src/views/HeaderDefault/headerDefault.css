@@ -118,7 +118,7 @@
   
 .header__create__menu {
     position: relative;
-    top: 30px;
+    top: 50px;
     width: 212px;
     height: 110px;
     justify-content: center;
@@ -160,10 +160,36 @@
 .header__create__menu__board-text {
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
+
+.header__user__menu {
+    position: relative;
+    top: 50px;
+    width: 200px;
+    height: 160px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+}
+
+.header__notifications__menu {
+    position: relative;
+    top: 50px;
+    width: 330px;
+    height: 130px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+}
   
 .header__user__menu {
     position: relative;
-    top: 54px;
+    top: 50px;
     width: 200px;
     height: 160px;
     justify-content: center;
