@@ -44,9 +44,9 @@ export function renderHeaderDefault() {
     const notificationsBtn = document.querySelector('.js-notification-img');
     notificationsBtn?.addEventListener('click', () => {
         if (notificationsMenu.classList.contains('hide')) {
-            notificationsBtn.src = '/assets/icons/actions/notification.svg';
+            notificationsBtn.src = '/assets/icons/forHeader/notification.svg';
         } else {
-            notificationsBtn.src = '/assets/icons/actions/notification-active.svg';
+            notificationsBtn.src = '/assets/icons/forHeader/notification-active.svg';
         }
 
         notificationsMenu.classList.toggle('hide');
@@ -100,7 +100,7 @@ export function renderHeaderDefault() {
 
         if (e.target !== notificationsBtn) {
             notificationsMenu.classList.add('hide');
-            notificationsBtn.src = '/assets/icons/actions/notification.svg';
+            notificationsBtn.src = '/assets/icons/forHeader/notification.svg';
         }
 
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
