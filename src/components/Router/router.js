@@ -191,6 +191,34 @@ export class Router {
                 },
             },
             {
+                path: "/messenger",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'messenger') {
+                        return;
+                    }
+
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage('messenger');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        
+                        setActiveSidebarItem('messenger');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Мессенджер');
+
+                        renderSubscriptionsPage();
+                    } else {
+                        this.navigate('/login');
+                    }
+                },
+            },
+            {
                 path: "/subscriptions",
                 handler: () => {
                     if (this.state.getCurrentPage() === 'subscriptions') {
