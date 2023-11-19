@@ -118,7 +118,8 @@
   
 .header__create__menu {
     position: relative;
-    top: 50px;
+    top: 10px;
+    left: 80%;
     width: 212px;
     height: 110px;
     justify-content: center;
@@ -164,8 +165,8 @@
 .header__notifications__menu {
     position: relative;
     top: 10px;
-    left: 1290px;
-    width: 250px;
+    left: 82%;
+    width: 220px;
     height: 100px;
     justify-content: center;
     align-items: center;
@@ -195,7 +196,7 @@
 .header__user__menu {
     position: relative;
     top: 10px;
-    left: 1420px;
+    left: 85%;
     width: 200px;
     height: 160px;
     justify-content: center;
