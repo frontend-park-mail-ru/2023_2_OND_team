@@ -43,6 +43,12 @@ export function renderHeaderDefault() {
 
     const notificationsBtn = document.querySelector('.js-notification-img');
     notificationsBtn?.addEventListener('click', () => {
+        if (notificationsMenu.classList.contains('hide')) {
+            notificationsBtn.src = '/assets/icons/actions/notification.svg';
+        } else {
+            notificationsBtn.src = '/assets/icons/actions/notification-active.svg';
+        }
+
         notificationsMenu.classList.toggle('hide');
     })
 
@@ -76,7 +82,6 @@ export function renderHeaderDefault() {
 
     const userBtn = document.querySelector('.header__user__avatar-img');
     userBtn?.addEventListener('click', () => {  
-
         if (userMenu.classList.contains('hide')) {
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
         } else {
@@ -95,6 +100,7 @@ export function renderHeaderDefault() {
 
         if (e.target !== notificationsBtn) {
             notificationsMenu.classList.add('hide');
+            notificationsBtn.src = '/assets/icons/actions/notification.svg';
         }
 
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
