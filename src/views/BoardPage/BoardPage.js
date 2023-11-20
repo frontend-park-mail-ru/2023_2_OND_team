@@ -34,13 +34,8 @@ export async function renderBoardPage(boardID) {
 
         const editSpan = document.querySelector('.pin-edit-span-all');
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Удалить';
-        deleteButton.classList.add('delete-button');
-
-        const updateButton = document.createElement('img');
-        updateButton.src = '/assets/icons/actions/icon_edit.svg';
-        updateButton.classList.add('edit-button');
+        const deleteButton = document.querySelector('.js-delete__btn');
+        const updateButton = document.querySelector('.js-edit__btn');
 
         updateButton?.addEventListener('click', () => {
             updateButton.classList.add('hide');
