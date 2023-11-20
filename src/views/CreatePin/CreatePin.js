@@ -70,29 +70,42 @@ export function renderCreatePin() {
             }
         }
     }
- 
+
     function handleFile(file) {
         const reader = new FileReader();
         const pictureImg = document.querySelector('.upload-image');
- 
-        reader.onload = (event) => {            
-        	const arrayBuffer = event.target.result;
-        	const byteArray = new Uint8Array(arrayBuffer);
-        	const byteString = String.fromCharCode.apply(null, byteArray);
-        	const base64String = btoa(byteString);
-        	const dataUrl = 'data:' + file.type + ';base64,' + base64String;
- 
-        	pictureImg.src = dataUrl;
- 
-            const pictureBytes = event.target.result;
+    
+        reader.onload = (event) => {
+            const dataUrl = event.target.result;
+            pictureImg.src = dataUrl;
+    
+            const pictureBytes = event.target.result.split(',')[1];
             const mimeType = file.type;
-            picture = new Blob([pictureBytes], { type: mimeType });
- 
+            picture = base64ToBlob(pictureBytes, mimeType);
+    
             console.log(picture);
- 
-            //pictureInput.value = file.name;
         };
- 
-        reader.readAsArrayBuffer(file);
+    
+        reader.readAsDataURL(file);
+    }
+
+    function base64ToBlob(base64, mime) {
+        const sliceSize = 1024;
+        const byteCharacters = atob(base64);
+        const byteArrays = [];
+    
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+    
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+    
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+    
+        return new Blob(byteArrays, { type: mime });
     }
 }
