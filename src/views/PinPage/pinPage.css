@@ -226,6 +226,7 @@
 }
 
 .user-block {
-    display: inline-flex;
+    display: flex;
+    align-items: center;
     padding-left: 20px;
 }
