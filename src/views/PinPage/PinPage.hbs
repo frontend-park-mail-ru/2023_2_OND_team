@@ -7,7 +7,10 @@
             <div class="saved">
                 <button disabled class="btn-primary-default text-base2-medium js-pin-to-board__btn">Прикрепить на доску</button>
             </div>
-            <span class="pin-username">{{username}}</span>
+            <div>
+                <img src="{{avatar}}" class="header__user__avatar-user">
+                <span class="pin-username">{{username}}</span>
+            </div>
             <div>
                 <label for="pin-title" class="labeled-input">Название</label>
                 <textarea disabled class="pin-title input-read-only text-base1-small pin-edit-item">{{title}}</textarea>

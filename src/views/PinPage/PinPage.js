@@ -19,6 +19,7 @@ export function renderPinPage(pinID) {
                 title: pinInfo.title,
                 description: pinInfo.description,
                 likes: pinInfo.count_likes,
+                avatar: state.getAvatar()
             };
 
             main.innerHTML = pinPage(context);
