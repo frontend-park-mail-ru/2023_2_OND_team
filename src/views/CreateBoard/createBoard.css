@@ -75,3 +75,7 @@
     outline: none;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
+
+.js-cancel__btn {
+    cursor: pointer;
+}
