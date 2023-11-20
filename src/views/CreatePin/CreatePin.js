@@ -13,9 +13,15 @@ export function renderCreatePin() {
     main.innerHTML = createPin(context);
 
     const cancelButton = document.querySelector('.js-pin-cancel__btn-change');
+    const secCancelButton = document.querySelector('.js-cancel__btn');
     const createButton = document.querySelector('.js-pin-create__btn-change');
     const pictureInput = document.getElementById('picture');
     const uploadImage = document.querySelector('.upload-image');
+
+    secCancelButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        router.navigate('/');
+    });
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();

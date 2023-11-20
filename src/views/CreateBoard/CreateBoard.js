@@ -15,7 +15,13 @@ export function renderCreateBoard() {
     main.innerHTML = createBoard(context);
 
     const cancelButton = document.querySelector('.js-board-cancel__btn-change');
+    const secCancelButton = document.querySelector('.js-cancel__btn');
     const createButton = document.querySelector('.js-board-create__btn-change');
+
+    secCancelButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        router.navigate('/');
+    });
 
     cancelButton.addEventListener('click', function (e) {
         e.preventDefault();
