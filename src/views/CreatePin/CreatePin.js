@@ -79,33 +79,25 @@ export function renderCreatePin() {
             const dataUrl = event.target.result;
             pictureImg.src = dataUrl;
     
-            const pictureBytes = event.target.result.split(',')[1];
-            const mimeType = file.type;
-            picture = base64ToBlob(pictureBytes, mimeType);
-    
+            picture = dataURLtoBlob(dataUrl);
             console.log(picture);
         };
     
         reader.readAsDataURL(file);
     }
-
-    function base64ToBlob(base64, mime) {
-        const sliceSize = 1024;
-        const byteCharacters = atob(base64);
-        const byteArrays = [];
     
-        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            const slice = byteCharacters.slice(offset, offset + sliceSize);
+    function dataURLtoBlob(dataUrl) {
+        const arr = dataUrl.split(',');
+        const mime = arr[0].match(/:(.*?);/)[1];
+        const bstr = atob(arr[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
     
-            const byteNumbers = new Array(slice.length);
-            for (let i = 0; i < slice.length; i++) {
-                byteNumbers[i] = slice.charCodeAt(i);
-            }
-    
-            const byteArray = new Uint8Array(byteNumbers);
-            byteArrays.push(byteArray);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
         }
     
-        return new Blob(byteArrays, { type: mime });
+        return new Blob([u8arr], { type: mime });
     }
+    
 }
