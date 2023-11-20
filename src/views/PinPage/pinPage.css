@@ -224,3 +224,7 @@
     width: 30px;
     height: 28px;
 }
+
+.user-block {
+    display: inline-flex;
+}
