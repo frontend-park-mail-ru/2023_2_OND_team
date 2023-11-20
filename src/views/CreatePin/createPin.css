@@ -83,3 +83,8 @@
     width: 350px;
     cursor: pointer;
 }
+
+.title__block {
+    display: flex;
+    align-items: center;
+}
