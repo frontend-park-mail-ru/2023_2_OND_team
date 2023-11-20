@@ -201,16 +201,9 @@
 }
 
 .btn-delete {
-    background-color: white;
-    color: red;
-    border: red;
-    font-size: 18px;
-    border-radius: 10px;
-    padding: 10px 15px;
     cursor: pointer;
-    width: 100px;
-    height: 45px;
-    margin: 10px 0;
+    width: 22px;
+    height: 25px;
 }
 
 .btn-edit {
