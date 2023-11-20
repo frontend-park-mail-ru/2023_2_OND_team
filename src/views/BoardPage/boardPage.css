@@ -75,3 +75,8 @@
     left: 520px;
     gap: 50px;
 }
+
+.board__block {
+    display: flex;
+    align-items: center;
+}
