@@ -227,4 +227,5 @@
 
 .user-block {
     display: inline-flex;
+    padding-left: 20px;
 }
