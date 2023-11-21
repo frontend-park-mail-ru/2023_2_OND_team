@@ -15,7 +15,7 @@ export function renderSubscriptionsPage() {
         .then((data) => {
             if (!data) {
                 const searchField = document.querySelector('.subscriptions__search');
-                searchField.classList.add('hide');
+                searchField.style.display = 'none';
                 const nonContent = document.querySelector('.subscriptions-non-content');
                 renderNonContentNotification(nonContent, 'Вы пока ни на кого не подписались', 'На главную', '/');
                 

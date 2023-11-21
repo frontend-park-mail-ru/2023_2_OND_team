@@ -672,7 +672,7 @@ export class API {
           throw new Error('Ошибка при получении данных из API');
         }
       } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
+        console.error('Ошибка при получении лайкнутых пинов:', error);
       }
     }
 
@@ -701,7 +701,7 @@ export class API {
           throw new Error('Ошибка при получении данных из API');
         }
       } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
+        console.error('Ошибка при получении досок:', error);
       }
     }
 
@@ -819,7 +819,7 @@ export class API {
         return res;
     
       } catch (error) {
-          console.error('Ошибка при обновлении данных пина:', error);
+          console.error('Ошибка при обновлении данных доски:', error);
         throw error;
       }
     }
@@ -848,7 +848,7 @@ export class API {
           throw new Error('Ошибка при получении данных из API');
         }
       } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
+        console.error('Ошибка при получении подписок:', error);
       }
     }
 
