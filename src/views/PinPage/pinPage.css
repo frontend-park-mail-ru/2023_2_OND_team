@@ -28,12 +28,10 @@
 }
 
 .pin-username {
-    font-family: Nunito;
     padding-right: 192px;
     display: block;
     max-width: 90%;
     margin-left: 20px;
-    font-weight: 700;
 }
 
 .pin-like-btn {
