@@ -826,7 +826,7 @@ export class API {
 
     static async getUserSubscriptions() {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/subscription/user/get?&view=subscriptions`;
+        const configItem = `//pinspire.online:8082/api/v1/subscription/user/get?&view=subscriptions`;
 
         const response = await fetch(configItem, {
           headers: {
