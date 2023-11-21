@@ -8,22 +8,19 @@ export function renderSubscriptionsPage() {
 
     const main = document.querySelector('#main');
     const subscriptionsTemplate = Handlebars.templates['Subscriptions.hbs'];
-    const subscriptionsContext = {
-        nonContent: true,
-    };
+    const subscriptionsContext = {};
+    main.innerHTML = subscriptionsTemplate(subscriptionsContext);
 
     API.getUserSubscriptions()
         .then((data) => {
             if (!data) {
-                main.innerHTML = subscriptionsTemplate(subscriptionsContext);
+                const searchField = document.querySelector('.subscriptions__search');
+                searchField.classList.add('hide');
                 const nonContent = document.querySelector('.subscriptions-non-content');
                 renderNonContentNotification(nonContent, 'Вы пока ни на кого не подписались', 'На главную', '/');
                 
                 return;
             }
-
-            subscriptionsContext.nonContent = false;
-            main.innerHTML = subscriptionsTemplate(subscriptionsContext);
 
             const section = document.querySelector('.subscriptions-gallery');
             renderUserItems(section, data);

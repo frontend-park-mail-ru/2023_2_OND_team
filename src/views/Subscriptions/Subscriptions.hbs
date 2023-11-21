@@ -1,15 +1,12 @@
 <div class="subscriptions">
-    {{#if nonContent}}
-        <div class="subscriptions-nonW-content"></div>
-    {{else}}
-        <div class="subscriptions__search">
-            <div class="subscriptions__search__text">
-                <input type="text" placeholder="Найти пользователя" class="subscriptions__search__text-input text-base2-medium">
-            </div>
-            <div class="subscriptions__search__img">
-                <img src="/assets/icons/forHeader/icon-search.svg" class="header__search__img-image">
-            </div>
+    <div class="subscriptions-non-content"></div>
+    <div class="subscriptions__search">
+        <div class="subscriptions__search__text">
+            <input type="text" placeholder="Найти пользователя" class="subscriptions__search__text-input text-base2-medium">
         </div>
-        <section class="subscriptions-gallery"></section>
-    {{/if}}
+        <div class="subscriptions__search__img">
+            <img src="/assets/icons/forHeader/icon-search.svg" class="header__search__img-image">
+        </div>
+    </div>
+    <section class="subscriptions-gallery"></section>
 </div>
