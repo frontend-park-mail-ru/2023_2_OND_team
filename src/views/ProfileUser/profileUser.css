@@ -50,12 +50,6 @@
   text-align: center;
 }
 
-.btn-primary-clear {
-  border-radius: var(--br-s, 10px);
-  border: 2px solid var(--primary-30, #226B77);
-  background: var(--bg-100, #FFF);
-}
-
 .profile-user__content {
   display: flex;
   flex-direction: column;

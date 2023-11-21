@@ -28,7 +28,8 @@
 }
 
 .header__search__text-input {
-    all: unset;
+    border: none;
+    outline: none;
     width: 230px;
     padding-left: 4px;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
