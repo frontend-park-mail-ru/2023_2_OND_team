@@ -155,8 +155,13 @@ export function renderPinPage(pinID) {
                     .then((res) => {
                         if (res.status === 'ok') {
                             router.navigate(`/pin/${pinInfo.id}`);
+                            titleTextarea.classList.remove('input-primary');
+                            descriptionTextarea.classList.remove('input-primary');
+
                             likeButton.classList.remove('hide');
                             likeField.classList.remove('hide');
+
+                            pinControl.classList.add('hide');
                         } else {
                             editSpan.textContent = 'Некорректные данные';
                         }
