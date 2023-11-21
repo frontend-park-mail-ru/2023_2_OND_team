@@ -854,7 +854,7 @@ export class API {
 
     static async getSomeUserInfo(userID) {
       try {
-        const configItem = `//pinspire.online:8082/api/v1/subscription/user/info/${userID}`;
+        const configItem = `//pinspire.online:8082/api/v1/user/info/${userID}`;
 
         const response = await fetch(configItem, {
           headers: {
