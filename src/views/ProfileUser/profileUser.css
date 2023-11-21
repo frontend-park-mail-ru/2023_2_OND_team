@@ -34,14 +34,6 @@
   text-align: center;
 }
 
-.text-base1-medium {
-  font-family: Nunito;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 .profile-user__change-cover-btn {
   position: relative;
   top: 90px;
@@ -56,12 +48,6 @@
   flex-shrink: 0;
   color: var(--primary-30, #226B77);
   text-align: center;
-}
-
-.btn-primary-clear {
-  border-radius: var(--br-s, 10px);
-  border: 2px solid var(--primary-30, #226B77);
-  background: var(--bg-100, #FFF);
 }
 
 .profile-user__content {

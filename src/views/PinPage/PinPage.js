@@ -19,6 +19,7 @@ export function renderPinPage(pinID) {
                 title: pinInfo.title,
                 description: pinInfo.description,
                 likes: pinInfo.count_likes,
+                avatar: pinInfo.author.avatar
             };
 
             main.innerHTML = pinPage(context);
@@ -79,6 +80,7 @@ export function renderPinPage(pinID) {
             const editSpan = document.querySelector('.pin-edit-span-all');
             
             const saveButton = document.querySelector('.js-pin-to-board__btn');
+            const subsButton = document.querySelector('.js-subscribe__btn');
             /*const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
@@ -170,6 +172,7 @@ export function renderPinPage(pinID) {
                 const rec = document.querySelector('.rectangle');
                 updateButton.classList.remove('hide');
                 deleteButton.classList.remove('hide');
+                subsButton.classList.add('hide');
             }
 
             if (isAuthorized) {

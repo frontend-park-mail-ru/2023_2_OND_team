@@ -3,7 +3,7 @@
     width: auto;
     display: flex;
     flex-direction: column;
-    padding: 20px 20px;
+    padding: 10px 20px;
     display: flex;
     justify-content: center;
     max-width: 900px;
@@ -82,4 +82,10 @@
     height: 250px;
     width: 350px;
     cursor: pointer;
+}
+
+.title__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

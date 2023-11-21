@@ -56,14 +56,6 @@
     justify-content: center;
 }
 
-.text-base2-medium {
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
 .board-edit-item {
     margin: 5px 0px 0px 15px;
     padding: 5px 5px;
@@ -74,4 +66,8 @@
     resize: none;
     outline: none;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.js-cancel__btn {
+    cursor: pointer;
 }
