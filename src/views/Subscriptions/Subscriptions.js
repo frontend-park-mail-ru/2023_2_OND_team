@@ -14,14 +14,14 @@ export function renderSubscriptionsPage() {
     API.getUserSubscriptions()
         .then((data) => {
             if (!data) {
-                const searchField = document.querySelector('.subscriptions__search');
-                searchField.style.display = 'none';
                 const nonContent = document.querySelector('.subscriptions-non-content');
                 renderNonContentNotification(nonContent, 'Вы пока ни на кого не подписались', 'На главную', '/');
                 
                 return;
             }
 
+            const searchField = document.querySelector('.subscriptions__search');
+            searchField.classList.remove('hide');
             const section = document.querySelector('.subscriptions-gallery');
             renderUserItems(section, data);
         })
