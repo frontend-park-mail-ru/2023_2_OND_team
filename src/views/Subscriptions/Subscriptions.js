@@ -2,6 +2,7 @@ import { renderNonContentNotification } from "../NonContentNotification/NonConte
 import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
 import { renderUserItems } from "./SubscriptionsUserItem.js";
+import { renderUserPage } from "../UserPage/UserPage.js";
 
 export function renderSubscriptionsPage() {
     const state = new State();
@@ -24,6 +25,11 @@ export function renderSubscriptionsPage() {
             searchField.classList.remove('hide');
             const section = document.querySelector('.subscriptions-gallery');
             renderUserItems(section, data);
+
+            const userItem = document.querySelector('.subscriptions__items');
+            userItem?.addEventListener('click', () => {
+                renderUserPage(1);
+            });
         })
         .catch((error) => {
             console.error(error);

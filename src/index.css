@@ -21,6 +21,7 @@
 @import url(./views/HeaderWithTitle/headerWithTitle.css);
 @import url(./views/Subscriptions/subscriptions.css);
 @import url(./views/Messenger/messenger.css);
+@import url(./views/UserPage/userPage.css);
 
 
 html, body {
