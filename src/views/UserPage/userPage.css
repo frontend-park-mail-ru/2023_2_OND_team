@@ -54,14 +54,14 @@
   flex-direction: column;
   justify-content: center;
   color: #000;
-  text-align: center;
+  text-align: left;
 }
 
 .user__data {
   display: flex;
   flex-direction: column;
   position: relative;
-  left: 250px;
+  left: 200px;
   align-items: center;
   justify-content: center;
   gap: 20px;
