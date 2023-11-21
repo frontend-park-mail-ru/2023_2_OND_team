@@ -34,14 +34,6 @@
   text-align: center;
 }
 
-.text-base1-medium {
-  font-family: Nunito;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 .profile-user__change-cover-btn {
   position: relative;
   top: 90px;

@@ -226,11 +226,3 @@
 .hide {
     display: none;
 }
-
-.text-base2-medium {
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
