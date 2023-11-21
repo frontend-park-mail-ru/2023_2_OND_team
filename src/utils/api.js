@@ -824,4 +824,32 @@ export class API {
       }
     }
 
+    static async getUserSubscriptions() {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/subscription/user/get?&view=subscriptions`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
 }
