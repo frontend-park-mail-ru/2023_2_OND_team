@@ -95,6 +95,6 @@ export function renderHeaderDefault() {
     const filterBtn = document.querySelector('.header__filter__img-image');
     const filterList = document.querySelector('header__filter__list');
     filterBtn?.addEventListener('click', () => {
-        filterList.classList.toggle('hide');
+        filterList.classList.remove('hide');
     });
 }
