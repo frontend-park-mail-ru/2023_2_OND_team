@@ -34,14 +34,34 @@ export function renderUserPage(userID) {
                 subscribeBtn.classList.add('hide');
                 unsubscribeBtn.classList.remove('hide');
 
-                // API.subscribeToUser(userID);
+                API.subscribeToUser(userID)
+                    .then((data, code) => {
+                        if (data) {
+                            console.log(data, code);
+                            subscribeBtn.classList.remove('hide');
+                            unsubscribeBtn.classList.add('hide');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
             });
 
             unsubscribeBtn?.addEventListener('click', () => {
                 subscribeBtn.classList.remove('hide');
                 unsubscribeBtn.classList.add('hide');
 
-                // API.unsubscribeFromUser(userID);
+                API.unsubscribeFromUser(userID)
+                    .then((data, code) => {
+                        if (data) {
+                            console.log(data, code);
+                            subscribeBtn.classList.add('hide');
+                            unsubscribeBtn.classList.remove('hide');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    })
             });
 
             const pinsBtn = document.querySelector('.user__pins-btn');

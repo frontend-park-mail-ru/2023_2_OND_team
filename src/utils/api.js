@@ -646,7 +646,7 @@ export class API {
 
     static async getMyBoards() {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUserID()}`;
+        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
 
         const response = await fetch(configItem, {
           headers: {
@@ -881,7 +881,7 @@ export class API {
 
     static async getUserSubscriptions() {
       try {
-        const configItem = `//pinspire.online:8082/api/v1/subscription/user/get?&view=subscriptions`;
+        const configItem = `//pinspire.online:8083/api/v1/subscription/user/get?&view=subscriptions`;
 
         const response = await fetch(configItem, {
           headers: {
@@ -909,7 +909,7 @@ export class API {
 
     static async getSomeUserInfo(userID) {
       try {
-        const configItem = `//pinspire.online:8082/api/v1/user/info/${userID}`;
+        const configItem = `//pinspire.online:8083/api/v1/user/info/${userID}`;
 
         const response = await fetch(configItem, {
           headers: {
@@ -929,6 +929,67 @@ export class API {
           return res.body;
         } else {
           throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных пользователя:', error);
+      }
+    }
+
+    static async subscribeToUser(userID) {
+      try {
+        const configItem = `//pinspire.online:8083/api/v1/subscription/user/create`;
+
+        const response = await fetch(configItem, {
+          method: 'POST',
+          headers: {
+            // 'Content-Type': 'application/json',
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({to: userID}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          return res.message, res.code;
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных пользователя:', error);
+      }
+    }
+
+    static async unsubscribeFromUser(userID) {
+      try {
+        const configItem = `//pinspire.online:8083/api/v1/subscription/user/delete`;
+
+        const response = await fetch(configItem, {
+          method: 'DELETE',
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({to: userID}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          return res.message, res.code;
         }
       } catch (error) {
         console.error('Ошибка при получении данных пользователя:', error);
