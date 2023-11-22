@@ -9,7 +9,7 @@
 }
 
 .header__search {
-    padding: 5px 0 0 20px;
+    padding: 0px 20px;
     display: flex;
     gap: 20px;
 }
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    top: 10px;
+    top: 15px;
     flex-shrink: 0;
     gap: 4px;
     border-radius: var(--br-s, 10px);
@@ -238,4 +238,5 @@
 .header__filter__img {
     position: relative;
     top: 20px;
+    cursor: pointer;
 }
