@@ -24,7 +24,7 @@ export function renderUserPage(userID) {
             const subscribeBtn = document.querySelector('.user__subscribe-btn');
             const unsubscribeBtn = document.querySelector('.user__unsubscribe-btn');
 
-            if (isSubscribed) {
+            if (data.is_subscribed) {
                 unsubscribeBtn.classList.remove('hide');
             } else {
                 subscribeBtn.classList.remove('hide');

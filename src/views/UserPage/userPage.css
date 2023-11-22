@@ -148,17 +148,13 @@
 
 .user__subscribe-btn {
   color: var(--error-35, #AB1708);
-text-align: center;
-
-/* text base1 medium */
-font-family: Nunito;
-font-size: 25px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  text-align: center;
 }
 
-
+.user__unsubscribe-btn {
+  color: var(--primary-30, #226B77);
+  text-align: center;
+}
 
 
 .user__content {
