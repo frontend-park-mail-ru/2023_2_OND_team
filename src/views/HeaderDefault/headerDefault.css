@@ -230,7 +230,12 @@
     display: none;
 }
 
-.header__filter__img-image{
+.header__filter__img-image {
     width: 35px;
     height: 35px;
+}
+
+.header__filter__img {
+    position: relative;
+    top: 20px;
 }
