@@ -11,7 +11,6 @@
     height: 40px;
     width: 270px;
     align-items: center;
-    justify-content: center;
     position: relative;
     top: 10px;
     flex-shrink: 0;
@@ -26,10 +25,6 @@
     width: 230px;
     padding-left: 4px;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
-}
-
-.subscriptions__search__img-image {
-    cursor: pointer;
 }
 
 .subscriptions-gallery {

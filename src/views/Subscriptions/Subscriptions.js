@@ -22,9 +22,10 @@ export function renderSubscriptionsPage() {
             renderUserItems(section, data);
             defineUserItems();
 
-            const searchField = document.querySelector('.subscriptions__search');
-            searchField.classList.remove('hide');
+            const search = document.querySelector('.subscriptions__search');
+            search.classList.remove('hide');
 
+            const searchField = document.querySelector('.subscriptions__search__text-input');
             searchField.addEventListener('change', () => {
                 sortUserItems(searchField.value);
             });

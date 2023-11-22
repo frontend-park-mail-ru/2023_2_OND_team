@@ -36,7 +36,7 @@ export function renderUserPage(userID) {
             subscribeBtn?.addEventListener('click', () => {
                 subscribeBtn.classList.add('hide');
                 unsubscribeBtn.classList.remove('hide');
-                numSubscriptionsField.innerHTML = numSubscriptionsField.innerHTML + 1;
+                numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML + 1;
 
                 API.subscribeToUser(userID)
                     .then((data, code) => {
@@ -44,6 +44,7 @@ export function renderUserPage(userID) {
                             console.log(data, code);
                             subscribeBtn.classList.remove('hide');
                             unsubscribeBtn.classList.add('hide');
+                            numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML - 1;
                         }
                     })
                     .catch((error) => {
@@ -54,7 +55,7 @@ export function renderUserPage(userID) {
             unsubscribeBtn?.addEventListener('click', () => {
                 subscribeBtn.classList.remove('hide');
                 unsubscribeBtn.classList.add('hide');
-                numSubscriptionsField.innerHTML = numSubscriptionsField.innerHTML - 1;
+                numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML - 1;
 
                 API.unsubscribeFromUser(userID)
                     .then((data, code) => {
@@ -62,6 +63,7 @@ export function renderUserPage(userID) {
                             console.log(data, code);
                             subscribeBtn.classList.add('hide');
                             unsubscribeBtn.classList.remove('hide');
+                            numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML + 1;
                         }
                     })
                     .catch((error) => {
