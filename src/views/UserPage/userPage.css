@@ -149,11 +149,13 @@
 .user__subscribe-btn {
   color: var(--primary-30, #226B77);
   text-align: center;
+  width: 178px;
 }
 
 .user__unsubscribe-btn {
   color: var(--error-35, #AB1708);
   text-align: center;
+  width: 178px;
 }
 
 
