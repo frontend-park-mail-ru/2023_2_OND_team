@@ -38,7 +38,7 @@ function defineUserItems() {
 
     userItems?.forEach((userItem) => {
         userItem.addEventListener('click', () => {
-            const userID = userItem.getAttribute(classList).split(' ')[1].split('-')[1];
+            const userID = userItem.getAttribute('class').split(' ')[1].split('-')[1];
             renderUserPage(userID);
         });
     });
