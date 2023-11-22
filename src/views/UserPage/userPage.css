@@ -178,6 +178,11 @@
   text-align: center;
 }
 
+.user__btn-active {
+  color: var(--primary-45, #33A1B3);
+  text-align: center;
+}
+
 .btn-error-clear {
   border-radius: var(--br-s, 10px);
   border: 2px solid var(--error-35, #AB1708);

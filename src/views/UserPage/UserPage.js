@@ -1,4 +1,6 @@
 import { API } from "../../utils/api.js";
+import { renderPins } from "../../components/RenderPins/renderPins.js";
+import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
 import { definePins } from "../../utils/definePins/definePins.js";
 import { defineBoards } from "../../utils/defingeBoards/defineBoards.js";
 
@@ -87,7 +89,7 @@ export function renderUserPage(userID) {
                 activeElement.classList.remove('user__btn-active');
                 boardsBtn.classList.add('user__btn-active');
 
-                renderUserBoards(userID);
+                renderUserBoards(data.username);
             })
 
             renderUserPins(userID);
@@ -102,39 +104,39 @@ export function renderUserPage(userID) {
 function renderUserPins(userID) {
     API.getUserPins(userID)
         .then((data) => {
-            // const nonContent = document.querySelector('.user-non-content');
-            // if (!data.pins) {
-            //     renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
-            //     return;
-            // }
+            const nonContent = document.querySelector('.user-non-content');
+            if (!data.pins) {
+                nonContent.innerHTML('У этого пользователя нет пинов');
+                return;
+            }
 
-            // const sectionPins = document.querySelector('.user-pins-gallery');
-            // const sectionBoards = document.querySelector('.user-boards-gallery');
-            // sectionBoards.innerHTML = '';
-            // nonContent.innerHTML = '';
-            // renderPins(sectionPins, data.pins);
-            // definePins();
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionBoards.innerHTML = '';
+            nonContent.innerHTML = '';
+            renderPins(sectionPins, data.pins);
+            definePins();
         })
         .catch((error) => {
             console.error('Ошибка при рендеринге пинов:', error);
         });
 }
 
-function renderUserBoards(userID) {
-    API.getUserBoards(userID)
+function renderUserBoards(username) {
+    API.getUserBoards(username)
         .then((data) => {
-            // const nonContent = document.querySelector('.user-non-content');
-            // if (!data.length) {
-            //     renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
-            //     return;
-            // }         
+            const nonContent = document.querySelector('.user-non-content');
+            if (!data.length) {
+                nonContent.innerHTML('У этого пользователя нет досок');
+                return;
+            }         
 
-            // const sectionPins = document.querySelector('.user-pins-gallery');
-            // const sectionBoards = document.querySelector('.user-boards-gallery');
-            // sectionPins.innerHTML = '';
-            // nonContent.innerHTML = '';
-            // renderBoards(sectionBoards, data);
-            // defineBoards();
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionPins.innerHTML = '';
+            nonContent.innerHTML = '';
+            renderBoards(sectionBoards, data);
+            defineBoards();
         })
         .catch((error) => {
             console.error('Ошибка при рендеринге досок:', error);

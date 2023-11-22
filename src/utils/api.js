@@ -731,9 +731,9 @@ export class API {
       }
     }
 
-    static async getUserBoards(userID) {
+    static async getUserBoards(username) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${userID}`;
+        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${username}`;
 
         const response = await fetch(configItem, {
           headers: {
@@ -942,7 +942,7 @@ export class API {
         const response = await fetch(configItem, {
           method: 'POST',
           headers: {
-            // 'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({to: userID}),
@@ -973,6 +973,7 @@ export class API {
         const response = await fetch(configItem, {
           method: 'DELETE',
           headers: {
+            'Content-Type': 'application/json',
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
           body: JSON.stringify({to: userID}),
