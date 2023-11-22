@@ -1,4 +1,8 @@
+import { Router } from "../../components/Router/router";
+
 export function defineBoards() {
+  const router = new Router();
+
     const boards = document.querySelectorAll('.user__board');
 
     boards?.forEach((board) => {

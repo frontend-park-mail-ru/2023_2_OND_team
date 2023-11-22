@@ -945,7 +945,7 @@ export class API {
             'Content-Type': 'application/json',
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({to: userID}),
+          body: JSON.stringify({to: Number(userID)}),
           credentials: 'include',
         });
 
@@ -976,7 +976,7 @@ export class API {
             'Content-Type': 'application/json',
             'X-CSRF-Token': this.state.getCsrfToken(),
           },
-          body: JSON.stringify({to: userID}),
+          body: JSON.stringify({to: Number(userID)}),
           credentials: 'include',
         });
 

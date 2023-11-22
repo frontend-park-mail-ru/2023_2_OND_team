@@ -25,6 +25,7 @@ export function renderUserPage(userID) {
 
             const subscribeBtn = document.querySelector('.user__subscribe-btn');
             const unsubscribeBtn = document.querySelector('.user__unsubscribe-btn');
+            const numSubscriptionsField = document.querySelector('.user__subscriptions-text');
 
             if (data.is_subscribed) {
                 unsubscribeBtn.classList.remove('hide');
@@ -35,6 +36,7 @@ export function renderUserPage(userID) {
             subscribeBtn?.addEventListener('click', () => {
                 subscribeBtn.classList.add('hide');
                 unsubscribeBtn.classList.remove('hide');
+                numSubscriptionsField.innerHTML = numSubscriptionsField.innerHTML + 1;
 
                 API.subscribeToUser(userID)
                     .then((data, code) => {
@@ -52,6 +54,7 @@ export function renderUserPage(userID) {
             unsubscribeBtn?.addEventListener('click', () => {
                 subscribeBtn.classList.remove('hide');
                 unsubscribeBtn.classList.add('hide');
+                numSubscriptionsField.innerHTML = numSubscriptionsField.innerHTML - 1;
 
                 API.unsubscribeFromUser(userID)
                     .then((data, code) => {
@@ -106,7 +109,7 @@ function renderUserPins(userID) {
         .then((data) => {
             const nonContent = document.querySelector('.user-non-content');
             if (!data.pins) {
-                nonContent.innerHTML('У этого пользователя нет пинов');
+                nonContent.innerHTML ='У этого пользователя нет пинов';
                 return;
             }
 
@@ -127,7 +130,7 @@ function renderUserBoards(username) {
         .then((data) => {
             const nonContent = document.querySelector('.user-non-content');
             if (!data.length) {
-                nonContent.innerHTML('У этого пользователя нет досок');
+                nonContent.innerHTML = 'У этого пользователя нет досок';
                 return;
             }         
 

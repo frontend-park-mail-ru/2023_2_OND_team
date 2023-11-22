@@ -432,6 +432,9 @@ export class Router {
                         return;
                     }
 
+
+                    this.state.deleteAllPins();
+
                     this.state.setCurrentPage(`user${userID}`);
 
                     if (this.state.getIsAuthorized()) {
