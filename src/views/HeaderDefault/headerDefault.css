@@ -256,7 +256,52 @@
 }
 
 .filter__list__pointer {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
     display: block;
-    margin-bottom: 8px;  
+    margin-bottom: 10px;
+}
+  
+.filter__list__pointer input {
+    position: absolute;
+    opacity: 0;
     cursor: pointer;
 }
+  
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+  
+.filter__list__pointer:hover .checkmark {
+    background-color: #ccc;
+}
+  
+.filter__list__pointer input:checked + .checkmark {
+    background-color: #2196F3;
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.filter__list__pointer input:checked + .checkmark:after {
+    display: block;
+}
+  
+.checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}  
