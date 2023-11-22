@@ -93,8 +93,8 @@ export function renderHeaderDefault() {
     })
 
     const filterBtn = document.querySelector('.header__filter__img-image');
-    const filterList = document.querySelector('header__filter__list');
+    const filterList = document.querySelector('.header__filter__list');
     filterBtn?.addEventListener('click', () => {
-        filterList.classList.remove('hide');
+        filterList.classList.toggle('hide');
     });
 }
