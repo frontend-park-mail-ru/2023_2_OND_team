@@ -147,12 +147,12 @@
 }
 
 .user__subscribe-btn {
-  color: var(--error-35, #AB1708);
+  color: var(--primary-30, #226B77);
   text-align: center;
 }
 
 .user__unsubscribe-btn {
-  color: var(--primary-30, #226B77);
+  color: var(--error-35, #AB1708);
   text-align: center;
 }
 
@@ -180,6 +180,10 @@
   border-radius: var(--br-s, 10px);
   border: 2px solid var(--error-35, #AB1708);
   background: var(--bg-100, #FFF);
+}
+
+.btn-error-clear:hover {
+  background: var(--error-50, #F4210B);
 }
 
 .hide {
