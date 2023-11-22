@@ -91,4 +91,10 @@ export function renderHeaderDefault() {
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
         }
     })
+
+    const filterBtn = document.querySelector('.header__filter__img-image');
+    const filterList = document.querySelector('header__filter__list');
+    filterBtn?.addEventListener('click', () => {
+        filterList.classList.toggle('hide');
+    });
 }
