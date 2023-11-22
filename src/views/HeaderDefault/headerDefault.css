@@ -10,6 +10,8 @@
 
 .header__search {
     padding: 5px 0 0 20px;
+    display: flex;
+    gap: 20px;
 }
 
 .header__search__field {
@@ -226,4 +228,9 @@
   
 .hide {
     display: none;
+}
+
+.header__filter__img-image{
+    width: 35px;
+    height: 35px;
 }
