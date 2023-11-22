@@ -23,7 +23,7 @@
 .subscriptions__search__text-input {
     all: unset;
     width: 230px;
-    padding-left: 4px;
+    padding-left: 10px;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 

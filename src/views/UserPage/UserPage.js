@@ -49,6 +49,9 @@ export function renderUserPage(userID) {
                     })
                     .catch((error) => {
                         console.error(error);
+                        subscribeBtn.classList.remove('hide');
+                        unsubscribeBtn.classList.add('hide');
+                        numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML - 1;
                     })
             });
 
@@ -68,6 +71,9 @@ export function renderUserPage(userID) {
                     })
                     .catch((error) => {
                         console.error(error);
+                        subscribeBtn.classList.add('hide');
+                        unsubscribeBtn.classList.remove('hide');
+                        numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML + 1;
                     })
             });
 
