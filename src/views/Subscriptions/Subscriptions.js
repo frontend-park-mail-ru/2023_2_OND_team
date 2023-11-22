@@ -25,14 +25,21 @@ export function renderSubscriptionsPage() {
             searchField.classList.remove('hide');
             const section = document.querySelector('.subscriptions-gallery');
             renderUserItems(section, data);
-
-            const userItem = document.querySelector('.subscriptions__items');
-            userItem?.addEventListener('click', () => {
-                renderUserPage(1);
-            });
+            defineUserItems();
         })
         .catch((error) => {
             console.error(error);
         })
 
+}
+
+function defineUserItems() {
+    const userItems = document.querySelectorAll('.subscriptions__items');
+
+    userItems?.forEach((userItem) => {
+        userItem.addEventListener('click', () => {
+            const userID = userItem.getAttribute(classList).split(' ')[1].split('-')[1];
+            renderUserPage(userID);
+        });
+    });
 }
