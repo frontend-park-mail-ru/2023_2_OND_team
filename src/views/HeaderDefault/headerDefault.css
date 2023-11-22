@@ -256,6 +256,7 @@
 }
 
 .filter__list__pointer {
-  display: block;
-  margin-bottom: 8px;  
+    display: block;
+    margin-bottom: 8px;  
+    cursor: pointer;
 }
