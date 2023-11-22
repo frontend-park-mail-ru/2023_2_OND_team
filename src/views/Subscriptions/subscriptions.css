@@ -62,19 +62,3 @@
 .hide {
     display: none;
 }
-
-.text-base1-medium {
-  font-family: Lato;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.text-base2-medium {
-  font-family: Lato;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}

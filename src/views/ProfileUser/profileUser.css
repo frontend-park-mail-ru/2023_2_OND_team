@@ -74,15 +74,6 @@
   text-align: center;
 }
 
-.text-h3-medium {
-  /* h3 medium */
-  font-family: Nunito;
-  font-size: 39.06px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-
 .user-pins-gallery {
     display: grid;
     grid-gap: 20px;

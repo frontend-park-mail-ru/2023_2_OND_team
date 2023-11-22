@@ -196,19 +196,3 @@
 .hide {
   display: none;
 }
-
-.text-h3-medium {
-  font-family: Nunito;
-  font-size: 39.06px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-
-.text-base1-medium {
-  font-family: Nunito;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}

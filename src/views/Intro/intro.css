@@ -9,15 +9,15 @@
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
-  }
+}
   
-  .intro__img {
+.intro__img {
     width: 715.022px;
     height: 283.535px;
     flex-shrink: 0;
-  }
+}
   
-  .intro__text {
+.intro__text {
     display: flex;
     width: 547.188px;
     height: 128.435px;
@@ -25,12 +25,5 @@
     justify-content: center;
     flex-shrink: 0;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
-  }
+}
   
-  .text-base1-regular {
-    font-family: Nunito;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
