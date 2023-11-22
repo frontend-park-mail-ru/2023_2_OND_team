@@ -5,12 +5,12 @@ import { renderPins } from "../../components/RenderPins/renderPins.js";
 import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
 import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
 import { definePins } from "../../utils/definePins/definePins.js";
+import { defineBoards } from "../../utils/defingeBoards/defineBoards.js";
 
 export function renderProfilePage() {
     const main = document.querySelector('#main');
 
     const state = new State();
-    const router = new Router();
 
     const profileTemplate = Handlebars.templates['ProfileUser.hbs'];
     const profileContext = {
@@ -47,58 +47,46 @@ export function renderProfilePage() {
     })
 
     renderUserPins();
+}
 
-    function renderUserPins() {
-        API.getUserPins()
-            .then((data) => {
-                const nonContent = document.querySelector('.user-non-content');
-                if (!data.pins) {
-                    renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
-                    return;
-                }
+function renderUserPins() {
+    API.getMyPins()
+        .then((data) => {
+            const nonContent = document.querySelector('.user-non-content');
+            if (!data.pins) {
+                renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
+                return;
+            }
 
-                const sectionPins = document.querySelector('.user-pins-gallery');
-                const sectionBoards = document.querySelector('.user-boards-gallery');
-                sectionBoards.innerHTML = '';
-                nonContent.innerHTML = '';
-                renderPins(sectionPins, data.pins);
-                definePins();
-            })
-            .catch((error) => {
-                console.error('Ошибка при рендеринге пинов:', error);
-            });
-    }
-    
-    function renderUserBoards() {
-        API.getUserBoards()
-            .then((data) => {
-                const nonContent = document.querySelector('.user-non-content');
-                if (!data.length) {
-                    renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
-                    return;
-                }         
-
-                const sectionPins = document.querySelector('.user-pins-gallery');
-                const sectionBoards = document.querySelector('.user-boards-gallery');
-                sectionPins.innerHTML = '';
-                nonContent.innerHTML = '';
-                renderBoards(sectionBoards, data);
-                defineBoards();
-            })
-            .catch((error) => {
-                console.error('Ошибка при рендеринге досок:', error);
-            });
-    }
-
-    function defineBoards() {
-        const boards = document.querySelectorAll('.user__board');
-    
-        boards?.forEach((board) => {
-            board.addEventListener('click', (e) => {
-
-            const boardID = board.className.split(' ')[1].split('-')[3];
-            router.navigate(`/board/${boardID}`);
-          });
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionBoards.innerHTML = '';
+            nonContent.innerHTML = '';
+            renderPins(sectionPins, data.pins);
+            definePins();
+        })
+        .catch((error) => {
+            console.error('Ошибка при рендеринге пинов:', error);
         });
-    }
+}
+
+function renderUserBoards() {
+    API.getMyBoards()
+        .then((data) => {
+            const nonContent = document.querySelector('.user-non-content');
+            if (!data.length) {
+                renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
+                return;
+            }         
+
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionPins.innerHTML = '';
+            nonContent.innerHTML = '';
+            renderBoards(sectionBoards, data);
+            defineBoards();
+        })
+        .catch((error) => {
+            console.error('Ошибка при рендеринге досок:', error);
+        });
 }

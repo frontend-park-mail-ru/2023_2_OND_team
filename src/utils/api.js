@@ -616,10 +616,65 @@ export class API {
       }
     }  
 
-    static async getUserPins() {
+    static async getMyPins() {
       try {
-        const userID = this.state.getUserID();
+        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${this.state.getUserID()}`;
 
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
+    static async getMyBoards() {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUserID()}`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении досок:', error);
+      }
+    }
+
+    static async getUserPins(userID) {
+      try {
         const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}`;
 
         const response = await fetch(configItem, {
@@ -676,9 +731,9 @@ export class API {
       }
     }
 
-    static async getUserBoards() {
+    static async getUserBoards(userID) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
+        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${userID}`;
 
         const response = await fetch(configItem, {
           headers: {

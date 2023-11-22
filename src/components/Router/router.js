@@ -427,8 +427,6 @@ export class Router {
                         return;
                     }
 
-                    console.log(this.state.getUserID(), userID)
-
                     if (this.state.getUserID() == userID) {
                         this.navigate('/profile');
                         return;

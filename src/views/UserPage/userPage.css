@@ -186,6 +186,10 @@ line-height: normal;
   background: var(--bg-100, #FFF);
 }
 
+.hide {
+  display: none;
+}
+
 .text-h3-medium {
   font-family: Nunito;
   font-size: 39.06px;
