@@ -52,14 +52,9 @@ function defineUserItems() {
 function searchUserItems(substring) {
     const userItems = document.querySelectorAll('.subscriptions__items');
 
-    if (!substring) {
-        userItems?.forEach((userItem) => {
-            userItem.classList.remove('hide');
-        });
-    }
-    
     userItems?.forEach((userItem) => {
-        if (!userItem.getAttribute('data-section').toLocaleLowerCase().includes(substring.toLocaleLowerCase())) {
+        userItem.classList.remove('hide');
+        if (substring && !userItem.getAttribute('data-section').toLocaleLowerCase().includes(substring.toLocaleLowerCase())) {
             userItem.classList.add('hide');
         }
     });
