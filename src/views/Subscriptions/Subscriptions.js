@@ -26,8 +26,8 @@ export function renderSubscriptionsPage() {
             search.classList.remove('hide');
 
             const searchField = document.querySelector('.subscriptions__search__text-input');
-            searchField.addEventListener('change', () => {
-                sortUserItems(searchField.value);
+            searchField?.addEventListener('input', () => {
+                searchUserItems(searchField.value);
             });
 
         })
@@ -49,6 +49,18 @@ function defineUserItems() {
     });
 }
 
-function sortUserItems(substring) {
-    console.log(substring);
+function searchUserItems(substring) {
+    const userItems = document.querySelectorAll('.subscriptions__items');
+
+    if (!substring) {
+        userItems?.forEach((userItem) => {
+            userItem.classList.remove('hide');
+        });
+    }
+    
+    userItems?.forEach((userItem) => {
+        if (!userItem.getAttribute('data-section').toLocaleLowerCase().includes(substring.toLocaleLowerCase())) {
+            userItem.classList.add('hide');
+        }
+    });
 }
