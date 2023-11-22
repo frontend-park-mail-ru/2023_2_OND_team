@@ -20,6 +20,7 @@ import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions
 import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
 import { setActiveSidebarItem } from "../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js";
 import { renderMessengerPage } from "../../views/Messenger/Messenger.js";
+import { renderUserPage } from "../../views/UserPage/UserPage.js";
 
 function resetScroll() {
     window.scrollTo({
@@ -419,6 +420,36 @@ export class Router {
                     renderBoardPage(boardID);
                 },
             },
+            {
+                path: "/user/ID",
+                handler: (userID) => {
+                    if (this.state.getCurrentPage() === `user${userID}`) {
+                        return;
+                    }
+
+                    if (this.state.getUserID === userID) {
+                        this.navigate('/profile');
+                        return;
+                    }
+
+                    this.state.setCurrentPage(`user${userID}`);
+
+                    if (this.state.getIsAuthorized()) {
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+                    } else {
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderGuest();
+                        }
+                    }
+
+                    renderUserPage(userID);
+                },
+            },
         ];
 
         this.#currentRoute = null;
@@ -473,6 +504,10 @@ export class Router {
                 const boardID = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
+                break;
+            case (/^\/user\/\d+$/).test(path): 
+                this.#currentRoute = this.#routes.find((r) => r.path === "/user/ID");
+                this.#currentRoute.handler(path.split('/')[2]);
                 break;
             default:
                 this.#currentRoute = null;

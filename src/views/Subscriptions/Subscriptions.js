@@ -1,12 +1,9 @@
 import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
 import { API } from "../../utils/api.js";
-import State from "../../components/State/state.js";
+import { Router } from "../../components/Router/router.js";
 import { renderUserItems } from "./SubscriptionsUserItem.js";
-import { renderUserPage } from "../UserPage/UserPage.js";
 
 export function renderSubscriptionsPage() {
-    const state = new State();
-
     const main = document.querySelector('#main');
     const subscriptionsTemplate = Handlebars.templates['Subscriptions.hbs'];
     const subscriptionsContext = {};
@@ -34,12 +31,13 @@ export function renderSubscriptionsPage() {
 }
 
 function defineUserItems() {
+    const router = new Router();
     const userItems = document.querySelectorAll('.subscriptions__items');
 
     userItems?.forEach((userItem) => {
         userItem.addEventListener('click', () => {
             const userID = userItem.getAttribute('class').split(' ')[1].split('-')[1];
-            renderUserPage(userID);
+            router.navigate(`/user/${userID}`);
         });
     });
 }
