@@ -52,15 +52,16 @@ function renderUserPins() {
     API.getMyPins()
         .then((data) => {
             const nonContent = document.querySelector('.user-non-content');
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionBoards.innerHTML = '';
+            nonContent.innerHTML = '';
+
             if (!data.pins) {
                 renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
                 return;
             }
 
-            const sectionPins = document.querySelector('.user-pins-gallery');
-            const sectionBoards = document.querySelector('.user-boards-gallery');
-            sectionBoards.innerHTML = '';
-            nonContent.innerHTML = '';
             renderPins(sectionPins, data.pins);
             definePins();
         })
@@ -73,15 +74,16 @@ function renderUserBoards() {
     API.getMyBoards()
         .then((data) => {
             const nonContent = document.querySelector('.user-non-content');
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionPins.innerHTML = '';
+            nonContent.innerHTML = '';
+            
             if (!data.length) {
                 renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
                 return;
             }         
 
-            const sectionPins = document.querySelector('.user-pins-gallery');
-            const sectionBoards = document.querySelector('.user-boards-gallery');
-            sectionPins.innerHTML = '';
-            nonContent.innerHTML = '';
             renderBoards(sectionBoards, data);
             defineBoards();
         })

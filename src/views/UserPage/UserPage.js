@@ -116,15 +116,16 @@ function renderUserPins(userID) {
     API.getUserPins(userID)
         .then((data) => {
             const nonContent = document.querySelector('.user-non-content');
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionBoards.innerHTML = '';
+            nonContent.innerHTML = '';
+
             if (!data.pins) {
                 nonContent.innerHTML ='У этого пользователя нет пинов';
                 return;
             }
 
-            const sectionPins = document.querySelector('.user-pins-gallery');
-            const sectionBoards = document.querySelector('.user-boards-gallery');
-            sectionBoards.innerHTML = '';
-            nonContent.innerHTML = '';
             renderPins(sectionPins, data.pins);
             definePins();
         })
@@ -137,15 +138,16 @@ function renderUserBoards(username) {
     API.getUserBoards(username)
         .then((data) => {
             const nonContent = document.querySelector('.user-non-content');
+            const sectionPins = document.querySelector('.user-pins-gallery');
+            const sectionBoards = document.querySelector('.user-boards-gallery');
+            sectionPins.innerHTML = '';
+            nonContent.innerHTML = '';
+            
             if (!data.length) {
                 nonContent.innerHTML = 'У этого пользователя нет досок';
                 return;
             }         
 
-            const sectionPins = document.querySelector('.user-pins-gallery');
-            const sectionBoards = document.querySelector('.user-boards-gallery');
-            sectionPins.innerHTML = '';
-            nonContent.innerHTML = '';
             renderBoards(sectionBoards, data);
             defineBoards();
         })
