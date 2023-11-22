@@ -46,25 +46,24 @@
 }
 
 .header__left {
-    width: 450px
+    width: 210px
 }
 
 .header__user-btns {
     display: flex;
     gap: 20px;
+    padding-right: 80px;
 }
   
 .header__user__create {
     display: flex;
     position: relative;
     flex-direction: column;
-    width: 200px;
 }
   
 .header__user__create-img {
     position: relative;
     top: 20px;
-    padding-left: 150px;
 }
 
 .js-create-img {
@@ -79,6 +78,7 @@
 .header__user__notification {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
 .header__user__notification-img {
@@ -96,7 +96,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: 200px;
+    width: 20px;
 }
 
 .header__user__avatar-img {
@@ -118,7 +118,8 @@
   
 .header__create__menu {
     position: relative;
-    top: 30px;
+    top: 10px;
+    left: 80%;
     width: 212px;
     height: 110px;
     justify-content: center;
@@ -160,10 +161,42 @@
 .header__create__menu__board-text {
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
-  
+
+.header__notifications__menu {
+    position: relative;
+    top: 10px;
+    left: 82%;
+    width: 220px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+}
+
+.header__notifications__menu__title {
+    display: flex;
+    height: 40px;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--primary-30, #226B77);
+    background: rgba(255, 255, 255, 0.00);
+}
+
+.header__notifications__menu__items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
 .header__user__menu {
     position: relative;
-    top: 54px;
+    top: 10px;
+    left: 85%;
     width: 200px;
     height: 160px;
     justify-content: center;
@@ -173,7 +206,7 @@
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
 }
-  
+
 .header__user__menu__item {
     display: flex;
     height: 30px;

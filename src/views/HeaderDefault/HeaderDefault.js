@@ -34,6 +34,24 @@ export function renderHeaderDefault() {
         })
     });
 
+    const createBtn = document.querySelector('.js-create-img');
+    createBtn?.addEventListener('click', () => {
+        createMenu.classList.toggle('hide');
+    });
+
+    const notificationsMenu = document.querySelector('.header__notifications__menu');
+
+    const notificationsBtn = document.querySelector('.js-notification-img');
+    notificationsBtn?.addEventListener('click', () => {
+        if (notificationsMenu.classList.contains('hide')) {
+            notificationsBtn.src = '/assets/icons/forHeader/notification-active.svg';
+        } else {
+            notificationsBtn.src = '/assets/icons/forHeader/notification.svg';
+        }
+
+        notificationsMenu.classList.toggle('hide');
+    })
+
     const userMenu = document.querySelector('.header__user__menu');
     const userMenuBtns = document.querySelectorAll('.header__user__menu__item');
     userMenuBtns.forEach((btn) => {
@@ -62,16 +80,8 @@ export function renderHeaderDefault() {
         })
     });
 
-    const createBtn = document.querySelector('.js-create-img');
-    createBtn?.addEventListener('click', () => {
-        createMenu.classList.toggle('hide');
-    });
-
-    const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
-
     const userBtn = document.querySelector('.header__user__avatar-img');
     userBtn?.addEventListener('click', () => {  
-
         if (userMenu.classList.contains('hide')) {
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
         } else {
@@ -81,10 +91,18 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
+    const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
+
     document.body.addEventListener('click', (e) => {
-        if (e.target !== document.querySelector('.js-create-img')) {
+        if (e.target !== createBtn) {
             createMenu.classList.add('hide');
         }
+
+        if (e.target !== notificationsBtn) {
+            notificationsMenu.classList.add('hide');
+            notificationsBtn.src = '/assets/icons/forHeader/notification.svg';
+        }
+
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
            e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
             userMenu.classList.add('hide');

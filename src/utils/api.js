@@ -616,10 +616,65 @@ export class API {
       }
     }  
 
-    static async getUserPins() {
+    static async getMyPins() {
       try {
-        const userID = this.state.getUserID();
+        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${this.state.getUserID()}`;
 
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении пинов:', error);
+      }
+    }
+
+    static async getMyBoards() {
+      try {
+        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении досок:', error);
+      }
+    }
+
+    static async getUserPins(userID) {
+      try {
         const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}`;
 
         const response = await fetch(configItem, {
@@ -672,13 +727,13 @@ export class API {
           throw new Error('Ошибка при получении данных из API');
         }
       } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
+        console.error('Ошибка при получении лайкнутых пинов:', error);
       }
     }
 
-    static async getUserBoards() {
+    static async getUserBoards(username) {
       try {
-        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
+        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${username}`;
 
         const response = await fetch(configItem, {
           headers: {
@@ -701,7 +756,7 @@ export class API {
           throw new Error('Ошибка при получении данных из API');
         }
       } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
+        console.error('Ошибка при получении досок:', error);
       }
     }
 
@@ -819,8 +874,126 @@ export class API {
         return res;
     
       } catch (error) {
-          console.error('Ошибка при обновлении данных пина:', error);
+          console.error('Ошибка при обновлении данных доски:', error);
         throw error;
+      }
+    }
+
+    static async getUserSubscriptions() {
+      try {
+        const configItem = `//pinspire.online:8083/api/v1/subscription/user/get?&view=subscriptions`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении подписок:', error);
+      }
+    }
+
+    static async getSomeUserInfo(userID) {
+      try {
+        const configItem = `//pinspire.online:8083/api/v1/user/info/${userID}`;
+
+        const response = await fetch(configItem, {
+          headers: {
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          throw new Error('Ошибка при получении данных из API');
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных пользователя:', error);
+      }
+    }
+
+    static async subscribeToUser(userID) {
+      try {
+        const configItem = `//pinspire.online:8083/api/v1/subscription/user/create`;
+
+        const response = await fetch(configItem, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({to: +userID}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          return res.message, res.code;
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных пользователя:', error);
+      }
+    }
+
+    static async unsubscribeFromUser(userID) {
+      try {
+        const configItem = `//pinspire.online:8083/api/v1/subscription/user/delete`;
+
+        const response = await fetch(configItem, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': this.state.getCsrfToken(),
+          },
+          body: JSON.stringify({to: +userID}),
+          credentials: 'include',
+        });
+
+        const csrfToken = response.headers.get('X-Set-CSRF-Token');
+        if (csrfToken) {
+          this.state.setCsrfToken(csrfToken);
+        }
+
+        const res = await response.json();
+
+        if (res.status === 'ok') {
+          return res.body;
+        } else {
+          return res.message, res.code;
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных пользователя:', error);
       }
     }
 
