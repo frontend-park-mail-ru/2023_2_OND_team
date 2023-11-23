@@ -126,11 +126,11 @@ export function passwordValid(password) {
       message: 'Пароль должен содержать символ в верхнем регистре',
     };
   }
-  
+
   return validation;
 }
 
-export function repeatPasswordValid (password, repeatPassword) {
+export function repeatPasswordValid(password, repeatPassword) {
   let validation = {valid: true, message: ''};
 
   if (!repeatPassword) {
@@ -138,7 +138,7 @@ export function repeatPasswordValid (password, repeatPassword) {
       valid: false,
       message: 'Заполните это поле',
     };
-  } else if (repeatPassword != password){
+  } else if (repeatPassword != password) {
     validation = {
       valid: false,
       message: 'Пароли не совпадают',
