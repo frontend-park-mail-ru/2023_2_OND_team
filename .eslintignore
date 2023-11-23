@@ -28,3 +28,4 @@ src/views/Sidebar/Sidebar.js
 src/views/Subscriptions/Subscriptions.js
 src/views/Subscriptions/SubscriptionsUserItem.js
 src/views/UserPage/UserPage.js
+dist/
