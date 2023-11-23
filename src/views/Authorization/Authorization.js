@@ -1,6 +1,6 @@
-import { API } from '../../utils/api.js';
-import { passwordValid, nameValid } from '../../components/Validation/valid.js'
-import { Router } from '../../components/Router/router.js';
+import {API} from '../../utils/api.js';
+import {passwordValid, nameValid} from '../../components/Validation/valid.js';
+import {Router} from '../../components/Router/router.js';
 
 /**
 * Рендерит страницу аутентификации.
@@ -36,7 +36,7 @@ export function renderAuthPage() {
   signUpLink.addEventListener('click', function(e) {
     e.preventDefault();
     authorization.innerHTML = '';
-    router.navigate('/signup')
+    router.navigate('/signup');
   });
 
   const usernameErrorSpan = document.querySelector('.username-error-message');
@@ -79,14 +79,14 @@ export function renderAuthPage() {
           .then((status) => {
             if (status) {
               API.checkLogin()
-                .then(() => {
-                  header.innerHTML = '';
-                  authorization.innerHTML = '';
-                  router.navigate('/');
-                })
-                .catch((error) => {
-                  console.error(error);
-                })
+                  .then(() => {
+                    header.innerHTML = '';
+                    authorization.innerHTML = '';
+                    router.navigate('/');
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               passwordInput.style.borderColor = 'var(--error-50, #F4210B)';
