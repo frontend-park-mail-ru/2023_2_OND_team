@@ -91,12 +91,12 @@ export function renderPinPage(pinID) {
               
                 API.getUserBoards()
                   .then((res) => {
-                    if (res.body.length > 0) {
+                    if (res.length > 0) {
                       const selectDefault = document.createElement('optgroup');
                       selectDefault.label = 'Выберите доску';
                       boardList.appendChild(selectDefault);
               
-                      res.body.forEach(board => {
+                      res.forEach(board => {
                         const optgroup = document.createElement('optgroup');
                         optgroup.label = board.title;
               
