@@ -83,6 +83,8 @@ export function renderPinPage(pinID) {
             const subsButton = document.querySelector('.js-subscribe__btn');
             const boardList = document.querySelector('.board-list');
 
+            let boardID;
+
             function UserBoards() {
                 boardList.addEventListener('change', (event) => {
                     boardID = event.target.value;
