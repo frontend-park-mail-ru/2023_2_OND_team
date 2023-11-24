@@ -113,7 +113,7 @@ export function renderPinPage(pinID) {
 
             saveButton?.addEventListener('click', () => {
                 console.log('КЛЛЛИИИК');
-                console.log(boardID, [parseInt(pinID)]);
+                console.log(boardID, pinID);
                 //API.addBoardPins(boardID, data);
             });
 
