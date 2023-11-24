@@ -85,21 +85,36 @@ export function renderPinPage(pinID) {
             boardList.classList.add('board-list');
 
             function UserBoards() {
-                const boardList = document.querySelector('.board-list');
-              
-                API.getUserBoards()
-                  .then((res) => {
-                    res.forEach(board => {
-                      const option = document.createElement('option');
-                      option.value = board.board_id;
-                      option.textContent = board.title;
-                      boardList.appendChild(option);
-                    });
-                  })
-                  .catch((error) => {
-                    console.error('Ошибка при получении досок:', error);
+            const boardContainer = document.querySelector('.board-container');
+
+            API.getUserBoards()
+                .then((res) => {
+                if (res.body.length > 0) {
+                    const selectDefault = document.createElement('option');
+                    selectDefault.value = '';
+                    selectDefault.textContent = 'Выберите доску';
+                    boardList.appendChild(selectDefault);
+                } else {
+                    const noBoardsOption = document.createElement('option');
+                    noBoardsOption.value = '';
+                    noBoardsOption.textContent = 'Нет досок';
+                    boardList.appendChild(noBoardsOption);
+                }
+
+                res.body.forEach(board => {
+                    const option = document.createElement('option');
+                    option.value = board.board_id;
+                    option.textContent = board.title;
+                    boardList.appendChild(option);
+                });
+
+                boardContainer.appendChild(boardList);
+                })
+                .catch((error) => {
+                console.error('Ошибка при получении досок:', error);
                 });
             }
+
             
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
