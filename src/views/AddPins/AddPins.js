@@ -102,7 +102,7 @@ export function renderAddPins(boardID) {
     addButton.addEventListener('click', function (e) {
         console.log(boardID, selectedPins);
 
-        API.addBoardPins(board_id, selectedPins)
+        API.addBoardPins(board_id, selectedPins);
         router.navigate(`/`);
 
     

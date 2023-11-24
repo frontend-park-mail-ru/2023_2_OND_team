@@ -22,6 +22,8 @@ export function renderPinPage(pinID) {
                 avatar: pinInfo.author.avatar
             };
 
+            const pin = pinInfo.id;
+
             main.innerHTML = pinPage(context);
 
             const likeButton = document.querySelector('.pin-like-icon');
@@ -97,12 +99,17 @@ export function renderPinPage(pinID) {
                     console.error('Ошибка при получении досок:', error);
                 });
             }
+            const board_id = board.board_id;
             
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
             updateButton.classList.add('hide');
             deleteButton.classList.add('hide');
+
+            saveButton?.addEventListener('click', () => {
+                addBoardPins(board_id, pin)
+            })
 
             deleteButton?.addEventListener('click', () => {
                 //e.preventDefault();
