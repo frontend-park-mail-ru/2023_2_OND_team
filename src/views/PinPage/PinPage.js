@@ -86,26 +86,18 @@ export function renderPinPage(pinID) {
 
             function UserBoards() {
                 const boardList = document.querySelector('.board-list');
-                
+              
                 API.getUserBoards()
-                .then((res) => {
-                    console.log(res);
-                })
-                .catch((error) => {
-                    console.error('Ошибка при получении пинов:', error);
-                });
-            
-                const testData = [
-                    { board_id: 1, title: 'Доска 1' },
-                    { board_id: 2, title: 'Доска 2' },
-                    { board_id: 3, title: 'Доска 3' }
-                ];
-            
-                testData.forEach(board => {
-                    const option = document.createElement('option');
-                    option.value = board.board_id;
-                    option.textContent = board.title;
-                    boardList.appendChild(option);
+                  .then((res) => {
+                    res.body.forEach(board => {
+                      const option = document.createElement('option');
+                      option.value = board.board_id;
+                      option.textContent = board.title;
+                      boardList.appendChild(option);
+                    });
+                  })
+                  .catch((error) => {
+                    console.error('Ошибка при получении досок:', error);
                 });
             }
             
