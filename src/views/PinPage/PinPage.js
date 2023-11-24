@@ -83,9 +83,11 @@ export function renderPinPage(pinID) {
             const subsButton = document.querySelector('.js-subscribe__btn');
             const boardList = document.querySelector('.board-list');
 
+            let boardID;
+
             function UserBoards() {
                 boardList.addEventListener('change', (event) => {
-                    const boardID = event.target.value;
+                    boardID = event.target.value;
                 });
 
                 API.getUserBoards()
@@ -110,7 +112,7 @@ export function renderPinPage(pinID) {
 
             saveButton?.addEventListener('click', () => {
                 console.log('КЛЛЛИИИК');
-                console.log(boardID, [parseInt(pinID)]);
+                console(boardID, [parseInt(pinID)]);
                 API.addBoardPins(boardID, [parseInt(pinID)]);
             });
 
