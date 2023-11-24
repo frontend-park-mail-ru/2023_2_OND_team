@@ -8,7 +8,6 @@ export function renderPinPage(pinID) {
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
-    let boardID;
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -84,6 +83,8 @@ export function renderPinPage(pinID) {
             const subsButton = document.querySelector('.js-subscribe__btn');
             const boardList = document.querySelector('.board-list');
 
+            let boardID;
+
             function UserBoards() {
                 boardList.addEventListener('change', (event) => {
                     boardID = event.target.value;
@@ -111,9 +112,8 @@ export function renderPinPage(pinID) {
 
             saveButton?.addEventListener('click', () => {
                 console.log('КЛЛЛИИИК');
-                const data = [parseInt(pinID)];
-                console.log(boardID, data);
-                API.addBoardPins(boardID, data);
+                console.log(boardID, pinID);
+                API.addBoardPins(boardID, pinID);
             });
 
             deleteButton?.addEventListener('click', () => {
