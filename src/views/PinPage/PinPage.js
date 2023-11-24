@@ -84,7 +84,6 @@ export function renderPinPage(pinID) {
             const boardList = document.querySelector('.board-list');
 
             let boardID;
-            let data;
 
             function UserBoards() {
                 boardList.addEventListener('change', (event) => {
@@ -114,8 +113,8 @@ export function renderPinPage(pinID) {
 
             saveButton?.addEventListener('click', () => {
                 console.log('КЛЛЛИИИК');
-                console.log(boardID, pinID);
-                API.addBoardPins(boardID, data);
+                console.log(boardID, [parseInt(pinID)]);
+                //API.addBoardPins(boardID, data);
             });
 
             deleteButton?.addEventListener('click', () => {
