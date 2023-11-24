@@ -83,11 +83,7 @@ export function renderPinPage(pinID) {
             const subsButton = document.querySelector('.js-subscribe__btn');
             const boardList = document.querySelector('.board-list');
 
-            boardList.classList.add('hide');
-
             function UserBoards() {
-                boardList.classList.remove('hide');
-              
                 API.getUserBoards()
                   .then((res) => {
                     res.forEach(board => {
