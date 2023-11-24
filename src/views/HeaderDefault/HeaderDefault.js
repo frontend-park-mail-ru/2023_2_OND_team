@@ -16,6 +16,8 @@ export function renderHeaderDefault() {
 
     header.innerHTML = headerTemplate(headerContext);
 
+    const searchInput = document.querySelector('.header__search__text-input');
+
     const createMenu = document.querySelector('.header__create__menu');
     const createMenuBtns = document.querySelectorAll('.header__create__menu__item');
     createMenuBtns.forEach((btn) => {

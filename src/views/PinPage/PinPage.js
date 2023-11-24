@@ -81,13 +81,19 @@ export function renderPinPage(pinID) {
             
             const saveButton = document.querySelector('.js-pin-to-board__btn');
             const subsButton = document.querySelector('.js-subscribe__btn');
-            /*const boardList = document.createElement('select');
+            const boardList = document.createElement('select');
             boardList.classList.add('board-list');
 
             function UserBoards() {
                 const boardList = document.querySelector('.board-list');
                 
-                //API.getUserBoards()
+                API.getUserBoards()
+                .then((res) => {
+                    console.log(res.body);
+                })
+                .catch((error) => {
+                    console.error('Ошибка при получении пинов:', error);
+                });
             
                 const testData = [
                     { board_id: 1, title: 'Доска 1' },
@@ -101,7 +107,7 @@ export function renderPinPage(pinID) {
                     option.textContent = board.title;
                     boardList.appendChild(option);
                 });
-            }*/
+            }
             
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
@@ -184,8 +190,8 @@ export function renderPinPage(pinID) {
             if (isAuthorized) {
                 const block = document.querySelector('.saved');
                 block.appendChild(saveButton);
-                //block.appendChild(boardList);
-                //UserBoards();
+                block.appendChild(boardList);
+                UserBoards();
             }
         })
         .catch((error) => {
