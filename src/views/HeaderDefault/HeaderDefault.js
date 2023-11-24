@@ -96,7 +96,7 @@ export function renderHeaderDefault() {
             userMenu.classList.add('hide');
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
         }
-        if (e.target !== document.querySelector('.header__filter__list')) {
+        if (!e.target.closest('.header__filter__list') && !e.target.classList.contains('header__filter__img-image')) {
             filterList.classList.add('hide');
         }
     })
