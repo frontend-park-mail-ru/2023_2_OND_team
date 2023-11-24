@@ -26,6 +26,7 @@ export function renderPinPage(pinID) {
 
             const likeButton = document.querySelector('.pin-like-icon');
             const likeField = document.querySelector('.pin-like-counter');
+            const data = [parseInt(pinID)];
 
             API.getLike(pinID)
                 .then((data) => {
@@ -112,7 +113,6 @@ export function renderPinPage(pinID) {
 
             saveButton?.addEventListener('click', () => {
                 console.log('КЛЛЛИИИК');
-                const data = [parseInt(pinID)];
                 console.log(boardID, pinID);
                 API.addBoardPins(boardID, data);
             });
