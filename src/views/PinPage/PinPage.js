@@ -22,8 +22,6 @@ export function renderPinPage(pinID) {
                 avatar: pinInfo.author.avatar
             };
 
-            const pin = pinInfo.id;
-
             main.innerHTML = pinPage(context);
 
             const likeButton = document.querySelector('.pin-like-icon');
@@ -86,6 +84,10 @@ export function renderPinPage(pinID) {
             const boardList = document.querySelector('.board-list');
 
             function UserBoards() {
+                boardList.addEventListener('change', (event) => {
+                    boardID = event.target.value;
+                });
+
                 API.getUserBoards()
                   .then((res) => {
                     res.forEach(board => {
@@ -99,7 +101,6 @@ export function renderPinPage(pinID) {
                     console.error('Ошибка при получении досок:', error);
                 });
             }
-            const board = board_id;
             
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
@@ -108,7 +109,7 @@ export function renderPinPage(pinID) {
             deleteButton.classList.add('hide');
 
             saveButton?.addEventListener('click', () => {
-                addBoardPins(board, pin)
+                addBoardPins(boardID, pinID)
             })
 
             deleteButton?.addEventListener('click', () => {
