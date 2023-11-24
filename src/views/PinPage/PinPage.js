@@ -90,15 +90,13 @@ export function renderPinPage(pinID) {
             API.getUserBoards()
                 .then((res) => {
                 if (res.length > 0) {
-                    const selectDefault = document.createElement('option');
-                    selectDefault.value = '';
-                    selectDefault.textContent = 'Выберите доску';
-                    boardList.appendChild(selectDefault);
+                    const boardOptgroup = document.createElement('optgroup');
+                    boardOptgroup.label = 'Выберите доску';
+                    boardList.appendChild(boardOptgroup.label);
                 } else {
-                    const noBoardsOption = document.createElement('option');
-                    noBoardsOption.value = '';
-                    noBoardsOption.textContent = 'Нет досок';
-                    boardList.appendChild(noBoardsOption);
+                    const noBoardOptgroup = document.createElement('optgroup');
+                    noBoardsOption.label = 'Нет досок';
+                    boardList.appendChild(noBoardOptgroup.label);
                 }
 
                 res.forEach(board => {
