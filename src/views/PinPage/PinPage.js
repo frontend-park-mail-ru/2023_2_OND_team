@@ -89,7 +89,7 @@ export function renderPinPage(pinID) {
 
             API.getUserBoards()
                 .then((res) => {
-                if (res.body.length > 0) {
+                if (res.length > 0) {
                     const selectDefault = document.createElement('option');
                     selectDefault.value = '';
                     selectDefault.textContent = 'Выберите доску';
@@ -101,7 +101,7 @@ export function renderPinPage(pinID) {
                     boardList.appendChild(noBoardsOption);
                 }
 
-                res.body.forEach(board => {
+                res.forEach(board => {
                     const option = document.createElement('option');
                     option.value = board.board_id;
                     option.textContent = board.title;
