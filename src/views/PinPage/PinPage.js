@@ -88,6 +88,7 @@ export function renderPinPage(pinID) {
             function UserBoards() {
                 boardList.addEventListener('change', (event) => {
                     boardID = event.target.value;
+                    data = [parseInt(pinID)];
                 });
 
                 API.getUserBoards()
@@ -112,8 +113,8 @@ export function renderPinPage(pinID) {
 
             saveButton?.addEventListener('click', () => {
                 console.log('КЛЛЛИИИК');
-                console(boardID, [parseInt(pinID)]);
-                API.addBoardPins(boardID, [parseInt(pinID)]);
+                console.log(boardID, [parseInt(pinID)]);
+                //API.addBoardPins(boardID, data);
             });
 
             deleteButton?.addEventListener('click', () => {
