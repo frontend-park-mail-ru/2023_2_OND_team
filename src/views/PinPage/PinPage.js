@@ -8,6 +8,7 @@ export function renderPinPage(pinID) {
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
+    let boardID;
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -84,7 +85,6 @@ export function renderPinPage(pinID) {
             const boardList = document.querySelector('.board-list');
 
             function UserBoards() {
-                let boardID;
                 boardList.addEventListener('change', (event) => {
                     boardID = event.target.value;
                 });
