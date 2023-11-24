@@ -111,7 +111,8 @@ export function renderPinPage(pinID) {
             deleteButton.classList.add('hide');
 
             saveButton?.addEventListener('click', () => {
-                API.addBoardPins(boardID, pinID)
+                console.log('КЛЛЛИИИК');
+                API.addBoardPins(boardID, pinID);
             })
 
             deleteButton?.addEventListener('click', () => {
