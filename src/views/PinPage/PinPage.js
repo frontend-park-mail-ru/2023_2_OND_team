@@ -88,7 +88,6 @@ export function renderPinPage(pinID) {
             function UserBoards() {
                 boardList.addEventListener('change', (event) => {
                     boardID = event.target.value;
-                    data = [parseInt(pinID)];
                 });
 
                 API.getUserBoards()
