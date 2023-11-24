@@ -84,8 +84,9 @@ export function renderPinPage(pinID) {
             const boardList = document.querySelector('.board-list');
 
             function UserBoards() {
+                let boardID;
                 boardList.addEventListener('change', (event) => {
-                    const boardID = event.target.value;
+                    boardID = event.target.value;
                 });
 
                 API.getUserBoards()
