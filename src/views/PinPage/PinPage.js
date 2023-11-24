@@ -113,11 +113,11 @@ export function renderPinPage(pinID) {
             saveButton?.addEventListener('click', () => {
                 console.log('КЛЛЛИИИК');
                 API.addBoardPins(boardID, pinID);
-            })
+            });
 
             deleteButton?.addEventListener('click', () => {
                 //e.preventDefault();
-                API.deletePin(pinID)
+                API.deletePin(pinID);
                 router.navigate('/');
             });
 
