@@ -81,20 +81,24 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
-    document.body.addEventListener('click', (e) => {
-        if (e.target !== document.querySelector('.js-create-img')) {
-            createMenu.classList.add('hide');
-        }
-        if (e.target !== document.querySelector('.header__user__avatar-user') &&
-           e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
-            userMenu.classList.add('hide');
-            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
-        }
-    })
-
     const filterBtn = document.querySelector('.header__filter__img-image');
     const filterList = document.querySelector('.header__filter__list');
     filterBtn?.addEventListener('click', () => {
         filterList.classList.toggle('hide');
     });
+
+    document.body.addEventListener('click', (e) => {
+        if (e.target !== document.querySelector('.js-create-img')) {
+            createMenu.classList.add('hide');
+        }
+        if (e.target !== document.querySelector('.header__user__avatar-user') &&
+            e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
+            userMenu.classList.add('hide');
+            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
+        }
+        if (e.target !== document.querySelector('.header__filter__img-image') &&
+            e.target !== document.querySelector('.header__filter__list')) {
+            filterList.classList.add('hide');
+        }
+    })
 }
