@@ -89,7 +89,7 @@ export function renderPinPage(pinID) {
               
                 API.getUserBoards()
                   .then((res) => {
-                    res.body.forEach(board => {
+                    res.forEach(board => {
                       const option = document.createElement('option');
                       option.value = board.board_id;
                       option.textContent = board.title;
