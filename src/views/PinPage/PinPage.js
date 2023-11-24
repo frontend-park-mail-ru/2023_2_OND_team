@@ -85,35 +85,42 @@ export function renderPinPage(pinID) {
             boardList.classList.add('board-list');
 
             function UserBoards() {
-            const boardContainer = document.querySelector('.board-container');
+                const boardContainer = document.querySelector('.board-container');
+                const boardList = document.createElement('select');
+                boardList.classList.add('board-list');
+              
+                API.getUserBoards()
+                  .then((res) => {
+                    if (res.body.length > 0) {
+                      const selectDefault = document.createElement('optgroup');
+                      selectDefault.label = 'Выберите доску';
+                      boardList.appendChild(selectDefault);
+              
+                      res.body.forEach(board => {
+                        const optgroup = document.createElement('optgroup');
+                        optgroup.label = board.title;
+              
+                        const option = document.createElement('option');
+                        option.value = board.board_id;
+                        option.textContent = 'Выберите доску';
+              
+                        optgroup.appendChild(option);
+                        boardList.appendChild(optgroup);
+                      });
+                    } else {
+                      const noBoardsOption = document.createElement('option');
+                      noBoardsOption.value = '';
+                      noBoardsOption.textContent = 'Нет досок';
+                      boardList.appendChild(noBoardsOption);
+                    }
+              
+                    boardContainer.appendChild(boardList);
+                  })
+                  .catch((error) => {
+                    console.error('Ошибка при получении досок:', error);
+                  });
+            }              
 
-            API.getUserBoards()
-                .then((res) => {
-                if (res.length > 0) {
-                    const boardOptgroup = document.createElement('optgroup');
-                    boardOptgroup.label = 'Выберите доску';
-                    boardList.appendChild(boardOptgroup.label);
-                } else {
-                    const noBoardOptgroup = document.createElement('optgroup');
-                    noBoardsOption.label = 'Нет досок';
-                    boardList.appendChild(noBoardOptgroup.label);
-                }
-
-                res.forEach(board => {
-                    const option = document.createElement('option');
-                    option.value = board.board_id;
-                    option.textContent = board.title;
-                    boardList.appendChild(option);
-                });
-
-                boardContainer.appendChild(boardList);
-                })
-                .catch((error) => {
-                console.error('Ошибка при получении досок:', error);
-                });
-            }
-
-            
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
