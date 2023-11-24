@@ -99,7 +99,7 @@ export function renderPinPage(pinID) {
                     console.error('Ошибка при получении досок:', error);
                 });
             }
-            const board_id = board.board_id;
+            const board = board_id;
             
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
@@ -108,7 +108,7 @@ export function renderPinPage(pinID) {
             deleteButton.classList.add('hide');
 
             saveButton?.addEventListener('click', () => {
-                addBoardPins(board_id, pin)
+                addBoardPins(board, pin)
             })
 
             deleteButton?.addEventListener('click', () => {
