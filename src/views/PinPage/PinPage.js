@@ -89,7 +89,7 @@ export function renderPinPage(pinID) {
                 
                 API.getUserBoards()
                 .then((res) => {
-                    console.log(res.body);
+                    console.log(res);
                 })
                 .catch((error) => {
                     console.error('Ошибка при получении пинов:', error);
