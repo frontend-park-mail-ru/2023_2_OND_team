@@ -81,11 +81,12 @@ export function renderPinPage(pinID) {
             
             const saveButton = document.querySelector('.js-pin-to-board__btn');
             const subsButton = document.querySelector('.js-subscribe__btn');
-            const boardList = document.createElement('select');
-            boardList.classList.add('board-list');
+
+            boardList.classList.add('hide');
 
             function UserBoards() {
                 const boardList = document.querySelector('.board-list');
+                boardList.classList.remove('hide');
               
                 API.getUserBoards()
                   .then((res) => {
