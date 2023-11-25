@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     quizID = 2;
                     inputValue = null;
                     console.log(quizID, [activeCount, inputValue]);
-                    //window.parent.postMessage(message, '*')
+                    window.parent.postMessage([quizID, activeCount, inputValue], 'https://pinspire.online/')
                 });
             }  
         });
