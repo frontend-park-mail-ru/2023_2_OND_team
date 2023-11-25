@@ -1,4 +1,4 @@
-import { Router } from "./components/Router/router";
+import { Router } from "./components/Router/router.js";
 
 const router = new Router();
 
