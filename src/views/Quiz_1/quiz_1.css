@@ -134,3 +134,11 @@
     box-sizing: border-box;
     border: 2px solid transparent;
 }
+
+.text-base1-regular {
+    font-family: Nunito;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
