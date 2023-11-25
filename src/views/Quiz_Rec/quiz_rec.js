@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
                             </div>
                             <hr class="grey-line">
-                            <input type="text" class="input-primary placeholder="Что улучшить?"">
+                            <input type="text" class="input-primary" placeholder="Что улучшить?">
                             <hr class="grey-line">
                             <div class="quiz-data__btns">
                                 <button class="btn-primary-clear text-base1-medium js-quiz-back__btn-change">Назад</button>
@@ -72,7 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 `;
-            }
+            }   
+
+            const inputElement = document.querySelector('.input-primary');
+            const inputValue = inputElement.value;
 
             const backButton = document.querySelector('.js-quiz-back__btn-change');
             backButton.addEventListener('click', () => {
@@ -82,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sendButton = document.querySelector('.js-quiz-send__btn-change');
             sendButton.addEventListener('click', () => {
                 quizID = 2;
-                console.log(quizID, activeCount);
+                console.log(quizID, activeCount, inputValue);
             });
         });
     };
