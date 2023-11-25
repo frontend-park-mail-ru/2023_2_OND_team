@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="text" class="input-primary">
                         <hr class="grey-line">
                         <div class="quiz-data__btns">
-                            <button class="btn-primary-clear text-base1-medium js-quiz-close__btn-change">Назад</button>
+                            <button class="btn-primary-clear text-base1-medium js-quiz-back__btn-change">Назад</button>
                             <button class="btn-primary-default text-base1-medium js-quiz-forward__btn-change">Отправить</button>
                         </div>
                     </div>

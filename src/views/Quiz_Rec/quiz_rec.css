@@ -11,6 +11,7 @@
 }
 
 .input-primary {
+    height: 30px;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-45, #33A1B3);
     background: var(--bg-100, #FFF);
