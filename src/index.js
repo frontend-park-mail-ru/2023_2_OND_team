@@ -31,9 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="rectangle">
                         <div class="title__block">
                             <span class="title-quiz text-base1-medium">Почему?</span>
+                            <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
                         </div>
                         <hr class="grey-line">
                         <input type="text" class="input-field">
+                        <hr class="grey-line">
+                        <div class="quiz-data__btns">
+                            <button class="btn-primary-clear text-base1-medium js-quiz-close__btn-change">Назад</button>
+                            <button class="btn-primary-default text-base1-medium js-quiz-forward__btn-change">Отправить</button>
+                        </div>
                     </div>
                 </div>
             `;
