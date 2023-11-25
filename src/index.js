@@ -45,4 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
     });
+
+    const backButton = document.querySelector('.js-quiz-back__btn-change');
+    backButton.addEventListener('click', () => {
+        const root = document.getElementById('root');
+        root.innerHTML = templateContent;
+    });
 });
