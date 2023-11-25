@@ -77,5 +77,5 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     };
-    //renderQuizTemplate();
+    renderQuizTemplate();
 });
