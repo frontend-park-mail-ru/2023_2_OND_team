@@ -1,3 +1,5 @@
+import { renderIframeSurvey } from "../../views/IframeSurvey/IframeSurvey";
+
 export class State {
   #csrfToken;
   #currentPage;
@@ -20,6 +22,8 @@ export class State {
     this.#avatar = null;
     this.#userID = null;
     this.#visiblePins = [];
+
+    setTimeout(renderIframeSurvey(1), 5 * 1000); // seconds
   }
 
   setCsrfToken(token) {

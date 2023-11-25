@@ -1,5 +1,4 @@
-export function renderIframeSurvey(surveyID) {
-  if (surveyID == -1) {
+export function createIframeSurvey() {
     const rootElement = document.querySelector('#root');
 
     const iframe = document.createElement('iframe');
@@ -7,11 +6,15 @@ export function renderIframeSurvey(surveyID) {
     iframe.classList.add('iframe-survey');
 
     rootElement.appendChild(iframe);
+}
 
-    return;
-  }
-
+export function renderIframeSurvey(surveyID) {
   const iframe = document.querySelector('.iframe-survey');
   iframe.src = `https://pinspire.online:1446/${surveyID}`;
   iframe.classList.remove('hide');
+}
+
+export function closeIframeSurvey() {
+  const iframe = document.querySelector('.iframe-survey');
+  iframe.classList.add('hide');
 }
