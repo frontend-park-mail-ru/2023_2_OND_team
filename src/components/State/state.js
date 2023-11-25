@@ -8,6 +8,7 @@ export class State {
   #username;
   #avatar;
   #visiblePins;
+  #countLikesForSurvey
 
   constructor() {
     if (State.instance) {
@@ -22,11 +23,12 @@ export class State {
     this.#avatar = null;
     this.#userID = null;
     this.#visiblePins = [];
+    this.#countLikesForSurvey = 0;
 
 
     createIframeSurvey();
 
-    setTimeout(() => renderIframeSurvey(1), 6 * 1000); // seconds
+    setTimeout(() => renderIframeSurvey(2), 6 * 1000); // seconds
 
     setTimeout(() => closeIframeSurvey(), 10 * 1000); // seconds
   }
@@ -48,6 +50,9 @@ export class State {
   }
 
   setIsAuthorized(isAuthorized) {
+    if (isAuthorized) {
+      setTimeout(() => renderIframeSurvey(1), 2 * 1000); // seconds
+    }
     this.#isAuthorized = isAuthorized;
   }
 
@@ -140,6 +145,18 @@ export class State {
     pin.countLikes -= 1;
     return pin.countLikes;
   }
+
+  incrementCountLikesForSurvey() {
+    this.#countLikesForSurvey++;
+    if (this.#countLikesForSurvey === 3) {
+      renderIframeSurvey(2);
+    }
+  }
+
+  getCountLikesForSurvey() {
+    return this.#countLikesForSurvey;
+  }
+
 }
 
 export default State;

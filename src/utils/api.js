@@ -385,6 +385,7 @@ export class API {
       const res = await response.json();
 
       if (res.status === 'ok') {
+        this.state.incrementCountLikesForSurvey();
         return res.body;
       } else {
         throw new Error('Ошибка при получении данных о лайке');
