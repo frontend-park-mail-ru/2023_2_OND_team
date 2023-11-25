@@ -92,7 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     quizID = 2;
                     inputValue = null;
                     console.log(quizID, [activeCount, inputValue]);
-                    window.parent.postMessage([quizID, activeCount, inputValue], 'https://pinspire.online:1443')
+                    window.parent.postMessage(['send', quizID, activeCount, inputValue], 'https://pinspire.online:1443')
+                });
+
+                const closeButton = document.querySelector('.js-quiz-close__btn-change');
+                closeButton.addEventListener('click', () => {
+                    quizID = 2;
+                    closeState = 'close';
+                    console.log([closeState]);
+                    window.parent.postMessage([closeState], 'https://pinspire.online:1443')
+                });
+
+                const cancelButton = document.querySelector('.js-quiz-close__btn-change');
+                cancelButton.addEventListener('click', () => {
+                    quizID = 2;
+                    closeState = 'close';
+                    console.log([closeState]);
+                    window.parent.postMessage([closeState], 'https://pinspire.online:1443')
                 });
             }  
         });
