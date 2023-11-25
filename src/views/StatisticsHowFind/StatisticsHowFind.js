@@ -1,4 +1,4 @@
-import { API } from "../../utils/api";
+import { API } from "../../utils/api.js";
 
 export function renderStatisticsHowFind() {
   const main = document.querySelector('#main');
