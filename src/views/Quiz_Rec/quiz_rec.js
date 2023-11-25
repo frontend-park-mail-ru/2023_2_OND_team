@@ -79,10 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderRecQuizTemplate();
             });
 
-            /*const sendButton = document.querySelector('.js-quiz-send__btn-change"');
+            const sendButton = document.querySelector('.js-quiz-send__btn-change');
             sendButton.addEventListener('click', () => {
-                console.log(quizID, val_array);
-            });*/
+                quizID = 2;
+                console.log(quizID, activeCount);
+            });
         });
     };
     renderRecQuizTemplate();
