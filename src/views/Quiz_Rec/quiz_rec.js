@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <hr class="grey-line">
                             <div class="quiz-data__btns">
                                 <button class="btn-primary-clear text-base1-medium js-quiz-back__btn-change">Назад</button>
-                                <button class="btn-primary-default text-base1-medium js-quiz-forward__btn-change">Отправить</button>
+                                <button class="btn-primary-default text-base1-medium js-quiz-send__btn-change">Отправить</button>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderRecQuizTemplate();
             });
         });
-        const sendButton = document.querySelector('.js-quiz-forward__btn-change"');
+        const sendButton = document.querySelector('.js-quiz-send__btn-change"');
         sendButton.addEventListener('click', () => {
             console.log(quizID, val_array);
         });
