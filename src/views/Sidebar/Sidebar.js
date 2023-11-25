@@ -32,8 +32,9 @@ export function renderSidebar() {
 
   const menuBtns = document.querySelectorAll('.sidebar__menu__btn');
   menuBtns.forEach((btn) => {
-    console.log(btn);
     btn?.addEventListener('click', (e) => {
+
+      console.log(btn);
       const profileArrow = document.querySelector('.sidebar__menu__profile__arrow-img');
       if (e.target == profileArrow) {
         return;
