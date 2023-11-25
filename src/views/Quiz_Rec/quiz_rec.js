@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const root = document.getElementById('root');
         root.innerHTML = templateContent;
 
+        quizID = null;
+        val_array = null;
+
         const likeButtons = document.querySelectorAll('.js-like-btn');
 
         likeButtons.forEach((button) => {
@@ -75,6 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
             backButton.addEventListener('click', () => {
                 renderRecQuizTemplate();
             });
+        });
+        const sendButton = document.querySelector('.js-quiz-forward__btn-change"');
+        sendButton.addEventListener('click', () => {
+            console.log(quizID, val_array);
         });
     };
     renderRecQuizTemplate();
