@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const renderFirstQuizTemplate = () => {
+
+export async function renderFirstQuizTemplate() {
         const templateContent = `
             <div class="container">
                 <div class="rectangle">
@@ -54,5 +54,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
     };
-    renderFirstQuizTemplate();
-});

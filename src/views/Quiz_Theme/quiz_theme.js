@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const renderThemeQuizTemplate = () => {
+export async function renderThemeQuizTemplate() {
         const templateContent = `
             <div class="container">
                 <div class="rectangle">
@@ -65,5 +64,3 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(quizID, [val_array]);
         });
     };
-    renderThemeQuizTemplate();
-});

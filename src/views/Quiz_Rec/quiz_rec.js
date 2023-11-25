@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const renderRecQuizTemplate = () => {
+export async function renderRecQuizTemplate() {
         const templateContent = `
             <div class="container">
                 <div class="rectangle">
@@ -121,5 +120,3 @@ document.addEventListener('DOMContentLoaded', () => {
             }  
         });
     };
-    renderRecQuizTemplate();
-});
