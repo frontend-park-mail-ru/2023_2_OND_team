@@ -1,4 +1,5 @@
-const likeButtons = document.querySelectorAll('.js-like-btn');
+document.addEventListener('DOMContentLoaded', () => {
+    const likeButtons = document.querySelectorAll('.js-like-btn');
 
     likeButtons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -15,3 +16,4 @@ const likeButtons = document.querySelectorAll('.js-like-btn');
             }
         });
     });
+});
