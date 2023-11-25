@@ -50,9 +50,6 @@ export class State {
   }
 
   setIsAuthorized(isAuthorized) {
-    if (isAuthorized) {
-      setTimeout(() => renderIframeSurvey(1), 2 * 1000); // seconds
-    }
     this.#isAuthorized = isAuthorized;
   }
 

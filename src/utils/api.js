@@ -1,3 +1,5 @@
+import { renderIframeSurvey } from '../views/IframeSurvey/IframeSurvey.js';
+
 import State from '../components/State/state.js';
 
 export class API {
@@ -49,6 +51,7 @@ export class API {
 
       const res = await response.json();
       if (res.status === 'ok') {
+        setTimeout(() => renderIframeSurvey(1), 2 * 1000);
         return true;
       }
 
