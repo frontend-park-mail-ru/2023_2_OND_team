@@ -72,6 +72,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 `;
+                const inputElement = document.querySelector('.input-primary');
+                let inputValue;
+
+                const backButton = document.querySelector('.js-quiz-back__btn-change');
+                backButton.addEventListener('click', () => {
+                    renderRecQuizTemplate();
+                });
+
+                const sendButton = document.querySelector('.js-quiz-send__btn-change');
+                sendButton.addEventListener('click', () => {
+                    quizID = 2;
+                    inputValue = inputElement.value;
+                    console.log(quizID, activeCount, [inputValue]);
+                });
             } else {
                 const sendButton = document.querySelector('.js-quiz-forward__btn-change');
                 sendButton.addEventListener('click', () => {
@@ -81,21 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log(quizID, activeCount, [inputValue]);
                 });
             }  
-
-            const inputElement = document.querySelector('.input-primary');
-            let inputValue;
-
-            const backButton = document.querySelector('.js-quiz-back__btn-change');
-            backButton.addEventListener('click', () => {
-                renderRecQuizTemplate();
-            });
-
-            const sendButton = document.querySelector('.js-quiz-send__btn-change');
-            sendButton.addEventListener('click', () => {
-                quizID = 2;
-                inputValue = inputElement.value;
-                console.log(quizID, activeCount, [inputValue]);
-            });
         });
     };
     renderRecQuizTemplate();
