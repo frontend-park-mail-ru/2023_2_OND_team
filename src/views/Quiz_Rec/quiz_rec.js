@@ -97,7 +97,7 @@ export function renderRecQuizTemplate() {
                 const sendButton = document.querySelector('.js-quiz-forward__btn-change');
                 sendButton.addEventListener('click', () => {
                     const quizID = 2;
-                    inputValue = null;
+                    const inputValue = null;
                     console.log(quizID, [activeCount, inputValue]);
                     window.parent.postMessage(['send', quizID, activeCount, inputValue], 'https://pinspire.online:1443')
                 });
