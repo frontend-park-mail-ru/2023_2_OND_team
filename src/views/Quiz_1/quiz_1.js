@@ -1,5 +1,5 @@
 
-export async function renderFirstQuizTemplate() {
+export function renderFirstQuizTemplate() {
         const templateContent = `
             <div class="container">
                 <div class="rectangle">
@@ -49,7 +49,7 @@ export async function renderFirstQuizTemplate() {
 
         const sendButton = document.querySelector('.js-quiz-forward__btn-change');
             sendButton.addEventListener('click', () => {
-                quizID = 1;
+                const quizID = 1;
                 console.log(quizID, [val_array]);
         });
         

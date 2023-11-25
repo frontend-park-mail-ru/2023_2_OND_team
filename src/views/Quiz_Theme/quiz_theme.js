@@ -1,4 +1,4 @@
-export async function renderThemeQuizTemplate() {
+export function renderThemeQuizTemplate() {
         const templateContent = `
             <div class="container">
                 <div class="rectangle">
@@ -60,7 +60,7 @@ export async function renderThemeQuizTemplate() {
 
         const sendButton = document.querySelector('.js-quiz-forward__btn-change');
         sendButton.addEventListener('click', () => {
-            quizID = 3;
+            const quizID = 3;
             console.log(quizID, [val_array]);
         });
     };

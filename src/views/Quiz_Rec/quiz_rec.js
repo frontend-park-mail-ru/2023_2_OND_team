@@ -1,4 +1,4 @@
-export async function renderRecQuizTemplate() {
+export function renderRecQuizTemplate() {
         const templateContent = `
             <div class="container">
                 <div class="rectangle">
@@ -24,8 +24,8 @@ export async function renderRecQuizTemplate() {
         const root = document.getElementById('root');
         root.innerHTML = templateContent;
 
-        quizID = null;
-        val_array = null;
+        const quizID = null;
+        const val_array = null;
 
         const likeButtons = document.querySelectorAll('.js-like-btn');
 
@@ -81,14 +81,14 @@ export async function renderRecQuizTemplate() {
 
                 const sendButton = document.querySelector('.js-quiz-send__btn-change');
                 sendButton.addEventListener('click', () => {
-                    quizID = 2;
+                    const quizID = 2;
                     inputValue = inputElement.value;
                     console.log(quizID, activeCount, [inputValue]);
                 });
 
                 const cancelButton = document.querySelector('.js-quiz-cancel__btn-change');
                 cancelButton.addEventListener('click', () => {
-                    quizID = 2;
+                    const quizID = 2;
                     closeState = 'close';
                     console.log([closeState]);
                     window.parent.postMessage([closeState], 'https://pinspire.online:1443')
