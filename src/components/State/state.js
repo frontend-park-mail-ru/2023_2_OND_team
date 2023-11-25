@@ -1,4 +1,4 @@
-import { renderIframeSurvey } from "../../views/IframeSurvey/IframeSurvey";
+import { renderIframeSurvey } from "../../views/IframeSurvey/IframeSurvey.js";
 
 export class State {
   #csrfToken;
