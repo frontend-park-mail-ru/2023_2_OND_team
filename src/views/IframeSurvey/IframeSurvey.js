@@ -1,4 +1,5 @@
 export function renderIframeSurvey(surveyID) {
+  console.log(surveyID);
   if (surveyID == -1) {
     const rootElement = document.querySelector('#root');
 
