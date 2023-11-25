@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <hr class="grey-line">
                     <div class="quiz-data__btns">
                         <button class="btn-primary-clear text-base1-medium js-quiz-close__btn-change">Закрыть</button>
-                        <button class="btn-primary-default text-base1-medium js-quiz-forward__btn-change">Далее</button>
+                        <button class="btn-primary-default text-base1-medium js-quiz-forwardd__btn-change">Далее</button>
                     </div>
                 </div>
             `;
@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 console.log('Количество активных сердечек:', activeCount);
             });
+        });
+
+        const sendButton = document.querySelector('.js-quiz-forwardd__btn-change');
+        sendButton.addEventListener('click', () => {
+            quizID = 2;
+            inputValue = inputElement.value;
+            console.log(quizID, activeCount, [inputValue]);
         });
 
         const forwardButton = document.querySelector('.js-quiz-forward__btn-change');
