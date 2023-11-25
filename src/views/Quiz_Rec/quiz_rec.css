@@ -1,3 +1,11 @@
 .like-btn {
     cursor: pointer;
+    width: 65px;
+    height: 65px;
+}
+
+.like-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
