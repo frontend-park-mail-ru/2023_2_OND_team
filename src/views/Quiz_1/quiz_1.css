@@ -12,6 +12,7 @@
     justify-content: center;
     border: 1px solid grey;
     border-radius: 15px;
+    background-color: white;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
 }
   
