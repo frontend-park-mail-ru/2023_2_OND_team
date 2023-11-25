@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }   
 
             const inputElement = document.querySelector('.input-primary');
-            const inputValue = inputElement.value;
+            let inputValue;
 
             const backButton = document.querySelector('.js-quiz-back__btn-change');
             backButton.addEventListener('click', () => {
@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sendButton = document.querySelector('.js-quiz-send__btn-change');
             sendButton.addEventListener('click', () => {
                 quizID = 2;
+                inputValue = inputElement.value;
                 console.log(quizID, activeCount, inputValue);
             });
         });
