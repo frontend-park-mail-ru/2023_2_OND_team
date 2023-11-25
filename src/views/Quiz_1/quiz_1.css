@@ -6,8 +6,8 @@
 }
   
 .rectangle {
-    height: 600px;
-    width: 200px;
+    height: auto;
+    width: auto;
     display: flex;
     flex-direction: column;
     padding: 10px 20px;
