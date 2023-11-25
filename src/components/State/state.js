@@ -34,17 +34,18 @@ export class State {
     // setTimeout(() => closeIframeSurvey(), 10 * 1000); // seconds
 
     window.addEventListener("message", (event) => {
-      console.log(event);
-      // switch (data) {
-      //   case 'close':
-      //     closeIframeSurvey();
-      //     break;
-      //   case 'send':
-      //     API.sendQuizInfo(quiz_id, val_array);
-      //     break;
-      //   default:
-      //     break;
-      // }
+      const { data } = event;
+      console.log(data);
+      switch (data) {
+          case (data[0] === 'close'):
+            closeIframeSurvey();
+            break;
+          case (data[0] === 'send'):
+            API.sendQuizInfo(data[1], data.slice(1));
+            break;
+          default:
+            break;
+        }
      }, false);
   }
 
