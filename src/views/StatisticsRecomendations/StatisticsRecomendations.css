@@ -1,0 +1,93 @@
+.statistics {
+  display: flex;
+  flex-direction: column;
+}
+
+.statistics__title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.statistics__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statistics__avg_mark {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.statistics__avg_mark__content {
+  display: flex;
+  justify-content: center;
+}
+
+.stistics__avg_mark__title {
+  text-align: center;
+}
+
+.statistics__avg_mark__mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.statistics__avg_mark__mark-img {
+  height: 100px;
+  width: 100px;
+}
+
+.statistics__offers {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.statistics__offers__title{
+  display: flex;
+}
+
+.statistics__offers__title-span{
+  width: 100%;
+  text-align: center;
+}
+
+.statistics__offers__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.statistics__offers__content-item {
+  display: flex;
+  width: 100%;
+  height: 183px;
+}
+
+.statistics__offers__content-item-textarea {
+  width: 100%;
+  height: 183px;
+  align-items: center;
+  resize: none;
+  outline: none;
+  border-radius: var(--br-s, 10px);
+  border: 2px solid var(--black-icon, rgba(20, 20, 20, 0.70));
+  background: var(--bg-100, #FFF);
+}
+
+
+
+.text-h4-medium {
+  font-family: Nunito;
+  font-size: 31.25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

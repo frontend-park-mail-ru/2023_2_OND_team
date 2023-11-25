@@ -21,6 +21,7 @@ import {setHeaderTitle, removeHeaderTitle} from '../../utils/HeaderTitleProcessi
 import {setActiveSidebarItem} from '../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js';
 import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
 import {renderUserPage} from '../../views/UserPage/UserPage.js';
+import { renderStatisticsRecomendations } from '../../views/StatisticsRecomendations/StatisticsRecomendations.js';
 
 function resetScroll() {
   window.scrollTo({
@@ -451,6 +452,31 @@ export class Router {
           }
 
           renderUserPage(userID);
+        },
+      },
+      {
+        path: '/statistics/1',
+        handler: () => {
+
+          if (this.state.getIsAuthorized()) {
+            this.state.setCurrentPage('statistics1');
+
+            if (document.querySelector('#sidebar').innerHTML === '') {
+              renderSidebar();
+            }
+
+            setActiveSidebarItem('');
+
+            if (document.querySelector('#header').innerHTML === '') {
+              renderHeaderDefault();
+            }
+
+            setHeaderTitle('Анализ опросов');
+
+            renderStatisticsRecomendations();
+          } else {
+            this.navigate('/login');
+          }
         },
       },
     ];
