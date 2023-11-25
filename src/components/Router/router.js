@@ -23,6 +23,7 @@ import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
 import {renderUserPage} from '../../views/UserPage/UserPage.js';
 import { renderStatisticsRecomendations } from '../../views/StatisticsRecomendations/StatisticsRecomendations.js';
 import { renderStatisticsHowFind } from '../../views/StatisticsHowFind/StatisticsHowFind.js';
+import { renderStatisticsThemes } from '../../views/StatisticsThemes/StatisticsThemes.js';
 
 
 function resetScroll() {
@@ -525,7 +526,7 @@ export class Router {
 
             setHeaderTitle('Анализ опросов');
 
-            renderStatisticsRecomendations(); // топ тематик
+            renderStatisticsThemes();
           } else {
             this.navigate('/login');
           }

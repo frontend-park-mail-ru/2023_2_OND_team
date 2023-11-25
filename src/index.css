@@ -25,6 +25,7 @@
 @import url(./views/UserPage/userPage.css);
 @import url(./views/StatisticsRecomendations/StatisticsRecomendations.css);
 @import url(./views/StatisticsHowFind/StatisticsHowFind.css);
+@import url(./views/StatisticsThemes/StatisticsThemes.css);
 
 
 html, body {
