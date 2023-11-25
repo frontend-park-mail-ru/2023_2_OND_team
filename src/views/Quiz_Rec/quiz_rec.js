@@ -24,8 +24,7 @@ export function renderRecQuizTemplate() {
         const root = document.getElementById('root');
         root.innerHTML = templateContent;
 
-        const quizID = null;
-        const val_array = null;
+        let quizID = null;
 
         const likeButtons = document.querySelectorAll('.js-like-btn');
 
@@ -81,14 +80,15 @@ export function renderRecQuizTemplate() {
 
                 const sendButton = document.querySelector('.js-quiz-send__btn-change');
                 sendButton.addEventListener('click', () => {
-                    const quizID = 2;
+                    quizID = 2;
                     inputValue = inputElement.value;
                     console.log(quizID, activeCount, [inputValue]);
+                    window.parent.postMessage(['send', quizID, activeCount, inputValue], 'https://pinspire.online:1443')
                 });
 
                 const cancelButton = document.querySelector('.js-quiz-cancel__btn-change');
                 cancelButton.addEventListener('click', () => {
-                    const quizID = 2;
+                    quizID = 2;
                     closeState = 'close';
                     console.log([closeState]);
                     window.parent.postMessage([closeState], 'https://pinspire.online:1443')
@@ -96,7 +96,7 @@ export function renderRecQuizTemplate() {
             } else {
                 const sendButton = document.querySelector('.js-quiz-forward__btn-change');
                 sendButton.addEventListener('click', () => {
-                    const quizID = 2;
+                    quizID = 2;
                     const inputValue = null;
                     console.log(quizID, [activeCount, inputValue]);
                     window.parent.postMessage(['send', quizID, activeCount, inputValue], 'https://pinspire.online:1443')
