@@ -7,6 +7,8 @@ export function renderSidebar() {
     return;
   }
 
+  console.log('menuItem');
+
   const router = new Router();
 
   const sidebar = document.querySelector('#sidebar');
@@ -37,6 +39,7 @@ export function renderSidebar() {
       }
 
       const menuItem = btn.className.split(' ')[1].split('__')[2];
+      console.log(menuItem);
       switch (menuItem) {
         case 'feed':
           router.navigate('/');
