@@ -491,8 +491,6 @@ export class Router {
               renderSidebar();
             }
 
-            setActiveSidebarItem('');
-
             if (document.querySelector('#header').innerHTML === '') {
               renderHeaderDefault();
             }
