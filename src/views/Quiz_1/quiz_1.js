@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         const root = document.getElementById('root');
         root.innerHTML = templateContent;
+        const val_array = null;
 
         const radioButtons = document.querySelectorAll('input[type="radio"]');
         radioButtons.forEach((radio) => {
