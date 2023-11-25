@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const sendButton = document.querySelector('.js-quiz-forward__btn-change');
         sendButton.addEventListener('click', () => {
-            quizID = 1;
+            quizID = 3;
             console.log(quizID, [val_array]);
         });
     };
