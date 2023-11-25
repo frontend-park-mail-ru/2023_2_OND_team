@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
                             </div>
                             <hr class="grey-line">
-                            <input type="text" class="input-primary">
+                            <input type="text" class="input-primary placeholder="Что улучшить?"">
                             <hr class="grey-line">
                             <div class="quiz-data__btns">
                                 <button class="btn-primary-clear text-base1-medium js-quiz-back__btn-change">Назад</button>
