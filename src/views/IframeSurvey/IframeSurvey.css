@@ -2,6 +2,7 @@
   all: unset;
   width: 600px;
   height: 500px;
+  z-index: 4;
 }
 
 .hide {

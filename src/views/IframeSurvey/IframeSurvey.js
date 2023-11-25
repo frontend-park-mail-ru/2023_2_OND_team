@@ -3,7 +3,6 @@ export function renderIframeSurvey(surveyID) {
     const rootElement = document.querySelector('#root');
 
     const iframe = document.createElement('iframe');
-    iframe.src = `https://pinspire.online:1446/${surveyID}`;
     iframe.classList.add('hide');
     iframe.classList.add('iframe-survey');
 
