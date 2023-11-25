@@ -36,11 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const root = document.getElementById('root');
         root.innerHTML = templateContent;
 
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach((radio) => {
+            radio.addEventListener('change', (event) => {
+                const selectedValue = event.target.value;
+        
+                const val_array = selectedValue;
+                console.log('Выбранное значение:', val_array);
+            });
+        });
+
         const sendButton = document.querySelector('.js-quiz-forward__btn-change');
             sendButton.addEventListener('click', () => {
                 quizID = 1;
                 console.log(quizID, val_array);
         });
+        
     };
     renderFirstQuizTemplate();
 });
