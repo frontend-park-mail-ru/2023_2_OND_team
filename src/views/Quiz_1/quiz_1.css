@@ -99,3 +99,38 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.quiz__pointer {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+  
+.quiz__pointer input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    margin-right: 25px
+}
+  
+.quiz__pointer input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
