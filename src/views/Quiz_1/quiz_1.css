@@ -84,3 +84,12 @@
 .btn-primary-default:hover {
     background: var(--primary-45, #33A1B3);
 }
+
+.quiz-data__btns {
+    display: inline-flex;
+    align-items: flex-start;
+    flex: center;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+}
