@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         const root = document.getElementById('root');
         root.innerHTML = templateContent;
+
+        const sendButton = document.querySelector('.js-quiz-forward__btn-change"');
+            sendButton.addEventListener('click', () => {
+                quizID = 1;
+                console.log(quizID, val_array);
+        });
     };
     renderFirstQuizTemplate();
 });
