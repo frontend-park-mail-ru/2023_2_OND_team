@@ -8,11 +8,8 @@
  */
 import {API} from './utils/api.js';
 import {Router} from './components/Router/router.js';
-import { createIframeSurvey } from './views/IframeSurvey/IframeSurvey.js';
 
 const router = new Router();
-
-createIframeSurvey();
 
 API.getCsrfToken()
     .then(() => {

@@ -1,4 +1,4 @@
-import { renderIframeSurvey } from "../../views/IframeSurvey/IframeSurvey.js";
+import { createIframeSurvey, renderIframeSurvey } from "../../views/IframeSurvey/IframeSurvey.js";
 
 export class State {
   #csrfToken;
@@ -22,6 +22,9 @@ export class State {
     this.#avatar = null;
     this.#userID = null;
     this.#visiblePins = [];
+
+
+    createIframeSurvey();
 
     setTimeout(renderIframeSurvey(1), 5 * 1000); // seconds
   }
