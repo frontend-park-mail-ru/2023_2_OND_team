@@ -31,6 +31,18 @@ export class State {
     setTimeout(() => renderIframeSurvey(2), 6 * 1000); // seconds
 
     setTimeout(() => closeIframeSurvey(), 10 * 1000); // seconds
+
+    window.addEventListener("message", (event) => {
+      const { data } = event;
+      console.log(data);
+      switch (data) {
+        case 'close':
+          closeIframeSurvey();
+          break;
+        default:
+          break;
+      }
+     }, false);
   }
 
   setCsrfToken(token) {
