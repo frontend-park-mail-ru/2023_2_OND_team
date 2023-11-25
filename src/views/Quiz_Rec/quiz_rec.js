@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sendButton.addEventListener('click', () => {
                 quizID = 2;
                 inputValue = inputElement.value;
-                console.log(quizID, activeCount, inputValue);
+                console.log(quizID, activeCount, [inputValue]);
             });
         });
     };
