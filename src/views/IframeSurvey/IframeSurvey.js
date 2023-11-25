@@ -9,12 +9,14 @@ export function createIframeSurvey() {
 }
 
 export function renderIframeSurvey(surveyID) {
+  console.log('++');
   const iframe = document.querySelector('.iframe-survey');
   iframe.src = `https://pinspire.online:1446/${surveyID}`;
   iframe.classList.remove('hide');
 }
 
 export function closeIframeSurvey() {
+  console.log('--');
   const iframe = document.querySelector('.iframe-survey');
   iframe.classList.add('hide');
 }
