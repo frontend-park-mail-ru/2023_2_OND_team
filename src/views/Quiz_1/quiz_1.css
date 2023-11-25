@@ -1,5 +1,8 @@
+.container {
+    padding: 20px;
+}
+
 .rectangle {
-    margin: 20px;
     height: auto;
     width: auto;
     display: flex;
@@ -135,4 +138,4 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-  }
+}
