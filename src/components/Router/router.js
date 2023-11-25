@@ -22,6 +22,8 @@ import {setActiveSidebarItem} from '../../utils/sidebarItemsProcessing/sidebarIt
 import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
 import {renderUserPage} from '../../views/UserPage/UserPage.js';
 import { renderStatisticsRecomendations } from '../../views/StatisticsRecomendations/StatisticsRecomendations.js';
+import { renderStatisticsHowToFind } from '../../views/StatisticsHowFind/StatisticsHowFind.js';
+
 
 function resetScroll() {
   window.scrollTo({
@@ -473,7 +475,57 @@ export class Router {
 
             setHeaderTitle('Анализ опросов');
 
+            renderStatisticsHowToFind();
+          } else {
+            this.navigate('/login');
+          }
+        },
+      },
+      {
+        path: '/statistics/2',
+        handler: () => {
+
+          if (this.state.getIsAuthorized()) {
+            this.state.setCurrentPage('statistics2');
+
+            if (document.querySelector('#sidebar').innerHTML === '') {
+              renderSidebar();
+            }
+
+            setActiveSidebarItem('');
+
+            if (document.querySelector('#header').innerHTML === '') {
+              renderHeaderDefault();
+            }
+
+            setHeaderTitle('Анализ опросов');
+
             renderStatisticsRecomendations();
+          } else {
+            this.navigate('/login');
+          }
+        },
+      },
+      {
+        path: '/statistics/3',
+        handler: () => {
+
+          if (this.state.getIsAuthorized()) {
+            this.state.setCurrentPage('statistics3');
+
+            if (document.querySelector('#sidebar').innerHTML === '') {
+              renderSidebar();
+            }
+
+            setActiveSidebarItem('');
+
+            if (document.querySelector('#header').innerHTML === '') {
+              renderHeaderDefault();
+            }
+
+            setHeaderTitle('Анализ опросов');
+
+            renderStatisticsRecomendations(); // топ тематик
           } else {
             this.navigate('/login');
           }

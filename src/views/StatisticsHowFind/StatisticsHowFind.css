@@ -1,0 +1,33 @@
+.statistics {
+  display: flex;
+  flex-direction: column;
+}
+
+.statistics__title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.statistics__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#canvas {
+    border: 1px solid black;
+}
+
+
+.text-h4-medium {
+  font-family: Nunito;
+  font-size: 31.25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

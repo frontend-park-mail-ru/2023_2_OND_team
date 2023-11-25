@@ -11,6 +11,7 @@
   justify-content: center;
   text-align: center;
   flex-shrink: 0;
+  padding: 20px;
 }
 
 .statistics__content {
@@ -21,7 +22,7 @@
 .statistics__avg_mark {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
 }
 
 .statistics__avg_mark__content {
@@ -47,7 +48,7 @@
 .statistics__offers {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
 }
 
 .statistics__offers__title{

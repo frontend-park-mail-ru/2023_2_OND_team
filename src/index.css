@@ -24,6 +24,7 @@
 @import url(./views/Messenger/messenger.css);
 @import url(./views/UserPage/userPage.css);
 @import url(./views/StatisticsRecomendations/StatisticsRecomendations.css);
+@import url(./views/StatisticsHowFind/StatisticsHowFind.css);
 
 
 html, body {
