@@ -18,7 +18,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.src = '/assets/icons/actions/like.svg';
             }
 
+            if (activeCount <= 2) {
+                const root = document.getElementById('root');
+                root.innerHTML = `
+                    <div class="container">
+                        <div class="rectangle">
+                            <div class="title__block">
+                                <span class="title-quiz text-base1-medium">Почему?</span>
+                            </div>
+                            <hr class="grey-line">
+                            <input type="text" class="input-field">
+                        </div>
+                    </div>
+                `;
+            }
+
             console.log('Количество активных сердечек:', activeCount);
         });
+    });
+
+    const forwardButton = document.querySelector('.js-quiz-forward__btn-change');
+    forwardButton.addEventListener('click', () => {
+        const activeCount = document.querySelectorAll('.like-btn[src="/assets/icons/actions/like_active.svg"]').length;
+        if (activeCount <= 2) {
+            const root = document.getElementById('root');
+            root.innerHTML = `
+                <div class="container">
+                    <div class="rectangle">
+                        <div class="title__block">
+                            <span class="title-quiz text-base1-medium">Почему?</span>
+                        </div>
+                        <hr class="grey-line">
+                        <input type="text" class="input-field">
+                    </div>
+                </div>
+            `;
+        }
     });
 });
