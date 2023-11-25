@@ -1,14 +1,17 @@
-const noChoice = document.querySelector('input[value="no"]');
-const titleText = document.querySelector('.title-quiz');
-const radioLabels = document.querySelectorAll('.quiz__pointer label');
+const likeButtons = document.querySelectorAll('.js-like-btn');
 
-noChoice.addEventListener('change', function() {
-    if (this.checked) {
-        titleText.textContent = 'Почему?';
+    likeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const index = button.dataset.index;
 
-        radioLabels.forEach(label => {
-            label.style.display = 'none';
+            for (let i = 1; i <= index; i++) {
+                const img = document.querySelector(`.js-like-btn[data-index="${i}"]`);
+                img.src = '/assets/icons/actions/like_active.svg';
+            }
+
+            for (let i = parseInt(index) + 1; i <= 5; i++) {
+                const img = document.querySelector(`.js-like-btn[data-index="${i}"]`);
+                img.src = '/assets/icons/actions/like.svg';
+            }
         });
-
-    }
-});
+    });
