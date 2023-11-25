@@ -12,11 +12,12 @@ import { createIframeSurvey } from './views/IframeSurvey/IframeSurvey.js';
 
 const router = new Router();
 
+createIframeSurvey();
+
 API.getCsrfToken()
     .then(() => {
       API.checkLogin()
           .then(() => {
-            createIframeSurvey();
             router.handlePopstate();
           });
     });
