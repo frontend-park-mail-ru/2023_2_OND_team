@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <hr class="grey-line">
                 <form class="quiz__pointer text-base1-regular">
                     <label class="quiz__pointer">
-                        <input type="radio" name="choice" value="people">
+                        <input type="radio" name="choice" value="traveling">
                         <span class="checkmark">Путешествия</span>
                     </label>
                     <label class="quiz__pointer">
-                        <input type="radio" name="choice" value="social_media">
+                        <input type="radio" name="choice" value="design">
                         <span class="checkmark">Дизайн</span>
                     </label>
                     <label class="quiz__pointer">
@@ -22,15 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="checkmark">Музыка</span>
                     </label>
                     <label class="quiz__pointer">
-                        <input type="radio" name="choice" value="other">
+                        <input type="radio" name="choice" value="cooking">
                         <span class="checkmark">Кулинария</span>
                     </label>
                     <label class="quiz__pointer">
-                        <input type="radio" name="choice" value="other">
+                        <input type="radio" name="choice" value="sport">
                         <span class="checkmark">Спорт</span>
                     </label>
                     <label class="quiz__pointer">
-                        <input type="radio" name="choice" value="other">
+                        <input type="radio" name="choice" value="politics">
                         <span class="checkmark">Политика</span>
                     </label>
                     <label class="quiz__pointer">
