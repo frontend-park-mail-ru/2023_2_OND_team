@@ -1,8 +1,8 @@
-export function renderStatisticsHowToFind() {
+export function renderStatisticsHowFind() {
   const main = document.querySelector('#main');
-  const statisticsHowToFindTemplate = Handlebars.templates['StatisticsHowToFind.hbs'];
-  const statisticsHowToFindContext = {};
-  main.innerHTML = statisticsHowToFindTemplate(statisticsHowToFindContext);
+  const statisticsHowFindTemplate = Handlebars.templates['StatisticsHowFind.hbs'];
+  const statisticsHowFindContext = {};
+  main.innerHTML = statisticsHowFindTemplate(statisticsHowFindContext);
 
 
   let canvas = document.getElementById('canvas'); 

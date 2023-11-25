@@ -22,7 +22,7 @@ import {setActiveSidebarItem} from '../../utils/sidebarItemsProcessing/sidebarIt
 import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
 import {renderUserPage} from '../../views/UserPage/UserPage.js';
 import { renderStatisticsRecomendations } from '../../views/StatisticsRecomendations/StatisticsRecomendations.js';
-import { renderStatisticsHowToFind } from '../../views/StatisticsHowFind/StatisticsHowFind.js';
+import { renderStatisticsHowFind } from '../../views/StatisticsHowFind/StatisticsHowFind.js';
 
 
 function resetScroll() {
@@ -475,7 +475,7 @@ export class Router {
 
             setHeaderTitle('Анализ опросов');
 
-            renderStatisticsHowToFind();
+            renderStatisticsHowFind();
           } else {
             this.navigate('/login');
           }
