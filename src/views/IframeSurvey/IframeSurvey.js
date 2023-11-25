@@ -1,5 +1,4 @@
 export function renderIframeSurvey(surveyID) {
-  console.log(surveyID);
   if (surveyID == -1) {
     const rootElement = document.querySelector('#root');
 
@@ -14,6 +13,6 @@ export function renderIframeSurvey(surveyID) {
   }
 
   const iframe = document.querySelector('.iframe-survey');
-  iframe?.src = `https://pinspire.online:1446/${surveyID}`;
-  iframe?.classList.remove('hide');
+  iframe.src = `https://pinspire.online:1446/${surveyID}`;
+  iframe.classList.remove('hide');
 }
