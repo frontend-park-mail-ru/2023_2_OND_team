@@ -140,3 +140,7 @@
     font-weight: 400;
     line-height: normal;
 }
+
+.js-cancel__btn {
+    cursor: pointer;
+}
