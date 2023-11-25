@@ -17,22 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const img = document.querySelector(`.js-like-btn[data-index="${i}"]`);
                 img.src = '/assets/icons/actions/like.svg';
             }
-
-            if (activeCount <= 2) {
-                const root = document.getElementById('root');
-                root.innerHTML = `
-                    <div class="container">
-                        <div class="rectangle">
-                            <div class="title__block">
-                                <span class="title-quiz text-base1-medium">Почему?</span>
-                            </div>
-                            <hr class="grey-line">
-                            <input type="text" class="input-field">
-                        </div>
-                    </div>
-                `;
-            }
-
             console.log('Количество активных сердечек:', activeCount);
         });
     });
