@@ -487,8 +487,6 @@ export class Router {
         handler: () => {
 
           if (this.state.getIsAuthorized()) {
-            this.state.setCurrentPage('statistics2');
-
             if (document.querySelector('#sidebar').innerHTML === '') {
               renderSidebar();
             }
