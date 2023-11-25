@@ -1,4 +1,5 @@
 .rectangle {
+    margin: 20px;
     height: auto;
     width: auto;
     display: flex;
