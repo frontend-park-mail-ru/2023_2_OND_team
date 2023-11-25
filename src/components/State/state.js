@@ -26,9 +26,9 @@ export class State {
 
     createIframeSurvey();
 
-    setTimeout(renderIframeSurvey(1), 6 * 1000); // seconds
-    
-    setTimeout(closeIframeSurvey(), 10 * 1000); // seconds
+    setTimeout(() => renderIframeSurvey(1), 6 * 1000); // seconds
+
+    setTimeout(() => closeIframeSurvey(), 10 * 1000); // seconds
   }
 
   setCsrfToken(token) {
