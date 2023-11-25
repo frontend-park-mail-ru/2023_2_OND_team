@@ -78,10 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
             backButton.addEventListener('click', () => {
                 renderRecQuizTemplate();
             });
-        });
-        const sendButton = document.querySelector('.js-quiz-send__btn-change"');
-        sendButton.addEventListener('click', () => {
-            console.log(quizID, val_array);
+
+            const sendButton = document.querySelector('.js-quiz-send__btn-change"');
+            sendButton.addEventListener('click', () => {
+                console.log(quizID, val_array);
+            });
         });
     };
     renderRecQuizTemplate();
