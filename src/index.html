@@ -11,31 +11,7 @@
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
     <script src="./index.js"></script>
-    <script>
-        const templateContent = `
-            <div class="container">
-                <div class="rectangle">
-                    <div class="title__block">
-                        <span class="title-quiz text-base1-medium">Порекомендовали ли бы вы своим друзьям наш сервис?</span>
-                        <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
-                    </div>
-                    <hr class="grey-line">
-                    <div class="like-buttons">
-                        <img src="/assets/icons/actions/like.svg" class="like-btn js-like-btn" data-index="1">
-                        <img src="/assets/icons/actions/like.svg" class="like-btn js-like-btn" data-index="2">
-                        <img src="/assets/icons/actions/like.svg" class="like-btn js-like-btn" data-index="3">
-                        <img src="/assets/icons/actions/like.svg" class="like-btn js-like-btn" data-index="4">
-                        <img src="/assets/icons/actions/like.svg" class="like-btn js-like-btn" data-index="5">
-                    </div>
-                    <hr class="grey-line">
-                    <div class="quiz-data__btns">
-                        <button class="btn-primary-clear text-base1-medium js-quiz-close__btn-change">Закрыть</button>
-                        <button class="btn-primary-default text-base1-medium js-quiz-forward__btn-change">Далее</button>
-                    </div>
-                </div>
-            `;
-        const root = document.getElementById('root');
-        root.innerHTML = templateContent;
-    </script>
+    <script src="./views/Quiz_Rec/quiz_rec.js"></script>
+    <script>renderQuizTemplate();</script>
 </body>
 </html>
