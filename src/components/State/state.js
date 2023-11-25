@@ -1,3 +1,4 @@
+import { API } from "../../utils/api.js";
 import { createIframeSurvey, renderIframeSurvey, closeIframeSurvey } from "../../views/IframeSurvey/IframeSurvey.js";
 
 export class State {
@@ -30,18 +31,20 @@ export class State {
 
     setTimeout(() => renderIframeSurvey(2), 6 * 1000); // seconds
 
-    setTimeout(() => closeIframeSurvey(), 10 * 1000); // seconds
+    // setTimeout(() => closeIframeSurvey(), 10 * 1000); // seconds
 
     window.addEventListener("message", (event) => {
-      const { data } = event;
-      console.log(data);
-      switch (data) {
-        case 'close':
-          closeIframeSurvey();
-          break;
-        default:
-          break;
-      }
+      console.log(event);
+      // switch (data) {
+      //   case 'close':
+      //     closeIframeSurvey();
+      //     break;
+      //   case 'send':
+      //     API.sendQuizInfo(quiz_id, val_array);
+      //     break;
+      //   default:
+      //     break;
+      // }
      }, false);
   }
 

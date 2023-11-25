@@ -1,3 +1,5 @@
+import { API } from "../../utils/api";
+
 export function renderStatisticsHowFind() {
   const main = document.querySelector('#main');
   const statisticsHowFindTemplate = Handlebars.templates['StatisticsHowFind.hbs'];
@@ -33,6 +35,8 @@ export function renderStatisticsHowFind() {
   for(var i=0; i<4; i++) { 
       ctx.fillText(labels[i], 50 + i*100, 475); 
   }
+
+  API.getStatisticsHowFindResults();
 
   let data = [ 10, 53, 39, 54]; 
 
