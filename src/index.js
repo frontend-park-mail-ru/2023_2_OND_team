@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="container">
                     <div class="rectangle">
                         <div class="title__block">
-                            <span class="title-quiz text-base1-medium">Почему?</span>
+                            <span class="title-quiz text-base1-medium">Расскажите, что вам не понравилось</span>
                             <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
                         </div>
                         <hr class="grey-line">
-                        <input type="text" class="input-field">
+                        <input type="text" class="input-primary">
                         <hr class="grey-line">
                         <div class="quiz-data__btns">
                             <button class="btn-primary-clear text-base1-medium js-quiz-close__btn-change">Назад</button>
