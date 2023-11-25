@@ -86,6 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     inputValue = inputElement.value;
                     console.log(quizID, activeCount, [inputValue]);
                 });
+
+                const cancelButton = document.querySelector('.js-quiz-cancel__btn-change');
+                cancelButton.addEventListener('click', () => {
+                    quizID = 2;
+                    closeState = 'close';
+                    console.log([closeState]);
+                    window.parent.postMessage([closeState], 'https://pinspire.online:1443')
+                });
             } else {
                 const sendButton = document.querySelector('.js-quiz-forward__btn-change');
                 sendButton.addEventListener('click', () => {
