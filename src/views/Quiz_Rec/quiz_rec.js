@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const renderQuizTemplate = () => {
+    const renderRecQuizTemplate = () => {
         const templateContent = `
             <div class="container">
                 <div class="rectangle">
@@ -77,5 +77,5 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     };
-    renderQuizTemplate();
+    renderRecQuizTemplate();
 });
