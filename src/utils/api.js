@@ -870,7 +870,7 @@ export class API {
 
   static async getUserSubscriptions() {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/subscription/user/get?&view=subscriptions`;
+      const configItem = `//pinspire.online:8083/api/v1/subscription/user/get?&view=subscriptions`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -898,7 +898,7 @@ export class API {
 
   static async getSomeUserInfo(userID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/user/info/${userID}`;
+      const configItem = `//pinspire.online:8083/api/v1/user/info/${userID}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -926,7 +926,7 @@ export class API {
 
   static async subscribeToUser(userID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/subscription/user/create`;
+      const configItem = `//pinspire.online:8083/api/v1/subscription/user/create`;
 
       const response = await fetch(configItem, {
         method: 'POST',
@@ -957,7 +957,7 @@ export class API {
 
   static async unsubscribeFromUser(userID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/subscription/user/delete`;
+      const configItem = `//pinspire.online:8083/api/v1/subscription/user/delete`;
 
       const response = await fetch(configItem, {
         method: 'DELETE',
