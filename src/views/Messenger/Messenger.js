@@ -1,6 +1,9 @@
 // import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 
 export function renderMessengerPage() {
+  const rootElement = document.querySelector('#root');
+  rootElement.style.overflow = 'hidden';
+
   const main = document.querySelector('#main');
 
   const messengerTemplate = Handlebars.templates['Messenger.hbs'];
