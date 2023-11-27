@@ -1,5 +1,5 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
-import { MessengerApi } from '../../utils/Api/messengerApi.js';
+import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 
 
 export function renderMessengerPage() {

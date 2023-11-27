@@ -1,4 +1,4 @@
-import State from "../../components/State/state.js";
+import State from "../../../components/State/state.js";
 
 export class MessengerApi {
     #handlers;
@@ -13,7 +13,7 @@ export class MessengerApi {
         this.state = new State();
 
         this.#handlers = [
-            {name: 'userChats', url: '//pinspire.online:8080/api/v1/chat/personal&count=100'},
+            {name: 'userChats', url: '//pinspire.online:8080/api/v1/chat/personal?count=100'},
         ]
     }
 
