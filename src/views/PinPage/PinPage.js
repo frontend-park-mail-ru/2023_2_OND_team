@@ -1,4 +1,4 @@
-import {API} from '../../utils/api.js';
+import {API} from '../../utils/Api/api.js';
 import State from '../../components/State/state.js';
 import {Router} from '../../components/Router/router.js';
 import {renderPins} from '../../components/RenderPins/renderPins.js';

@@ -1,4 +1,4 @@
-import {API} from '../../utils/api.js';
+import {API} from '../../utils/Api/api.js';
 import State from '../State/state.js';
 import {renderSidebar} from '../../views/Sidebar/Sidebar.js';
 import {renderHeaderDefault} from '../../views/HeaderDefault/HeaderDefault.js';
