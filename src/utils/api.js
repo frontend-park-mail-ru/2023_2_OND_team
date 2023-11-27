@@ -826,34 +826,33 @@ export class API {
 
     static async Search(searchMode, searchInput) {
         try {
-          const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
-
-          const response = await fetch(configItem.url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': this.state.getCsrfToken(),
-            },
-            body: JSON.stringify({ searchMode, searchInput }),
-            credentials: 'include',
-        });
-  
-          const csrfToken = response.headers.get('X-Set-CSRF-Token');
-          if (csrfToken) {
-            this.state.setCsrfToken(csrfToken);
-          }
-  
-          const res = await response.json();
-  
-          if (res.status === 'ok') {
-  
-            return res.body;
-          } else {
-            throw new Error('Ошибка при получении данных из API');
-          }
+            const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
+    
+            const response = await fetch(configItem, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': this.state.getCsrfToken(),
+                },
+                credentials: 'include',
+            });
+    
+            const csrfToken = response.headers.get('X-Set-CSRF-Token');
+            if (csrfToken) {
+                this.state.setCsrfToken(csrfToken);
+            }
+    
+            const res = await response.json();
+    
+            if (res.status === 'ok') {
+                return res.body;
+            } else {
+                throw new Error('Ошибка при получении данных из API');
+            }
         } catch (error) {
-          console.error('Ошибка при получении данных поиска:', error);
+            console.error('Ошибка при получении данных поиска:', error);
         }
-      }
+    }
+    
 
 }
