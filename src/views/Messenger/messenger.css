@@ -98,8 +98,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: 80vh;
-    width: 75vw;
+    height: 75vh;
+    width: 70vw;
     gap: 10px;
     padding: 10px;
 }
