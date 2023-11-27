@@ -91,17 +91,22 @@ export function renderPinPage(pinID) {
                 });
 
                 API.getUserBoards()
-                  .then((res) => {
-                    res.forEach(board => {
-                      const option = document.createElement('option');
-                      option.value = board.board_id;
-                      option.textContent = board.title;
-                      boardList.appendChild(option);
-                    });
-                  })
-                  .catch((error) => {
-                    console.error('Ошибка при получении досок:', error);
-                });
+                .then((res) => {
+                  const optgroup = document.createElement('optgroup');
+                  optgroup.label = 'Выберите доску';
+              
+                  res.forEach(board => {
+                    const option = document.createElement('option');
+                    option.value = board.board_id;
+                    option.textContent = board.title;
+                    optgroup.appendChild(option);
+                  });
+              
+                  boardList.appendChild(optgroup);
+                })
+                .catch((error) => {
+                  console.error('Ошибка при получении досок:', error);
+                });              
             }
             
             const deleteButton = document.querySelector('.js-delete__btn');
