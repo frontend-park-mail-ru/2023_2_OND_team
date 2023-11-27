@@ -1,4 +1,4 @@
-import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
+// import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 
 export function renderMessengerPage() {
   const main = document.querySelector('#main');
