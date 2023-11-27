@@ -828,13 +828,15 @@ export class API {
         try {
           const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
 
-          const response = await fetch(configItem, {
+          const response = await fetch(configItem.url, {
+            method: 'GET',
             headers: {
-              'X-CSRF-Token': this.state.getCsrfToken(),
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': this.state.getCsrfToken(),
             },
             body: JSON.stringify({ searchMode, searchInput }),
             credentials: 'include',
-          });
+        });
   
           const csrfToken = response.headers.get('X-Set-CSRF-Token');
           if (csrfToken) {
