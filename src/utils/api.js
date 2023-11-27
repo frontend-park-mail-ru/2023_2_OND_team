@@ -22,7 +22,8 @@ export class API {
       {name: 'getBoardInfo', url: '//pinspire.online:8080/api/v1/board/get'},
       {name: 'deleteBoard', url: '//pinspire.online:8080/api/v1/board/delete'},
       {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
-      {name: 'boardUpdate', url: '//pinspire.online:8080/api/v1/board/update'}
+      {name: 'boardUpdate', url: '//pinspire.online:8080/api/v1/board/update'},
+      {name: 'Search', url: '//pinspire.online:8084/api/v1/search'},
     ];
 
     static async loginUser(username, password) {
@@ -822,5 +823,35 @@ export class API {
         throw error;
       }
     }
+
+    static async Search(searchMode, searchInput) {
+        try {
+          const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
+
+          const response = await fetch(configItem, {
+            headers: {
+              'X-CSRF-Token': this.state.getCsrfToken(),
+            },
+            body: JSON.stringify({ searchMode, searchInput }),
+            credentials: 'include',
+          });
+  
+          const csrfToken = response.headers.get('X-Set-CSRF-Token');
+          if (csrfToken) {
+            this.state.setCsrfToken(csrfToken);
+          }
+  
+          const res = await response.json();
+  
+          if (res.status === 'ok') {
+  
+            return res.body;
+          } else {
+            throw new Error('Ошибка при получении данных из API');
+          }
+        } catch (error) {
+          console.error('Ошибка при получении данных поиска:', error);
+        }
+      }
 
 }

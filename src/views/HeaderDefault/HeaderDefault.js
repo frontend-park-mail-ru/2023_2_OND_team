@@ -83,6 +83,18 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
+    let searchMode = '';
+
+    const radioInputs = document.querySelectorAll('.filter__list__pointer input[type="radio"]');
+    radioInputs.forEach(input => {
+        input.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                searchMode = event.target.value;
+                console.log('Выбран режим поиска:', searchMode);
+            }
+        });
+    });
+
     const filterBtn = document.querySelector('.header__filter__img-image');
     const filterList = document.querySelector('.header__filter__list');
     filterBtn?.addEventListener('click', () => {
