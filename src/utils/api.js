@@ -829,7 +829,7 @@ export class API {
           const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
 
           const response = await fetch(configItem.url, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-Token': this.state.getCsrfToken(),
