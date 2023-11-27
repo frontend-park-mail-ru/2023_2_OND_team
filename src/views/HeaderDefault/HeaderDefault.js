@@ -16,8 +16,6 @@ export function renderHeaderDefault() {
 
     header.innerHTML = headerTemplate(headerContext);
 
-    const searchInput = document.querySelector('.header__search__text-input');
-
     const createMenu = document.querySelector('.header__create__menu');
     const createMenuBtns = document.querySelectorAll('.header__create__menu__item');
     createMenuBtns.forEach((btn) => {
@@ -84,6 +82,7 @@ export function renderHeaderDefault() {
     });
 
     let searchMode = '';
+    let searchInput = '';
 
     const radioInputs = document.querySelectorAll('.filter__list__pointer input[type="radio"]');
     radioInputs.forEach(input => {
@@ -93,6 +92,27 @@ export function renderHeaderDefault() {
                 console.log('Выбран режим поиска:', searchMode);
             }
         });
+    });
+
+    const inputField = document.querySelector('.header__search__text-input');
+    inputField.addEventListener('input', (event) => {
+        searchInput = event.target.value;
+        console.log('Новое значение поиска:', searchInput);
+    });
+
+    const searchImage = document.querySelector('.header__search__img-image');
+    searchImage.addEventListener('click', () => {
+        if (searchMode && searchInput) {
+            API.Search(searchMode, searchInput)
+                .then((res) => {
+                    console.log('Результат поиска:', res);
+                })
+                .catch((error) => {
+                    console.error('Ошибка при выполнении поиска:', error);
+                });
+        } else {
+            console.log('Выберите режим и введите текст для поиска');
+        }
     });
 
     const filterBtn = document.querySelector('.header__filter__img-image');
