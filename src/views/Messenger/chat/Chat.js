@@ -3,7 +3,6 @@ import { MessengerWS } from "../../../utils/Api/messenger/messengerWS.js";
 import State from "../../../components/State/state.js";
 
 export class MessengerChat {
-    #messengerWS;
     #messengerApi
     #chatWithUserId;
     #definedMessages;
@@ -13,7 +12,6 @@ export class MessengerChat {
     #state
 
     constructor(chatWithUserId) {
-        this.#messengerWS = new MessengerWS();
         this.#messengerApi = new MessengerApi();
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
@@ -117,7 +115,7 @@ export class MessengerChat {
             }
           }
 
-        this.#messengerWS.sendMessage(JSON.stringify(wsSendMessage));
+        MessengerWS.sendMessage(JSON.stringify(wsSendMessage));
 
         this.defineSendedMessage(this.#state.requestID++);
     }

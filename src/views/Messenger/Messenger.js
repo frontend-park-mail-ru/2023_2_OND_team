@@ -9,7 +9,6 @@ import State from '../../components/State/state.js';
 export function renderMessengerPage() {
   const state = new State();
   const messengerApi = new MessengerApi();
-  const messengerWS = new MessengerWS();
 
   const rootElement = document.querySelector('#root');
   rootElement.style.overflow = 'hidden';
@@ -30,7 +29,7 @@ export function renderMessengerPage() {
     }
   }
 
-  messengerWS.sendMessage(JSON.stringify(wsConnectMessage));
+  MessengerWS.sendMessage(JSON.stringify(wsConnectMessage));
 
   messengerApi.getUserChats()
     .then((res) => {
