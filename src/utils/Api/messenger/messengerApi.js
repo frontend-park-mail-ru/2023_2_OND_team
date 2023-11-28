@@ -6,7 +6,7 @@ export class MessengerApi {
 
     constructor() {
         if (MessengerApi.instance) {
-            return this;
+            return MessengerApi.instance;
         }
 
         MessengerApi.instance = this;

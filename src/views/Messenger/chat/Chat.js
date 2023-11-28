@@ -111,7 +111,7 @@ export class MessengerChat {
     sendMessage(messageToSend) {
         this.#requestID++;
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
-        const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#requestID };
+        const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#requestID, status: 'send' };
 
         this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
         this.defineSendedMessage(this.#requestID);
@@ -122,7 +122,7 @@ export class MessengerChat {
         this.#definedMessages.push(sendedMessage);
 
         const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
-        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_delete_message.svg';
+        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_received_message.svg';
 
         sendedMessage.setAttribute('data-message-id', -1); // установить id после получения ответа
 
@@ -144,7 +144,7 @@ export class MessengerChat {
 
     renderMyMessage(messageID, message) {
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
-        const myMessageItemContext = { messageID, message: message, requestID: -1 };
+        const myMessageItemContext = { messageID, message, requestID: -1, status: 'received' };
 
         this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
     }
