@@ -110,7 +110,7 @@ export function renderHeaderDefault() {
                 .then((res) => {
                     console.log('Результат поиска:', res);
                     router.navigate(`/search/pins/${searchInput}`);
-                    const searchResSection = document.querySelector('.search-res');
+                    const searchResSection = document.getElementById('.search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderPins(searchResSection, res);
