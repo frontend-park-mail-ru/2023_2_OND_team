@@ -423,11 +423,11 @@ export class Router {
             {
                 path: "/search/searchMode/searchInput",
                 handler: ({ searchMode, searchInput }) => {
-                    if (this.state.getCurrentPage() === `search${searchMode}${searchInput}`) {
-                        return;
-                    }
+                    //if (this.state.getCurrentPage() === `search${searchMode}${searchInput}`) {
+                    //    return;
+                    //}
 
-                    if (this.state.getIsAuthorized()) {
+                    //if (this.state.getIsAuthorized()) {
                         this.state.setCurrentPage(`search${searchMode}${searchInput}`);
 
                         if (document.querySelector('#sidebar').innerHTML === '') {
@@ -441,7 +441,7 @@ export class Router {
                         setHeaderTitle('Результат поиска');
 
                         renderSearchPage();
-                    } 
+                    //} 
                 },
             },
         ];
