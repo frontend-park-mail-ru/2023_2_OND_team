@@ -11,7 +11,7 @@ export class MessengerWS {
 
         this.state = new State();
 
-        this.socket = new WebSocket(`wss://pinspire.online:8080/websocket/connect/chat?${this.state.getUserID}`);
+        this.socket = new WebSocket(`wss://pinspire.online:8080/websocket/connect/chat?${this.state.getUserID()}`);
     }
 
     sendMessage(message) {
