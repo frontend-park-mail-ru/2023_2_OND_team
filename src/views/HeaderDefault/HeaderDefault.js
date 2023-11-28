@@ -109,11 +109,12 @@ export function renderHeaderDefault() {
                     console.log('Результат поиска:', res);
                     router.navigate('/search');
                     const searchResSection = document.querySelector('.search-res');
+                    const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderPins(searchResSection, res);
+                        searchNonContent.classList.add('hide');
                     } else {
-                        const searchNonContent = document.querySelector('.search-non-content');
-                        searchNonContent.textContent = 'Нет результатов для отображения';
+                        searchNonContent.classList.remove('hide');
                     }
                 })
                 .catch((error) => {
