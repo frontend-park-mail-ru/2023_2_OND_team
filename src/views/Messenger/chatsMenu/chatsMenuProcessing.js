@@ -6,10 +6,6 @@
 export function defineChatsMenu() {
   const definedChats = [];
   const searchField = document.querySelector('.messenger__search__text-input');
-
-  searchField.addEventListener('input', () => {
-    searchChatMenu(searchField.value);
-  });
   
   const chatsMenu = document.querySelectorAll('.messenger__chat-menu__chat-item');
   
@@ -25,10 +21,14 @@ export function defineChatsMenu() {
       chatMenu.classList.add('messenger__chat-menu__chat-item-active');
     });
   });
+
+  searchField.addEventListener('input', () => {
+    searchChatMenu(definedChats, searchField.value);
+  });
 }
 
-function searchChatMenu(substring) {
-  chatsMenu?.forEach((chatMenu) => {
+function searchChatMenu(definedChats, substring) {
+  definedChats?.forEach((chatMenu) => {
     chatMenu.classList.remove('hide');
     const name = chatMenu.getAttribute('data-section').split('-')[2];
     if (substring && !name.toLocaleLowerCase().includes(substring.toLocaleLowerCase())) {
