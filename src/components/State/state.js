@@ -21,7 +21,7 @@ export class State {
     this.#avatar = null;
     this.#userID = null;
     this.#visiblePins = [];
-    this.requestID = 0;
+    this.requestID = 1;
   }
 
   setCsrfToken(token) {

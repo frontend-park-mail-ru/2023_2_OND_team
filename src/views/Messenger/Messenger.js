@@ -22,7 +22,7 @@ export function renderMessengerPage() {
   main.innerHTML = messengerTemplate(messengerContext);
 
   const wsConnectMessage = {
-    "requestID": 1,
+    "requestID": 0,
     "action": "Subscribe",
     "channel":{
       "name": String(state.getUserID),
