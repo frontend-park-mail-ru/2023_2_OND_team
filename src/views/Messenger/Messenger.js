@@ -1,7 +1,7 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { defineChatWithUser } from './chat/chatProcessing.js';
-import { defineChatsMenu, renderChatsMenu } from './chatsMenu/chatsMenuProcessing.js';
+import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 
 
 export function renderMessengerPage() {
@@ -21,7 +21,8 @@ export function renderMessengerPage() {
   messengerApi.getUserChats()
     .then((res) => {
       if (res.status === 'ok') {
-        renderChatsMenu(res.body.chats);
+        const messengerChatsMenu = new MessengerChatsMenu();
+        messengerChatsMenu.renderChatsMenu(res.body.chats);
       }
     })
 
