@@ -21,6 +21,9 @@ export class MessengerChat {
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
         this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
         this.#state = new State();
+
+        this.#chat.innerHTML = '';
+        this.#messageFieldInput.innerHTML = '';
     }
 
     scrollToBottom() {
