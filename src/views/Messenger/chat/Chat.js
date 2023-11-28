@@ -1,9 +1,7 @@
-import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
 import { WebSocketConnection } from "../../../utils/Api/messenger/messengerWS.js";
 import State from "../../../components/State/state.js";
 
 export class MessengerChat {
-    #messengerApi
     #chatWithUserId;
     #definedMessages;
     #chat;
@@ -12,7 +10,6 @@ export class MessengerChat {
     #state
 
     constructor(chatWithUserId) {
-        this.#messengerApi = new MessengerApi();
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
@@ -94,6 +91,20 @@ export class MessengerChat {
     }
 
     sendMessage(messageToSend) {
+        const wsConnectMessage = {
+            "requestID": 0,
+            "action": "Subscribe",
+            "channel":{
+            "name": String(this.#state.getUserID()),
+            "topic": "chat"
+            }
+        }
+
+        const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
+
+        WS.sendMessage(JSON.stringify(wsConnectMessage));
+            console.log(this.#chatWithUserId);
+
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
         const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#state.requestID, status: 'send' };
 
@@ -115,7 +126,6 @@ export class MessengerChat {
             }
         }
 
-        const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
         WS.sendMessage(JSON.stringify(wsSendMessage));
 
         this.defineSendedMessage(this.#state.requestID++);
