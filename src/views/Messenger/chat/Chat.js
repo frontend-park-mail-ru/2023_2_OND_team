@@ -71,6 +71,18 @@ export class MessengerChat {
         const sendedMessage = document.querySelector('[data-section="waiting-server-responce"]');
         this.#definedMessages.push(sendedMessage);
 
+        const messageButtons = sendedMessage.querySelector('.messenger__chat__message-item__buttons');
+    
+        sendedMessage.addEventListener('click', () => {
+            messageButtons.classList.toggle('hide');
+        });
+
+        const editMessageButton = sendedMessage.querySelector('.messenger__chat__message-item__button-edit');
+        const deleteMessageButton = sendedMessage.querySelector('.messenger__chat__message-item__button-delete');
+
+        editMessageButton.addEventListener('click', () => this.editMessage());
+        deleteMessageButton.addEventListener('click', ()=> this.deleteMessage());
+
         const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
         messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_delete_message.svg';
 

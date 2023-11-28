@@ -112,7 +112,7 @@
     max-width: 40%;
 }
 
-.messenger__chat__message-item-my-text {
+.messenger__chat__message-item-my__text {
     width: max-content;
     max-width: 100%;
     height: fit-content;
@@ -125,7 +125,13 @@
     cursor: pointer;
 }
 
-.messenger__chat__message-item-my-buttons {
+.messenger__chat__message-item-my__indicator {
+    display: flex;
+    align-items: flex-end;
+    padding-left: 10px;
+  }
+
+.messenger__chat__message-item-my__buttons {
     display: flex;
     height: 100%;
     align-items: end;
