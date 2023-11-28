@@ -38,9 +38,11 @@ export class MessengerChat {
 
         this.#ws.setOnMessageMethod((event) => {
             const jsonObject = JSON.parse(event.data);
-            if (jsonObject.message.eventType === 'create') {
-                this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
-                this.scrollToBottom();
+            if (jsonObject.message.message.from == this.#chatWithUserId) {
+                if (jsonObject.message.eventType === 'create') {
+                    this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+                    this.scrollToBottom();
+                }
             }
         })
     }
