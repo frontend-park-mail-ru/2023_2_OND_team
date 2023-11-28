@@ -1,4 +1,5 @@
 import State from '../../components/State/state.js';
+import WS from './messenger/messengerWS.js';
 
 export class API {
   static state = new State();
