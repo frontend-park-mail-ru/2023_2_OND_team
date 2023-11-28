@@ -5,7 +5,7 @@ export class MessengerChat {
     #messageFieldInput;
 
     constructor() {
-        this.#definedMessages = null;
+        this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
         this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
