@@ -53,7 +53,7 @@ export class MessengerApi {
         try {
             const hander = this.#handlers.find((item) => item.name === 'chatWithUser');
             if (!hander) {
-                throw new Error('Не найдена ручка для userChats');
+                throw new Error('Не найдена ручка для chatWithUser');
             }
 
             const response = await fetch(hander.url + `${userID}?count=1000`, {
@@ -75,7 +75,7 @@ export class MessengerApi {
 
             // return getUserChatsMocked;
         } catch (error) {
-            console.error('messengerApi getUserChats error:', error);
+            console.error('messengerApi getChatWithUser error:', error);
         }
     }
 }

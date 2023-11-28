@@ -1,13 +1,13 @@
 import State from "../../../components/State/state.js";
 
-export class messengerWS {
+export class MessengerWS {
 
     constructor() {
-        if (messengerWS.instance) {
-            return messengerWS.instance;
+        if (MessengerWS.instance) {
+            return MessengerWS.instance;
         }
 
-        messengerWS.instance = this;
+        MessengerWS.instance = this;
 
         this.state = new State();
 
