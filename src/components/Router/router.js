@@ -403,7 +403,6 @@ export class Router {
                     this.state.setCurrentPage(`board${boardID}`);
 
                     if (this.state.getIsAuthorized()) {
-                        console.log('Handler for /search/pins/Input is being called!');
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
@@ -500,7 +499,7 @@ export class Router {
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
                 break;
-            case (/^\/search\/pins\/\w+$/).test(path):
+            case (/^\/search\/pins\/[\wа-яёА-ЯЁ]+$/u).test(path):
                 const searchInput = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/pins/Input");
                 this.#currentRoute.handler({ searchInput });
