@@ -16,6 +16,11 @@ export class WebSocketConnection {
         this.socket.onerror = this.onError.bind(this);
         this.socket.onclose = this.onClose.bind(this);
 
+    }
+
+    onOpen(event) {
+        console.log('WebSocket connection opened:', event);
+
         const wsConnectMessage = {
             "requestID": 0,
             "action": "Subscribe",
@@ -26,11 +31,7 @@ export class WebSocketConnection {
         }
         
         this.sendMessage(JSON.stringify(wsConnectMessage));
-        this.sendMessage(JSON.stringify(wsConnectMessage));
-    }
-
-    onOpen(event) {
-        console.log('WebSocket connection opened:', event);
+        // this.sendMessage(JSON.stringify(wsConnectMessage));
     }
 
     onMessage(event) {
