@@ -421,14 +421,14 @@ export class Router {
                 },
             },
             {
-                path: "/search",
-                handler: () => {
-                    if (this.state.getCurrentPage() === 'search') {
+                path: "/search/searchMode/searchInput",
+                handler: ({ searchMode, searchInput }) => {
+                    if (this.state.getCurrentPage() === `search${searchMode}${searchInput}`) {
                         return;
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        this.state.setCurrentPage('search');
+                        this.state.setCurrentPage(`search${searchMode}${searchInput}`);
 
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
@@ -498,6 +498,11 @@ export class Router {
                 const boardID = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
+                break;
+            case (/^\/search\/\w+\/\w+$/).test(path):
+                const [search, searchMode, searchInput] = path.split('/');
+                this.#currentRoute = this.#routes.find((r) => r.path === "/search/searchMode/searchInput");
+                this.#currentRoute.handler({ searchMode, searchInput });
                 break;
             default:
                 this.#currentRoute = null;
