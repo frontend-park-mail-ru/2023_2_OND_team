@@ -12,7 +12,7 @@ export class MessengerChat {
     constructor(chatWithUserId) {
         if (MessengerChat.instance) {
             this.#redefineChat(chatWithUserId);
-            return MessengerChat.instance;
+            return this;
         }
 
         MessengerChat.instance = this;

@@ -6,7 +6,7 @@ export class MessengerApi {
 
     constructor() {
         if (MessengerApi.instance) {
-            return MessengerApi.instance;
+            return this;
         }
 
         MessengerApi.instance = this;
@@ -21,29 +21,29 @@ export class MessengerApi {
 
     async getUserChats() {
         try {
-            // const hander = this.#handlers.find((item) => item.name === 'userChats');
-            // if (!hander) {
-            //     throw new Error('Не найдена ручка для userChats');
-            // }
+            const hander = this.#handlers.find((item) => item.name === 'userChats');
+            if (!hander) {
+                throw new Error('Не найдена ручка для userChats');
+            }
 
-            // const response = await fetch(hander.url, {
-            //     headers: {
-            //         'X-CSRF-Token': this.state.getCsrfToken(),
-            //     },
-            //     credentials: 'include',
-            // });
+            const response = await fetch(hander.url, {
+                headers: {
+                    'X-CSRF-Token': this.state.getCsrfToken(),
+                },
+                credentials: 'include',
+            });
         
-            // const csrfToken = response.headers.get('X-Set-CSRF-Token');
+            const csrfToken = response.headers.get('X-Set-CSRF-Token');
 
-            // if (csrfToken) {
-            //     this.state.setCsrfToken(csrfToken);
-            // }
+            if (csrfToken) {
+                this.state.setCsrfToken(csrfToken);
+            }
     
-            // const res = await response.json();
+            const res = await response.json();
             
-            // return res;
+            return res;
 
-            return getUserChatsMocked;
+            // return getUserChatsMocked;
         } catch (error) {
             console.error('messengerApi getUserChats error:', error);
         }
