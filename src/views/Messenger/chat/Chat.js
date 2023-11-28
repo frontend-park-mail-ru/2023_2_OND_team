@@ -16,8 +16,8 @@ export class MessengerChat {
     }
 
     defineChat() {
-        defineMyMessages();
-        defineSendMessageBtn();
+        this.defineMyMessages();
+        this.defineSendMessageBtn();
         this.scrollToBottom();
     }
 
