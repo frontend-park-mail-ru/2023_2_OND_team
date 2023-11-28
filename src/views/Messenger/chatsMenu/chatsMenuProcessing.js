@@ -14,6 +14,8 @@ export function defineChatsMenu() {
       return;
     }
 
+    definedChats.push(chatMenu);
+
     chatMenu.addEventListener('click', () => {
       const activeChatMenu = document.querySelector('.messenger__chat-menu__chat-item-active');
       activeChatMenu.classList.remove('messenger__chat-menu__chat-item-active');
