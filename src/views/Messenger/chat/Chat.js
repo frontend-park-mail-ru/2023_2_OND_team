@@ -2,6 +2,7 @@ import { WebSocketConnection } from "../../../utils/Api/messenger/messengerWS.js
 import State from "../../../components/State/state.js";
 
 export class MessengerChat {
+    #ws;
     #chatWithUserId;
     #definedMessages;
     #chat;
@@ -10,6 +11,7 @@ export class MessengerChat {
     #state
 
     constructor(chatWithUserId) {
+        this.#ws = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
@@ -34,7 +36,12 @@ export class MessengerChat {
         this.defineSendMessageBtn();
         this.scrollToBottom();
 
-        console.log(this.#chatWithUserId)
+        // this.#ws.setOnMessageMethod((event) => this.renderCompanionMessage(event.data))
+        this.#ws.setOnMessageMethod((event) => {
+            console.log(event.data);
+        })
+
+        console.log(this.#chatWithUserId);
     }
 
     renderChatMessages(content) {
@@ -93,20 +100,6 @@ export class MessengerChat {
     }
 
     sendMessage(messageToSend) {
-        // const wsConnectMessage = {
-        //     "requestID": 0,
-        //     "action": "Subscribe",
-        //     "channel":{
-        //     "name": String(this.#state.getUserID()),
-        //     "topic": "chat"
-        //     }
-        // }
-
-        const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
-
-        // WS.sendMessage(JSON.stringify(wsConnectMessage));
-            console.log(this.#chatWithUserId);
-
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
         const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#state.requestID, status: 'send' };
 
@@ -128,7 +121,7 @@ export class MessengerChat {
             }
         }
 
-        WS.sendMessage(JSON.stringify(wsSendMessage));
+        this.#ws.sendMessage(JSON.stringify(wsSendMessage));
 
         this.defineSendedMessage(this.#state.requestID++);
     }

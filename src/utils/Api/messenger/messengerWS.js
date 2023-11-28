@@ -38,6 +38,10 @@ export class WebSocketConnection {
         console.log('WebSocket message received:', event.data);
     }
 
+    setOnMessageMethod(callback) {
+        this.socket.onmessage = callback;
+    }
+
     onError(event) {
         console.log('WebSocket error:', event);
     }
