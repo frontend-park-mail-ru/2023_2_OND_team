@@ -71,6 +71,19 @@ export async function renderBoardPage(boardID) {
                 .then((res) => {
                     if (res.status === 'ok') {
                         router.navigate(`/board/${boardInfo.board_id}`);
+                        updateButton.classList.remove('hide');
+                        pinControl.classList.add('hide');
+            
+                        titleTextarea.classList.remove('input-primary');
+                        descriptionTextarea.classList.remove('input-primary');
+            
+                        titleTextarea.disabled = true;
+                        descriptionTextarea.disabled = true;
+            
+                        titleTextarea.value = boardInfo.title;
+                        descriptionTextarea.value = boardInfo.description;
+                        
+                        editSpan.textContent = '';
                     } else {
                         editSpan.textContent = 'Некорректные данные';
                     }
