@@ -3,7 +3,7 @@ import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { MessengerChat } from './chat/Chat.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 import State from '../../components/State/state.js';
-// import WS from '../../utils/Api/messenger/messengerWS.js';
+import WS from '../../utils/Api/messenger/messengerWS.js';
 
 
 export function renderMessengerPage() {
