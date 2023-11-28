@@ -421,14 +421,14 @@ export class Router {
                 },
             },
             {
-                path: "/search/searchMode/searchInput",
-                handler: ({ searchMode, searchInput }) => {
-                    if (this.state.getCurrentPage() === `search${searchMode}${searchInput}`) {
+                path: "/search/pins/Input",
+                handler: ({ searchInput }) => {
+                    if (this.state.getCurrentPage() === `searchPins${searchInput}`) {
                         return;
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        this.state.setCurrentPage(`search${searchMode}${searchInput}`);
+                        this.state.setCurrentPage(`searchPins${searchInput}`);
 
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
@@ -499,10 +499,10 @@ export class Router {
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
                 break;
-            case (/^\/search\/\w+\/\w+$/).test(path):
-                const [search, searchMode, searchInput] = path.split('/');
-                this.#currentRoute = this.#routes.find((r) => r.path === "/search/searchMode/searchInput");
-                this.#currentRoute.handler({ searchMode, searchInput });
+            case (/^\/search\/pins\/\w+$/).test(path):
+                const searchInput = path.split('/')[3];
+                this.#currentRoute = this.#routes.find((r) => r.path === "/search/pins/Input");
+                this.#currentRoute.handler({ searchInput });
                 break;
             default:
                 this.#currentRoute = null;
