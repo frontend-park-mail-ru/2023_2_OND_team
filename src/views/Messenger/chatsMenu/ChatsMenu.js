@@ -53,7 +53,7 @@ export class MessengerChatsMenu {
         chatMenu.classList.add('messenger__chat-menu__chat-item-active');
         this.#activeChatMenu = chatMenu;
 
-        this.#activeChatId = chatMenu.getAttribute('data-section').split(' ').split('-')[2];
+        this.#activeChatId = chatMenu.getAttribute('data-section').split(' ')[0].split('-')[2];
         this.#messegerApi.getChatWithUser(this.#activeChatId);
       });
     });
