@@ -2,6 +2,7 @@ import State from "../../components/State/state.js";
 import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
+import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -103,7 +104,7 @@ export function renderHeaderDefault() {
 
     const searchImage = document.querySelector('.header__search__img-image');
     searchImage.addEventListener('click', () => {
-        if (searchMode && searchInput) {
+        if (searchMode == 'pins' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
@@ -112,6 +113,24 @@ export function renderHeaderDefault() {
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderPins(searchResSection, res);
+                        searchNonContent.classList.add('hide');
+                    } else {
+                        searchNonContent.classList.remove('hide');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Ошибка при выполнении поиска:', error);
+                });
+        } 
+        if (searchMode == 'boards' && searchInput) {
+            API.Search(searchMode, searchInput)
+                .then((res) => {
+                    console.log('Результат поиска:', res);
+                    router.navigate('/search');
+                    const searchResSection = document.querySelector('.search-res');
+                    const searchNonContent = document.querySelector('.search-non-content');
+                    if (res && res.length > 0) {
+                        renderBoards(searchResSection, res);
                         searchNonContent.classList.add('hide');
                     } else {
                         searchNonContent.classList.remove('hide');
