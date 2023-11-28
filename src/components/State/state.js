@@ -34,7 +34,8 @@ export class State {
       }
     }
 
-    MessengerWS.sendMessage(JSON.stringify(wsConnectMessage));
+    const messengerWS = new MessengerWS();
+    messengerWS.sendMessage(JSON.stringify(wsConnectMessage));
   }
 
   setCsrfToken(token) {
