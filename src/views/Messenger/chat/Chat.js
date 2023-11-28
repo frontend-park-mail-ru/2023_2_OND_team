@@ -103,7 +103,7 @@ export class MessengerChat {
             "requestID": this.#state.requestID,
             "action": "Publish",
             "channel":{
-              "name": String(this.#chatWithUserId),
+              "name": this.#chatWithUserId,
               "topic": "chat",
             },
             "message": {
