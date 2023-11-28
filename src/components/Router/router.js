@@ -421,7 +421,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/pins/:searchInput",
+                path: "/search/pins/searchInput",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchPins${searchInput}`) {
                         return;
