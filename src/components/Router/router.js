@@ -501,7 +501,7 @@ export class Router {
                 break;
             case (/^\/search\/pins\/[a-zA-Zа-яА-Я0-9\s.]+$/u).test(path):
                 const searchInput = path.split('/')[3];
-                this.#currentRoute = this.#routes.find((r) => r.path === path);
+                this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/searchInput");
                 this.#currentRoute.handler({ searchInput });
                 break;   
             default:
