@@ -113,8 +113,9 @@ export class MessengerChat {
                     "content": messageToSend,
                 }
             }
-          }
+        }
 
+        const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
         WS.sendMessage(JSON.stringify(wsSendMessage));
 
         this.defineSendedMessage(this.#state.requestID++);

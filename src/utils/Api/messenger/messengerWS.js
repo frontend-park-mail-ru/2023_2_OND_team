@@ -1,7 +1,13 @@
 import State from "../../../components/State/state.js";
 
-class WebSocketConnection {
+export class WebSocketConnection {
     constructor(url) {
+        if (WebSocketConnection.instance) {
+            return WebSocketConnection.instance;
+        }
+
+        WebSocketConnection.instance = this;
+
         this.url = url;
         this.socket = new WebSocket(url);
         this.socket.onopen = this.onOpen.bind(this);
@@ -38,10 +44,10 @@ class WebSocketConnection {
     }
 }
 
-const state = new State();
+// const state = new State();
 
-console.log(state.getUserID())
+// console.log(state.getUserID())
 
-const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
+// const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
 
-export default WS;
+// export default WS;
