@@ -58,7 +58,7 @@ export class MessengerChat {
             return false; // вывести что пока нет сообщений
         }
 
-        const messages = content.message.reverse();
+        const messages = content.messages.reverse();
         messages.forEach((message) => {
             if (message.from == this.#chatWithUserId) {
                 this.renderCompanionMessage(message.ID, message.content)
