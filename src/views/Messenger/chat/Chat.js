@@ -36,8 +36,8 @@ export class MessengerChat {
             const editMessageButton = message.querySelector('.messenger__chat__message-item__button-edit');
             const deleteMessageButton = message.querySelector('.messenger__chat__message-item__button-delete');
     
-            editMessageButton.addEventListener('click', () => editMessage());
-            deleteMessageButton.addEventListener('click', ()=> deleteMessage());
+            editMessageButton.addEventListener('click', () => this.editMessage());
+            deleteMessageButton.addEventListener('click', ()=> this.deleteMessage());
         });
     }
 
@@ -53,7 +53,7 @@ export class MessengerChat {
         this.#sendMessageBtn?.addEventListener('click', () => {
             const messageToSend = this.#messageFieldInput.value;
             if (messageToSend) {
-                this.#sendMessageBtn(messageToSend);
+                this.sendMessage(messageToSend);
                 this.#messageFieldInput.value = '';
             }
         })

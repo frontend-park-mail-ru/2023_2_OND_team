@@ -177,7 +177,6 @@
     bottom: 0;
     height: 80px;
     width: 100%;
-    justify-content: center;
     align-items: center;
     gap: 20px;
     border-top: 2px solid black;
@@ -187,7 +186,7 @@
     display: inline-flex;
     height: 40px;
     width: 80%;
-    margin-left: 5%;
+    margin-left: 2%;
     flex-shrink: 0;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
