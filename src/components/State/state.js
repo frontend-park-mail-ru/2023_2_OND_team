@@ -1,4 +1,4 @@
-import { MessengerWS } from "../../utils/Api/messenger/messengerWS.js";
+import WS from "../../utils/Api/messenger/messengerWS.js";
 
 export class State {
   #csrfToken;
@@ -53,8 +53,7 @@ export class State {
         }
       }
   
-      const messengerWS = new MessengerWS();
-      messengerWS.sendMessage(JSON.stringify(wsConnectMessage));
+      WS.sendMessage(JSON.stringify(wsConnectMessage));
     }
     this.#isAuthorized = isAuthorized;
   }
