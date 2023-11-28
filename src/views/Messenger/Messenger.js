@@ -1,7 +1,6 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { MessengerChat } from './chat/Chat.js';
-import { MessengerWS } from '../../utils/Api/messenger/messengerWS.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 import State from '../../components/State/state.js';
 
@@ -19,17 +18,6 @@ export function renderMessengerPage() {
   const messengerContext = {};
 
   main.innerHTML = messengerTemplate(messengerContext);
-
-  const wsConnectMessage = {
-    "requestID": 0,
-    "action": "Subscribe",
-    "channel":{
-      "name": String(state.getUserID),
-      "topic": "chat"
-    }
-  }
-
-  MessengerWS.sendMessage(JSON.stringify(wsConnectMessage));
 
   messengerApi.getUserChats()
     .then((res) => {

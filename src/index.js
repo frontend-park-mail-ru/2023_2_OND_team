@@ -8,10 +8,8 @@
  */
 import { API } from './utils/Api/api.js';
 import {Router} from './components/Router/router.js';
-import { MessengerWS } from './utils/Api/messenger/messengerWS.js';
 
 const router = new Router();
-const messengerWS = new MessengerWS();
 
 API.getCsrfToken()
     .then(() => {

@@ -1,3 +1,5 @@
+import { MessengerWS } from "../../utils/Api/messenger/messengerWS";
+
 export class State {
   #csrfToken;
   #currentPage;
@@ -22,6 +24,17 @@ export class State {
     this.#userID = null;
     this.#visiblePins = [];
     this.requestID = 1;
+
+    const wsConnectMessage = {
+      "requestID": 0,
+      "action": "Subscribe",
+      "channel":{
+        "name": String(state.getUserID),
+        "topic": "chat"
+      }
+    }
+
+    MessengerWS.sendMessage(JSON.stringify(wsConnectMessage));
   }
 
   setCsrfToken(token) {
