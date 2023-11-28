@@ -3,14 +3,15 @@ import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
 export class MessengerChat {
     #requestID;
     #messegerApi;
+    #chatWithUserId;
     #definedMessages;
     #chat;
     #sendMessageBtn;
     #messageFieldInput;
 
-    constructor() {
+    constructor(chatWithUserId) {
         if (MessengerChat.instance) {
-            this.#redefineChat();
+            this.#redefineChat(chatWithUserId);
             return MessengerChat.instance;
         }
 
@@ -18,15 +19,17 @@ export class MessengerChat {
 
         this.#requestID = -1;
         this.#messegerApi = new MessengerApi();
+        this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
         this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
     }
 
-    #redefineChat() {
+    #redefineChat(chatWithUserId) {
         this.#requestID = -1;
         this.#messegerApi = new MessengerApi();
+        this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
@@ -40,10 +43,31 @@ export class MessengerChat {
         this.#chat.scrollTop = this.#chat.scrollHeight;
     }
 
-    defineChat() {
+    defineChat(content) {
+        if (!this.renderChatMessages(content)) {
+            return;
+        }
+
         this.defineMyMessages();
         this.defineSendMessageBtn();
         this.scrollToBottom();
+    }
+
+    renderChatMessages(content) {
+        if (!content.messages) {
+            return false; // вывести что пока нет сообщений
+        }
+
+        const messages = content.message.reverse();
+        messages.forEach((message) => {
+            if (message.from == this.#chatWithUserId) {
+                this.renderCompanionMessage(message.ID, message.content)
+            } else {
+                this.renderMyMessage(message.ID, message.content);
+            }
+        })
+
+        return true;
     }
 
     defineMyMessages() {
@@ -87,7 +111,7 @@ export class MessengerChat {
     sendMessage(messageToSend) {
         this.#requestID++;
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
-        const myMessageItemContext = { message: messageToSend, requestID: this.#requestID };
+        const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#requestID };
 
         this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
         this.defineSendedMessage(this.#requestID);
@@ -96,6 +120,11 @@ export class MessengerChat {
     defineSendedMessage(requestID) {
         const sendedMessage = document.querySelector(`[data-section="request-id-${requestID}"]`);
         this.#definedMessages.push(sendedMessage);
+
+        const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
+        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_delete_message.svg';
+
+        sendedMessage.setAttribute('data-message-id', -1); // установить id после получения ответа
 
         const messageButtons = sendedMessage.querySelector('.messenger__chat__message-item__buttons');
     
@@ -109,15 +138,20 @@ export class MessengerChat {
         editMessageButton.addEventListener('click', () => this.editMessage());
         deleteMessageButton.addEventListener('click', ()=> this.deleteMessage());
 
-        const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
-        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_delete_message.svg';
 
         this.scrollToBottom();
     }
 
-    renderReceivedMessage(message) {
+    renderMyMessage(messageID, message) {
+        const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
+        const myMessageItemContext = { messageID, message: message, requestID: -1 };
+
+        this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
+    }
+
+    renderCompanionMessage(messageID, message) {
         const companionMessageItemTemplate = Handlebars.templates['companionMessageItem.hbs'];
-        const companionMessageItemContext = { message };
+        const companionMessageItemContext = { messageID, message };
 
         this.#chat.insertAdjacentHTML('beforeend', companionMessageItemTemplate(companionMessageItemContext));
     }

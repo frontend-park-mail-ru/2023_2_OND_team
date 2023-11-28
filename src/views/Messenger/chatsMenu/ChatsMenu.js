@@ -1,7 +1,9 @@
 import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
+import { MessengerChat } from "../chat/Chat.js";
 
 export class MessengerChatsMenu {
-  #messegerApi;
+  #messengerChat;
+  #messengerApi;
   #definedChats;
   #chatsMenuList;
   #searchField;
@@ -10,7 +12,8 @@ export class MessengerChatsMenu {
   #activeChatId;
 
   constructor() {
-    this.#messegerApi = new MessengerApi();
+    this.#messengerChat = new MessengerChat();
+    this.#messengerApi = new MessengerApi();
     this.#definedChats = [];
     this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');
     this.#searchField = document.querySelector('.messenger__search__text-input');
@@ -54,7 +57,13 @@ export class MessengerChatsMenu {
         this.#activeChatMenu = chatMenu;
 
         this.#activeChatId = chatMenu.getAttribute('data-section').split(' ')[0].split('-')[2];
-        this.#messegerApi.getChatWithUser(this.#activeChatId);
+        this.#messengerApi.getChatWithUser(this.#activeChatId)
+          .then((res) => {
+            this.#messengerChat = new MessengerChat(this.#activeChatId);
+            if(res.status === "ok") {
+              this.#messengerChat.defineChat(res.body);
+            }
+          })
       });
     });
   }

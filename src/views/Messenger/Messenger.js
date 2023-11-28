@@ -22,10 +22,8 @@ export function renderMessengerPage() {
     .then((res) => {
       if (res.status === 'ok') {
         const messengerChatsMenu = new MessengerChatsMenu();
-        const messengerChat = new MessengerChat();
 
         messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
-        messengerChat.defineChat();
       }
     })
 
