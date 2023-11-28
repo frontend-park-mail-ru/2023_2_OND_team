@@ -11,13 +11,13 @@ export class MessengerChat {
     #state
 
     constructor(chatWithUserId) {
+        this.#state = new State();
         this.#ws = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
         this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
-        this.#state = new State();
 
         this.#chat.innerHTML = '';
         this.#messageFieldInput.innerHTML = '';
