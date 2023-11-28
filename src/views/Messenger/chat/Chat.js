@@ -37,10 +37,11 @@ export class MessengerChat {
         this.scrollToBottom();
 
         this.#ws.setOnMessageMethod((event) => {
-            if (event.data.message.eventType === 'create') {
-                this.renderCompanionMessage(event.data.message.message.ID, event.data.message.message.content);
+            const jsonObject = JSON.parse(event.data);
+            if (jsonObject.message.eventType === 'create') {
+                this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
             }
-            console.log(event.data);
+            console.log(jsonObject);
         })
     }
 
