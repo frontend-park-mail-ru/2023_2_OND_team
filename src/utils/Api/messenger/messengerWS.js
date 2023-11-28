@@ -39,7 +39,6 @@ export class WebSocketConnection {
     }
 
     setOnMessageMethod(callback) {
-        console.log(callback);
         this.socket.onmessage = callback;
     }
 

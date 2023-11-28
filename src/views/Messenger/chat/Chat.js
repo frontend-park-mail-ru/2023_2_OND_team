@@ -36,12 +36,12 @@ export class MessengerChat {
         this.defineSendMessageBtn();
         this.scrollToBottom();
 
-        // this.#ws.setOnMessageMethod((event) => this.renderCompanionMessage(event.data))
         this.#ws.setOnMessageMethod((event) => {
+            if (event.data.message.eventType === 'create') {
+                this.renderCompanionMessage(event.data.message.message.ID, event.data.message.message.content);
+            }
             console.log(event.data);
         })
-
-        console.log(this.#chatWithUserId);
     }
 
     renderChatMessages(content) {
