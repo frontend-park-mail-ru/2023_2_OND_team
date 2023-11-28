@@ -1,6 +1,7 @@
 import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
 
 export class MessengerChat {
+    #requestID;
     #messegerApi;
     #definedMessages;
     #chat;
@@ -8,11 +9,31 @@ export class MessengerChat {
     #messageFieldInput;
 
     constructor() {
+        if (MessengerChat.instance) {
+            this.#redefineChat();
+            return MessengerChat.instance;
+        }
+
+        MessengerChat.instance = this;
+
+        this.#requestID = -1;
         this.#messegerApi = new MessengerApi();
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
         this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
+    }
+
+    #redefineChat() {
+        this.#requestID = -1;
+        this.#messegerApi = new MessengerApi();
+        this.#definedMessages = [];
+        this.#chat = document.querySelector('.messenger__chat__messages');
+        this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
+        this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
+
+        this.#chat.innerHTML = '';
+        this.#messageFieldInput.innerHTML = '';
     }
 
     scrollToBottom() {
@@ -64,15 +85,16 @@ export class MessengerChat {
     }
 
     sendMessage(messageToSend) {
+        this.#requestID++;
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
-        const myMessageItemContext = { message: messageToSend, };
+        const myMessageItemContext = { message: messageToSend, requestID: this.#requestID };
 
         this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
-        this.defineSendedMessage();
+        this.defineSendedMessage(this.#requestID);
     }
 
-    defineSendedMessage() {
-        const sendedMessage = document.querySelector('[data-section="waiting-server-responce"]');
+    defineSendedMessage(requestID) {
+        const sendedMessage = document.querySelector(`[data-section="request-id-${requestID}"]`);
         this.#definedMessages.push(sendedMessage);
 
         const messageButtons = sendedMessage.querySelector('.messenger__chat__message-item__buttons');
@@ -90,9 +112,14 @@ export class MessengerChat {
         const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
         messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_delete_message.svg';
 
-        sendedMessage.dataset.section = '1'; // id
-
         this.scrollToBottom();
+    }
+
+    renderReceivedMessage(message) {
+        const companionMessageItemTemplate = Handlebars.templates['companionMessageItem.hbs'];
+        const companionMessageItemContext = { message };
+
+        this.#chat.insertAdjacentHTML('beforeend', companionMessageItemTemplate(companionMessageItemContext));
     }
 
 }

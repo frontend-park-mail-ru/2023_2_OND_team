@@ -56,7 +56,7 @@ export class MessengerApi {
                 throw new Error('Не найдена ручка для userChats');
             }
 
-            const response = await fetch(hander.url + `${userID}`, {
+            const response = await fetch(hander.url + `${userID}?count=1000`, {
                 headers: {
                     'X-CSRF-Token': this.state.getCsrfToken(),
                 },
