@@ -1,4 +1,4 @@
-import { MessengerApi } from "../../../utils/Api/messenger/messengerApi";
+import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
 
 export class MessengerChatsMenu {
   #messegerApi;
