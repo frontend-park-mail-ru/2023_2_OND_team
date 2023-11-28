@@ -444,6 +444,30 @@ export class Router {
                     } 
                 },
             },
+            {
+                path: "/search/boards/Input",
+                handler: ({ searchInput }) => {
+                    if (this.state.getCurrentPage() === `searchBoards${searchInput}`) {
+                        return;
+                    }
+
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage(`searchBoards${searchInput}`);
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Результат поиска');
+
+                        renderSearchPage();
+                    } 
+                },
+            },
         ];
 
         this.#currentRoute = null;
@@ -503,6 +527,11 @@ export class Router {
                 const searchInput = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/pins/Input");
                 this.#currentRoute.handler({ searchInput });
+                break;   
+            case (/^\/search\/boards\/[\wа-яёА-ЯЁ]+$/u).test(path):
+                const searchBoardInput = path.split('/')[3];
+                this.#currentRoute = this.#routes.find((r) => r.path === "/search/boards/Input");
+                this.#currentRoute.handler({ searchBoardInput });
                 break;   
             default:
                 this.#currentRoute = null;
