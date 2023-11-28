@@ -1,4 +1,4 @@
-import { MessengerWS } from "../../utils/Api/messenger/messengerWS";
+import { MessengerWS } from "../../utils/Api/messenger/messengerWS.js";
 
 export class State {
   #csrfToken;
