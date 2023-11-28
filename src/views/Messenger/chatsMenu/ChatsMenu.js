@@ -9,7 +9,7 @@ export class MessengerChatsMenu {
     this.#definedChats = [];
     this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');
     this.#searchField = document.querySelector('.messenger__search__text-input');
-    this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
+    this.#chatsMenuItems = null;
     this.#activeChatMenu = null;
   }
 
@@ -30,6 +30,8 @@ export class MessengerChatsMenu {
   
       this.#chatsMenuList.insertAdjacentHTML('beforeend', chatTemplate(chatContext));
     });
+
+    this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
   }
   
   defineChatsMenuItems() {   
