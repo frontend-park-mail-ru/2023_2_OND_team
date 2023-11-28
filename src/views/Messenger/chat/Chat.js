@@ -1,5 +1,5 @@
 import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
-import WS from "../../../utils/Api/messenger/messengerWS.js";
+// import WS from "../../../utils/Api/messenger/messengerWS.js";
 import State from "../../../components/State/state.js";
 
 export class MessengerChat {
