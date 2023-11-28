@@ -421,7 +421,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/pins/searchInput",
+                path: "/search/pins/:searchInput",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchPins${searchInput}`) {
                         return;
@@ -499,11 +499,11 @@ export class Router {
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
                 break;
-            case (/^\/search\/pins\/\w+$/).test(path):
+            case (/^\/search\/pins\/[a-zA-Zа-яА-Я0-9\s.]+$/u).test(path):
                 const searchInput = path.split('/')[3];
-                this.#currentRoute = this.#routes.find((r) => r.path === `/search/pins/${searchInput}`);
+                this.#currentRoute = this.#routes.find((r) => r.path === path);
                 this.#currentRoute.handler({ searchInput });
-                break;
+                break;   
             default:
                 this.#currentRoute = null;
                 this.#defaultRoute();
