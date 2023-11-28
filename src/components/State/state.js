@@ -1,5 +1,3 @@
-import WS from "../../utils/Api/messenger/messengerWS.js";
-
 export class State {
   #csrfToken;
   #currentPage;
@@ -43,18 +41,6 @@ export class State {
   }
 
   setIsAuthorized(isAuthorized) {
-    if (isAuthorized) {
-      const wsConnectMessage = {
-        "requestID": 0,
-        "action": "Subscribe",
-        "channel":{
-          "name": String(this.#userID),
-          "topic": "chat"
-        }
-      }
-  
-      WS.sendMessage(JSON.stringify(wsConnectMessage));
-    }
     this.#isAuthorized = isAuthorized;
   }
 

@@ -89,6 +89,18 @@ export class API {
 
       const res = await response.json();
       if (res.status === 'ok') {
+
+        const wsConnectMessage = {
+          "requestID": 0,
+          "action": "Subscribe",
+          "channel":{
+            "name": String(this.state.getUserID),
+            "topic": "chat"
+          }
+        }
+    
+        WS.sendMessage(JSON.stringify(wsConnectMessage));
+
         this.state.setIsAuthorized(true);
         this.state.setUserID(res.body.id);
         this.state.setUsername(res.body.username);
