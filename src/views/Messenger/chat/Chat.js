@@ -110,7 +110,7 @@ export class MessengerChat {
                 "eventType": "create",
                 "message": {
                     "to": +this.#chatWithUserId,
-                    "content": "теперь ты ОТЧИСЛЕН С ВУЦ",
+                    "content": messageToSend,
                 }
             }
           }
