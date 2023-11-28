@@ -1,5 +1,4 @@
 import State from '../../components/State/state.js';
-import WS from './messenger/messengerWS.js';
 
 export class API {
   static state = new State();
@@ -90,23 +89,10 @@ export class API {
 
       const res = await response.json();
       if (res.status === 'ok') {
-
-        const wsConnectMessage = {
-          "requestID": 0,
-          "action": "Subscribe",
-          "channel":{
-            "name": String(this.state.getUserID),
-            "topic": "chat"
-          }
-        }
-    
-
         this.state.setIsAuthorized(true);
         this.state.setUserID(res.body.id);
         this.state.setUsername(res.body.username);
         this.state.setAvatar(res.body.avatar);
-
-        WS.sendMessage(JSON.stringify(wsConnectMessage));
       } else {
         if (res.code === 'csrf') {
           this.getCsrfToken()

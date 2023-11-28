@@ -3,6 +3,7 @@ import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { MessengerChat } from './chat/Chat.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 import State from '../../components/State/state.js';
+import WS from '../../utils/Api/messenger/messengerWS.js';
 
 
 export function renderMessengerPage() {
@@ -18,6 +19,18 @@ export function renderMessengerPage() {
   const messengerContext = {};
 
   main.innerHTML = messengerTemplate(messengerContext);
+
+
+  const wsConnectMessage = {
+    "requestID": 0,
+    "action": "Subscribe",
+    "channel":{
+      "name": String(state.getUserID()),
+      "topic": "chat"
+    }
+  }
+
+  WS.sendMessage(JSON.stringify(wsConnectMessage));
 
   messengerApi.getUserChats()
     .then((res) => {
