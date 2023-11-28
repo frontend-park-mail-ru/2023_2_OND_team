@@ -421,28 +421,26 @@ export class Router {
                 },
             },
             {
-                path: "/search/:searchMode/:searchInput",
-                handler: (params) => {
-                    const { searchMode, searchInput } = params;
-                    if (this.state.getCurrentPage() === `search${params}`) {
+                path: "/search/searchMode",
+                handler: (searchMode) => {
+                    if (this.state.getCurrentPage() === `search${searchMode}`) {
                         return;
                     }
 
-                    if (this.state.getIsAuthorized()) {
-                        this.state.setCurrentPage(`search${params}`);
+                    
+                    this.state.setCurrentPage(`search${searchMode}`);
 
-                        if (document.querySelector('#sidebar').innerHTML === '') {
-                            renderSidebar();
-                        }
+                    if (document.querySelector('#sidebar').innerHTML === '') {
+                        renderSidebar();
+                    }
 
-                        if (document.querySelector('#header').innerHTML === '') {
-                            renderHeaderDefault();
-                        } 
-
-                        setHeaderTitle('Результат поиска');
-
-                        renderSearchPage();
+                    if (document.querySelector('#header').innerHTML === '') {
+                        renderHeaderDefault();
                     } 
+
+                    setHeaderTitle('Результат поиска');
+
+                    renderSearchPage();
                 },
             },
         ];
