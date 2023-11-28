@@ -19,23 +19,22 @@
 // }
 
 
-
-const CHAT = document.querySelector('.messenger__chat__messages');
-const SEND_MESSAGE_BTN = document.querySelector('.messenger__chat__footer__send_message-img');
-const MESSAGE_FIELD_INPUT = document.querySelector('.messenger__chat__footer__text-input');
-const DEFINED_MESSAGES = [];
-
 export function defineChatWithUser() {
-    CHAT.scrollTop = CHAT.scrollHeight;
+    const chat = document.querySelector('.messenger__chat__messages');
+    const sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
+    const messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
+    const definedMessages = [];
+
+    chat.scrollTop = chat.scrollHeight;
 
     const myMessages = document.querySelectorAll('.messenger__chat__message-item-my');
 
     myMessages?.forEach((message) => {
-        if (DEFINED_MESSAGES.includes(message)) {
+        if (definedMessages.includes(message)) {
             return;
         }
 
-        DEFINED_MESSAGES.push(message);
+        definedMessages.push(message);
 
         const messageButtons = message.querySelector('.messenger__chat__message-item__buttons');
 
@@ -51,11 +50,11 @@ export function defineChatWithUser() {
     });
 
 
-    SEND_MESSAGE_BTN?.addEventListener('click', () => {
-        const messageToSend = MESSAGE_FIELD_INPUT.value;
+    sendMessageBtn?.addEventListener('click', () => {
+        const messageToSend = messageFieldInput.value;
         if (messageToSend) {
-            sendMessage(messageToSend);
-            MESSAGE_FIELD_INPUT.value = '';
+            sendMessage(chat, messageToSend);
+            messageFieldInput.value = '';
         }
     })
 }
@@ -70,7 +69,7 @@ function deleteMessage() {
 }
 
 
-function sendMessage(messageToSend) {
+function sendMessage(chat, messageToSend) {
     const messageToSendDiv = document.createElement('div');
     messageToSendDiv.classList.add('messenger__chat__message-item-my');
     
@@ -108,7 +107,7 @@ function sendMessage(messageToSend) {
     messageToSendDiv.appendChild(messageToSendTextDiv);
     messageToSendDiv.appendChild(messageToSendBtnsDiv);
     
-    CHAT.insertAdjacentHTML('beforeend', messageToSendDiv.outerHTML);
+    chat.insertAdjacentHTML('beforeend', messageToSendDiv.outerHTML);
     
-    defineChatWithUser();
+    // defineChatWithUser();
 }
