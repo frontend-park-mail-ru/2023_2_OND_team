@@ -3,6 +3,7 @@ import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
 import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
+import { definePins } from "../../utils/definePins/definePins.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -113,6 +114,7 @@ export function renderHeaderDefault() {
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderPins(searchResSection, res);
+                        definePins();
                         searchNonContent.classList.add('hide');
                     } else {
                         searchNonContent.classList.remove('hide');
