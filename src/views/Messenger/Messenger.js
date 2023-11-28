@@ -22,7 +22,7 @@ export function renderMessengerPage() {
     .then((res) => {
       if (res.status === 'ok') {
         const messengerChatsMenu = new MessengerChatsMenu();
-        messengerChatsMenu.renderChatsMenu(res.body.chats);
+        messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
       }
     })
 

@@ -13,8 +13,8 @@ export class MessengerChatsMenu {
     this.#activeChatMenu = null;
   }
 
-  defineMessengerChatsMenu() {
-    this.renderChatsMenu();
+  defineMessengerChatsMenu(chats) {
+    this.renderChatsMenu(chats);
     this.defineChatsMenuItems();
     this.defineSearchField();
   }
