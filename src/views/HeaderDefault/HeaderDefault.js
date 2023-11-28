@@ -1,6 +1,7 @@
 import State from "../../components/State/state.js";
 import { API } from "../../utils/api.js";
 import { Router } from "../../components/Router/router.js";
+import { renderPins } from "../../components/RenderPins/renderPins.js";
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -107,6 +108,13 @@ export function renderHeaderDefault() {
                 .then((res) => {
                     console.log('Результат поиска:', res);
                     router.navigate('/search');
+                    const searchResSection = document.querySelector('.search-res');
+                    if (res && res.length > 0) {
+                        renderPins(searchResSection, res);
+                    } else {
+                        const searchNonContent = document.querySelector('.search-non-content');
+                        searchNonContent.textContent = 'Нет результатов для отображения';
+                    }
                 })
                 .catch((error) => {
                     console.error('Ошибка при выполнении поиска:', error);
