@@ -123,8 +123,7 @@ export function renderHeaderDefault() {
                 .catch((error) => {
                     console.error('Ошибка при выполнении поиска:', error);
                 });
-        } 
-        if (searchMode == 'boards' && searchInput) {
+        } else if (searchMode == 'boards' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
