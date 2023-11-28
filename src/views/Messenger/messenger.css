@@ -186,8 +186,8 @@
 .messenger__chat__footer__text {
     display: inline-flex;
     height: 40px;
-    width: 90%;
-    align-items: center;
+    width: 80%;
+    margin-left: 5%;
     flex-shrink: 0;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
