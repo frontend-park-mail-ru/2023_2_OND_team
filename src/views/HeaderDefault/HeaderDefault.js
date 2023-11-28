@@ -109,7 +109,7 @@ export function renderHeaderDefault() {
             API.Search(searchMode, searchInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
-                    router.navigate(`/search/${searchMode}&${searchInput}`);
+                    router.navigate(`/search/${searchMode}/${searchInput}`);
                     const searchResSection = document.querySelector('.search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
@@ -127,7 +127,7 @@ export function renderHeaderDefault() {
             API.Search(searchMode, searchInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
-                    router.navigate(`/search/${searchMode}&${searchInput}`);
+                    router.navigate(`/search/${searchMode}/${searchInput}`);
                     const searchResSection = document.querySelector('.search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
