@@ -109,7 +109,7 @@ export class MessengerChat {
             "message": {
                 "eventType": "create",
                 "message": {
-                    "to": this.#chatWithUserId,
+                    "to": +this.#chatWithUserId,
                     "content": "А вот и нет!",
                 }
             }
