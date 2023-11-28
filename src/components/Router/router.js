@@ -20,6 +20,7 @@ import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions
 import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
 import { setActiveSidebarItem } from "../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js";
 import { renderMessengerPage } from "../../views/Messenger/Messenger.js";
+import { renderSearchPage } from "../../views/SearchPage/Search.js"
 
 function resetScroll() {
     window.scrollTo({
@@ -417,6 +418,32 @@ export class Router {
                     resetScroll();
 
                     renderBoardPage(boardID);
+                },
+            },
+            {
+                path: "/search",
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'search') {
+                        return;
+                    }
+
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage('search');
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+                        
+                        setActiveSidebarItem('search');
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Результат поиска');
+
+                        renderSearchPage();
+                    } 
                 },
             },
         ];

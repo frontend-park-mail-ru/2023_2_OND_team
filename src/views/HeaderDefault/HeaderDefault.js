@@ -106,6 +106,7 @@ export function renderHeaderDefault() {
             API.Search(searchMode, searchInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
+                    router.navigate('/search');
                 })
                 .catch((error) => {
                     console.error('Ошибка при выполнении поиска:', error);
