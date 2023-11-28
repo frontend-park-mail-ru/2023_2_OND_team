@@ -424,12 +424,12 @@ export class Router {
                 path: "/search/:searchMode/:searchInput",
                 handler: (params) => {
                     const { searchMode, searchInput } = params;
-                    if (this.state.getCurrentPage() === `search`) {
+                    if (this.state.getCurrentPage() === `search${params}`) {
                         return;
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        this.state.setCurrentPage(`search`);
+                        this.state.setCurrentPage(`search${params}`);
 
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
