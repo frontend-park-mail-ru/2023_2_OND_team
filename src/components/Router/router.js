@@ -433,8 +433,6 @@ export class Router {
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
                         }
-                        
-                        setActiveSidebarItem('search');
 
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
