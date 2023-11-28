@@ -26,6 +26,7 @@ export class WebSocketConnection {
         }
         
         this.sendMessage(JSON.stringify(wsConnectMessage));
+        this.sendMessage(JSON.stringify(wsConnectMessage));
     }
 
     onOpen(event) {
