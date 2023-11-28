@@ -422,13 +422,13 @@ export class Router {
             },
             {
                 path: "/search/pins/Input",
-                handler: (searchInput) => {
-                    if (this.state.getCurrentPage() === `searchPins${searchInput}`) {
+                handler: () => {
+                    if (this.state.getCurrentPage() === 'search') {
                         return;
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        this.state.setCurrentPage(`searchPins${searchInput}`);
+                        this.state.setCurrentPage('search');
 
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
