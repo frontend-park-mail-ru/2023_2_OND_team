@@ -1,8 +1,10 @@
 import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
+import { MessengerWS } from "../../../utils/Api/messenger/messengerWS.js";
 
 export class MessengerChat {
     #requestID;
-    #messegerApi;
+    #messengerWS;
+    #messengerApi
     #chatWithUserId;
     #definedMessages;
     #chat;
@@ -17,8 +19,9 @@ export class MessengerChat {
 
         MessengerChat.instance = this;
 
-        this.#requestID = -1;
-        this.#messegerApi = new MessengerApi();
+        this.#requestID = 0;
+        this.#messengerWS = new MessengerWS();
+        this.#messengerApi = new MessengerApi();
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
@@ -27,8 +30,8 @@ export class MessengerChat {
     }
 
     #redefineChat(chatWithUserId) {
-        this.#requestID = -1;
-        this.#messegerApi = new MessengerApi();
+        this.#requestID = 0;
+        this.#messengerApi = new MessengerApi();
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
@@ -109,11 +112,29 @@ export class MessengerChat {
     }
 
     sendMessage(messageToSend) {
-        this.#requestID++;
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
         const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#requestID, status: 'send' };
 
         this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
+
+        const wsSendMessage = {
+            "requestID": this.#requestID++,
+            "action": "Publish",
+            "channel":{
+              "name": String(this.#chatWithUserId),
+              "topic": "chat",
+            },
+            "message": {
+                "eventType": "create",
+                "message": {
+                    "to": this.#chatWithUserId,
+                    "content": "А вот и нет!",
+                }
+            }
+          }
+
+        this.#messengerWS.sendMessage(JSON.stringify(wsSendMessage));
+
         this.defineSendedMessage(this.#requestID);
     }
 
