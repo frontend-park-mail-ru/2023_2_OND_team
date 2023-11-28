@@ -24,18 +24,6 @@ export class State {
     this.#userID = null;
     this.#visiblePins = [];
     this.requestID = 1;
-
-    const wsConnectMessage = {
-      "requestID": 0,
-      "action": "Subscribe",
-      "channel":{
-        "name": String(state.getUserID),
-        "topic": "chat"
-      }
-    }
-
-    const messengerWS = new MessengerWS();
-    messengerWS.sendMessage(JSON.stringify(wsConnectMessage));
   }
 
   setCsrfToken(token) {
@@ -55,6 +43,19 @@ export class State {
   }
 
   setIsAuthorized(isAuthorized) {
+    if (isAuthorized) {
+      const wsConnectMessage = {
+        "requestID": 0,
+        "action": "Subscribe",
+        "channel":{
+          "name": String(this.#userID),
+          "topic": "chat"
+        }
+      }
+  
+      const messengerWS = new MessengerWS();
+      messengerWS.sendMessage(JSON.stringify(wsConnectMessage));
+    }
     this.#isAuthorized = isAuthorized;
   }
 
