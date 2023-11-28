@@ -1,8 +1,8 @@
 import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
 import { MessengerWS } from "../../../utils/Api/messenger/messengerWS.js";
+import State from "../../../components/State/state.js";
 
 export class MessengerChat {
-    #requestID;
     #messengerWS;
     #messengerApi
     #chatWithUserId;
@@ -10,16 +10,9 @@ export class MessengerChat {
     #chat;
     #sendMessageBtn;
     #messageFieldInput;
+    #state
 
     constructor(chatWithUserId) {
-        if (MessengerChat.instance) {
-            this.#redefineChat(chatWithUserId);
-            return this;
-        }
-
-        MessengerChat.instance = this;
-
-        this.#requestID = 0;
         this.#messengerWS = new MessengerWS();
         this.#messengerApi = new MessengerApi();
         this.#chatWithUserId = chatWithUserId;
@@ -27,19 +20,7 @@ export class MessengerChat {
         this.#chat = document.querySelector('.messenger__chat__messages');
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
         this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
-    }
-
-    #redefineChat(chatWithUserId) {
-        this.#requestID = 0;
-        this.#messengerApi = new MessengerApi();
-        this.#chatWithUserId = chatWithUserId;
-        this.#definedMessages = [];
-        this.#chat = document.querySelector('.messenger__chat__messages');
-        this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');
-        this.#messageFieldInput = document.querySelector('.messenger__chat__footer__text-input');
-
-        this.#chat.innerHTML = '';
-        this.#messageFieldInput.innerHTML = '';
+        this.#state = new State();
     }
 
     scrollToBottom() {
@@ -113,12 +94,12 @@ export class MessengerChat {
 
     sendMessage(messageToSend) {
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
-        const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#requestID, status: 'send' };
+        const myMessageItemContext = { messageID: -2, message: messageToSend, requestID: this.#state.requestID, status: 'send' };
 
         this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
 
         const wsSendMessage = {
-            "requestID": this.#requestID++,
+            "requestID": this.#state.requestID++,
             "action": "Publish",
             "channel":{
               "name": String(this.#chatWithUserId),
@@ -135,7 +116,7 @@ export class MessengerChat {
 
         this.#messengerWS.sendMessage(JSON.stringify(wsSendMessage));
 
-        this.defineSendedMessage(this.#requestID);
+        this.defineSendedMessage(this.#state.requestID);
     }
 
     defineSendedMessage(requestID) {
