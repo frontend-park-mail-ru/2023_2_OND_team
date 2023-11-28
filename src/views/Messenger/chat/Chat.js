@@ -40,8 +40,8 @@ export class MessengerChat {
             const jsonObject = JSON.parse(event.data);
             if (jsonObject.message.eventType === 'create') {
                 this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+                this.scrollToBottom();
             }
-            console.log(jsonObject);
         })
     }
 
@@ -164,6 +164,7 @@ export class MessengerChat {
         const companionMessageItemContext = { messageID, message };
 
         this.#chat.insertAdjacentHTML('beforeend', companionMessageItemTemplate(companionMessageItemContext));
+        console.log('render', messageID, message);
     }
 
     setChatWithUserID(userID) {
