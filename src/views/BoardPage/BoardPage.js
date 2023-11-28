@@ -98,10 +98,6 @@ export async function renderBoardPage(boardID) {
 
         console.log(usernameReal);
 
-        const rec = document.querySelector('.bar');
-        rec.appendChild(deleteButton);
-        rec.appendChild(updateButton);
-
         await renderBoardPins();
 
     } catch (error) {
