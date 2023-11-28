@@ -421,7 +421,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/pins/Input",
+                path: "/search/pins/searchInput",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchPins${searchInput}`) {
                         return;
@@ -501,7 +501,7 @@ export class Router {
                 break;
             case (/^\/search\/pins\/\w+$/).test(path):
                 const searchInput = path.split('/')[3];
-                this.#currentRoute = this.#routes.find((r) => r.path === "/search/pins/Input");
+                this.#currentRoute = this.#routes.find((r) => r.path === `/search/pins/${searchInput}`);
                 this.#currentRoute.handler({ searchInput });
                 break;
             default:
