@@ -1,7 +1,7 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { defineChatWithUser } from './chat/chatProcessing.js';
-import { defineChatsMenu } from './chatsMenu/chatsMenuProcessing.js';
+import { defineChatsMenu, renderChatsMenu } from './chatsMenu/chatsMenuProcessing.js';
 
 
 export function renderMessengerPage() {
@@ -20,15 +20,17 @@ export function renderMessengerPage() {
 
   messengerApi.getUserChats()
     .then((res) => {
-      console.log(res);
+      if (res.status === 'ok') {
+        renderChatsMenu(res.body.chats);
+      }
     })
 
 
   // const nonContent = document.querySelector('.messenger-non-content');
   // renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
 
-  defineChatsMenu();
-  defineChatWithUser();
+  // defineChatsMenu();
+  // defineChatWithUser();
 
   // function renderChatWithUser() {
     

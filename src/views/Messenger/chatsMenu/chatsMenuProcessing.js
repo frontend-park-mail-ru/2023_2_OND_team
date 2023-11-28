@@ -1,12 +1,22 @@
-// export function renderChatMenu() {
-    
-// }
+export function renderChatsMenu(chats) {
+  const chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');
+  const chatTemplate = Handlebars.templates['chatsMenuItem.hbs'];
+
+  chats?.forEach((chat) => {
+    const chatContext = {
+      username: chat.user.username,
+      avatar: chat.user.avatar,
+    }
+
+    chatsMenuList.insertAdjacentHTML('beforeend', chatTemplate(chatContext));
+
+  });
+}
 
 
 export function defineChatsMenu() {
   const definedChats = [];
   const searchField = document.querySelector('.messenger__search__text-input');
-  
   const chatsMenu = document.querySelectorAll('.messenger__chat-menu__chat-item');
   
   chatsMenu?.forEach((chatMenu) => {
