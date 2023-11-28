@@ -100,12 +100,13 @@ export class API {
           }
         }
     
-        WS.sendMessage(JSON.stringify(wsConnectMessage));
 
         this.state.setIsAuthorized(true);
         this.state.setUserID(res.body.id);
         this.state.setUsername(res.body.username);
         this.state.setAvatar(res.body.avatar);
+
+        WS.sendMessage(JSON.stringify(wsConnectMessage));
       } else {
         if (res.code === 'csrf') {
           this.getCsrfToken()
