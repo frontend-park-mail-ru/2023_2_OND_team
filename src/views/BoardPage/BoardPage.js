@@ -79,9 +79,6 @@ export async function renderBoardPage(boardID) {
             
                         titleTextarea.disabled = true;
                         descriptionTextarea.disabled = true;
-            
-                        titleTextarea.value = boardInfo.title;
-                        descriptionTextarea.value = boardInfo.description;
                         
                         editSpan.textContent = '';
                     } else {
