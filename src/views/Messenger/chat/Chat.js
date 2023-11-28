@@ -86,6 +86,8 @@ export class MessengerChat {
         const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
         messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_delete_message.svg';
 
+        sendedMessage.dataset.section = '1'; // id
+
         this.scrollToBottom();
     }
 
