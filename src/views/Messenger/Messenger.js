@@ -20,18 +20,18 @@ export function renderMessengerPage() {
   main.innerHTML = messengerTemplate(messengerContext);
 
 
-  const wsConnectMessage = {
-    "requestID": 0,
-    "action": "Subscribe",
-    "channel":{
-      "name": String(state.getUserID()),
-      "topic": "chat"
-    }
-  }
+  // const wsConnectMessage = {
+  //   "requestID": 0,
+  //   "action": "Subscribe",
+  //   "channel":{
+  //     "name": String(state.getUserID()),
+  //     "topic": "chat"
+  //   }
+  // }
 
   const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
 
-  WS.sendMessage(JSON.stringify(wsConnectMessage));
+  // WS.sendMessage(JSON.stringify(wsConnectMessage));
 
   messengerApi.getUserChats()
     .then((res) => {

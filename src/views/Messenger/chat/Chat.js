@@ -91,18 +91,18 @@ export class MessengerChat {
     }
 
     sendMessage(messageToSend) {
-        const wsConnectMessage = {
-            "requestID": 0,
-            "action": "Subscribe",
-            "channel":{
-            "name": String(this.#state.getUserID()),
-            "topic": "chat"
-            }
-        }
+        // const wsConnectMessage = {
+        //     "requestID": 0,
+        //     "action": "Subscribe",
+        //     "channel":{
+        //     "name": String(this.#state.getUserID()),
+        //     "topic": "chat"
+        //     }
+        // }
 
         const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
 
-        WS.sendMessage(JSON.stringify(wsConnectMessage));
+        // WS.sendMessage(JSON.stringify(wsConnectMessage));
             console.log(this.#chatWithUserId);
 
         const myMessageItemTemplate = Handlebars.templates['myMessageItem.hbs'];
