@@ -421,7 +421,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/pins/Input",
+                path: "/search",
                 handler: () => {
                     if (this.state.getCurrentPage() === 'search') {
                         return;
