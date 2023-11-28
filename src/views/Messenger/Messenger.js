@@ -1,6 +1,6 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
-import { defineChatWithUser } from './chat/chatProcessing.js';
+import { MessengerChat } from './chat/Chat.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 
 
@@ -22,7 +22,10 @@ export function renderMessengerPage() {
     .then((res) => {
       if (res.status === 'ok') {
         const messengerChatsMenu = new MessengerChatsMenu();
+        const messengerChat = new MessengerChat();
+
         messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
+        messengerChat.defineChat();
       }
     })
 
