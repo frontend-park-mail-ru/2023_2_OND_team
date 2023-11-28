@@ -499,10 +499,9 @@ export class Router {
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
                 break;
-            case (/^\/search\/pins\/[a-zA-Zа-яА-Я0-9\s.]+$/u).test(path):
-                const searchInput = path.split('/')[3];
+            case (/^\/search\/pins\/[a-zA-Zа-яА-Я0-9\s.]+$/).test(path):
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/pins/Input");
-                this.#currentRoute.handler({ searchInput });
+                this.#currentRoute.handler(path.split('/')[3]);
                 break;   
             default:
                 this.#currentRoute = null;
