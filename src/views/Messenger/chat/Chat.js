@@ -1,10 +1,14 @@
+import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
+
 export class MessengerChat {
+    #messegerApi;
     #definedMessages;
     #chat;
     #sendMessageBtn;
     #messageFieldInput;
 
     constructor() {
+        this.#messegerApi = new MessengerApi();
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
         this.#sendMessageBtn = document.querySelector('.messenger__chat__footer__send_message-img');

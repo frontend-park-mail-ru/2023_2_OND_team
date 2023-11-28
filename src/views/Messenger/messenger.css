@@ -113,6 +113,7 @@
 }
 
 .messenger__chat__message-item-my__text {
+    display: flex;
     width: max-content;
     max-width: 100%;
     height: fit-content;
@@ -129,7 +130,12 @@
     display: flex;
     align-items: flex-end;
     padding-left: 10px;
-  }
+}
+
+.messenger__chat__message-item-my__indicator-img {
+    height: 15px;
+    width: 15px;
+}
 
 .messenger__chat__message-item-my__buttons {
     display: flex;
