@@ -40,6 +40,8 @@ class WebSocketConnection {
 
 const state = new State();
 
+console.log(state.getUserID())
+
 const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
 
 export default WS;
