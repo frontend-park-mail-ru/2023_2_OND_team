@@ -422,7 +422,8 @@ export class Router {
             },
             {
                 path: "/search/searchMode/searchInput",
-                handler: (searchMode, searchInput) => {
+                handler: (params) => {
+                    const { searchMode, searchInput } = params;
                     if (this.state.getCurrentPage() === `search${searchMode}${searchInput}`) {
                         return;
                     }
