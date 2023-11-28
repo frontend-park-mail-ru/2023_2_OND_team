@@ -59,7 +59,7 @@ export class MessengerChatsMenu {
         this.#activeChatId = chatMenu.getAttribute('data-section').split(' ')[0].split('-')[2];
         this.#messengerApi.getChatWithUser(this.#activeChatId)
           .then((res) => {
-            this.#messengerChat = new MessengerChat(this.#activeChatId);
+            this.#messengerChat.setChatWithUserID(this.#activeChatId);
             if(res.status === "ok") {
               this.#messengerChat.defineChat(res.body);
             }

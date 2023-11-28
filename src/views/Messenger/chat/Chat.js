@@ -33,6 +33,8 @@ export class MessengerChat {
         this.defineMyMessages();
         this.defineSendMessageBtn();
         this.scrollToBottom();
+
+        console.log(this.#chatWithUserId)
     }
 
     renderChatMessages(content) {
@@ -168,6 +170,10 @@ export class MessengerChat {
         const companionMessageItemContext = { messageID, message };
 
         this.#chat.insertAdjacentHTML('beforeend', companionMessageItemTemplate(companionMessageItemContext));
+    }
+
+    setChatWithUserID(userID) {
+        this.#chatWithUserId = userID;
     }
 
 }
