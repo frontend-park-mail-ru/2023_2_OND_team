@@ -13,6 +13,12 @@ export class MessengerChatsMenu {
     this.#activeChatMenu = null;
   }
 
+  defineMessengerChatsMenu() {
+    this.renderChatsMenu();
+    this.defineChatsMenuItems();
+    this.defineSearchField();
+  }
+
   renderChatsMenu(chats) {
     const chatTemplate = Handlebars.templates['chatsMenuItem.hbs'];
   
@@ -25,7 +31,6 @@ export class MessengerChatsMenu {
       this.#chatsMenuList.insertAdjacentHTML('beforeend', chatTemplate(chatContext));
     });
   }
-  
   
   defineChatsMenuItems() {   
     this.#chatsMenuItems?.forEach((chatMenu) => {
@@ -40,20 +45,19 @@ export class MessengerChatsMenu {
         this.#activeChatMenu = chatMenu;
       });
     });
-   }
-   
+  }
 
   defineSearchField() {
     this.#searchField.addEventListener('input', () => {
       this.searchChatMenu();
     });
-
   }
   
   searchChatMenu() {
     this.#definedChats?.forEach((chatMenu) => {
       chatMenu.classList.remove('hide');
       const name = chatMenu.getAttribute('data-section').split('-')[2];
+
       if (this.#searchField.value && !name.toLocaleLowerCase().includes(this.#searchField.value.toLocaleLowerCase())) {
         chatMenu.classList.add('hide');
       }
