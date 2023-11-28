@@ -99,7 +99,7 @@ export class MessengerChat {
         this.#chat.insertAdjacentHTML('beforeend', myMessageItemTemplate(myMessageItemContext));
 
         const wsSendMessage = {
-            "requestID": this.#state.requestID++,
+            "requestID": this.#state.requestID,
             "action": "Publish",
             "channel":{
               "name": String(this.#chatWithUserId),
@@ -116,7 +116,7 @@ export class MessengerChat {
 
         this.#messengerWS.sendMessage(JSON.stringify(wsSendMessage));
 
-        this.defineSendedMessage(this.#state.requestID);
+        this.defineSendedMessage(this.#state.requestID++);
     }
 
     defineSendedMessage(requestID) {
