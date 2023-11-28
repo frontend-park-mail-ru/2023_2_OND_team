@@ -421,14 +421,14 @@ export class Router {
                 },
             },
             {
-                path: "/search",
-                handler: () => {
-                    if (this.state.getCurrentPage() === 'search') {
+                path: "/search/searchMode/searchInput",
+                handler: (searchMode, searchInput) => {
+                    if (this.state.getCurrentPage() === `search${searchMode}${searchInput}`) {
                         return;
                     }
 
                     if (this.state.getIsAuthorized()) {
-                        this.state.setCurrentPage('search');
+                        this.state.setCurrentPage(`search${searchMode}${searchInput}`);
 
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
