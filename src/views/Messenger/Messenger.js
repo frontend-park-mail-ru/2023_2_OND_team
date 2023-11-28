@@ -3,9 +3,11 @@ import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { MessengerChat } from './chat/Chat.js';
 import { MessengerWS } from '../../utils/Api/messenger/messengerWS.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
+import State from '../../components/State/state.js';
 
 
 export function renderMessengerPage() {
+  const state = new State();
   const messengerApi = new MessengerApi();
   const messengerWS = new MessengerWS();
 
@@ -23,7 +25,7 @@ export function renderMessengerPage() {
     "requestID": 1,
     "action": "Subscribe",
     "channel":{
-      "name": "2",
+      "name": String(state.getUserID),
       "topic": "chat"
     }
   }
