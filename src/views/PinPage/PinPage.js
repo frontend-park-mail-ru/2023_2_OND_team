@@ -2,6 +2,7 @@ import { API } from "../../utils/api.js";
 import State from "../../components/State/state.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from '../../components/RenderPins/renderPins.js';
+import { renderUserPage } from '../../views/UserPage/UserPage.js'
 
 export function renderPinPage(pinID) {
     const router = new Router();
@@ -12,6 +13,7 @@ export function renderPinPage(pinID) {
     API.getPinInfo(pinID)
         .then((pinInfo) => {
             console.log('Информация о пине:', pinInfo);
+            console.log(pinInfo.author.id);
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
