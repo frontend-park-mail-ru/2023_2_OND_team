@@ -129,11 +129,12 @@ export function renderHeaderDefault() {
             API.Search(searchMode, searchInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
+                    const boards = res.map(item => item?.BoardHeader?.id);
                     router.navigate(`search/boards/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
-                        renderBoards(searchResSection, res);
+                        renderBoards(searchResSection, boards);
                         searchNonContent.classList.add('hide');
                         defineBoards();
                     } else {
