@@ -1,3 +1,7 @@
+.messenger-page:not(:empty) ~ #root {
+    overflow: hidden;
+}
+
 .messenger-page {
     margin: -30px;
 }
