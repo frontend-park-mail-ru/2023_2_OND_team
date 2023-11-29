@@ -9,8 +9,8 @@ export function renderMessengerPage() {
   const state = new State();
   const messengerApi = new MessengerApi();
 
-  // const rootElement = document.querySelector('#root');
-  // rootElement.style.overflow = 'hidden';
+  const rootElement = document.querySelector('#root');
+  rootElement.style.overflow = 'hidden';
 
   const main = document.querySelector('#main');
 
