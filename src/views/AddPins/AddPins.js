@@ -89,7 +89,6 @@ export function renderAddPins(boardID) {
   window.scrollFunc = scrollFunc;
   scrollFunc();
   window.removeEventListener('scroll', window.scrollFunc);
-  window.addEventListener('scroll', window.scrollFunc);
 
   const backButton = document.querySelector('.pin-back-button');
   const addButton = document.querySelector('.pin-add-button');
