@@ -212,10 +212,6 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
-
-
-
-
 .messenger__chat__footer__send_message-img {
     width: 25px;
     height: 25px;
@@ -223,6 +219,18 @@
 }
 
 
+.messenger__chat-non-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.messenger__chat__choose_chat-img {
+    height: 200px;
+    width: 250px;
+}
 
 .hide {
     display: none;
