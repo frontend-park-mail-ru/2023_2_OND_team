@@ -127,7 +127,6 @@ export function renderHeaderDefault() {
             API.Search(searchMode, searchInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
-                    console.log('Результат поиска:', BoardHeader.id);
                     router.navigate(`search/boards/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');

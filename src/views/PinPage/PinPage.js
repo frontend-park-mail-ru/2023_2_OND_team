@@ -30,6 +30,63 @@ export function renderPinPage(pinID) {
             const likeField = document.querySelector('.pin-like-counter');
             const userName = document.querySelector('.pin-username');
 
+            const subscribeBtn = document.querySelector('.user__subscribe-btn');
+            const unsubscribeBtn = document.querySelector('.user__unsubscribe-btn');
+
+            /* API.getSomeUserInfo(userID)
+            .then((data) => {
+                const userPageContext = {
+                    id: data.id,
+                    username: data.username,
+                    isSubscribed: data.is_subscribed,
+                }
+            
+                if (data.is_subscribed) {
+                    unsubscribeBtn.classList.remove('hide');
+                } else {
+                    subscribeBtn.classList.remove('hide');
+                }
+
+                subscribeBtn?.addEventListener('click', () => {
+                    subscribeBtn.classList.add('hide');
+                    unsubscribeBtn.classList.remove('hide');
+
+                    API.subscribeToUser(userID)
+                        .then((data, code) => {
+                            if (data) {
+                                console.log(data, code);
+                                subscribeBtn.classList.remove('hide');
+                                unsubscribeBtn.classList.add('hide');
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            subscribeBtn.classList.remove('hide');
+                            unsubscribeBtn.classList.add('hide');
+                        })
+                });
+
+                unsubscribeBtn?.addEventListener('click', () => {
+                    subscribeBtn.classList.remove('hide');
+                    unsubscribeBtn.classList.add('hide');
+
+                    API.unsubscribeFromUser(userID)
+                        .then((data, code) => {
+                            if (data) {
+                                console.log(data, code);
+                                subscribeBtn.classList.add('hide');
+                                unsubscribeBtn.classList.remove('hide');
+                                numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML + 1;
+                            }
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            subscribeBtn.classList.add('hide');
+                            unsubscribeBtn.classList.remove('hide');
+                            numSubscriptionsField.innerHTML = +numSubscriptionsField.innerHTML + 1;
+                        })
+                });*/
+
             API.getLike(pinID)
                 .then((data) => {
                     if (data.is_set) {
