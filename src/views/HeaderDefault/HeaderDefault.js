@@ -115,8 +115,8 @@ export function renderHeaderDefault() {
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderPins(searchResSection, res);
-                        searchNonContent.classList.add('hide');
                         definePins();
+                        searchNonContent.classList.add('hide');
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
