@@ -27,7 +27,7 @@ export class MessengerChatsMenu {
 
   defineMessengerChatsMenu(chats) {
     this.renderChatsMenu(chats);
-    this.defineChatsMenuItems();
+    // this.defineChatsMenuItems();
     this.defineSearchField();
   }
 
@@ -44,6 +44,22 @@ export class MessengerChatsMenu {
       this.#chatsMenuList.insertAdjacentHTML('beforeend', chatTemplate(chatContext));
     });
 
+    this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
+
+    this.defineChatsMenuItems();
+  }
+
+  renderChatMenuWithUser(user) {
+    const chatTemplate = Handlebars.templates['chatsMenuItem.hbs'];
+
+    const chatContext = {
+      id: user.id,
+      username: user.username,
+      avatar: user.avatar,
+    }
+
+    this.#chatsMenuList.insertAdjacentHTML('beforeend', chatTemplate(chatContext));
+    
     this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
   }
   
@@ -92,7 +108,7 @@ export class MessengerChatsMenu {
     const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`)
     
     nestedChatMenu.classList.add('messenger__chat-menu__chat-item-active');
-    
+
     this.#activeChatMenu = nestedChatMenu;
     this.#activeChatId = userID;
 
