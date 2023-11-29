@@ -723,9 +723,9 @@ export class API {
     }
   }
 
-  static async getUserBoards(username) {
+  static async getUserBoards() {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/board/get/user/${username}`;
+      const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -747,7 +747,7 @@ export class API {
         throw new Error('Ошибка при получении данных из API');
       }
     } catch (error) {
-      console.error('Ошибка при получении досок:', error);
+      console.error('Ошибка при получении пинов:', error);
     }
   }
 
