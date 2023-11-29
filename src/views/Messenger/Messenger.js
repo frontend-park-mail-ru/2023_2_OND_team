@@ -44,13 +44,16 @@ export function renderMessengerPage(userID) {
 
         let isOpen = false;
         const userChats = res?.body?.chats;
+
+        const chatsMenuDiv = document.querySelector('.messenger');
+        chatsMenuDiv.classList.remove('hide');
+
+        const messengerChatsMenu = new MessengerChatsMenu();
+        messengerChatsMenu.defineMessengerChatsMenu(res?.body?.chats);
+
         userChats?.forEach((chat) => {
           if (chat?.user?.id == userID) {
-            const chatsMenuDiv = document.querySelector('.messenger');
-            chatsMenuDiv.classList.remove('hide');
     
-            const messengerChatsMenu = new MessengerChatsMenu();
-            messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
             messengerChatsMenu.openChatWithUser(userID);
             isOpen = true;
           }
@@ -59,35 +62,40 @@ export function renderMessengerPage(userID) {
         if (!isOpen) {
           API.getSomeUserInfo(userID)
             .then((data) => {
-              const chatsMenuDiv = document.querySelector('.messenger');
-              chatsMenuDiv.classList.remove('hide');
-              
-              const messengerChatsMenu = new MessengerChatsMenu();
-              messengerChatsMenu.defineMessengerChatsMenu();
-
               messengerChatsMenu.renderChatMenuWithUser(data);
               messengerChatsMenu.openChatWithUser(userID);
             });
-
-          
         }
 
-        // if (res?.body?.chats)
-      
-        // // case opening chat with user
-        // API.getSomeUserInfo(userID)
-        //   .then((data) => {
-        //     const messengerChatsMenu = new MessengerChatsMenu();
-        //     const chatMenuContext = {
-        //       user: {
-        //         id: data.id,
-        //         username: data.username,
-        //         avatar: data.avatar,
-        //       }
-        //     }
 
-        //     messengerChatsMenu.renderChatsMenu(chatMenuContext);
-        //   })
+        // let isOpen = false;
+        // const userChats = res?.body?.chats;
+        // userChats?.forEach((chat) => {
+        //   if (chat?.user?.id == userID) {
+        //     const chatsMenuDiv = document.querySelector('.messenger');
+        //     chatsMenuDiv.classList.remove('hide');
+    
+        //     const messengerChatsMenu = new MessengerChatsMenu();
+        //     messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
+        //     messengerChatsMenu.openChatWithUser(userID);
+        //     isOpen = true;
+        //   }
+        // });
+
+        // if (!isOpen) {
+        //   API.getSomeUserInfo(userID)
+        //     .then((data) => {
+        //       const chatsMenuDiv = document.querySelector('.messenger');
+        //       chatsMenuDiv.classList.remove('hide');
+              
+        //       const messengerChatsMenu = new MessengerChatsMenu();
+        //       messengerChatsMenu.defineMessengerChatsMenu();
+
+        //       messengerChatsMenu.renderChatMenuWithUser(data);
+        //       messengerChatsMenu.openChatWithUser(userID);
+        //     });
+
+        // }
 
       }
 
