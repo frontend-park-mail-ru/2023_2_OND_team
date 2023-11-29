@@ -421,7 +421,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/pins/:searchInput",
+                path: "/search/pins/Input",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchPins${searchInput}`) {
                         return;
@@ -445,7 +445,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/boards/:Input",
+                path: "/search/boards/Input",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchBoards${searchInput}`) {
                         return;
@@ -469,7 +469,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/users/:Input",
+                path: "/search/users/Input",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchUsers${searchInput}`) {
                         return;
@@ -547,21 +547,21 @@ export class Router {
                 this.#currentRoute = this.#routes.find((r) => r.path === "/create/board/ID");
                 this.#currentRoute.handler({ boardID });
                 break;
-            case (/^\/search\/pins\/[\wа-яёА-ЯЁ]+$/u).test(path):
+            case (/^\/search\/pins\/[a-zA-Zа-яА-ЯёЁ0-9]+$/u).test(path):
                 const searchInput = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/pins/Input");
                 this.#currentRoute.handler({ searchInput });
                 break;   
-            case (/^\/search\/boards\/[\wа-яёА-ЯЁ]+$/u).test(path):
+            case (/^\/search\/boards\/[a-zA-Zа-яА-ЯёЁ0-9]+$/u).test(path):
                 const searchBoardInput = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/boards/Input");
                 this.#currentRoute.handler({ searchBoardInput });
                 break;   
-            case (/^\/search\/users\/[\wа-яёА-ЯЁ]+$/u).test(path):
+            case (/^\/search\/users\/[a-zA-Zа-яА-ЯёЁ0-9]+$/u).test(path):
                 const searchUsersInput = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/users/Input");
                 this.#currentRoute.handler({ searchUsersInput });
-                break;   
+                break;
             default:
                 this.#currentRoute = null;
                 this.#defaultRoute();
