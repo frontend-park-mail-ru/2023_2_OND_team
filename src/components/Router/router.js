@@ -421,7 +421,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/pins/Input",
+                path: "/search/pins/:Input",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchPins${searchInput}`) {
                         return;
@@ -445,7 +445,7 @@ export class Router {
                 },
             },
             {
-                path: "/search/boards/Input",
+                path: "/search/boards/:Input",
                 handler: ({ searchInput }) => {
                     if (this.state.getCurrentPage() === `searchBoards${searchInput}`) {
                         return;
@@ -453,6 +453,30 @@ export class Router {
 
                     if (this.state.getIsAuthorized()) {
                         this.state.setCurrentPage(`searchBoards${searchInput}`);
+
+                        if (document.querySelector('#sidebar').innerHTML === '') {
+                            renderSidebar();
+                        }
+
+                        if (document.querySelector('#header').innerHTML === '') {
+                            renderHeaderDefault();
+                        } 
+
+                        setHeaderTitle('Результат поиска');
+
+                        renderSearchPage();
+                    } 
+                },
+            },
+            {
+                path: "/search/users/:Input",
+                handler: ({ searchInput }) => {
+                    if (this.state.getCurrentPage() === `searchUsers${searchInput}`) {
+                        return;
+                    }
+
+                    if (this.state.getIsAuthorized()) {
+                        this.state.setCurrentPage(`searchUsers${searchInput}`);
 
                         if (document.querySelector('#sidebar').innerHTML === '') {
                             renderSidebar();
@@ -532,6 +556,11 @@ export class Router {
                 const searchBoardInput = path.split('/')[3];
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/boards/Input");
                 this.#currentRoute.handler({ searchBoardInput });
+                break;   
+            case (/^\/search\/users\/[\wа-яёА-ЯЁ]+$/u).test(path):
+                const searchUsersInput = path.split('/')[3];
+                this.#currentRoute = this.#routes.find((r) => r.path === "/search/users/Input");
+                this.#currentRoute.handler({ searchUsersInput });
                 break;   
             default:
                 this.#currentRoute = null;
