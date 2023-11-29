@@ -1,0 +1,37 @@
+@import url('./assets/components/buttons/primary/btnPrimary.scss');
+@import url('./assets/components/buttons/primary/fontsPrimary.scss');
+@import url('./views/Authorization/form.css');
+@import url('./views/Feed/Feed.css');
+@import url('./views/Feed/Gallery.css');
+@import url('./views/HeaderDefault/headerDefault.css');
+@import url('./views/HeaderGuest/headerGuest.css');
+@import url('./views/Sidebar/sidebar.css');
+@import url('./views/ProfileUser/profileUser.css');
+@import url('./views/ProfileData/profileData.css');
+@import url('./views/ProfileSecurity/profileSecurity.css');
+@import url('./views/Intro/intro.css');
+@import url('./views/CreatePin/createPin.css');
+@import url('./views/PinPage/pinPage.css');
+@import url('./views/CreateBoard/createBoard.css');
+@import url('./views/UserBoards/userBoards.css');
+@import url('./views/Favourite/favourite.css');
+@import url('./views/Page404/page404.css');
+@import url('./views/AddPins/addPins.css');
+@import url('./views/BoardPage/boardPage.css');
+@import url('./views/NonContentNotification/nonContentNotification.css');
+@import url('./views/Subscriptions/subscriptions.css');
+@import url('./views/Messenger/messenger.css');
+@import url('./views/UserPage/userPage.scss');
+
+$bg50: #808080;
+$bg-90: #E6E6E6;
+$primary-30: #226B77;
+
+html, body {
+  --bg50: #{$bg50};
+  --bg-90: #{$bg-90};
+  --primary-30: #{$primary-30};
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,33 @@
+.btn-primary-clear,
+.btn-primary-default {
+  font-family: Nunito;
+  height: 45px;
+  padding: 1px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  &.btn-primary-clear {
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30, #226B77);
+    background: var(--bg-100, #FFF);
+    color: var(--primary-30, #226B77);
+
+    &:hover {
+      background: var(--primary-45, #33A1B3);
+    }
+  }
+
+  &.btn-primary-default {
+    background-color: #226B77;
+    color: #FFFFFF;
+
+    &:hover {
+      background: var(--primary-45, #33A1B3);
+    }
+  }
+}
