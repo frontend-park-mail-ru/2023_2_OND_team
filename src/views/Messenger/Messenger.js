@@ -19,37 +19,24 @@ export function renderMessengerPage() {
 
   main.innerHTML = messengerTemplate(messengerContext);
 
-
-  // const wsConnectMessage = {
-  //   "requestID": 0,
-  //   "action": "Subscribe",
-  //   "channel":{
-  //     "name": String(state.getUserID()),
-  //     "topic": "chat"
-  //   }
-  // }
-
   const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
-
-  // WS.sendMessage(JSON.stringify(wsConnectMessage));
 
   messengerApi.getUserChats()
     .then((res) => {
       if (res.status === 'ok') {
-        const messengerChatsMenu = new MessengerChatsMenu();
+        if (!res.body) {
+          const nonContent = document.querySelector('.messenger-non-content');
+          nonContent.classList.remove('hide');
+          renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
+          return;
+        } 
 
+        const chatsMenuDiv = document.querySelector('.messenger');
+        chatsMenuDiv.classList.remove('hide');
+
+        const messengerChatsMenu = new MessengerChatsMenu();
         messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
       }
     })
 
-
-  // const nonContent = document.querySelector('.messenger-non-content');
-  // renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
-
-  // defineChatsMenu();
-  // defineChatWithUser();
-
-  // function renderChatWithUser() {
-    
-  // }
 }
