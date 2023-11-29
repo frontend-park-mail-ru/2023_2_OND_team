@@ -1,7 +1,9 @@
 import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
 import { MessengerChat } from "../chat/Chat.js";
+import { Router } from "../../../components/Router/router.js";
 
 export class MessengerChatsMenu {
+  #router;
   #messengerChat;
   #messengerApi;
   #definedChats;
@@ -12,6 +14,7 @@ export class MessengerChatsMenu {
   #activeChatId;
 
   constructor() {
+    this.#router = new Router();
     this.#messengerChat = new MessengerChat();
     this.#messengerApi = new MessengerApi();
     this.#definedChats = [];
@@ -47,8 +50,18 @@ export class MessengerChatsMenu {
   defineChatsMenuItems() {   
     this.#chatsMenuItems?.forEach((chatMenu) => {
       this.#definedChats.push(chatMenu);
+
+      const chatMenuUserAvatar = chatMenu.querySelector('.messenger__chat-menu__chat-avatar');
+      chatMenuUserAvatar?.addEventListener('click', () => {
+        const userID = chatMenuUserAvatar.getAttribute('data-section').split('-')[3];
+        this.#router.navigate(`/user/${userID}`);
+      })
    
-      chatMenu.addEventListener('click', () => {
+      chatMenu.addEventListener('click', (e) => {
+        if (e.target === chatMenuUserAvatar) {
+          return;
+        }
+
         if (this.#activeChatMenu) {
           this.#activeChatMenu.classList.remove('messenger__chat-menu__chat-item-active');
         }
