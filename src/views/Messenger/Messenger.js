@@ -1,13 +1,13 @@
-import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
+import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 
 export function renderMessengerPage() {
-    const main = document.querySelector('#main');
+  const main = document.querySelector('#main');
 
-    const messengerTemplate = Handlebars.templates['Messenger.hbs'];
-    const messengerContext = {};
+  const messengerTemplate = Handlebars.templates['Messenger.hbs'];
+  const messengerContext = {};
 
-    main.innerHTML = messengerTemplate(messengerContext);
+  main.innerHTML = messengerTemplate(messengerContext);
 
-    const nonContent = document.querySelector('.messenger-non-content');
-    renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
+  const nonContent = document.querySelector('.messenger-non-content');
+  renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
 }

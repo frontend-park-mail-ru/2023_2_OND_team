@@ -1,6 +1,6 @@
-import { API } from '../../utils/Api/api.js';
-import { passwordValid, nameValid } from '../../components/Validation/valid.js'
-import { Router } from '../../components/Router/router.js';
+import {API} from '../../utils/Api/api.js';
+import {passwordValid, nameValid} from '../../components/Validation/valid.js';
+import {Router} from '../../components/Router/router.js';
 
 /**
 * Рендерит страницу аутентификации.

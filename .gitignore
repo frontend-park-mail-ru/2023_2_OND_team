@@ -6,3 +6,4 @@ service.txt
 .DS_Store
 src/templates.hbs.js
 server/ssk/
+dist/

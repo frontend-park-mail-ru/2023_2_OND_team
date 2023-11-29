@@ -13,8 +13,8 @@ const router = new Router();
 
 API.getCsrfToken()
     .then(() => {
-        API.checkLogin()
-            .then(() => {
-                router.handlePopstate();
-            })
-    })
+      API.checkLogin()
+          .then(() => {
+            router.handlePopstate();
+          });
+    });

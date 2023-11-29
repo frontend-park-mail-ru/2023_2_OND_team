@@ -1,25 +1,26 @@
-import { API } from "../../utils/Api/api.js";
-import State from "../State/state.js";
-import { renderSidebar } from "../../views/Sidebar/Sidebar.js";
-import { renderHeaderDefault } from "../../views/HeaderDefault/HeaderDefault.js";
-import { renderFeedPage } from "../../views/Feed/Feed.js";
-import { renderHeaderGuest } from "../../views/HeaderGuest/HeaderGuest.js";
-import { renderProfilePage } from "../../views/ProfileUser/ProfileUser.js";
-import { renderAuthPage } from "../../views/Authorization/Authorization.js";
-import { renderRegPage } from "../../views/Registration/Registration.js";
-import { renderPage404 } from "../../views/Page404/Page404.js";
-import { renderProfileData } from "../../views/ProfileData/ProfileData.js";
-import { renderProfileSecurity } from "../../views/ProfileSecurity/ProfileSecurity.js";
-import { renderCreatePin } from "../../views/CreatePin/CreatePin.js";
-import { renderPinPage } from "../../views/PinPage/PinPage.js";
-import { renderBoardPage } from "../../views/BoardPage/BoardPage.js";
-import { renderCreateBoard } from "../../views/CreateBoard/CreateBoard.js";
-import { renderFavouritePage } from "../../views/Favourite/Favourite.js";
-import { renderAddPins } from "../../views/AddPins/AddPins.js";
-import { renderSubscriptionsPage } from "../../views/Subscriptions/Subscriptions.js";
-import { setHeaderTitle, removeHeaderTitle } from "../../utils/HeaderTitleProcessing/headerTitleProcessing.js";
-import { setActiveSidebarItem } from "../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js";
-import { renderMessengerPage } from "../../views/Messenger/Messenger.js";
+import {API} from '../../utils/Api/api.js';
+import State from '../State/state.js';
+import {renderSidebar} from '../../views/Sidebar/Sidebar.js';
+import {renderHeaderDefault} from '../../views/HeaderDefault/HeaderDefault.js';
+import {renderFeedPage} from '../../views/Feed/Feed.js';
+import {renderHeaderGuest} from '../../views/HeaderGuest/HeaderGuest.js';
+import {renderProfilePage} from '../../views/ProfileUser/ProfileUser.js';
+import {renderAuthPage} from '../../views/Authorization/Authorization.js';
+import {renderRegPage} from '../../views/Registration/Registration.js';
+import {renderPage404} from '../../views/Page404/Page404.js';
+import {renderProfileData} from '../../views/ProfileData/ProfileData.js';
+import {renderProfileSecurity} from '../../views/ProfileSecurity/ProfileSecurity.js';
+import {renderCreatePin} from '../../views/CreatePin/CreatePin.js';
+import {renderPinPage} from '../../views/PinPage/PinPage.js';
+import {renderBoardPage} from '../../views/BoardPage/BoardPage.js';
+import {renderCreateBoard} from '../../views/CreateBoard/CreateBoard.js';
+import {renderFavouritePage} from '../../views/Favourite/Favourite.js';
+import {renderAddPins} from '../../views/AddPins/AddPins.js';
+import {renderSubscriptionsPage} from '../../views/Subscriptions/Subscriptions.js';
+import {setHeaderTitle, removeHeaderTitle} from '../../utils/HeaderTitleProcessing/headerTitleProcessing.js';
+import {setActiveSidebarItem} from '../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js';
+import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
+import {renderUserPage} from '../../views/UserPage/UserPage.js';
 import { renderSearchPage } from "../../views/SearchPage/Search.js"
 
 function resetScroll() {

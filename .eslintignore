@@ -1,5 +1,2 @@
-public/compiledTemplates/templates.hbs.js
-public/utils/api.js
-public/components/Registration/RegPage.js
-public/components/Authorization/AuthPage.js
-public/components/Feed/Feed.js
+src/
+dist/

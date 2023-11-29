@@ -1,9 +1,9 @@
-import { renderAuthPage } from '../Authorization/Authorization.js';
-import { renderFeedPage } from '../Feed/Feed.js';
-import { emailValid, passwordValid, nameValid, repeatPasswordValid } from '../../components/Validation/valid.js';
-import { API } from '../../utils/Api/api.js';
-import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
-import { Router } from '../../components/Router/router.js';
+import {renderAuthPage} from '../Authorization/Authorization.js';
+import {renderFeedPage} from '../Feed/Feed.js';
+import {emailValid, passwordValid, nameValid, repeatPasswordValid} from '../../components/Validation/valid.js';
+import {API} from '../../utils/Api/api.js';
+import {renderHeaderGuest} from '../HeaderGuest/HeaderGuest.js';
+import {Router} from '../../components/Router/router.js';
 
 /**
  * Рендерит страницу регистрации.
