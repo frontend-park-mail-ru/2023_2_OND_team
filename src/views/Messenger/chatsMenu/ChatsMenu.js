@@ -48,6 +48,9 @@ export class MessengerChatsMenu {
   }
   
   defineChatsMenuItems() {   
+    const chatDiv = document.querySelector('.messenger__chat');
+    const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
+
     this.#chatsMenuItems?.forEach((chatMenu) => {
       this.#definedChats.push(chatMenu);
 
@@ -74,6 +77,8 @@ export class MessengerChatsMenu {
           .then((res) => {
             this.#messengerChat.setChatWithUserID(this.#activeChatId);
             if(res.status === "ok") {
+              chatNoContentDiv.classList.add('hide');
+              chatDiv.classList.remove('hide');
               this.#messengerChat.defineChat(res.body);
             }
           })
