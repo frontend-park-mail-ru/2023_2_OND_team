@@ -106,10 +106,11 @@ export function renderHeaderDefault() {
     const searchImage = document.querySelector('.header__search__img-image');
     searchImage.addEventListener('click', () => {
         if (searchMode == 'pins' && searchInput) {
-            API.Search(searchMode, searchInput)
+            const encodedInput = encodeURIComponent(searchInput);
+            API.Search(searchMode, encodedInput)
                 .then((res) => {
                     console.log('Результат поиска:', res);
-                    router.navigate(`/search/pins/${searchInput}`);
+                    router.navigate(`/search/pins/${encodedInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
