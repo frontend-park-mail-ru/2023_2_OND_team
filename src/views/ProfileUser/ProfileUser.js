@@ -30,6 +30,8 @@ export function renderProfilePage() {
     activeElement.classList.remove('profile-user__btn-active');
     pinsBtn.classList.add('profile-user__btn-active');
 
+    state.deleteAllPins();
+    
     renderUserPins();
   });
 
