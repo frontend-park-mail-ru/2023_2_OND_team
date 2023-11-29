@@ -4,8 +4,9 @@ import { MessengerChat } from './chat/Chat.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 import State from '../../components/State/state.js';
 import { WebSocketConnection } from '../../utils/Api/messenger/messengerWS.js';
+import { API } from '../../utils/Api/api.js';
 
-export function renderMessengerPage() {
+export function renderMessengerPage(userID = -1) {
   const state = new State();
   const messengerApi = new MessengerApi();
 
@@ -24,19 +25,40 @@ export function renderMessengerPage() {
   messengerApi.getUserChats()
     .then((res) => {
       if (res.status === 'ok') {
-        if (!res?.body?.chats) {
-          const nonContent = document.querySelector('.messenger-non-content');
-          nonContent.classList.remove('hide');
-          renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
+        if (userID === -1) { // case opening messenger
+          if (!res?.body?.chats) {
+            const nonContent = document.querySelector('.messenger-non-content');
+            nonContent.classList.remove('hide');
+            renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
+            return;
+          } 
+  
+          const chatsMenuDiv = document.querySelector('.messenger');
+          chatsMenuDiv.classList.remove('hide');
+  
+          const messengerChatsMenu = new MessengerChatsMenu();
+          messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
+
           return;
-        } 
+        }
+      
+        // case opening chat with user
+        API.getSomeUserInfo(userID)
+          .then((data) => {
+            const messengerChatsMenu = new MessengerChatsMenu();
+            const chatMenuContext = {
+              user: {
+                id: data.id,
+                username: data.username,
+                avatar: data.avatar,
+              }
+            }
+            
+            messengerChatsMenu.renderChatsMenu(chatMenuContext);
+          })
 
-        const chatsMenuDiv = document.querySelector('.messenger');
-        chatsMenuDiv.classList.remove('hide');
-
-        const messengerChatsMenu = new MessengerChatsMenu();
-        messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
       }
+
     })
 
 }

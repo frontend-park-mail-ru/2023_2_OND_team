@@ -452,6 +452,30 @@ export class Router {
           renderUserPage(userID);
         },
       },
+      {
+        path: '/messenger/ID',
+        handler: ({userID}) => {
+          if (this.state.getIsAuthorized()) {
+            this.state.setCurrentPage(`messenger${userID}`);
+
+            if (document.querySelector('#sidebar').innerHTML === '') {
+                renderSidebar();
+            }
+  
+            setActiveSidebarItem('messenger');
+  
+            if (document.querySelector('#header').innerHTML === '') {
+                renderHeaderDefault();
+            }
+
+            setHeaderTitle('Мессенджер');
+            
+            renderMessengerPage(userID);
+          } else {
+            this.navigate('/login');
+          }
+        },
+      },
     ];
 
     this.#currentRoute = null;
@@ -509,6 +533,10 @@ export class Router {
         break;
       case (/^\/user\/\d+$/).test(path):
         this.#currentRoute = this.#routes.find((r) => r.path === '/user/ID');
+        this.#currentRoute.handler(path.split('/')[2]);
+        break;
+      case (/^\/messenger\/\d+$/).test(path):
+        this.#currentRoute = this.#routes.find((r) => r.path === '/messenger/ID');
         this.#currentRoute.handler(path.split('/')[2]);
         break;
       default:
