@@ -61,6 +61,8 @@ export class MessengerChatsMenu {
     this.#chatsMenuList.insertAdjacentHTML('beforeend', chatTemplate(chatContext));
     
     this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
+
+    this.defineChatsMenuItems();
   }
   
   defineChatsMenuItems() {   
