@@ -2,7 +2,6 @@ import { API } from '../../utils/Api/api.js';
 import { renderRecPins } from '../../components/RenderRecPins/renderRecPins.js';
 import { State } from '../../components/State/state.js'
 import { Router } from '../../components/Router/router.js'
- 
 
 export function renderAddPins(boardID) {
     const router = new Router();
