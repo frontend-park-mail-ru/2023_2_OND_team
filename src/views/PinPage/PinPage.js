@@ -72,6 +72,8 @@ export function renderPinPage(pinID) {
 
             userName?.addEventListener('click', () => {
                 console.log(pinInfo.author.id);
+                //router.navigate(`/user/${pinInfo.author.id}`);
+                //renderUserPage(pinInfo.author.id);
             })
 
             const usernameReal = state.getUsername();
@@ -123,13 +125,11 @@ export function renderPinPage(pinID) {
             deleteButton.classList.add('hide');
 
             saveButton?.addEventListener('click', () => {
-                console.log('КЛЛЛИИИК');
                 console.log(boardID, [parseInt(pinID)]);
                 API.addBoardPins(boardID, [parseInt(pinID)]);
             });
 
             deleteButton?.addEventListener('click', () => {
-                //e.preventDefault();
                 API.deletePin(pinID);
                 router.navigate('/');
             });
