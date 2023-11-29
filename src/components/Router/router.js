@@ -454,7 +454,7 @@ export class Router {
       },
       {
         path: '/messenger/ID',
-        handler: ({userID}) => {
+        handler: (userID) => {
           if (this.state.getIsAuthorized()) {
             this.state.setCurrentPage(`messenger${userID}`);
 
