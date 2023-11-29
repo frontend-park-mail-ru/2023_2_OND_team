@@ -114,8 +114,8 @@ export function renderHeaderDefault() {
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderPins(searchResSection, res);
-                        definePins();
                         searchNonContent.classList.add('hide');
+                        definePins();
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
@@ -133,6 +133,7 @@ export function renderHeaderDefault() {
                     if (res && res.length > 0) {
                         renderBoards(searchResSection, res);
                         searchNonContent.classList.add('hide');
+                        defineBoards();
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
@@ -164,4 +165,16 @@ export function renderHeaderDefault() {
             filterList.classList.add('hide');
         }
     })
+
+    function defineBoards() {
+        const boards = document.querySelectorAll('.user__board');
+    
+        boards?.forEach((board) => {
+            board.addEventListener('click', (e) => {
+
+            const boardID = board.className.split(' ')[1].split('-')[3];
+            router.navigate(`/board/${boardID}`);
+          });
+        });
+    }
 }
