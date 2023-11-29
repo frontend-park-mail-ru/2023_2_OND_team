@@ -87,10 +87,15 @@ export class MessengerChatsMenu {
   }
 
   openChatWithUser(userID) {
+    const chatDiv = document.querySelector('.messenger__chat');
+    const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
     const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`)
+    
+    nestedChatMenu.classList.add('messenger__chat-menu__chat-item-active');
     
     this.#activeChatMenu = nestedChatMenu;
     this.#activeChatId = userID;
+
     this.#messengerApi.getChatWithUser(this.#activeChatId)
       .then((res) => {
         this.#messengerChat.setChatWithUserID(this.#activeChatId);
