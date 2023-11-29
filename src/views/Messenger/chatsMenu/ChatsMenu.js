@@ -86,6 +86,22 @@ export class MessengerChatsMenu {
     });
   }
 
+  openChatWithUser(userID) {
+    const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`)
+    
+    this.#activeChatMenu = nestedChatMenu;
+    this.#activeChatId = userID;
+    this.#messengerApi.getChatWithUser(this.#activeChatId)
+      .then((res) => {
+        this.#messengerChat.setChatWithUserID(this.#activeChatId);
+        if(res.status === "ok") {
+          chatNoContentDiv.classList.add('hide');
+          chatDiv.classList.remove('hide');
+          this.#messengerChat.defineChat(res.body);
+        }
+      })
+  }
+
   defineSearchField() {
     this.#searchField.addEventListener('input', () => {
       this.searchChatMenu();

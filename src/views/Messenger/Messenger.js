@@ -41,21 +41,35 @@ export function renderMessengerPage(userID = -1) {
 
           return;
         }
-      
-        // case opening chat with user
-        API.getSomeUserInfo(userID)
-          .then((data) => {
+
+        const userChats = res?.body?.chats;
+        userChats?.forEach((chat) => {
+          if (chat?.user?.id == userID) {
+            const chatsMenuDiv = document.querySelector('.messenger');
+            chatsMenuDiv.classList.remove('hide');
+    
             const messengerChatsMenu = new MessengerChatsMenu();
-            const chatMenuContext = {
-              user: {
-                id: data.id,
-                username: data.username,
-                avatar: data.avatar,
-              }
-            }
-            
-            messengerChatsMenu.renderChatsMenu(chatMenuContext);
-          })
+            messengerChatsMenu.defineMessengerChatsMenu(res.body.chats);
+            messengerChatsMenu.openChatWithUser(userID);
+          }
+        });
+
+        // if (res?.body?.chats)
+      
+        // // case opening chat with user
+        // API.getSomeUserInfo(userID)
+        //   .then((data) => {
+        //     const messengerChatsMenu = new MessengerChatsMenu();
+        //     const chatMenuContext = {
+        //       user: {
+        //         id: data.id,
+        //         username: data.username,
+        //         avatar: data.avatar,
+        //       }
+        //     }
+
+        //     messengerChatsMenu.renderChatsMenu(chatMenuContext);
+        //   })
 
       }
 
