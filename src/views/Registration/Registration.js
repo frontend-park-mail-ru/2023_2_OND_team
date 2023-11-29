@@ -115,14 +115,14 @@ export function renderRegPage() {
           .then((status) => {
             if (status) {
               API.checkLogin()
-                .then(() => {
-                  header.innerHTML = '';
-                  registration.innerHTML = '';
-                  router.navigate('/');
-                })
-                .catch((error) => {
-                  console.error(error);
-                })
+                  .then(() => {
+                    header.innerHTML = '';
+                    registration.innerHTML = '';
+                    router.navigate('/');
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               emailInput.style.borderColor = 'var(--error-50, #F4210B)';

@@ -853,6 +853,4 @@ export class API {
             console.error('Ошибка при получении данных поиска:', error);
         }
     }
-    
-
 }
