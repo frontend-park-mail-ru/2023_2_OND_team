@@ -28,6 +28,7 @@
 }
 
 .pin-username {
+    cursor: pointer;
     padding-right: 192px;
     display: block;
     max-width: 90%;
