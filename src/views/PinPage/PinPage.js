@@ -12,8 +12,7 @@ export function renderPinPage(pinID) {
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
-            console.log('Информация о пине:', pinInfo);
-            console.log(pinInfo.author.id);
+            console.log('Информация о пине:', pinInfo.author.id);
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
