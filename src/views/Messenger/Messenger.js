@@ -6,7 +6,7 @@ import State from '../../components/State/state.js';
 import { WebSocketConnection } from '../../utils/Api/messenger/messengerWS.js';
 import { API } from '../../utils/Api/api.js';
 
-export function renderMessengerPage(userID = -1) {
+export function renderMessengerPage(userID) {
   const state = new State();
   const messengerApi = new MessengerApi();
 
@@ -25,7 +25,7 @@ export function renderMessengerPage(userID = -1) {
   messengerApi.getUserChats()
     .then((res) => {
       if (res.status === 'ok') {
-        if (userID === -1) { // case opening messenger
+        if (!userID) { // case opening messenger
           if (!res?.body?.chats) {
             const nonContent = document.querySelector('.messenger-non-content');
             nonContent.classList.remove('hide');
