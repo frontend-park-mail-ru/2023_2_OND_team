@@ -23,6 +23,7 @@ export class API {
     {name: 'deleteBoard', url: '//pinspire.online:8080/api/v1/board/delete'},
     {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
     {name: 'boardUpdate', url: '//pinspire.online:8080/api/v1/board/update'},
+    {name: 'Search', url: '//pinspire.online:8084/api/v1/search'},
   ];
 
   static async loginUser(username, password) {
@@ -59,6 +60,14 @@ export class API {
     }
   }
 
+  /**
+      * Проверяет статус авторизации пользователя.
+      *
+      * @async
+      * @function
+      * @return {Promise<{ isAuthorized: boolean, username: string }>} Объект с информацией о статусе авторизации и именем пользователя.
+      * @throws {Error} Если произошла ошибка при запросе или обработке данных.
+      */
   static async checkLogin() {
     try {
       const configItem = this.#config.find((item) => item.name === 'loginUser');
@@ -137,6 +146,13 @@ export class API {
     }
   }
 
+  /**
+      * Регистрирует пользователя с указанными данными.
+      * Если регистрация успешна, устанавливает куки `registered` и отправляет их на сервер.
+      * @param {string} username - Имя пользователя.
+      * @param {string} email - Почта.
+      * @param {string} password - Пароль.
+      */
   static async registerUser(username, email, password) {
     try {
       const configItem = this.#config.find((item) => item.name === 'registerUser');
@@ -170,6 +186,14 @@ export class API {
     }
   }
 
+  /**
+      * Генерирует изображения (пины) для отображения на странице.
+      *
+      * @async
+      * @function
+      * @throws {Error} Если произошла ошибка при запросе или обработке данных.
+      * @return {Promise<{ images: { picture: string }[] }>} Объект с массивом изображений.
+      */
   static async generatePins(num, maxID, minID) {
     try {
       let configItem;
@@ -963,663 +987,33 @@ export class API {
     }
   }
 
-    static async generatePins(num, maxID, minID) {
-      try {
-        let configItem;
-        if (maxID === -Infinity && minID === Infinity) {
-          configItem = `//pinspire.online:8080/api/v1/feed/pin?count=${num}`;
-        } else {
-          configItem = `//pinspire.online:8080/api/v1/feed/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
-        }
-        const response = await fetch(configItem, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных из API');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
-      }
-    }
-
-    static async getUserInfo() {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'profileInfo');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для profileInfo');
-        }
-
-        const response = await fetch(configItem.url, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-       const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных пользователя');
-        }
-
-      } catch (error) {
-        console.error('Ошибка при получении данных об авторизации:', error);
-      }
-    }
-
-    static async putUserInfo({username, name, surname, about_me, email, password}) {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'profileEdit');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для profileEdit');
-        }
-    
-        const response = await fetch(configItem.url, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          body: JSON.stringify({username, name, surname, about_me, email, password}),
-          credentials: 'include',
-        });
-    
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-    
-        const res = await response.json();
-
-        return res;    
-        
-      } catch (error) {
-        console.error('Ошибка при обновлении данных пользователя:', error);
-        throw error;
-      }
-    }
-
-    static async putUserAvatar(avatar, contentType) {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'profileAvatar');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для profileAvatar');
-        }
-
-        const response = await fetch(configItem.url, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': `image/${contentType}`,
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          body: avatar,
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        return res;
-
-      } catch (error) {
-        console.error('Ошибка при обновлении данных пользователя:', error);
-      }
-    }
-
-    static async getCsrfToken() {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'csrfToken');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для csrfToken');
-        }
-        
-        const response = await fetch(configItem.url, {
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        console.log(csrfToken);
-
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-      } catch (error) {
-        console.error('Ошибка при получении csrf токена', error);
-      }
-    }
-
-    static async getLike(id) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/like/isSet/${id}`;
-        const response = await fetch(configItem, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных о лайке');
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-      }
-    }
-
-    static async setLike(id) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/like/set/${id}`;
-        const response = await fetch(configItem, {
-          method: 'POST',
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных о лайке');
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-      }
-    }
-
-    static async deleteLike(id) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/like/${id}`;
-        const response = await fetch(configItem, {
-          method: 'DELETE',
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных о лайке');
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-      }
-    }
-
-    static async getPinInfo(pinID) {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'getPinInfo');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для getPinInfo');
-        }
-    
-        const pinInfoURL = `${configItem.url}/${pinID}`;
-    
-        const response = await fetch(pinInfoURL, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-    
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-    
-        const res = await response.json();
-    
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных о пине');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении данных о пине:', error);
-        throw error;
-      }
-    }
-
-    static async createPin(formData) {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'createPin');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для createPin');
-        }
-    
-        const response = await fetch(configItem.url, {
-          method: 'POST',
-          headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          body: formData,
-          credentials: 'include',
-        });
-    
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-    
-        const res = await response.json();
-        if (res.status === 'ok') {
-          return res;
-        }
-    
-        return false;
-      } catch (error) {
-        console.error('Ошибка при выполнении запроса:', error);
-        throw error;
-      }
-    }  
-
-    static async deletePin(pinID) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/delete/${pinID}`;
-        const response = await fetch(configItem, {
-          method: 'DELETE',
-          headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных об удалении пина');
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-      }
-    }
-
-    static async addBoardPins(board_id, pins) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/board/add/pins/${board_id}`;
-        const response = await fetch(configItem, {
-          method: 'POST',
-          headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          body: JSON.stringify({ pins }),
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных о доске');
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-      }
-    }
-
-    static async putPinInfo(pinID, title, description) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/pin/edit/${pinID}`;
-  
-        const response = await fetch(configItem, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          body: JSON.stringify({title,description}),
-          credentials: 'include',
-        });
-    
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-    
-        const res = await response.json();
-    
-        return res;
-    
-      } catch (error) {
-        console.error('Ошибка при обновлении данных пина:', error);
-        throw error;
-      }
-    }
-
-    static async createBoard(title, description) {
-      try {
-          const configItem = this.#config.find((item) => item.name === 'createBoard');
-          if (!configItem) {
-              throw new Error('Не найдена конфигурация для createBoard');
-          }
-  
-          const response = await fetch(configItem.url, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'X-CSRF-Token': this.state.getCsrfToken(),
-              },
-              body: JSON.stringify({ title, description, 'public': true, 'tags': [" "] }),
-              credentials: 'include',
-          });
-  
-          const csrfToken = response.headers.get('X-Set-CSRF-Token');
-          if (csrfToken) {
-              this.state.setCsrfToken(csrfToken);
-          }
-  
-          const res = await response.json();
-          if (res.status === 'ok' && res.body && res.body.new_board_id) {
-              return { status: 'ok', body: { new_board_id: res.body.new_board_id } };
-          } else {
-              throw new Error('Ошибка при получении данных из API');
-          }
-      } catch (error) {
-          console.error('Ошибка при выполнении запроса:', error);
-          throw error;
-      }
-    }  
-
-    static async getUserPins() {
-      try {
-        const userID = this.state.getUserID();
-
-        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}`;
+  static async Search(searchMode, searchInput) {
+    try {
+        const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
 
         const response = await fetch(configItem, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': this.state.getCsrfToken(),
+            },
+            credentials: 'include',
         });
 
         const csrfToken = response.headers.get('X-Set-CSRF-Token');
         if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
+            this.state.setCsrfToken(csrfToken);
         }
 
         const res = await response.json();
 
         if (res.status === 'ok') {
-          return res.body;
+            return res.body;
         } else {
-          throw new Error('Ошибка при получении данных из API');
+            throw new Error('Ошибка при получении данных из API');
         }
-      } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
-      }
+    } catch (error) {
+        console.error('Ошибка при получении данных поиска:', error);
     }
-
-    static async getLikedPins() {
-      try {
-        const userID = this.state.getUserID();
-
-        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}&liked=true`;
-
-        const response = await fetch(configItem, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных из API');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
-      }
-    }
-
-    static async getUserBoards() {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
-
-        const response = await fetch(configItem, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных из API');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
-      }
-    }
-
-    static async getBoardInfo(boardID) {
-      try {
-        const configItem = this.#config.find((item) => item.name === 'getBoardInfo');
-        if (!configItem) {
-          throw new Error('Не найдена конфигурация для getBoardInfo');
-        }
-    
-        const boardInfoURL = `${configItem.url}/${boardID}`;
-    
-        const response = await fetch(boardInfoURL, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-    
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-    
-        const res = await response.json();
-    
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных о доске');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении данных о доске:', error);
-        throw error;
-      }
-    }
-    
-    static async deleteBoard(boardID) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/board/delete/${boardID}`;
-        const response = await fetch(configItem, {
-          method: 'DELETE',
-          headers: {
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {          
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных об удалении доски');
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-      }
-    }
-
-    static async getBoardPins(boardID) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&boardID=${boardID}`;
-
-        const response = await fetch(configItem, {
-          headers: {
-            'X-CSRF-Token': this.state.getCsrfToken(),
-          },
-          credentials: 'include',
-        });
-
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-
-        const res = await response.json();
-
-        if (res.status === 'ok') {
-          return res.body;
-        } else {
-          throw new Error('Ошибка при получении данных из API');
-        }
-      } catch (error) {
-        console.error('Ошибка при получении пинов:', error);
-      }
-    }
-
-    static async putBoardInfo(boardID, title, description, pins) {
-      try {
-        const configItem = `//pinspire.online:8080/api/v1/board/update/${boardID}`;
-  
-        const response = await fetch(configItem, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-csrf-token': this.state.getCsrfToken(),
-          },
-          body: JSON.stringify({ title, description, pins, 'public': false }),
-          credentials: 'include',
-        });
-    
-        const csrfToken = response.headers.get('X-Set-CSRF-Token');
-        if (csrfToken) {
-          this.state.setCsrfToken(csrfToken);
-        }
-    
-        const res = await response.json();
-    
-        return res;
-    
-      } catch (error) {
-          console.error('Ошибка при обновлении данных пина:', error);
-        throw error;
-      }
-    }
-
-    static async Search(searchMode, searchInput) {
-        try {
-            const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
-    
-            const response = await fetch(configItem, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': this.state.getCsrfToken(),
-                },
-                credentials: 'include',
-            });
-    
-            const csrfToken = response.headers.get('X-Set-CSRF-Token');
-            if (csrfToken) {
-                this.state.setCsrfToken(csrfToken);
-            }
-    
-            const res = await response.json();
-    
-            if (res.status === 'ok') {
-                return res.body;
-            } else {
-                throw new Error('Ошибка при получении данных из API');
-            }
-        } catch (error) {
-            console.error('Ошибка при получении данных поиска:', error);
-        }
-    }
+  }
 }
