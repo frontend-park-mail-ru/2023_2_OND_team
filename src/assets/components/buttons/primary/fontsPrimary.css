@@ -1,8 +1,34 @@
-.text-base1-small {
+/*REGULAR FONTS*/
+
+.text-h1-regular {
     font-family: Nunito;
-    font-size: 20px;
+    font-size: 60px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.text-h2-regular {
+    font-family: Nunito;
+    font-size: 48.83px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.text-h3-regular {
+    font-family: Nunito;
+    font-size: 39.06px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.text-h4-regular {
+    font-family: Nunito;
+    font-size: 31.25px;
+    font-style: normal;
+    font-weight: 300;
     line-height: normal;
 }
 
@@ -13,7 +39,57 @@
     font-weight: 400;
     line-height: normal;
 }
-  
+
+.text-base2-regular {
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.text-base3-regular {
+    font-family: Nunito;
+    font-size: 12.8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/*MEDIUM FONTS*/
+
+.text-h1-medium {
+    font-family: Nunito;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.text-h2-medium {
+    font-family: Nunito;
+    font-size: 48.8px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.text-h3-medium {
+    font-family: Nunito;
+    font-size: 39.06px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.text-h4-medium {
+    font-family: Nunito;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
 .text-base1-medium {
     font-family: Nunito;
     font-size: 25px;
@@ -30,10 +106,77 @@
     line-height: normal;
 }
 
-.text-h4-medium {
+.text-base3-medium {
     font-family: Nunito;
-    font-size: 32px;
+    font-size: 12.8px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/*BOLD FONTS*/
+.text-h1-bold {
+    font-family: Nunito;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.text-h2-bold {
+    font-family: Nunito;
+    font-size: 48.83px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.text-h3-bold {
+    font-family: Nunito;
+    font-size: 39px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.text-h4-bold {
+    font-family: Nunito;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.text-base1-bold {
+    font-family: Nunito;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.text-base2-bold {
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.text-base3-bold {
+    font-family: Nunito;
+    font-size: 12.8px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/*SMALL FONT*/
+
+.text-base1-small {
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
     line-height: normal;
 }

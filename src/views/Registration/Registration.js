@@ -1,9 +1,9 @@
-import { renderAuthPage } from '../Authorization/Authorization.js';
-import { renderFeedPage } from '../Feed/Feed.js';
-import { emailValid, passwordValid, nameValid, repeatPasswordValid } from '../../components/Validation/valid.js';
-import { API } from '../../utils/api.js';
-import { renderHeaderGuest } from '../HeaderGuest/HeaderGuest.js';
-import { Router } from '../../components/Router/router.js';
+import {renderAuthPage} from '../Authorization/Authorization.js';
+import {renderFeedPage} from '../Feed/Feed.js';
+import {emailValid, passwordValid, nameValid, repeatPasswordValid} from '../../components/Validation/valid.js';
+import {API} from '../../utils/api.js';
+import {renderHeaderGuest} from '../HeaderGuest/HeaderGuest.js';
+import {Router} from '../../components/Router/router.js';
 
 /**
  * Рендерит страницу регистрации.
@@ -115,14 +115,14 @@ export function renderRegPage() {
           .then((status) => {
             if (status) {
               API.checkLogin()
-                .then(() => {
-                  header.innerHTML = '';
-                  registration.innerHTML = '';
-                  router.navigate('/');
-                })
-                .catch((error) => {
-                  console.error(error);
-                })
+                  .then(() => {
+                    header.innerHTML = '';
+                    registration.innerHTML = '';
+                    router.navigate('/');
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               emailInput.style.borderColor = 'var(--error-50, #F4210B)';
