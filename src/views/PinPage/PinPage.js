@@ -28,6 +28,7 @@ export function renderPinPage(pinID) {
 
             const likeButton = document.querySelector('.pin-like-icon');
             const likeField = document.querySelector('.pin-like-counter');
+            const userName = document.querySelector('.pin-username');
 
             API.getLike(pinID)
                 .then((data) => {
@@ -67,6 +68,10 @@ export function renderPinPage(pinID) {
                     .catch((error) => {
                         console.error(error);
                     })
+            })
+
+            userName?.addEventListener('click', () => {
+                console.log(pinInfo.author.id);
             })
 
             const usernameReal = state.getUsername();
