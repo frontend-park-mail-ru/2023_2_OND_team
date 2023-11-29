@@ -27,7 +27,7 @@ export class MessengerChatsMenu {
 
   defineMessengerChatsMenu(chats) {
     this.renderChatsMenu(chats);
-    this.defineChatsMenuItems();
+    // this.defineChatsMenuItems();
     this.defineSearchField();
   }
 
@@ -45,9 +45,28 @@ export class MessengerChatsMenu {
     });
 
     this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
+
+    this.defineChatsMenuItems();
+  }
+
+  renderChatMenuWithUser(user) {
+    const chatTemplate = Handlebars.templates['chatsMenuItem.hbs'];
+
+    const chatContext = {
+      id: user.id,
+      username: user.username,
+      avatar: user.avatar,
+    }
+
+    this.#chatsMenuList.insertAdjacentHTML('beforeend', chatTemplate(chatContext));
+    
+    this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
   }
   
   defineChatsMenuItems() {   
+    const chatDiv = document.querySelector('.messenger__chat');
+    const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
+
     this.#chatsMenuItems?.forEach((chatMenu) => {
       this.#definedChats.push(chatMenu);
 
@@ -74,11 +93,34 @@ export class MessengerChatsMenu {
           .then((res) => {
             this.#messengerChat.setChatWithUserID(this.#activeChatId);
             if(res.status === "ok") {
+              chatNoContentDiv.classList.add('hide');
+              chatDiv.classList.remove('hide');
               this.#messengerChat.defineChat(res.body);
             }
           })
       });
     });
+  }
+
+  openChatWithUser(userID) {
+    const chatDiv = document.querySelector('.messenger__chat');
+    const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
+    const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`)
+    
+    nestedChatMenu.classList.add('messenger__chat-menu__chat-item-active');
+
+    this.#activeChatMenu = nestedChatMenu;
+    this.#activeChatId = userID;
+
+    this.#messengerApi.getChatWithUser(this.#activeChatId)
+      .then((res) => {
+        this.#messengerChat.setChatWithUserID(this.#activeChatId);
+        if(res.status === "ok") {
+          chatNoContentDiv.classList.add('hide');
+          chatDiv.classList.remove('hide');
+          this.#messengerChat.defineChat(res.body);
+        }
+      })
   }
 
   defineSearchField() {

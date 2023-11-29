@@ -546,7 +546,7 @@ export class Router {
                     renderHeaderGuest();
                 }      
             }
-
+          
             renderPage404();
         };
 

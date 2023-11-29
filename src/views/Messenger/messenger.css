@@ -4,8 +4,8 @@
 
 .messenger {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    height: 100vh;
+    grid-template-columns: 1fr 5fr;
+    height: 85vh;
 }
 
 .messenger__chat-menu {
@@ -100,8 +100,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: 75vh;
-    width: 75vw;
+    height: 78vh;
+    width: 68vw;
     gap: 10px;
     padding: 10px;
 }
@@ -198,7 +198,7 @@
     display: inline-flex;
     height: 40px;
     width: 80%;
-    margin-left: 2%;
+    margin-left: 5%;
     flex-shrink: 0;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
@@ -212,10 +212,6 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
-
-
-
-
 .messenger__chat__footer__send_message-img {
     width: 25px;
     height: 25px;
@@ -223,6 +219,18 @@
 }
 
 
+.messenger__chat-non-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.messenger__chat__choose_chat-img {
+    height: 200px;
+    width: 250px;
+}
 
 .hide {
     display: none;
