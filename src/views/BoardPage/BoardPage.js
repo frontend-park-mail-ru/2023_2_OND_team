@@ -37,9 +37,6 @@ export async function renderBoardPage(boardID) {
         const deleteButton = document.querySelector('.js-delete__btn');
         const updateButton = document.querySelector('.js-edit__btn');
 
-        updateButton.classList.add('hide');
-        deleteButton.classList.add('hide');
-
         updateButton?.addEventListener('click', () => {
             updateButton.classList.add('hide');
             pinControl.classList.remove('hide');
@@ -106,13 +103,6 @@ export async function renderBoardPage(boardID) {
     } catch (error) {
         console.error('Ошибка при получении информации о доске:', error);
         router.navigate('/page404');
-    }
-
-    const usernameReal = state.getUsername();
-
-    if (usernameReal === putBoardInfo.author.username) {
-        updateButton.classList.remove('hide');
-        deleteButton.classList.remove('hide');
     }
 
     async function renderBoardPins() {
