@@ -1,6 +1,5 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
-import { MessengerChat } from './chat/Chat.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 import State from '../../components/State/state.js';
 import { WebSocketConnection } from '../../utils/Api/messenger/messengerWS.js';
@@ -9,9 +8,6 @@ import { API } from '../../utils/Api/api.js';
 export function renderMessengerPage(userID) {
   const state = new State();
   const messengerApi = new MessengerApi();
-
-  const rootElement = document.querySelector('#root');
-  rootElement.style.overflow = 'hidden';
 
   const main = document.querySelector('#main');
 

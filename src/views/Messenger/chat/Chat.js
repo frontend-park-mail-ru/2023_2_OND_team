@@ -166,7 +166,6 @@ export class MessengerChat {
         const companionMessageItemContext = { messageID, message };
 
         this.#chat.insertAdjacentHTML('beforeend', companionMessageItemTemplate(companionMessageItemContext));
-        console.log('render', messageID, message);
     }
 
     setChatWithUserID(userID) {
