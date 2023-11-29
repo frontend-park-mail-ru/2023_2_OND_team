@@ -24,7 +24,7 @@ export function renderMessengerPage() {
   messengerApi.getUserChats()
     .then((res) => {
       if (res.status === 'ok') {
-        if (!res.body) {
+        if (!res?.body?.chats) {
           const nonContent = document.querySelector('.messenger-non-content');
           nonContent.classList.remove('hide');
           renderNonContentNotification(nonContent, 'У вас пока нет чатов', 'На главную', '/');
