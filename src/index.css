@@ -1,5 +1,5 @@
 @import url(./assets/components/buttons/primary/btnPrimary.css);
-@import url(./assets/components/buttons/primary/fontsPrimary.scss);
+@import url(./assets/components/buttons/primary/fontsPrimary.css);
 @import url(./views/Authorization/form.css);
 @import url(./views/Feed/Feed.css);
 @import url(./views/Feed/Gallery.css);
