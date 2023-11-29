@@ -29,7 +29,6 @@
 
 .pin-username {
     cursor: pointer;
-    padding-right: 192px;
     display: block;
     max-width: 90%;
     margin-left: 20px;
@@ -228,4 +227,8 @@
     display: flex;
     align-items: center;
     padding-left: 20px;
+}
+
+.js-subscribe__btn {
+    padding-left: 193px;
 }
