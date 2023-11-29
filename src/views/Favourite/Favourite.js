@@ -1,4 +1,4 @@
-import {API} from '../../utils/api.js';
+import {API} from '../../utils/Api/api.js';
 import {definePins} from '../../utils/definePins/definePins.js';
 import {renderPins} from '../../components/RenderPins/renderPins.js';
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';

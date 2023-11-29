@@ -1,7 +1,7 @@
-import {API} from '../../utils/api.js';
-import {State} from '../../components/State/state.js';
-import {renderPins} from '../../components/RenderPins/renderPins.js';
-import {definePins} from '../../utils/definePins/definePins.js';
+import { API } from '../../utils/Api/api.js';
+import { State } from '../../components/State/state.js'
+import { renderPins } from '../../components/RenderPins/renderPins.js';
+import { definePins } from '../../utils/definePins/definePins.js';
 
 /**
 * Рендерит главную страницу с пинами.
