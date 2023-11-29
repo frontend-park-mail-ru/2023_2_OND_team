@@ -72,8 +72,8 @@ export function renderPinPage(pinID) {
 
             userName?.addEventListener('click', () => {
                 console.log(pinInfo.author.id);
-                //router.navigate(`/user/${pinInfo.author.id}`);
-                //renderUserPage(pinInfo.author.id);
+                router.navigate(`/user/${pinInfo.author.id}`);
+                renderUserPage(pinInfo.author.id);
             })
 
             const usernameReal = state.getUsername();
@@ -99,7 +99,7 @@ export function renderPinPage(pinID) {
                     boardID = event.target.value;
                 });
 
-                API.getUserBoards()
+                API.getMyBoards()
                 .then((res) => {
                   const optgroup = document.createElement('optgroup');
                   optgroup.label = 'Выберите доску';
