@@ -548,17 +548,17 @@ export class Router {
                 this.#currentRoute.handler({ boardID });
                 break;
             case (/^\/search\/pins\/[a-zA-Zа-яА-ЯёЁ0-9]+$/u).test(path):
-                const searchInput = path.split('/')[3];
+                const searchInput = decodeURIComponent(path.split('/')[3]);
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/pins/Input");
                 this.#currentRoute.handler({ searchInput });
                 break;   
             case (/^\/search\/boards\/[a-zA-Zа-яА-ЯёЁ0-9]+$/u).test(path):
-                const searchBoardInput = path.split('/')[3];
+                const searchBoardInput = decodeURIComponent(path.split('/')[3]);
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/boards/Input");
                 this.#currentRoute.handler({ searchBoardInput });
                 break;   
             case (/^\/search\/users\/[a-zA-Zа-яА-ЯёЁ0-9]+$/u).test(path):
-                const searchUsersInput = path.split('/')[3];
+                const searchUsersInput = decodeURIComponent(path.split('/')[3]);
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/users/Input");
                 this.#currentRoute.handler({ searchUsersInput });
                 break;

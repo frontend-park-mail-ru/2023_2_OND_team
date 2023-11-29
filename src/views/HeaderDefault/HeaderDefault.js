@@ -141,6 +141,24 @@ export function renderHeaderDefault() {
                 .catch((error) => {
                     console.error('Ошибка при выполнении поиска:', error);
                 });
+        } else if (searchMode == 'users' && searchInput) {
+            API.Search(searchMode, searchInput)
+                .then((res) => {
+                    console.log('Результат поиска:', res);
+                    router.navigate(`search/users/${searchInput}`);
+                    const searchResSection = document.getElementById('search-res');
+                    const searchNonContent = document.querySelector('.search-non-content');
+                    if (res && res.length > 0) {
+                        renderBoards(searchResSection, res);
+                        searchNonContent.classList.add('hide');
+                        defineBoards();
+                    } else {
+                        searchNonContent.classList.remove('hide');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Ошибка при выполнении поиска:', error);
+                });
         } else {
             console.log('Выберите режим и введите текст для поиска');
         }
