@@ -1,4 +1,3 @@
-import {API} from '../../utils/Api/api.js';
 import State from '../State/state.js';
 import {renderSidebar} from '../../views/Sidebar/Sidebar.js';
 import {renderHeaderDefault} from '../../views/HeaderDefault/HeaderDefault.js';
@@ -19,9 +18,10 @@ import {renderAddPins} from '../../views/AddPins/AddPins.js';
 import {renderSubscriptionsPage} from '../../views/Subscriptions/Subscriptions.js';
 import {setHeaderTitle, removeHeaderTitle} from '../../utils/HeaderTitleProcessing/headerTitleProcessing.js';
 import {setActiveSidebarItem} from '../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js';
-import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
+import {renderMessengerPage, renderChatPage} from '../../views/Messenger/Messenger.js';
 import {renderUserPage} from '../../views/UserPage/UserPage.js';
 import {renderSearchPage} from "../../views/SearchPage/Search.js"
+import { MessengerChatsMenu } from '../../views/Messenger/chatsMenu/ChatsMenu.js';
 
 function resetScroll() {
     window.scrollTo({
@@ -530,7 +530,13 @@ export class Router {
                 path: '/messenger/ID',
                 handler: (userID) => {
                   if (this.state.getIsAuthorized()) {
-                    this.state.setCurrentPage(`messenger${userID}`);
+                    if (this.state.getCurrentPage().startsWith('messenger')) {
+                        this.state.setCurrentPage(`messenger${userID}`);
+
+                        const messengerChatsMenu = new MessengerChatsMenu();
+                        messengerChatsMenu.openChatWithUser(userID);
+                    }
+
         
                     if (document.querySelector('#sidebar').innerHTML === '') {
                         renderSidebar();
@@ -544,7 +550,7 @@ export class Router {
         
                     setHeaderTitle('Мессенджер');
                     
-                    renderMessengerPage(userID);
+                    renderChatPage(userID);
                   } else {
                     this.navigate('/login');
                   }

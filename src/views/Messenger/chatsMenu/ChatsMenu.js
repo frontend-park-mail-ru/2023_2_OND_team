@@ -1,8 +1,12 @@
 import { MessengerApi } from "../../../utils/Api/messenger/messengerApi.js";
 import { MessengerChat } from "../chat/Chat.js";
+import { WebSocketConnection } from "../../../utils/Api/messenger/messengerWS.js";
+import State from "../../../components/State/state.js";
 import { Router } from "../../../components/Router/router.js";
 
 export class MessengerChatsMenu {
+  #ws;
+  #state;
   #router;
   #messengerChat;
   #messengerApi;
@@ -14,8 +18,16 @@ export class MessengerChatsMenu {
   #activeChatId;
 
   constructor() {
+    if (MessengerChatsMenu.instance) {
+      return MessengerChatsMenu.instance;
+    }
+
+    MessengerChatsMenu.instance = this;
+
+    this.#state = new State();
     this.#router = new Router();
     this.#messengerChat = new MessengerChat();
+    this.#ws = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
     this.#messengerApi = new MessengerApi();
     this.#definedChats = [];
     this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');
@@ -27,8 +39,46 @@ export class MessengerChatsMenu {
 
   defineMessengerChatsMenu(chats) {
     this.renderChatsMenu(chats);
-    // this.defineChatsMenuItems();
-    this.defineSearchField();
+    this.#defineSearchField();
+
+    this.#ws.setOnMessageMethod((event) => {
+      const jsonObject = JSON.parse(event.data);
+
+      if (jsonObject?.type === 'responce') {  //getting response from server
+          if (jsonObject?.status === 'ok' && jsonObject.message === 'publish success') {
+              if (jsonObject.body) {
+                  // markMessageAsReceived(jsonObject.requestID, jsonObject.body.id);  // сделать провеку в функции, есть ли сообщение на странице
+              } else {
+                  // markMessageAsUpdated(jsonObject.requestID);
+              }
+          } else {
+              console.log(jsonObject);
+          }
+      } else if (jsonObject?.type === 'event') {  // getting message
+          if (jsonObject.message.message?.from == this.#activeChatId) {  // message from opened chat
+              if (jsonObject.message.eventType === 'create') {
+                this.#messengerChat.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+                  // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+                  // this.#scrollToBottom();
+              } else if (jsonObject.message.eventType === 'update') {
+                  // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);  update message text
+              } else if (jsonObject.message.eventType === 'delete') {
+                  // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);  delete message
+              } else {
+                  console.log(jsonObject);
+              }
+          } else {  // message from other chat
+              if (jsonObject.message.eventType === 'create') {
+                  // raiseUpChatMenuItem(jsonObject.message.message.from)  поднять чат в списке чатов вверх
+                  // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+                  // this.scrollToBottom();
+              } else {
+                  console.log(jsonObject);
+              }
+          }
+      }
+
+  })
   }
 
   renderChatsMenu(chats) {
@@ -66,15 +116,13 @@ export class MessengerChatsMenu {
   }
   
   defineChatsMenuItems() {   
-    const chatDiv = document.querySelector('.messenger__chat');
-    const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
-
     this.#chatsMenuItems?.forEach((chatMenu) => {
       this.#definedChats.push(chatMenu);
 
+      const userID = chatMenuUserAvatar.getAttribute('data-section').split('-')[3];
+      
       const chatMenuUserAvatar = chatMenu.querySelector('.messenger__chat-menu__chat-avatar');
       chatMenuUserAvatar?.addEventListener('click', () => {
-        const userID = chatMenuUserAvatar.getAttribute('data-section').split('-')[3];
         this.#router.navigate(`/user/${userID}`);
       })
    
@@ -83,23 +131,9 @@ export class MessengerChatsMenu {
           return;
         }
 
-        if (this.#activeChatMenu) {
-          this.#activeChatMenu.classList.remove('messenger__chat-menu__chat-item-active');
-        }
-        
-        chatMenu.classList.add('messenger__chat-menu__chat-item-active');
-        this.#activeChatMenu = chatMenu;
+        this.#router.navigate(`/messenger/${userID}`);
 
-        this.#activeChatId = chatMenu.getAttribute('data-section').split(' ')[0].split('-')[2];
-        this.#messengerApi.getChatWithUser(this.#activeChatId)
-          .then((res) => {
-            this.#messengerChat.setChatWithUserID(this.#activeChatId);
-            if(res.status === "ok") {
-              chatNoContentDiv.classList.add('hide');
-              chatDiv.classList.remove('hide');
-              this.#messengerChat.defineChat(res.body);
-            }
-          })
+        // this.openChatWithUser(userID);
       });
     });
   }
@@ -107,7 +141,9 @@ export class MessengerChatsMenu {
   openChatWithUser(userID) {
     const chatDiv = document.querySelector('.messenger__chat');
     const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
-    const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`)
+    const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`);
+
+    this.#activeChatMenu?.classList.remove('messenger__chat-menu__chat-item-active');
     
     nestedChatMenu.classList.add('messenger__chat-menu__chat-item-active');
 
@@ -125,13 +161,13 @@ export class MessengerChatsMenu {
       })
   }
 
-  defineSearchField() {
+  #defineSearchField() {
     this.#searchField.addEventListener('input', () => {
-      this.searchChatMenu();
+      this.#searchChatMenu();
     });
   }
   
-  searchChatMenu() {
+  #searchChatMenu() {
     this.#definedChats?.forEach((chatMenu) => {
       chatMenu.classList.remove('hide');
       const name = chatMenu.getAttribute('data-section').split(' ')[1].split('-')[2];

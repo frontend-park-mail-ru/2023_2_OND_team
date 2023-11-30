@@ -36,15 +36,43 @@ export class MessengerChat {
         this.defineSendMessageBtn();
         this.scrollToBottom();
 
-        this.#ws.setOnMessageMethod((event) => {
-            const jsonObject = JSON.parse(event.data);
-            if (jsonObject.message.message.from == this.#chatWithUserId) {
-                if (jsonObject.message.eventType === 'create') {
-                    this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
-                    this.scrollToBottom();
-                }
-            }
-        })
+        // this.#ws.setOnMessageMethod((event) => {
+        //     const jsonObject = JSON.parse(event.data);
+
+        //     if (jsonObject?.type === 'responce') {  //getting response from server
+        //         if (jsonObject?.status === 'ok' && jsonObject.message === 'publish success') {
+        //             if (jsonObject.body) {
+        //                 // markMessageAsReceived(jsonObject.requestID, jsonObject.body.id);  // сделать провеку в функции, есть ли сообщение на странице
+        //             } else {
+        //                 // markMessageAsUpdated(jsonObject.requestID);
+        //             }
+        //         } else {
+        //             console.log(jsonObject);
+        //         }
+        //     } else if (jsonObject?.type === 'event') {  // getting message
+        //         if (jsonObject.message.message?.from == this.#chatWithUserId) {  // message from opened chat
+        //             if (jsonObject.message.eventType === 'create') {
+        //                 this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+        //                 this.scrollToBottom();
+        //             } else if (jsonObject.message.eventType === 'update') {
+        //                 // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);  update message text
+        //             } else if (jsonObject.message.eventType === 'delete') {
+        //                 // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);  delete message
+        //             } else {
+        //                 console.log(jsonObject);
+        //             }
+        //         } else {  // message from other chat
+        //             if (jsonObject.message.eventType === 'create') {
+        //                 // raiseUpChatMenuItem(jsonObject.message.message.from)  поднять чат в списке чатов вверх
+        //                 // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+        //                 // this.scrollToBottom();
+        //             } else {
+        //                 console.log(jsonObject);
+        //             }
+        //         }
+        //     }
+
+        // })
     }
 
     renderChatMessages(content) {
