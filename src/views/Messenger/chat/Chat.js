@@ -155,18 +155,24 @@ export class MessengerChat {
         }
 
         this.#ws.sendMessage(JSON.stringify(wsSendMessage));
-
-        this.defineSendedMessage(this.#state.requestID++);
+        
+        // this.defineSendedMessage(this.#state.requestID++);
+        this.#state.requestID++;
     }
 
-    defineSendedMessage(requestID) {
+    defineSendedMessage(requestID, messageID) {
         const sendedMessage = document.querySelector(`[data-section="request-id-${requestID}"]`);
+
+        if (!sendedMessage) {
+            return;
+        }
+
         this.#definedMessages.push(sendedMessage);
 
         const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
         messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_received_message.svg';
 
-        sendedMessage.setAttribute('data-message-id', -1); // установить id после получения ответа
+        sendedMessage.setAttribute('data-message-id', messageID); // установить id после получения ответа
 
         const messageButtons = sendedMessage.querySelector('.messenger__chat__message-item__buttons');
     
