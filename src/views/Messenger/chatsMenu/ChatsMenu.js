@@ -46,13 +46,19 @@ export class MessengerChatsMenu {
 
       if (jsonObject?.type === 'responce') {  //getting response from server
           if (jsonObject?.status === 'ok' && jsonObject.message === 'publish success') {
-              if (jsonObject.body) {
+            switch (jsonObject.body.eventType) {
+              case 'create':
                 this.#messengerChat.defineSendedMessage(jsonObject.requestID, jsonObject.body.id);
-              } else {
-                  // markMessageAsUpdated(jsonObject.requestID);
-                  // this.#messengerChat.setMessageDeleted()
-                  // this.#messengerChat.setMessageUpdated();
-              }
+                break;
+              case 'update':
+                this.#messengerChat.setMessageUpdated(jsonObject.requestID);
+                break;
+              case 'create':
+                this.#messengerChat.setMessageDeleted(jsonObject.requestID);
+                break;
+              default:
+                break;
+            }
           } else {
               console.log(jsonObject);
           }
