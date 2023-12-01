@@ -4,26 +4,26 @@ export class API {
   static state = new State();
 
   static #config = [
-    {name: 'loginUser', url: '//pinspire.online:8080/api/v1/auth/login'},
-    {name: 'logoutUser', url: '//pinspire.online:8080/api/v1/auth/logout'},
-    {name: 'registerUser', url: '//pinspire.online:8080/api/v1/auth/signup'},
-    {name: 'profileAvatar', url: '//pinspire.online:8080/api/v1/profile/avatar'},
-    {name: 'profileInfo', url: '//pinspire.online:8080/api/v1/profile/info'},
-    {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
-    {name: 'profileEdit', url: '//pinspire.online:8080/api/v1/profile/edit'},
-    {name: 'csrfToken', url: '//pinspire.online:8080/api/v1/csrf'},
-    {name: 'getPinInfo', url: '//pinspire.online:8080/api/v1/pin'},
-    {name: 'createPin', url: '//pinspire.online:8080/api/v1/pin/create'},
-    {name: 'deletePin', url: '//pinspire.online:8080/api/v1/pin/delete'},
-    {name: 'addPins', url: '//pinspire.online:8080/api/v1/board/add/pins'},
-    {name: 'getUserPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
-    {name: 'pinEdit', url: '//pinspire.online:8080/api/v1/pin/edit'},
-    {name: 'createBoard', url: '//pinspire.online:8080/api/v1/board/create'},
-    {name: 'getBoardInfo', url: '//pinspire.online:8080/api/v1/board/get'},
-    {name: 'deleteBoard', url: '//pinspire.online:8080/api/v1/board/delete'},
-    {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
-    {name: 'boardUpdate', url: '//pinspire.online:8080/api/v1/board/update'},
-    {name: 'Search', url: '//pinspire.online:8084/api/v1/search'},
+    {name: 'loginUser', url: `//${this.state.getDomain()}:8080/api/v1/auth/login`},
+    {name: 'logoutUser', url: `//${this.state.getDomain()}/api/v1/auth/logout`},
+    {name: 'registerUser', url: `//${this.state.getDomain()}:8080/api/v1/auth/signup`},
+    {name: 'profileAvatar', url: `//${this.state.getDomain()}:8080/api/v1/profile/avatar`},
+    {name: 'profileInfo', url: `//${this.state.getDomain()}:8080/api/v1/profile/info`},
+    {name: 'profileEdit', url: `//${this.state.getDomain()}:8080/api/v1/profile/edit`},
+    {name: 'profileEdit', url: `//${this.state.getDomain()}:8080/api/v1/profile/edit`},
+    {name: 'csrfToken', url: `//${this.state.getDomain()}:8080/api/v1/csrf`},
+    {name: 'getPinInfo', url: `//${this.state.getDomain()}:8080/api/v1/pin`},
+    {name: 'createPin', url: `//${this.state.getDomain()}:8080/api/v1/pin/create`},
+    {name: 'deletePin', url: `//${this.state.getDomain()}:8080/api/v1/pin/delete`},
+    {name: 'addPins', url: `//${this.state.getDomain()}:8080/api/v1/board/add/pins`},
+    {name: 'getUserPins', url: `//${this.state.getDomain()}:8080/api/v1/feed/pin/personal?count=1000`},
+    {name: 'pinEdit', url: `//${this.state.getDomain()}:8080/api/v1/pin/edit`},
+    {name: 'createBoard', url: `//${this.state.getDomain()}:8080/api/v1/board/create`},
+    {name: 'getBoardInfo', url: `//${this.state.getDomain()}:8080/api/v1/board/get`},
+    {name: 'deleteBoard', url: `//${this.state.getDomain()}:8080/api/v1/board/delete`},
+    {name: 'getBoardPins', url: `//${this.state.getDomain()}:8080/api/v1/feed/pin/personal?count=1000`},
+    {name: 'boardUpdate', url: `//${this.state.getDomain()}:8080/api/v1/board/update`},
+    {name: 'Search', url: `//${this.state.getDomain()}:8084/api/v1/search`},
   ];
 
   static async loginUser(username, password) {
@@ -198,9 +198,9 @@ export class API {
     try {
       let configItem;
       if (maxID === -Infinity && minID === Infinity) {
-        configItem = `//pinspire.online:8080/api/v1/feed/pin?count=${num}`;
+        configItem = `//${this.state.getDomain()}:8080/api/v1/feed/pin?count=${num}`;
       } else {
-        configItem = `//pinspire.online:8080/api/v1/feed/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
+        configItem = `//${this.state.getDomain()}:8080/api/v1/feed/pin?count=${num}&maxID=${maxID}&minID=${minID}`;
       }
       const response = await fetch(configItem, {
         headers: {
@@ -342,7 +342,7 @@ export class API {
 
   static async getLike(id) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/pin/like/isSet/${id}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/pin/like/isSet/${id}`;
       const response = await fetch(configItem, {
         headers: {
           'X-CSRF-Token': this.state.getCsrfToken(),
@@ -369,7 +369,7 @@ export class API {
 
   static async setLike(id) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/pin/like/set/${id}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/pin/like/set/${id}`;
       const response = await fetch(configItem, {
         method: 'POST',
         headers: {
@@ -397,7 +397,7 @@ export class API {
 
   static async deleteLike(id) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/pin/like/${id}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/pin/like/${id}`;
       const response = await fetch(configItem, {
         method: 'DELETE',
         headers: {
@@ -492,7 +492,7 @@ export class API {
 
   static async deletePin(pinID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/pin/delete/${pinID}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/pin/delete/${pinID}`;
       const response = await fetch(configItem, {
         method: 'DELETE',
         headers: {
@@ -520,7 +520,7 @@ export class API {
 
   static async addBoardPins(board_id, pins) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/board/add/pins/${board_id}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/board/add/pins/${board_id}`;
       const response = await fetch(configItem, {
         method: 'POST',
         headers: {
@@ -549,7 +549,7 @@ export class API {
 
   static async putPinInfo(pinID, title, description) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/pin/edit/${pinID}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/pin/edit/${pinID}`;
 
       const response = await fetch(configItem, {
         method: 'PUT',
@@ -611,7 +611,7 @@ export class API {
 
   static async getMyPins() {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${this.state.getUserID()}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/feed/pin?count=1000&userID=${this.state.getUserID()}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -639,7 +639,7 @@ export class API {
 
   static async getMyBoards() {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/board/get/user/${this.state.getUsername()}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/board/get/user/${this.state.getUsername()}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -667,7 +667,7 @@ export class API {
 
   static async getUserPins(userID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/feed/pin?count=1000&userID=${userID}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -697,7 +697,7 @@ export class API {
     try {
       const userID = this.state.getUserID();
 
-      const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&userID=${userID}&liked=true`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/feed/pin?count=1000&userID=${userID}&liked=true`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -725,7 +725,7 @@ export class API {
 
   static async getUserBoards(username) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/board/get/user/${username}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/board/get/user/${username}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -787,7 +787,7 @@ export class API {
 
   static async deleteBoard(boardID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/board/delete/${boardID}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/board/delete/${boardID}`;
       const response = await fetch(configItem, {
         method: 'DELETE',
         headers: {
@@ -815,7 +815,7 @@ export class API {
 
   static async getBoardPins(boardID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/feed/pin?count=1000&boardID=${boardID}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/feed/pin?count=1000&boardID=${boardID}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -843,7 +843,7 @@ export class API {
 
   static async putBoardInfo(boardID, title, description, pins) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/board/update/${boardID}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/board/update/${boardID}`;
 
       const response = await fetch(configItem, {
         method: 'PUT',
@@ -871,7 +871,7 @@ export class API {
 
   static async getUserSubscriptions() {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/subscription/user/get?&view=subscriptions`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/subscription/user/get?&view=subscriptions`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -899,7 +899,7 @@ export class API {
 
   static async getSomeUserInfo(userID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/user/info/${userID}`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/user/info/${userID}`;
 
       const response = await fetch(configItem, {
         headers: {
@@ -927,7 +927,7 @@ export class API {
 
   static async subscribeToUser(userID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/subscription/user/create`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/subscription/user/create`;
 
       const response = await fetch(configItem, {
         method: 'POST',
@@ -958,7 +958,7 @@ export class API {
 
   static async unsubscribeFromUser(userID) {
     try {
-      const configItem = `//pinspire.online:8080/api/v1/subscription/user/delete`;
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/subscription/user/delete`;
 
       const response = await fetch(configItem, {
         method: 'DELETE',
@@ -989,7 +989,7 @@ export class API {
 
   static async Search(searchMode, searchInput) {
     try {
-        const configItem = `//pinspire.online:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
+        const configItem = `//${this.state.getDomain()}:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
 
         const response = await fetch(configItem, {
             method: 'GET',

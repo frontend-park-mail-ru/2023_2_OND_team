@@ -1,4 +1,5 @@
 export class State {
+  #domain
   #csrfToken;
   #currentPage;
   #isAuthorized;
@@ -13,6 +14,7 @@ export class State {
       return State.instance;
     }
 
+    this.#domain = 'pinspire.online';
     State.instance = this;
     this.#csrfToken = null;
     this.#currentPage = null;
@@ -22,6 +24,10 @@ export class State {
     this.#userID = null;
     this.#visiblePins = [];
     this.requestID = 1;
+  }
+
+  getDomain() {
+    return this.#domain;
   }
 
   setCsrfToken(token) {

@@ -13,7 +13,7 @@ export class MessengerChat {
 
     constructor(chatWithUserId) {
         this.#state = new State();
-        this.#ws = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
+        this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain}:8080/websocket/connect/chat?${this.#state.getUserID()}`);
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
@@ -139,7 +139,7 @@ export class MessengerChat {
         messageToUpdate.setAttribute('data-section', `request-id-${this.#state.requestID}`); // обновить id
 
         const messageIndicator = messageToUpdate.querySelector('.messenger__chat__message-item-my__indicator-img');
-        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_send_message.svg';
+        messageIndicator.src = '/assets/icons/forMessenger/icon_send_message.svg';
 
         const wsUpdateMessage = {
             "requestID": this.#state.requestID,
@@ -165,7 +165,7 @@ export class MessengerChat {
         const updatedMessage = document.querySelector(`[data-section="request-id-${requestID}"]`);
 
         const messageIndicator = updatedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
-        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_received_message.svg';
+        messageIndicator.src = '/assets/icons/forMessenger/icon_received_message.svg';
     }
 
     deleteMessage(messageID) {
@@ -174,7 +174,7 @@ export class MessengerChat {
         messageToDelete.setAttribute('data-section', `request-id-${this.#state.requestID}`); // обновить id
 
         const messageIndicator = messageToDelete.querySelector('.messenger__chat__message-item-my__indicator-img');
-        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_send_message.svg';
+        messageIndicator.src = '/assets/icons/forMessenger/icon_send_message.svg';
 
         const wsDeleteMessage = {
             "requestID": this.#state.requestID,
@@ -263,7 +263,7 @@ export class MessengerChat {
         this.#definedMessages.push(sendedMessage);
 
         const messageIndicator = sendedMessage.querySelector('.messenger__chat__message-item-my__indicator-img');
-        messageIndicator.src = 'https://pinspire.online:8081/assets/icons/forMessenger/icon_received_message.svg';
+        messageIndicator.src = '/assets/icons/forMessenger/icon_received_message.svg';
 
         sendedMessage.setAttribute('data-message-id', messageID); // установить id после получения ответа
 

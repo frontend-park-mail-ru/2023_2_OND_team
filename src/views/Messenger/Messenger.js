@@ -16,7 +16,7 @@ export function renderMessengerPage() {
 
   main.innerHTML = messengerTemplate(messengerContext);
 
-  const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
+  const WS = new WebSocketConnection(`wss://${state.getDomain}:8080/websocket/connect/chat?${state.getUserID()}`);
 
   messengerApi.getUserChats()
     .then((res) => {
@@ -49,7 +49,7 @@ export function renderChatPage(userID) {
 
   main.innerHTML = messengerTemplate(messengerContext);
 
-  const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
+  const WS = new WebSocketConnection(`wss://${state.getDomain}:8080/websocket/connect/chat?${state.getUserID()}`);
 
   messengerApi.getUserChats()
     .then((res) => {

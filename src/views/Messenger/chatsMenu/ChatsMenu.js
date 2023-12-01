@@ -27,7 +27,7 @@ export class MessengerChatsMenu {
     this.#state = new State();
     this.#router = new Router();
     this.#messengerChat = new MessengerChat();
-    this.#ws = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${this.#state.getUserID()}`);
+    this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain}:8080/websocket/connect/chat?${this.#state.getUserID()}`);
     this.#messengerApi = new MessengerApi();
     this.#definedChats = [];
     this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');
