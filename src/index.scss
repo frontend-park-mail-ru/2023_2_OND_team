@@ -1,0 +1,34 @@
+@import url(./assets/components/buttons/primary/btnPrimary.scss);
+@import url(./assets/components/buttons/primary/fontsPrimary.scss);
+@import url(./views/Authorization/form.scss);
+@import url(./views/Feed/Feed.scss);
+@import url(./views/Feed/Gallery.scss);
+@import url(./views/HeaderDefault/headerDefault.scss);
+@import url(./views/HeaderGuest/headerGuest.scss);
+@import url(./views/Sidebar/sidebar.scss);
+@import url(./views/ProfileUser/profileUser.scss);
+@import url(./views/ProfileData/profileData.scss);
+@import url(./views/ProfileSecurity/profileSecurity.scss);
+@import url(./views/Intro/intro.scss);
+@import url(./views/CreatePin/createPin.scss);
+@import url(./views/PinPage/pinPage.scss);
+@import url(./views/CreateBoard/createBoard.scss);
+@import url(./views/UserBoards/userBoards.scss);
+@import url(./views/Favourite/favourite.scss);
+@import url(./views/Page404/page404.scss);
+@import url(./views/AddPins/addPins.scss);
+@import url(./views/BoardPage/boardPage.scss);
+@import url(./views/NonContentNotification/nonContentNotification.scss);
+@import url(./views/Subscriptions/subscriptions.scss);
+@import url(./views/Messenger/messenger.scss);
+@import url(./views/UserPage/userPage.scss);
+
+
+html, body {
+  --bg50: #808080;
+  --bg-90: #E6E6E6;
+  --primary-30: #226B77;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
