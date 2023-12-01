@@ -50,6 +50,8 @@ export class MessengerChatsMenu {
                 this.#messengerChat.defineSendedMessage(jsonObject.requestID, jsonObject.body.id);
               } else {
                   // markMessageAsUpdated(jsonObject.requestID);
+                  // this.#messengerChat.setMessageDeleted()
+                  // this.#messengerChat.setMessageUpdated();
               }
           } else {
               console.log(jsonObject);
