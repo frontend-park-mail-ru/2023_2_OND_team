@@ -6,9 +6,9 @@
  * @param {HTMLElement} pageElement - Элемент основной части страницы.
  * @throws {Error} Если произошла ошибка при отображении основной страницы.
  */
+import './index.scss';
 import { API } from './utils/Api/api.js';
 import { Router } from "./components/Router/router.js";
-import './index.scss';
 
 const router = new Router();
 
