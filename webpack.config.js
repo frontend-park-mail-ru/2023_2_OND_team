@@ -8,6 +8,7 @@ module.exports = {
   mode: 'development',
   entry: {
     main: './index.js',
+    styles: './index.scss',
   },
   output: {
     filename: 'bundle.[contenthash].js',
