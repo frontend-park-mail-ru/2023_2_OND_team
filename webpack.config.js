@@ -13,7 +13,7 @@ module.exports = {
   output: {
     filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/static/',
+    publicPath: '/',
   },
   devServer: {
     port: 1445,
@@ -41,6 +41,13 @@ module.exports = {
             presets: ['@babel/preset-env'],
           },
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ]
       },
       {
         test: /\.(sa|sc|c)ss$/,
