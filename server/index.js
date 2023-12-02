@@ -20,14 +20,14 @@ const http = require('http');
 * @property {string} cert - Путь к сертификату сервера.
 */
 
-//const httpsOptions = {
-  //key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
-  //cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
-//};
+const httpsOptions = {
+  key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
+  cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
+};
 
-//https.createServer(httpsOptions, app).listen(1445);
+https.createServer(httpsOptions, app).listen(1445);
 
-http.createServer(app).listen(1445);
+//http.createServer(app).listen(1445);
 
 app.use(express.static(path.resolve(__dirname, '..', 'src')));
 app.use(express.json());
