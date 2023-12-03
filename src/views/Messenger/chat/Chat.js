@@ -120,14 +120,12 @@ export class MessengerChat {
 
     editMessage(messageID) {
         const messageToUpdate = document.querySelector(`[data-message-id="${messageID}"]`);
-        const messageText = messageToUpdate.querySelector('.messenger__chat__message-item__text').value;
+        const messageText = messageToUpdate.querySelector('.messenger__chat__message-item__text').innerHTML;
 
         this.#messageFieldInput.value = messageText;
         
         this.#messageMode.mode = 'update';
         this.#messageMode.messageID = messageID;
-
-        console.log('edit');
     }
 
     updateMessage(messageText, messageID) {
