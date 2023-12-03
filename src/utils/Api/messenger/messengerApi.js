@@ -1,5 +1,4 @@
 import State from "../../../components/State/state.js";
-import { getUserChatsMocked } from "./messengerMock.js";
 
 export class MessengerApi {
     #handlers;
@@ -42,8 +41,6 @@ export class MessengerApi {
             const res = await response.json();
             
             return res;
-
-            // return getUserChatsMocked;
         } catch (error) {
             console.error('messengerApi getUserChats error:', error);
         }
@@ -72,8 +69,6 @@ export class MessengerApi {
             const res = await response.json();
             
             return res;
-
-            // return getUserChatsMocked;
         } catch (error) {
             console.error('messengerApi getChatWithUser error:', error);
         }
