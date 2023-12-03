@@ -207,7 +207,7 @@ export class MessengerChat {
         this.#sendMessageBtn?.addEventListener('click', () => {
             const messageToSend = this.#messageFieldInput.value;
             if (messageToSend) {
-                switch (this.#messageMode) {
+                switch (this.#messageMode.mode) {
                     case 'send':
                         this.sendMessage(messageToSend);
                         break;
