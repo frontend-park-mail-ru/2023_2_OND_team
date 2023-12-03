@@ -535,6 +535,8 @@ export class Router {
 
                         const messengerChatsMenu = new MessengerChatsMenu();
                         messengerChatsMenu.openChatWithUser(userID);
+                        
+                        return;
                     }
 
         
