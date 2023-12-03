@@ -36,7 +36,7 @@ export class MessengerChatsMenu {
     this.#activeChatMenu = null;
     this.#activeChatId = null;
 
-    this.defineChatsMenuItems();
+    // this.defineChatsMenuItems();
   }
 
   defineMessengerChatsMenu(chats) {
