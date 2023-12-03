@@ -151,8 +151,7 @@ export class MessengerChat {
             "message": {
                 "eventType": "update",
                 "message": {
-                    "to": +this.#chatWithUserId,
-                    "content": messageText,
+                    "id": messageID,
                 }
             }
         }
@@ -186,7 +185,7 @@ export class MessengerChat {
             "message": {
                 "eventType": "delete",
                 "message": {
-                    "to": +this.#chatWithUserId,
+                    "id": messageID,
                 }
             }
         }
