@@ -128,7 +128,7 @@ export class MessengerChatsMenu {
       this.#definedChats.push(chatMenu);
 
       const chatMenuUserAvatar = chatMenu.querySelector('.messenger__chat-menu__chat-avatar');
-      
+
       const userID = chatMenuUserAvatar.getAttribute('data-section').split('-')[3];
       
       chatMenuUserAvatar?.addEventListener('click', () => {
@@ -141,8 +141,6 @@ export class MessengerChatsMenu {
         }
 
         this.#router.navigate(`/messenger/${userID}`);
-
-        // this.openChatWithUser(userID);
       });
     });
   }
@@ -151,6 +149,8 @@ export class MessengerChatsMenu {
     const chatDiv = document.querySelector('.messenger__chat');
     const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
     const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`);
+
+    console.log(nestedChatMenu)
 
     this.#activeChatMenu?.classList.remove('messenger__chat-menu__chat-item-active');
     
