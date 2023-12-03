@@ -150,8 +150,6 @@ export class MessengerChatsMenu {
     const chatNoContentDiv = document.querySelector('.messenger__chat-non-content');
     const nestedChatMenu = document.querySelector(`[data-section*="messenger__chat-menu__chat-${userID}"]`);
 
-    console.log(nestedChatMenu)
-
     this.#activeChatMenu?.classList.remove('messenger__chat-menu__chat-item-active');
     
     nestedChatMenu.classList.add('messenger__chat-menu__chat-item-active');
