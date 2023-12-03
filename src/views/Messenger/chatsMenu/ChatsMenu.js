@@ -127,9 +127,10 @@ export class MessengerChatsMenu {
     this.#chatsMenuItems?.forEach((chatMenu) => {
       this.#definedChats.push(chatMenu);
 
+      const chatMenuUserAvatar = chatMenu.querySelector('.messenger__chat-menu__chat-avatar');
+      
       const userID = chatMenuUserAvatar.getAttribute('data-section').split('-')[3];
       
-      const chatMenuUserAvatar = chatMenu.querySelector('.messenger__chat-menu__chat-avatar');
       chatMenuUserAvatar?.addEventListener('click', () => {
         this.#router.navigate(`/user/${userID}`);
       })
