@@ -556,6 +556,8 @@ export class Router {
         
                     setHeaderTitle('Мессенджер');
                     
+                    this.state.setCurrentPage(`messenger${userID}`);
+                    
                     renderChatPage(userID);
                   } else {
                     this.navigate('/login');
