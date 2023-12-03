@@ -62,7 +62,7 @@ export function renderChatPage(userID) {
         const messengerChatsMenu = new MessengerChatsMenu();
         messengerChatsMenu.defineMessengerChatsMenu(userChats);
 
-        const isOpen = false;
+        let isOpen = false;
 
         userChats?.forEach((chat) => {  // case user has chats
           console.log(chat)
