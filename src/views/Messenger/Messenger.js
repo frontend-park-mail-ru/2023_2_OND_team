@@ -56,11 +56,13 @@ export function renderChatPage(userID) {
       if (res.status === 'ok') {
         const userChats = res?.body?.chats;
 
+        console.log('user chats')
+
         const chatsMenuDiv = document.querySelector('.messenger');
         chatsMenuDiv.classList.remove('hide');
 
         const messengerChatsMenu = new MessengerChatsMenu();
-        messengerChatsMenu.defineMessengerChatsMenu(res?.body?.chats);
+        messengerChatsMenu.defineMessengerChatsMenu(userChats);
 
         userChats?.forEach((chat) => {  // case user has chats
           if (chat?.user?.id == userID) {

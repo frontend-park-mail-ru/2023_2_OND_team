@@ -91,6 +91,8 @@ export class MessengerChatsMenu {
 
   renderChatsMenu(chats) {
     const chatTemplate = Handlebars.templates['chatsMenuItem.hbs'];
+
+    console.log('chats')
   
     chats?.forEach((chat) => {
       const chatContext = {
