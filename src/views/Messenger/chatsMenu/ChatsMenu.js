@@ -33,7 +33,7 @@ export class MessengerChatsMenu {
     this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');
     this.#searchField = document.querySelector('.messenger__search__text-input');
     this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
-    this.#activeChatMenu = null;
+    this.#activeChatMenu = document.querySelector('.messenger__chat-menu__chat-item-active');
     this.#activeChatId = null;
 
     this.defineChatsMenuItems();
