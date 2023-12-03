@@ -30,13 +30,13 @@ export class MessengerChatsMenu {
     this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:8080/websocket/connect/chat?${this.#state.getUserID()}`);
     this.#messengerApi = new MessengerApi();
     this.#definedChats = [];
-    this.#chatsMenuList = document.querySelectorAll('.messenger__chat-menu__chat-list');
+    this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');
     this.#searchField = document.querySelector('.messenger__search__text-input');
-    this.#chatsMenuItems = null;
+    this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
     this.#activeChatMenu = null;
     this.#activeChatId = null;
 
-    // this.defineChatsMenuItems();
+    this.defineChatsMenuItems();
   }
 
   defineMessengerChatsMenu(chats) {
