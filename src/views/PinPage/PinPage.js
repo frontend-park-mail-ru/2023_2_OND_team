@@ -215,7 +215,9 @@ export function renderPinPage(pinID) {
         });
 
         function showDeleteConfirmationModal(pinID) {
-            const confirmModalHTML = confirmModalTemplate();
+            const confirmModalTemplate = Handlebars.templates['СonfPage.hbs'];
+            const confirmModalHTML = confirmModalTemplate({});
+            
             const main = document.querySelector('#main');
             main.innerHTML += confirmModalHTML;
             
