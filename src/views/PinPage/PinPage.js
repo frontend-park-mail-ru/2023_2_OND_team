@@ -9,6 +9,7 @@ export function renderPinPage(pinID) {
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
+    const confirmModalTemplate = Handlebars.templates['СonfPage.hbs'];
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -214,27 +215,25 @@ export function renderPinPage(pinID) {
         });
 
         function showDeleteConfirmationModal(pinID) {
-            const confirmModalTemplate = Handlebars.templates['СonfPage.hbs'];
             const confirmModalHTML = confirmModalTemplate();
-
             const main = document.querySelector('#main');
             main.innerHTML += confirmModalHTML;
-        
+            
             const deleteButton = document.querySelector('.js-delete__btn');
             const confirmModal = document.getElementById('confirmModal');
-        
+            
             deleteButton?.addEventListener('click', () => {
                 confirmModal.style.display = 'block';
-        
+            
                 const confirmYes = document.getElementById('confirmYes');
                 const confirmCancel = document.getElementById('confirmCancel');
-        
+            
                 confirmYes.addEventListener('click', () => {
                     API.deletePin(pinID);
                     confirmModal.style.display = 'none';
                     router.navigate('/');
                 });
-        
+            
                 confirmCancel.addEventListener('click', () => {
                     confirmModal.style.display = 'none';
                 });
