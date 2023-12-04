@@ -229,3 +229,35 @@
     align-items: center;
     padding-left: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+    .rectangle {
+        flex-direction: column;
+        height: auto;
+        margin: 20px auto 0;
+        border-radius: 10px;
+    }
+
+    .open__gallery__item img {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pin-like-btn {
+        position: static;
+        padding-left: 0;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .pin-username {
+        padding-right: 0;
+        margin-left: 0;
+    }
+
+}
