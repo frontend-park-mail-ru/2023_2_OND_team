@@ -1,5 +1,5 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
-import {API} from '../../utils/api.js';
+import {API} from '../../utils/Api/api.js';
 import {Router} from '../../components/Router/router.js';
 import {renderUserItems} from './SubscriptionsUserItem.js';
 
