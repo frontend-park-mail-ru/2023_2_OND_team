@@ -46,7 +46,7 @@ export class MessengerChatsMenu {
     this.#ws.setOnMessageMethod((event) => {
       const jsonObject = JSON.parse(event.data);
 
-      if (jsonObject?.type === 'responce') {  //getting response from server
+      if (jsonObject?.type === 'response') {  //getting response from server
           if (jsonObject?.status === 'ok' && jsonObject.message === 'publish success') {
             switch (jsonObject.body.eventType) {
               case 'create':
