@@ -5,7 +5,7 @@ export class API {
 
   static #config = [
     {name: 'loginUser', url: `//${this.state.getDomain()}:8080/api/v1/auth/login`},
-    {name: 'logoutUser', url: `//${this.state.getDomain()}/api/v1/auth/logout`},
+    {name: 'logoutUser', url: `//${this.state.getDomain()}:8080/api/v1/auth/logout`},
     {name: 'registerUser', url: `//${this.state.getDomain()}:8080/api/v1/auth/signup`},
     {name: 'profileAvatar', url: `//${this.state.getDomain()}:8080/api/v1/profile/avatar`},
     {name: 'profileInfo', url: `//${this.state.getDomain()}:8080/api/v1/profile/info`},
