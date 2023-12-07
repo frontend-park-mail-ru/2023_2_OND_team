@@ -65,7 +65,6 @@ export function renderChatPage(userID) {
         let isOpen = false;
 
         userChats?.forEach((chat) => {  // case user has chats
-          console.log(chat)
           if (chat?.user?.id == userID) {
             messengerChatsMenu.openChatWithUser(userID);
             isOpen = true;

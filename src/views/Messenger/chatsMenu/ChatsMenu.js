@@ -18,12 +18,6 @@ export class MessengerChatsMenu {
   #activeChatId;
 
   constructor() {
-    // if (MessengerChatsMenu.instance) {
-    //   return MessengerChatsMenu.instance;
-    // }
-
-    // MessengerChatsMenu.instance = this;
-
     this.#state = new State();
     this.#router = new Router();
     this.#messengerChat = new MessengerChat();
@@ -68,12 +62,10 @@ export class MessengerChatsMenu {
           if (jsonObject.message.message?.from == this.#activeChatId) {  // message from opened chat
               if (jsonObject.message.eventType === 'create') {
                 this.#messengerChat.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
-                  // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
-                  // this.#scrollToBottom();
               } else if (jsonObject.message.eventType === 'update') {
-                  // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);  update message text
-              } else if (jsonObject.message.eventType === 'delete') {
-                  // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);  delete message
+                this.#messengerChat.updateCompanionMessage(jsonObject?.message?.message?.ID, jsonObject?.message?.message?.content);
+              } else if (jsonObject.message.eventType === 'delete') {                
+                this.#messengerChat.deleteCompanionMessage(jsonObject?.message?.message?.ID);
               } else {
                   console.log(jsonObject);
               }
@@ -94,8 +86,6 @@ export class MessengerChatsMenu {
   renderChatsMenu(chats) {
     const chatTemplate = Handlebars.templates['chatsMenuItem.hbs'];
 
-    console.log('chats')
-  
     chats?.forEach((chat) => {
       const chatContext = {
         id: chat.user.id,

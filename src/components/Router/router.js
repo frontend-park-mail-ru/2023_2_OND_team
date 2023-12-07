@@ -530,7 +530,6 @@ export class Router {
                 path: '/messenger/ID',
                 handler: (userID) => {
                   if (this.state.getIsAuthorized()) {
-                    console.log(this.state.getCurrentPage())
                     if (this.state.getCurrentPage()?.startsWith('messenger')) {
 
                         console.log('messenger..')
