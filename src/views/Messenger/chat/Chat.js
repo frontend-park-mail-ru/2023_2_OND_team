@@ -132,7 +132,7 @@ export class MessengerChat {
         const messageToUpdate = document.querySelector(`[data-message-id="${messageID}"]`);
 
         const messageToUpdateText = messageToUpdate.querySelector('.messenger__chat__message-item__text');
-        messageToUpdateText.value = messageText;
+        messageToUpdateText.textContent = messageText;
 
         messageToUpdate.setAttribute('data-section', `request-id-${this.#state.requestID}`); // обновить id
 

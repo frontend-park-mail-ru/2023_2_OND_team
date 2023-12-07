@@ -55,7 +55,7 @@ export class MessengerChatsMenu {
               case 'update':
                 this.#messengerChat.setMessageUpdated(jsonObject.requestID);
                 break;
-              case 'create':
+              case 'delete':
                 this.#messengerChat.setMessageDeleted(jsonObject.requestID);
                 break;
               default:
