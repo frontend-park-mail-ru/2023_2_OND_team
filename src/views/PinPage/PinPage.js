@@ -9,7 +9,6 @@ export function renderPinPage(pinID) {
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
-    const confirmModalTemplate = Handlebars.templates['СonfPage.hbs'];
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -125,6 +124,16 @@ export function renderPinPage(pinID) {
             updateButton.classList.add('hide');
             deleteButton.classList.add('hide');
 
+            const showModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.add('show');
+            };
+
+            const hideModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.remove('show');
+            };
+
             saveButton?.addEventListener('click', () => {
                 console.log(boardID, [parseInt(pinID)]);
                 API.addBoardPins(boardID, [parseInt(pinID)]);
@@ -132,8 +141,27 @@ export function renderPinPage(pinID) {
 
             deleteButton?.addEventListener('click', () => {
                 //API.deletePin(pinID);
-                showDeleteConfirmationModal(pinID);
                 //router.navigate('/');
+                showModal();
+            });
+
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+            const cancelDeleteBtn = document.getElementById('cancelDelete');
+        
+            confirmDeleteBtn?.addEventListener('click', () => {
+                API.deletePin(pinID)
+                    .then(() => {
+                        hideModal();
+                        router.navigate('/');
+                    })
+                    .catch((error) => {
+                        console.error('Ошибка при удалении пина:', error);
+                        hideModal();
+                    });
+            });
+        
+            cancelDeleteBtn?.addEventListener('click', () => {
+                hideModal();
             });
 
             updateButton?.addEventListener('click', () => {
@@ -214,31 +242,4 @@ export function renderPinPage(pinID) {
             router.navigate('/page404');
         });
 
-        function showDeleteConfirmationModal(pinID) {
-            const confirmModalTemplate = Handlebars.templates['СonfPage.hbs'];
-            const confirmModalHTML = confirmModalTemplate({});
-            
-            const main = document.querySelector('#main');
-            main.innerHTML += confirmModalHTML;
-            
-            const deleteButton = document.querySelector('.js-delete__btn');
-            const confirmModal = document.getElementById('confirmModal');
-            
-            deleteButton?.addEventListener('click', () => {
-                confirmModal.style.display = 'block';
-            
-                const confirmYes = document.getElementById('confirmYes');
-                const confirmCancel = document.getElementById('confirmCancel');
-            
-                confirmYes.addEventListener('click', () => {
-                    API.deletePin(pinID);
-                    confirmModal.style.display = 'none';
-                    router.navigate('/');
-                });
-            
-                confirmCancel.addEventListener('click', () => {
-                    confirmModal.style.display = 'none';
-                });
-            });
-        }
 }
