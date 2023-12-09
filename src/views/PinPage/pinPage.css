@@ -29,7 +29,6 @@
 
 .pin-username {
     cursor: pointer;
-    padding-right: 192px;
     display: block;
     max-width: 90%;
     margin-left: 20px;
@@ -230,7 +229,7 @@
     padding-left: 20px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 968px) {
     .rectangle {
         flex-direction: column;
         height: auto;
@@ -250,14 +249,19 @@
 
     .pin-like-btn {
         position: static;
-        padding-left: 0;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     .pin-username {
-        padding-right: 0;
-        margin-left: 0;
+        cursor: pointer;
+        display: block;
+        max-width: 90%;
+        margin-left: 20px;
     }
 
+    .big-pin-edit-item {
+        width: 472px;
+        height: auto;
+    }
 }
