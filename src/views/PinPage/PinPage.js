@@ -140,8 +140,6 @@ export function renderPinPage(pinID) {
             });
 
             deleteButton?.addEventListener('click', () => {
-                //API.deletePin(pinID);
-                //router.navigate('/');
                 showModal();
             });
 
