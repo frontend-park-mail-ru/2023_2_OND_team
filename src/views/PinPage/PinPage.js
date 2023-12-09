@@ -99,7 +99,7 @@ export function renderPinPage(pinID) {
                     boardID = event.target.value;
                 });
 
-                API.getUserBoards()
+                API.getMyBoards()
                 .then((res) => {
                   const optgroup = document.createElement('optgroup');
                   optgroup.label = 'Выберите доску';
