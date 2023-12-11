@@ -2,7 +2,7 @@ import {API} from '../../utils/Api/api.js';
 import State from '../../components/State/state.js';
 import {Router} from '../../components/Router/router.js';
 import {renderPins} from '../../components/RenderPins/renderPins.js';
-//import { renderUserPage } from '../../views/UserPage/UserPage.js'
+import { renderUserPage } from '../../views/UserPage/UserPage.js'
 
 export function renderPinPage(pinID) {
     const router = new Router();
