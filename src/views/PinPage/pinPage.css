@@ -301,10 +301,26 @@
     background-color: #ff4f4f;
     color: white;
     border: none;
+    cursor: pointer;
 }
 
 #cancelDelete {
     background-color: #d3d3d3;
     color: black;
     border: none;
+    cursor: pointer;
+}
+
+#confirmDelete:hover {
+    background-color: #e30505;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#cancelDelete:hover {
+    background-color: #adadad;
+    color: black;
+    border: none;
+    cursor: pointer;
 }
