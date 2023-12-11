@@ -21,7 +21,7 @@ import {setHeaderTitle, removeHeaderTitle} from '../../utils/HeaderTitleProcessi
 import {setActiveSidebarItem} from '../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js';
 import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
 import {renderUserPage} from '../../views/UserPage/UserPage.js';
-import { renderSearchPage } from "../../views/SearchPage/Search.js"
+import {renderSearchPage} from "../../views/SearchPage/Search.js"
 
 function resetScroll() {
     window.scrollTo({
@@ -493,6 +493,63 @@ export class Router {
                     } 
                 },
             },
+            {
+                path: '/user/ID',
+                handler: (userID) => {
+                  if (this.state.getCurrentPage() === `user${userID}`) {
+                    return;
+                  }
+        
+                  if (this.state.getUserID() == userID) {
+                    this.navigate('/profile');
+                    return;
+                  }
+        
+        
+                  this.state.deleteAllPins();
+        
+                  this.state.setCurrentPage(`user${userID}`);
+        
+                  if (this.state.getIsAuthorized()) {
+                    if (document.querySelector('#sidebar').innerHTML === '') {
+                      renderSidebar();
+                    }
+                    if (document.querySelector('#header').innerHTML === '') {
+                      renderHeaderDefault();
+                    }
+                  } else {
+                    if (document.querySelector('#header').innerHTML === '') {
+                      renderHeaderGuest();
+                    }
+                  }
+        
+                  renderUserPage(userID);
+                },
+              },
+              {
+                path: '/messenger/ID',
+                handler: (userID) => {
+                  if (this.state.getIsAuthorized()) {
+                    this.state.setCurrentPage(`messenger${userID}`);
+        
+                    if (document.querySelector('#sidebar').innerHTML === '') {
+                        renderSidebar();
+                    }
+          
+                    setActiveSidebarItem('messenger');
+          
+                    if (document.querySelector('#header').innerHTML === '') {
+                        renderHeaderDefault();
+                    }
+        
+                    setHeaderTitle('Мессенджер');
+                    
+                    renderMessengerPage(userID);
+                  } else {
+                    this.navigate('/login');
+                  }
+                },
+              },
         ];
 
         this.#currentRoute = null;
@@ -513,7 +570,7 @@ export class Router {
                     renderHeaderGuest();
                 }      
             }
-
+          
             renderPage404();
         };
 
@@ -562,6 +619,14 @@ export class Router {
                 const searchUsersInput = decodeURIComponent(path.split('/')[3]);
                 this.#currentRoute = this.#routes.find((r) => r.path === "/search/users/Input");
                 this.#currentRoute.handler({ searchUsersInput });
+                break;
+            case (/^\/user\/\d+$/).test(path):
+                this.#currentRoute = this.#routes.find((r) => r.path === '/user/ID');
+                this.#currentRoute.handler(path.split('/')[2]);
+                break;
+            case (/^\/messenger\/\d+$/).test(path):
+                this.#currentRoute = this.#routes.find((r) => r.path === '/messenger/ID');
+                this.#currentRoute.handler(path.split('/')[2]);
                 break;
             default:
                 this.#currentRoute = null;
