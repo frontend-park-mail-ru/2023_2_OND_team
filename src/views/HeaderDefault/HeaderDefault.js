@@ -3,7 +3,8 @@ import {API} from '../../utils/Api/api.js';
 import {Router} from '../../components/Router/router.js';
 import { renderPins } from "../../components/RenderPins/renderPins.js";
 import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
-import { definePins } from "../../utils/definePins/definePins.js";
+import { definePins } from '../../utils/definePins/definePins.js';
+import { renderUserItems } from '../Subscriptions/SubscriptionsUserItem.js';
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -115,8 +116,8 @@ export function renderHeaderDefault() {
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderPins(searchResSection, res);
-                        searchNonContent.classList.add('hide');
                         definePins();
+                        searchNonContent.classList.add('hide');
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
@@ -150,9 +151,9 @@ export function renderHeaderDefault() {
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
-                        renderBoards(searchResSection, res);
+                        renderUserItems(searchResSection, res);
+                        defineUserItems();
                         searchNonContent.classList.add('hide');
-                        defineBoards();
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
@@ -193,6 +194,18 @@ export function renderHeaderDefault() {
 
             const boardID = board.className.split(' ')[1].split('-')[3];
             router.navigate(`/board/${boardID}`);
+          });
+        });
+    }
+
+    function defineUserItems() {
+        const router = new Router();
+        const userItems = document.querySelectorAll('.subscriptions__items');
+      
+        userItems?.forEach((userItem) => {
+          userItem.addEventListener('click', () => {
+            const userID = userItem.getAttribute('class').split(' ')[1].split('-')[1];
+            router.navigate(`/user/${userID}`);
           });
         });
     }
