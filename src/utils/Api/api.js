@@ -24,6 +24,7 @@ export class API {
     {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
     {name: 'boardUpdate', url: '//pinspire.online:8080/api/v1/board/update'},
     {name: 'Search', url: '//pinspire.online:8080/api/v1/search'},
+
   ];
 
   static async loginUser(username, password) {
@@ -990,7 +991,6 @@ export class API {
   static async Search(searchMode, searchInput) {
     try {
         const configItem = `//pinspire.online:8080/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
-
         const response = await fetch(configItem, {
             method: 'GET',
             headers: {

@@ -6,6 +6,7 @@ export class State {
   #username;
   #avatar;
   #visiblePins;
+  requestID;
 
   constructor() {
     if (State.instance) {
@@ -20,6 +21,7 @@ export class State {
     this.#avatar = null;
     this.#userID = null;
     this.#visiblePins = [];
+    this.requestID = 1;
   }
 
   setCsrfToken(token) {

@@ -3,9 +3,13 @@ import {renderPins} from '../../components/RenderPins/renderPins.js';
 import {renderBoards} from '../../components/RenderBoards/renderBoards.js';
 import {definePins} from '../../utils/definePins/definePins.js';
 import {defineBoards} from '../../utils/defingeBoards/defineBoards.js';
+import { Router } from '../../components/Router/router.js';
+import State from '../../components/State/state.js';
 
 export function renderUserPage(userID) {
   const main = document.querySelector('#main');
+  const router = new Router();
+  const state = new State();
 
   API.getSomeUserInfo(userID)
       .then((data) => {
@@ -26,6 +30,7 @@ export function renderUserPage(userID) {
         const subscribeBtn = document.querySelector('.user__subscribe-btn');
         const unsubscribeBtn = document.querySelector('.user__unsubscribe-btn');
         const numSubscriptionsField = document.querySelector('.user__subscriptions-text');
+        const chatBtn = document.querySelector('.user__avatar__chat-btn');
 
         if (data.is_subscribed) {
           unsubscribeBtn.classList.remove('hide');
@@ -77,6 +82,10 @@ export function renderUserPage(userID) {
               });
         });
 
+        chatBtn?.addEventListener('click', () => {
+          router.navigate(`/messenger/${userID}`);
+        });
+
         const pinsBtn = document.querySelector('.user__pins-btn');
         pinsBtn?.addEventListener('click', () => {
           const activeElement = document.querySelector('.user__btn-active');
@@ -86,6 +95,8 @@ export function renderUserPage(userID) {
 
           activeElement.classList.remove('user__btn-active');
           pinsBtn.classList.add('user__btn-active');
+
+          state.deleteAllPins();
 
           renderUserPins(userID);
         });
