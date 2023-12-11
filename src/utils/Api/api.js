@@ -23,7 +23,7 @@ export class API {
     {name: 'deleteBoard', url: '//pinspire.online:8080/api/v1/board/delete'},
     {name: 'getBoardPins', url: '//pinspire.online:8080/api/v1/feed/pin/personal?count=1000'},
     {name: 'boardUpdate', url: '//pinspire.online:8080/api/v1/board/update'},
-    {name: 'Search', url: '//pinspire.online:8084/api/v1/search'},
+    {name: 'Search', url: '//pinspire.online:8080/api/v1/search'},
   ];
 
   static async loginUser(username, password) {
