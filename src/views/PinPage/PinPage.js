@@ -124,14 +124,42 @@ export function renderPinPage(pinID) {
             updateButton.classList.add('hide');
             deleteButton.classList.add('hide');
 
+            const showModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.add('show');
+            };
+
+            const hideModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.remove('show');
+            };
+
             saveButton?.addEventListener('click', () => {
                 console.log(boardID, [parseInt(pinID)]);
                 API.addBoardPins(boardID, [parseInt(pinID)]);
             });
 
             deleteButton?.addEventListener('click', () => {
-                API.deletePin(pinID);
-                router.navigate('/');
+                showModal();
+            });
+
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+            const cancelDeleteBtn = document.getElementById('cancelDelete');
+        
+            confirmDeleteBtn?.addEventListener('click', () => {
+                API.deletePin(pinID)
+                    .then(() => {
+                        hideModal();
+                        router.navigate('/');
+                    })
+                    .catch((error) => {
+                        console.error('Ошибка при удалении пина:', error);
+                        hideModal();
+                    });
+            });
+        
+            cancelDeleteBtn?.addEventListener('click', () => {
+                hideModal();
             });
 
             updateButton?.addEventListener('click', () => {
@@ -211,4 +239,5 @@ export function renderPinPage(pinID) {
             console.error('Ошибка при получении информации о пине:', error);
             router.navigate('/page404');
         });
+
 }
