@@ -192,7 +192,6 @@
 .js-pin-to-board__btn {
     margin: 10px 0;
     max-width: 90%;
-    margin-left: 20px;
     width: 200px;
     height: 45px
 }
@@ -323,4 +322,17 @@
     color: black;
     border: none;
     cursor: pointer;
+}
+
+.share-btn-block {
+    font-size: 18px;
+    padding: 18px 13px;
+    width: 30px;
+    height: 28px;
+}
+
+.btn-share {
+    cursor: pointer;
+    width: 23px;
+    height: 25px
 }
