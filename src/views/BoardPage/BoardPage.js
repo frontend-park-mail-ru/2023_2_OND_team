@@ -37,6 +37,16 @@ export async function renderBoardPage(boardID) {
         const deleteButton = document.querySelector('.js-delete__btn');
         const updateButton = document.querySelector('.js-edit__btn');
 
+        const showModal = () => {
+            const modal = document.getElementById('deleteModal');
+            modal.classList.add('show');
+        };
+
+        const hideModal = () => {
+            const modal = document.getElementById('deleteModal');
+            modal.classList.remove('show');
+        };
+
         updateButton?.addEventListener('click', () => {
             updateButton.classList.add('hide');
             pinControl.classList.remove('hide');
@@ -90,10 +100,27 @@ export async function renderBoardPage(boardID) {
                 })
         });
 
-        deleteButton.addEventListener('click', async function (e) {
-            e.preventDefault();
-            await API.deleteBoard(boardID);
-            router.navigate('/profile');
+        deleteButton?.addEventListener('click', () => {
+            showModal();
+        });
+
+        const confirmDeleteBtn = document.getElementById('confirmDelete');
+        const cancelDeleteBtn = document.getElementById('cancelDelete');
+    
+        confirmDeleteBtn?.addEventListener('click', () => {
+            API.deleteBoard(boardID)
+                .then(() => {
+                    hideModal();
+                    router.navigate('/profile');
+                })
+                .catch((error) => {
+                    console.error('Ошибка при удалении доски:', error);
+                    hideModal();
+                });
+        });
+    
+        cancelDeleteBtn?.addEventListener('click', () => {
+            hideModal();
         });
 
         console.log(usernameReal);
