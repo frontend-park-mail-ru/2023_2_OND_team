@@ -1,6 +1,6 @@
 .user {
     display: flex;
-    width: 1545px;
+    width: 1435px;
     height: 330px;
     flex-shrink: 0;
     align-items: center;
@@ -135,7 +135,7 @@
 
 .user__subscribe {
   position: relative;
-  left: 300px;
+  left: 230px;
   display: flex;
   width: 170px;
   height: 36.676px;
