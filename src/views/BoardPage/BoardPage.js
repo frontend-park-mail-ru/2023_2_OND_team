@@ -15,6 +15,7 @@ export async function renderBoardPage(boardID) {
     try {
         const boardInfo = await API.getBoardInfo(boardID);
         console.log('Информация о доске:', boardInfo);
+        console.log('Информация о пине:', boardInfo.author_username);
 
         const context = {
             title: boardInfo.title,
@@ -37,6 +38,9 @@ export async function renderBoardPage(boardID) {
         const deleteButton = document.querySelector('.js-delete__btn');
         const updateButton = document.querySelector('.js-edit__btn');
 
+        updateButton.classList.add('hide');
+        deleteButton.classList.add('hide');
+
         const showModal = () => {
             const modal = document.getElementById('deleteModal');
             modal.classList.add('show');
@@ -46,6 +50,12 @@ export async function renderBoardPage(boardID) {
             const modal = document.getElementById('deleteModal');
             modal.classList.remove('show');
         };
+
+        if (usernameReal === boardInfo.author_username) {
+            const rec = document.querySelector('.rectangle-board-open');
+            updateButton.classList.remove('hide');
+            deleteButton.classList.remove('hide');
+        }
 
         updateButton?.addEventListener('click', () => {
             updateButton.classList.add('hide');
