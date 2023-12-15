@@ -49,8 +49,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    width: 15px;
-    height: 15px;
+    width: 35px;
+    height: 35px;
     z-index: 9999;
 }
 
@@ -154,4 +154,11 @@
 .auth-title,
 .registration-title {
     margin: 15px;
+}
+
+.mobile-form-container {
+    background: white;
+    width: auto;
+    height: 100%;
+    display: flex;
 }
