@@ -1,169 +1,96 @@
 import State from "../../components/State/state.js";
-import { API } from "../../utils/api.js";
+import { API } from "../../utils/Api/api.js";
 import { Router } from "../../components/Router/router.js";
 import { renderPins } from "../../components/RenderPins/renderPins.js";
 import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
+import { renderNonContentNotification } from "../NonContentNotification/NonContentNotification.js";
+import { definePins } from "../../utils/definePins/definePins.js";
+import {defineBoards} from '../../utils/defingeBoards/defineBoards.js';
 
 export function renderProfilePage() {
-    const main = document.querySelector('#main');
+  const main = document.querySelector('#main');
 
-    const state = new State();
-    const router = new Router();
+  const state = new State();
 
-    const profileTemplate = Handlebars.templates['ProfileUser.hbs'];
-    const profileContext = {
-        avatar: state.getAvatar(),
-        username: state.getUsername(),
-    };
+  const profileTemplate = Handlebars.templates['ProfileUser.hbs'];
+  const profileContext = {
+    avatar: state.getAvatar(),
+    username: state.getUsername(),
+  };
 
-    main.innerHTML = profileTemplate(profileContext);
+  main.innerHTML = profileTemplate(profileContext);
 
-    const pinsBtn = document.querySelector('.profile-user__pins-btn');
-    pinsBtn?.addEventListener('click', () => {
-        const activeElement = document.querySelector('.profile-user__btn-active');
-        if (activeElement === pinsBtn) {
-            return;
-        }
+  const pinsBtn = document.querySelector('.profile-user__pins-btn');
+  pinsBtn?.addEventListener('click', () => {
+    const activeElement = document.querySelector('.profile-user__btn-active');
+    if (activeElement === pinsBtn) {
+      return;
+    }
 
-        activeElement.classList.remove('profile-user__btn-active');
-        pinsBtn.classList.add('profile-user__btn-active');
-        
-        const gallery = document.querySelector('#user-boards');
-        gallery.innerHTML = '';
+    activeElement.classList.remove('profile-user__btn-active');
+    pinsBtn.classList.add('profile-user__btn-active');
 
-        renderUserPins();
-    })
-
-    const boardsBtn = document.querySelector('.profile-user__boards-btn');
-    boardsBtn?.addEventListener('click', () => {
-        const activeElement = document.querySelector('.profile-user__btn-active');
-        if (activeElement === boardsBtn) {
-            return;
-        }
-
-        activeElement.classList.remove('profile-user__btn-active');
-        boardsBtn.classList.add('profile-user__btn-active');
-
-        const gallery = document.querySelector('#user-pins');
-        gallery.innerHTML = '';
-
-        renderUserBoards();
-    })
-
+    state.deleteAllPins();
+    
     renderUserPins();
+  });
 
-    function renderUserPins() {
-        API.getUserPins()
-            .then((data) => {
-                const section = document.getElementById('user-pins');
-                renderPins(section, data.pins);
-                definePins();
-            })
-            .catch((error) => {
-                console.error('Ошибка при рендеринге пинов:', error);
-            });
-    }
-    
-    function renderUserBoards() {
-        API.getUserBoards()
-            .then((data) => {
-                const section = document.getElementById('user-boards');
-                renderBoards(section, data);
-                defineBoards();
-            })
-            .catch((error) => {
-                console.error('Ошибка при рендеринге досок:', error);
-            });
+  const boardsBtn = document.querySelector('.profile-user__boards-btn');
+  boardsBtn?.addEventListener('click', () => {
+    const activeElement = document.querySelector('.profile-user__btn-active');
+    if (activeElement === boardsBtn) {
+      return;
     }
 
-    function definePins() {
-        const pins = document.querySelectorAll('.gallery__item');
-    
-        pins?.forEach((pin) => {
-          pin.addEventListener('click', (e) => {
-            if (e.target.classList.contains('like-icon')) {
-                return;
-            }
+    activeElement.classList.remove('profile-user__btn-active');
+    boardsBtn.classList.add('profile-user__btn-active');
 
-            const pinID = pin.className.split(' ')[1].split('-')[3];
-            router.navigate(`/pin/${pinID}`);
-          });
-        });
+    renderUserBoards();
+  });
 
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseenter', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeButton = document.querySelector(`.js-like-button-${pinID}`);
-                API.getLike(pinID)
-                    .then((data) => {
-                        if (data.is_set) {
-                            likeButton.src = '/assets/icons/like_active.svg';
-                        } else {
-                            likeButton.src = '/assets/icons/like.svg';
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
-            })
-        })
+  renderUserPins();
+}
 
-        pins?.forEach((pin) => {
-            pin.addEventListener('mouseleave', () => {
-                const pinID = pin.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${pinID}`);
-                likeField.style.opacity = 0;
-            })
-        })
+function renderUserPins() {
+  API.getMyPins()
+      .then((data) => {
+        const nonContent = document.querySelector('.user-non-content');
+        const sectionPins = document.querySelector('.user-pins-gallery');
+        const sectionBoards = document.querySelector('.user-boards-gallery');
+        sectionBoards.innerHTML = '';
+        nonContent.innerHTML = '';
 
-        const likeButtons = document.querySelectorAll('.like-icon');
-        likeButtons?.forEach((likeButton) => {
-            likeButton.addEventListener('click', (element) => {
-                const id = element.target.className.split(' ')[1].split('-')[3];
-                const likeField = document.querySelector(`.like-counter-${id}`);
-                API.getLike(id)
-                    .then((data) => {
-                        if (data.is_set) {
-                            API.deleteLike(id)
-                                .then((data) => {
-                                    likeButton.src = '/assets/icons/like.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
-                                })
-                                .catch((error) => {
-                                    console.error(error);
-                                })
-                        } else {
-                            API.setLike(id)
-                                .then((data) => {
-                                    likeButton.src = '/assets/icons/like_active.svg';
-                                    likeField.innerHTML = data.count_like;
-                                    likeField.style.opacity = 1;
-                                })
-                                .catch((error) => {
-                                    console.error(error);
-                                })
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    })
+        if (!data.pins) {
+          renderNonContentNotification(nonContent, 'У вас пока нет пинов', 'Создать пин', '/create/pin');
+          return;
+        }
 
-            });  
+        renderPins(sectionPins, data.pins);
+        definePins();
+      })
+      .catch((error) => {
+        console.error('Ошибка при рендеринге пинов:', error);
+      });
+}
 
-        });
-    }
+function renderUserBoards() {
+  API.getMyBoards()
+      .then((data) => {
+        const nonContent = document.querySelector('.user-non-content');
+        const sectionPins = document.querySelector('.user-pins-gallery');
+        const sectionBoards = document.querySelector('.user-boards-gallery');
+        sectionPins.innerHTML = '';
+        nonContent.innerHTML = '';
 
+        if (!data.length) {
+          renderNonContentNotification(nonContent, 'У вас пока нет досок', 'Создать доску', '/create/board');
+          return;
+        }
 
-    function defineBoards() {
-        const boards = document.querySelectorAll('.user__board');
-    
-        boards?.forEach((board) => {
-            board.addEventListener('click', (e) => {
-
-            const boardID = board.className.split(' ')[1].split('-')[3];
-            router.navigate(`/board/${boardID}`);
-          });
-        });
-    }
+        renderBoards(sectionBoards, data);
+        defineBoards();
+      })
+      .catch((error) => {
+        console.error('Ошибка при рендеринге досок:', error);
+      });
 }

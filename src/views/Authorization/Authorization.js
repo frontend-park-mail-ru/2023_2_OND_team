@@ -1,6 +1,6 @@
-import { API } from '../../utils/api.js';
-import { passwordValid, nameValid } from '../../components/Validation/valid.js'
-import { Router } from '../../components/Router/router.js';
+import {API} from '../../utils/Api/api.js';
+import {passwordValid, nameValid} from '../../components/Validation/valid.js';
+import {Router} from '../../components/Router/router.js';
 
 /**
 * Рендерит страницу аутентификации.
@@ -29,14 +29,14 @@ export function renderAuthPage() {
 
   const passwordInput = document.querySelector('#password');
   const usernameInput = document.querySelector('#username');
-  const AuthButton = document.querySelector('.button');
+  const AuthButton = document.querySelector('.form__button');
   const cancelButton = document.querySelector('.cancel-button');
 
   const signUpLink = document.querySelector('.already-registered a');
   signUpLink.addEventListener('click', function(e) {
     e.preventDefault();
     authorization.innerHTML = '';
-    router.navigate('/signup')
+    router.navigate('/signup');
   });
 
   const usernameErrorSpan = document.querySelector('.username-error-message');
@@ -51,6 +51,9 @@ export function renderAuthPage() {
 
     usernameInput.style.borderColor = '';
     passwordInput.style.borderColor = '';
+
+    usernameInput.style.color = '';
+    passwordInput.style.color = '';
 
     const usernameValidationResult = nameValid(username);
     const passwordValidationResult = passwordValid(password);
@@ -75,9 +78,15 @@ export function renderAuthPage() {
       API.loginUser(username, password)
           .then((status) => {
             if (status) {
-              header.innerHTML = '';
-              authorization.innerHTML = '';
-              router.navigate('/');
+              API.checkLogin()
+                  .then(() => {
+                    header.innerHTML = '';
+                    authorization.innerHTML = '';
+                    router.navigate('/');
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
             } else {
               usernameInput.style.borderColor = 'var(--error-50, #F4210B)';
               passwordInput.style.borderColor = 'var(--error-50, #F4210B)';

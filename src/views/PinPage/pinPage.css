@@ -1,12 +1,20 @@
 .rectangle {
     display: flex;
-    justify-content: center;
-    max-width: 950px;
+    width: auto;
     border: 1px solid #000;
     border-radius: 15px;
-    margin: 100px auto 0;
-    height: 570px;
+    margin: 50px auto 0;
+    height: 650px;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.open__gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px 0px 0px 14px;
 }
   
 .delete-button,
@@ -20,38 +28,30 @@
 }
 
 .pin-username {
-    font-family: Nunito;
-    margin: 10px 0;
-    padding: 0;
+    cursor: pointer;
     display: block;
     max-width: 90%;
     margin-left: 20px;
-    font-weight: 700;
-}
-  
-.open__gallery__item img {
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-    margin-right: 0px;
-    border-radius: 14px;
 }
 
 .pin-like-btn {
+    position: absolute;
     display: flex;
     align-items: center;
     padding-left: 20px;
+    gap: 10px;
+    bottom: 20px;
 }
 
 .pin-like-counter {
+    display: flex;
     height: 20px;
-    text-align: center;
+    align-items: center;
 }
     
-.pin-like-icon {
-    width: 60px;
-    height: 60px;
+.pin-like-icon {    
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -88,10 +88,6 @@
     height: 45px;
 }
   
-.rectangle > div {
-    flex: 1;
-}
-  
 .cancel-button {
     position: fixed;
     top: 10px;
@@ -118,21 +114,6 @@
     color: var(--bg50, #808080);
 }
 
-.pin-title,
-.pin-description{
-    font-family: Nunito;
-    padding: 5px 20px;
-    box-sizing: border-box;
-    padding: 0;
-    display: block;
-    margin-top: 20px;
-    margin-left: 20px;
-    width: 300px;
-    height: auto;
-    resize: vertical;
-    overflow-y: auto;
-}
-
 .other__pins__title {
     font-family: Nunito;
     font-size: 25px;
@@ -152,12 +133,13 @@
     display: inline-flex;
     align-items: flex-start;
     position: relative;
-    top: -70px;
-    left: 520px;
     gap: 50px;
+    padding: 80px 0px 0px 140px
 }
 
 .pin-edit-item {
+    margin: 5px 0px 0px 15px;
+    padding: 5px 5px;
     width: 472px;
     height: 56px;
     border: none;
@@ -167,7 +149,21 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
-.pin-description {
+.big-pin-edit-item {
+    margin: 5px 0px 0px 15px;
+    padding: 5px 5px;
+    width: 472px;
+    height: 186px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.description__item-data {
+    vertical-align: top;
+    padding: 8px 0px 8px 8px;
     width: 472px;
     height: 200px;
     border: none;
@@ -193,10 +189,150 @@
     background: var(--bg-100, #FFF);
 }
 
-.text-base1-medium {
-    font-family: Nunito;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.js-pin-to-board__btn {
+    margin: 10px 0;
+    max-width: 90%;
+    width: 200px;
+    height: 45px
+}
+
+.btn-delete {
+    cursor: pointer;
+    width: 22px;
+    height: 25px;
+}
+
+.btn-edit {
+    cursor: pointer;
+    width: 22px;
+    height: 25px;
+}
+
+.edit-btn-block {
+    font-size: 18px;
+    padding: 18px 15px;
+    width: 30px;
+    height: 28px;
+}
+
+.delete-btn-block {
+    font-size: 18px;
+    padding: 18px 3px;
+    width: 30px;
+    height: 28px;
+}
+
+.user-block {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+@media only screen and (max-width: 968px) {
+    .rectangle {
+        flex-direction: column;
+        height: auto;
+        margin: 20px auto 0;
+        border-radius: 10px;
+    }
+
+    .open__gallery__item img {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pin-like-btn {
+        position: static;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .pin-username {
+        cursor: pointer;
+        display: block;
+        max-width: 90%;
+        margin-left: 20px;
+    }
+
+    .big-pin-edit-item {
+        width: 472px;
+        height: auto;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 360px auto 0;
+    padding: 20px;
+    border-radius: 15px;
+    width: 30%;
+    text-align: center;
+}
+
+.modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#confirmDelete {
+    background-color: #ff4f4f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#cancelDelete {
+    background-color: #d3d3d3;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+#confirmDelete:hover {
+    background-color: #e30505;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#cancelDelete:hover {
+    background-color: #adadad;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.share-btn-block {
+    font-size: 18px;
+    padding: 18px 13px;
+    width: 30px;
+    height: 28px;
+}
+
+.btn-share {
+    cursor: pointer;
+    width: 23px;
+    height: 25px
 }

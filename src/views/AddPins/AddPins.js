@@ -1,8 +1,7 @@
-import { API } from '../../utils/api.js';
+import { API } from '../../utils/Api/api.js';
 import { renderRecPins } from '../../components/RenderRecPins/renderRecPins.js';
 import { State } from '../../components/State/state.js'
 import { Router } from '../../components/Router/router.js'
- 
 
 export function renderAddPins(boardID) {
     const router = new Router();
@@ -102,7 +101,7 @@ export function renderAddPins(boardID) {
     addButton.addEventListener('click', function (e) {
         console.log(boardID, selectedPins);
 
-        API.addBoardPins(board_id, selectedPins)
+        API.addBoardPins(board_id, selectedPins);
         router.navigate(`/`);
 
     

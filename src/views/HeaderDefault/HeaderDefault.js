@@ -1,6 +1,10 @@
-import State from "../../components/State/state.js";
-import { API } from "../../utils/api.js";
-import { Router } from "../../components/Router/router.js";
+import State from '../../components/State/state.js';
+import {API} from '../../utils/Api/api.js';
+import {Router} from '../../components/Router/router.js';
+import { renderPins } from "../../components/RenderPins/renderPins.js";
+import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
+import { definePins } from '../../utils/definePins/definePins.js';
+import { renderUserItems } from '../Subscriptions/SubscriptionsUserItem.js';
 
 export function renderHeaderDefault() {
     const header = document.querySelector('#header');
@@ -21,7 +25,6 @@ export function renderHeaderDefault() {
     createMenuBtns.forEach((btn) => {
         btn?.addEventListener('click', () => {
             const menuItem = btn.className.split(' ')[0].split('__')[3];
-            console.log(menuItem);
             switch (menuItem) {
                 case 'pin':
                     router.navigate('/create/pin');
@@ -43,10 +46,6 @@ export function renderHeaderDefault() {
             switch (menuItem) {
                 case 'profile':
                     router.navigate('/profile');
-                    const sidebarActiveElement = document.querySelector('.sidebar__menu__btn-active');
-                    sidebarActiveElement.classList.remove('sidebar__menu__btn-active');
-                    const sidebarProfileElement = document.querySelector('.sidebar__menu__profile');
-                    sidebarProfileElement.classList.add('sidebar__menu__btn-active');
                     break;
                 case 'logout':
                     API.logoutUser()
@@ -72,9 +71,10 @@ export function renderHeaderDefault() {
         createMenu.classList.toggle('hide');
     });
 
+    const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
+
     const userBtn = document.querySelector('.header__user__avatar-img');
     userBtn?.addEventListener('click', () => {  
-        const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
 
         if (userMenu.classList.contains('hide')) {
             profileArrow.src = '/assets/icons/actions/icon_profile_arrow-up.svg';
@@ -85,4 +85,128 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
+    let searchMode = '';
+    let searchInput = '';
+
+    const radioInputs = document.querySelectorAll('.filter__list__pointer input[type="radio"]');
+    radioInputs.forEach(input => {
+        input.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                searchMode = event.target.value;
+                console.log('Выбран режим поиска:', searchMode);
+            }
+        });
+    });
+
+    const inputField = document.querySelector('.header__search__text-input');
+    inputField.addEventListener('input', (event) => {
+        searchInput = event.target.value;
+        console.log('Новое значение поиска:', searchInput);
+    });
+
+    const searchImage = document.querySelector('.header__search__img-image');
+    searchImage.addEventListener('click', () => {
+        if (searchMode == 'pins' && searchInput) {
+            const encodedInput = encodeURIComponent(searchInput);
+            API.Search(searchMode, encodedInput)
+                .then((res) => {
+                    console.log('Результат поиска:', res);
+                    router.navigate(`/search/pins/${encodedInput}`);
+                    const searchResSection = document.getElementById('search-res');
+                    const searchNonContent = document.querySelector('.search-non-content');
+                    if (res && res.length > 0) {
+                        renderPins(searchResSection, res);
+                        definePins();
+                        searchNonContent.classList.add('hide');
+                    } else {
+                        searchNonContent.classList.remove('hide');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Ошибка при выполнении поиска:', error);
+                });
+        } else if (searchMode == 'boards' && searchInput) {
+            API.Search(searchMode, searchInput)
+                .then((res) => {
+                    console.log('Результат поиска:', res);
+                    router.navigate(`search/boards/${searchInput}`);
+                    const searchResSection = document.getElementById('search-res');
+                    const searchNonContent = document.querySelector('.search-non-content');
+                    if (res && res.length > 0) {
+                        renderBoards(searchResSection, res);
+                        searchNonContent.classList.add('hide');
+                        defineBoards();
+                    } else {
+                        searchNonContent.classList.remove('hide');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Ошибка при выполнении поиска:', error);
+                });
+        } else if (searchMode == 'users' && searchInput) {
+            API.Search(searchMode, searchInput)
+                .then((res) => {
+                    console.log('Результат поиска:', res);
+                    router.navigate(`search/users/${searchInput}`);
+                    const searchResSection = document.getElementById('search-res');
+                    const searchNonContent = document.querySelector('.search-non-content');
+                    if (res && res.length > 0) {
+                        renderUserItems(searchResSection, res);
+                        defineUserItems();
+                        searchNonContent.classList.add('hide');
+                    } else {
+                        searchNonContent.classList.remove('hide');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Ошибка при выполнении поиска:', error);
+                });
+        } else {
+            console.log('Выберите режим и введите текст для поиска');
+        }
+    });
+
+    const filterBtn = document.querySelector('.header__filter__img-image');
+    const filterList = document.querySelector('.header__filter__list');
+    filterBtn?.addEventListener('click', () => {
+        filterList.classList.toggle('hide');
+    });
+
+    document.body.addEventListener('click', (e) => {
+        if (e.target !== document.querySelector('.js-create-img')) {
+            createMenu.classList.add('hide');
+        }
+        if (e.target !== document.querySelector('.header__user__avatar-user') &&
+            e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
+            userMenu.classList.add('hide');
+            profileArrow.src = '/assets/icons/actions/icon_profile_arrow-down.svg';
+        }
+        if (!e.target.closest('.header__filter__list') && !e.target.classList.contains('header__filter__img-image')) {
+            filterList.classList.add('hide');
+        }
+    })
+
+    function defineBoards() {
+        const boards = document.querySelectorAll('.user__board');
+    
+        boards?.forEach((board) => {
+            board.addEventListener('click', (e) => {
+
+            const boardID = board.className.split(' ')[1].split('-')[3];
+            router.navigate(`/board/${boardID}`);
+          });
+        });
+    }
+
+    function defineUserItems() {
+        const router = new Router();
+        const userItems = document.querySelectorAll('.subscriptions__items');
+      
+        userItems?.forEach((userItem) => {
+          userItem.addEventListener('click', () => {
+            const userID = userItem.getAttribute('class').split(' ')[1].split('-')[1];
+            router.navigate(`/user/${userID}`);
+          });
+        });
+    }
 }

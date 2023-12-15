@@ -11,4 +11,3 @@ export function renderRecPins(parent, images) {
     parent?.insertAdjacentHTML('beforeend', template(context));
   });
 }
-  

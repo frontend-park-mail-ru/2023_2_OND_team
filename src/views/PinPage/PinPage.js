@@ -1,7 +1,8 @@
-import { API } from "../../utils/api.js";
-import State from "../../components/State/state.js";
-import { Router } from "../../components/Router/router.js";
-import { renderPins } from '../../components/RenderPins/renderPins.js';
+import {API} from '../../utils/Api/api.js';
+import State from '../../components/State/state.js';
+import {Router} from '../../components/Router/router.js';
+import {renderPins} from '../../components/RenderPins/renderPins.js';
+import { renderUserPage } from '../../views/UserPage/UserPage.js'
 
 export function renderPinPage(pinID) {
     const router = new Router();
@@ -12,6 +13,7 @@ export function renderPinPage(pinID) {
     API.getPinInfo(pinID)
         .then((pinInfo) => {
             console.log('Информация о пине:', pinInfo);
+            console.log('Информация о пине:', pinInfo.author.id);
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
@@ -19,12 +21,14 @@ export function renderPinPage(pinID) {
                 title: pinInfo.title,
                 description: pinInfo.description,
                 likes: pinInfo.count_likes,
+                avatar: pinInfo.author.avatar
             };
 
             main.innerHTML = pinPage(context);
 
             const likeButton = document.querySelector('.pin-like-icon');
             const likeField = document.querySelector('.pin-like-counter');
+            const userName = document.querySelector('.pin-username');
 
             API.getLike(pinID)
                 .then((data) => {
@@ -66,6 +70,12 @@ export function renderPinPage(pinID) {
                     })
             })
 
+            userName?.addEventListener('click', () => {
+                console.log(pinInfo.author.id);
+                router.navigate(`/user/${pinInfo.author.id}`);
+                renderUserPage(pinInfo.author.id);
+            })
+
             const usernameReal = state.getUsername();
             const isAuthorized = state.getIsAuthorized();
 
@@ -77,40 +87,80 @@ export function renderPinPage(pinID) {
             const saveDataBtn = document.querySelector('.pin-control__save-btn');
 
             const editSpan = document.querySelector('.pin-edit-span-all');
+            
+            const saveButton = document.querySelector('.js-pin-to-board__btn');
+            const subsButton = document.querySelector('.js-subscribe__btn');
+            const boardList = document.querySelector('.board-list');
 
-            const saveButton = document.createElement('button');
-            saveButton.textContent = 'Прикрепить на доску';
-            saveButton.classList.add('save-button');
-            const boardList = document.createElement('select');
-            boardList.classList.add('board-list');
+            let boardID;
 
             function UserBoards() {
-                const boardList = document.querySelector('.board-list');
-                
-                //API.getUserBoards()
-            
-                const testData = [
-                    { board_id: 1, title: 'Доска 1' },
-                    { board_id: 2, title: 'Доска 2' },
-                    { board_id: 3, title: 'Доска 3' }
-                ];
-            
-                testData.forEach(board => {
+                boardList.addEventListener('change', (event) => {
+                    boardID = event.target.value;
+                });
+
+                API.getMyBoards()
+                .then((res) => {
+                  const optgroup = document.createElement('optgroup');
+                  optgroup.label = 'Выберите доску';
+              
+                  res.forEach(board => {
                     const option = document.createElement('option');
                     option.value = board.board_id;
                     option.textContent = board.title;
-                    boardList.appendChild(option);
-                });
+                    optgroup.appendChild(option);
+                  });
+              
+                  boardList.appendChild(optgroup);
+                })
+                .catch((error) => {
+                  console.error('Ошибка при получении досок:', error);
+                });              
             }
             
-            
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Удалить';
-            deleteButton.classList.add('delete-button');
+            const deleteButton = document.querySelector('.js-delete__btn');
+            const updateButton = document.querySelector('.js-edit__btn');
 
-            const updateButton = document.createElement('img');
-            updateButton.src = 'https://pinspire.online/assets/icons/actions/icon_edit.svg';
-            updateButton.classList.add('edit-button');
+            updateButton.classList.add('hide');
+            deleteButton.classList.add('hide');
+
+            const showModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.add('show');
+            };
+
+            const hideModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.remove('show');
+            };
+
+            saveButton?.addEventListener('click', () => {
+                console.log(boardID, [parseInt(pinID)]);
+                API.addBoardPins(boardID, [parseInt(pinID)]);
+            });
+
+            deleteButton?.addEventListener('click', () => {
+                showModal();
+            });
+
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+            const cancelDeleteBtn = document.getElementById('cancelDelete');
+        
+            confirmDeleteBtn?.addEventListener('click', () => {
+                API.deletePin(pinID)
+                    .then(() => {
+                        hideModal();
+                        router.navigate('/');
+                    })
+                    .catch((error) => {
+                        console.error('Ошибка при удалении пина:', error);
+                        hideModal();
+                    });
+            });
+        
+            cancelDeleteBtn?.addEventListener('click', () => {
+                hideModal();
+            });
 
             updateButton?.addEventListener('click', () => {
                 updateButton.classList.add('hide');
@@ -118,6 +168,9 @@ export function renderPinPage(pinID) {
 
                 titleTextarea.classList.add('input-primary');
                 descriptionTextarea.classList.add('input-primary');
+
+                likeButton.classList.add('hide');
+                likeField.classList.add('hide');
 
                 titleTextarea.disabled = false;
                 descriptionTextarea.disabled = false;
@@ -131,6 +184,9 @@ export function renderPinPage(pinID) {
 
                 titleTextarea.classList.remove('input-primary');
                 descriptionTextarea.classList.remove('input-primary');
+
+                likeButton.classList.remove('hide');
+                likeField.classList.remove('hide');
 
                 titleTextarea.disabled = true;
                 descriptionTextarea.disabled = true;
@@ -146,6 +202,14 @@ export function renderPinPage(pinID) {
                     .then((res) => {
                         if (res.status === 'ok') {
                             router.navigate(`/pin/${pinInfo.id}`);
+                            updateButton.classList.remove('hide');
+                            pinControl.classList.add('hide');
+            
+                            titleTextarea.classList.remove('input-primary');
+                            descriptionTextarea.classList.remove('input-primary');
+            
+                            likeButton.classList.remove('hide');
+                            likeField.classList.remove('hide');
                         } else {
                             editSpan.textContent = 'Некорректные данные';
                         }
@@ -159,8 +223,9 @@ export function renderPinPage(pinID) {
 
             if (usernameReal === pinInfo.author.username) {
                 const rec = document.querySelector('.rectangle');
-                rec.appendChild(deleteButton);
-                rec.appendChild(updateButton);
+                updateButton.classList.remove('hide');
+                deleteButton.classList.remove('hide');
+                subsButton.classList.add('hide');
             }
 
             if (isAuthorized) {
@@ -169,15 +234,10 @@ export function renderPinPage(pinID) {
                 block.appendChild(boardList);
                 UserBoards();
             }
-
-            deleteButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                API.deletePin(pinID);
-                router.navigate('/');
-            });
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
             router.navigate('/page404');
         });
+
 }

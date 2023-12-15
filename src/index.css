@@ -1,4 +1,5 @@
 @import url(./assets/components/buttons/primary/btnPrimary.css);
+@import url(./assets/components/buttons/primary/fontsPrimary.css);
 @import url(./views/Authorization/form.css);
 @import url(./views/Feed/Feed.css);
 @import url(./views/Feed/Gallery.css);
@@ -17,6 +18,11 @@
 @import url(./views/Page404/page404.css);
 @import url(./views/AddPins/addPins.css);
 @import url(./views/BoardPage/boardPage.css);
+@import url(./views/NonContentNotification/nonContentNotification.css);
+@import url(./views/Subscriptions/subscriptions.css);
+@import url(./views/Messenger/messenger.css);
+@import url(./views/UserPage/userPage.css);
+
 
 html, body {
   --bg50: #808080;

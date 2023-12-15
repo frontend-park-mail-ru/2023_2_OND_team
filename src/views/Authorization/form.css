@@ -36,62 +36,9 @@
     gap: 5px;
 }
 
-textarea {
-    font-family: Nunito;
-    width: 400px;
-    height: 25px; 
-    padding: 8px 0px 8px 8px;
-    border: 2px solid var(--primary-45, #33A1B3);
-    border-radius: var(--br-s, 10px);
-  
-    color: var(--primary-15, #11363C);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    resize: none;
-}
-
-
-input {
-    font-family: Nunito;
-    width: 400px;
-    height: 25px; 
-    padding: 8px 0px 8px 8px;
-    border: 2px solid var(--primary-45, #33A1B3);
-    border-radius: var(--br-s, 10px);
-  
-    color: var(--primary-15, #11363C);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;  
-}
-
-input:focus {
-    border-radius: var(--br-s, 10px);
-    border: 2px solid var(--primary-30, #226B77);
-    background: var(--bg-100, #FFF);
-}
-
-.button {
-    background-color: #226B77;
-    color: #FFFFFF;
+.form__button {
     width: 410px;
     height: 45px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.button:hover {
-    background: rgba(34, 107, 119, 0.80);
 }
 
 .cancel-button {
@@ -105,67 +52,6 @@ input:focus {
     width: 15px;
     height: 15px;
     z-index: 9999;
-}
-
-.registration-title {
-    font-family: Nunito;
-    font-size: 31px; 
-    font-weight: normal; 
-    margin-bottom: 30px;
-}
-
-.auth-title {
-    font-family: Nunito;
-    font-size: 31px; 
-    font-weight: normal; 
-    margin-bottom: 30px;
-}
-
-p {
-    font-family: Nunito;
-}
-
-a {
-    font-family: Nunito 600;
-    font-weight: bold; 
-    color: black;
-    text-decoration: none;
-}
-
-.password-error-message {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-.username-error-message {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-.email-error-message {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: left;
-    min-height: 30px;
-    min-width: 410px;
-}
-
-.wrong-data-error-message  {
-    font-family: Nunito;
-    font-size: 15px; 
-    color: var(--error-50, #F4210B);
-    text-align: center;
-    min-height: 30px;
-    min-width: 410px;
 }
 
 .input-error input {
@@ -208,7 +94,64 @@ a {
     display: none;
 }
 
-input::placeholder {
-  position: absolute;
-  top: 10px;
+.auth__item-data {
+    margin: 5px 0px 0px 0px;
+    width: 400px;
+    height: 25px;
+    padding: 8px 0px 8px 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;   
+}
+
+.open-btn {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.primary-error-message {
+    font-family: Nunito;
+    font-size: 15px;
+    color: var(--error-50, #F4210B);
+    text-align: left;
+    min-height: 25px;
+    min-width: 410px;
+}
+
+.form-btn-primary-default {
+    display: flex;
+    width: 410px;
+    height: 44px;
+    padding: 20px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30);
+    color: var(--bg-100, #FFF);
+    text-align: center;
+    background: var(--primary-30, #226B77);
+    cursor: pointer;
+}
+
+.form-btn-primary-default:hover {
+    display: flex;
+    width: 410px;
+    height: 44px;
+    padding: 20px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30);
+    color: var(--bg-100, #FFF);
+    text-align: center;
+    background: var(--primary-45, #33A1B3);
+    cursor: pointer;
+}
+
+.auth-title,
+.registration-title {
+    margin: 15px;
 }

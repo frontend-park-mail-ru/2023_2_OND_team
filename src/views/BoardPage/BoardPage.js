@@ -1,7 +1,8 @@
-import { API } from "../../utils/api.js";
-import State from "../../components/State/state.js";
-import { Router } from "../../components/Router/router.js";
-import { renderPins } from "../../components/RenderPins/renderPins.js";
+import {API} from '../../utils/Api/api.js';
+import State from '../../components/State/state.js';
+import {Router} from '../../components/Router/router.js';
+import {renderPins} from '../../components/RenderPins/renderPins.js';
+import {definePins} from '../../utils/definePins/definePins.js';
 
 export async function renderBoardPage(boardID) {
     const router = new Router();
@@ -14,6 +15,7 @@ export async function renderBoardPage(boardID) {
     try {
         const boardInfo = await API.getBoardInfo(boardID);
         console.log('Информация о доске:', boardInfo);
+        console.log('Информация о пине:', boardInfo.author_username);
 
         const context = {
             title: boardInfo.title,
@@ -24,7 +26,7 @@ export async function renderBoardPage(boardID) {
 
         const usernameReal = state.getUsername();
 
-        const titleTextarea = document.querySelector('.pin-title');
+        const titleTextarea = document.querySelector('.board-title');
         const descriptionTextarea = document.querySelector('.pin-description');
 
         const pinControl = document.querySelector('.pin-control');
@@ -33,13 +35,27 @@ export async function renderBoardPage(boardID) {
 
         const editSpan = document.querySelector('.pin-edit-span-all');
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Удалить';
-        deleteButton.classList.add('delete-button');
+        const deleteButton = document.querySelector('.js-delete__btn');
+        const updateButton = document.querySelector('.js-edit__btn');
 
-        const updateButton = document.createElement('img');
-        updateButton.src = 'https://pinspire.online:1445/assets/icons/actions/icon_edit.svg';
-        updateButton.classList.add('edit-button');
+        updateButton.classList.add('hide');
+        deleteButton.classList.add('hide');
+
+        const showModal = () => {
+            const modal = document.getElementById('deleteModal');
+            modal.classList.add('show');
+        };
+
+        const hideModal = () => {
+            const modal = document.getElementById('deleteModal');
+            modal.classList.remove('show');
+        };
+
+        if (usernameReal === boardInfo.author_username) {
+            const rec = document.querySelector('.rectangle-board-open');
+            updateButton.classList.remove('hide');
+            deleteButton.classList.remove('hide');
+        }
 
         updateButton?.addEventListener('click', () => {
             updateButton.classList.add('hide');
@@ -75,6 +91,16 @@ export async function renderBoardPage(boardID) {
                 .then((res) => {
                     if (res.status === 'ok') {
                         router.navigate(`/board/${boardInfo.board_id}`);
+                        updateButton.classList.remove('hide');
+                        pinControl.classList.add('hide');
+            
+                        titleTextarea.classList.remove('input-primary');
+                        descriptionTextarea.classList.remove('input-primary');
+            
+                        titleTextarea.disabled = true;
+                        descriptionTextarea.disabled = true;
+                        
+                        editSpan.textContent = '';
                     } else {
                         editSpan.textContent = 'Некорректные данные';
                     }
@@ -84,17 +110,30 @@ export async function renderBoardPage(boardID) {
                 })
         });
 
-        deleteButton.addEventListener('click', async function (e) {
-            e.preventDefault();
-            await API.deleteBoard(boardID);
-            router.navigate('/profile');
+        deleteButton?.addEventListener('click', () => {
+            showModal();
+        });
+
+        const confirmDeleteBtn = document.getElementById('confirmDelete');
+        const cancelDeleteBtn = document.getElementById('cancelDelete');
+    
+        confirmDeleteBtn?.addEventListener('click', () => {
+            API.deleteBoard(boardID)
+                .then(() => {
+                    hideModal();
+                    router.navigate('/profile');
+                })
+                .catch((error) => {
+                    console.error('Ошибка при удалении доски:', error);
+                    hideModal();
+                });
+        });
+    
+        cancelDeleteBtn?.addEventListener('click', () => {
+            hideModal();
         });
 
         console.log(usernameReal);
-
-        const rec = document.querySelector('.bar');
-        rec.appendChild(deleteButton);
-        rec.appendChild(updateButton);
 
         await renderBoardPins();
 
@@ -108,6 +147,7 @@ export async function renderBoardPage(boardID) {
             const data = await API.getBoardPins(boardID);
             const section = document.getElementById('board-pins');
             renderPins(section, data.pins);
+            definePins();
         } catch (error) {
             console.error('Ошибка при рендеринге пинов:', error);
         }

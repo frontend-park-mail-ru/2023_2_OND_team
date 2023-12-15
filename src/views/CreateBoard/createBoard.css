@@ -46,3 +46,28 @@
 .input-container {
     justify-content: center;
 }
+
+.board-data__btns {
+    display: inline-flex;
+    align-items: flex-start;
+    flex: center;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.board-edit-item {
+    margin: 5px 0px 0px 15px;
+    padding: 5px 5px;
+    width: 472px;
+    height: 56px;
+    border: none;
+    background: none;
+    resize: none;
+    outline: none;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.js-cancel__btn {
+    cursor: pointer;
+}

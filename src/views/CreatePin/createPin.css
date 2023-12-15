@@ -1,0 +1,91 @@
+.rectangle-create {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin: 100px auto 0;
+    box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
+}
+  
+#file-input {
+    width: 50%;
+    margin-bottom: 10px;
+    height: 100px;
+}
+  
+.input-title,
+.input-description {
+    width: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+}
+  
+.labeled-input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input__forms {
+    display: flex;
+}
+
+.pin__img__add {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.forms {
+    flex: 1;
+}
+
+.labeled-input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-title,
+.input-description {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.title-create {
+    text-align: left;
+}
+
+.pin-data__btns {
+    display: inline-flex;
+    align-items: flex-start;
+    flex: center;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.title__item-data {
+    width: 472px;
+    height: 25px;
+    padding: 8px 0px 8px 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;  
+}
+
+.upload-image {
+    height: 250px;
+    width: 350px;
+    cursor: pointer;
+}
+
+.title__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

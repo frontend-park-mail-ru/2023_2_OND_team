@@ -1,17 +1,20 @@
 <div class="rectangle-create" id="board-rectangle">
-    <span class="title-create">Создание доски</span>
+    <div class="title__block">
+        <span class="title-create text-base1-medium">Создание доски</span>
+        <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
+    </div>
     <hr class="grey-line">
     <div class="input-title">
         <label for="title" class="labeled-input">Название</label>
-        <input type="text" id="title" placeholder="Введите название доски">
+        <input type="text" class="title__item-data text-base2-medium input-primary" id="title" placeholder="Введите название доски">
     </div>
     <div class="input-description">
         <label for="description" class="labeled-input">Описание</label>
-        <textarea type="text" id="description" placeholder="Введите описание доски"></textarea>
+        <textarea type="text" class="description__item-data text-base2-medium input-primary" id="description" placeholder="Введите описание доски"></textarea>
     </div>
     <hr class="grey-line">
-    <div class="buttons-container">
-        <button class="board-cancel-button">Отмена</button>
-        <button class="board-create-button">Создать</button>
+    <div class="board-data__btns">
+        <button class="btn-primary-clear text-base1-medium js-board-cancel__btn-change">Отмена</button>
+        <button class="btn-primary-default text-base1-medium js-board-create__btn-change">Создать</button>
     </div>
 </div>
