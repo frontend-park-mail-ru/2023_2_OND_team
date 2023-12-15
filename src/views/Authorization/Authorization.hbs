@@ -1,27 +1,54 @@
 <div class="auth-page">
-    <button class="cancel-button">
-        <img src="/assets/icons/actions/cancel.svg" alt="Cancel">
-    </button>
-    <img class="ibackground" src="/assets/img/image_2.png" alt="Background Image">
-    <div class="form-container">
-        <form class="input-container">
-            <div>
-                <img src="/assets/icons/actions/main-logo.svg" alt="Main Logo">
-            </div>
-            <h4 class="auth-title text-h4-medium">Войти в PinSpire</h4>
-            <div class="input-username">
-                <label for="username" class="labeled-input">Имя пользователя</label>
-                <input type="text" id="username" class="auth__item-data text-base2-medium input-primary" placeholder="Введите имя пользователя">
-                <span class="username-error-message primary-error-message"></span>
-            </div>
-            <div class="input-password">
-                <label for="password" class="labeled-input">Пароль</label>
-                <input type="password" id="password" class="auth__item-data text-base2-medium input-primary"  placeholder="Введите пароль">
-                <span class="password-error-message primary-error-message"></span>
-                <span class="wrong-data-error-message primary-error-message"></span>
-            </div>
-            <button class="form-btn-primary-default text-base1-medium form__button" type="submit">Войти</button>
-            <p class="already-registered text-base2-medium">Все еще нет аккаунта? <a href="#" class="open-btn">Регистрация</a></p>
-        </form>
-    </div>
+    {{#if mobile}}
+        <button class="cancel-button">
+            <img src="/assets/icons/actions/cancel.svg" alt="Cancel">
+        </button>
+        <div class="form-container">
+            <form class="input-container">
+                <div>
+                    <img src="/assets/icons/actions/main-logo.svg" alt="Main Logo">
+                </div>
+                <h4 class="auth-title text-h4-medium">Войти в PinSpire</h4>
+                <div class="input-username">
+                    <label for="username" class="labeled-input">Имя пользователя</label>
+                    <input type="text" id="username" class="auth__item-data text-base2-medium input-primary" placeholder="Введите имя пользователя">
+                    <span class="username-error-message primary-error-message"></span>
+                </div>
+                <div class="input-password">
+                    <label for="password" class="labeled-input">Пароль</label>
+                    <input type="password" id="password" class="auth__item-data text-base2-medium input-primary"  placeholder="Введите пароль">
+                    <span class="password-error-message primary-error-message"></span>
+                    <span class="wrong-data-error-message primary-error-message"></span>
+                </div>
+                <button class="form-btn-primary-default text-base1-medium form__button" type="submit">Войти</button>
+                <p class="already-registered text-base2-medium">Все еще нет аккаунта? <a href="#" class="open-btn">Регистрация</a></p>
+            </form>
+        </div>
+    {{else}}
+        <button class="cancel-button">
+            <img src="/assets/icons/actions/cancel.svg" alt="Cancel">
+        </button>
+        <img class="ibackground" src="/assets/img/image_2.png" alt="Background Image">
+        <div class="form-container">
+            <form class="input-container">
+                <div>
+                    <img src="/assets/icons/actions/main-logo.svg" alt="Main Logo">
+                </div>
+                <h4 class="auth-title text-h4-medium">Войти в PinSpire</h4>
+                <div class="input-username">
+                    <label for="username" class="labeled-input">Имя пользователя</label>
+                    <input type="text" id="username" class="auth__item-data text-base2-medium input-primary" placeholder="Введите имя пользователя">
+                    <span class="username-error-message primary-error-message"></span>
+                </div>
+                <div class="input-password">
+                    <label for="password" class="labeled-input">Пароль</label>
+                    <input type="password" id="password" class="auth__item-data text-base2-medium input-primary"  placeholder="Введите пароль">
+                    <span class="password-error-message primary-error-message"></span>
+                    <span class="wrong-data-error-message primary-error-message"></span>
+                </div>
+                <button class="form-btn-primary-default text-base1-medium form__button" type="submit">Войти</button>
+                <p class="already-registered text-base2-medium">Все еще нет аккаунта? <a href="#" class="open-btn">Регистрация</a></p>
+            </form>
+        </div>
+    {{/if}}
 </div>
