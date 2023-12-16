@@ -142,12 +142,6 @@ export function renderPinPage(pinID) {
 
             deleteButton?.addEventListener('click', () => {
                 showModal();
-
-                const closeButton = shareModal.querySelector('.js-cancel__btn');
-
-                closeButton.addEventListener('click', () => {
-                    shareModal.classList.remove('show');
-                }); 
             });
 
             shareButton.addEventListener('click', () => {

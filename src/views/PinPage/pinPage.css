@@ -359,3 +359,7 @@
     border-radius: 5px;
     height: 36px;
 }
+
+.modal-content header span {
+    font-weight: bold;
+}
