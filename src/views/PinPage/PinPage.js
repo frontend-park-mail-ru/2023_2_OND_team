@@ -142,6 +142,12 @@ export function renderPinPage(pinID) {
 
             deleteButton?.addEventListener('click', () => {
                 showModal();
+                
+                const closeButton = shareModal.querySelector('.js-cancel__btn');
+
+                closeButton.addEventListener('click', () => {
+                    shareModal.classList.add('close');
+                }); 
             });
 
             shareButton.addEventListener('click', () => {
@@ -151,15 +157,15 @@ export function renderPinPage(pinID) {
                 input.value = currentURL;
 
                 const shareModal = document.getElementById('shareModal');
-                const closeShareModal = shareModal.querySelector('.close');
             
                 shareModal.classList.add('show');
-            
-                closeShareModal.addEventListener('click', () => {
-                    shareModal.classList.remove('show');
-                });
-            
+
+                const closeButton = shareModal.querySelector('.js-cancel__btn');
                 const copyButton = shareModal.querySelector('.field button');
+
+                closeButton.addEventListener('click', () => {
+                    shareModal.classList.add('close');
+                }); 
             
                 copyButton.addEventListener('click', () => {
                     const copyInput = shareModal.querySelector('.field input');
@@ -167,7 +173,6 @@ export function renderPinPage(pinID) {
                 
                     try {
                         const successful = document.execCommand('copy');
-                        const message = successful ? 'Скопировано!' : 'Не удалось скопировать';
                         
                         if (successful) {
                             copyButton.style.backgroundColor = 'green';
@@ -176,8 +181,6 @@ export function renderPinPage(pinID) {
                             copyButton.style.backgroundColor = '';
                             copyButton.innerText = 'Скопировать';
                         }
-                
-                        console.log(message);
                     } catch (err) {
                         console.error('Ошибка копирования:', err);
                     }
