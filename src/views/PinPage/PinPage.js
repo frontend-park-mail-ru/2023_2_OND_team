@@ -149,7 +149,7 @@ export function renderPinPage(pinID) {
 
                 const input = document.querySelector('#shareModal .field input');
                 input.value = currentURL;
-                
+
                 const shareModal = document.getElementById('shareModal');
                 const closeShareModal = shareModal.querySelector('.close');
             
@@ -168,11 +168,20 @@ export function renderPinPage(pinID) {
                     try {
                         const successful = document.execCommand('copy');
                         const message = successful ? 'Скопировано!' : 'Не удалось скопировать';
+                        
+                        if (successful) {
+                            copyButton.style.backgroundColor = 'green';
+                            copyButton.innerText = 'Скопировано';
+                        } else {
+                            copyButton.style.backgroundColor = '';
+                            copyButton.innerText = 'Скопировать';
+                        }
+                
                         console.log(message);
                     } catch (err) {
                         console.error('Ошибка копирования:', err);
                     }
-                });
+                });                
             
                 const socialIcons = shareModal.querySelectorAll('.icons a');
             

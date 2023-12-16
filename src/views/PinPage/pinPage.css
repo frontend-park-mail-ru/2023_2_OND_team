@@ -354,3 +354,8 @@
 .js-search__btn {
     width: 130px
 }
+
+.link-container {
+    border-radius: 5px;
+    height: 36px;
+}
