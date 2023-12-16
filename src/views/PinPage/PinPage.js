@@ -142,11 +142,11 @@ export function renderPinPage(pinID) {
 
             deleteButton?.addEventListener('click', () => {
                 showModal();
-                
+
                 const closeButton = shareModal.querySelector('.js-cancel__btn');
 
                 closeButton.addEventListener('click', () => {
-                    shareModal.classList.add('close');
+                    shareModal.classList.remove('show');
                 }); 
             });
 
@@ -164,7 +164,7 @@ export function renderPinPage(pinID) {
                 const copyButton = shareModal.querySelector('.field button');
 
                 closeButton.addEventListener('click', () => {
-                    shareModal.classList.add('close');
+                    shareModal.classList.remove('show');
                 }); 
             
                 copyButton.addEventListener('click', () => {
