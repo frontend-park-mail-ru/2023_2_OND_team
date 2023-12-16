@@ -145,6 +145,11 @@ export function renderPinPage(pinID) {
             });
 
             shareButton.addEventListener('click', () => {
+                const currentURL = window.location.href;
+
+                const input = document.querySelector('#shareModal .field input');
+                input.value = currentURL;
+                
                 const shareModal = document.getElementById('shareModal');
                 const closeShareModal = shareModal.querySelector('.close');
             
