@@ -9,6 +9,7 @@ export function renderPinPage(pinID) {
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
+    const currentURL = window.location.href;
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -21,7 +22,8 @@ export function renderPinPage(pinID) {
                 title: pinInfo.title,
                 description: pinInfo.description,
                 likes: pinInfo.count_likes,
-                avatar: pinInfo.author.avatar
+                avatar: pinInfo.author.avatar,
+                link: currentURL
             };
 
             main.innerHTML = pinPage(context);
@@ -145,8 +147,6 @@ export function renderPinPage(pinID) {
             });
 
             shareButton.addEventListener('click', () => {
-                const currentURL = window.location.href;
-
                 const input = document.querySelector('#shareModal .field input');
                 input.value = currentURL;
 
