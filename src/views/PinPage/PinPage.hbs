@@ -52,7 +52,10 @@
 
 <div id="deleteModal" class="modal hide">
     <div class="modal-content text-base1-small">
-        <p>Вы уверены, что хотите удалить этот пин?</p>
+        <div class="title-block">
+            <p>Вы уверены, что хотите удалить этот пин?</p>
+            <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
+        </div>
         <button class="btn-error-clear text-base1-medium" id="confirmDelete">Удалить</button>
         <button class="btn-error-clear text-base1-medium" id="cancelDelete">Отменить</button>
     </div>
@@ -61,8 +64,10 @@
 <div id="shareModal" class="modal hide" >
     <div class="modal-content text-base1-small">
         <header>
-            <span>Поделиться пином</span>
-            <div class="close"><i class="uil uil-times"></i></div>
+            <div class="title-block">
+                <span>Поделиться пином</span>
+                <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
+            </div>
         </header>
         <div class="content">
             <ul class="icons">
