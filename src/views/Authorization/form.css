@@ -164,9 +164,32 @@
 }
 
 .mobile-input-container {
+    padding-top: 10px;
     background: white;
-    width: 100%;
+    width: calc(100% - 20px);
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
+
+.mobile-input-username {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mobile-input-email {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mobile-input-password {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
