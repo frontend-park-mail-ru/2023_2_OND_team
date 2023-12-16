@@ -118,6 +118,7 @@ export function renderPinPage(pinID) {
                 });              
             }
             
+            const shareButton = document.querySelector('.js-share__btn');
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
@@ -142,6 +143,40 @@ export function renderPinPage(pinID) {
             deleteButton?.addEventListener('click', () => {
                 showModal();
             });
+
+            shareButton.addEventListener('click', () => {
+                const shareModal = document.getElementById('shareModal');
+                const closeShareModal = shareModal.querySelector('.close');
+            
+                shareModal.classList.add('show');
+            
+                closeShareModal.addEventListener('click', () => {
+                    shareModal.classList.remove('show');
+                });
+            
+                const copyButton = shareModal.querySelector('.field button');
+            
+                copyButton.addEventListener('click', () => {
+                    const copyInput = shareModal.querySelector('.field input');
+                    copyInput.select();
+                
+                    try {
+                        const successful = document.execCommand('copy');
+                        const message = successful ? 'Скопировано!' : 'Не удалось скопировать';
+                        console.log(message);
+                    } catch (err) {
+                        console.error('Ошибка копирования:', err);
+                    }
+                });
+            
+                const socialIcons = shareModal.querySelectorAll('.icons a');
+            
+                socialIcons.forEach(icon => {
+                    icon.addEventListener('click', () => {
+                        console.log('click');
+                    });
+                });
+            });            
 
             const confirmDeleteBtn = document.getElementById('confirmDelete');
             const cancelDeleteBtn = document.getElementById('cancelDelete');
