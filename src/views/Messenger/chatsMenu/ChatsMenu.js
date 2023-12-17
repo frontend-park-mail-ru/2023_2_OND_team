@@ -142,11 +142,11 @@ export class MessengerChatsMenu {
         this.#router.navigate(`/user/${userID}`);
       })
    
-      chatMenu.addEventListener('click', (e) => this.#chatMenuListener(e, chatMenuUserAvatar, userID));
+      chatMenu.addEventListener('click', (e) => this.#chatMenuListener(e, chatMenu, chatMenuUserAvatar, userID));
     });
    }
    
-   #chatMenuListener(e, chatMenuUserAvatar, userID) {
+   #chatMenuListener(e, chatMenu, chatMenuUserAvatar, userID) {
       if (e.target === chatMenuUserAvatar) {
         return;
       }
