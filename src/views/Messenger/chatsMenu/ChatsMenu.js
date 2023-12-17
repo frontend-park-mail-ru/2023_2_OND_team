@@ -16,7 +16,6 @@ export class MessengerChatsMenu {
   #chatsMenuItems;
   #activeChatMenu;
   #activeChatId;
-  lastInstance;
 
   constructor() {
     if (MessengerChatsMenu.instance) {
@@ -133,7 +132,6 @@ export class MessengerChatsMenu {
       const userID = chatMenuUserAvatar.getAttribute('data-section').split('-')[3];
       
       chatMenuUserAvatar?.addEventListener('click', () => {
-        MessengerChatsMenu.instance = null;
         this.#router.navigate(`/user/${userID}`);
       })
    
@@ -142,7 +140,6 @@ export class MessengerChatsMenu {
           return;
         }
 
-        MessengerChatsMenu.instance = null;
         this.#router.navigate(`/messenger/${userID}`);
       });
     });

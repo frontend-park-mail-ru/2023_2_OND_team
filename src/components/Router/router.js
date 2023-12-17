@@ -29,6 +29,10 @@ function resetScroll() {
     });
 }
 
+function destroyMessenger() {
+    MessengerChatsMenu.instance = null;
+}
+
 export class Router {
     #routes;
     #currentRoute;
@@ -73,6 +77,8 @@ export class Router {
                     } else {
                         renderHeaderGuest();
                     }
+
+                    destroyMessenger();
 
                     renderFeedPage();
                 },
