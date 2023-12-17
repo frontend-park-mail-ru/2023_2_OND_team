@@ -128,12 +128,12 @@ export class Notifications {
                     const router = new Router();
                     router.navigate(`/messenger/${payload}`);
                 };
-                
+
                 break;
             case 'NEW_COMMENT': 
                 break;
             default:
                 break;
         }
-     }       
+    }       
 }
