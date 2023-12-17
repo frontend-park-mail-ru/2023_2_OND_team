@@ -1,5 +1,4 @@
 import State from "../../../components/State/state.js";
-import { getUserChatsMocked } from "./messengerMock.js";
 
 export class MessengerApi {
     #handlers;
@@ -14,8 +13,8 @@ export class MessengerApi {
         this.state = new State();
 
         this.#handlers = [
-            {name: 'userChats', url: '//pinspire.online:8080/api/v1/chat/personal?count=100'},
-            {name: 'chatWithUser', url: '//pinspire.online:8080/api/v1/chat/get/'},
+            {name: 'userChats', url: `//${this.state.getDomain()}:8080/api/v1/chat/personal?count=100`},
+            {name: 'chatWithUser', url: `//${this.state.getDomain()}:8080/api/v1/chat/get/`},
         ]
     }
 
@@ -42,8 +41,6 @@ export class MessengerApi {
             const res = await response.json();
             
             return res;
-
-            // return getUserChatsMocked;
         } catch (error) {
             console.error('messengerApi getUserChats error:', error);
         }
@@ -72,8 +69,6 @@ export class MessengerApi {
             const res = await response.json();
             
             return res;
-
-            // return getUserChatsMocked;
         } catch (error) {
             console.error('messengerApi getChatWithUser error:', error);
         }

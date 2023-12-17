@@ -168,8 +168,9 @@
     position: relative;
     top: 10px;
     left: 82%;
+    height: 200px;
     width: 220px;
-    height: 100px;
+    overflow-y: auto;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -179,20 +180,61 @@
 }
 
 .header__notifications__menu__title {
+    position: fixed;
     display: flex;
     height: 40px;
-    padding-left: 10px;
+    width: 200px;
     align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid var(--primary-30, #226B77);
-    background: rgba(255, 255, 255, 0.00);
+    justify-content: center;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 20px 20px 0 0;
+}
+
+.header__notifications__menu__footer {
+    position: fixed;
+    display: flex;
+    top: 258px;
+    height: 30px;
+    width: 200px;
+    align-items: center;
+    justify-content: flex-end;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0 0 20px 20px;
+}
+
+.header__notifications__menu__footer-text {
+    cursor: pointer;    
+}
+
+.header__notifications__menu_item {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    gap: 5px;
+    margin-right: 15px;
+}
+
+.header__notifications__menu_item-text {
+    cursor: pointer;   
 }
 
 .header__notifications__menu__items {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60px;
+    padding: 40px 5px 30px 5px;
+    gap: 15px;
+}
+
+.header__notifications__menu_item-btn {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.header__notifications__menu-no_notifications-text {
+    padding-top: 25%;
 }
 
 .header__user__menu {
@@ -321,4 +363,36 @@
   background-color: #000;
   box-sizing: border-box;
   border: 2px solid transparent;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 360px auto 0;
+    padding: 20px;
+    border-radius: 15px;
+    width: 30%;
+    text-align: center;
+}
+
+.modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
 }

@@ -11,27 +11,10 @@ export class WebSocketConnection {
         this.url = url;
         this.state = new State();
         this.socket = new WebSocket(url);
-        this.socket.onopen = this.onOpen.bind(this);
         this.socket.onmessage = this.onMessage.bind(this);
         this.socket.onerror = this.onError.bind(this);
         this.socket.onclose = this.onClose.bind(this);
 
-    }
-
-    onOpen(event) {
-        console.log('WebSocket connection opened:', event);
-
-        const wsConnectMessage = {
-            "requestID": 0,
-            "action": "Subscribe",
-            "channel":{
-                "name": String(this.state.getUserID()),
-                "topic": "chat"
-            }
-        }
-        
-        this.sendMessage(JSON.stringify(wsConnectMessage));
-        // this.sendMessage(JSON.stringify(wsConnectMessage));
     }
 
     onMessage(event) {
@@ -61,11 +44,3 @@ export class WebSocketConnection {
         }
     }
 }
-
-// const state = new State();
-
-// console.log(state.getUserID())
-
-// const WS = new WebSocketConnection(`wss://pinspire.online:8080/websocket/connect/chat?${state.getUserID()}`);
-
-// export default WS;

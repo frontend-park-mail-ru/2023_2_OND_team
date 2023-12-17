@@ -9,6 +9,7 @@ export function renderPinPage(pinID) {
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
+    const currentURL = window.location.href;
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -21,7 +22,8 @@ export function renderPinPage(pinID) {
                 title: pinInfo.title,
                 description: pinInfo.description,
                 likes: pinInfo.count_likes,
-                avatar: pinInfo.author.avatar
+                avatar: pinInfo.author.avatar,
+                link: currentURL
             };
 
             main.innerHTML = pinPage(context);
@@ -118,6 +120,7 @@ export function renderPinPage(pinID) {
                 });              
             }
             
+            const shareButton = document.querySelector('.js-share__btn');
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
@@ -142,6 +145,49 @@ export function renderPinPage(pinID) {
             deleteButton?.addEventListener('click', () => {
                 showModal();
             });
+
+            shareButton.addEventListener('click', () => {
+                const input = document.querySelector('#shareModal .field input');
+                input.value = currentURL;
+
+                const shareModal = document.getElementById('shareModal');
+            
+                shareModal.classList.add('show');
+
+                const closeButton = shareModal.querySelector('.js-cancel__btn');
+                const copyButton = shareModal.querySelector('.field button');
+
+                closeButton.addEventListener('click', () => {
+                    shareModal.classList.remove('show');
+                }); 
+            
+                copyButton.addEventListener('click', () => {
+                    const copyInput = shareModal.querySelector('.field input');
+                    copyInput.select();
+                
+                    try {
+                        const successful = document.execCommand('copy');
+                        
+                        if (successful) {
+                            copyButton.style.backgroundColor = 'green';
+                            copyButton.innerText = 'Скопировано';
+                        } else {
+                            copyButton.style.backgroundColor = '';
+                            copyButton.innerText = 'Скопировать';
+                        }
+                    } catch (err) {
+                        console.error('Ошибка копирования:', err);
+                    }
+                });                
+            
+                const socialIcons = shareModal.querySelectorAll('.icons a');
+            
+                socialIcons.forEach(icon => {
+                    icon.addEventListener('click', () => {
+                        console.log('click');
+                    });
+                });
+            });            
 
             const confirmDeleteBtn = document.getElementById('confirmDelete');
             const cancelDeleteBtn = document.getElementById('cancelDelete');
