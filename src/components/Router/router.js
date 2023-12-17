@@ -48,7 +48,7 @@ export class Router {
         Router.instance = this;
 
         this.state = new State();
-        const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${state.getUserID()}`);
+        const WS = new WebSocketConnection(`wss://${this.state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
 
         this.#routes = [
             {
