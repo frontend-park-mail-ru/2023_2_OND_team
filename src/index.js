@@ -14,13 +14,14 @@ import { Notifications } from './views/Notifications/Notifications.js';
 
 const router = new Router();
 const state = new State();
-const notifications = new Notifications();
 
 API.getCsrfToken()
     .then(() => {
       API.checkLogin()
           .then(() => {
             router.handlePopstate();
+            
+            const notifications = new Notifications();
             const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${state.getUserID()}`);
 
             WS.setOnMessageMethod((event) => {
