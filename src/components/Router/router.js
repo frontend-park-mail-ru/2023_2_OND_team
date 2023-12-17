@@ -30,6 +30,9 @@ function resetScroll() {
 }
 
 function destroyMessenger() {
+    const messengerChatsMenu = new MessengerChatsMenu();
+    messengerChatsMenu.activeChatId = null;
+    
     MessengerChatsMenu.instance = null;
 }
 

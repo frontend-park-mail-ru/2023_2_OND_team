@@ -17,7 +17,7 @@ export class MessengerChatsMenu {
   #searchField;
   #chatsMenuItems;
   #activeChatMenu;
-  #activeChatId;
+  activeChatId;
 
   constructor() {
     if (MessengerChatsMenu.instance) {
@@ -37,7 +37,7 @@ export class MessengerChatsMenu {
     this.#searchField = document.querySelector('.messenger__search__text-input');
     this.#chatsMenuItems = document.querySelectorAll('.messenger__chat-menu__chat-item');
     this.#activeChatMenu = document.querySelector('.messenger__chat-menu__chat-item-active');
-    this.#activeChatId = null;
+    this.activeChatId = null;
 
     this.defineChatsMenuItems();
   }
@@ -68,7 +68,7 @@ export class MessengerChatsMenu {
               console.log(jsonObject);
           }
         } else if (jsonObject?.type === 'event') {  // getting message
-          if (jsonObject.message.message?.from == this.#activeChatId) {  // message from opened chat
+          if (jsonObject.message.message?.from == this.activeChatId) {  // message from opened chat
               if (jsonObject.message.eventType === 'create') {
                 this.#messengerChat.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
               } else if (jsonObject.message.eventType === 'update') {
@@ -159,11 +159,11 @@ export class MessengerChatsMenu {
     nestedChatMenu.classList.add('messenger__chat-menu__chat-item-active');
 
     this.#activeChatMenu = nestedChatMenu;
-    this.#activeChatId = userID;
+    this.activeChatId = userID;
 
-    this.#messengerApi.getChatWithUser(this.#activeChatId)
+    this.#messengerApi.getChatWithUser(this.activeChatId)
       .then((res) => {
-        this.#messengerChat.setChatWithUserID(this.#activeChatId);
+        this.#messengerChat.setChatWithUserID(this.activeChatId);
         if(res.status === "ok") {
           chatNoContentDiv.classList.add('hide');
           chatDiv.classList.remove('hide');
