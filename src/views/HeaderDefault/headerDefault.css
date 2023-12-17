@@ -202,7 +202,7 @@
     border-radius: 0 0 20px 20px;
 }
 
-.header__notifications__menu__item {
+.header__notifications__menu_item {
     display: flex;
     align-items: center;
     width: 190px;
