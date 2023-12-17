@@ -266,6 +266,8 @@ export class MessengerChat {
     deleteCompanionMessage(messageID) {
       const messageToDelete = document.querySelector(`[data-message-id="${messageID}"]`);
 
+      console.log(messageToDelete);
+
       this.#definedMessages = this.#definedMessages.filter((item) => {item !== messageToDelete});
 
       messageToDelete.remove();
