@@ -108,12 +108,14 @@ export class Notifications {
             return;
         }
      
+        let notification;
+
         if (Notification.permission === "granted" && document.hidden) {
-            var notification = new Notification(content);
+            notification = new Notification(content);
         } else if (Notification.permission !== "denied") {
             Notification.requestPermission(function (permission) {
                 if (permission === "granted" && document.hidden) {
-                    var notification = new Notification(content);
+                    notification = new Notification(content);
                 }
             });
         }
