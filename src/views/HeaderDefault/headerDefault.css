@@ -169,7 +169,6 @@
     top: 10px;
     left: 82%;
     width: 220px;
-    height: 100px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -190,9 +189,11 @@
 
 .header__notifications__menu__items {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60px;
+    padding: 5px;
+    gap: 10px;
 }
 
 .header__user__menu {
