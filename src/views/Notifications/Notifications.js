@@ -58,7 +58,7 @@ export class Notifications {
 
                 this.checkNotificationCount();
 
-                this.notifyMe(notificationContext.content, payload);
+                this.createBrowserNotification(type, notificationContext.content, payload);
 
                 break;
             default:
@@ -103,30 +103,37 @@ export class Notifications {
         });
     }
 
-    notifyMe(content, payload) {
+    createBrowserNotification(type, content, payload) {
         if (!("Notification" in window)) {
             return;
         }
      
         let notification;
 
-        if (Notification.permission === "granted" && document.hidden) {
-            notification = new Notification(content);
-        } else if (Notification.permission !== "denied") {
-            Notification.requestPermission(function (permission) {
-                if (permission === "granted" && document.hidden) {
+        switch (type) {
+            case 'NEW_MESSAGE': 
+                if (Notification.permission === "granted" && document.hidden) {
                     notification = new Notification(content);
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission(function (permission) {
+                        if (permission === "granted" && document.hidden) {
+                            notification = new Notification(content);
+                        }
+                    });
                 }
-            });
+        
+                notification.onclick = function(event) {
+                    event.preventDefault(); 
+                    window.focus();
+                    const router = new Router();
+                    router.navigate(`/messenger/${payload}`);
+                };
+                
+                break;
+            case 'NEW_COMMENT': 
+                break;
+            default:
+                break;
         }
-
-        notification.onclick = (event) => {
-            event.preventDefault(); 
-            const router = new Router();
-            // window.open('http://www.example.com', '_blank');
-            router.navigate(`/messenger/${payload}`);
-        };
-     }
-     
-       
+     }       
 }
