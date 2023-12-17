@@ -2,11 +2,9 @@ import {renderNonContentNotification} from '../NonContentNotification/NonContent
 import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
 import State from '../../components/State/state.js';
-import { WebSocketConnection } from '../../utils/Api/messenger/messengerWS.js';
 import { API } from '../../utils/Api/api.js';
 
 export function renderMessengerPage() {
-  const state = new State();
   const messengerApi = new MessengerApi();
 
   const main = document.querySelector('#main');
@@ -16,7 +14,6 @@ export function renderMessengerPage() {
 
   main.innerHTML = messengerTemplate(messengerContext);
 
-  const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${state.getUserID()}`);
 
   messengerApi.getUserChats()
     .then((res) => {
@@ -39,7 +36,6 @@ export function renderMessengerPage() {
 
 
 export function renderChatPage(userID) {
-  const state = new State();
   const messengerApi = new MessengerApi();
 
   const main = document.querySelector('#main');
@@ -48,8 +44,6 @@ export function renderChatPage(userID) {
   const messengerContext = {};
 
   main.innerHTML = messengerTemplate(messengerContext);
-
-  const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${state.getUserID()}`);
 
   messengerApi.getUserChats()
     .then((res) => {
