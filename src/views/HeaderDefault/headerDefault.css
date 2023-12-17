@@ -202,10 +202,9 @@
     border-radius: 0 0 20px 20px;
 }
 
-.header__notifications__menu__footer {
+.header__notifications__menu__footer-text {
     cursor: pointer;    
 }
-
 
 .header__notifications__menu_item {
     display: flex;
@@ -215,6 +214,10 @@
     margin-right: 15px;
 }
 
+.header__notifications__menu_item-text {
+    cursor: pointer;   
+}
+
 .header__notifications__menu__items {
     display: flex;
     flex-direction: column;
@@ -222,7 +225,6 @@
     justify-content: center;
     padding: 40px 5px 30px 5px;
     gap: 10px;
-    cursor: pointer;
 }
 
 .header__notifications__menu_item-btn {
