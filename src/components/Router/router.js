@@ -106,6 +106,8 @@ export class Router {
                         }
 
                         setHeaderTitle('Мои пины и доски');
+ 
+                        destroyMessenger();
 
                         renderProfilePage();
                     } else {
@@ -132,6 +134,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Данные аккаунта');
+                        
+                        destroyMessenger();
 
                         renderProfileData();
                     } else {
@@ -157,6 +161,8 @@ export class Router {
 
                         setHeaderTitle('Безопасность');
 
+                        destroyMessenger();
+
                         renderProfileSecurity();
                     } else {
                         this.navigate('/login');
@@ -178,6 +184,9 @@ export class Router {
                         this.state.setCurrentPage('login');
 
                         renderHeaderGuest();
+
+                        destroyMessenger();
+
                         renderAuthPage();
                     }
                 },
@@ -195,6 +204,9 @@ export class Router {
                         this.state.setCurrentPage('signup');
                         
                         renderHeaderGuest();
+                        
+                        destroyMessenger();
+                        
                         renderRegPage();
                     }
                 },
@@ -220,6 +232,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Мессенджер');
+                        
+                        destroyMessenger();
 
                         renderMessengerPage();
                     } else {
@@ -248,6 +262,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Подписки');
+
+                        destroyMessenger();
 
                         renderSubscriptionsPage();
                     } else {
@@ -279,6 +295,8 @@ export class Router {
 
                         setHeaderTitle('Понравившиеся пины');
 
+                        destroyMessenger();
+
                         renderFavouritePage();
                     } else {
                         this.navigate('/login');
@@ -308,6 +326,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Создание пина');
+
+                        destroyMessenger();
 
                         renderCreatePin();
                     } else {
@@ -339,6 +359,8 @@ export class Router {
                         
                         setHeaderTitle('Создание доски');
 
+                        destroyMessenger();
+
                         renderCreateBoard();
                     } else {
                         this.navigate('/login');
@@ -364,6 +386,8 @@ export class Router {
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         }
+
+                        destroyMessenger();
 
                         renderAddPins(boardID);
                     } else {
@@ -395,6 +419,8 @@ export class Router {
 
                     resetScroll();
 
+                    destroyMessenger();
+                    
                     renderPinPage(pinID);
                 },
             },
@@ -424,6 +450,8 @@ export class Router {
 
                     resetScroll();
 
+                    destroyMessenger();
+
                     renderBoardPage(boardID);
                 },
             },
@@ -446,6 +474,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Результат поиска');
+
+                        destroyMessenger();
 
                         renderSearchPage();
                     } 
@@ -471,6 +501,8 @@ export class Router {
 
                         setHeaderTitle('Результат поиска');
 
+                        destroyMessenger();
+
                         renderSearchPage();
                     } 
                 },
@@ -494,6 +526,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Результат поиска');
+
+                        destroyMessenger();
 
                         renderSearchPage();
                     } 
@@ -529,6 +563,8 @@ export class Router {
                     }
                   }
         
+                  destroyMessenger();
+
                   renderUserPage(userID);
                 },
               },
