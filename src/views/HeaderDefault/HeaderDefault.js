@@ -180,8 +180,11 @@ export function renderHeaderDefault() {
     });
 
     document.body.addEventListener('click', (e) => {
-        if (e.target !== document.querySelector('.js-create-img')) {
+        if (e.target !== createBtn) {
             createMenu.classList.add('hide');
+        }
+        if (e.target !== notificationsBtn) {
+            notificationsMenu.classList.add('hide');
         }
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
             e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
