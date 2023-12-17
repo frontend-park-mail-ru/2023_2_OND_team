@@ -3,6 +3,7 @@ import { Router } from "../../components/Router/router.js";
 export class Notifications {
     #notificationMenu;
     #notificationCounter;
+    #notifications;
 
     constructor() {
         if (Notifications.instance) {
@@ -13,6 +14,7 @@ export class Notifications {
 
         this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
         this.#notificationCounter = 0;
+        this.#notifications = [];
     }
 
     renderNotification(type, payload) {
@@ -42,6 +44,10 @@ export class Notifications {
                     notificationElement.remove();
                 });
 
+                this.#notifications.push(notification);
+
+                this.checkNotificationCount();
+
                 break;
             default:
                 break;
@@ -63,6 +69,15 @@ export class Notifications {
                 } 
             default:
                 break;
+        }
+    }
+
+    checkNotificationCount() {
+        const notificationsNonContent = document.querySelector('.header__notifications__menu-no_notifications-text');
+        if (this.#notifications.length) {
+            notificationsNonContent.classList.remove('hide');
+        } else {
+            notificationsNonContent.classList.add('hide');
         }
     }
 }

@@ -233,6 +233,10 @@
     cursor: pointer;
 }
 
+.header__notifications__menu-no_notifications-text {
+    padding-top: 25%;
+}
+
 .header__user__menu {
     position: relative;
     top: 10px;
