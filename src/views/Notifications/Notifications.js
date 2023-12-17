@@ -105,20 +105,19 @@ export class Notifications {
 
     notifyMe() {
         if (!("Notification" in window)) {
-          alert("This browser does not support desktop notification");
+            return;
         }
-       
-        else if (Notification.permission === "granted") {
-          var notification = new Notification("Hi there!");
+     
+        if (Notification.permission === "granted" && !document.hidden) {
+            var notification = new Notification("Hi there!");
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission(function (permission) {
+                if (permission === "granted" && !document.hidden) {
+                    var notification = new Notification("Hi there!");
+                }
+            });
         }
-       
-        else if (Notification.permission !== "denied") {
-          Notification.requestPermission(function (permission) {
-            if (permission === "granted") {
-              var notification = new Notification("Hi there!");
-            }
-          });
-        }
-    }
+     }
+     
        
 }
