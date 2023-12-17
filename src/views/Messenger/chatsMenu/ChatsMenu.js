@@ -19,11 +19,11 @@ export class MessengerChatsMenu {
   lastInstance;
 
   constructor() {
-    if (MessengerChatsMenu.lastInstance) {
-      MessengerChatsMenu.lastInstance.desroy();
+    if (MessengerChatsMenu.instance) {
+      return MessengerChatsMenu.instance;
     }
-    MessengerChatsMenu.lastInstance = this;
 
+    MessengerChatsMenu.instance = this;
 
     this.#state = new State();
     this.#router = new Router();
@@ -38,12 +38,6 @@ export class MessengerChatsMenu {
     this.#activeChatId = null;
 
     this.defineChatsMenuItems();
-  }
-
-  desroy() {
-    this.#definedChats.forEach((chatMenu) => {   
-      chatMenu.removeEventListener('click', this.#chatMenuListener);
-    });
   }
 
   defineMessengerChatsMenu(chats) {
@@ -142,19 +136,17 @@ export class MessengerChatsMenu {
         this.#router.navigate(`/user/${userID}`);
       })
    
-      chatMenu.addEventListener('click', (e) => this.#chatMenuListener(e, chatMenu, chatMenuUserAvatar, userID));
+      chatMenu.addEventListener('click', (e) => {
+        if (e.target === chatMenuUserAvatar) {
+          return;
+        }
+     
+        // chatMenu.removeEventListener('click', this.#chatMenuListener);
+     
+        this.#router.navigate(`/messenger/${userID}`);
+      });
     });
-   }
-   
-   #chatMenuListener(e, chatMenu, chatMenuUserAvatar, userID) {
-      if (e.target === chatMenuUserAvatar) {
-        return;
-      }
-   
-      chatMenu.removeEventListener('click', this.#chatMenuListener);
-   
-      this.#router.navigate(`/messenger/${userID}`);
-   }
+  }
 
   openChatWithUser(userID) {
     const chatDiv = document.querySelector('.messenger__chat');
