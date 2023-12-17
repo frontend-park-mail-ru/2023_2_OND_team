@@ -2,13 +2,14 @@ import {API} from '../../utils/Api/api.js';
 import State from '../../components/State/state.js';
 import {Router} from '../../components/Router/router.js';
 import {renderPins} from '../../components/RenderPins/renderPins.js';
-//import { renderUserPage } from '../../views/UserPage/UserPage.js'
+import { renderUserPage } from '../../views/UserPage/UserPage.js'
 
 export function renderPinPage(pinID) {
     const router = new Router();
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
+    const currentURL = window.location.href;
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
@@ -21,7 +22,8 @@ export function renderPinPage(pinID) {
                 title: pinInfo.title,
                 description: pinInfo.description,
                 likes: pinInfo.count_likes,
-                avatar: pinInfo.author.avatar
+                avatar: pinInfo.author.avatar,
+                link: currentURL
             };
 
             main.innerHTML = pinPage(context);
@@ -118,11 +120,22 @@ export function renderPinPage(pinID) {
                 });              
             }
             
+            const shareButton = document.querySelector('.js-share__btn');
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
             updateButton.classList.add('hide');
             deleteButton.classList.add('hide');
+
+            const showModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.add('show');
+            };
+
+            const hideModal = () => {
+                const modal = document.getElementById('deleteModal');
+                modal.classList.remove('show');
+            };
 
             saveButton?.addEventListener('click', () => {
                 console.log(boardID, [parseInt(pinID)]);
@@ -130,8 +143,69 @@ export function renderPinPage(pinID) {
             });
 
             deleteButton?.addEventListener('click', () => {
-                API.deletePin(pinID);
-                router.navigate('/');
+                showModal();
+            });
+
+            shareButton.addEventListener('click', () => {
+                const input = document.querySelector('#shareModal .field input');
+                input.value = currentURL;
+
+                const shareModal = document.getElementById('shareModal');
+            
+                shareModal.classList.add('show');
+
+                const closeButton = shareModal.querySelector('.js-cancel__btn');
+                const copyButton = shareModal.querySelector('.field button');
+
+                closeButton.addEventListener('click', () => {
+                    shareModal.classList.remove('show');
+                }); 
+            
+                copyButton.addEventListener('click', () => {
+                    const copyInput = shareModal.querySelector('.field input');
+                    copyInput.select();
+                
+                    try {
+                        const successful = document.execCommand('copy');
+                        
+                        if (successful) {
+                            copyButton.style.backgroundColor = 'green';
+                            copyButton.innerText = 'Скопировано';
+                        } else {
+                            copyButton.style.backgroundColor = '';
+                            copyButton.innerText = 'Скопировать';
+                        }
+                    } catch (err) {
+                        console.error('Ошибка копирования:', err);
+                    }
+                });                
+            
+                const socialIcons = shareModal.querySelectorAll('.icons a');
+            
+                socialIcons.forEach(icon => {
+                    icon.addEventListener('click', () => {
+                        console.log('click');
+                    });
+                });
+            });            
+
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+            const cancelDeleteBtn = document.getElementById('cancelDelete');
+        
+            confirmDeleteBtn?.addEventListener('click', () => {
+                API.deletePin(pinID)
+                    .then(() => {
+                        hideModal();
+                        router.navigate('/');
+                    })
+                    .catch((error) => {
+                        console.error('Ошибка при удалении пина:', error);
+                        hideModal();
+                    });
+            });
+        
+            cancelDeleteBtn?.addEventListener('click', () => {
+                hideModal();
             });
 
             updateButton?.addEventListener('click', () => {
@@ -211,4 +285,5 @@ export function renderPinPage(pinID) {
             console.error('Ошибка при получении информации о пине:', error);
             router.navigate('/page404');
         });
+
 }

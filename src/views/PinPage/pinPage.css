@@ -29,7 +29,6 @@
 
 .pin-username {
     cursor: pointer;
-    padding-right: 192px;
     display: block;
     max-width: 90%;
     margin-left: 20px;
@@ -193,7 +192,6 @@
 .js-pin-to-board__btn {
     margin: 10px 0;
     max-width: 90%;
-    margin-left: 20px;
     width: 200px;
     height: 45px
 }
@@ -228,4 +226,140 @@
     display: flex;
     align-items: center;
     padding-left: 20px;
+}
+
+@media only screen and (max-width: 968px) {
+    .rectangle {
+        flex-direction: column;
+        height: auto;
+        margin: 20px auto 0;
+        border-radius: 10px;
+    }
+
+    .open__gallery__item img {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pin-like-btn {
+        position: static;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .pin-username {
+        cursor: pointer;
+        display: block;
+        max-width: 90%;
+        margin-left: 20px;
+    }
+
+    .big-pin-edit-item {
+        width: 472px;
+        height: auto;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 360px auto 0;
+    padding: 20px;
+    border-radius: 15px;
+    width: 30%;
+    text-align: center;
+}
+
+.modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#confirmDelete {
+    background-color: #ff4f4f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#cancelDelete {
+    background-color: #d3d3d3;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+#confirmDelete:hover {
+    background-color: #e30505;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#cancelDelete:hover {
+    background-color: #adadad;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.share-btn-block {
+    font-size: 18px;
+    padding: 18px 13px;
+    width: 30px;
+    height: 28px;
+}
+
+.btn-share {
+    cursor: pointer;
+    width: 23px;
+    height: 25px
+}
+
+.icons {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.js-search__btn {
+    width: 138px
+}
+
+.link-conteiner {
+    border-radius: 5px;
+    height: 36px;
+}
+
+.modal-content header span {
+    font-weight: bold;
 }

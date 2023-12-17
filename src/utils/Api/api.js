@@ -990,7 +990,7 @@ export class API {
   static async Search(searchMode, searchInput) {
     try {
         const configItem = `//${this.state.getDomain()}:8084/api/v1/search/${searchMode}?template=${searchInput}&count=&offset=&sortBy=&order=`;
-
+      
         const response = await fetch(configItem, {
             method: 'GET',
             headers: {
