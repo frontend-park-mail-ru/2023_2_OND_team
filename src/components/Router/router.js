@@ -1,5 +1,4 @@
 import State from '../State/state.js';
-import { WebSocketConnection } from '../../utils/Api/messenger/messengerWS.js';
 import {renderSidebar} from '../../views/Sidebar/Sidebar.js';
 import {renderHeaderDefault} from '../../views/HeaderDefault/HeaderDefault.js';
 import {renderFeedPage} from '../../views/Feed/Feed.js';
@@ -48,7 +47,6 @@ export class Router {
         Router.instance = this;
 
         this.state = new State();
-        const WS = new WebSocketConnection(`wss://${this.state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
 
         this.#routes = [
             {
