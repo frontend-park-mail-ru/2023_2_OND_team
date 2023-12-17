@@ -41,6 +41,7 @@ export class Notifications {
 
                 const notificationElementDelete = notificationElement.querySelector('.header__notifications__menu_item-btn');
                 notificationElementDelete?.addEventListener('click', () => {
+                    this.#notifications = this.#notifications.filter((item) => {item !== notification})
                     notificationElement.remove();
                 });
 

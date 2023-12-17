@@ -80,7 +80,7 @@ export class MessengerChatsMenu {
               }
           } else {  // message from other chat
               if (jsonObject.message.eventType === 'create') {
-                  this.#notifications.renderNotification('NEW_MESSAGE', jsonObject?.message?.message?.ID)
+                  this.#notifications.renderNotification('NEW_MESSAGE', jsonObject?.message?.message?.from)
                   // raiseUpChatMenuItem(jsonObject.message.message.from)  поднять чат в списке чатов вверх
                   // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
                   // this.scrollToBottom();
