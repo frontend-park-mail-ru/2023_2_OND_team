@@ -532,8 +532,6 @@ export class Router {
                   if (this.state.getIsAuthorized()) {
                     if (this.state.getCurrentPage()?.startsWith('messenger')) {
 
-                        console.log('messenger..')
-
                         this.state.setCurrentPage(`messenger${userID}`);
 
                         const messengerChatsMenu = new MessengerChatsMenu();

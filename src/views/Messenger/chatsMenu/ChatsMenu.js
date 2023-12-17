@@ -16,8 +16,15 @@ export class MessengerChatsMenu {
   #chatsMenuItems;
   #activeChatMenu;
   #activeChatId;
+  lastInstance;
 
   constructor() {
+    if (MessengerChatsMenu.lastInstance) {
+      MessengerChatsMenu.lastInstance.desroy();
+    }
+    MessengerChatsMenu.lastInstance = this;
+
+
     this.#state = new State();
     this.#router = new Router();
     this.#messengerChat = new MessengerChat();
@@ -31,6 +38,12 @@ export class MessengerChatsMenu {
     this.#activeChatId = null;
 
     this.defineChatsMenuItems();
+  }
+
+  desroy() {
+    this.#definedChats.forEach((chatMenu) => {   
+      chatMenu.removeEventListener('click', this.#chatMenuListener);
+    });
   }
 
   defineMessengerChatsMenu(chats) {
@@ -138,7 +151,7 @@ export class MessengerChatsMenu {
         return;
       }
    
-      chatMenuUserAvatar.removeEventListener('click', this.#chatMenuListener);
+      chatMenu.removeEventListener('click', this.#chatMenuListener);
    
       this.#router.navigate(`/messenger/${userID}`);
    }
