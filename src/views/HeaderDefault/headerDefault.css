@@ -188,7 +188,17 @@
     justify-content: center;
     background: rgba(255, 255, 255, 1);
     border-radius: 20px 0 0 0;
-    border-bottom: 1px solid var(--primary-30, #226B77);
+}
+
+.header__notifications__menu__footer {
+    position: fixed;
+    display: flex;
+    height: 40px;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0 0 0 20px;
 }
 
 .header__notifications__menu__items {
