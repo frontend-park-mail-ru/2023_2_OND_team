@@ -20,6 +20,8 @@ export function renderHeaderDefault() {
 
     header.innerHTML = headerTemplate(headerContext);
 
+    const notificationsMenu = document.querySelector('.header__notifications__menu');
+
     const createMenu = document.querySelector('.header__create__menu');
     const createMenuBtns = document.querySelectorAll('.header__create__menu__item');
     createMenuBtns.forEach((btn) => {
@@ -69,6 +71,11 @@ export function renderHeaderDefault() {
     const createBtn = document.querySelector('.js-create-img');
     createBtn?.addEventListener('click', () => {
         createMenu.classList.toggle('hide');
+    });
+
+    const notificationsBtn = document.querySelector('.js-notification-img');
+    notificationsBtn?.addEventListener('click', () => {
+        notificationsMenu.classList.toggle('hide');
     });
 
     const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
@@ -173,8 +180,11 @@ export function renderHeaderDefault() {
     });
 
     document.body.addEventListener('click', (e) => {
-        if (e.target !== document.querySelector('.js-create-img')) {
+        if (e.target !== createBtn) {
             createMenu.classList.add('hide');
+        }
+        if (e.target !== notificationsMenu && e.target !== notificationsBtn) {
+            notificationsMenu.classList.add('hide');
         }
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
             e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
