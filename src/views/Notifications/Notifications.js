@@ -91,7 +91,7 @@ export class Notifications {
     }
 
     #defineClearBtn() {
-        const clearAllBtn = document.querySelector('.header__notifications__menu-no_notifications-text');
+        const clearAllBtn = document.querySelector('.header__notifications__menu__footer-text');
         clearAllBtn?.addEventListener('click', () => {
             this.#notifications = [];
             const notifications = document.querySelectorAll('[data-notification-id]');
