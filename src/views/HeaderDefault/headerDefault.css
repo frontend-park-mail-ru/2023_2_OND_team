@@ -183,11 +183,11 @@
     position: fixed;
     display: flex;
     height: 40px;
+    width: 200px;
     padding-left: 10px;
     align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid var(--primary-30, #226B77);
-    background: rgba(255, 255, 255, 0.00);
+    justify-content: center;
+    background: rgba(255, 255, 255, 1);
 }
 
 .header__notifications__menu__items {
