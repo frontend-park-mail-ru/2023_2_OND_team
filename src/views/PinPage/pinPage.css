@@ -87,19 +87,6 @@
     width: 100px;
     height: 45px;
 }
-  
-.cancel-button {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    width: 15px;
-    height: 15px;
-    z-index: 9999;
-}
 
 .edit-button {
     font-size: 18px;
