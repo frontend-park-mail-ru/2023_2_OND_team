@@ -36,24 +36,25 @@ export class Notifications {
 
                 this.#notificationMenu.insertAdjacentHTML('afterbegin', notificationTemplate(notificationContext));
 
+                this.#notifications.push(notification);
+
                 const notificationElement = document.querySelector(`[data-notification-id="${notification.id}"]`);
 
                 const notificationElementText = notificationElement.querySelector('.header__notifications__menu_item-text');
                 notificationElementText?.addEventListener('click', () => {
                     notification.handler();
-                    this.#notifications = this.#notifications.filter((item) => {item !== notification})
+                    this.#notifications = this.#notifications.filter((item) => {return item !== notification})
                     notificationElement.remove();
                     this.checkNotificationCount();
                 });
 
                 const notificationElementDelete = notificationElement.querySelector('.header__notifications__menu_item-btn');
                 notificationElementDelete?.addEventListener('click', () => {
-                    this.#notifications = this.#notifications.filter((item) => {item.id !== notification.id})
+                    this.#notifications = this.#notifications.filter((item) => {return item !== notification})
                     notificationElement.remove();
                     this.checkNotificationCount();
                 });
 
-                this.#notifications.push(notification);
 
                 this.checkNotificationCount();
 
