@@ -183,7 +183,7 @@ export function renderHeaderDefault() {
         if (e.target !== createBtn) {
             createMenu.classList.add('hide');
         }
-        if (e.target !== notificationsBtn) {
+        if (e.target !== notificationsMenu) {
             notificationsMenu.classList.add('hide');
         }
         if (e.target !== document.querySelector('.header__user__avatar-user') &&

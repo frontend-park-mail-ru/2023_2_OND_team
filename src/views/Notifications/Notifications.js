@@ -15,6 +15,8 @@ export class Notifications {
         this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
         this.#notificationCounter = 0;
         this.#notifications = [];
+
+        this.#defineClearBtn();
     }
 
     renderNotification(type, payload) {
@@ -86,5 +88,15 @@ export class Notifications {
         } else {
             notificationsNonContent.classList.add('hide');
         }
+    }
+
+    #defineClearBtn() {
+        const clearAllBtn = document.querySelector('.header__notifications__menu-no_notifications-text');
+        clearAllBtn?.addEventListener('click', () => {
+            this.#notifications = [];
+            const notifications = document.querySelectorAll('[data-notification-id]');
+            notifications.forEach((notification) => notification.remove());
+            this.checkNotificationCount();
+        });
     }
 }
