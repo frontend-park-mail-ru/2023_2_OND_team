@@ -3,11 +3,13 @@ import { MessengerChat } from "../chat/Chat.js";
 import { WebSocketConnection } from "../../../utils/Api/messenger/messengerWS.js";
 import State from "../../../components/State/state.js";
 import { Router } from "../../../components/Router/router.js";
+import { Notifications } from "../../Notifications/Notifications.js";
 
 export class MessengerChatsMenu {
   #ws;
   #state;
   #router;
+  #notifications;
   #messengerChat;
   #messengerApi;
   #definedChats;
@@ -26,6 +28,7 @@ export class MessengerChatsMenu {
 
     this.#state = new State();
     this.#router = new Router();
+    this.#notifications = new Notifications();
     this.#messengerChat = new MessengerChat();
     this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:8080/websocket/connect/chat?${this.#state.getUserID()}`);
     this.#messengerApi = new MessengerApi();
@@ -77,6 +80,7 @@ export class MessengerChatsMenu {
               }
           } else {  // message from other chat
               if (jsonObject.message.eventType === 'create') {
+                  this.#notifications.renderNotification('NEW_MESSAGE', jsonObject?.message?.message?.ID)
                   // raiseUpChatMenuItem(jsonObject.message.message.from)  поднять чат в списке чатов вверх
                   // this.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
                   // this.scrollToBottom();
