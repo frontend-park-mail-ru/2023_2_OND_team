@@ -49,9 +49,9 @@ export class MessengerChat {
         const messages = content.messages.reverse();
         messages.forEach((message) => {
             if (message.from == this.#chatWithUserId) {
-                this.renderCompanionMessage(message.ID, message.content)
+                this.renderCompanionMessage(message.id, message.content)
             } else {
-                this.renderMyMessage(message.ID, message.content);
+                this.renderMyMessage(message.id, message.content);
             }
         })
 

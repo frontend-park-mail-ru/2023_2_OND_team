@@ -20,11 +20,11 @@ export class MessengerChatsMenu {
   activeChatId;
 
   constructor() {
-    // if (MessengerChatsMenu.instance) {
-    //   return MessengerChatsMenu.instance;
-    // }
+    if (MessengerChatsMenu.instance) {
+      return MessengerChatsMenu.instance;
+    }
 
-    // MessengerChatsMenu.instance = this;
+    MessengerChatsMenu.instance = this;
 
     this.#state = new State();
     this.#router = new Router();
