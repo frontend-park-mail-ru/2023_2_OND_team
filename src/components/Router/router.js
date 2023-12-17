@@ -30,12 +30,12 @@ function resetScroll() {
 }
 
 function destroyMessenger() {
-    if (!MessengerChatsMenu.instance) {
-        return;
-    }
+    // if (!MessengerChatsMenu.instance) {
+    //     return;
+    // }
     
-    const messengerChatsMenu = new MessengerChatsMenu();
-    messengerChatsMenu.activeChatId = null;
+    // const messengerChatsMenu = new MessengerChatsMenu();
+    // messengerChatsMenu.activeChatId = null;
     MessengerChatsMenu.instance = null;
 }
 

@@ -39,9 +39,9 @@ export class Notifications {
                 const notificationElementText = notificationElement.querySelector('.header__notifications__menu_item-text');
                 notificationElementText?.addEventListener('click', () => {
                     notification.handler;
-                    // this.#notifications = this.#notifications.filter((item) => {item !== notification})
-                    // notificationElement.remove();
-                    // this.checkNotificationCount();
+                    this.#notifications = this.#notifications.filter((item) => {item !== notification})
+                    notificationElement.remove();
+                    this.checkNotificationCount();
                 });
 
                 const notificationElementDelete = notificationElement.querySelector('.header__notifications__menu_item-btn');
