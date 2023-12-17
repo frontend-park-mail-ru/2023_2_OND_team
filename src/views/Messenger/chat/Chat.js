@@ -36,6 +36,7 @@ export class MessengerChat {
 
         this.defineMyMessages();
         this.defineSendMessageBtn();
+        this.defineMessageInput();
         this.scrollToBottom();
     }
 
@@ -113,7 +114,7 @@ export class MessengerChat {
                 "message": {
                     "id": +messageID,
                     "from": this.#state.getUserID(),
-                    "to": this.#chatWithUserId,
+                    "to": +this.#chatWithUserId,
                     "content": messageText,
                 }
             }
@@ -150,7 +151,7 @@ export class MessengerChat {
                 "message": {
                     "id": +messageID,
                     "from": this.#state.getUserID(),
-                    "to": this.#chatWithUserId,
+                    "to": +this.#chatWithUserId,
                 }
             }
         }
@@ -206,7 +207,7 @@ export class MessengerChat {
                 "eventType": "create",
                 "message": {
                     "from": this.#state.getUserID(),
-                    "to": this.#chatWithUserId,
+                    "to": +this.#chatWithUserId,
                     "content": messageToSend,
                 }
             }
@@ -245,6 +246,34 @@ export class MessengerChat {
 
 
         this.scrollToBottom();
+    }
+
+    defineMessageInput() {
+        this.#messageFieldInput?.addEventListener('keydown', (e) => {
+            if (e.key != 'Enter') {
+                return;
+            }
+
+            e.preventDefault();
+
+            const messageToSend = this.#messageFieldInput.value;
+            if (messageToSend) {
+                switch (this.#messageMode.mode) {
+                    case 'send':
+                        this.sendMessage(messageToSend);
+                        break;
+                    case 'update':
+                        this.updateMessage(messageToSend, this.#messageMode.messageID);
+                        break;
+                    default:
+                        break;
+                }
+                
+                this.#messageFieldInput.value = '';
+                this.#messageMode.mode = 'send';
+                this.#messageMode.messageID = -2;
+            }
+        })
     }
 
     renderMyMessage(messageID, message) {
