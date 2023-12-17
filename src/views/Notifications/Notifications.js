@@ -58,7 +58,7 @@ export class Notifications {
 
                 this.checkNotificationCount();
 
-                this.notifyMe();
+                this.notifyMe(notificationContext.content, payload);
 
                 break;
             default:
@@ -103,20 +103,27 @@ export class Notifications {
         });
     }
 
-    notifyMe() {
+    notifyMe(content, payload) {
         if (!("Notification" in window)) {
             return;
         }
      
-        if (Notification.permission === "granted" && !document.hidden) {
-            var notification = new Notification("Hi there!");
+        if (Notification.permission === "granted" && document.hidden) {
+            var notification = new Notification(content);
         } else if (Notification.permission !== "denied") {
             Notification.requestPermission(function (permission) {
-                if (permission === "granted" && !document.hidden) {
-                    var notification = new Notification("Hi there!");
+                if (permission === "granted" && document.hidden) {
+                    var notification = new Notification(content);
                 }
             });
         }
+
+        notification.onclick = (event) => {
+            event.preventDefault(); 
+            const router = new Router();
+            // window.open('http://www.example.com', '_blank');
+            router.navigate(`/messenger/${payload}`);
+        };
      }
      
        
