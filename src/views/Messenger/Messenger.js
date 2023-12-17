@@ -1,7 +1,6 @@
 import {renderNonContentNotification} from '../NonContentNotification/NonContentNotification.js';
 import { MessengerApi } from '../../utils/Api/messenger/messengerApi.js';
 import { MessengerChatsMenu } from './chatsMenu/ChatsMenu.js';
-import State from '../../components/State/state.js';
 import { API } from '../../utils/Api/api.js';
 
 export function renderMessengerPage() {

@@ -9,7 +9,6 @@ import { definePins } from '../../utils/definePins/definePins.js';
 export function renderFeedPage() {
   const state = new State();
   const main = document.querySelector('#main');
-  const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${state.getUserID()}`);
 
   const numRequestedPins = 20;
   let pinMaxID = -Infinity;
