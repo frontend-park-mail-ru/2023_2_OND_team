@@ -103,15 +103,17 @@ export class MessengerChat {
 
         const wsUpdateMessage = {
             "requestID": this.#state.requestID,
-            "action": "Publish",
-            "channel":{
-              "name": this.#chatWithUserId,
-              "topic": "chat",
-            },
+            // "action": "Publish",
+            // "channel":{
+            //   "name": this.#chatWithUserId,
+            //   "topic": "chat",
+            // },
             "message": {
                 "eventType": "update",
                 "message": {
                     "id": +messageID,
+                    "from": this.#state.getUserID(),
+                    "to": this.#chatWithUserId,
                     "content": messageText,
                 }
             }
@@ -138,15 +140,17 @@ export class MessengerChat {
 
         const wsDeleteMessage = {
             "requestID": this.#state.requestID,
-            "action": "Publish",
-            "channel":{
-              "name": this.#chatWithUserId,
-              "topic": "chat",
-            },
+            // "action": "Publish",
+            // "channel":{
+            //   "name": this.#chatWithUserId,
+            //   "topic": "chat",
+            // },
             "message": {
                 "eventType": "delete",
                 "message": {
                     "id": +messageID,
+                    "from": this.#state.getUserID(),
+                    "to": this.#chatWithUserId,
                 }
             }
         }
@@ -193,15 +197,16 @@ export class MessengerChat {
 
         const wsSendMessage = {
             "requestID": this.#state.requestID,
-            "action": "Publish",
-            "channel":{
-              "name": this.#chatWithUserId,
-              "topic": "chat",
-            },
+            // "action": "Publish",
+            // "channel":{
+            //   "name": this.#chatWithUserId,
+            //   "topic": "chat",
+            // },
             "message": {
                 "eventType": "create",
                 "message": {
-                    "to": +this.#chatWithUserId,
+                    "from": this.#state.getUserID(),
+                    "to": this.#chatWithUserId,
                     "content": messageToSend,
                 }
             }
