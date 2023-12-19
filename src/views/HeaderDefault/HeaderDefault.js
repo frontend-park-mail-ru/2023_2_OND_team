@@ -183,7 +183,7 @@ export function renderHeaderDefault() {
         if (e.target !== createBtn) {
             createMenu.classList.add('hide');
         }
-        if (!notificationsMenu.contains(e.target) && e.target !== notificationsBtn) {
+        if (!document.querySelector('.header__notifications__menu').contains(e.target) && e.target !== notificationsBtn) {
             notificationsMenu.classList.add('hide');
         }
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
