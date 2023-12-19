@@ -99,7 +99,7 @@ export class API {
 
 
         const notifications = new Notifications();
-        const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
+        const WS = new WebSocketConnection(`wss://${this.state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
         WS.open(`wss://${this.state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
         WS.setOnMessageMethod((event) => {
             const jsonObject = JSON.parse(event.data);
