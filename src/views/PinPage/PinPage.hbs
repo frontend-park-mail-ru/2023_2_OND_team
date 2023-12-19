@@ -26,6 +26,38 @@
                 <label for="pin-description" class="labeled-input">Описание</label>
                 <textarea disabled class="pin-description input-read-only text-base1-small big-pin-edit-item">{{description}}</textarea>
             </div>
+            <div class="pin-comments-div">
+                <div class="pin-comments">
+                    <div class="pin-comments__item">
+                        <div class="pin-comments__user_info">
+                            <img src="/assets/icons/actions/icon_delete.svg" class="pin-comments__user_info__avatar">
+                            <div class="pin-comments__user_info__username">
+                                Username
+                            </div>
+                        </div>
+                        <div class="pin-comments__comment">
+                            asdfasdfasdfasdfasdfasdfasdfasdf
+                        </div>
+                    </div>
+                    <div class="pin-comments__item">
+                        <div class="pin-comments__user_info">
+                            <img src="/assets/icons/actions/icon_delete.svg" class="pin-comments__user_info__avatar">
+                            <div class="pin-comments__user_info__username">
+                                Username
+                            </div>
+                        </div>
+                        <div class="pin-comments__comment">
+                            asdfasdfasdfasdfasdfasdfasdfasdf
+                        </div>
+                    </div>          
+                </div>
+                <div class="pin-comment__input">
+                    <div class="pin-comment__input_text">
+                        <input type="text" placeholder="Добавить комментарий" class="pin-comment__input_text-input text-base2-medium">
+                    </div>
+                    <img src="/assets/icons/actions/messenger_send_message.svg" class="pin-comment__input__send_message-img">
+                </div>
+            </div>
             <div class="pin-like-btn">
                 <img src="/assets/icons/like.svg" alt="Like" class="pin-like-icon js-pin-like-icon-{{id}}">
                 <div class="pin-like-counter pin-like-counter-{{id}} text-base1-medium">{{likes}}</span></div>
