@@ -61,7 +61,9 @@ export class Notifications {
 
                 this.checkNotificationCount();
 
-                this.createBrowserNotification(type, notificationContext.content, payload);
+                if (document.hidden) {
+                    this.createBrowserNotification(type, notificationContext.content, payload);
+                }
                 
                 break;
             default:
@@ -115,11 +117,11 @@ export class Notifications {
 
         switch (type) {
             case 'NEW_MESSAGE': 
-                if (Notification.permission === "granted" && document.hidden) {
+                if (Notification.permission === "granted") {
                     notification = new Notification(content);
                 } else if (Notification.permission !== "denied") {
                     Notification.requestPermission(function (permission) {
-                        if (permission === "granted" && document.hidden) {
+                        if (permission === "granted") {
                             notification = new Notification(content);
                         }
                     });
