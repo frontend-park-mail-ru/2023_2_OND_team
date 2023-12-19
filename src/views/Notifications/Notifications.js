@@ -15,12 +15,11 @@ export class Notifications {
         this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
         this.#notificationCounter = 0;
         this.#notifications = [];
-
-        this.#defineClearBtn();
     }
 
-    setNotificationMenu() {
+    defineNotifications() {
         this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
+        this.#defineClearBtn();
     }
 
     renderNotification(type, payload) {
