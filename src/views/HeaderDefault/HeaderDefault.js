@@ -181,7 +181,16 @@ export function renderHeaderDefault() {
 
     document.body.addEventListener('click', (e) => {
         const notifications = document.querySelectorAll('[data-notification-id]');
-        console.log(notifications.contains(e.target), notifications, e.target)
+
+        let isTargetContained = false;
+
+        notifications.forEach(notification => {
+            if (notification.contains(e.target)) {
+                isTargetContained = true;
+            }
+        });
+
+        console.log(isTargetContained)
 
         if (e.target !== createBtn) {
             createMenu.classList.add('hide');
