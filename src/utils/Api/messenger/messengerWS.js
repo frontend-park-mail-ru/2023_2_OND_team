@@ -17,6 +17,14 @@ export class WebSocketConnection {
 
     }
 
+    close() {
+        this.socket.close();
+    }
+
+    open(url) {
+        this.socket = new WebSocket(url);
+    }
+
     onMessage(event) {
         console.log('WebSocket message received:', event.data);
     }

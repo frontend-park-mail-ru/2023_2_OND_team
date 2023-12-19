@@ -1,4 +1,6 @@
 import State from '../../components/State/state.js';
+import { WebSocketConnection } from './messenger/messengerWS.js';
+import { Notifications } from '../../views/Notifications/Notifications.js';
 
 export class API {
   static state = new State();
@@ -94,6 +96,20 @@ export class API {
         this.state.setUserID(res.body.id);
         this.state.setUsername(res.body.username);
         this.state.setAvatar(res.body.avatar);
+
+
+        const notifications = new Notifications();
+        const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
+        WS.open(`wss://${this.state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
+        WS.setOnMessageMethod((event) => {
+            const jsonObject = JSON.parse(event.data);
+            if (jsonObject.message.eventType === 'create') {
+                notifications.renderNotification('NEW_MESSAGE', jsonObject?.message?.message?.from)
+            } else {
+                console.log(jsonObject);
+            }
+        });
+
       } else {
         if (res.code === 'csrf') {
           this.getCsrfToken()
@@ -138,6 +154,10 @@ export class API {
         this.state.setUserID(null);
         this.state.setUsername(null);
         this.state.setAvatar(null);
+
+        const WS = new WebSocketConnection(`wss://${this.state.getDomain()}:8080/websocket/connect/chat?${this.state.getUserID()}`);
+        WS.close();
+        
       }
 
       return res.status;

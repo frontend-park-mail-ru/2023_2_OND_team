@@ -21,17 +21,6 @@ API.getCsrfToken()
           .then(() => {
             router.handlePopstate();
             
-            const notifications = new Notifications();
-            const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${state.getUserID()}`);
-
-            WS.setOnMessageMethod((event) => {
-              const jsonObject = JSON.parse(event.data);
-              if (jsonObject.message.eventType === 'create') {
-                  notifications.renderNotification('NEW_MESSAGE', jsonObject?.message?.message?.from)
-              } else {
-                  console.log(jsonObject);
-              }
-          });
-          });
+        });
           
     });
