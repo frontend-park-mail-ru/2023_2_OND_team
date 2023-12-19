@@ -22,10 +22,10 @@ export class WebSocketConnection {
     }
 
     open(url) {
-        if (socket.readyState === WebSocket.OPEN) {
+        if (this.socket.readyState === WebSocket.OPEN) {
             return
         }
-        
+
         this.socket = new WebSocket(url);
     }
 
