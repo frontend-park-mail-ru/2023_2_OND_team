@@ -104,11 +104,6 @@ export class MessengerChat {
 
         const wsUpdateMessage = {
             "requestID": this.#state.requestID,
-            // "action": "Publish",
-            // "channel":{
-            //   "name": this.#chatWithUserId,
-            //   "topic": "chat",
-            // },
             "message": {
                 "eventType": "update",
                 "message": {
@@ -198,11 +193,6 @@ export class MessengerChat {
 
         const wsSendMessage = {
             "requestID": this.#state.requestID,
-            // "action": "Publish",
-            // "channel":{
-            //   "name": this.#chatWithUserId,
-            //   "topic": "chat",
-            // },
             "message": {
                 "eventType": "create",
                 "message": {

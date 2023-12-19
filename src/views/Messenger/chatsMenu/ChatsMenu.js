@@ -70,11 +70,11 @@ export class MessengerChatsMenu {
         } else if (jsonObject?.type === 'event') {  // getting message
           if (jsonObject.message.message?.from == this.activeChatId) {  // message from opened chat
               if (jsonObject.message.eventType === 'create') {
-                this.#messengerChat.renderCompanionMessage(jsonObject.message.message.ID, jsonObject.message.message.content);
+                this.#messengerChat.renderCompanionMessage(jsonObject.message.message.id, jsonObject.message.message.content);
               } else if (jsonObject.message.eventType === 'update') {
-                this.#messengerChat.updateCompanionMessage(jsonObject?.message?.message?.ID, jsonObject?.message?.message?.content);
+                this.#messengerChat.updateCompanionMessage(jsonObject?.message?.message?.id, jsonObject?.message?.message?.content);
               } else if (jsonObject.message.eventType === 'delete') {                
-                this.#messengerChat.deleteCompanionMessage(jsonObject?.message?.message?.ID);
+                this.#messengerChat.deleteCompanionMessage(jsonObject?.message?.message?.id);
               } else {
                   console.log(jsonObject);
               }
