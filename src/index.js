@@ -20,7 +20,8 @@ API.getCsrfToken()
       API.checkLogin()
           .then(() => {
             router.handlePopstate();
-            
+            const notifications = new Notifications();
+            notifications.setNotificationMenu();
         });
           
     });

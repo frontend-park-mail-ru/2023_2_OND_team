@@ -19,6 +19,10 @@ export class Notifications {
         this.#defineClearBtn();
     }
 
+    setNotificationMenu() {
+        this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
+    }
+
     renderNotification(type, payload) {
         const notification = {
             id: this.#notificationCounter++,
