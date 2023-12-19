@@ -22,8 +22,10 @@ export class WebSocketConnection {
     }
 
     open(url) {
+        console.log(this.socket.readyState);
+
         if (this.socket.readyState === WebSocket.OPEN) {
-            return
+            return;
         }
 
         this.socket = new WebSocket(url);
