@@ -68,7 +68,7 @@ export class MessengerChatsMenu {
               console.log(jsonObject);
           }
         } else if (jsonObject?.type === 'event') {  // getting message
-          if (jsonObject.message.message?.from == this.activeChatId && !document.hidden) {  // message from opened chat
+          if (jsonObject.message.message?.from == this.activeChatId && !window.hidden) {  // message from opened chat
               if (jsonObject.message.eventType === 'create') {
                 this.#messengerChat.renderCompanionMessage(jsonObject.message.message.id, jsonObject.message.message.content);
               } else if (jsonObject.message.eventType === 'update') {

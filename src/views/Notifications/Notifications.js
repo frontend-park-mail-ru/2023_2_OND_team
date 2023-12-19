@@ -57,7 +57,7 @@ export class Notifications {
 
                 this.checkNotificationCount();
 
-                if (document.hidden) {
+                if (window.hidden) {
                     this.createBrowserNotification(type, notificationContext.content, payload);
                 }
 
