@@ -180,23 +180,11 @@ export function renderHeaderDefault() {
     });
 
     document.body.addEventListener('click', (e) => {
-        const notifications = document.querySelectorAll('[data-notification-id]');
-
-        let isTargetContained = false;
-
-        notifications.forEach(notification => {
-            if (notification.contains(e.target)) {
-                isTargetContained = true;
-            }
-        });
-
-        console.log(isTargetContained)
-
         if (e.target !== createBtn) {
             createMenu.classList.add('hide');
         }
         if (!document.querySelector('.header__notifications__menu').contains(e.target) && 
-            !notifications.contains(e.target) &&
+            !e.target.matches('.header__notifications__menu_item-btn') &&
             e.target !== notificationsBtn) {
             notificationsMenu.classList.add('hide');
         }
