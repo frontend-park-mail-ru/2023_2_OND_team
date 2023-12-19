@@ -55,10 +55,11 @@ export class Notifications {
                     this.checkNotificationCount();
                 });
 
-
                 this.checkNotificationCount();
 
-                this.createBrowserNotification(type, notificationContext.content, payload);
+                if (document.hidden) {
+                    this.createBrowserNotification(type, notificationContext.content, payload);
+                }
 
                 break;
             default:
