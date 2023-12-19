@@ -40,13 +40,13 @@
     margin-left: 20px;
     border: 2px solid;
     border-radius: 10px;
-    gap: 30px;
 }
 
 .pin-comments {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    height: 150px;
     gap: 25px;
     padding: 10px;
 }
