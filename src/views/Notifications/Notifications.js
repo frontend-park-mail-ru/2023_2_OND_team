@@ -61,10 +61,8 @@ export class Notifications {
 
                 this.checkNotificationCount();
 
-                if (window.hidden) {
-                    this.createBrowserNotification(type, notificationContext.content, payload);
-                }
-
+                this.createBrowserNotification(type, notificationContext.content, payload);
+                
                 break;
             default:
                 break;
