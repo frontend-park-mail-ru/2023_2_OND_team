@@ -180,6 +180,8 @@ export function renderHeaderDefault() {
     });
 
     document.body.addEventListener('click', (e) => {
+        console.log(document.querySelector('.header__notifications__menu'), e.target)
+
         if (e.target !== createBtn) {
             createMenu.classList.add('hide');
         }
