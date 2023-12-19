@@ -9,8 +9,6 @@
 import { API } from './utils/Api/api.js';
 import { Router } from "./components/Router/router.js";
 import State from './components/State/state.js';
-import { WebSocketConnection } from './utils/Api/messenger/messengerWS.js';
-import { Notifications } from './views/Notifications/Notifications.js';
 
 const router = new Router();
 const state = new State();
@@ -20,18 +18,6 @@ API.getCsrfToken()
       API.checkLogin()
           .then(() => {
             router.handlePopstate();
-            
-            const notifications = new Notifications();
-            const WS = new WebSocketConnection(`wss://${state.getDomain()}:8080/websocket/connect/chat?${state.getUserID()}`);
-
-            WS.setOnMessageMethod((event) => {
-              const jsonObject = JSON.parse(event.data);
-              if (jsonObject.message.eventType === 'create') {
-                  notifications.renderNotification('NEW_MESSAGE', jsonObject?.message?.message?.from)
-              } else {
-                  console.log(jsonObject);
-              }
-          });
-          });
+        });
           
     });

@@ -1,4 +1,5 @@
 import State from '../State/state.js';
+import { Notifications } from '../../views/Notifications/Notifications.js';
 import {renderSidebar} from '../../views/Sidebar/Sidebar.js';
 import {renderHeaderDefault} from '../../views/HeaderDefault/HeaderDefault.js';
 import {renderFeedPage} from '../../views/Feed/Feed.js';
@@ -692,5 +693,8 @@ export class Router {
                 this.#defaultRoute();
                 break;
         }
+
+        const notifications = new Notifications();
+        notifications.defineNotifications();
     }
 }

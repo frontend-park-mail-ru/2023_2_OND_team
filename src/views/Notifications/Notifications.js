@@ -15,7 +15,10 @@ export class Notifications {
         this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
         this.#notificationCounter = 0;
         this.#notifications = [];
+    }
 
+    defineNotifications() {
+        this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
         this.#defineClearBtn();
     }
 
@@ -55,9 +58,12 @@ export class Notifications {
                     this.checkNotificationCount();
                 });
 
-
                 this.checkNotificationCount();
 
+                if (document.hidden) {
+                    this.createBrowserNotification(type, notificationContext.content, payload);
+                }
+                
                 break;
             default:
                 break;
@@ -100,4 +106,38 @@ export class Notifications {
             this.checkNotificationCount();
         });
     }
+
+    createBrowserNotification(type, content, payload) {
+        if (!("Notification" in window)) {
+            return;
+        }
+     
+        let notification;
+
+        switch (type) {
+            case 'NEW_MESSAGE': 
+                if (Notification.permission === "granted") {
+                    notification = new Notification(content);
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission(function (permission) {
+                        if (permission === "granted") {
+                            notification = new Notification(content);
+                        }
+                    });
+                }
+        
+                notification.onclick = function(event) {
+                    event.preventDefault(); 
+                    window.focus();
+                    const router = new Router();
+                    router.navigate(`/messenger/${payload}`);
+                };
+
+                break;
+            case 'NEW_COMMENT': 
+                break;
+            default:
+                break;
+        }
+    }       
 }

@@ -183,7 +183,9 @@ export function renderHeaderDefault() {
         if (e.target !== createBtn) {
             createMenu.classList.add('hide');
         }
-        if (e.target !== notificationsMenu && e.target !== notificationsBtn) {
+        if (!document.querySelector('.header__notifications__menu').contains(e.target) && 
+            !e.target.matches('.header__notifications__menu_item-btn') &&
+            e.target !== notificationsBtn) {
             notificationsMenu.classList.add('hide');
         }
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
