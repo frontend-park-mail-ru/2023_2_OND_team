@@ -647,10 +647,6 @@ export class Router {
         const path = window.location.pathname;
         const route = this.#routes.find((r) => r.path === path);
 
-
-        const notifications = new Notifications();
-        notifications.defineNotifications();
-
         switch (true) {
             case (route !== undefined):
                 this.#currentRoute = route;
@@ -697,5 +693,8 @@ export class Router {
                 this.#defaultRoute();
                 break;
         }
+
+        const notifications = new Notifications();
+        notifications.defineNotifications();
     }
 }
