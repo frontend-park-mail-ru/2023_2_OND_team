@@ -1,8 +1,40 @@
-export class Comments {
-    #commentsDiv;
+import { API } from "../../../utils/Api/api.js";
 
-    constructor() {
+export class Comments {
+    #pinID;
+    #commentsDiv;
+    #commentInput;
+    #sendCommentBtn;
+
+    constructor(pinID) {
+        this.#pinID = pinID;
+        defineElements();
+    }
+
+    defineElements() {
         this.#commentsDiv = document.querySelector('.pin-comments');
+
+        this.#commentInput = document.querySelector('.pin-comments__input_text-input');
+        this.#commentInput.addEventListener('keydown', (e) => {
+            if (e.key != 'Enter') {
+                return;
+            }
+
+            e.preventDefault();
+
+            const commentToSend = this.#commentInput.value;
+            if (commentToSend) {
+                this.sendComment(commentToSend);
+            }
+        });
+
+        this.#sendCommentBtn = document.querySelector('.pin-comments__input__send_message-img');
+        this.#sendCommentBtn.addEventListener('click', () => {
+            const commentToSend = this.#commentInput.value;
+            if (commentToSend) {
+                this.sendComment(commentToSend);
+            }
+        });
     }
 
     renderAllComments(comments) {
@@ -14,6 +46,7 @@ export class Comments {
 
             const noCommentsMessage = document.createElement('span');
             noCommentsMessage.classList.add('pin-comments__no_content_message');
+            noCommentsMessage.classList.add('text-base2-medium');
             noCommentsMessage.textContent = 'Оставьте первый комментарий';
 
             noCommentsDiv.appendChild(noCommentsMessage);
@@ -32,5 +65,16 @@ export class Comments {
         }
 
         this.#commentsDiv.insertAdjacentHTML('beforeend', commentTemplate(commentContext));
+    }
+
+    sendComment(comment) {
+        API.sendCommentToPin(this.#pinID, comment)
+            .then((res) => {
+                if (res.status === 'ok') {
+                    this.renderComment(comment);
+                } else {
+                    console.error(res);
+                }
+            })
     }
 }

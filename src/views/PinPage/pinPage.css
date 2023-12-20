@@ -57,6 +57,14 @@
     padding: 10px;
 }
 
+.pin-comments__no_content_div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .pin-comments__item {
     display: flex;
     gap: 40px;
@@ -87,7 +95,7 @@
 .pin-comments__input_text {
     display: inline-flex;
     height: 30px;
-    width: 80%;
+    width: 90%;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
     background: var(--bg-100, #FFF);

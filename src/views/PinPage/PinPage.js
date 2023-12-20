@@ -283,7 +283,7 @@ export function renderPinPage(pinID) {
 
             API.getPinComments(pinID)
                 .then((data) => {
-                    const comments = new Comments();
+                    const comments = new Comments(pinID);
                     comments.renderAllComments(data.comments);
                 })
                 .catch((error) => {
