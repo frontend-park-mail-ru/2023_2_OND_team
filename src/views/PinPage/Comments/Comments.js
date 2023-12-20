@@ -6,9 +6,7 @@ export class Comments {
     }
 
     renderAllComments(comments) {
-        console.log('comments')
         if (comments.length) {
-            console.log('coms:', comments)
             comments.forEach((comment) => this.renderComment(comment));
         } else {
             const noCommentsDiv = document.createElement('div');
@@ -20,7 +18,7 @@ export class Comments {
 
             noCommentsDiv.appendChild(noCommentsMessage);
 
-            this.#commentsDiv.innerHTML = noCommentsDiv;
+            this.#commentsDiv.appendChild(noCommentsDiv);
         }
     }
 
