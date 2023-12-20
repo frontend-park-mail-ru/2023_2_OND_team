@@ -7,7 +7,7 @@ export class Comments {
 
     renderAllComments(comments) {
         console.log('comments')
-        if (comments) {
+        if (comments.length) {
             console.log('coms:', comments)
             comments.forEach((comment) => this.renderComment(comment));
         } else {
