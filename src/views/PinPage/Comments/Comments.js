@@ -29,7 +29,7 @@ export class Comments {
 
             e.preventDefault();
 
-            const commentToSend = this.#commentInput.value;
+            const commentToSend = this.#commentInput.value.trim();
             if (commentToSend) {
                 this.sendComment(commentToSend);
             }
@@ -37,7 +37,7 @@ export class Comments {
 
         this.#sendCommentBtn = document.querySelector('.pin-comments__input__send_message-img');
         this.#sendCommentBtn.addEventListener('click', () => {
-            const commentToSend = this.#commentInput.value;
+            const commentToSend = this.#commentInput.value.trim();
             if (commentToSend) {
                 this.sendComment(commentToSend);
             }
