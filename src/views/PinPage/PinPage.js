@@ -287,8 +287,11 @@ export function renderPinPage(pinID) {
         });
 
         document.body.addEventListener('click', (e) => {
-            if (e.target !== modal) {
-                hideModal();
+            const shareModal = document.getElementById('shareModal');
+            const modalContent = document.querySelector('.modal-content');
+        
+            if (!modalContent.contains(e.target) && shareModal.classList.contains('show')) {
+                shareModal.classList.remove('show');
             }
-        })
+        });
 }
