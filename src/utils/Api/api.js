@@ -499,11 +499,8 @@ export class API {
       }
 
       const res = await response.json();
-      if (res.status === 'ok') {
-        return res;
-      }
 
-      return false;
+      return res;
     } catch (error) {
       console.error('Ошибка при выполнении запроса:', error);
       throw error;
