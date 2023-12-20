@@ -3,6 +3,7 @@ export class Comments {
 
     constructor() {
         this.#commentsDiv = document.querySelector('.pin-comments');
+        console.log('comments')
     }
 
     renderAllComments(comments) {
