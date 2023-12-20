@@ -286,4 +286,9 @@ export function renderPinPage(pinID) {
             router.navigate('/page404');
         });
 
+        document.body.addEventListener('click', (e) => {
+            if (e.target !== shareModal) {
+                hideModal();
+            }
+        })
 }
