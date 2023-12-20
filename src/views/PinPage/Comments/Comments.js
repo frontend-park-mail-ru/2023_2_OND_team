@@ -44,7 +44,16 @@ export class Comments {
 
     renderAllComments(comments) {
         if (comments.length) {
-            comments.forEach((comment) => this.renderComment(comment));
+            comments.forEach((item) => {
+                const comment = {
+                    id: item.id,
+                    username: item.author.username,
+                    avatar: item.author.avatar,
+                    content: item.content,
+                }
+
+                this.renderComment(comment)
+            });
         } else {
             const noCommentsDiv = document.createElement('div');
             noCommentsDiv.classList.add('pin-comments__no_content_div');
