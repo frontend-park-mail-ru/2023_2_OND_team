@@ -92,12 +92,11 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
-    let searchMode = '';
+    let searchMode = 'pins';
     let searchInput = '';
 
     const radioInputs = document.querySelectorAll('.filter__list__pointer input[type="radio"]');
     radioInputs.forEach(input => {
-        searchMode == 'pins';
         input.addEventListener('change', (event) => {
             if (event.target.checked) {
                 searchMode = event.target.value;
