@@ -1,6 +1,7 @@
 import { Router } from "../../components/Router/router.js";
 
 export class Notifications {
+    #notificationsImage;
     #notificationMenu;
     #notificationCounter;
     #notifications;
@@ -12,12 +13,14 @@ export class Notifications {
 
         Notifications.instance = this;
 
+        this.#notificationsImage = document.querySelector('.js-notification-img');
         this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
         this.#notificationCounter = 0;
         this.#notifications = [];
     }
 
     defineNotifications() {
+        this.#notificationsImage = document.querySelector('.js-notification-img');
         this.#notificationMenu = document.querySelector('.header__notifications__menu__items');
         this.#defineClearBtn();
     }
@@ -61,7 +64,7 @@ export class Notifications {
                 this.checkNotificationCount();
 
                 if (document.hidden) {
-                    this.createBrowserNotification(type, notificationContext.content, payload);
+                    this.#createBrowserNotification(type, notificationContext.content, payload);
                 }
                 
                 break;
@@ -95,7 +98,7 @@ export class Notifications {
                 this.checkNotificationCount();
 
                 if (document.hidden) {
-                    this.createBrowserNotification(type, notificationContext.content, payload);
+                    this.#createBrowserNotification(type, notificationContext.content, payload);
                 }
                 
                 break;
@@ -128,8 +131,10 @@ export class Notifications {
     checkNotificationCount() {
         const notificationsNonContent = document.querySelector('.header__notifications__menu-no_notifications-text');
         if (this.#notifications.length == 0) {
+            this.#notificationsImage.src = '/assets/icons/forHeader/notification.svg'
             notificationsNonContent.classList.remove('hide');
         } else {
+            this.#notificationsImage.src = '/assets/icons/forHeader/notification-active-new.svg'
             notificationsNonContent.classList.add('hide');
         }
     }
@@ -144,7 +149,7 @@ export class Notifications {
         });
     }
 
-    createBrowserNotification(type, content, payload) {
+    #createBrowserNotification(type, content, payload) {
         if (!("Notification" in window)) {
             return;
         }
