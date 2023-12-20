@@ -3,10 +3,10 @@ export class Comments {
 
     constructor() {
         this.#commentsDiv = document.querySelector('.pin-comments');
-        console.log('comments')
     }
 
     renderAllComments(comments) {
+        console.log('comments')
         if (comments) {
             comments.forEach((comment) => this.renderComment(comment));
         } else {
