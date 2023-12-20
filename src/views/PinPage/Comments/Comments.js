@@ -71,14 +71,8 @@ export class Comments {
 
     renderComment(comment) {
         const commentTemplate = Handlebars.templates['CommentTemplate.hbs'];
-        const commentContext = {
-            id: comment.id,
-            username: comment.author.username,
-            avatar: comment.author.avatar,
-            content: comment.content,
-        }
 
-        this.#commentsDiv.insertAdjacentHTML('beforeend', commentTemplate(commentContext));
+        this.#commentsDiv.insertAdjacentHTML('beforeend', commentTemplate(comment));
     }
 
     sendComment(content) {
