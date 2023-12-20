@@ -20,7 +20,8 @@ export async function renderBoardPage(boardID) {
 
         const context = {
             title: boardInfo.title,
-            description: boardInfo.description
+            description: boardInfo.description,
+            link: currentURL
         };
 
         main.innerHTML = boardPage(context);
