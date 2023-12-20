@@ -77,7 +77,7 @@ export class Comments {
         if (this.#flagNoComments) { 
             const noCommentsDiv = document.querySelector('.pin-comments__no_content_div');
             noCommentsDiv.classList.add('hide');
-            
+
             this.#flagNoComments = false;
         }
         
@@ -86,6 +86,8 @@ export class Comments {
     }
 
     sendComment(content) {
+        this.#commentInput.value = '';
+
         API.sendCommentToPin(this.#pinID, content)
             .then((res) => {
                 if (res.status === 'ok') {
