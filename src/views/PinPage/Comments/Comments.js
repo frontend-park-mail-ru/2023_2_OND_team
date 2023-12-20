@@ -8,7 +8,7 @@ export class Comments {
 
     constructor(pinID) {
         this.#pinID = pinID;
-        defineElements();
+        this.defineElements();
     }
 
     defineElements() {
