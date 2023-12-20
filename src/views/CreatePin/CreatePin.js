@@ -1,6 +1,7 @@
 import {API} from '../../utils/Api/api.js';
 import State from '../../components/State/state.js';
 import {Router} from '../../components/Router/router.js';
+import { Notifications } from '../Notifications/Notifications.js';
 
 export function renderCreatePin() {
   const router = new Router();
@@ -43,6 +44,9 @@ export function renderCreatePin() {
         .then((response) => {
           if (response.status === 'ok') {
             router.navigate('/');
+          } else if (response.status === 'error' && response.message === '') {
+            const notification = new Notifications();
+            notification.renderNotification('BAD_PIN', null);
           } else {
             console.error('Error creating pin');
           }

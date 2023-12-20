@@ -65,6 +65,41 @@ export class Notifications {
                 }
                 
                 break;
+            case 'BAD_PIN': {
+                const notificationContext = {
+                    id: notification.id,
+                    content: 'Пин содержит неприличный контент',
+                }
+
+                this.#notificationMenu.insertAdjacentHTML('afterbegin', notificationTemplate(notificationContext));
+
+                this.#notifications.push(notification);
+
+                const notificationElement = document.querySelector(`[data-notification-id="${notification.id}"]`);
+
+                // const notificationElementText = notificationElement.querySelector('.header__notifications__menu_item-text');
+                // notificationElementText?.addEventListener('click', () => {
+                //     notification.handler();
+                //     this.#notifications = this.#notifications.filter((item) => {return item !== notification})
+                //     notificationElement.remove();
+                //     this.checkNotificationCount();
+                // });
+
+                const notificationElementDelete = notificationElement.querySelector('.header__notifications__menu_item-btn');
+                notificationElementDelete?.addEventListener('click', () => {
+                    this.#notifications = this.#notifications.filter((item) => {return item !== notification})
+                    notificationElement.remove();
+                    this.checkNotificationCount();
+                });
+
+                this.checkNotificationCount();
+
+                if (document.hidden) {
+                    this.createBrowserNotification(type, notificationContext.content, payload);
+                }
+                
+                break;
+            }
             default:
                 break;
         }
@@ -82,7 +117,9 @@ export class Notifications {
                 return function() {
                     const router = new Router();
                     router.navigate(`/pin/${payload}`);
-                } 
+                }
+            case 'BAD_PIN':
+                break;
             default:
                 break;
         }
@@ -135,6 +172,25 @@ export class Notifications {
 
                 break;
             case 'NEW_COMMENT': 
+                break;
+            case 'BAD_PIN': 
+                if (Notification.permission === "granted") {
+                    notification = new Notification(content);
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission(function (permission) {
+                        if (permission === "granted") {
+                            notification = new Notification(content);
+                        }
+                    });
+                }
+        
+                // notification.onclick = function(event) {
+                //     event.preventDefault(); 
+                //     window.focus();
+                //     const router = new Router();
+                //     router.navigate(`/messenger/${payload}`);
+                // };
+
                 break;
             default:
                 break;
