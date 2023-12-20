@@ -9,6 +9,7 @@ export async function renderBoardPage(boardID) {
     const main = document.querySelector('#main');
     const state = new State();
     const boardPage = Handlebars.templates['BoardPage.hbs'];
+    const currentURL = window.location.href;
 
     const pins = [190, 2, 1];
 
