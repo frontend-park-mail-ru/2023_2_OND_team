@@ -288,10 +288,10 @@ export function renderPinPage(pinID) {
 
         document.body.addEventListener('click', (e) => {
             const shareModal = document.getElementById('shareModal');
-            const modalContent = document.querySelector('.modal-content');
         
-            if (!modalContent.contains(e.target) && shareModal.classList.contains('show')) {
+            if (e.target !== shareModal) {
                 shareModal.classList.remove('show');
             }
         });
+        
 }
