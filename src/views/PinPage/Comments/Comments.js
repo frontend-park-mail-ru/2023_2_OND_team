@@ -3,6 +3,7 @@ import State from "../../../components/State/state.js";
 
 export class Comments {
     #pinID;
+    #flagNoComments;
     #state;
 
     #commentsDiv;
@@ -11,6 +12,7 @@ export class Comments {
 
     constructor(pinID) {
         this.#pinID = pinID;
+        this.#flagNoComments = true;
         this.#state = new State();
 
         this.defineElements();
@@ -44,6 +46,8 @@ export class Comments {
 
     renderAllComments(comments) {
         if (comments.length) {
+            this.#flagNoComments = false;
+
             comments.forEach((item) => {
                 const comment = {
                     id: item.id,
@@ -70,8 +74,14 @@ export class Comments {
     }
 
     renderComment(comment) {
+        if (this.#flagNoComments) { 
+            const noCommentsDiv = document.querySelector('.pin-comments__no_content_div');
+            noCommentsDiv.classList.add('hide');
+            
+            this.#flagNoComments = false;
+        }
+        
         const commentTemplate = Handlebars.templates['CommentTemplate.hbs'];
-
         this.#commentsDiv.insertAdjacentHTML('beforeend', commentTemplate(comment));
     }
 
