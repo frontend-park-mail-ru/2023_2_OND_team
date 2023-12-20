@@ -8,6 +8,7 @@ export class Comments {
     renderAllComments(comments) {
         console.log('comments')
         if (comments) {
+            console.log('coms:', comments)
             comments.forEach((comment) => this.renderComment(comment));
         } else {
             const noCommentsDiv = document.createElement('div');
