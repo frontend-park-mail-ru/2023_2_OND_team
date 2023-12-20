@@ -162,7 +162,7 @@ export function renderPinPage(pinID) {
                 }); 
 
                 shareModal.addEventListener('click', (e) => {
-                    if (e.target !== shareModal) {
+                    if (e.target == shareModal) {
                         shareModal.classList.remove('show');
                     }
                 });
