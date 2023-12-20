@@ -13,8 +13,8 @@ export class MessengerApi {
         this.state = new State();
 
         this.#handlers = [
-            {name: 'userChats', url: `//${this.state.getDomain()}:8080/api/v1/chat/personal?count=100`},
-            {name: 'chatWithUser', url: `//${this.state.getDomain()}:8080/api/v1/chat/get/`},
+            {name: 'userChats', url: `//${this.state.getDomain()}:8081/api/v1/chat/personal?count=100`},
+            {name: 'chatWithUser', url: `//${this.state.getDomain()}:8081/api/v1/chat/get/`},
         ]
     }
 

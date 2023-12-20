@@ -89,6 +89,7 @@
 .pin-comments__user_info__avatar {
     height: 30px;
     width: 30px;
+    border-radius: 15px;
 }
 
 .pin-comments__input {
@@ -123,7 +124,7 @@
     position: absolute;
     display: flex;
     align-items: center;
-    padding-right: 20px;
+    padding: 0px 15px 10px 0px;
     gap: 10px;
     bottom: 20px;
     right: 0;
