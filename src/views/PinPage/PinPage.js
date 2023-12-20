@@ -1,7 +1,7 @@
 import {API} from '../../utils/Api/api.js';
 import State from '../../components/State/state.js';
 import {Router} from '../../components/Router/router.js';
-import {renderPins} from '../../components/RenderPins/renderPins.js';
+import { Comments } from './Comments/Comments.js';
 import { renderUserPage } from '../../views/UserPage/UserPage.js'
 
 export function renderPinPage(pinID) {
@@ -280,6 +280,16 @@ export function renderPinPage(pinID) {
                 block.appendChild(boardList);
                 UserBoards();
             }
+
+            API.getPinComments(pinID)
+                .then((data) => {
+                    const comments = new Comments();
+                    comments.renderAllComments(data.comments);
+                })
+                .catch((error) => {
+                    console.error('Ошибка при получении комментариев к пину', error);
+                })
+
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
