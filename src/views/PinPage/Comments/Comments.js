@@ -56,7 +56,7 @@ export class Comments {
     }
 
     renderComment(comment) {
-        const commentTemplate = Handlebars.Templates['CommentTemplate.hbs'];
+        const commentTemplate = Handlebars.templates['CommentTemplate.hbs'];
         const commentContext = {
             id: comment.id,
             username: comment.author.username,
