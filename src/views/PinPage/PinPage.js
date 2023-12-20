@@ -161,7 +161,7 @@ export function renderPinPage(pinID) {
                     shareModal.classList.remove('show');
                 }); 
 
-                document.body.addEventListener('click', (e) => {
+                shareModal.addEventListener('click', (e) => {
                     if (e.target !== shareModal) {
                         shareModal.classList.remove('show');
                     }
