@@ -160,6 +160,12 @@ export function renderPinPage(pinID) {
                 closeButton.addEventListener('click', () => {
                     shareModal.classList.remove('show');
                 }); 
+
+                document.body.addEventListener('click', (e) => {
+                    if (e.target !== shareModal) {
+                        shareModal.classList.remove('show');
+                    }
+                });
             
                 copyButton.addEventListener('click', () => {
                     const copyInput = shareModal.querySelector('.field input');
@@ -284,14 +290,6 @@ export function renderPinPage(pinID) {
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
             router.navigate('/page404');
-        });
-
-        document.body.addEventListener('click', (e) => {
-            const shareModal = document.getElementById('shareModal');
-        
-            if (e.target !== shareModal) {
-                shareModal.classList.remove('show');
-            }
         });
         
 }
