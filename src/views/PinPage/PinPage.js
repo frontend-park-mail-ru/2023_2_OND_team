@@ -103,17 +103,21 @@ export function renderPinPage(pinID) {
 
                 API.getMyBoards()
                 .then((res) => {
-                  const optgroup = document.createElement('optgroup');
-                  optgroup.label = 'Выберите доску';
-              
-                  res.forEach(board => {
-                    const option = document.createElement('option');
-                    option.value = board.board_id;
-                    option.textContent = board.title;
-                    optgroup.appendChild(option);
-                  });
-              
-                  boardList.appendChild(optgroup);
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = 'Выберите доску';
+                
+                    res.forEach(board => {
+                        const option = document.createElement('option');
+                        option.value = board.board_id;
+                        option.textContent = board.title;
+                        optgroup.appendChild(option);
+                    });
+                  
+                    if (optgroup.children.length) {
+                        boardID = optgroup.children[0].value;
+                    }
+
+                    boardList.appendChild(optgroup);
                 })
                 .catch((error) => {
                   console.error('Ошибка при получении досок:', error);
