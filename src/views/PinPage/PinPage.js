@@ -287,7 +287,7 @@ export function renderPinPage(pinID) {
         });
 
         document.body.addEventListener('click', (e) => {
-            if (e.target !== shareModal) {
+            if (e.target !== modal) {
                 hideModal();
             }
         })
