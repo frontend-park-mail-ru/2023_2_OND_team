@@ -37,6 +37,7 @@ export async function renderBoardPage(boardID) {
 
         const deleteButton = document.querySelector('.js-delete__btn');
         const updateButton = document.querySelector('.js-edit__btn');
+        const shareButton = document.querySelector('.js-share__btn');
 
         updateButton.classList.add('hide');
         deleteButton.classList.add('hide');
@@ -50,6 +51,55 @@ export async function renderBoardPage(boardID) {
             const modal = document.getElementById('deleteModal');
             modal.classList.remove('show');
         };
+
+        shareButton.addEventListener('click', () => {
+            const input = document.querySelector('#shareModal .field input');
+            input.value = currentURL;
+
+            const shareModal = document.getElementById('shareModal');
+        
+            shareModal.classList.add('show');
+
+            const closeButton = shareModal.querySelector('.js-cancel__btn');
+            const copyButton = shareModal.querySelector('.field button');
+
+            closeButton.addEventListener('click', () => {
+                shareModal.classList.remove('show');
+            }); 
+
+            shareModal.addEventListener('click', (e) => {
+                if (e.target == shareModal) {
+                    shareModal.classList.remove('show');
+                }
+            });
+        
+            copyButton.addEventListener('click', () => {
+                const copyInput = shareModal.querySelector('.field input');
+                copyInput.select();
+            
+                try {
+                    const successful = document.execCommand('copy');
+                    
+                    if (successful) {
+                        copyButton.style.backgroundColor = 'green';
+                        copyButton.innerText = 'Скопировано';
+                    } else {
+                        copyButton.style.backgroundColor = '';
+                        copyButton.innerText = 'Скопировать';
+                    }
+                } catch (err) {
+                    console.error('Ошибка копирования:', err);
+                }
+            });                
+        
+            const socialIcons = shareModal.querySelectorAll('.icons a');
+        
+            socialIcons.forEach(icon => {
+                icon.addEventListener('click', () => {
+                    console.log('click');
+                });
+            });
+        });  
 
         if (usernameReal === boardInfo.author_username) {
             const rec = document.querySelector('.rectangle-board-open');

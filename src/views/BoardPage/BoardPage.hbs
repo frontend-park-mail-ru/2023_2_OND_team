@@ -2,6 +2,9 @@
     <div class="bar">
         <textarea disabled class="board-title input-read-only text-base1-medium pin-edit-item">{{title}}</textarea>
         <div class="buttons__block">
+            <div class="share-btn-block">
+                <img src="/assets/icons/actions/icon_share.svg" class="btn-share js-share__btn">
+            </div>
             <div class="delete-btn-block">
                 <img src="/assets/icons/actions/icon_delete.svg" class="btn-delete js-delete__btn">
             </div>
@@ -29,5 +32,38 @@
         <p>Вы уверены, что хотите удалить эту доску?</p>
         <button class="btn-error-clear text-base1-medium" id="confirmDelete">Удалить</button>
         <button class="btn-error-clear text-base1-medium" id="cancelDelete">Отменить</button>
+    </div>
+</div>
+
+<div id="shareModal" class="modal hide" >
+    <div class="modal-content text-base1-small">
+        <header>
+            <div class="title__block">
+                <span>Поделиться</span>
+                <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
+            </div>
+        </header>
+        <div class="content">
+            <ul class="icons">
+                <a href="https://vk.com/share.php?url={{link}}&title=Привет!%0AСмотри,%20какая%20крутая%20доска%20мне%20встретилась%20в%20PinSpire:%20" target="_blank">
+                    <img src="/assets/icons/forSharing/vk_logo.svg" class="social-icon">
+                </a>
+                <a href="mailto:?body=Привет!%F0%9F%91%8B%F0%9F%8F%BB%0AСмотри,%20какая%20крутая%20доска%20мне%20встретилась%20в%20PinSpire:%20{{link}}" target="_blank">
+                    <img src="/assets/icons/forSharing/mail_logo.svg" class="social-icon">
+                </a>
+                <a href="https://t.me/share/url?url=pinspire.online&text=Привет!%F0%9F%91%8B%F0%9F%8F%BB%0AСмотри,%20какая%20крутая%20доска%20мне%20встретилась%20в%20PinSpire:%20{{link}}" target="_blank">
+                    <img src="/assets/icons/forSharing/telegram_logo.svg" class="social-icon">
+                </a>
+                <a href="https://web.whatsapp.com/send?text=Привет!%F0%9F%91%8B%F0%9F%8F%BB%0AСмотри,%20какая%20крутая%20доска%20мне%20встретилась%20в%20PinSpire:%20{{link}}" target="_blank">
+                    <img src="/assets/icons/forSharing/whatsapp_logo.svg" class="social-icon">
+                </a>
+            </ul>
+            <hr>
+            <p>Скопировать ссылку</p>
+            <div class="field">
+                <input class="text-base2-medium link-conteiner" type="text" readonly value="">
+                <button class="btn-primary-default text-base2-medium js-search__btn">Скопировать</button>
+            </div>
+        </div>
     </div>
 </div>
