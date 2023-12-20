@@ -1036,4 +1036,59 @@ export class API {
         console.error('Ошибка при получении данных поиска:', error);
     }
   }
+
+  static async getPinComments(pinID) {
+    try {
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/pin/comment/feed/${pinID}?count=1000`;
+
+      const response = await fetch(configItem, {
+        headers: {
+          'X-CSRF-Token': this.state.getCsrfToken(),
+        },
+        credentials: 'include',
+      });
+
+      const csrfToken = response.headers.get('X-Set-CSRF-Token');
+      if (csrfToken) {
+        this.state.setCsrfToken(csrfToken);
+      }
+
+      const res = await response.json();
+
+      if (res.status === 'ok') {
+        return res.body;
+      } else {
+        throw new Error('Ошибка при получении данных из API');
+      }
+    } catch (error) {
+      console.error('Ошибка при получении досок:', error);
+    }
+  }
+
+  static async sendCommentToPin(pinID, comment) {
+    try {
+      const configItem = `//${this.state.getDomain()}:8080/api/v1/pin/comment/${pinID}`;
+
+      const response = await fetch(configItem, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': this.state.getCsrfToken(),
+        },
+        body: JSON.stringify({content: comment}),
+        credentials: 'include',
+      });
+
+      const csrfToken = response.headers.get('X-Set-CSRF-Token');
+      if (csrfToken) {
+        this.state.setCsrfToken(csrfToken);
+      }
+
+      const res = await response.json();
+
+      return res;
+    } catch (error) {
+      console.error('Ошибка при получении данных пользователя:', error);
+    }
+  }
 }

@@ -165,7 +165,7 @@ export class MessengerChat {
 
     defineSendMessageBtn() {
         this.#sendMessageBtn?.addEventListener('click', () => {
-            const messageToSend = this.#messageFieldInput.value;
+            const messageToSend = this.#messageFieldInput.value.trim();
             if (messageToSend) {
                 switch (this.#messageMode.mode) {
                     case 'send':
@@ -246,7 +246,7 @@ export class MessengerChat {
 
             e.preventDefault();
 
-            const messageToSend = this.#messageFieldInput.value;
+            const messageToSend = this.#messageFieldInput.value.trim();
             if (messageToSend) {
                 switch (this.#messageMode.mode) {
                     case 'send':
