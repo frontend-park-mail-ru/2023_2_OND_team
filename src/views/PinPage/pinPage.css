@@ -85,6 +85,11 @@
     gap: 10px;
 }
 
+.pin-comments__user_info__avatar {
+    height: 30px;
+    width: 30px;
+}
+
 .pin-comments__input {
     display: flex;
     padding: 10px;

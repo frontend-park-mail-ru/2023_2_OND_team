@@ -1,13 +1,18 @@
 import { API } from "../../../utils/Api/api.js";
+import State from "../../../components/State/state.js";
 
 export class Comments {
     #pinID;
+    #state;
+
     #commentsDiv;
     #commentInput;
     #sendCommentBtn;
 
     constructor(pinID) {
         this.#pinID = pinID;
+        this.#state = new State();
+
         this.defineElements();
     }
 
@@ -67,10 +72,17 @@ export class Comments {
         this.#commentsDiv.insertAdjacentHTML('beforeend', commentTemplate(commentContext));
     }
 
-    sendComment(comment) {
-        API.sendCommentToPin(this.#pinID, comment)
+    sendComment(content) {
+        API.sendCommentToPin(this.#pinID, content)
             .then((res) => {
                 if (res.status === 'ok') {
+                    const comment = {
+                        id: -1,
+                        username: this.#state.getUsername(),
+                        avatar: this.#state.getAvatar(),
+                        content,
+                    }
+                    
                     this.renderComment(comment);
                 } else {
                     console.error(res);
