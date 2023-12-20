@@ -97,6 +97,7 @@ export function renderHeaderDefault() {
 
     const radioInputs = document.querySelectorAll('.filter__list__pointer input[type="radio"]');
     radioInputs.forEach(input => {
+        searchMode == 'pins';
         input.addEventListener('change', (event) => {
             if (event.target.checked) {
                 searchMode = event.target.value;
