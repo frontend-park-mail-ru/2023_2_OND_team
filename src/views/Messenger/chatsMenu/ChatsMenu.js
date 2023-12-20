@@ -30,7 +30,7 @@ export class MessengerChatsMenu {
     this.#router = new Router();
     this.#notifications = new Notifications();
     this.#messengerChat = new MessengerChat();
-    this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:8079/websocket/connect/chat?${this.#state.getUserID()}`);
+    this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:8080/websocket/connect/chat?${this.#state.getUserID()}`);
     this.#messengerApi = new MessengerApi();
     this.#definedChats = [];
     this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');

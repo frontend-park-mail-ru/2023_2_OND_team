@@ -13,7 +13,7 @@ export class MessengerChat {
 
     constructor(chatWithUserId) {
         this.#state = new State();
-        this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:8079/websocket/connect/chat?${this.#state.getUserID()}`);
+        this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:8080/websocket/connect/chat?${this.#state.getUserID()}`);
         this.#chatWithUserId = chatWithUserId;
         this.#definedMessages = [];
         this.#chat = document.querySelector('.messenger__chat__messages');
