@@ -14,7 +14,7 @@ export class Comments {
 
             const noCommentsMessage = document.createElement('span');
             noCommentsMessage.classList.add('pin-comments__no_content_message');
-            noCommentsMessage.content = 'Оставьте первый комментарий';
+            noCommentsMessage.textContent = 'Оставьте первый комментарий';
 
             noCommentsDiv.appendChild(noCommentsMessage);
 
