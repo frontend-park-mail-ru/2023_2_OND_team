@@ -48,7 +48,9 @@ export class Comments {
         if (comments.length) {
             this.#flagNoComments = false;
 
-            comments.forEach((item) => {
+            const commentsToRender = comments.reverse();
+
+            commentsToRender.forEach((item) => {
                 const comment = {
                     id: item.id,
                     username: item.author.username,
