@@ -19,7 +19,7 @@ export class Comments {
 
             noCommentsDiv.appendChild(noCommentsMessage);
 
-            this.#commentsDiv.appendChild(noCommentsDiv);
+            this.#commentsDiv.innerHTML = noCommentsDiv;
         }
     }
 
