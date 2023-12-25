@@ -8,6 +8,8 @@
     grid-template-rows: 77px 1fr;
     grid-template-columns: min-content 1fr;
     position: absolute;
+    width: 100vw;
+    height: 100vh;
 }
 
 #sidebar {
@@ -41,7 +43,6 @@
     flex-grow: 1;
     z-index: 0;
     padding: 30px;
-    width: 100%;
 }
 
 #main:empty {
