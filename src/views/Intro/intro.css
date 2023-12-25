@@ -19,3 +19,6 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
   
+.intro__img-img {
+    width: 40vw;
+}
