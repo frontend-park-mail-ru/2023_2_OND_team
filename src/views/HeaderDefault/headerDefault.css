@@ -42,6 +42,7 @@
 }
 
 .header__title {
+    width: 500px;
     padding-top: 20px;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
     text-align: center;
@@ -184,6 +185,7 @@
     display: flex;
     height: 40px;
     width: 200px;
+    padding-top: 10px;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 1);
