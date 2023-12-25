@@ -7,6 +7,8 @@ import { Router } from '../../components/Router/router.js';
 import State from '../../components/State/state.js';
 
 export function renderUserPage(userID) {
+  console.log('other');
+
   const main = document.querySelector('#main');
   const router = new Router();
   const state = new State();
