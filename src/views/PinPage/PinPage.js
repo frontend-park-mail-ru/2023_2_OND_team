@@ -75,7 +75,6 @@ export function renderPinPage(pinID) {
             userName?.addEventListener('click', () => {
                 console.log(pinInfo.author.id);
                 router.navigate(`/user/${pinInfo.author.id}`);
-                renderUserPage(pinInfo.author.id);
             })
 
             const usernameReal = state.getUsername();
