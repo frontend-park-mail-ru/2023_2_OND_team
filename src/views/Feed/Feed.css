@@ -22,6 +22,7 @@
 
 #header {
     grid-area: header;
+    position: fixed;
     flex-grow: 1;
     z-index: 1;
     width: -webkit-fill-available;

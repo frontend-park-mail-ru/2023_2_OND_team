@@ -1,7 +1,5 @@
 .header {
     display: flex;
-    position: fixed;
-    width: -webkit-fill-available;
     justify-content: space-between;
     height: 77px;
     padding-right: 10px;
