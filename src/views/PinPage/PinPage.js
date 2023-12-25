@@ -246,6 +246,9 @@ export function renderPinPage(pinID) {
                 titleTextarea.classList.remove('input-primary');
                 descriptionTextarea.classList.remove('input-primary');
 
+                pinCommentsName.classList.remove('hide');
+                pinCommentsDiv.classList.remove('hide');
+
                 likeButton.classList.remove('hide');
                 likeField.classList.remove('hide');
 
@@ -265,6 +268,9 @@ export function renderPinPage(pinID) {
                             router.navigate(`/pin/${pinInfo.id}`);
                             updateButton.classList.remove('hide');
                             pinControl.classList.add('hide');
+
+                            pinCommentsName.classList.remove('hide');
+                            pinCommentsDiv.classList.remove('hide');
             
                             titleTextarea.classList.remove('input-primary');
                             descriptionTextarea.classList.remove('input-primary');
