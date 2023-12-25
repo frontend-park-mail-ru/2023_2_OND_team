@@ -552,8 +552,6 @@ export class Router {
                     return;
                   }
 
-                  console.log('asdf');
-                
                   this.state.deleteAllPins();
         
                   this.state.setCurrentPage(`user${userID}`);
