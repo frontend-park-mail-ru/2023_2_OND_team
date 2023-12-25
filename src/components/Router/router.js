@@ -551,6 +551,8 @@ export class Router {
                     this.navigate('/profile');
                     return;
                   }
+
+                  console.log('asdf');
                 
                   this.state.deleteAllPins();
         
