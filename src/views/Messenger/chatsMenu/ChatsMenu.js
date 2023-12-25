@@ -5,6 +5,8 @@ import State from "../../../components/State/state.js";
 import { Router } from "../../../components/Router/router.js";
 import { Notifications } from "../../Notifications/Notifications.js";
 
+const PORT = '443';
+
 export class MessengerChatsMenu {
   #ws;
   #state;
@@ -30,7 +32,7 @@ export class MessengerChatsMenu {
     this.#router = new Router();
     this.#notifications = new Notifications();
     this.#messengerChat = new MessengerChat();
-    this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:8080/websocket/connect/chat?${this.#state.getUserID()}`);
+    this.#ws = new WebSocketConnection(`wss://${this.#state.getDomain()}:${PORT}/websocket/connect/chat?${this.#state.getUserID()}`);
     this.#messengerApi = new MessengerApi();
     this.#definedChats = [];
     this.#chatsMenuList = document.querySelector('.messenger__chat-menu__chat-list');

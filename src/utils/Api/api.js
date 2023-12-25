@@ -2,7 +2,7 @@ import State from '../../components/State/state.js';
 import { WebSocketConnection } from './messenger/messengerWS.js';
 import { Notifications } from '../../views/Notifications/Notifications.js';
 
-const PORT = '8081';
+const PORT = '443';
 
 export class API {
   static state = new State();
