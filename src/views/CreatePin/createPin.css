@@ -60,6 +60,11 @@
     text-align: left;
 }
 
+.create_pin__bad_content {
+    text-align: center;
+    color: red;
+}
+
 .pin-data__btns {
     display: inline-flex;
     align-items: flex-start;

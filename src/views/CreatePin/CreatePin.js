@@ -45,8 +45,8 @@ export function renderCreatePin() {
           if (response.status === 'ok') {
             router.navigate('/');
           } else if (response.status === 'error' && response.code === 'explicit_pin') {
-            const notification = new Notifications();
-            notification.renderNotification('BAD_PIN', null);
+            const badContent = document.querySelector('.create_pin__bad_content');
+            badContent.classList.remove('hide');
           } else {
             console.error('Error creating pin');
           }
