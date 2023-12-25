@@ -127,6 +127,9 @@ export function renderPinPage(pinID) {
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
 
+            const pinCommentsName = document.querySelector('.pin-comments_name');
+            const pinCommentsDiv = document.querySelector('.pin-comments-div');
+
             updateButton.classList.add('hide');
             deleteButton.classList.add('hide');
 
@@ -220,6 +223,9 @@ export function renderPinPage(pinID) {
             updateButton?.addEventListener('click', () => {
                 updateButton.classList.add('hide');
                 pinControl.classList.remove('hide');
+
+                pinCommentsName.add('hide');
+                pinCommentsDiv.add('hide');
 
                 titleTextarea.classList.add('input-primary');
                 descriptionTextarea.classList.add('input-primary');
