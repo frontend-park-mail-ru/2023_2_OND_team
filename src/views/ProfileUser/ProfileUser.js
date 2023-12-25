@@ -8,6 +8,8 @@ import { definePins } from "../../utils/definePins/definePins.js";
 import {defineBoards} from '../../utils/defingeBoards/defineBoards.js';
 
 export function renderProfilePage() {
+  console.log('mypage');
+
   const main = document.querySelector('#main');
 
   const state = new State();

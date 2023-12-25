@@ -549,12 +549,9 @@ export class Router {
         
                   if (this.state.getUserID() == userID) {
                     this.navigate('/profile');
-                    console.log('asdf');
                     return;
                   }
-        
-                  console.log('asdf');
-        
+                
                   this.state.deleteAllPins();
         
                   this.state.setCurrentPage(`user${userID}`);
