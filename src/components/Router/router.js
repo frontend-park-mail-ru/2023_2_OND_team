@@ -482,6 +482,8 @@ export class Router {
 
                         setHeaderTitle('Результат поиска');
 
+                        this.state.deleteAllPins();
+                        
                         destroyMessenger();
 
                         renderSearchPage();
