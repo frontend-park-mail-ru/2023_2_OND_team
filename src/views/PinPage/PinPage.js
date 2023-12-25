@@ -224,8 +224,8 @@ export function renderPinPage(pinID) {
                 updateButton.classList.add('hide');
                 pinControl.classList.remove('hide');
 
-                pinCommentsName.add('hide');
-                pinCommentsDiv.add('hide');
+                pinCommentsName.classList.add('hide');
+                pinCommentsDiv.classList.add('hide');
 
                 titleTextarea.classList.add('input-primary');
                 descriptionTextarea.classList.add('input-primary');
