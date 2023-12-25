@@ -92,14 +92,13 @@
   height: 46px;
 }
 
-.user__data__names-item-textarea {
+.user__data__names-item-span {
   width: 347px;
   height: 46px;
   align-items: center;
   resize: none;
   outline: none;
   border-radius: var(--br-s, 10px);
-  border: 2px solid var(--black-icon, rgba(20, 20, 20, 0.70));
   background: var(--bg-100, #FFF);
 }
 
@@ -122,14 +121,13 @@
   height: 183px;
 }
 
-.user__data__about-textarea {
+.user__data__about-span {
   width: 747px;
   height: 183px;
   align-items: center;
   resize: none;
   outline: none;
   border-radius: var(--br-s, 10px);
-  border: 2px solid var(--black-icon, rgba(20, 20, 20, 0.70));
   background: var(--bg-100, #FFF);
 }
 
