@@ -172,6 +172,7 @@ export function renderHeaderDefault() {
         } else {
             console.log('Выберите режим и введите текст для поиска');
         }
+        inputField.value = '';
     });
 
     const filterBtn = document.querySelector('.header__filter__img-image');
