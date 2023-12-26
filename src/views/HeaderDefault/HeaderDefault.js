@@ -224,7 +224,9 @@ export function renderHeaderDefault() {
 
 
     const searchTextInput = document.querySelector('.header__search__text-input');
+    const searchIcon = document.querySelector('.header__search__img')
     if (window.innerWidth < 700) {
+        searchIcon.classList.add('hide');
         searchTextInput.placeholder = '\u{1F50E}';
-     }     
+    }     
 }
