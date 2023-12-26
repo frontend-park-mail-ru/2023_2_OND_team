@@ -414,7 +414,7 @@
 
     .header__search__field {
         display: inline-flex;
-        height: 10px;
+        height: 40px;
         width: min-content;
         align-items: center;
         justify-content: center;
