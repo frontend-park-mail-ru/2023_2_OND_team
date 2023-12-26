@@ -81,24 +81,9 @@ export function renderSidebar() {
     }
   }
 
-  window.addEventListener("load", function() {
-    const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
-    console.log(profileFields)
-    if (window.innerWidth < 1500) {
-      profileFields?.classList.remove('hide');
-    } else {
-      profileFields?.classList.add('hide');
+  $(window).on('load', function() {
+    if ($(window).width() < 1500) {
+     $('.js-sidebar__menu__profile-fields').removeClass('hide');
     }
-  });
-
-
-  window.addEventListener('resize', function() {
-    const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
-    if (window.innerWidth < 1500) {
-      profileFields?.classList.remove('hide');
-    } else {
-      profileFields?.classList.add('hide');
-    }
-  });
-   
+   });  
 }
