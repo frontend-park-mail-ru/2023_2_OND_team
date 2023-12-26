@@ -83,6 +83,7 @@ export function renderSidebar() {
 
   window.addEventListener("load", function() {
     const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
+    console.log(profileFields)
     if (window.innerWidth < 1500) {
       profileFields?.classList.remove('hide');
     } else {
