@@ -27,13 +27,8 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  width: 200px;
   height: 50px;
   flex-shrink: 0;
-}
-
-.sidebar__menu__profile-full {
-  width: 200px;
 }
 
 .sidebar__menu__item__content {
@@ -48,17 +43,17 @@
   border-radius: var(--br-s, 10px);
   background: rgba(51, 161, 179, 0.40);
   color: var(--primary-30);
+  width: 100%;
 }
 
 .sidebar__menu__btn:hover {
   border-radius: var(--br-s, 10px);
   background: var(--bg-90);
+  width: 100%;
 }
 
 .sidebar__menu__item__label {
   display: flex;
-  width: 117.822px;
-  height: 19.89px;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
