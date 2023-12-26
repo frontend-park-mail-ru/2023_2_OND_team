@@ -84,6 +84,14 @@
 }
 
 @media (max-width: 1500px) {
+  #sidebar {
+    width: 100px;
+  }
+
+  .sidebar {
+    width: min-content;
+  }
+
   .sidebar__menu__item__label {
     display: none;
   }
@@ -98,6 +106,10 @@
 
   .sidebar__menu__item__content {
     padding-left: 0;
+  }
+
+  .sidebar__logo {
+    height: 70px;
   }
 
 }
