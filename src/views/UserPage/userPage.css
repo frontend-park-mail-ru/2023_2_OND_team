@@ -12,11 +12,11 @@
   
 .user__avatar {
   display: flex;
-  width: max(90px, 6vw);
+  width: max(150px, 9vw);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   flex-shrink: 0;
 }
 
@@ -67,16 +67,16 @@
 
 .user__data__names {
   display: flex;
+  width: 100%;
   gap: 1rem;
   justify-content: space-between;
 }
 
 .user__data__names-item {
   display: flex;
-  width: 347px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 0.5rem;
 }
 
 .user__data__names-item-title {
@@ -85,13 +85,9 @@
 
 .user__data__names-item-data {
   display: flex;
-  width: 347px;
-  height: 46px;
 }
 
 .user__data__names-item-span {
-  width: 347px;
-  height: 46px;
   align-items: center;
   resize: none;
   outline: none;
@@ -101,10 +97,9 @@
 
 .user__data__about {
   display: flex;
-  width: 747px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
