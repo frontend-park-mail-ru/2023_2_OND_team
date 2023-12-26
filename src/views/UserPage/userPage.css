@@ -12,6 +12,7 @@
 
 .user-begin {
   display: flex;
+  gap: 1rem;
   align-items: center;
 }
   
@@ -186,6 +187,10 @@
 
 @media (max-width: 1000px) {
   .user {
-      display: block;;
+      flex-direction: column;
+  }
+
+  .user__data__names {
+    flex-direction: column;
   }
 }
