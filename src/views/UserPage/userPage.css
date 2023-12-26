@@ -6,13 +6,13 @@
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
-    gap: 1rem;
-    padding: 1rem;
+    gap: 2rem;
+    padding: 2rem;
 }
 
 .user-begin {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
 }
   
@@ -22,7 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   flex-shrink: 0;
 }
 
@@ -191,10 +191,8 @@
   }
 }
 
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
   .user {
       flex-direction: column;
   }
-
 }
