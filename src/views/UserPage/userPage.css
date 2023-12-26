@@ -10,8 +10,6 @@
   
 .user__avatar {
   display: flex;
-  position: relative;
-  left: 50px;
   width: 120px;
   height: 162px;
   flex-direction: column;
@@ -36,8 +34,6 @@
 .user__subscriptions {
   display: inline-flex;
   align-items: flex-start;
-  position: relative;
-  left: 150px;
   gap: var(--br-s, 10px);
 }
 
@@ -59,8 +55,6 @@
 .user__data {
   display: flex;
   flex-direction: column;
-  position: relative;
-  left: 200px;
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -131,8 +125,6 @@
 }
 
 .user__subscribe {
-  position: relative;
-  left: 230px;
   display: flex;
   width: 170px;
   height: 36.676px;
