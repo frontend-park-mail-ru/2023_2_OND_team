@@ -5,7 +5,6 @@
     align-items: center;
     height: 77px;
     width: -webkit-fill-available;
-    padding-right: 10px;
     flex-shrink: 0;
     border-bottom: 1px solid var(--bg50, #808080);
     background: #FFF;
@@ -119,13 +118,10 @@
 .header__create__menu {
     position: fixed;
     top: 87px;
-    left: 80vw;
+    right: 3vw;
     width: 212px;
     height: 110px;
     padding: 10px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
@@ -166,13 +162,10 @@
 .header__notifications__menu {
     position: fixed;
     top: 87px;
-    left: 83vw;
+    right: 2vw;
     height: 200px;
     width: 220px;
     overflow-y: auto;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
@@ -240,13 +233,10 @@
 .header__user__menu {
     position: fixed;
     top: 87px;
-    left: 86vw;
+    right: 1vw;
     width: 200px;
     height: 160px;
     padding: 10px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
