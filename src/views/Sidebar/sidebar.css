@@ -50,7 +50,7 @@
 .sidebar__menu__btn:hover {
   border-radius: var(--br-s, 10px);
   background: var(--bg-90);
-  /* width: 100%; */
+  width: 100%;
 }
 
 .sidebar__menu__item__label {
@@ -113,5 +113,8 @@
     padding-left: 0;
   }
 
+  .sidebar__menu__profile-fields__label {
+    display: none;
+  }
 
 }
