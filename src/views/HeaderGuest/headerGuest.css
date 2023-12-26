@@ -3,15 +3,15 @@
     align-items: center;
     justify-content: space-between;
     height: 77px;
-    padding: 0 40px 0 40px;
+    padding: 0 20px;
     flex-shrink: 0;
     border-bottom: 1px solid var(--bg50, #808080);
     background: #FFF;
 }
 
 .header-guest__logo_and_search {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
 }
 
 .header-guest__search {
@@ -54,15 +54,17 @@
 .header-guest__btns {
     display: inline-flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 1rem;
 }
 
 .header__login-btn {
+    padding: 0 0.5rem;
     color: var(--primary-30);
     text-align: center;
 }
 
 .header__singup-btn {
+    padding: 0 0.5rem;
     color: var(--bg-100, #FFF);
     text-align: center;
 }
