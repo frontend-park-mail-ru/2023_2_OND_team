@@ -29,7 +29,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-rows: 300px;
     grid-auto-flow: dense;
-    margin: 40px;
+    margin-top: 40px;
 }
 
 .subscriptions__items {
