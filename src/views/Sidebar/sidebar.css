@@ -114,7 +114,7 @@
   }
 
   .js-sidebar__menu__profile-fields {
-    display: flex;
+    display: block;
   }
 
   .sidebar__menu__profile-fields__label {
