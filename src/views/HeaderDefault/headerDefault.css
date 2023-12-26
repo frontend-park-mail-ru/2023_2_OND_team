@@ -397,7 +397,7 @@
 
     .header__search__field {
         display: inline-flex;
-        height: 40px;
+        height: 30px;
         width: min-content;
         gap: 0.5rem;
         justify-content: end;
@@ -405,6 +405,7 @@
 
     .header__search__text-input {
         width: 15vw;
+        border-radius: 10px;
     }
 
     .header__user-btns {
@@ -414,7 +415,7 @@
 
 
     .header__filter__list {
-        left: 25vw;
+        left: 35vw;
     }
 
 }
