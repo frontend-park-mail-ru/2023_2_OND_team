@@ -123,10 +123,11 @@
   
 .header__create__menu {
     position: fixed;
-    top: 77px;
+    top: 87px;
     left: 80vw;
     width: 212px;
     height: 110px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
@@ -247,6 +248,7 @@
     left: 86vw;
     width: 200px;
     height: 160px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
