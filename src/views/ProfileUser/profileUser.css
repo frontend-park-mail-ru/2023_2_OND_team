@@ -1,6 +1,6 @@
 .profile-user {
     display: flex;
-    width: 70vw;
+    width: 60vw;
     height: 250px;
     flex-shrink: 0;
     align-items: center;
@@ -56,7 +56,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .profile-user__btn {
