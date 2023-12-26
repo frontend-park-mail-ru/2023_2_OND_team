@@ -1,7 +1,9 @@
 .header {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     height: 77px;
+    width: -webkit-fill-available;
     padding-right: 10px;
     flex-shrink: 0;
     border-bottom: 1px solid var(--bg50, #808080);
