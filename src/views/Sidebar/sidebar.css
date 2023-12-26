@@ -6,16 +6,14 @@
   display: flex;
   position: fixed;
   height: 100%;
-  width: 196px;
-  padding: 27px;
+  padding: 1rem;
+  gap: 1rem;
   flex-direction: column;
   background: var(--sidebra-bg, rgba(51, 161, 179, 0.05));
 }
 
 .sidebar__logo {
   display: flex;
-  position: relative;
-  top: -25px;
   cursor: pointer;
 }
 
