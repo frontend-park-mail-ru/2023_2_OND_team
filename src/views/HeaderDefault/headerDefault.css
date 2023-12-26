@@ -62,7 +62,6 @@
   
 .header__user__create {
     display: flex;
-    flex-direction: column;
 }
   
 .header__user__create-img {
