@@ -5,7 +5,7 @@
 .subscriptions__search {
     display: inline-flex;
     height: 40px;
-    width: 270px;
+    width: 200px;
     align-items: center;
     margin-top: 10px;
     flex-shrink: 0;
@@ -17,7 +17,7 @@
 
 .subscriptions__search__text-input {
     all: unset;
-    width: 230px;
+    width: 100%;
     padding-left: 10px;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
