@@ -82,3 +82,38 @@
 .sidebar__menu__icon {
   display: flex;
 }
+
+@media (max-width: 1500px) {
+  .sidebar__menu__item__label {
+    display: none;
+  }
+
+  .sidebar__menu__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 50px;
+    flex-shrink: 0;
+    width: 50px;
+  }
+
+  .sidebar__menu__item__content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  
+  .sidebar__menu__btn-active {
+    border-radius: var(--br-s, 10px);
+    background: rgba(51, 161, 179, 0.40);
+    color: var(--primary-30);
+  }
+  
+  .sidebar__menu__btn:hover {
+    border-radius: var(--br-s, 10px);
+    background: var(--bg-90);
+  }
+
+}
