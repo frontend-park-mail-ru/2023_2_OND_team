@@ -402,3 +402,34 @@
     padding: 10px 20px;
     border-radius: 5px;
 }
+
+
+
+@media (max-width: 700px) {
+
+    .header__search {
+        padding: 0px 20px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .header__search__field {
+        display: inline-flex;
+        height: 40px;
+        width: min-content;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: 15px;
+        flex-shrink: 0;
+        gap: 4px;
+        border-radius: var(--br-s, 10px);
+        border: 2px solid var(--primary-30, #226B77);
+        background: var(--bg-100, #FFF);
+    }
+
+    .header__search__text-input {
+        width: 55px;
+    }
+
+}
