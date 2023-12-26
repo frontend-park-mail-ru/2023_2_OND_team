@@ -111,6 +111,7 @@ export function renderHeaderDefault() {
         console.log('Новое значение поиска:', searchInput);
     });
 
+
     const searchImage = document.querySelector('.header__search__img-image');
     searchImage.addEventListener('click', () => {
         if (searchMode == 'pins' && searchInput) {
@@ -231,4 +232,21 @@ export function renderHeaderDefault() {
         headerTitle.classList.add('hide');
         searchTextInput.placeholder = '\u{1F50E}';
     }     
+
+
+    inputField.addEventListener('keydown', (e) => {
+        if (e.key != 'Enter') {
+            return;
+        }
+
+        e.preventDefault();
+
+        const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        });
+     
+        searchImage.dispatchEvent(clickEvent);
+    });
 }
