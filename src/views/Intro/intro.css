@@ -1,6 +1,6 @@
 .intro {
     display: flex;
-    width: 80vw;
+    width: 70vw;
     justify-content: center;
     align-items: center;
     gap: 50px;
@@ -12,7 +12,7 @@
   
 .intro__text {
     display: flex;
-    width: 30vw;
+    width: 25vw;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -20,7 +20,7 @@
 }
   
 .intro__img-img {
-    width: 40vw;
+    width: 30vw;
 }
 
 @media (max-width: 900px) {
