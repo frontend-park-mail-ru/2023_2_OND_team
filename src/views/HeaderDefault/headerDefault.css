@@ -122,9 +122,9 @@
 }
   
 .header__create__menu {
-    position: relative;
-    top: 10px;
-    left: 80%;
+    position: fixed;
+    top: 77px;
+    left: 80vw;
     width: 212px;
     height: 110px;
     justify-content: center;
@@ -168,9 +168,9 @@
 }
 
 .header__notifications__menu {
-    position: relative;
-    top: 10px;
-    left: 82%;
+    position: fixed;
+    top: 87px;
+    left: 83vw;
     height: 200px;
     width: 220px;
     overflow-y: auto;
@@ -242,9 +242,9 @@
 }
 
 .header__user__menu {
-    position: relative;
-    top: 10px;
-    left: 85%;
+    position: fixed;
+    top: 87px;
+    left: 86vw;
     width: 200px;
     height: 160px;
     justify-content: center;

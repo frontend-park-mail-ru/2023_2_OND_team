@@ -34,8 +34,14 @@
     object-fit: cover;
     width: 100%;
 }
+
+@media (max-width: 1800px) {
+    .gallery {
+        max-width: 1500px;
+    }
+}
     
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
     .gallery {
         max-width: 1200px;
     }
