@@ -171,9 +171,10 @@
 }
 
 .header__notifications__menu__title {
+    position: fixed;
     display: flex;
     height: 40px;
-    width: 100%;
+    width: 200px;
     padding-top: 10px;
     align-items: center;
     justify-content: center;
