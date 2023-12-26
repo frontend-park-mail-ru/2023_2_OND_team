@@ -92,6 +92,11 @@
     width: min-content;
   }
 
+  .sidebar__logo {
+    padding: 0;
+    height: 70px;
+  }
+
   .sidebar__menu__item__label {
     display: none;
   }
@@ -108,8 +113,5 @@
     padding-left: 0;
   }
 
-  .sidebar__logo {
-    height: 70px;
-  }
 
 }
