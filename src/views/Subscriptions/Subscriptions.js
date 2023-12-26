@@ -11,6 +11,7 @@ export function renderSubscriptionsPage() {
 
   API.getUserSubscriptions()
       .then((data) => {
+        console.log(data)
         if (!data) {
           const nonContent = document.querySelector('.subscriptions-non-content');
           renderNonContentNotification(nonContent, 'Вы пока ни на кого не подписались', 'На главную', '/');
