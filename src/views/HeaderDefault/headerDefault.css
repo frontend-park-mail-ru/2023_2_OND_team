@@ -398,7 +398,7 @@
     .header__search__field {
         display: inline-flex;
         height: 40px;
-        width: min-content;
+        width: -webkit-fill-available;
         gap: 0.5rem;
         justify-content: end;
     }
