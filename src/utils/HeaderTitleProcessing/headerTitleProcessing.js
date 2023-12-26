@@ -1,5 +1,5 @@
 export function setHeaderTitle(title) {
-  if (window.innerWidth < 900) return;    
+  if (window.innerWidth < 700) return;    
 
   const headerSearch = document.querySelector('.header__search');
   const headerLeft = document.querySelector('.header__left');
@@ -14,7 +14,7 @@ export function setHeaderTitle(title) {
 }
 
 export function removeHeaderTitle() {
-  if (window.innerWidth < 900) return;    
+  if (window.innerWidth < 700) return;    
   
   const headerSearch = document.querySelector('.header__search');
   const headerLeft = document.querySelector('.header__left');

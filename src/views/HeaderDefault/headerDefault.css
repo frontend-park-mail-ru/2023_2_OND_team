@@ -59,7 +59,7 @@
 .header__user-btns {
     display: flex;
     gap: 20px;
-    padding-right: 80px;
+    padding-right: 40px;
 }
   
 .header__user__create {
