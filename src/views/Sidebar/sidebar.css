@@ -92,14 +92,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     height: 50px;
-    flex-shrink: 0;
     width: 70px;
   }
 
   .sidebar__menu__item__content {
-    padding-left: 0.5rem;
+    padding-left: 0;
   }
 
 }
