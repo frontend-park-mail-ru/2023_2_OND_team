@@ -10,7 +10,6 @@
 .user__board {
     display: flex;
     flex-direction: column;
-    width: 250px;
     height: 300px;
     gap: 10px;
     border-radius: 17px;
