@@ -2,6 +2,11 @@
     width: 100%;
 }
 
+.subscriptions-non-content {
+    display: flex;
+    justify-content: center;
+}
+
 .subscriptions__search {
     display: inline-flex;
     height: 40px;
