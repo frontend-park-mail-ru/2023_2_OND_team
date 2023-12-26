@@ -3,8 +3,10 @@
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    gap: 3rem;
 }
 
 .js-non-content-goto-btn{
-    width: 220px;
+    width: 100%;
+    height: min-content;
 }
