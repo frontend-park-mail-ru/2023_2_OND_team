@@ -44,7 +44,6 @@
 
 .header__title {
     width: 500px;
-    padding-top: 20px;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
     text-align: center;
 }
