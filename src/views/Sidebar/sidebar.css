@@ -94,7 +94,7 @@
 
   .sidebar__logo {
     padding: 0;
-    height: 70px;
+    height: 50px;
   }
 
   .sidebar__menu__item__label {
@@ -106,7 +106,7 @@
     align-items: center;
     justify-content: center;
     height: 50px;
-    width: 70px;
+    width: 50px;
   }
 
   .sidebar__menu__item__content {
