@@ -1,6 +1,6 @@
 .user {
     display: flex;
-    /* width: 1435px; */
+    min-width: 300px;
     flex-shrink: 0;
     align-items: center;
     border-radius: 20px;
