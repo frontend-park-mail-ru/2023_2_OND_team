@@ -92,9 +92,8 @@
     width: min-content;
   }
 
-  .sidebar__logo {
-    padding: 0;
-    height: 50px;
+  .js-sidebar__logo-img {
+    width: 50px;
   }
 
   .sidebar__menu__item__label {
