@@ -404,11 +404,12 @@
     }
 
     .header__search__text-input {
-        width: 30px;
+        width: 15vw;
     }
 
     .header__user-btns {
         gap: 0.5rem;
+        padding-right: 10;
     }
 
 }
