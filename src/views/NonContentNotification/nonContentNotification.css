@@ -7,6 +7,6 @@
 }
 
 .js-non-content-goto-btn{
-    width: 100%;
+    width: min(100%, 250px);
     height: min-content;
 }

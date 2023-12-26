@@ -161,7 +161,7 @@ export function renderHeaderDefault() {
                     if (res && res.length > 0) {
                         renderUserItems(searchResSection, res);
                         defineUserItems();
-                        searchNonContent.classList.add('hide');
+                        searchNonContent?.classList.add('hide');
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
