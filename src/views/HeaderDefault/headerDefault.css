@@ -407,14 +407,14 @@
 
 @media (max-width: 700px) {
     .header__search {
-        padding: 0px 20px;
+        padding: 0px 5px;
         display: flex;
-        gap: 20px;
+        gap: 5px;
     }
 
     .header__search__field {
         display: inline-flex;
-        height: 40px;
+        height: 10px;
         width: min-content;
         align-items: center;
         justify-content: center;

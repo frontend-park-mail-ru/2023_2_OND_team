@@ -221,4 +221,10 @@ export function renderHeaderDefault() {
           });
         });
     }
+
+
+    const searchTextInput = document.querySelector('.header__search__text-input');
+    if (window.innerWidth < 700) {
+        searchTextInput.placeholder = '';
+    }
 }
