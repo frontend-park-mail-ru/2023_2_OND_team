@@ -185,13 +185,13 @@
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .user__data__names {
     flex-direction: column;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
 
   .user {
       flex-direction: column;
