@@ -48,26 +48,14 @@
         max-width: 1200px;
     }
 }
-    
-@media (max-width: 1600px) {
-    .user-boards-gallery {
-        max-width: 1000px;
-    }
-}
-    
+
 @media (max-width: 1200px) {
     .user-boards-gallery {
         max-width: 800px;
     }
 }
     
-@media (max-width: 1000px) {
-    .user-boards-gallery {
-        max-width: 600px;
-    }
-}
-    
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .user-boards-gallery {
         max-width: 400px;
     }
