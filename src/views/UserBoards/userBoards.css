@@ -1,7 +1,7 @@
 .user-boards-gallery {
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: 300px;
     grid-auto-flow: dense;
     max-width: 1500px;
@@ -11,7 +11,7 @@
 .user__board {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 250px;
     height: 300px;
     gap: 10px;
     border-radius: 17px;
