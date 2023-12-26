@@ -7,7 +7,7 @@
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
     gap: 0.5rem;
-    padding: 0.5rem;
+    padding: 1rem;
 }
   
 .user__avatar {
@@ -50,7 +50,6 @@
 
 .user__subscriptions-text {
   display: flex;
-  width: 90px;
   height: 30px;
   flex-direction: column;
   justify-content: center;
@@ -63,13 +62,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1rem;
 }
 
 .user__data__names {
   display: flex;
-  gap: 20px;
-  width: 747px;
+  gap: 1rem;
   justify-content: space-between;
 }
 
