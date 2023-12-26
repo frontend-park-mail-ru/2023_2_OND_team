@@ -99,34 +99,33 @@
     object-fit: cover;
     width: 100%;
 }
-    
-@media (max-width: 1500px) {
+@media (max-width: 1800px) {
   .gallery {
       max-width: 1200px;
   }
 }
   
-@media (max-width: 1200px) {
+@media (max-width: 1600px) {
   .gallery {
-  max-width: 1000px;
+      max-width: 1000px;
   }
 }
   
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
   .gallery {
   max-width: 800px;
+  }
+}
+  
+@media (max-width: 1100px) {
+  .gallery {
+  max-width: 600px;
   }
 }
   
 @media (max-width: 800px) {
   .gallery {
   max-width: 600px;
-  }
-}
-  
-@media (max-width: 600px) {
-  .gallery {
-  max-width: 400px;
   }
 }
     

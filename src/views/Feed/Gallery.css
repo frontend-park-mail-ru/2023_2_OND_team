@@ -64,12 +64,7 @@
     max-width: 600px;
     }
 }
-    
-@media (max-width: 600px) {
-    .gallery {
-    max-width: 400px;
-    }
-}
+
     
 .gallery__item--hor {
     grid-column: span 2;
