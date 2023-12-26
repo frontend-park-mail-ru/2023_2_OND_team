@@ -186,11 +186,15 @@
 
 
 @media (max-width: 1000px) {
+  .user__data__names {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+
   .user {
       flex-direction: column;
   }
 
-  .user__data__names {
-    flex-direction: column;
-  }
 }
