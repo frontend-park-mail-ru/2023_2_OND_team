@@ -4,6 +4,8 @@ export function setHeaderTitle(title) {
   const headerTitle = document.querySelector('.header__title');
 
   headerTitle.innerHTML = title;
+  
+  if (window.innerWidth < 700) return;    
 
   headerSearch.classList.add('hide');
   headerLeft.classList.remove('hide');
