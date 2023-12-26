@@ -4,6 +4,7 @@
     align-items: center;
     margin-top: 50px;
     gap: 3rem;
+    width: 60vw;
 }
 
 .js-non-content-goto-btn{
