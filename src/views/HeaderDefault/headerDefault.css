@@ -409,7 +409,7 @@
     .header__search {
         padding: 0px 5px;
         display: flex;
-        gap: 5px;
+        gap: 10px;
     }
 
     .header__search__field {
@@ -428,7 +428,7 @@
     }
 
     .header__search__text-input {
-        width: 55px;
+        width: 30px;
     }
 
 }
