@@ -398,9 +398,9 @@
 
 @media (max-width: 700px) {
     .header__search {
-        padding: 0px 5px;
+        padding: 0px 10px;
         display: flex;
-        gap: 10px;
+        gap: 0.5rem;
     }
 
     .header__search__field {
@@ -418,6 +418,10 @@
 
     .header__search__text-input {
         width: 30px;
+    }
+
+    .header__user-btns {
+        gap: 0.5rem;
     }
 
 }
