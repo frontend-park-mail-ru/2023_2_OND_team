@@ -1,7 +1,6 @@
 .user {
     display: flex;
-    width: 1435px;
-    height: 330px;
+    /* width: 1435px; */
     flex-shrink: 0;
     align-items: center;
     border-radius: 20px;
