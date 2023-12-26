@@ -17,6 +17,10 @@
     align-items: center;
 }
 
+.header__search__img {
+    display: flex;
+}
+
 .header__search__field {
     display: inline-flex;
     height: 40px;
@@ -158,6 +162,10 @@
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
+.header__create__menu__board-icon {
+    display: flex;
+}
+
 .header__notifications__menu {
     position: fixed;
     top: 87px;
@@ -201,8 +209,8 @@
 .header__notifications__menu_item {
     display: flex;
     align-items: center;
-    gap: 5px;
-    margin-right: 15px;
+    gap: 1rem;
+    margin: 0 20px;
 }
 
 .header__notifications__menu_item-text {
@@ -214,7 +222,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 5px 30px 5px;
+    padding: 50px 5px 30px 5px;
     margin: 10px;
     gap: 15px;
 }
