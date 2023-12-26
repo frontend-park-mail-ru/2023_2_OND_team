@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-between;
     height: 77px;
+    width: -webkit-fill-available;
     padding: 0 3vw;
     flex-shrink: 0;
     border-bottom: 1px solid var(--bg50, #808080);
