@@ -22,8 +22,6 @@
     width: 270px;
     align-items: center;
     justify-content: center;
-    position: relative;
-    top: 15px;
     flex-shrink: 0;
     gap: 4px;
     border-radius: var(--br-s, 10px);
@@ -62,13 +60,10 @@
   
 .header__user__create {
     display: flex;
-    position: relative;
     flex-direction: column;
 }
   
 .header__user__create-img {
-    position: relative;
-    top: 20px;
 }
 
 .js-create-img {
@@ -87,8 +82,6 @@
 }
 
 .header__user__notification-img {
-    position: relative;
-    top: 18px;
     cursor: pointer;
 }
 
@@ -99,7 +92,6 @@
   
 .header__user__avatar {
     display: flex;
-    position: relative;
     flex-direction: column;
     width: 20px;
 }
@@ -107,11 +99,9 @@
 .header__user__avatar-img {
     display: flex;
     align-items: center;
-    position: relative;
     width: min-content;
     cursor: pointer;
     gap: 5px;
-    top: 20px;
 }
 
 .header__user__avatar-user {
@@ -317,14 +307,12 @@
 }
 
 .header__filter__img {
-    position: relative;
-    top: 20px;
     cursor: pointer;
 }
 
 .header__filter__list {
     padding: 15px;
-    position: relative;
+    position: fixed;
     top: 50px;
     width: 150px;
     height: 120px;
@@ -418,8 +406,6 @@
         width: min-content;
         align-items: center;
         justify-content: center;
-        position: relative;
-        top: 15px;
         flex-shrink: 0;
         gap: 4px;
         border-radius: var(--br-s, 10px);
