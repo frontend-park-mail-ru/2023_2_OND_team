@@ -40,11 +40,9 @@
 
 .sidebar__menu__item__content {
   display: flex;
-  width: 179px;
-  height: 25px;
-  padding: 15px 12px 6px 13px;
-  align-items: inherit;
-  gap: 9px;
+  padding-left: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -85,4 +83,8 @@
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.sidebar__menu__icon {
+  display: flex;
 }
