@@ -6,22 +6,28 @@
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+    gap: 0.5rem;
+    padding: 0.5rem;
 }
   
 .user__avatar {
   display: flex;
-  width: 120px;
-  height: 162px;
+  width: max(90px, 6vw);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
+.user__avatar__chat-btn {
+  height: auto;
+  padding: 0 0.5rem;
+  width: max(90px, 100%);
+}
+
 .user__avatar-img {
-  width: 120px;
-  height: 120px;
+  width: max(90px, 100%);
   object-fit: cover;
   border-radius: 10px;
 }
