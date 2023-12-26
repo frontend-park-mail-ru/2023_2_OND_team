@@ -1,6 +1,6 @@
 .profile-user {
     display: flex;
-    width: 90%;
+    width: 70vw;
     height: 250px;
     flex-shrink: 0;
     align-items: center;
@@ -11,15 +11,9 @@
   
 .profile-user__avatar {
   display: flex;
-  position: relative;
-  left: 45%;
-  width: 120px;
-  height: 162px;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  gap: 1rem;
 }
 
 .profile-user__avatar-img {
