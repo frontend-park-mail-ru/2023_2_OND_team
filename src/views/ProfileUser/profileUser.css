@@ -77,7 +77,7 @@
     grid-auto-rows: 400px;
     grid-auto-flow: dense;
     max-width: 1500px;
-    margin: 10px auto;
+    padding-top: 2rem;
 }
 
 .gallery__item {
