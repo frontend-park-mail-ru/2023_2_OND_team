@@ -392,19 +392,19 @@
         padding: 0px 10px;
         display: flex;
         gap: 0.5rem;
-        width: -webkit-fill-available;
+        width: min-content;
     }
 
     .header__search__field {
         display: inline-flex;
         height: 40px;
-        width: -webkit-fill-available;
+        width: min-content;
         gap: 0.5rem;
         justify-content: end;
     }
 
     .header__search__text-input {
-        width: 30px;
+        width: 15vw;
     }
 
     .header__user-btns {
