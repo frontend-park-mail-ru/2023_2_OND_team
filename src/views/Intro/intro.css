@@ -22,3 +22,9 @@
 .intro__img-img {
     width: 40vw;
 }
+
+@media (max-width: 900px) {
+    .intro {
+        display: none;
+    }
+  }
