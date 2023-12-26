@@ -26,31 +26,31 @@
 }
     
 @media (max-width: 1800px) {
-    .gallery {
+    .favourite-gallery {
         max-width: 1200px;
     }
 }
     
 @media (max-width: 1600px) {
-    .gallery {
+    .favourite-gallery {
         max-width: 1000px;
     }
 }
     
 @media (max-width: 1200px) {
-    .gallery {
+    .favourite-gallery {
     max-width: 800px;
     }
 }
     
 @media (max-width: 1000px) {
-    .gallery {
-    max-width: 600px;
+    .favourite-gallery {
+        max-width: 600px;
     }
 }
     
 @media (max-width: 600px) {
-    .gallery {
+    .favourite-gallery {
         max-width: 400px;
     }
 }
