@@ -310,7 +310,7 @@
     padding: 15px;
     position: fixed;
     top: 87px;
-    left: 25vw;
+    left: 45vw;
     width: 150px;
     height: 120px;
     border-radius: 20px;
@@ -410,6 +410,11 @@
     .header__user-btns {
         gap: 0.5rem;
         padding-right: 10;
+    }
+
+
+    .header__filter__list {
+        left: 25vw;
     }
 
 }

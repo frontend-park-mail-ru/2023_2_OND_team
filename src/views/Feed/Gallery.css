@@ -58,7 +58,7 @@
     }
 }
     
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     .gallery {
     max-width: 400px;
     }
