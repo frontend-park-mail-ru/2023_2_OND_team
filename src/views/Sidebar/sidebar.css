@@ -6,21 +6,22 @@
   display: flex;
   position: fixed;
   height: 100%;
-  padding: 1rem;
-  gap: 1rem;
+  width: 15vw;
   flex-direction: column;
   background: var(--sidebra-bg, rgba(51, 161, 179, 0.05));
 }
 
 .sidebar__logo {
+  padding: 0.5rem 0 0 1rem;
   display: flex;
   cursor: pointer;
 }
 
 .sidebar__menu {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.5rem;
 }
 
 .sidebar__menu__btn {
