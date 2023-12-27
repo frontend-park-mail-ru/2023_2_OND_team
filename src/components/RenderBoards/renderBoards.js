@@ -16,3 +16,17 @@ export function renderBoards(parent, boards) {
     parent?.insertAdjacentHTML('beforeend', template(context));
   });
 }
+
+export function renderSearchBoards(parent, boards) {
+  const template = Handlebars.templates['UserBoards.hbs'];
+  boards.forEach((board) => {
+    const pins = Array.from(board.pins).slice(0, 3);
+    const context = {
+      id: BoardHeader.id,
+      title: BoardHeader.title,
+      pins: pins,
+    };
+
+    parent?.insertAdjacentHTML('beforeend', template(context));
+  });
+}

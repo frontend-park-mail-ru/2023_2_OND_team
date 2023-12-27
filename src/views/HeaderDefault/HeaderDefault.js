@@ -2,7 +2,7 @@ import State from '../../components/State/state.js';
 import {API} from '../../utils/Api/api.js';
 import {Router} from '../../components/Router/router.js';
 import { renderPins } from "../../components/RenderPins/renderPins.js";
-import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
+import { renderSearchBoards } from "../../components/RenderBoards/renderBoards.js";
 import { definePins } from '../../utils/definePins/definePins.js';
 import { renderUserItems } from '../Subscriptions/SubscriptionsUserItem.js';
 
@@ -140,7 +140,7 @@ export function renderHeaderDefault() {
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
-                        renderBoards(searchResSection, res);
+                        renderSearchBoards(searchResSection, res);
                         searchNonContent.classList.add('hide');
                         defineBoards();
                     } else {
