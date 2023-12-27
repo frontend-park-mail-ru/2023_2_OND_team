@@ -5,20 +5,19 @@
 .messenger {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    height: 85vh;
 }
 
 .messenger__chat-menu {
     border-right: 2px solid black;
-    padding: 10px;
+    padding: 1vw;
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1rem;
 }
 
 .messenger__search {
-    width: 100%;
+    width: max(200px, 20vw);
 }
 
 .messenger__search__text {
@@ -35,7 +34,7 @@
 .messenger__search__text-input {  
     all: unset;
     width: 100%;
-    padding-left: 10px;
+    padding-left: 0.5rem;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
