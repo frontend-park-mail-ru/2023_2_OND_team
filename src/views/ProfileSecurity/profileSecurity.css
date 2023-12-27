@@ -9,7 +9,7 @@
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
-    padding: 2rem;
+    padding: 1rem;
     gap: 1rem;
 }
 
@@ -144,24 +144,18 @@
 
 .profile-security__btns__cansel-btn {
     display: flex;
-    width: 135px;
-    height: 40px;
-    padding: 8px 16px;
+    padding: 0 0.5rem;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     color: var(--primary-30, #226B77);
     text-align: center;
 }
 
 .profile-security__btns__save-btn {
     display: flex;
-    width: 175px;
-    height: 40px;
-    padding: 20px 16px;
+    padding: 0 0.5rem;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     color: var(--bg-100, #FFF);
     text-align: center;
 }
