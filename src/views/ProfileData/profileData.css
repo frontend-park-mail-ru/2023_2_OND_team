@@ -32,6 +32,12 @@
 
 .profile-data__avatar {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-data__avatar-avatar {
+  display: flex;
   align-items: center;
 }
 
