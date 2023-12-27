@@ -94,3 +94,27 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 768px) {
+    .input__forms {
+        flex-direction: column;
+    }
+
+    .pin__img__add {
+        display: flex;
+        justify-content: center;
+    }
+
+    .pin__img__add > * {
+        margin: 0 70px;
+    }
+
+    .rectangle-create {
+        width: auto;
+        padding: 10px 10px;
+    }
+
+    .title__item-data {
+        width: 470px;
+    }
+}

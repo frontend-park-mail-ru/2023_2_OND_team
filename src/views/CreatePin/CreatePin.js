@@ -89,7 +89,7 @@ export function renderCreatePin() {
       const mimeType = file.type;
       picture = new Blob([pictureBytes], {type: mimeType});
 
-      console.log(picture);
+      // console.log(picture);
 
       // pictureInput.value = file.name;
     };

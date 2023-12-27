@@ -2,7 +2,7 @@ import State from '../../components/State/state.js';
 import {API} from '../../utils/Api/api.js';
 import {Router} from '../../components/Router/router.js';
 import { renderPins } from "../../components/RenderPins/renderPins.js";
-import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
+import { renderSearchBoards } from "../../components/RenderBoards/renderBoards.js";
 import { definePins } from '../../utils/definePins/definePins.js';
 import { renderUserItems } from '../Subscriptions/SubscriptionsUserItem.js';
 
@@ -54,8 +54,6 @@ export function renderHeaderDefault() {
                         .then((status) => {
                             if (status === 'ok') {
                                 router.navigate('/login');
-                            } else {
-                                console.log('error logout');
                             }
                         })
                         .catch((error) => {
@@ -100,7 +98,7 @@ export function renderHeaderDefault() {
         input.addEventListener('change', (event) => {
             if (event.target.checked) {
                 searchMode = event.target.value;
-                console.log('Выбран режим поиска:', searchMode);
+                //console.log('Выбран режим поиска:', searchMode);
             }
         });
     });
@@ -108,9 +106,8 @@ export function renderHeaderDefault() {
     const inputField = document.querySelector('.header__search__text-input');
     inputField.addEventListener('input', (event) => {
         searchInput = event.target.value;
-        console.log('Новое значение поиска:', searchInput);
+        //console.log('Новое значение поиска:', searchInput);
     });
-
 
     const searchImage = document.querySelector('.header__search__img-image');
     searchImage.addEventListener('click', () => {
@@ -118,7 +115,7 @@ export function renderHeaderDefault() {
             const encodedInput = encodeURIComponent(searchInput);
             API.Search(searchMode, encodedInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
+                    //console.log('Результат поиска:', res);
                     router.navigate(`/search/pins/${encodedInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
@@ -136,12 +133,12 @@ export function renderHeaderDefault() {
         } else if (searchMode == 'boards' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
+                    //console.log('Результат поиска:', res);
                     router.navigate(`search/boards/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
-                        renderBoards(searchResSection, res);
+                        renderSearchBoards(searchResSection, res);
                         searchNonContent.classList.add('hide');
                         defineBoards();
                     } else {
@@ -154,14 +151,14 @@ export function renderHeaderDefault() {
         } else if (searchMode == 'users' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
+                    //console.log('Результат поиска:', res);
                     router.navigate(`search/users/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
                         renderUserItems(searchResSection, res);
                         defineUserItems();
-                        searchNonContent?.classList.add('hide');
+                        searchNonContent.classList.add('hide');
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
@@ -169,11 +166,7 @@ export function renderHeaderDefault() {
                 .catch((error) => {
                     console.error('Ошибка при выполнении поиска:', error);
                 });
-        } else {
-            console.log('Выберите режим и введите текст для поиска');
         }
-        inputField.value = '';
-        searchInput = '';
     });
 
     const filterBtn = document.querySelector('.header__filter__img-image');
@@ -224,18 +217,7 @@ export function renderHeaderDefault() {
           });
         });
     }
-
-
-    const searchTextInput = document.querySelector('.header__search__text-input');
-    const searchIcon = document.querySelector('.header__search__img')
-    const headerTitle = document.querySelector('.header__title');
-    if (window.innerWidth < 700) {
-        searchIcon.classList.add('hide');
-        headerTitle.classList.add('hide');
-        // searchTextInput.placeholder = '\u{1F50E}';
-    }     
-
-
+  
     inputField.addEventListener('keydown', (e) => {
         if (e.key != 'Enter') {
             return;

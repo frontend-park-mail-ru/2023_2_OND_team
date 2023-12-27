@@ -35,31 +35,36 @@
 }
 
 @media (max-width: 1800px) {
-    .gallery {
+    .gallery,
+    .search-gallery {
         max-width: 1200px;
     }
 }
     
 @media (max-width: 1600px) {
-    .gallery {
+    .gallery,
+    .search-gallery {
         max-width: 1000px;
     }
 }
     
 @media (max-width: 1200px) {
-    .gallery {
+    .gallery,
+    .search-gallery {
     max-width: 800px;
     }
 }
     
 @media (max-width: 1000px) {
-    .gallery {
+    .gallery,
+    .search-gallery {
     max-width: 600px;
     }
 }
     
 @media (max-width: 600px) {
-    .gallery {
+    .gallery,
+    .search-gallery {
     max-width: 400px;
     }
 }
