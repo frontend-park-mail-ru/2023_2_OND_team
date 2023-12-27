@@ -32,7 +32,7 @@
 .profile-data__edit-avatar {
   display: flex;
   position: relative;
-  top: -10px;
+  top: -55px;
   left: -20px;
   align-items: flex-start;
   cursor: pointer;
@@ -68,7 +68,8 @@
   align-items: flex-start;
 }
 
-.profile-data__data-names__name {
+.profile-data__data-names__surname {
+  margin-top: 30px;
 }
 
 .profile-data__data-names__item-title {
