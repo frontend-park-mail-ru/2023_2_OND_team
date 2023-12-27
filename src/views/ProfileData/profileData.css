@@ -16,7 +16,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+}
+
+.profile-data__content-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .profile-data__avatar {
@@ -52,7 +58,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .profile-data__data-names {
@@ -84,7 +90,7 @@
 }
 
 .profile-data__data-names__item-textarea {
-  width: max(200px, 10vw);
+  width: max(200px, 20vw);
   border: none;
   background: none;
   resize: none;
@@ -113,6 +119,7 @@
 
 .profile-data__data-about__data-textarea {
   height: 100%;
+  width: max(200px, 20vw);
   border: none;
   background: none;
   resize: none;
