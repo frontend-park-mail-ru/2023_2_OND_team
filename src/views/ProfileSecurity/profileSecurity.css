@@ -86,7 +86,7 @@
 }
 
 .profile-security__data-item-input {
-    width: max(200px, 20vw);
+    width: max(200px, 14vw);
     height: 46px;
     border: none;
     background: none;
