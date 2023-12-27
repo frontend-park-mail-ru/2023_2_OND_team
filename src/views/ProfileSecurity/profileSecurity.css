@@ -221,7 +221,7 @@
         justify-content: center;
     }
 
-    ..profile-security-span {
+    .profile-security-span {
         width: 200px;
     }
 }
