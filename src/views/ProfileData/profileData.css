@@ -209,9 +209,13 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1500px) {
   .profile-data__data {
     flex-direction: column;
+  }
+
+  .profile-data {
+    width: max(500px, 40vw);
   }
 }
 
