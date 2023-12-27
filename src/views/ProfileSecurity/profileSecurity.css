@@ -16,7 +16,7 @@
 .profile-security__content {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 2rem;
 }
@@ -170,22 +170,25 @@
 }
 
 .profile-security-span {
-    width: 100%;
+    width: max(200px, 40vw);
     text-align: center;
 }
 
 .profile-security__email-span {
     width: max(200px, 14vw);
+    text-align: left;
 
 }
 
 .profile-security__password-span {
     width: max(200px, 14vw);
 
+    text-align: left;
 }
 
 .profile-security__password-repeat-span{
     width: max(200px, 14vw);
+    text-align: left;
     
 }
 
@@ -194,7 +197,6 @@
     height: 40px;
     font-size: 15px; 
     color: var(--error-50, #F4210B);
-    text-align: left;
 }
 
 .input-primary {
@@ -216,6 +218,11 @@
 
     .profile-security__content {
         gap: 7vw;
+        justify-content: center;
+    }
+
+    ..profile-security-span {
+        width: 200px;
     }
 }
 
