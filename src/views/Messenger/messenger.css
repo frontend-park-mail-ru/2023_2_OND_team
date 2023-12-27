@@ -285,6 +285,10 @@
 
 @media (max-width: 650px) {
     .messenger__chat__messages {
-        width: 45vw;
+        width: 40vw;
+    }
+
+    .messenger__chat__footer__text {
+        width: 35vw;
     }
 }
