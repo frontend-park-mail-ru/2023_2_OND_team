@@ -74,12 +74,10 @@
 
 .profile-security__data-item-data {
     display: flex;
-    height: 46px;
 }
 
 .profile-security__data-item-textarea {
     width: 272px;
-    height: 46px;
     border: none;
     background: none;
     resize: none;
@@ -89,7 +87,7 @@
 
 .profile-security__data-item-input {
     width: max(200px, 20vw);
-    height: 30px;
+    height: 46px;
     border: none;
     background: none;
     resize: none;
