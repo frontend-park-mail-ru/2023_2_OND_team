@@ -13,8 +13,8 @@ export function renderPinPage(pinID) {
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
-            console.log('Информация о пине:', pinInfo);
-            console.log('Информация о пине:', pinInfo.author.id);
+            //console.log('Информация о пине:', pinInfo);
+            //console.log('Информация о пине:', pinInfo.author.id);
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
@@ -73,7 +73,7 @@ export function renderPinPage(pinID) {
             })
 
             userName?.addEventListener('click', () => {
-                console.log(pinInfo.author.id);
+                //console.log(pinInfo.author.id);
                 router.navigate(`/user/${pinInfo.author.id}`);
             })
 
@@ -144,7 +144,7 @@ export function renderPinPage(pinID) {
             };
 
             saveButton?.addEventListener('click', () => {
-                console.log(boardID, [parseInt(pinID)]);
+                //console.log(boardID, [parseInt(pinID)]);
                 API.addBoardPins(boardID, [parseInt(pinID)]);
             });
 
@@ -191,14 +191,6 @@ export function renderPinPage(pinID) {
                         console.error('Ошибка копирования:', err);
                     }
                 });                
-            
-                const socialIcons = shareModal.querySelectorAll('.icons a');
-            
-                socialIcons.forEach(icon => {
-                    icon.addEventListener('click', () => {
-                        console.log('click');
-                    });
-                });
             });            
 
             const confirmDeleteBtn = document.getElementById('confirmDelete');
@@ -286,7 +278,7 @@ export function renderPinPage(pinID) {
                     })
             });
 
-            console.log(usernameReal, pinInfo.author.username);
+            //console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
                 const rec = document.querySelector('.rectangle');

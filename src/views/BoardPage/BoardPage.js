@@ -15,8 +15,6 @@ export async function renderBoardPage(boardID) {
 
     try {
         const boardInfo = await API.getBoardInfo(boardID);
-        console.log('Информация о доске:', boardInfo);
-        console.log('Информация о пине:', boardInfo.author_username);
 
         const context = {
             title: boardInfo.title,
@@ -94,13 +92,13 @@ export async function renderBoardPage(boardID) {
                 }
             });                
         
-            const socialIcons = shareModal.querySelectorAll('.icons a');
+            /*const socialIcons = shareModal.querySelectorAll('.icons a');
         
             socialIcons.forEach(icon => {
                 icon.addEventListener('click', () => {
                     console.log('click');
                 });
-            });
+            });*/
         });  
 
         if (usernameReal === boardInfo.author_username) {
@@ -185,7 +183,7 @@ export async function renderBoardPage(boardID) {
             hideModal();
         });
 
-        console.log(usernameReal);
+        //console.log(usernameReal);
 
         await renderBoardPins();
 

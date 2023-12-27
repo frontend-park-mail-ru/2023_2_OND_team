@@ -54,8 +54,6 @@ export function renderHeaderDefault() {
                         .then((status) => {
                             if (status === 'ok') {
                                 router.navigate('/login');
-                            } else {
-                                console.log('error logout');
                             }
                         })
                         .catch((error) => {
@@ -100,7 +98,7 @@ export function renderHeaderDefault() {
         input.addEventListener('change', (event) => {
             if (event.target.checked) {
                 searchMode = event.target.value;
-                console.log('Выбран режим поиска:', searchMode);
+                //console.log('Выбран режим поиска:', searchMode);
             }
         });
     });
@@ -108,7 +106,7 @@ export function renderHeaderDefault() {
     const inputField = document.querySelector('.header__search__text-input');
     inputField.addEventListener('input', (event) => {
         searchInput = event.target.value;
-        console.log('Новое значение поиска:', searchInput);
+        //console.log('Новое значение поиска:', searchInput);
     });
 
     const searchImage = document.querySelector('.header__search__img-image');
@@ -117,7 +115,7 @@ export function renderHeaderDefault() {
             const encodedInput = encodeURIComponent(searchInput);
             API.Search(searchMode, encodedInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
+                    //console.log('Результат поиска:', res);
                     router.navigate(`/search/pins/${encodedInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
@@ -135,7 +133,7 @@ export function renderHeaderDefault() {
         } else if (searchMode == 'boards' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
+                    //console.log('Результат поиска:', res);
                     router.navigate(`search/boards/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
@@ -153,7 +151,7 @@ export function renderHeaderDefault() {
         } else if (searchMode == 'users' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
+                    //console.log('Результат поиска:', res);
                     router.navigate(`search/users/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
@@ -168,8 +166,6 @@ export function renderHeaderDefault() {
                 .catch((error) => {
                     console.error('Ошибка при выполнении поиска:', error);
                 });
-        } else {
-            console.log('Выберите режим и введите текст для поиска');
         }
     });
 
