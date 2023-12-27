@@ -17,7 +17,7 @@
 }
 
 .messenger__search {
-    width: max(200px, 20vw);
+    width: max(170px, 14vw);
 }
 
 .messenger__search__text {
@@ -51,7 +51,8 @@
     all: unset;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    width: max(170px, 14vw);
+    gap: 0.5rem;
 }
 
 .messenger__chat-menu__chat-item {
@@ -77,7 +78,7 @@
 
 .messenger__chat-menu__chat-username {
     display: flex;
-    padding: 10px;
+    padding: 0.5vw;
     justify-content: center;
     align-items: center;
     width: 100%;
