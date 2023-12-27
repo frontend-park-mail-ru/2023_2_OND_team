@@ -194,6 +194,7 @@
     height: 80px;
     width: 100%;
     align-items: center;
+    justify-content: center;
     gap: 2vw;
     border-top: 2px solid black;
 }
