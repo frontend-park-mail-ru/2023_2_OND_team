@@ -211,6 +211,10 @@
 
 
 @media (max-width: 1500px) {
+  .profile-data {
+    width: 60vw;
+  }
+
   .profile-data__data {
     flex-direction: column;
   }
@@ -223,6 +227,10 @@
 
 
 @media (max-width: 800px) {
+  .profile-data {
+    width: 60vw;
+  }
+  
   .profile-data__data {
     flex-direction: column;
   }
