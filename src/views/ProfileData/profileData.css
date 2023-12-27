@@ -146,7 +146,7 @@
   height: 30px;
   font-size: 15px; 
   color: var(--error-50, #F4210B);
-  text-align: left;
+  text-align: center;
 }
 
 .profile-data__edit-data {
