@@ -37,6 +37,7 @@ export function renderProfileSecurity() {
 
         const changeBtn = document.querySelector('.profile-security__btn-change');
         changeBtn?.addEventListener('click', () => {
+          securitySpan.classList.remove('hide');
           footerChangeBtn.classList.add('hide');
           footerSaveBtns.classList.remove('hide');
 
