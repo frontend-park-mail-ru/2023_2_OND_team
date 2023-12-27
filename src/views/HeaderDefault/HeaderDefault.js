@@ -232,7 +232,7 @@ export function renderHeaderDefault() {
     if (window.innerWidth < 700) {
         searchIcon.classList.add('hide');
         headerTitle.classList.add('hide');
-        searchTextInput.placeholder = '\u{1F50E}';
+        // searchTextInput.placeholder = '\u{1F50E}';
     }     
 
 
