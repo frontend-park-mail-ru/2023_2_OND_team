@@ -77,7 +77,7 @@
 }
 
 .profile-security__data-item-textarea {
-    width: 272px;
+    width: 100%;
     border: none;
     background: none;
     resize: none;
