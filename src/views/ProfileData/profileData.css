@@ -14,12 +14,15 @@
 
 .profile-data__content {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 .profile-data__content-main {
   display: flex;
+  height: 100%;
   align-items: center;
   justify-content: center;
   gap: 2rem;
