@@ -167,12 +167,11 @@
 .profile-data__btns {
   display: inline-flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 1rem;
 }
 
 .profile-data__btns__cansel-btn {
   display: flex;
-  width: 135px;
   height: 40px;
   padding: 8px 16px;
   justify-content: center;
@@ -184,7 +183,6 @@
 
 .profile-data__btns__save-btn {
   display: flex;
-  width: 175px;
   height: 40px;
   padding: 20px 16px;
   justify-content: center;
