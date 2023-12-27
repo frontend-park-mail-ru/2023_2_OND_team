@@ -96,11 +96,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
-    .title-create {
-        margin-bottom: 20px;
-    }
-
     .input__forms {
         flex-direction: column;
     }
@@ -116,6 +111,7 @@
 
     .rectangle-create {
         width: auto;
+        padding: 10px 10px;
     }
 
     .title__item-data {
