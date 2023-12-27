@@ -8,7 +8,7 @@ export function renderBoards(parent, boards) {
   boards.forEach((board) => {
     const pins = Array.from(board.pins).slice(0, 3);
     const context = {
-      id: BoardHeader.board_id,
+      id: board.id,
       title: board.title,
       pins: pins,
     };
