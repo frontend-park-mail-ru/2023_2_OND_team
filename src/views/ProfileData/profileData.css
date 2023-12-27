@@ -36,6 +36,15 @@
   align-items: center;
 }
 
+.profile-data__avatar-span {
+  font-family: Nunito;
+  height: 30px;
+  font-size: 15px; 
+  color: var(--error-50, #F4210B);
+  text-align: center;
+  width: 130px;
+}
+
 .profile-data__avatar-avatar {
   display: flex;
   align-items: center;
