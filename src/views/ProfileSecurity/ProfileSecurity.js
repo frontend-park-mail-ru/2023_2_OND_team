@@ -56,6 +56,7 @@ export function renderProfileSecurity() {
 
         const canselBtn = document.querySelector('.js-profile-security__btns__cansel-btn');
         canselBtn?.addEventListener('click', () => {
+          securitySpan.classList.add('hide');
           footerChangeBtn.classList.remove('hide');
           footerSaveBtns.classList.add('hide');
 
