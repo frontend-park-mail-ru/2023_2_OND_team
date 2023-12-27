@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 60vw;
+  min-width: 400px;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -214,8 +215,22 @@
     flex-direction: column;
   }
 
-  .profile-data {
-    width: max(400px, 40vw);
+  .profile-data__content-main {
+    gap: 5vw;
   }
+
+}
+
+
+@media (max-width: 800px) {
+  .profile-data__data {
+    flex-direction: column;
+  }
+
+  .profile-data__content-main {
+    gap: 5vw;
+    flex-direction: column;
+  }
+
 }
 
