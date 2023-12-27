@@ -217,7 +217,7 @@ export function renderHeaderDefault() {
           });
         });
     }
-
+  
     inputField.addEventListener('keydown', (e) => {
         if (e.key != 'Enter') {
             return;

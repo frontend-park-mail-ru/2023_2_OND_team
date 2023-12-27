@@ -5,20 +5,20 @@
 .messenger {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    height: 85vh;
 }
 
 .messenger__chat-menu {
     border-right: 2px solid black;
-    padding: 10px;
+    padding: 1vw;
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1rem;
+    height: calc(100vh - 115px);
 }
 
 .messenger__search {
-    width: 100%;
+    width: max(170px, 14vw);
 }
 
 .messenger__search__text {
@@ -35,7 +35,7 @@
 .messenger__search__text-input {  
     all: unset;
     width: 100%;
-    padding-left: 10px;
+    padding-left: 0.5vw;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
@@ -43,8 +43,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    overflow-x: hidden;
-    height: 85vh;
+    overflow-x: hidden;    
+    height: calc(100vh - 180px);
     padding-right: 10px;
 }
 
@@ -52,7 +52,8 @@
     all: unset;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    width: max(155px, 14vw);
+    gap: 0.5rem;
 }
 
 .messenger__chat-menu__chat-item {
@@ -78,7 +79,7 @@
 
 .messenger__chat-menu__chat-username {
     display: flex;
-    padding: 10px;
+    padding: 0.5vw;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -106,16 +107,16 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: 78vh;
-    width: 68vw;
-    gap: 10px;
-    padding: 10px;
+    height: calc(100vh - 240px);
+    width: 65vw;
+    gap: 0.5rem;
+    padding: 1rem;
 }
 
 .messenger__chat__message-item-my {
     display: flex;
     width: max-content;
-    max-width: 40%;
+    max-width: 85%;
 }
 
 .messenger__chat__message-item-my__text {
@@ -175,7 +176,7 @@
 
 .messenger__chat__message-item-companion {
     width: max-content;
-    max-width: 40%;
+    max-width: 85%;
     height: fit-content;
     flex-shrink: 0;
     border-radius: 20px;
@@ -191,20 +192,19 @@
 
 .messenger__chat__footer {
     display: flex;
-    position: relative;
-    bottom: 0;
     height: 80px;
     width: 100%;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    gap: 2vw;
+    margin-top: 1rem;
     border-top: 2px solid black;
 }
 
 .messenger__chat__footer__text {
     display: inline-flex;
     height: 40px;
-    width: 80%;
-    margin-left: 5%;
+    width: 45vw;
     flex-shrink: 0;
     border-radius: var(--br-s, 10px);
     border: 2px solid var(--primary-30, #226B77);
@@ -256,4 +256,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+@media (max-width: 1300px) {
+    .messenger__chat-menu__chat-avatar {
+        display: none;
+    }
 }
