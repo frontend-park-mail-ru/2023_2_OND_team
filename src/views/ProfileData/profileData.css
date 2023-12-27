@@ -224,7 +224,7 @@
   }
 
   .profile-data__edit-data {
-    left: 90px;
+    left: 9vw;
     top: 0; 
   }
 }
@@ -247,9 +247,9 @@
   .profile-data__line {
     display: none;
   }
-  
+
   .profile-data__edit-data {
-    left: 90px;
+    left: 9vw;
     top: 0; 
   }
 
