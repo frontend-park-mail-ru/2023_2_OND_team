@@ -16,7 +16,7 @@
 .profile-security__content {
     display: flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 2rem;
 }
@@ -74,6 +74,7 @@
 
 .profile-security__data-item-data {
     display: flex;
+    height: 46px;
 }
 
 .profile-security__data-item-textarea {
@@ -208,12 +209,22 @@
 
 
 
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .profile-security__data-fields {
         flex-direction: column;
     }
 
     .profile-security__content {
         gap: 7vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .profile-security__content {
+        flex-direction: column;
+    }
+
+    .profile-security__line {
+        display: none;
     }
 }
