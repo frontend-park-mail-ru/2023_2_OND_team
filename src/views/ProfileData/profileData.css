@@ -26,6 +26,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding-top: 20px;
 }
 
 .profile-data__avatar {
@@ -135,7 +136,7 @@
 
 .profile-data-span-all {
   font-family: Nunito;
-  height: 30px;
+  height: 20px;
   font-size: 15px; 
   color: var(--error-50, #F4210B);
   text-align: left;
