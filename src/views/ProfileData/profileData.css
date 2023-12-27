@@ -71,7 +71,7 @@
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .profile-data__data-names__item {
@@ -132,9 +132,18 @@
   color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
-.profile-data-span-all {
+.profile-data__username-span {
   font-family: Nunito;
   height: 20px;
+  width: max(200px, 20vw);
+  font-size: 15px; 
+  color: var(--error-50, #F4210B);
+  text-align: left;
+}
+
+.profile-data-span-all {
+  font-family: Nunito;
+  height: 30px;
   font-size: 15px; 
   color: var(--error-50, #F4210B);
   text-align: left;
