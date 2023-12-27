@@ -223,6 +223,10 @@
     gap: 7vw;
   }
 
+  .profile-data__edit-data {
+    left: 90px;
+    top: 0; 
+  }
 }
 
 
@@ -242,6 +246,11 @@
   
   .profile-data__line {
     display: none;
+  }
+  
+  .profile-data__edit-data {
+    left: 90px;
+    top: 0; 
   }
 
 }
