@@ -137,11 +137,17 @@ export function renderHeaderDefault() {
                 .then((res) => {
                     console.log('Результат поиска:', res);
                     router.navigate(`search/boards/${searchInput}`);
-                    const searchResSection = document.getElementById('search-res');
-                    const searchNonContent = document.querySelector('.search-non-content');
+                    //const searchResSection = document.getElementById('search-res');
+                    //const searchNonContent = document.querySelector('.search-non-content');
+                    const sectionPins = document.querySelector('.user-pins-gallery');
+                    const sectionBoards = document.querySelector('.user-boards-gallery');
+                    sectionPins.innerHTML = '';
+                    nonContent.innerHTML = '';9
                     if (res && res.length > 0) {
-                        renderBoards(searchResSection, res);
+                        //renderBoards(searchResSection, res);
                         searchNonContent.classList.add('hide');
+                        //defineBoards();
+                        renderBoards(sectionBoards, data);
                         defineBoards();
                     } else {
                         searchNonContent.classList.remove('hide');
