@@ -14,9 +14,8 @@
 
 .profile-data__content {
   display: flex;
-  position: relative;
-  top: -10px;
-  left: -20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-data__avatar {
@@ -32,9 +31,9 @@
 
 .profile-data__edit-avatar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
+  position: relative;
+  top: -10px;
+  left: -20px;
 }
 
 .profile-data__line {
