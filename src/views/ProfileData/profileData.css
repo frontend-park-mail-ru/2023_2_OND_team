@@ -21,6 +21,7 @@
 
 .profile-data__avatar {
   display: flex;
+  align-items: center;
   margin: 1rem;
 }
 

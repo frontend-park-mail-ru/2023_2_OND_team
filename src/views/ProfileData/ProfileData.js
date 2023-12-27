@@ -62,13 +62,13 @@ export function renderProfileData() {
         const profileAvatar = document.querySelector('.profile-data__avatar');
         const editAvatarBtn = document.querySelector('.profile-data__edit-avatar');
 
-        profileAvatar?.addEventListener('mouseenter', () => {
-          editAvatarBtn.classList.remove('hide');
-        });
+        // profileAvatar?.addEventListener('mouseenter', () => {
+        //   editAvatarBtn.classList.remove('hide');
+        // });
 
-        profileAvatar?.addEventListener('mouseleave', () => {
-          editAvatarBtn.classList.add('hide');
-        });
+        // profileAvatar?.addEventListener('mouseleave', () => {
+        //   editAvatarBtn.classList.add('hide');
+        // });
 
         editAvatarBtn?.addEventListener('click', () => {
           inputElement.click();
