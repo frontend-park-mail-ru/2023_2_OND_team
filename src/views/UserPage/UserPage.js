@@ -147,6 +147,7 @@ function renderUserPins(userID) {
 function renderUserBoards(username) {
   API.getUserBoards(username)
       .then((data) => {
+        console.log(data);
         const nonContent = document.querySelector('.user-non-content');
         const sectionPins = document.querySelector('.user-pins-gallery');
         const sectionBoards = document.querySelector('.user-boards-gallery');
