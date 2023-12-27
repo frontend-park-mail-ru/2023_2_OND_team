@@ -42,8 +42,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    overflow-x: hidden;
-    height: 85vh;
+    overflow-x: hidden;    
+    height: calc(100vh - 140px);
     padding-right: 10px;
 }
 
