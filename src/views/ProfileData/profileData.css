@@ -212,7 +212,7 @@
 
 @media (max-width: 1500px) {
   .profile-data {
-    width: 50vw;
+    /* width: 50vw; */
   }
 
   .profile-data__data {
@@ -228,7 +228,7 @@
 
 @media (max-width: 900px) {
   .profile-data {
-    width: 50vw;
+    /* width: 50vw; */
   }
 
   .profile-data__data {
