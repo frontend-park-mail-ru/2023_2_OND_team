@@ -18,7 +18,7 @@
 }
 
 .messenger__search {
-    width: max(200px, 14vw);
+    width: max(170px, 14vw);
 }
 
 .messenger__search__text {
@@ -35,7 +35,7 @@
 .messenger__search__text-input {  
     all: unset;
     width: 100%;
-    padding-left: 0.5rem;
+    padding-left: 0.5vw;
     color: var(--black-text, rgba(24, 24, 24, 0.87));
 }
 
@@ -52,7 +52,7 @@
     all: unset;
     display: flex;
     flex-direction: column;
-    width: max(200px, 14vw);
+    width: max(155px, 14vw);
     gap: 0.5rem;
 }
 
