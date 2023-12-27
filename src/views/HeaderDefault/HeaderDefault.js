@@ -111,7 +111,6 @@ export function renderHeaderDefault() {
         console.log('Новое значение поиска:', searchInput);
     });
 
-
     const searchImage = document.querySelector('.header__search__img-image');
     searchImage.addEventListener('click', () => {
         if (searchMode == 'pins' && searchInput) {
@@ -161,7 +160,7 @@ export function renderHeaderDefault() {
                     if (res && res.length > 0) {
                         renderUserItems(searchResSection, res);
                         defineUserItems();
-                        searchNonContent?.classList.add('hide');
+                        searchNonContent.classList.add('hide');
                     } else {
                         searchNonContent.classList.remove('hide');
                     }
@@ -172,8 +171,6 @@ export function renderHeaderDefault() {
         } else {
             console.log('Выберите режим и введите текст для поиска');
         }
-        inputField.value = '';
-        searchInput = '';
     });
 
     const filterBtn = document.querySelector('.header__filter__img-image');
@@ -224,17 +221,6 @@ export function renderHeaderDefault() {
           });
         });
     }
-
-
-    const searchTextInput = document.querySelector('.header__search__text-input');
-    const searchIcon = document.querySelector('.header__search__img')
-    const headerTitle = document.querySelector('.header__title');
-    if (window.innerWidth < 700) {
-        searchIcon.classList.add('hide');
-        headerTitle.classList.add('hide');
-        searchTextInput.placeholder = '\u{1F50E}';
-    }     
-
 
     inputField.addEventListener('keydown', (e) => {
         if (e.key != 'Enter') {
