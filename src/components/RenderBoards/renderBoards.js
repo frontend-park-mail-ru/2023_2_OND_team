@@ -22,8 +22,8 @@ export function renderSearchBoards(parent, boards) {
   boards.forEach((board) => {
     const pins = Array.from(board.pins).slice(0, 3);
     const context = {
-      id: BoardHeader.id,
-      title: BoardHeader.title,
+      id: board.BoardHeader.id,
+      title: board.BoardHeader.title,
       pins: pins,
     };
 
