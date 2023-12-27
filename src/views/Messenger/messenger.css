@@ -257,3 +257,9 @@
     font-weight: 400;
     line-height: normal;
 }
+
+@media (max-width: 1300px) {
+    .messenger__chat-menu__chat-avatar {
+        display: none;
+    }
+}
