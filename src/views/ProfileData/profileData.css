@@ -207,3 +207,11 @@
 .hide {
   display: none;
 }
+
+
+@media (max-width: 800px) {
+  .profile-data__data {
+    flex-direction: column;
+  }
+}
+
