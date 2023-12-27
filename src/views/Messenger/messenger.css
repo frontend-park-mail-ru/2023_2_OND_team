@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    height: calc(100vh - 115px);
 }
 
 .messenger__search {
@@ -43,7 +44,7 @@
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;    
-    height: calc(100vh - 170px);
+    height: calc(100vh - 240px);
     padding-right: 10px;
 }
 
@@ -106,7 +107,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: calc(100vh - 220px);
+    height: calc(100vh - 240px);
     width: 65vw;
     gap: 0.5rem;
     padding: 1rem;
@@ -196,6 +197,7 @@
     align-items: center;
     justify-content: center;
     gap: 2vw;
+    margin-top: 1rem;
     border-top: 2px solid black;
 }
 
