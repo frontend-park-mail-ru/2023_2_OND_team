@@ -43,7 +43,7 @@
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;    
-    height: calc(100vh - 140px);
+    height: calc(100vh - 150px);
     padding-right: 10px;
 }
 
@@ -106,8 +106,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: calc(100vh - 90px);
-    width: 68vw;
+    height: calc(100vh - 200px);
+    width: 65vw;
     gap: 0.5rem;
     padding: 1rem;
 }
