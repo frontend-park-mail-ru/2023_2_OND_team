@@ -38,8 +38,7 @@
 
 .profile-security__line {
     display: flex;
-    width: 0.1px;
-    height: 245px;
+    height: 100%;
     padding-bottom: 0px;
     justify-content: center;
     align-items: center;
@@ -52,6 +51,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    gap: 2rem;
 }
 
 .profile-security__data-fields {
@@ -166,6 +166,26 @@
     gap: 10px;
     color: var(--bg-100, #FFF);
     text-align: center;
+}
+
+.profile-security-span {
+    width: 100%;
+    text-align: center;
+}
+
+.profile-security__email-span {
+    width: max(200px, 14vw);
+
+}
+
+.profile-security__password-span {
+    width: max(200px, 14vw);
+
+}
+
+.profile-security__password-repeat-span{
+    width: max(200px, 14vw);
+    
 }
 
 .profile-security-span-all {
