@@ -1,4 +1,6 @@
 .profile-security {
+    display: flex;
+    flex-direction: column;
     width: 60vw;
     min-width: 200px;
     justify-content: center;
@@ -7,11 +9,14 @@
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+    padding: 1rem;
+    gap: 1rem;
 }
 
 .profile-security__content {
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -46,8 +51,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 1076px;
-    height: 346px;
 }
 
 .profile-security__data-fields {
@@ -102,16 +105,16 @@
 
 .profile-security__control {
     display: flex;
-    width: 1503px;
-    height: 91px;
+    flex-direction: column;
+    width: 100%;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
 .profile-security__control__line {
     display: flex;
-    width: 1500px;
-    height: 0.1px;
+    width: 100%;
     padding-bottom: 0px;
     justify-content: center;
     align-items: center;
