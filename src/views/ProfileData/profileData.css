@@ -16,12 +16,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 .profile-data__avatar {
   display: flex;
   align-items: center;
-  margin: 1rem;
 }
 
 .profile-data__avatar-img {
@@ -34,12 +34,13 @@
   position: relative;
   top: -10px;
   left: -20px;
+  align-items: flex-start;
+  cursor: pointer;
 }
 
 .profile-data__line {
   display: flex;
-  width: 0.1px;
-  height: 343px;
+  height: 100%;
   padding-bottom: 0px;
   justify-content: center;
   align-items: center;
@@ -51,9 +52,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1076px;
-  height: 346px;
-  padding: 0 78px 0 78px;
 }
 
 .profile-data__data-names {
@@ -61,19 +59,16 @@
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 30px;
+  gap: 0.5rem;
 }
 
 .profile-data__data-names__item {
   display: flex;
-  width: 272px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
 }
 
 .profile-data__data-names__name {
-  margin-top: -20px;
 }
 
 .profile-data__data-names__item-title {
@@ -82,7 +77,6 @@
 
 .profile-data__data-names__item-data {
   display: flex;
-  width: 360px;
   height: 46px;
 }
 
@@ -97,10 +91,8 @@
 
 .profile-data__data-about {
   display: flex;
-  left: 500px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
   flex-shrink: 0;
   flex: 1;
 }
@@ -111,16 +103,11 @@
 
 .profile-data__data-about__data {
   display: flex;
-  width: 650px;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 2px;
-  gap: 4px;
 }
 
 .profile-data__data-about__data-textarea {
-  height: 258px;
-  width: 650px;
   border: none;
   background: none;
   resize: none;
