@@ -121,18 +121,15 @@
 
 .profile-security__change {
     display: flex;
-    width: 350px;
-    height: 40px;
 }
 
 .profile-security__btn-change{
     display: flex;
     width: 350px;
     height: 100%;
-    padding: 20px 16px;
+    padding: 0 0.5rem;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     flex-shrink: 0;
     color: var(--bg-100, #FFF);
     text-align: center;
@@ -224,6 +221,11 @@
     .profile-security-span {
         width: 200px;
     }
+
+    .profile-security__btn-change {
+        width: max(200px, 25vw);
+    }
+
 }
 
 @media (max-width: 700px) {
