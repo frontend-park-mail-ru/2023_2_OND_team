@@ -1,5 +1,6 @@
 .profile-data {
   display: flex;
+  flex-direction: column;
   width: 60vw;
   justify-content: center;
   align-items: center;
@@ -7,30 +8,24 @@
   border-radius: 20px;
   background: #FFF;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .profile-data__content {
   display: flex;
-  width: 1503px;
-  height: 355px;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  top: -10px;
+  left: -20px;
 }
 
 .profile-data__avatar {
   display: flex;
-  width: 120px;
-  height: 122px;
-  padding-bottom: 0px;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
+  margin: 1rem;
 }
 
 .profile-data__avatar-img {
-  object-fit: cover;
   width: 120px;
-  height: 120px;
   border-radius: 10px;
 }
 
