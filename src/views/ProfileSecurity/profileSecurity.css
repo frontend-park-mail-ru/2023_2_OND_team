@@ -18,6 +18,7 @@
     width: 100%;
     justify-content: flex-start;
     align-items: center;
+    gap: 2rem;
 }
 
 .profile-security__avatar {
@@ -58,15 +59,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 30px;
+    gap: 2vw;
 }
 
 .profile-security__data-item {
     display: flex;
-    width: 300px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
 }
 
 .profile-security__data-item-title {
@@ -75,7 +74,6 @@
 
 .profile-security__data-item-data {
     display: flex;
-    width: 272px;
     height: 46px;
 }
 
@@ -90,7 +88,7 @@
 }
 
 .profile-security__data-item-input {
-    width: 264px;
+    width: max(200px, 20vw);
     height: 30px;
     border: none;
     background: none;
