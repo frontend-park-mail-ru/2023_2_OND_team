@@ -138,8 +138,7 @@
 .profile-security__save {
     display: inline-flex;
     align-items: flex-start;
-    height: 40px;
-    gap: 20px;
+    gap: 1rem;
 }
 
 .profile-security__btns__cansel-btn {
