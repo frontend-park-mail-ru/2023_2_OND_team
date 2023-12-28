@@ -310,7 +310,9 @@
         display: flex;
         width: 360px;
         flex-direction: column;
-        height: 900px;
+        /* height: 900px; */
+        height: 80vh;
+        overflow-y: auto;
         margin: 20px auto 0;
         border-radius: 10px;
     }
