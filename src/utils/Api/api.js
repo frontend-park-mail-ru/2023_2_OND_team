@@ -352,7 +352,6 @@ export class API {
       });
 
       const csrfToken = response.headers.get('X-Set-CSRF-Token');
-      console.log(csrfToken);
 
       if (csrfToken) {
         this.state.setCsrfToken(csrfToken);
