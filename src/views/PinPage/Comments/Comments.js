@@ -91,7 +91,7 @@ export class Comments {
     }
 
     sendComment(content) {
-        if (!this.#state.getIsAuthorized) {
+        if (!this.#state.getIsAuthorized()) {
             this.#router.navigate('/login')
         }
 
