@@ -45,6 +45,11 @@ export function renderPinPage(pinID) {
                 })
 
             likeButton?.addEventListener('click', () => {
+                if (!isAuthorized) {
+                    router.navigate('/login')
+                    return;
+                }
+
                 API.getLike(pinID)
                     .then((data) => {
                         if (data.is_set) {
