@@ -49,8 +49,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    width: 15px;
-    height: 15px;
+    width: 35px;
+    height: 35px;
     z-index: 9999;
 }
 
@@ -101,7 +101,7 @@
     padding: 8px 0px 8px 8px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;   
+    line-height: normal;
 }
 
 .open-btn {
@@ -154,4 +154,39 @@
 .auth-title,
 .registration-title {
     margin: 15px;
+}
+
+.mobile-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-form-container {
+    background: white;
+    width: 100%; 
+    height: 100vh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.mobile-form-container {
+    background: white;
+    width: 100vw;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.mobile-input-username,
+.mobile-input-email,
+.mobile-input-password {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

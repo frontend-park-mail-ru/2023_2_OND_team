@@ -32,8 +32,6 @@ export function renderCreateBoard() {
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
 
-    console.log(title, description);
-
     API.createBoard(title, description)
         .then((response) => {
           if (response && response.status === 'ok' && response.body && response.body.new_board_id) {

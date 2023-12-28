@@ -1,6 +1,7 @@
 import {API} from '../../utils/Api/api.js';
 import State from '../../components/State/state.js';
 import {Router} from '../../components/Router/router.js';
+import { Notifications } from '../Notifications/Notifications.js';
 
 export function renderCreatePin() {
   const router = new Router();
@@ -43,6 +44,14 @@ export function renderCreatePin() {
         .then((response) => {
           if (response.status === 'ok') {
             router.navigate('/');
+          } else if (response.status === 'error' && response.code === 'explicit_pin') {
+            const badContent = document.querySelector('.create_pin__bad_content');
+            badContent.textContent = 'Пин содержит неприличный контент';
+            badContent.classList.remove('hide');
+          } else if (response.status === 'error' && response.code === 'add_pin') {
+            const badContent = document.querySelector('.create_pin__bad_content');
+            badContent.textContent = 'Недопустимый формат или размер файла';
+            badContent.classList.remove('hide');
           } else {
             console.error('Error creating pin');
           }
@@ -85,9 +94,6 @@ export function renderCreatePin() {
       const mimeType = file.type;
       picture = new Blob([pictureBytes], {type: mimeType});
 
-      console.log(picture);
-
-      // pictureInput.value = file.name;
     };
 
     reader.readAsArrayBuffer(file);

@@ -27,7 +27,11 @@ export function renderRegPage() {
 
 
   const registrationTemplate = Handlebars.templates['Registration.hbs'];
-  const registrationContext = {};
+  const isMobile = window.innerWidth < 968;
+
+  const registrationContext = {
+    mobile: isMobile
+  };
 
   registration.innerHTML = registrationTemplate(registrationContext);
 

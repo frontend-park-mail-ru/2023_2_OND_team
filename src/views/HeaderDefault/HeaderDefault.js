@@ -2,7 +2,7 @@ import State from '../../components/State/state.js';
 import {API} from '../../utils/Api/api.js';
 import {Router} from '../../components/Router/router.js';
 import { renderPins } from "../../components/RenderPins/renderPins.js";
-import { renderBoards } from "../../components/RenderBoards/renderBoards.js";
+import { renderSearchBoards } from "../../components/RenderBoards/renderBoards.js";
 import { definePins } from '../../utils/definePins/definePins.js';
 import { renderUserItems } from '../Subscriptions/SubscriptionsUserItem.js';
 
@@ -19,6 +19,8 @@ export function renderHeaderDefault() {
     }
 
     header.innerHTML = headerTemplate(headerContext);
+
+    const notificationsMenu = document.querySelector('.header__notifications__menu');
 
     const createMenu = document.querySelector('.header__create__menu');
     const createMenuBtns = document.querySelectorAll('.header__create__menu__item');
@@ -52,8 +54,6 @@ export function renderHeaderDefault() {
                         .then((status) => {
                             if (status === 'ok') {
                                 router.navigate('/login');
-                            } else {
-                                console.log('error logout');
                             }
                         })
                         .catch((error) => {
@@ -71,6 +71,11 @@ export function renderHeaderDefault() {
         createMenu.classList.toggle('hide');
     });
 
+    const notificationsBtn = document.querySelector('.js-notification-img');
+    notificationsBtn?.addEventListener('click', () => {
+        notificationsMenu.classList.toggle('hide');
+    });
+
     const profileArrow = document.querySelector('.header__user__avatar-user-arrow');
 
     const userBtn = document.querySelector('.header__user__avatar-img');
@@ -85,7 +90,7 @@ export function renderHeaderDefault() {
         userMenu.classList.toggle('hide');
     });
 
-    let searchMode = '';
+    let searchMode = 'pins';
     let searchInput = '';
 
     const radioInputs = document.querySelectorAll('.filter__list__pointer input[type="radio"]');
@@ -93,7 +98,6 @@ export function renderHeaderDefault() {
         input.addEventListener('change', (event) => {
             if (event.target.checked) {
                 searchMode = event.target.value;
-                console.log('Выбран режим поиска:', searchMode);
             }
         });
     });
@@ -101,7 +105,6 @@ export function renderHeaderDefault() {
     const inputField = document.querySelector('.header__search__text-input');
     inputField.addEventListener('input', (event) => {
         searchInput = event.target.value;
-        console.log('Новое значение поиска:', searchInput);
     });
 
     const searchImage = document.querySelector('.header__search__img-image');
@@ -110,7 +113,6 @@ export function renderHeaderDefault() {
             const encodedInput = encodeURIComponent(searchInput);
             API.Search(searchMode, encodedInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
                     router.navigate(`/search/pins/${encodedInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
@@ -128,12 +130,11 @@ export function renderHeaderDefault() {
         } else if (searchMode == 'boards' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
                     router.navigate(`search/boards/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
                     if (res && res.length > 0) {
-                        renderBoards(searchResSection, res);
+                        renderSearchBoards(searchResSection, res);
                         searchNonContent.classList.add('hide');
                         defineBoards();
                     } else {
@@ -146,7 +147,6 @@ export function renderHeaderDefault() {
         } else if (searchMode == 'users' && searchInput) {
             API.Search(searchMode, searchInput)
                 .then((res) => {
-                    console.log('Результат поиска:', res);
                     router.navigate(`search/users/${searchInput}`);
                     const searchResSection = document.getElementById('search-res');
                     const searchNonContent = document.querySelector('.search-non-content');
@@ -161,8 +161,6 @@ export function renderHeaderDefault() {
                 .catch((error) => {
                     console.error('Ошибка при выполнении поиска:', error);
                 });
-        } else {
-            console.log('Выберите режим и введите текст для поиска');
         }
     });
 
@@ -173,8 +171,13 @@ export function renderHeaderDefault() {
     });
 
     document.body.addEventListener('click', (e) => {
-        if (e.target !== document.querySelector('.js-create-img')) {
+        if (e.target !== createBtn) {
             createMenu.classList.add('hide');
+        }
+        if (!document.querySelector('.header__notifications__menu').contains(e.target) && 
+            !e.target.matches('.header__notifications__menu_item-btn') &&
+            e.target !== notificationsBtn) {
+            notificationsMenu.classList.add('hide');
         }
         if (e.target !== document.querySelector('.header__user__avatar-user') &&
             e.target !== document.querySelector('.header__user__avatar-user-arrow')) {
@@ -209,4 +212,20 @@ export function renderHeaderDefault() {
           });
         });
     }
+  
+    inputField.addEventListener('keydown', (e) => {
+        if (e.key != 'Enter') {
+            return;
+        }
+
+        e.preventDefault();
+
+        const clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        });
+     
+        searchImage.dispatchEvent(clickEvent);
+    });
 }

@@ -37,6 +37,7 @@ export function renderProfileSecurity() {
 
         const changeBtn = document.querySelector('.profile-security__btn-change');
         changeBtn?.addEventListener('click', () => {
+          securitySpan.classList.remove('hide');
           footerChangeBtn.classList.add('hide');
           footerSaveBtns.classList.remove('hide');
 
@@ -55,6 +56,7 @@ export function renderProfileSecurity() {
 
         const canselBtn = document.querySelector('.js-profile-security__btns__cansel-btn');
         canselBtn?.addEventListener('click', () => {
+          securitySpan.classList.add('hide');
           footerChangeBtn.classList.remove('hide');
           footerSaveBtns.classList.add('hide');
 

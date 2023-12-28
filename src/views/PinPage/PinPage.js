@@ -1,7 +1,7 @@
 import {API} from '../../utils/Api/api.js';
 import State from '../../components/State/state.js';
 import {Router} from '../../components/Router/router.js';
-import {renderPins} from '../../components/RenderPins/renderPins.js';
+import { Comments } from './Comments/Comments.js';
 import { renderUserPage } from '../../views/UserPage/UserPage.js'
 
 export function renderPinPage(pinID) {
@@ -9,11 +9,12 @@ export function renderPinPage(pinID) {
     const main = document.querySelector('#main');
     const state = new State();
     const pinPage = Handlebars.templates['PinPage.hbs'];
+    const currentURL = window.location.href;
 
     API.getPinInfo(pinID)
         .then((pinInfo) => {
-            console.log('Информация о пине:', pinInfo);
-            console.log('Информация о пине:', pinInfo.author.id);
+            //console.log('Информация о пине:', pinInfo);
+            //console.log('Информация о пине:', pinInfo.author.id);
             const context = {
                 id: pinInfo.id,
                 src: pinInfo.picture,
@@ -21,7 +22,8 @@ export function renderPinPage(pinID) {
                 title: pinInfo.title,
                 description: pinInfo.description,
                 likes: pinInfo.count_likes,
-                avatar: pinInfo.author.avatar
+                avatar: pinInfo.author.avatar,
+                link: currentURL
             };
 
             main.innerHTML = pinPage(context);
@@ -43,6 +45,11 @@ export function renderPinPage(pinID) {
                 })
 
             likeButton?.addEventListener('click', () => {
+                if (!isAuthorized) {
+                    router.navigate('/login')
+                    return;
+                }
+
                 API.getLike(pinID)
                     .then((data) => {
                         if (data.is_set) {
@@ -71,9 +78,8 @@ export function renderPinPage(pinID) {
             })
 
             userName?.addEventListener('click', () => {
-                console.log(pinInfo.author.id);
+                //console.log(pinInfo.author.id);
                 router.navigate(`/user/${pinInfo.author.id}`);
-                renderUserPage(pinInfo.author.id);
             })
 
             const usernameReal = state.getUsername();
@@ -101,25 +107,33 @@ export function renderPinPage(pinID) {
 
                 API.getMyBoards()
                 .then((res) => {
-                  const optgroup = document.createElement('optgroup');
-                  optgroup.label = 'Выберите доску';
-              
-                  res.forEach(board => {
-                    const option = document.createElement('option');
-                    option.value = board.board_id;
-                    option.textContent = board.title;
-                    optgroup.appendChild(option);
-                  });
-              
-                  boardList.appendChild(optgroup);
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = 'Выберите доску';
+                
+                    res.forEach(board => {
+                        const option = document.createElement('option');
+                        option.value = board.board_id;
+                        option.textContent = board.title;
+                        optgroup.appendChild(option);
+                    });
+                  
+                    if (optgroup.children.length) {
+                        boardID = optgroup.children[0].value;
+                    }
+
+                    boardList.appendChild(optgroup);
                 })
                 .catch((error) => {
                   console.error('Ошибка при получении досок:', error);
                 });              
             }
             
+            const shareButton = document.querySelector('.js-share__btn');
             const deleteButton = document.querySelector('.js-delete__btn');
             const updateButton = document.querySelector('.js-edit__btn');
+
+            const pinCommentsName = document.querySelector('.pin-comments_name');
+            const pinCommentsDiv = document.querySelector('.pin-comments-div');
 
             updateButton.classList.add('hide');
             deleteButton.classList.add('hide');
@@ -135,13 +149,54 @@ export function renderPinPage(pinID) {
             };
 
             saveButton?.addEventListener('click', () => {
-                console.log(boardID, [parseInt(pinID)]);
+                //console.log(boardID, [parseInt(pinID)]);
                 API.addBoardPins(boardID, [parseInt(pinID)]);
             });
 
             deleteButton?.addEventListener('click', () => {
                 showModal();
             });
+
+            shareButton.addEventListener('click', () => {
+                const input = document.querySelector('#shareModal .field input');
+                input.value = currentURL;
+
+                const shareModal = document.getElementById('shareModal');
+            
+                shareModal.classList.add('show');
+
+                const closeButton = shareModal.querySelector('.js-cancel__btn');
+                const copyButton = shareModal.querySelector('.field button');
+
+                closeButton.addEventListener('click', () => {
+                    shareModal.classList.remove('show');
+                }); 
+
+                shareModal.addEventListener('click', (e) => {
+                    if (e.target == shareModal) {
+                        shareModal.classList.remove('show');
+                    }
+                });
+            
+                copyButton.addEventListener('click', () => {
+                    const copyInput = shareModal.querySelector('.field input');
+                    copyInput.select();
+                
+                    try {
+                        const successful = document.execCommand('copy');
+                        
+                        if (successful) {
+                            copyButton.style.backgroundColor = 'green';
+                            copyButton.innerText = 'Скопировано';
+                        } else {
+                            copyButton.style.backgroundColor = '';
+                            copyButton.innerText = 'Скопировать';
+                        }
+                    } catch (err) {
+                        console.error('Ошибка копирования:', err);
+                    }
+                });                
+            });            
 
             const confirmDeleteBtn = document.getElementById('confirmDelete');
             const cancelDeleteBtn = document.getElementById('cancelDelete');
@@ -166,6 +221,9 @@ export function renderPinPage(pinID) {
                 updateButton.classList.add('hide');
                 pinControl.classList.remove('hide');
 
+                pinCommentsName.classList.add('hide');
+                pinCommentsDiv.classList.add('hide');
+
                 titleTextarea.classList.add('input-primary');
                 descriptionTextarea.classList.add('input-primary');
 
@@ -184,6 +242,9 @@ export function renderPinPage(pinID) {
 
                 titleTextarea.classList.remove('input-primary');
                 descriptionTextarea.classList.remove('input-primary');
+
+                pinCommentsName.classList.remove('hide');
+                pinCommentsDiv.classList.remove('hide');
 
                 likeButton.classList.remove('hide');
                 likeField.classList.remove('hide');
@@ -204,6 +265,9 @@ export function renderPinPage(pinID) {
                             router.navigate(`/pin/${pinInfo.id}`);
                             updateButton.classList.remove('hide');
                             pinControl.classList.add('hide');
+
+                            pinCommentsName.classList.remove('hide');
+                            pinCommentsDiv.classList.remove('hide');
             
                             titleTextarea.classList.remove('input-primary');
                             descriptionTextarea.classList.remove('input-primary');
@@ -219,7 +283,7 @@ export function renderPinPage(pinID) {
                     })
             });
 
-            console.log(usernameReal, pinInfo.author.username);
+            //console.log(usernameReal, pinInfo.author.username);
 
             if (usernameReal === pinInfo.author.username) {
                 const rec = document.querySelector('.rectangle');
@@ -234,10 +298,20 @@ export function renderPinPage(pinID) {
                 block.appendChild(boardList);
                 UserBoards();
             }
+
+            API.getPinComments(pinID)
+                .then((data) => {
+                    const comments = new Comments(pinID);
+                    comments.renderAllComments(data.comments);
+                })
+                .catch((error) => {
+                    console.error('Ошибка при получении комментариев к пину', error);
+                })
+
         })
         .catch((error) => {
             console.error('Ошибка при получении информации о пине:', error);
             router.navigate('/page404');
         });
-
+        
 }

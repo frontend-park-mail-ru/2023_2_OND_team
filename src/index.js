@@ -16,5 +16,5 @@ API.getCsrfToken()
       API.checkLogin()
           .then(() => {
             router.handlePopstate();
-          });
+        });
     });

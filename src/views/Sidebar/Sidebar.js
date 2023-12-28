@@ -80,4 +80,22 @@ export function renderSidebar() {
       router.navigate('/');
     }
   }
+
+  window.addEventListener("resize", function() {
+    const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
+    if (window.innerWidth < 1500) {
+      profileFields?.classList.remove('hide');
+    } else {
+      profileFields?.classList.add('hide');
+    }
+  });
+
+
+  const profileFields = document.querySelector('.js-sidebar__menu__profile-fields');
+  if (window.innerWidth < 1500) {
+    profileFields?.classList.remove('hide');
+  } else {
+    profileFields?.classList.add('hide');
+  }
+   
 }

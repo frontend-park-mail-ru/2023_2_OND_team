@@ -34,13 +34,94 @@
     margin-left: 20px;
 }
 
+.pin-comments-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+.pin-comments {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 130px;
+    gap: 25px;
+    padding: 10px;
+}
+
+.pin-comments__no_content_div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-comments__item {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.pin-comments__comment {
+    display: flex;
+    width: 300px;
+    height: fit-content;
+    flex-shrink: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.pin-comments__user_info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pin-comments__user_info__avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+}
+
+.pin-comments__input {
+    display: flex;
+    padding: 10px;
+    border-top: 2px solid;
+    justify-content: space-between;
+}
+
+.pin-comments__input_text {
+    display: inline-flex;
+    height: 30px;
+    width: 90%;
+    border-radius: var(--br-s, 10px);
+    border: 2px solid var(--primary-30, #226B77);
+    background: var(--bg-100, #FFF);
+}
+
+.pin-comments__input_text-input {
+    all: unset;
+    width: 100%;
+    padding-left: 10px;
+    color: var(--black-text, rgba(24, 24, 24, 0.87));
+}
+
+.pin-comments__input__send_message-img {
+    cursor: pointer;
+}
+
+
 .pin-like-btn {
     position: absolute;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding: 0px 15px 10px 0px;
     gap: 10px;
     bottom: 20px;
+    right: 0;
 }
 
 .pin-like-counter {
@@ -57,6 +138,7 @@
 
 .saved {
     display: flex;
+    align-items: center;
 }
 
 .board-list {
@@ -86,19 +168,6 @@
     cursor: pointer;
     width: 100px;
     height: 45px;
-}
-  
-.cancel-button {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    width: 15px;
-    height: 15px;
-    z-index: 9999;
 }
 
 .edit-button {
@@ -153,7 +222,7 @@
     margin: 5px 0px 0px 15px;
     padding: 5px 5px;
     width: 472px;
-    height: 186px;
+    height: 100px;
     border: none;
     background: none;
     resize: none;
@@ -229,11 +298,27 @@
 }
 
 @media only screen and (max-width: 968px) {
+    .pin-comments-div {
+        width: 320px;
+    }
+
+    .pin-comments__comment {
+        width: 150px;
+    }
+
     .rectangle {
+        display: flex;
+        width: 360px;
         flex-direction: column;
-        height: auto;
+        /* height: 900px; */
+        height: 80vh;
+        overflow-y: auto;
         margin: 20px auto 0;
         border-radius: 10px;
+    }
+
+    .board-list {
+        width: 90px;
     }
 
     .open__gallery__item img {
@@ -247,6 +332,8 @@
     }
 
     .pin-like-btn {
+        padding-left: 20px;
+        padding-top: 5px;
         position: static;
         justify-content: center;
         margin-top: 5px;
@@ -261,7 +348,7 @@
 
     .big-pin-edit-item {
         width: 472px;
-        height: auto;
+        height: 26px;
     }
 }
 
@@ -286,7 +373,7 @@
     margin: 360px auto 0;
     padding: 20px;
     border-radius: 15px;
-    width: 30%;
+    width: 40%;
     text-align: center;
 }
 
@@ -335,4 +422,31 @@
     cursor: pointer;
     width: 23px;
     height: 25px
+}
+
+.icons {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.js-search__btn {
+    width: 138px
+}
+
+.link-conteiner {
+    border-radius: 5px;
+    height: 36px;
+}
+
+.modal-content header span {
+    font-weight: bold;
 }

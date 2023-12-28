@@ -12,22 +12,6 @@
       <div class="header__filter__img">
         <img src="/assets/icons/forHeader/icon_filter.svg" class="header__filter__img-image">
       </div>
-      <nav class="header__filter__list hide">
-        <form class="filter__list text-base1-regular">
-          <label class="filter__list__pointer">
-            <input type="radio" name="choice" value="users">
-            <span class="checkmark">Люди</span>
-          </label>
-          <label class="filter__list__pointer">
-            <input type="radio" name="choice" value="pins">
-            <span class="checkmark">Пины</span>
-          </label>
-          <label class="filter__list__pointer">
-            <input type="radio" name="choice" value="boards">
-            <span class="checkmark">Доски</span>
-          </label>
-        </form>
-      </nav>
     </div>
   </div>
   <div class="header__left hide"></div>
@@ -37,73 +21,36 @@
       <div class="header__user__create-img">
         <img class="js-create-img" src="/assets/icons/forHeader/create.svg">
       </div>
-      {{!-- <nav class="header__create__menu hide">
-        <div class="header__create__menu__pin header__create__menu__item">
-          <div class="header__create__menu__pin-icon">
-            <img src="/assets/icons/forHeader/icon_picture-create.svg">
-          </div>
-          <div class="header__create__menu__pin-text text-base1-regular">
-            Создать пин
-          </div>
-        </div>
-        <div class="header__create__menu__board header__create__menu__item">
-          <div class="header__create__menu__board-icon">
-            <img src="/assets/icons/forHeader/icon_board-create.svg">
-          </div>
-          <div class="header__create__menu__board-text text-base1-regular">
-            Создать доску
-          </div>
-        </div>
-      </nav> --}}
     </div>
     <div class="header__user__notification">
       <div class="header__user__notification-img">
         <img class="js-notification-img" src="/assets/icons/forHeader/notification.svg">
       </div>
-      {{!-- <nav class="header__notifications__menu hide">
-        <div class="header__notifications__menu__title">
-          <div class="header__notifications__menu__title-text text-base2-medium">
-            Уведомления
-          </div>
-        </div>
-        <div class="header__notifications__menu__items">
-          <div class="header__notifications__menu-no_notifications-text text-base1-medium">
-            Нет уведомлений
-          </div>
-        </div>
-      </nav> --}}
     </div>
     <div class="header__user__avatar">
       <div class="header__user__avatar-img">
         <img src="{{avatar}}" class="header__user__avatar-user">
         <img src="/assets/icons/actions/icon_profile_arrow-down.svg" class="header__user__avatar-user-arrow">
       </div>
-      {{!-- <nav class="header__user__menu hide">
-        <div class="header__user__menu__username">
-          <div class="header__user__menu__username-text text-base1-medium">
-            {{username}}
-          </div>
-        </div>
-        <div class="header__user__menu__profile header__user__menu__item">
-          <div class="header__user__menu__profile-icon">
-            <img src="/assets/icons/forHeader/icon_profile-user_menu.svg">
-          </div>
-          <div class="header__user__menu__profile-text text-base1-regular">
-            Профиль
-          </div>
-        </div>
-        <div class="header__user__menu__logout header__user__menu__item">
-          <div class="header__user__menu__logout-icon">
-            <img src="/assets/icons/actions/icon_exit-user_menu.svg">
-          </div>
-          <div class="header__user__menu__logout-text text-base1-regular">
-            Выход
-          </div>
-        </div>
-      </nav> --}}
     </div>    
   </div>
 </div>
+<nav class="header__filter__list hide">
+  <form class="filter__list text-base1-regular">
+    <label class="filter__list__pointer">
+      <input type="radio" name="choice" value="users">
+      <span class="checkmark">Люди</span>
+    </label>
+    <label class="filter__list__pointer">
+      <input type="radio" name="choice" value="pins" checked>
+      <span class="checkmark">Пины</span>
+    </label>
+    <label class="filter__list__pointer">
+      <input type="radio" name="choice" value="boards">
+      <span class="checkmark">Доски</span>
+    </label>
+  </form>
+</nav>
 <nav class="header__create__menu hide">
   <div class="header__create__menu__pin header__create__menu__item">
     <div class="header__create__menu__pin-icon">
@@ -124,15 +71,20 @@
 </nav>
 <nav class="header__notifications__menu hide">
   <div class="header__notifications__menu__title">
-    <div class="header__notifications__menu__title-text text-base2-medium">
+    <div class="header__notifications__menu__title-text text-base1-medium">
       Уведомления
     </div>
-  </div>
+  </div> 
+  <div class="header__notifications__menu__footer">
+    <div class="header__notifications__menu__footer-text text-base2-medium">
+      Очистить всё
+    </div>
+  </div> 
   <div class="header__notifications__menu__items">
-    <div class="header__notifications__menu-no_notifications-text text-base1-medium">
+    <div class="header__notifications__menu-no_notifications-text text-base2-medium">
       Нет уведомлений
     </div>
-  </div>
+  </div>  
 </nav>
 <nav class="header__user__menu hide">
   <div class="header__user__menu__username">

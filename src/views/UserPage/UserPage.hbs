@@ -1,36 +1,38 @@
 <div class="user">
-  <div class="user__avatar">
-    <img src="{{avatar}}" class="user__avatar-img">
-    <div class="user__avatar__username text-base1-medium">{{username}}</div>
-    <button class="btn-primary-default user__avatar__chat-btn text-base1-medium">К чату</button>
-  </div>
-  <div class="user__subscriptions">
-    <div class="user__subscriptions-icon">
-      <img src="/assets/icons/subscribers.svg" class="user__subscriptions-img">
+  {{!-- <div class="user-begin"> --}}
+    <div class="user__avatar">
+      <img src="{{avatar}}" class="user__avatar-img">
+      <div class="user__avatar__username text-base1-medium">{{username}}</div>
+      <button class="btn-primary-default user__avatar__chat-btn text-base1-medium">К чату</button>
     </div>
-    <div class="user__subscriptions-count">
-      <div class="user__subscriptions-text text-base1-medium">{{subscribers}}</div>
+    <div class="user__subscriptions">
+      <div class="user__subscriptions-icon">
+        <img src="/assets/icons/subscribers.svg" class="user__subscriptions-img">
+      </div>
+      <div class="user__subscriptions-count">
+        <div class="user__subscriptions-text text-base1-medium">{{subscribers}}</div>
+      </div>
     </div>
-  </div>
+  {{!-- </div> --}}
   <div class="user__data">
     <div class="user__data__names">
       <div class="user__data__names__name user__data__names-item">
         <div class="user__data__names__name-title user__data__names-item-title text-base2-medium">Имя</div>
         <div class="user__data__names__name-data user__data__names-item-data input-read-only">
-          <textarea disabled class="user__data__names__name-textarea user__data__names-item-textarea text-base1-medium">{{name}}</textarea>
+          <span disabled class="user__data__names__name-span user__data__names-item-span text-base1-medium">{{name}}</span>
         </div>
       </div>
       <div class="user__data__names__name user__data__names-item">
         <div class="user__data__names__surname-title user__data__names-item-title text-base2-medium">Фамилия</div>
         <div class="user__data__names__surname-data user__data__names-item-data input-read-only">
-          <textarea disabled class="user__data__names__surname-textarea user__data__names-item-textarea text-base1-medium">{{surname}}</textarea>
+          <span disabled class="user__data__names__surname-span user__data__names-item-span text-base1-medium">{{surname}}</span>
         </div>
       </div>
     </div>
     <div class="user__data__about">
       <div class="user__data__about-title text-base2-medium">О себе</div>
       <div class="user__data__about-data input-read-only">
-        <textarea disabled class="user__data__about-textarea text-base1-medium">{{about}}</textarea>
+        <span disabled class="user__data__about-span text-base1-medium">{{about}}</span>
       </div>
     </div>
   </div>

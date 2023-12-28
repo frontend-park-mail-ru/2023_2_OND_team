@@ -26,6 +26,18 @@
                 <label for="pin-description" class="labeled-input">Описание</label>
                 <textarea disabled class="pin-description input-read-only text-base1-small big-pin-edit-item">{{description}}</textarea>
             </div>
+            <div class="pin-comments_name">
+                <span class="pin-comments_name-span labeled-input">Комментарии</span>
+            </div>
+            <div class="pin-comments-div">
+                <div class="pin-comments"></div>
+                <div class="pin-comments__input">
+                    <div class="pin-comments__input_text">
+                        <input type="text" placeholder="Добавить комментарий" class="pin-comments__input_text-input text-base2-medium">
+                    </div>
+                    <img src="/assets/icons/actions/messenger_send_message.svg" class="pin-comments__input__send_message-img">
+                </div>
+            </div>
             <div class="pin-like-btn">
                 <img src="/assets/icons/like.svg" alt="Like" class="pin-like-icon js-pin-like-icon-{{id}}">
                 <div class="pin-like-counter pin-like-counter-{{id}} text-base1-medium">{{likes}}</span></div>
@@ -54,6 +66,39 @@
     <div class="modal-content text-base1-small">
         <p>Вы уверены, что хотите удалить этот пин?</p>
         <button class="btn-error-clear text-base1-medium" id="confirmDelete">Удалить</button>
-        <button class="btn-error-clear text-base1-medium" id="cancelDelete">Отменить</button>
+        <button class="btn-error-clear text-base1-medium" id="cancelDelete">Оставить</button>
+    </div>
+</div>
+
+<div id="shareModal" class="modal hide" >
+    <div class="modal-content text-base1-small">
+        <header>
+            <div class="title__block">
+                <span>Поделиться</span>
+                <img src="/assets/icons/actions/icon_cancel.svg" class="btn-cancel js-cancel__btn">
+            </div>
+        </header>
+        <div class="content">
+            <ul class="icons">
+                <a href="https://vk.com/share.php?url={{link}}&title=Привет!%0AСмотри,%20какой%20крутой%20пин%20мне%20встретился%20в%20PinSpire:%20" target="_blank">
+                    <img src="/assets/icons/forSharing/vk_logo.svg" class="social-icon">
+                </a>
+                <a href="https://e.mail.ru/compose/?subject=PinSpire&body=Привет!%F0%9F%91%8B%F0%9F%8F%BB%0AСмотри,%20какой%20крутой%20пин%20мне%20встретился%20в%20PinSpire:%20{{link}}" target="_blank">
+                    <img src="/assets/icons/forSharing/mail_logo.svg" class="social-icon">
+                </a>
+                <a href="https://t.me/share/url?url=pinspire.online&text=Привет!%F0%9F%91%8B%F0%9F%8F%BB%0AСмотри,%20какой%20крутой%20пин%20мне%20встретился%20в%20PinSpire:%20{{link}}" target="_blank">
+                    <img src="/assets/icons/forSharing/telegram_logo.svg" class="social-icon">
+                </a>
+                <a href="https://web.whatsapp.com/send?text=Привет!%F0%9F%91%8B%F0%9F%8F%BB%0AСмотри,%20какой%20крутой%20пин%20мне%20встретился%20в%20PinSpire:%20{{link}}" target="_blank">
+                    <img src="/assets/icons/forSharing/whatsapp_logo.svg" class="social-icon">
+                </a>
+            </ul>
+            <hr>
+            <p>Скопировать ссылку</p>
+            <div class="field">
+                <input class="text-base2-medium link-conteiner" type="text" readonly value="">
+                <button class="btn-primary-default text-base2-medium js-search__btn">Скопировать</button>
+            </div>
+        </div>
     </div>
 </div>

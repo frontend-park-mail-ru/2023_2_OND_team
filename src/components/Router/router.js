@@ -1,5 +1,5 @@
-import {API} from '../../utils/Api/api.js';
 import State from '../State/state.js';
+import { Notifications } from '../../views/Notifications/Notifications.js';
 import {renderSidebar} from '../../views/Sidebar/Sidebar.js';
 import {renderHeaderDefault} from '../../views/HeaderDefault/HeaderDefault.js';
 import {renderFeedPage} from '../../views/Feed/Feed.js';
@@ -19,14 +19,25 @@ import {renderAddPins} from '../../views/AddPins/AddPins.js';
 import {renderSubscriptionsPage} from '../../views/Subscriptions/Subscriptions.js';
 import {setHeaderTitle, removeHeaderTitle} from '../../utils/HeaderTitleProcessing/headerTitleProcessing.js';
 import {setActiveSidebarItem} from '../../utils/sidebarItemsProcessing/sidebarItemsProcessing.js';
-import {renderMessengerPage} from '../../views/Messenger/Messenger.js';
+import {renderMessengerPage, renderChatPage} from '../../views/Messenger/Messenger.js';
 import {renderUserPage} from '../../views/UserPage/UserPage.js';
 import {renderSearchPage} from "../../views/SearchPage/Search.js"
+import { MessengerChatsMenu } from '../../views/Messenger/chatsMenu/ChatsMenu.js';
 
 function resetScroll() {
     window.scrollTo({
         top: 0,
     });
+}
+
+function destroyMessenger() {
+    if (!MessengerChatsMenu.instance) {
+        return;
+    }
+    
+    const messengerChatsMenu = new MessengerChatsMenu();
+    messengerChatsMenu.activeChatId = null;
+    MessengerChatsMenu.instance = null;
 }
 
 export class Router {
@@ -74,6 +85,8 @@ export class Router {
                         renderHeaderGuest();
                     }
 
+                    destroyMessenger();
+
                     renderFeedPage();
                 },
             },
@@ -100,6 +113,8 @@ export class Router {
                         }
 
                         setHeaderTitle('Мои пины и доски');
+ 
+                        destroyMessenger();
 
                         renderProfilePage();
                     } else {
@@ -126,6 +141,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Данные аккаунта');
+                        
+                        destroyMessenger();
 
                         renderProfileData();
                     } else {
@@ -151,6 +168,8 @@ export class Router {
 
                         setHeaderTitle('Безопасность');
 
+                        destroyMessenger();
+
                         renderProfileSecurity();
                     } else {
                         this.navigate('/login');
@@ -172,6 +191,9 @@ export class Router {
                         this.state.setCurrentPage('login');
 
                         renderHeaderGuest();
+
+                        destroyMessenger();
+
                         renderAuthPage();
                     }
                 },
@@ -189,6 +211,9 @@ export class Router {
                         this.state.setCurrentPage('signup');
                         
                         renderHeaderGuest();
+                        
+                        destroyMessenger();
+                        
                         renderRegPage();
                     }
                 },
@@ -214,6 +239,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Мессенджер');
+                        
+                        destroyMessenger();
 
                         renderMessengerPage();
                     } else {
@@ -242,6 +269,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Подписки');
+
+                        destroyMessenger();
 
                         renderSubscriptionsPage();
                     } else {
@@ -273,6 +302,8 @@ export class Router {
 
                         setHeaderTitle('Понравившиеся пины');
 
+                        destroyMessenger();
+
                         renderFavouritePage();
                     } else {
                         this.navigate('/login');
@@ -302,6 +333,8 @@ export class Router {
                         } 
 
                         setHeaderTitle('Создание пина');
+
+                        destroyMessenger();
 
                         renderCreatePin();
                     } else {
@@ -333,6 +366,8 @@ export class Router {
                         
                         setHeaderTitle('Создание доски');
 
+                        destroyMessenger();
+
                         renderCreateBoard();
                     } else {
                         this.navigate('/login');
@@ -358,6 +393,8 @@ export class Router {
                         if (document.querySelector('#header').innerHTML === '') {
                             renderHeaderDefault();
                         }
+
+                        destroyMessenger();
 
                         renderAddPins(boardID);
                     } else {
@@ -389,6 +426,8 @@ export class Router {
 
                     resetScroll();
 
+                    destroyMessenger();
+                    
                     renderPinPage(pinID);
                 },
             },
@@ -418,6 +457,8 @@ export class Router {
 
                     resetScroll();
 
+                    destroyMessenger();
+
                     renderBoardPage(boardID);
                 },
             },
@@ -440,6 +481,10 @@ export class Router {
                         } 
 
                         setHeaderTitle('Результат поиска');
+
+                        this.state.deleteAllPins();
+                        
+                        destroyMessenger();
 
                         renderSearchPage();
                     } 
@@ -465,6 +510,8 @@ export class Router {
 
                         setHeaderTitle('Результат поиска');
 
+                        destroyMessenger();
+
                         renderSearchPage();
                     } 
                 },
@@ -489,6 +536,8 @@ export class Router {
 
                         setHeaderTitle('Результат поиска');
 
+                        destroyMessenger();
+
                         renderSearchPage();
                     } 
                 },
@@ -504,8 +553,7 @@ export class Router {
                     this.navigate('/profile');
                     return;
                   }
-        
-        
+
                   this.state.deleteAllPins();
         
                   this.state.setCurrentPage(`user${userID}`);
@@ -523,6 +571,8 @@ export class Router {
                     }
                   }
         
+                  destroyMessenger();
+
                   renderUserPage(userID);
                 },
               },
@@ -530,7 +580,16 @@ export class Router {
                 path: '/messenger/ID',
                 handler: (userID) => {
                   if (this.state.getIsAuthorized()) {
-                    this.state.setCurrentPage(`messenger${userID}`);
+                    if (this.state.getCurrentPage()?.startsWith('messenger')) {
+
+                        this.state.setCurrentPage(`messenger${userID}`);
+
+                        const messengerChatsMenu = new MessengerChatsMenu();
+                        messengerChatsMenu.openChatWithUser(userID);
+                        
+                        return;
+                    }
+
         
                     if (document.querySelector('#sidebar').innerHTML === '') {
                         renderSidebar();
@@ -544,7 +603,9 @@ export class Router {
         
                     setHeaderTitle('Мессенджер');
                     
-                    renderMessengerPage(userID);
+                    this.state.setCurrentPage(`messenger${userID}`);
+                    
+                    renderChatPage(userID);
                   } else {
                     this.navigate('/login');
                   }
@@ -633,5 +694,8 @@ export class Router {
                 this.#defaultRoute();
                 break;
         }
+
+        const notifications = new Notifications();
+        notifications.defineNotifications();
     }
 }
