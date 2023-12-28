@@ -34,12 +34,6 @@
     margin-left: 20px;
 }
 
-.pin-comments_name{
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
 .pin-comments-div {
     display: flex;
     flex-direction: column;
