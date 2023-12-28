@@ -138,6 +138,7 @@
 
 .saved {
     display: flex;
+    align-items: center;
 }
 
 .board-list {
@@ -298,12 +299,16 @@
 
 @media only screen and (max-width: 968px) {
     .pin-comments-div {
-        width: 350px;
+        width: 320px;
+    }
+
+    .pin-comments__comment {
+        width: 150px;
     }
 
     .rectangle {
         display: flex;
-        width: 400px;
+        width: 360px;
         flex-direction: column;
         height: 900px;
         margin: 20px auto 0;
