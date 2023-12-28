@@ -306,16 +306,12 @@
     .pin-comments-div {
         width: 350px;
     }
-    
-    .open__gallery__item {
-        height: 500px;
-    }
-    
+
     .rectangle {
         display: flex;
         width: 400px;
         flex-direction: column;
-        height: 900px;
+        height: auto;
         margin: 20px auto 0;
         border-radius: 10px;
     }
