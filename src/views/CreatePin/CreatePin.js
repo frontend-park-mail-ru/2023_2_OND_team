@@ -46,6 +46,11 @@ export function renderCreatePin() {
             router.navigate('/');
           } else if (response.status === 'error' && response.code === 'explicit_pin') {
             const badContent = document.querySelector('.create_pin__bad_content');
+            badContent.textContent = 'Пин содержит неприличный контент';
+            badContent.classList.remove('hide');
+          } else if (response.status === 'error' && response.code === 'add_pin') {
+            const badContent = document.querySelector('.create_pin__bad_content');
+            badContent.textContent = 'Недопустимый формат или размер файла';
             badContent.classList.remove('hide');
           } else {
             console.error('Error creating pin');
