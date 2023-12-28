@@ -261,6 +261,10 @@
     .messenger__chat__messages, messenger__chat-non-content {
         width: 70vw;
     }
+
+    .messenger__chat-non-content {
+        width: 70vw;
+    }
 }
 
 @media (max-width: 1300px) {
@@ -274,16 +278,28 @@
     .messenger__chat__messages, messenger__chat-non-content {
         width: 60vw;
     }
+
+    .messenger__chat-non-content {
+        width: 60vw;
+    }
 }
 
 @media (max-width: 800px) {
     .messenger__chat__messages, messenger__chat-non-content {
         width: 50vw;
     }
+
+    .messenger__chat-non-content {
+        width: 50vw;
+    }
 }
 
 @media (max-width: 650px) {
     .messenger__chat__messages, messenger__chat-non-content {
+        width: 40vw;
+    }
+
+    .messenger__chat-non-content {
         width: 40vw;
     }
 
