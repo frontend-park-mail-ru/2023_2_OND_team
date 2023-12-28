@@ -303,11 +303,18 @@
 }
 
 @media only screen and (max-width: 968px) {
+    .pin-comments-div {
+        width: 350px;
+    }
+    
+    .open__gallery__item {
+        height: 900px;
+    }
     .rectangle {
         display: flex;
         width: 400px;
         flex-direction: column;
-        height: auto;
+        height: 900px;
         margin: 20px auto 0;
         border-radius: 10px;
     }
@@ -327,6 +334,8 @@
     }
 
     .pin-like-btn {
+        padding-left: 20px;
+        padding-top: 5px;
         position: static;
         justify-content: center;
         margin-top: 5px;
@@ -341,7 +350,7 @@
 
     .big-pin-edit-item {
         width: 472px;
-        height: auto;
+        height: 26px;
     }
 }
 
