@@ -304,10 +304,16 @@
 
 @media only screen and (max-width: 968px) {
     .rectangle {
+        display: flex;
+        width: 400px;
         flex-direction: column;
         height: auto;
         margin: 20px auto 0;
         border-radius: 10px;
+    }
+
+    .board-list {
+        width: 90px;
     }
 
     .open__gallery__item img {
