@@ -1,10 +1,12 @@
 import { API } from "../../../utils/Api/api.js";
 import State from "../../../components/State/state.js";
+import { Router } from "../../../components/Router/router.js";
 
 export class Comments {
     #pinID;
     #flagNoComments;
     #state;
+    #router;
 
     #commentsDiv;
     #commentInput;
@@ -14,6 +16,7 @@ export class Comments {
         this.#pinID = pinID;
         this.#flagNoComments = true;
         this.#state = new State();
+        this.#router = new Router();
 
         this.defineElements();
     }
@@ -88,6 +91,10 @@ export class Comments {
     }
 
     sendComment(content) {
+        if (!this.#state.getIsAuthorized) {
+            this.#router.navigate('/login')
+        }
+
         this.#commentInput.value = '';
 
         API.sendCommentToPin(this.#pinID, content)
