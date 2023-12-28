@@ -234,8 +234,7 @@
 
 
 .messenger__chat__choose_chat-img {
-    height: 200px;
-    width: 250px;
+    width: 100%;
 }
 
 .hide {
@@ -259,7 +258,7 @@
 }
 
 @media (max-width: 1500px) {
-    .messenger__chat__messages {
+    .messenger__chat__messages, messenger__chat-non-content {
         width: 70vw;
     }
 }
@@ -272,19 +271,19 @@
 
 
 @media (max-width: 1100px) {
-    .messenger__chat__messages {
+    .messenger__chat__messages, messenger__chat-non-content {
         width: 60vw;
     }
 }
 
 @media (max-width: 800px) {
-    .messenger__chat__messages {
+    .messenger__chat__messages, messenger__chat-non-content {
         width: 50vw;
     }
 }
 
 @media (max-width: 650px) {
-    .messenger__chat__messages {
+    .messenger__chat__messages, messenger__chat-non-content {
         width: 40vw;
     }
 
