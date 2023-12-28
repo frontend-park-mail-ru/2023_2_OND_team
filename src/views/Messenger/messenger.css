@@ -41,7 +41,6 @@
 
 .messenger__chat-menu__chats {
     display: flex;
-    flex-direction: column;35vw
     flex-direction: column;
     width: max(140px, 14vw);
     gap: 0.5rem;
