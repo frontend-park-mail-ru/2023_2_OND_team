@@ -41,16 +41,7 @@
 
 .messenger__chat-menu__chats {
     display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;    
-    height: calc(100vh - 165px);
-    padding-right: 10px;
-}
-
-.messenger__chat-menu__chat-list {
-    all: unset;
-    display: flex;
+    flex-direction: column;35vw
     flex-direction: column;
     width: max(140px, 14vw);
     gap: 0.5rem;
@@ -289,6 +280,6 @@
     }
 
     .messenger__chat__footer__text {
-        width: 35vw;
+        width: 30vw;
     }
 }
