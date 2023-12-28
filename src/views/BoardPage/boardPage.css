@@ -1,12 +1,10 @@
 .rectangle-board-open {
     margin: 15px 15px 0px;
-    width: 100%;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     padding: 1px 20px;
-    display: flex;
     justify-content: center;
-    max-width: 1395px;
     border: 1px solid grey;
     border-radius: 15px;
     box-shadow: 10px 8px 4px rgba(0, 0, 0, 0.2);
@@ -77,4 +75,16 @@
 .buttons__block {
     display: flex;
     align-items: center;
+}
+
+@media screen and (max-width: 1395px) {
+    .rectangle-board-open {
+        width: 90%; 
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .rectangle-board-open {
+        width: 80%;
+    }
 }
