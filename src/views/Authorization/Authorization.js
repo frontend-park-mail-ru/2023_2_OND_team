@@ -23,7 +23,7 @@ export function renderAuthPage() {
   main.innerHTML = '';
 
   const authorizationTemplate = Handlebars.templates['Authorization.hbs'];
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 968;
   
   const authorizationContext = {
     mobile: isMobile
