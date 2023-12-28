@@ -305,7 +305,7 @@
         display: flex;
         width: 400px;
         flex-direction: column;
-        height: auto;
+        height: 900px;
         margin: 20px auto 0;
         border-radius: 10px;
     }
