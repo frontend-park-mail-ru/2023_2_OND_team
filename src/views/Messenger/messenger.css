@@ -5,6 +5,8 @@
 .messenger {
     display: grid;
     grid-template-columns: 1fr 5fr;
+    height: calc(100vh - 115px);
+    overflow: hidden;
 }
 
 .messenger__chat-menu {
