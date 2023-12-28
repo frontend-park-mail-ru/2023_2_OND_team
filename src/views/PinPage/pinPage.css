@@ -308,13 +308,14 @@
     }
     
     .open__gallery__item {
-        height: 900px;
+        height: 500px;
     }
+    
     .rectangle {
         display: flex;
         width: 400px;
         flex-direction: column;
-        height: 500px;
+        height: 900px;
         margin: 20px auto 0;
         border-radius: 10px;
     }
