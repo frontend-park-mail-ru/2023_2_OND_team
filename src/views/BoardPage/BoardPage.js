@@ -92,13 +92,6 @@ export async function renderBoardPage(boardID) {
                 }
             });                
         
-            /*const socialIcons = shareModal.querySelectorAll('.icons a');
-        
-            socialIcons.forEach(icon => {
-                icon.addEventListener('click', () => {
-                    console.log('click');
-                });
-            });*/
         });  
 
         if (usernameReal === boardInfo.author_username) {
@@ -182,8 +175,6 @@ export async function renderBoardPage(boardID) {
         cancelDeleteBtn?.addEventListener('click', () => {
             hideModal();
         });
-
-        //console.log(usernameReal);
 
         await renderBoardPins();
 

@@ -107,8 +107,6 @@ export class API {
             const jsonObject = JSON.parse(event.data);
             if (jsonObject.message.eventType === 'create') {
                 notifications.renderNotification('NEW_MESSAGE', jsonObject?.message?.message?.from)
-            } else {
-                console.log(jsonObject);
             }
         });
 
