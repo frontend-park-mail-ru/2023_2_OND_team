@@ -20,8 +20,8 @@ const app = express();
 */
 
 const httpsOptions = {
-  key: fs.readFileSync('/home/ond_team/cert/privkey.pem'),
-  cert: fs.readFileSync('/home/ond_team/cert/fullchain.pem'),
+  key: fs.readFileSync('/cert/privkey.pem'),
+  cert: fs.readFileSync('/cert/fullchain.pem'),
 };
 
 https.createServer(httpsOptions, app).listen(443);
