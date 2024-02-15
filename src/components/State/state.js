@@ -14,7 +14,7 @@ export class State {
       return State.instance;
     }
 
-    this.#domain = 'pinspire.online';
+    this.#domain = 'pinspire.site';
     State.instance = this;
     this.#csrfToken = null;
     this.#currentPage = null;
